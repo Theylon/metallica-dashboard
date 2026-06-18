@@ -1,0 +1,43 @@
+name: Fetch IBKR Data
+
+on:
+  schedule:
+    # Every 30 min Mon–Fri 9:00am–4:00pm ET (14:00–21:00 UTC)
+    - cron: '0,30 14-21 * * 1-5'
+  workflow_dispatch: # Allow manual trigger from GitHub Actions UI
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Needed to commit data/ updates
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install requests yfinance cryptography
+
+      - name: Fetch data
+        env:
+          IBKR_CONSUMER_KEY: ${{ secrets.IBKR_CONSUMER_KEY }}
+          IBKR_PRIVATE_KEY: ${{ secrets.IBKR_PRIVATE_KEY }}
+          IBKR_ACCOUNT_ID: ${{ secrets.IBKR_ACCOUNT_ID }}
+        run: python scripts/fetch.py
+
+      - name: Commit data updates
+        run: |
+          git config user.name "metallica-bot"
+          git config user.email "bot@metallica-dashboard.local"
+          git add data/
+          git diff --staged --quiet && echo "No changes" || (
+            git commit -m "data: update $(date -u +%Y-%m-%dT%H:%M)Z" &&
+            git push
+          )
