@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
-"""Rebuild data/{positions,account,pnl}.json from raw IBKR MCP tool outputs.
+"""Rebuild data/{positions,account,pnl,benchmarks}.json from raw IBKR MCP outputs.
 
-Used by the SessionStart auto-refresh (and any manual refresh). In a Claude
-session: call the IBKR MCP tools and save each raw JSON result to /tmp, then run
-this script. It does NOT touch benchmarks.json or report.json.
+Used by the SessionStart auto-refresh, the scheduled Routine, and any manual
+refresh. In a Claude session: call the IBKR MCP tools, save each raw JSON result
+to /tmp, then run this script. It never touches report.json (static content).
 
 Inputs (raw MCP tool outputs, saved verbatim):
-  /tmp/ibkr_summary.json    <- get_account_summary
-  /tmp/ibkr_positions.json  <- get_account_positions
-  /tmp/ibkr_balances.json   <- get_account_balances
-  /tmp/ibkr_perf.json       <- get_pa_performance_all_periods
+  /tmp/ibkr_summary.json        <- get_account_summary
+  /tmp/ibkr_positions.json      <- get_account_positions
+  /tmp/ibkr_balances.json       <- get_account_balances
+  /tmp/ibkr_perf.json           <- get_pa_performance_all_periods
+  /tmp/ibkr_bench_<TICKER>.json <- get_price_history (STK, ONE_DAY, THREE_MONTHS)
+                                   for SPY, XME, SLV, CPER, JJU (optional)
 """
 import json, datetime, pathlib
 
@@ -29,9 +31,51 @@ CATEGORY = {
     "XME": "Mining ETF",
 }
 
+# Benchmark ETFs plotted on the dashboard chart.
+BENCH_TICKERS = ["SPY", "XME", "SLV", "CPER", "JJU"]
+
 
 def load(name):
     return json.loads((SRC / name).read_text())
+
+
+def build_benchmarks(now):
+    """Rebuild data/benchmarks.json from per-ticker IBKR price-history dumps.
+
+    Reads /tmp/ibkr_bench_<TICKER>.json (raw get_price_history output). A ticker
+    whose dump is missing or errored keeps its existing entry, so a transient
+    data gap never blanks a line on the chart.
+    """
+    bench_file = DATA / "benchmarks.json"
+    try:
+        existing = json.loads(bench_file.read_text()).get("tickers", {})
+    except Exception:
+        existing = {}
+
+    tickers, refreshed, kept = {}, [], []
+    for t in BENCH_TICKERS:
+        src = SRC / f"ibkr_bench_{t}.json"
+        entry = None
+        if src.exists():
+            try:
+                raw = json.loads(src.read_text())
+                times, closes = raw.get("time"), raw.get("close")
+                if "error" not in raw and times and closes and len(times) == len(closes):
+                    entry = {
+                        "dates": [s[:10] for s in times],
+                        "closes": [round(float(c), 4) for c in closes],
+                    }
+            except Exception:
+                entry = None
+        if entry:
+            tickers[t] = entry
+            refreshed.append(t)
+        elif t in existing:
+            tickers[t] = existing[t]
+            kept.append(t)
+
+    bench_file.write_text(json.dumps({"updatedAt": now, "tickers": tickers}, indent=2))
+    return refreshed, kept
 
 
 def main():
@@ -105,8 +149,12 @@ def main():
         prev = nv
     (DATA / "pnl.json").write_text(json.dumps(hist, indent=2))
 
+    # ── Benchmarks (refreshed only when /tmp/ibkr_bench_*.json dumps exist) ─
+    refreshed, kept = build_benchmarks(now)
+
     print(f"Refreshed @ {now}: NAV {account['nav']} | dailyPnl {account['dailyPnl']} | "
-          f"netExp {account['netExposure']}% | {len(positions)} positions | {len(hist)} pnl pts")
+          f"netExp {account['netExposure']}% | {len(positions)} positions | {len(hist)} pnl pts | "
+          f"bench refreshed={','.join(refreshed) or '-'} kept={','.join(kept) or '-'}")
 
 
 if __name__ == "__main__":
