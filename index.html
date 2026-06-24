@@ -293,6 +293,52 @@ td:first-child { text-align: left; }
 .smart-item:last-child { border-bottom: none; }
 .smart-head { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
 .report-disclaimer { font-size: 11px; color: var(--text-dim); margin-bottom: 24px; line-height: 1.5; }
+
+/* ── Mobile / responsive ───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .topbar { padding: 0 12px; height: 52px; }
+  .topbar-sub { display: none; }
+  .topbar-name { font-size: 15px; }
+  .topbar-right { gap: 8px; }
+  .updated-at { display: none; }
+  .market-badge { padding: 4px 8px; font-size: 10px; }
+  .stale-badge { padding: 3px 6px; font-size: 10px; }
+  .logout-btn { padding: 4px 2px; }
+
+  /* tabs become a horizontal scroll strip */
+  .tabs { top: 52px; padding: 0 6px; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { padding: 12px 11px; font-size: 12px; }
+
+  .page { padding: 14px 12px; }
+
+  .kpi-row { grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 16px; }
+  .kpi-card { padding: 14px; border-radius: 12px; }
+  .kpi-value { font-size: 22px; letter-spacing: -.5px; }
+  .kpi-label { font-size: 10px; margin-bottom: 6px; }
+  .kpi-sub { font-size: 11px; }
+
+  .chart-panel { padding: 14px; margin-bottom: 16px; border-radius: 12px; }
+  .chart-container, .chart-empty { height: 240px; }
+  .chart-title { font-size: 13px; }
+  .chart-header { gap: 8px; }
+  .benchmark-toggles { margin-left: 0; padding-left: 0; border-left: none; }
+  .period-btn { padding: 4px 9px; font-size: 11px; }
+
+  .stats-row { grid-template-columns: 1fr; gap: 12px; margin-bottom: 16px; }
+  .two-col { gap: 12px; margin-bottom: 16px; }
+  .stat-block { padding: 14px; }
+
+  /* tables: tighter, and scroll horizontally inside their wrapper */
+  td, thead th { padding: 9px 10px; font-size: 12px; }
+  .table-header, .bm-table-header { padding: 12px 14px; }
+  #trade-note { max-width: 100% !important; text-align: left !important; }
+
+  .exposure-grid { gap: 12px; }
+  .gauge-center-label { font-size: 20px; }
+  .report-note-block { padding: 14px; }
+  .section-title { margin-bottom: 10px; }
+}
 </style>
 </head>
 <body>
