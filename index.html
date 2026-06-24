@@ -432,6 +432,9 @@ td:first-child { text-align: left; }
     <div class="tab" onclick="showTab('markets')">
       <span class="tab-icon">🌐</span> Markets
     </div>
+    <div class="tab" onclick="showTab('intel')">
+      <span class="tab-icon">🧠</span> Intel
+    </div>
   </div>
 
   <!-- ─── Overview page ─────────────────────────────────────────── -->
@@ -803,6 +806,41 @@ td:first-child { text-align: left; }
     </div>
   </div><!-- /markets -->
 
+  <!-- ─── Intel page (live commodities · macro · analyst · news) ──── -->
+  <div id="page-intel" class="page">
+
+    <div class="chart-header"><div class="chart-title">🪙 Commodities — Live ETF-Proxy Prices</div></div>
+    <div class="table-panel">
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th style="text-align:left;">Metal</th><th style="text-align:left;">Proxy</th><th>Price</th><th>Day %</th></tr></thead>
+          <tbody id="commodities-tbody"><tr class="empty-row"><td colspan="4">Awaiting data</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">🌍 Macro Backdrop</div></div>
+    <div class="kpi-row" id="macro-row">
+      <div class="kpi-card"><div class="kpi-label">—</div><div class="kpi-value">—</div><div class="kpi-sub">awaiting data</div></div>
+    </div>
+
+    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">🎯 Analyst Ratings — Holdings</div></div>
+    <div class="table-panel">
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th style="text-align:left;">Stock</th><th style="text-align:left;">Consensus</th><th>Avg Target</th><th>Upside</th><th style="text-align:left;">Buy/Hold/Sell</th></tr></thead>
+          <tbody id="analysts-tbody"><tr class="empty-row"><td colspan="5">Awaiting data</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">📰 News &amp; Sentiment</div></div>
+    <div class="table-panel">
+      <div id="news-list"><div class="empty-text" style="padding:16px;">Awaiting data</div></div>
+    </div>
+
+  </div><!-- /intel -->
+
 </div><!-- /dashboard -->
 
 <script>
@@ -855,6 +893,7 @@ function logout() {
 
 // ═══════════════════════════════════════════ DATA ══
 let account = {}, positions = [], pnl = [], benchmarks = {}, report = {};
+let intel = { commodities: [], analysts: [], macro: [], news: [] };
 let activePeriod = '1W', activeBmPeriod = '1M';
 let pnlChartInst = null, bmChartInst = null, expChartInst = null;
 let bmVisible = { SPY: true, XME: true, SLV: true, CPER: false, JJU: false };
@@ -862,18 +901,23 @@ let positionSide = 'long';
 
 async function loadData() {
   try {
-    const [posRes, accRes, pnlRes, bmRes, repRes] = await Promise.all([
+    const [posRes, accRes, pnlRes, bmRes, repRes, comRes, anaRes, macRes, newsRes] = await Promise.all([
       fetch('data/positions.json?' + Date.now()).then(r => r.json()).catch(() => ({ positions: [] })),
       fetch('data/account.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
       fetch('data/pnl.json?' + Date.now()).then(r => r.json()).catch(() => []),
       fetch('data/benchmarks.json?' + Date.now()).then(r => r.json()).catch(() => ({ tickers: {} })),
       fetch('data/report.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
+      fetch('data/commodities.json?' + Date.now()).then(r => r.json()).catch(() => ({ items: [] })),
+      fetch('data/analysts.json?' + Date.now()).then(r => r.json()).catch(() => ({ items: [] })),
+      fetch('data/macro.json?' + Date.now()).then(r => r.json()).catch(() => ({ items: [] })),
+      fetch('data/news.json?' + Date.now()).then(r => r.json()).catch(() => ({ items: [] })),
     ]);
     positions = posRes.positions || [];
     account   = accRes || {};
     pnl       = Array.isArray(pnlRes) ? pnlRes : [];
     benchmarks = bmRes.tickers || {};
     report    = repRes || {};
+    intel = { commodities: comRes.items || [], analysts: anaRes.items || [], macro: macRes.items || [], news: newsRes.items || [] };
 
     renderAll();
     updateMetaBadges(accRes.updatedAt);
@@ -895,6 +939,65 @@ function renderAll() {
   renderBmTable();
   renderExposure();
   renderReport();
+  renderIntel();
+}
+
+// ── Intel: live commodities · macro · analyst · news ─────────────────
+function renderIntel() {
+  const pos = '#22c55e', neg = '#ef4444', mut = 'var(--text-muted)';
+  const col  = v => (v > 0 ? pos : v < 0 ? neg : mut);
+  const sgn  = v => (v > 0 ? '+' : '') + fmt(v, 2);
+
+  const ct = document.getElementById('commodities-tbody');
+  if (ct) {
+    const r = intel.commodities || [];
+    ct.innerHTML = r.length ? r.map(c =>
+      `<tr><td style="text-align:left;font-weight:600;">${c.name}</td>`
+      + `<td style="text-align:left;color:${mut};">${c.symbol}</td>`
+      + `<td>$${fmt(c.price, 2)}</td>`
+      + `<td style="color:${col(c.changePct)};font-weight:600;">${sgn(c.changePct)}%</td></tr>`
+    ).join('') : '<tr class="empty-row"><td colspan="4">Awaiting data</td></tr>';
+  }
+
+  const mr = document.getElementById('macro-row');
+  if (mr) {
+    const tone = { good: '#22c55e', warn: '#f59e0b', bad: '#ef4444' };
+    const r = intel.macro || [];
+    mr.innerHTML = r.length ? r.map(m =>
+      `<div class="kpi-card"><div class="kpi-label">${m.label}</div>`
+      + `<div class="kpi-value" style="color:${tone[m.tone] || 'inherit'};">${m.value}</div>`
+      + `<div class="kpi-sub">${m.sub}</div></div>`
+    ).join('') : '<div class="kpi-card"><div class="kpi-label">—</div><div class="kpi-value">—</div><div class="kpi-sub">awaiting data</div></div>';
+  }
+
+  const at = document.getElementById('analysts-tbody');
+  if (at) {
+    const cc = { Buy: '#22c55e', 'Strong Buy': '#22c55e', Neutral: '#f59e0b', Hold: '#f59e0b', Sell: '#ef4444' };
+    const r = intel.analysts || [];
+    at.innerHTML = r.length ? r.map(a =>
+      `<tr><td style="text-align:left;"><strong>${a.ticker}</strong> <span style="color:${mut};">${a.name}</span></td>`
+      + `<td style="text-align:left;color:${cc[a.consensus] || 'inherit'};font-weight:600;">${a.consensus}</td>`
+      + `<td>${a.priceTarget != null ? '$' + fmt(a.priceTarget, 2) : '—'}</td>`
+      + `<td style="color:${col(a.upside)};font-weight:600;">${a.upside != null ? sgn(a.upside) + '%' : '—'}</td>`
+      + `<td style="text-align:left;color:${mut};">${a.buy} / ${a.hold} / ${a.sell}</td></tr>`
+    ).join('') : '<tr class="empty-row"><td colspan="5">Awaiting data</td></tr>';
+  }
+
+  const nl = document.getElementById('news-list');
+  if (nl) {
+    const sc = { Bullish: '#22c55e', Bearish: '#ef4444' };
+    const r = intel.news || [];
+    nl.innerHTML = r.length ? r.map(n => {
+      const c = sc[n.sentiment] || mut;
+      const title = n.url
+        ? `<a href="${n.url}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">${n.title}</a>`
+        : n.title;
+      return `<div style="display:flex;gap:10px;align-items:baseline;padding:9px 14px;border-bottom:1px solid var(--border);">`
+        + `<span style="flex:0 0 56px;font-size:11px;font-weight:700;color:${c};">${n.sentiment}</span>`
+        + `<span style="flex:1;font-size:13px;line-height:1.35;">${title}</span>`
+        + `<span style="flex:0 0 auto;font-size:11px;color:${mut};white-space:nowrap;">${n.ticker} · ${n.date}</span></div>`;
+    }).join('') : '<div class="empty-text" style="padding:16px;">Awaiting data</div>';
+  }
 }
 
 // ── KPI cards
@@ -1415,7 +1518,7 @@ function calcMetricsForSeries(prices) {
 // ═══════════════════════════════════════════ TABS ══
 function showTab(name) {
   document.querySelectorAll('.tab').forEach((t, i) => {
-    const names = ['overview', 'positions', 'benchmarks', 'exposure', 'risk', 'markets'];
+    const names = ['overview', 'positions', 'benchmarks', 'exposure', 'risk', 'markets', 'intel'];
     t.classList.toggle('active', names[i] === name);
   });
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
