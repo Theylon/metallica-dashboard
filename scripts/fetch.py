@@ -32,9 +32,9 @@ from cryptography.hazmat.primitives.asymmetric import padding
 # ---------------------------------------------------------------------------
 
 IBKR_BASE = os.environ.get("IBKR_BASE_URL", "https://api.ibkr.com/v1/api")
-CONSUMER_KEY = os.environ["IBKR_CONSUMER_KEY"]
-ACCOUNT_ID = os.environ["IBKR_ACCOUNT_ID"]
-PRIVATE_KEY_PEM = os.environ["IBKR_PRIVATE_KEY"]
+CONSUMER_KEY = os.environ.get("IBKR_CONSUMER_KEY", "")
+ACCOUNT_ID = os.environ.get("IBKR_ACCOUNT_ID", "")
+PRIVATE_KEY_PEM = os.environ.get("IBKR_PRIVATE_KEY", "")
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 BENCHMARK_TICKERS = ["SPY", "XME", "SLV", "CPER", "JJU"]
@@ -272,6 +272,14 @@ def update_pnl_history(account: dict) -> None:
 
 def main() -> None:
     now_str = datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+    # No credentials → keep the committed data snapshot and let the deploy proceed.
+    # Live fetching kicks in automatically once the IBKR_* secrets are set.
+    if not (CONSUMER_KEY and ACCOUNT_ID and PRIVATE_KEY_PEM):
+        print(f"[{now_str}] No IBKR credentials set — skipping live fetch, "
+              "keeping existing data/ snapshot.")
+        return
+
     print(f"[{now_str}] Starting Metallica data fetch")
 
     # Positions
