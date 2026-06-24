@@ -29,6 +29,11 @@ COMMODITIES = [
 ]
 NEWS_TICKERS = ["ALB", "SQM"]
 NEWS_MAX = 12
+TECH_TICKERS = ["ALB", "SQM"]                       # TrueNorth stock snapshots
+METAL_SPOT = [("Lithium", "lithium"), ("Copper", "copper"),
+              ("Cobalt", "cobalt"), ("Nickel", "nickel")]   # metalminer spot
+RESEARCH_SRC = ["ALB"]                              # Bigdata research dumps
+RESEARCH_MAX = 6
 
 
 def _read(name):
@@ -188,14 +193,92 @@ def build_macro(now):
     return 0
 
 
+def build_technicals(now):
+    """Per-holding price + 50/200-day moving averages from TrueNorth snapshots."""
+    items = []
+    for tkr in TECH_TICKERS:
+        try:
+            outer = _read(f"truenorth_{tkr}.json")
+            snap = json.loads(outer["result"])["snapshot"] if "result" in outer else outer.get("snapshot", {})
+            if snap.get("price") is None:
+                continue
+            items.append({
+                "ticker": tkr,
+                "price": round(float(snap["price"]), 2),
+                "changePct": round(float(snap.get("change_percentage", 0) or 0), 2),
+                "ma50": round(float(snap.get("price_avg_50", 0) or 0), 2),
+                "ma200": round(float(snap.get("price_avg_200", 0) or 0), 2),
+            })
+        except Exception:
+            continue
+    if items:
+        _write("technicals.json", {"items": items}, now)
+        return len(items)
+    return 0
+
+
+def build_metals_spot(now):
+    """True metal spot prices from metalminer (nested JSON-in-string dumps)."""
+    items = []
+    for label, key in METAL_SPOT:
+        try:
+            outer = _read(f"metalminer_{key}.json")
+            cp = json.loads(outer["data"]["content"][0]["text"])["data"]["current_prices"][0]
+            pr = cp["current_price"]
+            items.append({
+                "name": label,
+                "price": round(float(pr["value"]), 2),
+                "currency": (pr.get("currency") or "usd").upper(),
+                "unit": pr.get("unit", ""),
+                "trend": (cp.get("market_analysis", {}) or {}).get("trend", ""),
+                "asOf": (pr.get("as_of_date") or "")[:10],
+            })
+        except Exception:
+            continue
+    if items:
+        _write("metals_spot.json", {"items": items}, now)
+        return len(items)
+    return 0
+
+
+def build_research(now):
+    """Broker-research snippets from Bigdata.com search dumps."""
+    items = []
+    for tkr in RESEARCH_SRC:
+        try:
+            raw = _read(f"bigdata_{tkr}.json")
+        except Exception:
+            continue
+        for r in (raw.get("results") or []):
+            chunks = r.get("chunks") or []
+            snippet = " ".join((chunks[0].get("text", "") if chunks else "").split())[:280]
+            items.append({
+                "ticker": tkr,
+                "headline": r.get("headline", ""),
+                "source": (r.get("source") or {}).get("name", ""),
+                "date": (r.get("timestamp") or "")[:10],
+                "snippet": snippet,
+                "url": r.get("url", ""),
+            })
+    items.sort(key=lambda x: x["date"], reverse=True)
+    items = items[:RESEARCH_MAX]
+    if items:
+        _write("research.json", {"items": items}, now)
+        return len(items)
+    return 0
+
+
 def main():
     now = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat()
     c = build_commodities(now)
     a = build_analysts(now)
     n = build_news(now)
     m = build_macro(now)
+    t = build_technicals(now)
+    s = build_metals_spot(now)
+    r = build_research(now)
     print(f"Enriched @ {now}: commodities={c} analysts={a} news={n} macro={m} "
-          f"(0 = kept existing)")
+          f"technicals={t} spot={s} research={r} (0 = kept existing)")
 
 
 if __name__ == "__main__":
