@@ -1,6 +1,15 @@
 name: Fetch IBKR Data & Deploy
 
 on:
+  push:
+    branches: [master]
+    # Content changes auto-deploy. Excludes data/{positions,account,pnl,benchmarks}.json
+    # (committed by this workflow) so the bot's own data commits can't re-trigger it.
+    paths:
+      - 'index.html'
+      - 'data/report.json'
+      - 'scripts/**'
+      - '.github/workflows/fetch-data.yml'
   schedule:
     # Every 30 min during US market hours, Mon–Fri (14:00–21:00 UTC).
     - cron: '0,30 14-21 * * 1-5'

@@ -275,6 +275,24 @@ td:first-child { text-align: left; }
 
 /* ── Tooltip override ──────────────────────────────────────────────── */
 .chartjs-tooltip { pointer-events: none; }
+
+/* ── Report v2 additions ───────────────────────────────────────────── */
+.tl { text-align: left !important; white-space: normal; }
+.report-note { font-size: 12px; line-height: 1.55; color: var(--text-muted); }
+.report-note-block { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; margin-bottom: 24px; font-size: 12px; line-height: 1.6; color: var(--text-muted); }
+.report-note-block strong { color: var(--text); }
+.trend-up   { color: var(--green); font-weight: 600; }
+.trend-down { color: var(--red);   font-weight: 600; }
+.status-badge { padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; }
+.status-confirmed { background: rgba(34,197,94,.12);  color: var(--green); }
+.status-scheduled { background: rgba(245,158,11,.12); color: var(--amber); }
+.status-est       { background: rgba(123,130,160,.12); color: var(--text-muted); }
+.scenario-bar-wrap { height: 6px; background: var(--surface); border-radius: 3px; margin-top: 5px; overflow: hidden; }
+.scenario-bar { height: 100%; background: var(--red); border-radius: 3px; transition: width .5s; }
+.smart-item { padding: 11px 0; border-bottom: 1px solid var(--border); }
+.smart-item:last-child { border-bottom: none; }
+.smart-head { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+.report-disclaimer { font-size: 11px; color: var(--text-dim); margin-bottom: 24px; line-height: 1.5; }
 </style>
 </head>
 <body>
@@ -325,6 +343,12 @@ td:first-child { text-align: left; }
     </div>
     <div class="tab" onclick="showTab('exposure')">
       <span class="tab-icon">🔭</span> Exposure
+    </div>
+    <div class="tab" onclick="showTab('risk')">
+      <span class="tab-icon">🛡️</span> Risk
+    </div>
+    <div class="tab" onclick="showTab('markets')">
+      <span class="tab-icon">🌐</span> Markets
     </div>
   </div>
 
@@ -437,6 +461,28 @@ td:first-child { text-align: left; }
             </tr>
           </thead>
           <tbody id="pos-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Trade execution tape (Report v2) -->
+    <div class="table-panel">
+      <div class="table-header">
+        <div class="table-title">Trade Execution Tape</div>
+        <div id="trade-note" style="font-size:11px;color:var(--text-muted);max-width:58%;text-align:right;line-height:1.45;"></div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align:left;">Time (UTC)</th>
+              <th>Ticker</th>
+              <th>Shares</th>
+              <th>Avg Fill</th>
+              <th>Order</th>
+            </tr>
+          </thead>
+          <tbody id="trade-tbody"><tr class="empty-row"><td colspan="5">Awaiting report data</td></tr></tbody>
         </table>
       </div>
     </div>
@@ -570,7 +616,110 @@ td:first-child { text-align: left; }
       </div>
     </div>
 
+    <!-- ETF look-through (Report v2) -->
+    <div class="section-title" style="margin-top:8px;">ETF Look-Through — Your True Exposure</div>
+    <div class="two-col">
+      <div class="stat-block">
+        <div class="stat-block-title">True Exposure (decomposed)</div>
+        <div class="stat-row"><span class="stat-key">China exposure (embedded)</span><span class="stat-val" id="etf-china">—</span></div>
+        <div class="stat-row"><span class="stat-key">ALB — true (direct + ETF)</span><span class="stat-val" id="etf-alb">—</span></div>
+        <div class="stat-row"><span class="stat-key">SQM — true (direct + ETF)</span><span class="stat-val" id="etf-sqm">—</span></div>
+        <div class="stat-row" style="border:none;padding-top:12px;"><span class="report-note" id="etf-conc"></span></div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-block-title">Hidden Single-Name Bets (via ETFs)</div>
+        <div id="etf-hidden"></div>
+      </div>
+    </div>
+
   </div><!-- /exposure -->
+
+  <!-- ─── Risk page (Report v2) ─────────────────────────────────── -->
+  <div id="page-risk" class="page">
+    <div class="kpi-row">
+      <div class="kpi-card yellow">
+        <div class="kpi-label">Ann. Volatility</div>
+        <div class="kpi-value" id="rk-vol">—</div>
+        <div class="kpi-sub">vs SPY 14.8% · XME 40.8%</div>
+      </div>
+      <div class="kpi-card red">
+        <div class="kpi-label">Beta — SPY / XME</div>
+        <div class="kpi-value" id="rk-beta">—</div>
+        <div class="kpi-sub">market vs metals sector</div>
+      </div>
+      <div class="kpi-card red">
+        <div class="kpi-label">1-Day VaR (95%)</div>
+        <div class="kpi-value" id="rk-var">—</div>
+        <div class="kpi-sub">historical · of NAV</div>
+      </div>
+      <div class="kpi-card silver">
+        <div class="kpi-label">Avg Correlation</div>
+        <div class="kpi-value" id="rk-corr">—</div>
+        <div class="kpi-sub">limited diversification</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="table-panel">
+        <div class="table-header">
+          <div class="table-title">Risk Analytics</div>
+          <div style="font-size:11px;color:var(--text-muted)" id="risk-asof">as of —</div>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th style="text-align:left;">Metric</th><th>Value</th><th style="text-align:left;">Read</th></tr></thead>
+            <tbody id="risk-tbody"><tr class="empty-row"><td colspan="3">Awaiting report data</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-block-title">Scenario Stress Tests</div>
+        <div id="scenario-list"></div>
+        <div class="stat-block-title" style="margin-top:20px;">Key Correlations</div>
+        <div id="corr-list"></div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="stat-block">
+        <div class="stat-block-title">Smart Money & Positioning</div>
+        <div id="smart-list"></div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-block-title">Options-Implied Vol</div>
+        <div class="report-note" id="opt-note" style="margin-bottom:8px;"></div>
+        <div class="stat-block-title" style="margin-top:16px;">Performance vs Benchmarks</div>
+        <div class="report-note" id="perf-note"></div>
+      </div>
+    </div>
+
+    <div class="report-note-block"><strong>Bottom line.</strong> <span id="risk-bottom"></span></div>
+    <div class="report-disclaimer" id="report-sources"></div>
+  </div><!-- /risk -->
+
+  <!-- ─── Markets page (Report v2) ──────────────────────────────── -->
+  <div id="page-markets" class="page">
+    <div class="table-panel">
+      <div class="table-header"><div class="table-title">Commodity & Macro Drivers</div></div>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th style="text-align:left;">Driver</th><th>Level</th><th style="text-align:left;">Trend</th><th style="text-align:left;">Read</th></tr></thead>
+          <tbody id="drivers-tbody"><tr class="empty-row"><td colspan="4">Awaiting report data</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="report-note-block" id="drivers-note"></div>
+
+    <div class="table-panel">
+      <div class="table-header"><div class="table-title">Forward Catalyst Calendar</div></div>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th style="text-align:left;">Date</th><th style="text-align:left;">Status</th><th style="text-align:left;">Event</th><th style="text-align:left;">Affects</th></tr></thead>
+          <tbody id="catalysts-tbody"><tr class="empty-row"><td colspan="4">Awaiting report data</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div><!-- /markets -->
 
 </div><!-- /dashboard -->
 
@@ -623,7 +772,7 @@ function logout() {
 }
 
 // ═══════════════════════════════════════════ DATA ══
-let account = {}, positions = [], pnl = [], benchmarks = {};
+let account = {}, positions = [], pnl = [], benchmarks = {}, report = {};
 let activePeriod = '1W', activeBmPeriod = '1M';
 let pnlChartInst = null, bmChartInst = null, expChartInst = null;
 let bmVisible = { SPY: true, XME: true, SLV: true, CPER: false, JJU: false };
@@ -631,16 +780,18 @@ let positionSide = 'long';
 
 async function loadData() {
   try {
-    const [posRes, accRes, pnlRes, bmRes] = await Promise.all([
+    const [posRes, accRes, pnlRes, bmRes, repRes] = await Promise.all([
       fetch('data/positions.json?' + Date.now()).then(r => r.json()).catch(() => ({ positions: [] })),
       fetch('data/account.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
       fetch('data/pnl.json?' + Date.now()).then(r => r.json()).catch(() => []),
       fetch('data/benchmarks.json?' + Date.now()).then(r => r.json()).catch(() => ({ tickers: {} })),
+      fetch('data/report.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
     ]);
     positions = posRes.positions || [];
     account   = accRes || {};
     pnl       = Array.isArray(pnlRes) ? pnlRes : [];
     benchmarks = bmRes.tickers || {};
+    report    = repRes || {};
 
     renderAll();
     updateMetaBadges(accRes.updatedAt);
@@ -661,6 +812,7 @@ function renderAll() {
   renderBmChart();
   renderBmTable();
   renderExposure();
+  renderReport();
 }
 
 // ── KPI cards
@@ -1012,6 +1164,111 @@ function renderExposure() {
     'Exposure timeline builds as the strategy runs (requires position history).';
 }
 
+// ═══════════════════════════════════════════ REPORT v2 ══
+function renderReport() {
+  if (!report || !report.headline) return;
+  setText('report-sources', 'Sources: ' + (report.sources || ''));
+  setText('risk-asof', 'as of ' + (report.asOf || '—'));
+  renderTradeTape();
+  renderEtfLookthrough();
+  renderRiskTab();
+  renderMarkets();
+}
+
+function renderTradeTape() {
+  const tt = report.tradeTape; if (!tt) return;
+  setText('trade-note', tt.note);
+  document.getElementById('trade-tbody').innerHTML = tt.fills.map(f => `
+    <tr>
+      <td>${esc(f.time)}</td>
+      <td><span class="ticker-sym">${esc(f.ticker)}</span></td>
+      <td>${fmt(f.shares, 2)}</td>
+      <td>$${f.fill.toFixed(2)}</td>
+      <td>${esc(f.order)}</td>
+    </tr>`).join('');
+}
+
+function renderEtfLookthrough() {
+  const e = report.etfLookThrough; if (!e) return;
+  setText('etf-china', e.chinaExposure + '% of NAV');
+  setText('etf-alb', e.albTrue + '% of NAV');
+  setText('etf-sqm', e.sqmTrue + '% of NAV');
+  setText('etf-conc', e.concentrationNote);
+  document.getElementById('etf-hidden').innerHTML = e.hidden.map(h => `
+    <div class="stat-row"><span class="stat-key">${esc(h.name)}</span><span class="stat-val">${h.wt}%</span></div>`).join('');
+}
+
+function renderRiskTab() {
+  const h = report.headline, r = report.risk;
+  if (h) {
+    setText('rk-vol', h.annVol.toFixed(1) + '%');
+    setText('rk-beta', h.betaSpy.toFixed(2) + ' / ' + h.betaXme.toFixed(2));
+    setText('rk-var', fmtDollarSigned(h.var1d95));
+    pnlColor('rk-var', h.var1d95);
+  }
+  if (r && r.metrics) {
+    document.getElementById('risk-tbody').innerHTML = r.metrics.map(m => `
+      <tr>
+        <td class="tl">${esc(m.k)}</td>
+        <td class="${m.tone === 'neg' ? 'negative' : m.tone === 'pos' ? 'positive' : ''}">${esc(m.v)}</td>
+        <td class="tl report-note">${esc(m.note)}</td>
+      </tr>`).join('');
+  }
+  if (r && r.correlations) {
+    setText('rk-corr', '0.67');
+    document.getElementById('corr-list').innerHTML = r.correlations.map(c => `
+      <div class="stat-row"><span class="stat-key">${esc(c.pair)}</span>
+      <span class="stat-val ${c.v >= 0.8 ? 'negative' : c.v <= 0.4 ? 'positive' : 'neutral'}">${c.v.toFixed(2)}</span></div>`).join('');
+  }
+  if (report.scenarios) {
+    const maxAbs = Math.max(...report.scenarios.map(s => Math.abs(s.pnl)));
+    document.getElementById('scenario-list').innerHTML = report.scenarios.map(s => `
+      <div style="padding:8px 0;border-bottom:1px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;">
+          <span class="stat-key">${esc(s.name)}${s.note ? ` <em style="color:var(--text-dim);font-style:normal;">· ${esc(s.note)}</em>` : ''}</span>
+          <span class="stat-val negative" style="white-space:nowrap;">${fmtDollarSigned(s.pnl)} (${s.pct}%)</span>
+        </div>
+        <div class="scenario-bar-wrap"><div class="scenario-bar" style="width:${Math.abs(s.pnl) / maxAbs * 100}%"></div></div>
+      </div>`).join('');
+  }
+  if (report.smartMoney) {
+    document.getElementById('smart-list').innerHTML = report.smartMoney.map(s => `
+      <div class="smart-item">
+        <div class="smart-head"><span class="ticker-sym">${esc(s.stock)}</span>
+        <span class="${s.tone === 'pos' ? 'positive' : 'negative'}" style="font-size:12px;font-weight:600;">${esc(s.read)}</span></div>
+        <div class="report-note">${esc(s.detail)}</div>
+      </div>`).join('');
+  }
+  if (report.options) setText('opt-note', report.options.note);
+  if (report.performance) setText('perf-note', report.performance.note);
+  setText('risk-bottom', report.bottomLine || '');
+}
+
+function renderMarkets() {
+  if (report.drivers) {
+    document.getElementById('drivers-tbody').innerHTML = report.drivers.map(d => `
+      <tr>
+        <td class="tl"><strong>${esc(d.driver)}</strong></td>
+        <td>${esc(d.level)}</td>
+        <td class="tl ${d.dir === 'up' ? 'trend-up' : 'trend-down'}">${d.dir === 'up' ? '▲' : '▼'} ${esc(d.trend)}</td>
+        <td class="tl report-note">${esc(d.read)}</td>
+      </tr>`).join('');
+  }
+  setText('drivers-note', report.driversNote || '');
+  if (report.catalysts) {
+    document.getElementById('catalysts-tbody').innerHTML = report.catalysts.map(c => {
+      const cls = c.status === 'confirmed' ? 'status-confirmed' : c.status === 'scheduled' ? 'status-scheduled' : 'status-est';
+      return `
+      <tr>
+        <td class="tl"><strong>${esc(c.date)}</strong></td>
+        <td class="tl"><span class="status-badge ${cls}">${esc(c.status)}</span></td>
+        <td class="tl">${esc(c.event)}</td>
+        <td class="tl report-note">${esc(c.affects)}</td>
+      </tr>`;
+    }).join('');
+  }
+}
+
 // ── Meta badges
 function updateMetaBadges(updatedAt) {
   if (!updatedAt) return;
@@ -1076,7 +1333,7 @@ function calcMetricsForSeries(prices) {
 // ═══════════════════════════════════════════ TABS ══
 function showTab(name) {
   document.querySelectorAll('.tab').forEach((t, i) => {
-    const names = ['overview', 'positions', 'benchmarks', 'exposure'];
+    const names = ['overview', 'positions', 'benchmarks', 'exposure', 'risk', 'markets'];
     t.classList.toggle('active', names[i] === name);
   });
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
