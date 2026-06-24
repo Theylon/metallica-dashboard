@@ -14,11 +14,17 @@ gh repo create metallica-dashboard --private --source=. --remote=origin --push
 
 ### 2. Enable GitHub Pages
 
-Go to **Settings → Pages → Source** and set:
-- Branch: `main`
-- Folder: `/ (root)`
+Deployment is handled by the **Fetch IBKR Data & Deploy** GitHub Action (it builds
+and publishes the site on every data refresh). The workflow auto-enables Pages on its
+first run, so you usually don't need to touch any settings. If it doesn't, set it
+manually: **Settings → Pages → Source → GitHub Actions**.
 
 Your dashboard will be at: `https://<your-username>.github.io/metallica-dashboard/`
+
+> **Private repo note:** GitHub Pages on a **private** repository requires a paid plan
+> (Pro/Team/Enterprise). The dashboard password is a client-side gate only — the
+> `data/*.json` files are directly fetchable — so do **not** make this repo public to
+> get free Pages, or you'll expose live position data. Keep it private + paid.
 
 ### 3. Add GitHub Secrets
 
