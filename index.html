@@ -31,6 +31,34 @@
   --silver-light: #cbd5e1;
   --cyan:         #06b6d4;
   --amber:        #f59e0b;
+  --login-glow:   #111a35;
+}
+/* ── Light theme overrides ──────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg:           #f4f6fb;
+  --surface:      #ffffff;
+  --card:         #ffffff;
+  --card-hover:   #eef1f8;
+  --border:       #e3e7f0;
+  --border-light: #cbd3e3;
+  --text:         #1a1f33;
+  --text-muted:   #5d6480;
+  --text-dim:     #939ab5;
+  --accent:       #6366f1;
+  --accent-light: #4f46e5;
+  --green:        #16a34a;
+  --red:          #dc2626;
+  --silver:       #64748b;
+  --silver-light: #475569;
+  --login-glow:   #dfe6f7;
+}
+[data-theme="light"] body { background: var(--bg); }
+[data-theme="light"] .topbar { background: rgba(244,246,251,0.92); }
+[data-theme="light"] .tabs { background: var(--surface); }
+[data-theme="light"] .card, [data-theme="light"] .kpi-card,
+[data-theme="light"] .chart-panel, [data-theme="light"] .stat-block,
+[data-theme="light"] .table-panel, [data-theme="light"] .gauge-panel {
+  box-shadow: 0 1px 3px rgba(20,30,60,0.06);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
@@ -42,7 +70,7 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
 #login-screen {
   position: fixed; inset: 0; z-index: 999;
   display: flex; align-items: center; justify-content: center;
-  background: radial-gradient(ellipse at 50% 40%, #111a35 0%, var(--bg) 70%);
+  background: radial-gradient(ellipse at 50% 40%, var(--login-glow) 0%, var(--bg) 70%);
 }
 .login-box {
   width: 380px; padding: 48px 40px;
@@ -117,6 +145,13 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
 .updated-at { font-size: 11px; color: var(--text-muted); }
 .logout-btn { font-size: 11px; color: var(--text-dim); cursor: pointer; padding: 4px 8px; border-radius: 6px; transition: color .2s; background: none; border: none; }
 .logout-btn:hover { color: var(--text-muted); }
+.theme-toggle {
+  display: flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px; border-radius: 8px; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text-muted); font-size: 14px; transition: all .2s; line-height: 1;
+}
+.theme-toggle:hover { color: var(--text); border-color: var(--border-light); }
 
 /* ── Tabs ───────────────────────────────────────────────────────────── */
 .tabs {
@@ -372,6 +407,7 @@ td:first-child { text-align: left; }
       <div id="stale-badge" class="stale-badge" style="display:none">⚠ Stale</div>
       <div id="market-badge" class="market-badge closed">Market Closed</div>
       <div id="updated-at" class="updated-at">—</div>
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark">🌙</button>
       <button class="logout-btn" onclick="logout()">Log out</button>
     </div>
   </div>
@@ -1491,6 +1527,14 @@ function showTab(name) {
 
 // ═══════════════════════════════════════════ CHART OPTS ══
 function chartOpts(yLabel) {
+  const light = document.documentElement.dataset.theme === 'light';
+  const tick    = light ? '#939ab5' : '#4a5070';
+  const grid    = light ? 'rgba(180,188,212,0.30)' : 'rgba(34,40,64,0.6)';
+  const legend  = light ? '#5d6480' : '#7b82a0';
+  const ttBg    = light ? 'rgba(255,255,255,0.97)' : 'rgba(22,27,43,0.95)';
+  const ttBdr   = light ? 'rgba(203,211,227,1)' : 'rgba(45,53,85,1)';
+  const ttTitle = light ? '#1a1f33' : '#e2e6f0';
+  const ttBody  = light ? '#5d6480' : '#7b82a0';
   return {
     responsive: true,
     maintainAspectRatio: false,
@@ -1499,14 +1543,14 @@ function chartOpts(yLabel) {
       legend: {
         position: 'top',
         align: 'end',
-        labels: { color: '#7b82a0', boxWidth: 24, padding: 12, font: { size: 11 } }
+        labels: { color: legend, boxWidth: 24, padding: 12, font: { size: 11 } }
       },
       tooltip: {
-        backgroundColor: 'rgba(22,27,43,0.95)',
-        borderColor: 'rgba(45,53,85,1)',
+        backgroundColor: ttBg,
+        borderColor: ttBdr,
         borderWidth: 1,
-        titleColor: '#e2e6f0',
-        bodyColor: '#7b82a0',
+        titleColor: ttTitle,
+        bodyColor: ttBody,
         callbacks: {
           label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)}`
         }
@@ -1516,16 +1560,32 @@ function chartOpts(yLabel) {
       x: {
         type: 'time',
         time: { tooltipFormat: 'MMM d HH:mm' },
-        ticks: { color: '#4a5070', font: { size: 10 }, maxTicksLimit: 8 },
-        grid: { color: 'rgba(34,40,64,0.6)' },
+        ticks: { color: tick, font: { size: 10 }, maxTicksLimit: 8 },
+        grid: { color: grid },
       },
       y: {
-        title: { display: true, text: yLabel, color: '#4a5070', font: { size: 10 } },
-        ticks: { color: '#4a5070', font: { size: 10 }, callback: v => v.toFixed(1) },
-        grid: { color: 'rgba(34,40,64,0.6)' },
+        title: { display: true, text: yLabel, color: tick, font: { size: 10 } },
+        ticks: { color: tick, font: { size: 10 }, callback: v => v.toFixed(1) },
+        grid: { color: grid },
       }
     }
   };
+}
+
+// ═══════════════════════════════════════════ THEME ══
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  const btn = document.getElementById('theme-toggle');
+  if (btn) btn.textContent = theme === 'light' ? '☀️' : '🌙';
+}
+
+function toggleTheme() {
+  const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+  localStorage.setItem('metallica_theme', next);
+  applyTheme(next);
+  // Re-render charts so their axis/grid/legend colors match the new theme
+  renderPnlChart();
+  renderBmChart();
 }
 
 // ═══════════════════════════════════════════ UTILS ══
@@ -1554,6 +1614,7 @@ function pnlColor(id, val) {
 
 // ═══════════════════════════════════════════ INIT ══
 (async () => {
+  applyTheme(localStorage.getItem('metallica_theme') || 'dark');
   if (sessionStorage.getItem('metallica_auth') === '1') {
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('dashboard').style.display = 'block';
