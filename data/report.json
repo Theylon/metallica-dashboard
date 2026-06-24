@@ -1,0 +1,92 @@
+{
+  "asOf": "2026-06-24",
+  "title": "IBKR Portfolio Report v2",
+  "headline": {
+    "netLiq": 9587.84,
+    "sinceInception": -4.12,
+    "unrealizedPnl": -412,
+    "annVol": 38.0,
+    "betaSpy": 1.69,
+    "betaXme": 0.69,
+    "var1d95": -371
+  },
+  "tradeTape": {
+    "note": "Entire book built in a single ~6-minute window on 2026-06-22, 18:33–18:39 UTC — six BUYs. The −4.2% drawdown hit the very next session. Commissions (6 × ~$1) explain the −$5.98 cash balance.",
+    "fills": [
+      { "time": "18:33:55", "ticker": "BATT", "shares": 139.84, "fill": 16.69, "order": "Limit" },
+      { "time": "18:35:01", "ticker": "SQM", "shares": 29.79, "fill": 78.34, "order": "Market" },
+      { "time": "18:36:38", "ticker": "LIT", "shares": 27.86, "fill": 82.56, "order": "Market" },
+      { "time": "18:37:40", "ticker": "ALB", "shares": 7.11, "fill": 156.22, "order": "Market" },
+      { "time": "18:38:38", "ticker": "REMX", "shares": 9.96, "fill": 97.49, "order": "Market" },
+      { "time": "18:39:29", "ticker": "PALL", "shares": 41.70, "fill": 22.81, "order": "Market" }
+    ]
+  },
+  "etfLookThrough": {
+    "chinaExposure": 17.6,
+    "albTrue": 13.1,
+    "sqmTrue": 24.2,
+    "hidden": [
+      { "name": "Rio Tinto", "wt": 4.6 },
+      { "name": "Tesla", "wt": 2.5 },
+      { "name": "CATL", "wt": 2.3 },
+      { "name": "TDK", "wt": 2.3 },
+      { "name": "BHP", "wt": 1.6 },
+      { "name": "Pilbara", "wt": 1.4 }
+    ],
+    "concentrationNote": "100% Basic Materials · HHI 1,924 (~5.2 effective names) · BATT+LIT = 45.8% of NAV in two heavily-overlapping ETFs. Real diversification is lower than 6 lines suggests."
+  },
+  "risk": {
+    "metrics": [
+      { "k": "Annualized volatility", "v": "38.0%", "note": "vs SPY 14.8%, XME 40.8% — equity-like-metals risk", "tone": "neg" },
+      { "k": "Beta vs S&P 500 (SPY)", "v": "1.69", "note": "high market beta — moves ~1.7× the index", "tone": "neg" },
+      { "k": "Beta vs metals (XME)", "v": "0.69", "note": "low vs the sector — behaves like a slice of XME", "tone": "neutral" },
+      { "k": "Avg pairwise correlation", "v": "0.67", "note": "holdings move together — limited diversification", "tone": "neg" },
+      { "k": "1-day VaR (95%, historical)", "v": "−$371", "note": "−3.87% of NAV; 99% VaR −4.88%", "tone": "neg" },
+      { "k": "Worst day in window", "v": "−5.83%", "note": "the Jun 22→23 gap", "tone": "neg" },
+      { "k": "Backtested 60-day max drawdown", "v": "−19.4%", "note": "on current weights", "tone": "neg" },
+      { "k": "Concentration (HHI / eff. N)", "v": "1,924 / 5.2", "note": "6 names, ~5.2 effective — high corr lowers real diversification", "tone": "neg" }
+    ],
+    "correlations": [
+      { "pair": "LIT – REMX", "v": 0.92 },
+      { "pair": "BATT – LIT", "v": 0.89 },
+      { "pair": "PALL – ALB", "v": 0.29 }
+    ]
+  },
+  "scenarios": [
+    { "name": "Lithium −20%", "pnl": -1207, "pct": -12.6, "note": "dominant risk" },
+    { "name": "Broad metals −10%", "pnl": -664, "pct": -6.9, "note": "" },
+    { "name": "China RE escalation", "pnl": -377, "pct": -3.9, "note": "" },
+    { "name": "Palladium −15%", "pnl": -140, "pct": -1.5, "note": "" }
+  ],
+  "drivers": [
+    { "driver": "Lithium carbonate (battery)", "level": "~$21,380/t", "trend": "−15–20% off Q1/May peak", "read": "Headwind — ALB, SQM, LIT, BATT", "dir": "down" },
+    { "driver": "Palladium spot", "level": "~$1,224/oz", "trend": "−18% 3M, −40% from Jan", "read": "Headwind — PALL", "dir": "down" },
+    { "driver": "Rare earth — dysprosium", "level": "~$931/kg", "trend": "+105% YTD", "read": "Tailwind — REMX", "dir": "up" },
+    { "driver": "Rare earth — NdPr", "level": "~$110/kg", "trend": "Up YTD", "read": "Tailwind — REMX", "dir": "up" },
+    { "driver": "Copper", "level": "firm", "trend": "+9% 3M", "read": "Mild tailwind — broad", "dir": "up" },
+    { "driver": "US Dollar (DXY)", "level": "~101.4", "trend": "+1.8% YTD, +2.2% 1M", "read": "Headwind — all USD commodities", "dir": "down" }
+  ],
+  "driversNote": "Mixed-to-headwind backdrop: lithium & palladium are correcting and a firming dollar (DXY +1.8% YTD) pressures all USD commodities. Rare earths (Dy +105% YTD) are the standout tailwind — good for REMX. The Fed is on a hawkish hold (3.50–3.75%, ~68% odds of a Sept hike) given sticky 4.17% CPI, so the easing tailwind is on pause.",
+  "catalysts": [
+    { "date": "Jul 14", "status": "confirmed", "event": "US CPI release (June data)", "affects": "All — rates/macro" },
+    { "date": "Jul 28–29", "status": "confirmed", "event": "FOMC meeting (no dot plot)", "affects": "All" },
+    { "date": "Jul 30", "status": "scheduled", "event": "ALB Q2 2026 earnings", "affects": "ALB, LIT, BATT" },
+    { "date": "Aug 19", "status": "scheduled", "event": "SQM Q2 2026 earnings", "affects": "SQM, LIT, BATT" },
+    { "date": "~Sep 15", "status": "est", "event": "ALB dividend ex-date (~$0.41)", "affects": "ALB" },
+    { "date": "Sep 15–16", "status": "confirmed", "event": "FOMC meeting (with dot plot)", "affects": "All — higher impact" },
+    { "date": "Nov 10", "status": "confirmed", "event": "US–China truce / RE export-curb expiry", "affects": "REMX, PALL — dominant catalyst" }
+  ],
+  "smartMoney": [
+    { "stock": "ALB", "read": "Accumulation (analyst-led)", "tone": "pos", "detail": "Citigroup upgrade to Buy (PT $225, Jun 18); UBS/Citi PT hikes; mean PT ~$195→$225 over the quarter. Offset: CCO sold 5,692 sh ($942k) Feb 20." },
+    { "stock": "SQM", "read": "Mixed / lean distribution", "tone": "neg", "detail": "Tianqi (21.9% holder) exited its Series B stake; controlling blocks (Pampa 25.8%, Tianqi 21.9%) steady; Berenberg Hold, flags valuation stretched." }
+  ],
+  "options": {
+    "note": "ALB ATM implied vol ≈ 59% (Aug expiry, ~58 DTE) — the options market prices a large forward move, consistent with 62% realized vol. Mild downside skew: the 10%-OTM put trades ~1.1 vol points above the call (60.0% vs 58.9%)."
+  },
+  "performance": {
+    "note": "60-day current-weights backtest: the book returned +0.5% vs SPY +15.7% and XME +4.7% — heavy underperformance, driven by ALB (−16%) and palladium (−11%). Positions have only been held since Jun 22; this is a current-weights backtest, not realized performance.",
+    "book": 0.5, "spy": 15.7, "xme": 4.7
+  },
+  "bottomLine": "−4.1% since inception, essentially all from buying on Jun 22 immediately before a complex-wide sell-off. A concentrated, highly-correlated (0.67) single-theme bet: ~38% volatility, high market beta (1.69) but sector-like metals beta (0.69), ~17.6% hidden China exposure, and a dominant sensitivity to the lithium price (a −20% lithium move ≈ −$1,200). Lithium & palladium are correcting and the dollar is firming; rare earths are the bright spot. Watch: ALB earnings Jul 30, SQM Aug 19, the Sep FOMC, and the Nov 10 US–China truce expiry.",
+  "sources": "IBKR (live account) · TipRanks · Bigdata.com · FRED/Federal Reserve · TrueNorth/FMP commodity feed · Carbon Arc · web. Risk metrics from 60 daily closes (2026-03-27→06-23). Informational only — not investment advice."
+}
