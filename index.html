@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metallica — Performance Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<style>
+/* ── Variables ──────────────────────────────────────────────────────── */
+:root {
+  --bg:           #0a0c12;
+  --surface:      #111520;
+  --card:         #161b2b;
+  --card-hover:   #1d2438;
+  --border:       #222840;
+  --border-light: #2d3555;
+  --text:         #e2e6f0;
+  --text-muted:   #7b82a0;
+  --text-dim:     #4a5070;
+  --accent:       #6366f1;
+  --accent-light: #818cf8;
+  --accent-dim:   #3730a3;
+  --green:        #22c55e;
+  --green-dim:    #166534;
+  --red:          #ef4444;
+  --red-dim:      #7f1d1d;
+  --yellow:       #eab308;
+  --orange:       #f97316;
+  --silver:       #94a3b8;
+  --silver-light: #cbd5e1;
+  --cyan:         #06b6d4;
+  --amber:        #f59e0b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+/* ── Login ─────────────────────────────────────────────────────────── */
+#login-screen {
+  position: fixed; inset: 0; z-index: 999;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(ellipse at 50% 40%, #111a35 0%, var(--bg) 70%);
+}
+.login-box {
+  width: 380px; padding: 48px 40px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 20px; text-align: center;
+  box-shadow: 0 0 80px rgba(99,102,241,0.08);
+}
+.login-logo {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 64px; height: 64px; border-radius: 16px; margin-bottom: 24px;
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+  font-size: 28px; font-weight: 900; color: var(--silver-light);
+  letter-spacing: -1px;
+}
+.login-title {
+  font-size: 28px; font-weight: 800; letter-spacing: -0.5px;
+  background: linear-gradient(135deg, var(--silver-light) 0%, var(--accent-light) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin-bottom: 6px;
+}
+.login-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 36px; }
+.login-input {
+  width: 100%; padding: 14px 16px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 10px;
+  color: var(--text); font-size: 16px; margin-bottom: 16px;
+  outline: none; letter-spacing: 2px; text-align: center;
+  transition: border-color .2s;
+}
+.login-input:focus { border-color: var(--accent); }
+.login-btn {
+  width: 100%; padding: 14px; background: var(--accent);
+  border: none; border-radius: 10px; color: #fff;
+  font-size: 15px; font-weight: 600; cursor: pointer;
+  transition: background .2s, transform .1s;
+}
+.login-btn:hover { background: var(--accent-light); }
+.login-btn:active { transform: scale(0.98); }
+.login-error { color: var(--red); font-size: 13px; margin-top: 12px; min-height: 20px; }
+.login-powered { margin-top: 32px; font-size: 11px; color: var(--text-dim); }
+
+/* ── Main Layout ────────────────────────────────────────────────────── */
+#dashboard { display: none; }
+
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,12,18,0.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px; height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.topbar-left { display: flex; align-items: center; gap: 14px; }
+.topbar-logo {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 8px;
+  background: linear-gradient(135deg, #1e1b4b, #4338ca);
+  font-size: 14px; font-weight: 900; color: var(--silver-light);
+}
+.topbar-name { font-size: 17px; font-weight: 700; letter-spacing: -0.3px; color: var(--silver-light); }
+.topbar-sub { font-size: 11px; color: var(--text-muted); margin-left: 4px; }
+.topbar-right { display: flex; align-items: center; gap: 16px; }
+.market-badge {
+  display: flex; align-items: center; gap: 6px;
+  padding: 4px 10px; border-radius: 20px;
+  font-size: 11px; font-weight: 600;
+}
+.market-badge.open { background: rgba(34,197,94,0.12); color: var(--green); }
+.market-badge.closed { background: rgba(123,130,160,0.12); color: var(--text-muted); }
+.market-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.market-badge.open::before { animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.4;} }
+.stale-badge { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--yellow); background: rgba(234,179,8,0.1); padding: 4px 8px; border-radius: 6px; }
+.updated-at { font-size: 11px; color: var(--text-muted); }
+.logout-btn { font-size: 11px; color: var(--text-dim); cursor: pointer; padding: 4px 8px; border-radius: 6px; transition: color .2s; background: none; border: none; }
+.logout-btn:hover { color: var(--text-muted); }
+
+/* ── Tabs ───────────────────────────────────────────────────────────── */
+.tabs {
+  position: sticky; top: 56px; z-index: 99;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  display: flex; padding: 0 24px;
+}
+.tab {
+  padding: 14px 20px; cursor: pointer; font-size: 13px; font-weight: 500;
+  color: var(--text-muted); border-bottom: 2px solid transparent;
+  transition: all .2s; display: flex; align-items: center; gap: 6px;
+  user-select: none; white-space: nowrap;
+}
+.tab:hover { color: var(--text); }
+.tab.active { color: var(--accent-light); border-bottom-color: var(--accent-light); }
+.tab-icon { font-size: 14px; }
+
+/* ── Pages ──────────────────────────────────────────────────────────── */
+.page { display: none; padding: 24px; max-width: 1440px; margin: 0 auto; }
+.page.active { display: block; }
+
+/* ── KPI Cards ──────────────────────────────────────────────────────── */
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+.kpi-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 20px 22px; position: relative; overflow: hidden;
+}
+.kpi-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--accent-bar, var(--accent));
+}
+.kpi-label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px; }
+.kpi-value { font-size: 30px; font-weight: 800; letter-spacing: -1px; line-height: 1; margin-bottom: 6px; }
+.kpi-sub { font-size: 12px; color: var(--text-muted); }
+.kpi-card.green  { --accent-bar: var(--green); }
+.kpi-card.red    { --accent-bar: var(--red); }
+.kpi-card.silver { --accent-bar: var(--silver); }
+.kpi-card.yellow { --accent-bar: var(--yellow); }
+.kpi-card.cyan   { --accent-bar: var(--cyan); }
+.positive { color: var(--green); }
+.negative { color: var(--red); }
+.neutral  { color: var(--text-muted); }
+
+/* ── Chart Panel ────────────────────────────────────────────────────── */
+.chart-panel {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px; margin-bottom: 24px;
+}
+.chart-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; }
+.chart-title { font-size: 14px; font-weight: 600; color: var(--text); }
+.chart-controls { display: flex; gap: 8px; flex-wrap: wrap; }
+.period-btn {
+  padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;
+  cursor: pointer; border: 1px solid var(--border);
+  background: transparent; color: var(--text-muted); transition: all .15s;
+}
+.period-btn:hover { border-color: var(--border-light); color: var(--text); }
+.period-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.benchmark-toggles { display: flex; gap: 6px; flex-wrap: wrap; margin-left: 8px; padding-left: 8px; border-left: 1px solid var(--border); }
+.bm-toggle {
+  display: flex; align-items: center; gap: 5px;
+  padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600;
+  cursor: pointer; border: 1px solid; transition: all .15s; user-select: none;
+}
+.chart-container { position: relative; height: 320px; }
+.chart-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 320px; color: var(--text-muted); gap: 8px; }
+.chart-empty .empty-icon { font-size: 32px; opacity: .4; }
+.chart-empty .empty-text { font-size: 13px; }
+
+/* ── Stats Row ──────────────────────────────────────────────────────── */
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+.stat-block {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 18px;
+}
+.stat-block-title { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 14px; }
+.stat-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid var(--border); }
+.stat-row:last-child { border-bottom: none; }
+.stat-key { font-size: 12px; color: var(--text-muted); }
+.stat-val { font-size: 13px; font-weight: 600; color: var(--text); }
+
+/* ── Two-column layout ──────────────────────────────────────────────── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } .kpi-row { grid-template-columns: repeat(2,1fr); } }
+
+/* ── Positions Table ────────────────────────────────────────────────── */
+.table-panel {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden; margin-bottom: 24px;
+}
+.table-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+.table-header-left { display: flex; align-items: center; gap: 12px; }
+.table-title { font-size: 14px; font-weight: 600; }
+.sub-tabs { display: flex; gap: 4px; }
+.sub-tab {
+  padding: 5px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;
+  cursor: pointer; transition: all .15s; background: transparent;
+  border: 1px solid var(--border); color: var(--text-muted);
+}
+.sub-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.table-wrapper { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+thead th {
+  padding: 10px 16px; font-size: 11px; font-weight: 600;
+  color: var(--text-muted); text-align: right; white-space: nowrap;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  text-transform: uppercase; letter-spacing: .4px;
+}
+thead th:first-child { text-align: left; }
+tbody tr { border-bottom: 1px solid var(--border); transition: background .1s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--card-hover); }
+td { padding: 11px 16px; font-size: 13px; text-align: right; white-space: nowrap; }
+td:first-child { text-align: left; }
+.ticker-cell { display: flex; align-items: center; gap: 8px; }
+.ticker-sym { font-weight: 700; font-size: 13px; color: var(--text); }
+.category-badge {
+  padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .4px;
+}
+.cat-lithium   { background: rgba(6,182,212,.12);  color: var(--cyan); }
+.cat-copper    { background: rgba(249,115,22,.12);  color: var(--orange); }
+.cat-steel     { background: rgba(148,163,184,.12); color: var(--silver); }
+.cat-aluminum  { background: rgba(99,102,241,.12);  color: var(--accent-light); }
+.cat-precious  { background: rgba(234,179,8,.12);   color: var(--yellow); }
+.cat-rareearth { background: rgba(34,197,94,.12);   color: var(--green); }
+.cat-uranium   { background: rgba(239,68,68,.12);   color: var(--red); }
+.cat-diversified { background: rgba(168,85,247,.12); color: #c084fc; }
+.cat-miningetf { background: rgba(245,158,11,.12);  color: var(--amber); }
+.cat-other     { background: rgba(74,80,112,.12);   color: var(--text-dim); }
+.empty-row td { text-align: center; color: var(--text-muted); padding: 40px; }
+
+/* ── Benchmark Table ────────────────────────────────────────────────── */
+.bm-table-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+.bm-name { display: flex; align-items: center; gap: 6px; }
+.bm-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+/* ── Exposure Panel ─────────────────────────────────────────────────── */
+.exposure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+@media (max-width: 700px) { .exposure-grid { grid-template-columns: 1fr; } }
+.gauge-panel { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+.gauge-title { font-size: 13px; font-weight: 600; margin-bottom: 16px; }
+.gauge-bar-wrap { position: relative; height: 12px; background: var(--surface); border-radius: 6px; overflow: visible; margin-bottom: 8px; }
+.gauge-zero { position: absolute; top: -4px; bottom: -4px; left: 50%; width: 2px; background: var(--border-light); border-radius: 1px; z-index: 2; }
+.gauge-fill { position: absolute; top: 0; height: 100%; border-radius: 6px; transition: width .6s, left .6s; }
+.gauge-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-dim); margin-bottom: 4px; }
+.gauge-center-label { text-align: center; font-size: 22px; font-weight: 800; letter-spacing: -1px; margin-bottom: 4px; }
+.gauge-center-sub { text-align: center; font-size: 11px; color: var(--text-muted); }
+.split-bars { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.split-bar { background: var(--surface); border-radius: 8px; padding: 12px; text-align: center; }
+.split-bar-label { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+.split-bar-val { font-size: 18px; font-weight: 700; }
+
+/* ── Section heading ────────────────────────────────────────────────── */
+.section-title { font-size: 13px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 14px; }
+
+/* ── Tooltip override ──────────────────────────────────────────────── */
+.chartjs-tooltip { pointer-events: none; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ LOGIN ══ -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">M</div>
+    <div class="login-title">Metallica</div>
+    <div class="login-sub">Systematic L/S Equity · MetalMiner Alpha</div>
+    <input type="password" id="pw-input" class="login-input" placeholder="••••••••••" autocomplete="current-password">
+    <button class="login-btn" onclick="doLogin()">Enter Dashboard</button>
+    <div class="login-error" id="login-error"></div>
+    <div class="login-powered">Powered by MetalMiner · IBKR Web API</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ DASHBOARD ══ -->
+<div id="dashboard">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="topbar-logo">M</div>
+      <div>
+        <span class="topbar-name">Metallica</span>
+        <span class="topbar-sub">Systematic L/S · MetalMiner Alpha</span>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div id="stale-badge" class="stale-badge" style="display:none">⚠ Stale</div>
+      <div id="market-badge" class="market-badge closed">Market Closed</div>
+      <div id="updated-at" class="updated-at">—</div>
+      <button class="logout-btn" onclick="logout()">Log out</button>
+    </div>
+  </div>
+
+  <!-- Tab nav -->
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('overview')">
+      <span class="tab-icon">📈</span> Overview
+    </div>
+    <div class="tab" onclick="showTab('positions')">
+      <span class="tab-icon">📋</span> Positions
+    </div>
+    <div class="tab" onclick="showTab('benchmarks')">
+      <span class="tab-icon">⚖️</span> Benchmarks
+    </div>
+    <div class="tab" onclick="showTab('exposure')">
+      <span class="tab-icon">🔭</span> Exposure
+    </div>
+  </div>
+
+  <!-- ─── Overview page ─────────────────────────────────────────── -->
+  <div id="page-overview" class="page active">
+
+    <!-- KPI cards -->
+    <div class="kpi-row">
+      <div class="kpi-card cyan">
+        <div class="kpi-label">Portfolio NAV</div>
+        <div class="kpi-value" id="kpi-nav">—</div>
+        <div class="kpi-sub" id="kpi-nav-sub">awaiting data</div>
+      </div>
+      <div class="kpi-card" id="kpi-daily-card">
+        <div class="kpi-label">Daily P&amp;L</div>
+        <div class="kpi-value" id="kpi-daily">—</div>
+        <div class="kpi-sub" id="kpi-daily-sub">awaiting data</div>
+      </div>
+      <div class="kpi-card" id="kpi-total-card">
+        <div class="kpi-label">Total Unrealized P&amp;L</div>
+        <div class="kpi-value" id="kpi-total">—</div>
+        <div class="kpi-sub" id="kpi-total-sub">awaiting data</div>
+      </div>
+      <div class="kpi-card silver">
+        <div class="kpi-label">Net Exposure</div>
+        <div class="kpi-value" id="kpi-net-exp">—</div>
+        <div class="kpi-sub" id="kpi-net-sub">awaiting data</div>
+      </div>
+    </div>
+
+    <!-- P&L chart -->
+    <div class="chart-panel">
+      <div class="chart-header">
+        <div class="chart-title">Cumulative Return — Indexed (100 = period start)</div>
+        <div class="chart-controls">
+          <div style="display:flex;gap:4px;" id="period-btns">
+            <button class="period-btn" onclick="setPeriod('1D')">1D</button>
+            <button class="period-btn active" onclick="setPeriod('1W')">1W</button>
+            <button class="period-btn" onclick="setPeriod('1M')">1M</button>
+            <button class="period-btn" onclick="setPeriod('3M')">3M</button>
+            <button class="period-btn" onclick="setPeriod('ALL')">All</button>
+          </div>
+          <div class="benchmark-toggles" id="bm-toggles"></div>
+        </div>
+      </div>
+      <div class="chart-container">
+        <canvas id="pnl-chart" style="display:none"></canvas>
+        <div id="pnl-empty" class="chart-empty">
+          <div class="empty-icon">📡</div>
+          <div class="empty-text">Awaiting first data fetch from IBKR</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats blocks -->
+    <div class="stats-row">
+      <div class="stat-block">
+        <div class="stat-block-title">Live Performance</div>
+        <div class="stat-row"><span class="stat-key">Portfolio NAV</span><span class="stat-val" id="stat-nav">—</span></div>
+        <div class="stat-row"><span class="stat-key">Unrealized P&L</span><span class="stat-val" id="stat-upnl">—</span></div>
+        <div class="stat-row"><span class="stat-key">Realized P&L</span><span class="stat-val" id="stat-rpnl">—</span></div>
+        <div class="stat-row"><span class="stat-key">Daily P&L</span><span class="stat-val" id="stat-dpnl">—</span></div>
+        <div class="stat-row"><span class="stat-key">Currency</span><span class="stat-val" id="stat-ccy">USD</span></div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-block-title">Rolling Metrics (90d)</div>
+        <div class="stat-row"><span class="stat-key">Sharpe Ratio</span><span class="stat-val" id="stat-sharpe">—</span></div>
+        <div class="stat-row"><span class="stat-key">Ann. Return</span><span class="stat-val" id="stat-cagr">—</span></div>
+        <div class="stat-row"><span class="stat-key">Daily Volatility</span><span class="stat-val" id="stat-vol">—</span></div>
+        <div class="stat-row"><span class="stat-key">Max Drawdown</span><span class="stat-val" id="stat-mdd">—</span></div>
+        <div class="stat-row"><span class="stat-key">Win Rate (days)</span><span class="stat-val" id="stat-winrate">—</span></div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-block-title">OOS Track Record (brief)</div>
+        <div class="stat-row"><span class="stat-key">Sharpe Ratio</span><span class="stat-val positive">1.48</span></div>
+        <div class="stat-row"><span class="stat-key">OOS CAGR</span><span class="stat-val positive">25.4%</span></div>
+        <div class="stat-row"><span class="stat-key">Max Drawdown</span><span class="stat-val negative">−18.0%</span></div>
+        <div class="stat-row"><span class="stat-key">Avg β to S&amp;P 500</span><span class="stat-val">0.20</span></div>
+        <div class="stat-row"><span class="stat-key">OOS Window</span><span class="stat-val">Jan 2022 – Jun 2026</span></div>
+      </div>
+    </div>
+
+  </div><!-- /overview -->
+
+  <!-- ─── Positions page ────────────────────────────────────────── -->
+  <div id="page-positions" class="page">
+    <div class="table-panel">
+      <div class="table-header">
+        <div class="table-header-left">
+          <div class="table-title">Positions</div>
+          <div class="sub-tabs">
+            <div class="sub-tab active" onclick="showPositionSide('long')">Long</div>
+            <div class="sub-tab" onclick="showPositionSide('short')">Short</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--text-muted);" id="pos-count">—</div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align:left;">Ticker</th>
+              <th>Shares</th>
+              <th>Avg Cost</th>
+              <th>Last Price</th>
+              <th>Mkt Value</th>
+              <th>Unr. P&L</th>
+              <th>Unr. P&L %</th>
+              <th>Weight</th>
+            </tr>
+          </thead>
+          <tbody id="pos-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div><!-- /positions -->
+
+  <!-- ─── Benchmarks page ───────────────────────────────────────── -->
+  <div id="page-benchmarks" class="page">
+
+    <div class="chart-panel">
+      <div class="chart-header">
+        <div class="chart-title">Relative Return — Indexed (100 = period start)</div>
+        <div class="chart-controls">
+          <div style="display:flex;gap:4px;" id="bm-period-btns">
+            <button class="period-btn" onclick="setBmPeriod('1W')">1W</button>
+            <button class="period-btn active" onclick="setBmPeriod('1M')">1M</button>
+            <button class="period-btn" onclick="setBmPeriod('3M')">3M</button>
+            <button class="period-btn" onclick="setBmPeriod('ALL')">All</button>
+          </div>
+        </div>
+      </div>
+      <div class="chart-container">
+        <canvas id="bm-chart" style="display:none"></canvas>
+        <div id="bm-empty" class="chart-empty">
+          <div class="empty-icon">📡</div>
+          <div class="empty-text">Awaiting benchmark data</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-panel">
+      <div class="bm-table-header">
+        <div class="table-title">Risk-Adjusted Comparison</div>
+        <div id="bm-period-label" style="font-size:12px;color:var(--text-muted)">1M window</div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align:left;">Benchmark</th>
+              <th>Return</th>
+              <th>Ann. Return</th>
+              <th>Volatility</th>
+              <th>Sharpe</th>
+              <th>Max DD</th>
+            </tr>
+          </thead>
+          <tbody id="bm-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /benchmarks -->
+
+  <!-- ─── Exposure page ─────────────────────────────────────────── -->
+  <div id="page-exposure" class="page">
+
+    <div class="exposure-grid">
+      <div class="gauge-panel">
+        <div class="gauge-title">Net Market Exposure</div>
+        <div class="gauge-labels"><span>−100%</span><span>0</span><span>+100%</span></div>
+        <div class="gauge-bar-wrap">
+          <div class="gauge-zero"></div>
+          <div id="net-gauge-fill" class="gauge-fill"></div>
+        </div>
+        <div class="gauge-center-label" id="net-exp-val">—</div>
+        <div class="gauge-center-sub">Net Exposure (Long − Short) / NAV</div>
+        <div class="split-bars">
+          <div class="split-bar">
+            <div class="split-bar-label">Long</div>
+            <div class="split-bar-val positive" id="long-exp-val">—</div>
+          </div>
+          <div class="split-bar">
+            <div class="split-bar-label">Short</div>
+            <div class="split-bar-val negative" id="short-exp-val">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gauge-panel">
+        <div class="gauge-title">Gross Exposure</div>
+        <div class="gauge-labels"><span>0%</span><span>100%</span><span>200%</span></div>
+        <div class="gauge-bar-wrap" style="background:var(--surface);">
+          <div id="gross-gauge-fill" class="gauge-fill" style="left:0;background:var(--accent);"></div>
+        </div>
+        <div class="gauge-center-label" id="gross-exp-val">—</div>
+        <div class="gauge-center-sub">Gross Exposure (Long + Short) / NAV</div>
+        <div class="split-bars">
+          <div class="split-bar">
+            <div class="split-bar-label">Positions</div>
+            <div class="split-bar-val" id="pos-count-exp">—</div>
+          </div>
+          <div class="split-bar">
+            <div class="split-bar-label">Cash</div>
+            <div class="split-bar-val" id="cash-val">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exposure over time chart -->
+    <div class="chart-panel">
+      <div class="chart-header">
+        <div class="chart-title">Net Exposure Over Time (from P&L history)</div>
+      </div>
+      <div class="chart-container">
+        <canvas id="exp-chart" style="display:none"></canvas>
+        <div id="exp-empty" class="chart-empty">
+          <div class="empty-icon">📡</div>
+          <div class="empty-text">Exposure history builds after several data fetches</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strategy context stats from brief -->
+    <div class="two-col">
+      <div class="stat-block">
+        <div class="stat-block-title">Strategy Exposure Profile (OOS brief)</div>
+        <div class="stat-row"><span class="stat-key">Avg β to S&amp;P 500</span><span class="stat-val">0.20</span></div>
+        <div class="stat-row"><span class="stat-key">Avg Net Exposure</span><span class="stat-val">+0.11 (11%)</span></div>
+        <div class="stat-row"><span class="stat-key">% Time Long</span><span class="stat-val">46%</span></div>
+        <div class="stat-row"><span class="stat-key">% Time Short</span><span class="stat-val">54%</span></div>
+        <div class="stat-row"><span class="stat-key">Net Exposure σ</span><span class="stat-val">0.46</span></div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-block-title">Signal Library</div>
+        <div class="stat-row"><span class="stat-key">Signals</span><span class="stat-val">199</span></div>
+        <div class="stat-row"><span class="stat-key">Universe</span><span class="stat-val">~42 liquid equities</span></div>
+        <div class="stat-row"><span class="stat-key">Data source</span><span class="stat-val">MetalMiner (130+ series)</span></div>
+        <div class="stat-row"><span class="stat-key">Rebalance</span><span class="stat-val">Systematic / rules-based</span></div>
+        <div class="stat-row"><span class="stat-key">OOS window</span><span class="stat-val">Jan 2022 – Jun 2026 (4.5yr)</span></div>
+      </div>
+    </div>
+
+  </div><!-- /exposure -->
+
+</div><!-- /dashboard -->
+
+<script>
+'use strict';
+
+// ═══════════════════════════════════════════ CONFIG ══
+// SHA-256 of the dashboard password.
+// Default password: "metallica"
+// To change: run: echo -n "yourpassword" | shasum -a 256
+// then replace the hash below and rebuild.
+const PASSWORD_HASH = '336665b051dbac2e59b32911c20f519a1d4fa75d65407207d2e4a4d09e762275';
+
+const BENCHMARK_LABELS = {
+  SPY:  { label: 'S&P 500 (SPY)',    color: '#22c55e' },
+  XME:  { label: 'Mining ETF (XME)', color: '#f97316' },
+  SLV:  { label: 'Silver (SLV)',      color: '#94a3b8' },
+  CPER: { label: 'Copper (CPER)',     color: '#f59e0b' },
+  JJU:  { label: 'Aluminum (JJU)',    color: '#06b6d4' },
+};
+
+// ═══════════════════════════════════════════ AUTH ══
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function doLogin() {
+  const pw = document.getElementById('pw-input').value;
+  const hash = await sha256(pw);
+  if (hash === PASSWORD_HASH) {
+    sessionStorage.setItem('metallica_auth', '1');
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    await loadData();
+  } else {
+    document.getElementById('login-error').textContent = 'Incorrect password.';
+    document.getElementById('pw-input').value = '';
+    setTimeout(() => { document.getElementById('login-error').textContent = ''; }, 3000);
+  }
+}
+
+document.getElementById('pw-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') doLogin();
+});
+
+function logout() {
+  sessionStorage.removeItem('metallica_auth');
+  location.reload();
+}
+
+// ═══════════════════════════════════════════ DATA ══
+let account = {}, positions = [], pnl = [], benchmarks = {};
+let activePeriod = '1W', activeBmPeriod = '1M';
+let pnlChartInst = null, bmChartInst = null, expChartInst = null;
+let bmVisible = { SPY: true, XME: true, SLV: true, CPER: false, JJU: false };
+let positionSide = 'long';
+
+async function loadData() {
+  try {
+    const [posRes, accRes, pnlRes, bmRes] = await Promise.all([
+      fetch('data/positions.json?' + Date.now()).then(r => r.json()).catch(() => ({ positions: [] })),
+      fetch('data/account.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
+      fetch('data/pnl.json?' + Date.now()).then(r => r.json()).catch(() => []),
+      fetch('data/benchmarks.json?' + Date.now()).then(r => r.json()).catch(() => ({ tickers: {} })),
+    ]);
+    positions = posRes.positions || [];
+    account   = accRes || {};
+    pnl       = Array.isArray(pnlRes) ? pnlRes : [];
+    benchmarks = bmRes.tickers || {};
+
+    renderAll();
+    updateMetaBadges(accRes.updatedAt);
+  } catch(e) {
+    console.error('Data load error', e);
+  }
+  // Auto-refresh every 5 minutes
+  setTimeout(loadData, 5 * 60 * 1000);
+}
+
+// ═══════════════════════════════════════════ RENDER ══
+function renderAll() {
+  renderKPIs();
+  buildBmToggles();
+  renderPnlChart();
+  renderStats();
+  renderPositions();
+  renderBmChart();
+  renderBmTable();
+  renderExposure();
+}
+
+// ── KPI cards
+function renderKPIs() {
+  const nav   = account.nav;
+  const daily = account.dailyPnl;
+  const upnl  = account.unrealizedPnl;
+  const net   = account.netExposure;
+
+  setText('kpi-nav', nav != null ? fmtDollar(nav) : '—');
+  setText('kpi-nav-sub', nav != null ? `Cash: ${fmtDollar(account.cash || 0)}` : 'awaiting data');
+
+  if (daily != null) {
+    setText('kpi-daily', fmtDollarSigned(daily));
+    setText('kpi-daily-sub', nav ? `${(daily/nav*100).toFixed(2)}% of NAV` : '');
+    pnlColor('kpi-daily', daily);
+    document.getElementById('kpi-daily-card').className = 'kpi-card ' + (daily >= 0 ? 'green' : 'red');
+  }
+
+  if (upnl != null) {
+    setText('kpi-total', fmtDollarSigned(upnl));
+    setText('kpi-total-sub', `Realized: ${fmtDollarSigned(account.realizedPnl || 0)}`);
+    pnlColor('kpi-total', upnl);
+    document.getElementById('kpi-total-card').className = 'kpi-card ' + (upnl >= 0 ? 'green' : 'red');
+  }
+
+  if (net != null) {
+    setText('kpi-net-exp', (net >= 0 ? '+' : '') + net.toFixed(1) + '%');
+    setText('kpi-net-sub', `Gross: ${(account.grossExposurePct || 0).toFixed(1)}%`);
+    pnlColor('kpi-net-exp', net);
+  }
+}
+
+// ── Stats panel
+function renderStats() {
+  const fmtNull = v => v != null ? fmtDollarSigned(v) : '—';
+  setText('stat-nav',  account.nav  != null ? fmtDollar(account.nav)  : '—');
+  setText('stat-upnl', fmtNull(account.unrealizedPnl));
+  setText('stat-rpnl', fmtNull(account.realizedPnl));
+  setText('stat-dpnl', fmtNull(account.dailyPnl));
+  pnlColor('stat-upnl', account.unrealizedPnl);
+  pnlColor('stat-rpnl', account.realizedPnl);
+  pnlColor('stat-dpnl', account.dailyPnl);
+
+  // Rolling metrics from pnl history
+  const { sharpe, cagr, vol, mdd, winRate } = calcMetrics(pnl);
+  setText('stat-sharpe',  sharpe  != null ? sharpe.toFixed(2)   : '—');
+  setText('stat-cagr',    cagr    != null ? cagr.toFixed(1)+'%' : '—');
+  setText('stat-vol',     vol     != null ? vol.toFixed(2)+'%'  : '—');
+  setText('stat-mdd',     mdd     != null ? mdd.toFixed(1)+'%'  : '—');
+  setText('stat-winrate', winRate != null ? winRate.toFixed(0)+'%' : '—');
+  pnlColor('stat-cagr',  cagr);
+  pnlColor('stat-mdd',   mdd ? -mdd : null); // mdd is already negative-ish
+}
+
+// ── P&L chart with benchmarks
+function buildBmToggles() {
+  const wrap = document.getElementById('bm-toggles');
+  wrap.innerHTML = '';
+  Object.keys(BENCHMARK_LABELS).forEach(ticker => {
+    const { label, color } = BENCHMARK_LABELS[ticker];
+    const el = document.createElement('div');
+    el.className = 'bm-toggle' + (bmVisible[ticker] ? ' active' : '');
+    el.style.borderColor = color;
+    el.style.color = bmVisible[ticker] ? '#fff' : color;
+    el.style.background = bmVisible[ticker] ? color + '30' : 'transparent';
+    el.innerHTML = `<span style="width:8px;height:8px;border-radius:50%;background:${color};display:inline-block;"></span>${ticker}`;
+    el.title = label;
+    el.onclick = () => {
+      bmVisible[ticker] = !bmVisible[ticker];
+      buildBmToggles();
+      renderPnlChart();
+    };
+    wrap.appendChild(el);
+  });
+}
+
+function setPeriod(p) {
+  activePeriod = p;
+  document.querySelectorAll('#period-btns .period-btn').forEach(b =>
+    b.classList.toggle('active', b.textContent === p));
+  renderPnlChart();
+}
+
+function renderPnlChart() {
+  const canvas = document.getElementById('pnl-chart');
+  const empty  = document.getElementById('pnl-empty');
+
+  if (!pnl.length) { canvas.style.display = 'none'; empty.style.display = 'flex'; return; }
+  canvas.style.display = 'block'; empty.style.display = 'none';
+
+  const startDate = periodStart(activePeriod);
+  const filtered  = pnl.filter(s => new Date(s.timestamp) >= startDate);
+  if (!filtered.length) { canvas.style.display = 'none'; empty.style.display = 'flex'; return; }
+
+  const baseNav = filtered[0].nav || 1;
+  const stratData = filtered.map(s => ({ x: new Date(s.timestamp), y: s.nav / baseNav * 100 }));
+
+  const datasets = [{
+    label: 'Metallica',
+    data: stratData,
+    borderColor: '#818cf8',
+    backgroundColor: 'rgba(129,140,248,0.06)',
+    borderWidth: 2.5,
+    fill: true,
+    tension: 0.3,
+    pointRadius: 0,
+    pointHoverRadius: 4,
+  }];
+
+  // Add benchmark lines
+  Object.keys(BENCHMARK_LABELS).forEach(ticker => {
+    if (!bmVisible[ticker] || !benchmarks[ticker]) return;
+    const { color } = BENCHMARK_LABELS[ticker];
+
+    let dates, closes;
+    // For 1D, prefer intraday data
+    if (activePeriod === '1D' && benchmarks[ticker].intraday) {
+      dates  = benchmarks[ticker].intraday.timestamps.map(t => new Date(t));
+      closes = benchmarks[ticker].intraday.closes;
+    } else {
+      dates  = benchmarks[ticker].dates.map(d => new Date(d));
+      closes = benchmarks[ticker].closes;
+    }
+
+    const bmFiltered = dates
+      .map((d, i) => ({ x: d, y: closes[i] }))
+      .filter(p => p.x >= startDate);
+    if (!bmFiltered.length) return;
+
+    const base = bmFiltered[0].y;
+    datasets.push({
+      label: BENCHMARK_LABELS[ticker].label,
+      data: bmFiltered.map(p => ({ x: p.x, y: p.y / base * 100 })),
+      borderColor: color,
+      borderWidth: 1.5,
+      fill: false,
+      tension: 0.3,
+      pointRadius: 0,
+      pointHoverRadius: 3,
+      borderDash: [4, 3],
+    });
+  });
+
+  if (pnlChartInst) pnlChartInst.destroy();
+  pnlChartInst = new Chart(canvas, {
+    type: 'line',
+    data: { datasets },
+    options: chartOpts('Indexed Return'),
+  });
+}
+
+// ── Positions table
+function showPositionSide(side) {
+  positionSide = side;
+  document.querySelectorAll('.sub-tab').forEach(t =>
+    t.classList.toggle('active', t.textContent.trim().toLowerCase() === side));
+  renderPositions();
+}
+
+function renderPositions() {
+  const tbody = document.getElementById('pos-tbody');
+  const filtered = positions.filter(p => p.side === positionSide);
+  const totalMktVal = filtered.reduce((s, p) => s + Math.abs(p.mktValue), 0);
+
+  document.getElementById('pos-count').textContent =
+    `${positions.filter(p => p.side === 'long').length} long · ${positions.filter(p => p.side === 'short').length} short`;
+
+  if (!filtered.length) {
+    tbody.innerHTML = `<tr class="empty-row"><td colspan="8">${positions.length ? 'No ' + positionSide + ' positions' : 'Awaiting position data from IBKR'}</td></tr>`;
+    return;
+  }
+
+  filtered.sort((a, b) => Math.abs(b.mktValue) - Math.abs(a.mktValue));
+
+  tbody.innerHTML = filtered.map(p => {
+    const pct = p.avgCost ? (p.lastPrice - p.avgCost) / p.avgCost * 100 : 0;
+    const weight = totalMktVal ? Math.abs(p.mktValue) / totalMktVal * 100 : 0;
+    const catClass = 'cat-' + p.category.toLowerCase().replace(/ /g, '').replace('&', '');
+    return `
+      <tr>
+        <td><div class="ticker-cell">
+          <span class="ticker-sym">${esc(p.ticker)}</span>
+          <span class="category-badge ${catClass}">${esc(p.category)}</span>
+        </div></td>
+        <td>${fmt(p.shares, 0)}</td>
+        <td>${fmtDollar(p.avgCost)}</td>
+        <td>${fmtDollar(p.lastPrice)}</td>
+        <td>${fmtDollar(Math.abs(p.mktValue))}</td>
+        <td class="${p.unrealizedPnl >= 0 ? 'positive' : 'negative'}">${fmtDollarSigned(p.unrealizedPnl)}</td>
+        <td class="${pct >= 0 ? 'positive' : 'negative'}">${pct >= 0 ? '+' : ''}${pct.toFixed(2)}%</td>
+        <td>${weight.toFixed(1)}%</td>
+      </tr>`;
+  }).join('');
+}
+
+// ── Benchmark chart & table
+function setBmPeriod(p) {
+  activeBmPeriod = p;
+  document.querySelectorAll('#bm-period-btns .period-btn').forEach(b =>
+    b.classList.toggle('active', b.textContent === p));
+  document.getElementById('bm-period-label').textContent = p + ' window';
+  renderBmChart();
+  renderBmTable();
+}
+
+function renderBmChart() {
+  const canvas = document.getElementById('bm-chart');
+  const empty  = document.getElementById('bm-empty');
+  const startDate = periodStart(activeBmPeriod);
+
+  const datasets = [];
+
+  // Strategy line from pnl
+  const filtered = pnl.filter(s => new Date(s.timestamp) >= startDate);
+  if (filtered.length) {
+    const baseNav = filtered[0].nav || 1;
+    datasets.push({
+      label: 'Metallica',
+      data: filtered.map(s => ({ x: new Date(s.timestamp), y: s.nav / baseNav * 100 })),
+      borderColor: '#818cf8',
+      borderWidth: 2.5,
+      fill: false,
+      tension: 0.3,
+      pointRadius: 0,
+    });
+  }
+
+  Object.keys(BENCHMARK_LABELS).forEach(ticker => {
+    if (!benchmarks[ticker]) return;
+    const { label, color } = BENCHMARK_LABELS[ticker];
+    const dates  = benchmarks[ticker].dates.map(d => new Date(d));
+    const closes = benchmarks[ticker].closes;
+    const filtered = dates.map((d, i) => ({ x: d, y: closes[i] })).filter(p => p.x >= startDate);
+    if (!filtered.length) return;
+    const base = filtered[0].y;
+    datasets.push({
+      label,
+      data: filtered.map(p => ({ x: p.x, y: p.y / base * 100 })),
+      borderColor: color,
+      borderWidth: 1.5,
+      fill: false,
+      tension: 0.3,
+      pointRadius: 0,
+      borderDash: [4, 3],
+    });
+  });
+
+  if (!datasets.length) { canvas.style.display = 'none'; empty.style.display = 'flex'; return; }
+  canvas.style.display = 'block'; empty.style.display = 'none';
+
+  if (bmChartInst) bmChartInst.destroy();
+  bmChartInst = new Chart(canvas, {
+    type: 'line',
+    data: { datasets },
+    options: chartOpts('Indexed Return'),
+  });
+}
+
+function renderBmTable() {
+  const tbody = document.getElementById('bm-tbody');
+  const startDate = periodStart(activeBmPeriod);
+  const rows = [];
+
+  // Strategy row
+  const filtPnl = pnl.filter(s => new Date(s.timestamp) >= startDate);
+  if (filtPnl.length >= 2) {
+    const m = calcMetricsForSeries(filtPnl.map(s => s.nav));
+    rows.push({ name: 'Metallica', color: '#818cf8', ...m, isStrategy: true });
+  }
+
+  Object.keys(BENCHMARK_LABELS).forEach(ticker => {
+    if (!benchmarks[ticker]) return;
+    const dates  = benchmarks[ticker].dates.map(d => new Date(d));
+    const closes = benchmarks[ticker].closes;
+    const filtered = closes.filter((_, i) => dates[i] >= startDate);
+    if (filtered.length < 2) return;
+    const m = calcMetricsForSeries(filtered);
+    rows.push({ name: BENCHMARK_LABELS[ticker].label, color: BENCHMARK_LABELS[ticker].color, ...m });
+  });
+
+  if (!rows.length) {
+    tbody.innerHTML = '<tr class="empty-row"><td colspan="6">Awaiting benchmark data</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = rows.map(r => `
+    <tr ${r.isStrategy ? 'style="font-weight:600;"' : ''}>
+      <td><div class="bm-name">
+        <div class="bm-dot" style="background:${r.color}"></div>
+        ${esc(r.name)}
+      </div></td>
+      <td class="${r.ret >= 0 ? 'positive' : 'negative'}">${r.ret != null ? (r.ret >= 0 ? '+' : '') + r.ret.toFixed(2) + '%' : '—'}</td>
+      <td class="${r.annRet >= 0 ? 'positive' : 'negative'}">${r.annRet != null ? (r.annRet >= 0 ? '+' : '') + r.annRet.toFixed(1) + '%' : '—'}</td>
+      <td>${r.vol != null ? r.vol.toFixed(2) + '%' : '—'}</td>
+      <td class="${r.sharpe >= 0 ? 'positive' : 'negative'}">${r.sharpe != null ? r.sharpe.toFixed(2) : '—'}</td>
+      <td class="negative">${r.mdd != null ? r.mdd.toFixed(1) + '%' : '—'}</td>
+    </tr>`).join('');
+}
+
+// ── Exposure
+function renderExposure() {
+  const net   = account.netExposure;
+  const gross = account.grossExposurePct;
+  const longE = account.longExposure;
+  const shortE = account.shortExposure;
+
+  // Net gauge: −100% to +100%, zero center
+  const netFill = document.getElementById('net-gauge-fill');
+  if (net != null) {
+    const clamped = Math.max(-100, Math.min(100, net));
+    const pct = Math.abs(clamped) / 2; // percent of bar width (50% max each side)
+    if (clamped >= 0) {
+      netFill.style.left  = '50%';
+      netFill.style.width = pct + '%';
+      netFill.style.background = 'var(--green)';
+    } else {
+      netFill.style.left  = (50 - pct) + '%';
+      netFill.style.width = pct + '%';
+      netFill.style.background = 'var(--red)';
+    }
+    setText('net-exp-val', (net >= 0 ? '+' : '') + net.toFixed(1) + '%');
+    pnlColor('net-exp-val', net);
+  }
+
+  // Gross gauge: 0 to 200%
+  const grossFill = document.getElementById('gross-gauge-fill');
+  if (gross != null) {
+    const clamped = Math.max(0, Math.min(200, gross));
+    grossFill.style.width = (clamped / 2) + '%';
+    setText('gross-exp-val', gross.toFixed(1) + '%');
+  }
+
+  setText('long-exp-val',  longE  != null ? '+' + longE.toFixed(1) + '%' : '—');
+  setText('short-exp-val', shortE != null ? '−' + shortE.toFixed(1) + '%' : '—');
+  setText('pos-count-exp', positions.length + ' names');
+  setText('cash-val', account.cash != null ? fmtDollar(account.cash) : '—');
+
+  // Exposure over time chart (net exposure from pnl history, if available)
+  const canvas = document.getElementById('exp-chart');
+  const empty  = document.getElementById('exp-empty');
+  // We don't store net exposure in pnl.json snapshots yet — show empty for now
+  if (pnl.length < 5) { canvas.style.display = 'none'; empty.style.display = 'flex'; return; }
+
+  // If we had enough data, we'd compute rolling exposure here. For now skip.
+  canvas.style.display = 'none';
+  empty.style.display = 'flex';
+  document.getElementById('exp-empty').querySelector('.empty-text').textContent =
+    'Exposure timeline builds as the strategy runs (requires position history).';
+}
+
+// ── Meta badges
+function updateMetaBadges(updatedAt) {
+  if (!updatedAt) return;
+  const d = new Date(updatedAt);
+  document.getElementById('updated-at').textContent = 'Updated ' + fmtTime(d);
+
+  const ageMin = (Date.now() - d) / 60000;
+  document.getElementById('stale-badge').style.display = ageMin > 60 ? 'flex' : 'none';
+
+  // Market open: Mon-Fri 9:30am-4pm ET
+  const et = new Date(d.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+  const h = et.getHours(), m = et.getMinutes(), day = et.getDay();
+  const isOpen = day >= 1 && day <= 5 && (h > 9 || (h === 9 && m >= 30)) && h < 16;
+  const badge = document.getElementById('market-badge');
+  badge.className = 'market-badge ' + (isOpen ? 'open' : 'closed');
+  badge.textContent = isOpen ? 'Market Open' : 'Market Closed';
+}
+
+// ═══════════════════════════════════════════ METRICS ══
+function calcMetrics(pnlArr) {
+  if (pnlArr.length < 2) return {};
+  const navs = pnlArr.map(s => s.nav).filter(Boolean);
+  if (navs.length < 2) return {};
+  return calcMetricsForSeries(navs);
+}
+
+function calcMetricsForSeries(prices) {
+  if (prices.length < 2) return {};
+  const n = prices.length;
+  const first = prices[0], last = prices[n - 1];
+  const ret = (last - first) / first * 100;
+
+  // Daily returns (approximate: treat each snapshot as 1 period)
+  const dailyRets = [];
+  for (let i = 1; i < prices.length; i++) {
+    if (prices[i - 1]) dailyRets.push((prices[i] - prices[i - 1]) / prices[i - 1]);
+  }
+
+  const mean = dailyRets.reduce((s, r) => s + r, 0) / dailyRets.length;
+  const variance = dailyRets.reduce((s, r) => s + (r - mean) ** 2, 0) / (dailyRets.length - 1);
+  const stdDev = Math.sqrt(variance);
+  const annFactor = 252; // approximate trading days
+  const sharpe = stdDev > 0 ? (mean / stdDev) * Math.sqrt(annFactor) : null;
+  const annRet = ((1 + mean) ** annFactor - 1) * 100;
+  const vol = stdDev * Math.sqrt(annFactor) * 100;
+
+  // Max drawdown
+  let peak = prices[0], mdd = 0;
+  for (const p of prices) {
+    if (p > peak) peak = p;
+    const dd = (p - peak) / peak * 100;
+    if (dd < mdd) mdd = dd;
+  }
+
+  // Win rate
+  const wins = dailyRets.filter(r => r > 0).length;
+  const winRate = (wins / dailyRets.length) * 100;
+
+  return { ret, annRet, vol, sharpe, mdd, winRate };
+}
+
+// ═══════════════════════════════════════════ TABS ══
+function showTab(name) {
+  document.querySelectorAll('.tab').forEach((t, i) => {
+    const names = ['overview', 'positions', 'benchmarks', 'exposure'];
+    t.classList.toggle('active', names[i] === name);
+  });
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+}
+
+// ═══════════════════════════════════════════ CHART OPTS ══
+function chartOpts(yLabel) {
+  return {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: {
+        position: 'top',
+        align: 'end',
+        labels: { color: '#7b82a0', boxWidth: 24, padding: 12, font: { size: 11 } }
+      },
+      tooltip: {
+        backgroundColor: 'rgba(22,27,43,0.95)',
+        borderColor: 'rgba(45,53,85,1)',
+        borderWidth: 1,
+        titleColor: '#e2e6f0',
+        bodyColor: '#7b82a0',
+        callbacks: {
+          label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)}`
+        }
+      }
+    },
+    scales: {
+      x: {
+        type: 'time',
+        time: { tooltipFormat: 'MMM d HH:mm' },
+        ticks: { color: '#4a5070', font: { size: 10 }, maxTicksLimit: 8 },
+        grid: { color: 'rgba(34,40,64,0.6)' },
+      },
+      y: {
+        title: { display: true, text: yLabel, color: '#4a5070', font: { size: 10 } },
+        ticks: { color: '#4a5070', font: { size: 10 }, callback: v => v.toFixed(1) },
+        grid: { color: 'rgba(34,40,64,0.6)' },
+      }
+    }
+  };
+}
+
+// ═══════════════════════════════════════════ UTILS ══
+function periodStart(period) {
+  const d = new Date();
+  if (period === '1D')  d.setDate(d.getDate() - 1);
+  else if (period === '1W')  d.setDate(d.getDate() - 7);
+  else if (period === '1M')  d.setMonth(d.getMonth() - 1);
+  else if (period === '3M')  d.setMonth(d.getMonth() - 3);
+  else d.setFullYear(2000); // ALL
+  return d;
+}
+
+function fmt(n, dec = 2)        { return n != null ? Number(n).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) : '—'; }
+function fmtDollar(n)           { return n != null ? '$' + fmt(n, 0) : '—'; }
+function fmtDollarSigned(n)     { return n != null ? (n >= 0 ? '+$' : '−$') + fmt(Math.abs(n), 0) : '—'; }
+function fmtTime(d)             { return d.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }); }
+function setText(id, text)      { const el = document.getElementById(id); if (el) el.textContent = text; }
+function esc(s)                 { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function pnlColor(id, val) {
+  const el = document.getElementById(id);
+  if (!el || val == null) return;
+  el.classList.remove('positive', 'negative', 'neutral');
+  el.classList.add(val > 0 ? 'positive' : val < 0 ? 'negative' : 'neutral');
+}
+
+// ═══════════════════════════════════════════ INIT ══
+(async () => {
+  if (sessionStorage.getItem('metallica_auth') === '1') {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    await loadData();
+  }
+})();
+</script>
+</body>
+</html>
