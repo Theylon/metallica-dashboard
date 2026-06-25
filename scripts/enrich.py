@@ -37,7 +37,19 @@ RESEARCH_MAX = 6
 
 
 def _read(name):
-    return json.loads((SRC / name).read_text())
+    txt = (SRC / name).read_text()
+    try:
+        return json.loads(txt)
+    except Exception:
+        # Tolerate text-wrapped payloads, e.g. TipRanks "Found N result(s):\n\n[...]"
+        for ch in "[{":
+            i = txt.find(ch)
+            if i != -1:
+                try:
+                    return json.loads(txt[i:])
+                except Exception:
+                    continue
+        raise
 
 
 def _write(name, payload, now):
