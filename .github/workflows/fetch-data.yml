@@ -8,8 +8,12 @@ on:
     # use GITHUB_TOKEN, and GITHUB_TOKEN-authored pushes never trigger workflows,
     # so the scheduled fetch can't set off a deploy loop.
   schedule:
-    # Every 30 min during US market hours, Mon–Fri (14:00–21:00 UTC).
-    - cron: '0,30 14-21 * * 1-5'
+    # Times are UTC and fixed; the ET equivalents below assume EDT (UTC-4, the
+    # US summer offset). During EST (winter) each run lands one hour earlier ET.
+    - cron: '30 13 * * 1-5'   # ~market open      — 09:30 ET
+    - cron: '0 16 * * 1-5'    # midday            — 12:00 ET
+    - cron: '0 18 * * 1-5'    # early afternoon   — 14:00 ET
+    - cron: '55 19 * * 1-5'   # just before close — 15:55 ET
   workflow_dispatch: # Allow manual trigger from the Actions UI
 
 # contents: commit the rolling P&L history · pages/id-token: deploy to GitHub Pages
