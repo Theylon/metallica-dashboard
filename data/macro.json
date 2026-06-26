@@ -1,11 +1,23 @@
 {
-  "updatedAt": "2026-06-26T12:11:01+00:00",
+  "updatedAt": "2026-06-26T13:09:52+00:00",
   "items": [
     {
       "label": "Fed Funds Rate",
       "value": "3.63%",
-      "sub": "hold",
-      "tone": "neutral"
+      "sub": "dovish \u00b7 hold",
+      "tone": "good"
+    },
+    {
+      "label": "CPI (YoY)",
+      "value": "4.17%",
+      "sub": "above 2% target",
+      "tone": "warn"
+    },
+    {
+      "label": "10Y\u20132Y Spread",
+      "value": "+0.31",
+      "sub": "normal curve",
+      "tone": "good"
     }
   ]
 }
