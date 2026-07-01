@@ -126,7 +126,10 @@ def build_news(now):
         except Exception:
             continue
         for q in raw if isinstance(raw, list) else []:
-            for d in (q.get("data") or []):
+            # Two observed shapes: a flat list of blog-post dicts (title at
+            # top level), or a list of {query, data: [...]} wrappers.
+            candidates = q.get("data") if "data" in q else [q]
+            for d in (candidates or []):
                 title = d.get("title")
                 if not title:
                     continue
