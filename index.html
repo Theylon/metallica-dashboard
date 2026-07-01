@@ -743,6 +743,26 @@ td:first-child { text-align: left; }
       </div>
     </div>
 
+    <!-- Asset -> Commodity exposure while held (T1/T2 signal-validated links only) -->
+    <div class="section-title" style="margin-top:8px;">Commodity Exposure — Held Positions (T1/T2 Signal Links)</div>
+    <div class="table-panel">
+      <div class="table-header">
+        <div class="table-title">Tier-Weighted Exposure by Commodity</div>
+        <div style="font-size:11px;color:var(--text-muted)" id="commexp-asof">as of —</div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th style="text-align:left;">Commodity</th><th>Exposure (% NAV, tier-weighted)</th></tr></thead>
+          <tbody id="commexp-tbody"><tr class="empty-row"><td colspan="2">Awaiting exposure history</td></tr></tbody>
+        </table>
+      </div>
+      <div class="report-note" style="padding:8px 16px;">
+        Weighted by each held ticker's % of NAV × linkage tier (T1=1.0, T2=0.5), summed across
+        holdings linked to that commodity via metallica-fund's equity-commodity linkage map.
+        Forward-looking only — accumulates from the day this tracker went live, no backfilled history.
+      </div>
+    </div>
+
   </div><!-- /exposure -->
 
   <!-- ─── Risk page (Report v2) ─────────────────────────────────── -->
@@ -943,7 +963,7 @@ function logout() {
 }
 
 // ═══════════════════════════════════════════ DATA ══
-let account = {}, positions = [], pnl = [], benchmarks = {}, report = {};
+let account = {}, positions = [], pnl = [], benchmarks = {}, report = {}, exposureHistory = {};
 let intel = { commodities: [], analysts: [], macro: [], news: [] };
 let activePeriod = '1W', activeBmPeriod = '1M';
 let pnlChartInst = null, bmChartInst = null, expChartInst = null;
@@ -955,7 +975,7 @@ let positionSort = { key: null, dir: 1 };
 
 async function loadData() {
   try {
-    const [posRes, accRes, pnlRes, bmRes, repRes, comRes, anaRes, macRes, newsRes, techRes, spotRes, resRes] = await Promise.all([
+    const [posRes, accRes, pnlRes, bmRes, repRes, comRes, anaRes, macRes, newsRes, techRes, spotRes, resRes, expHistRes] = await Promise.all([
       fetch('data/positions.json?' + Date.now()).then(r => r.json()).catch(() => ({ positions: [] })),
       fetch('data/account.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
       fetch('data/pnl.json?' + Date.now()).then(r => r.json()).catch(() => []),
@@ -968,6 +988,7 @@ async function loadData() {
       fetch('data/technicals.json?' + Date.now()).then(r => r.json()).catch(() => ({ items: [] })),
       fetch('data/metals_spot.json?' + Date.now()).then(r => r.json()).catch(() => ({ items: [] })),
       fetch('data/research.json?' + Date.now()).then(r => r.json()).catch(() => ({ items: [] })),
+      fetch('data/exposure_history.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
     ]);
     positions = posRes.positions || [];
     account   = accRes || {};
@@ -976,6 +997,7 @@ async function loadData() {
     report    = repRes || {};
     intel = { commodities: comRes.items || [], analysts: anaRes.items || [], macro: macRes.items || [], news: newsRes.items || [],
               technicals: techRes.items || [], metalsSpot: spotRes.items || [], research: resRes.items || [] };
+    exposureHistory = expHistRes || {};
 
     renderAll();
     updateMetaBadges(accRes.updatedAt);
@@ -997,6 +1019,7 @@ function renderAll() {
   renderBmChart();
   renderBmTable();
   renderExposure();
+  renderCommodityExposure();
   renderReport();
   renderIntel();
 }
@@ -1507,6 +1530,29 @@ function renderExposure() {
   empty.style.display = 'flex';
   document.getElementById('exp-empty').querySelector('.empty-text').textContent =
     'Exposure timeline builds as the strategy runs (requires position history).';
+}
+
+function renderCommodityExposure() {
+  const dates = Object.keys(exposureHistory).sort();
+  const tbody = document.getElementById('commexp-tbody');
+  if (!dates.length) {
+    tbody.innerHTML = '<tr class="empty-row"><td colspan="2">Awaiting exposure history</td></tr>';
+    setText('commexp-asof', 'as of —');
+    return;
+  }
+  const latestDate = dates[dates.length - 1];
+  const commodityExposure = exposureHistory[latestDate].commodityExposure || {};
+  setText('commexp-asof', 'as of ' + latestDate);
+  const rows = Object.entries(commodityExposure);
+  if (!rows.length) {
+    tbody.innerHTML = '<tr class="empty-row"><td colspan="2">No T1/T2-linked commodities held</td></tr>';
+    return;
+  }
+  tbody.innerHTML = rows.map(([commodity, weight]) => `
+    <tr>
+      <td style="text-align:left;">${esc(commodity)}</td>
+      <td>${(weight * 100).toFixed(2)}%</td>
+    </tr>`).join('');
 }
 
 // ═══════════════════════════════════════════ REPORT v2 ══
