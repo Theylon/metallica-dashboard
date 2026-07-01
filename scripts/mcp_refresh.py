@@ -138,12 +138,18 @@ def main():
     for i, (d, nv) in enumerate(zip(dates, navs)):
         dt = datetime.datetime(int(d[:4]), int(d[4:6]), int(d[6:8]), 20, 0, 0,
                                tzinfo=datetime.timezone.utc)
-        if i == len(dates) - 1:
+        is_last = i == len(dates) - 1
+        if is_last:
+            # get_pa_performance_all_periods can lag or disagree with the
+            # account-summary NAV (they're different IBKR endpoints). Use the
+            # same authoritative nav/dailyPnl as account.json for "today" so
+            # the chart's latest point always matches the KPI cards.
             dt = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)
+            nv = nav
         hist.append({
             "timestamp": dt.isoformat(), "nav": round(nv, 2),
             "unrealizedPnl": round(nv - base, 2), "realizedPnl": 0.0,
-            "dailyPnl": 0.0 if prev is None else round(nv - prev, 2),
+            "dailyPnl": daily if is_last else (0.0 if prev is None else round(nv - prev, 2)),
             "totalPnl": round(nv - base, 2),
         })
         prev = nv
