@@ -14,6 +14,7 @@ Inputs (raw MCP tool outputs, saved verbatim):
                                    for SPY, XME, SLV, CPER, JJU (optional)
 """
 import json, datetime, pathlib
+import exposure
 
 SRC = pathlib.Path("/tmp")
 DATA = pathlib.Path(__file__).resolve().parent.parent / "data"
@@ -158,6 +159,9 @@ def main():
 
     # ── Benchmarks (refreshed only when /tmp/ibkr_bench_*.json dumps exist) ─
     refreshed, kept = build_benchmarks(now)
+
+    # ── Asset-commodity exposure tracking (forward-looking, T1/T2 links) ───
+    exposure.record_and_report()
 
     print(f"Refreshed @ {now}: NAV {account['nav']} | dailyPnl {account['dailyPnl']} | "
           f"netExp {account['netExposure']}% | {len(positions)} positions | {len(hist)} pnl pts | "
