@@ -102,6 +102,7 @@ def main():
             "mktValue": round(mv, 2),
             "unrealizedPnl": round(float(p.get("unrealized_pnl", 0)), 2),
             "realizedPnl": round(float(p.get("realized_pnl", 0)), 2),
+            "dailyPnl": round(float(p.get("daily_pnl", 0)), 2),
             "currency": p.get("currency", "USD"),
             "category": CATEGORY.get(tkr.upper(), "Other"),
         })

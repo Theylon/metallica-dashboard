@@ -252,6 +252,15 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
   border: 1px solid var(--border); color: var(--text-muted);
 }
 .sub-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.filter-bar { display: flex; align-items: center; gap: 8px; margin-left: 8px; padding-left: 8px; border-left: 1px solid var(--border); }
+.filter-input, .filter-select {
+  padding: 5px 10px; border-radius: 6px; font-size: 12px;
+  border: 1px solid var(--border); background: transparent; color: var(--text);
+}
+.filter-input { width: 130px; }
+.filter-input::placeholder { color: var(--text-dim); }
+.filter-input:focus, .filter-select:focus { outline: none; border-color: var(--accent); }
+.filter-select option { background: var(--surface); color: var(--text); }
 .table-wrapper { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; }
 thead th {
@@ -261,6 +270,9 @@ thead th {
   text-transform: uppercase; letter-spacing: .4px;
 }
 thead th:first-child { text-align: left; }
+th.sortable { cursor: pointer; user-select: none; }
+th.sortable:hover { color: var(--text); }
+.sort-arrow { font-size: 9px; opacity: .7; }
 tbody tr { border-bottom: 1px solid var(--border); transition: background .1s; }
 tbody tr:last-child { border-bottom: none; }
 tbody tr:hover { background: var(--card-hover); }
@@ -366,7 +378,10 @@ td:first-child { text-align: left; }
 
   /* tables: tighter, and scroll horizontally inside their wrapper */
   td, thead th { padding: 9px 10px; font-size: 12px; }
-  .table-header, .bm-table-header { padding: 12px 14px; }
+  .table-header, .bm-table-header { padding: 12px 14px; flex-wrap: wrap; }
+  .table-header-left { flex-wrap: wrap; row-gap: 8px; }
+  .filter-bar { margin-left: 0; padding-left: 0; border-left: none; }
+  .filter-input { width: 100px; }
   #trade-note { max-width: 100% !important; text-align: left !important; }
 
   .exposure-grid { gap: 12px; }
@@ -528,6 +543,12 @@ td:first-child { text-align: left; }
             <div class="sub-tab active" onclick="showPositionSide('long')">Long</div>
             <div class="sub-tab" onclick="showPositionSide('short')">Short</div>
           </div>
+          <div class="filter-bar">
+            <input type="text" class="filter-input" id="pos-search" placeholder="Search ticker…" oninput="setPositionSearch(this.value)">
+            <select class="filter-select" id="pos-category-filter" onchange="setPositionCategoryFilter(this.value)">
+              <option value="">All Categories</option>
+            </select>
+          </div>
         </div>
         <div style="font-size:12px;color:var(--text-muted);" id="pos-count">—</div>
       </div>
@@ -535,14 +556,19 @@ td:first-child { text-align: left; }
         <table>
           <thead>
             <tr>
-              <th style="text-align:left;">Ticker</th>
-              <th>Shares</th>
-              <th>Avg Cost</th>
-              <th>Last Price</th>
-              <th>Mkt Value</th>
-              <th>Unr. P&L</th>
-              <th>Unr. P&L %</th>
-              <th>Weight</th>
+              <th style="text-align:left;" class="sortable" onclick="sortPositionsBy('ticker')">Ticker<span class="sort-arrow" id="arrow-ticker"></span></th>
+              <th style="text-align:left;" class="sortable" onclick="sortPositionsBy('category')">Category<span class="sort-arrow" id="arrow-category"></span></th>
+              <th class="sortable" onclick="sortPositionsBy('shares')">Shares<span class="sort-arrow" id="arrow-shares"></span></th>
+              <th class="sortable" onclick="sortPositionsBy('avgCost')">Avg Cost<span class="sort-arrow" id="arrow-avgCost"></span></th>
+              <th class="sortable" onclick="sortPositionsBy('costBasis')">Cost Basis<span class="sort-arrow" id="arrow-costBasis"></span></th>
+              <th class="sortable" onclick="sortPositionsBy('lastPrice')">Last Price<span class="sort-arrow" id="arrow-lastPrice"></span></th>
+              <th class="sortable" onclick="sortPositionsBy('mktValue')">Mkt Value<span class="sort-arrow" id="arrow-mktValue"></span></th>
+              <th class="sortable" onclick="sortPositionsBy('dailyPnl')">Day P&L<span class="sort-arrow" id="arrow-dailyPnl"></span></th>
+              <th class="sortable" onclick="sortPositionsBy('dayPct')">Day %<span class="sort-arrow" id="arrow-dayPct"></span></th>
+              <th class="sortable" onclick="sortPositionsBy('unrealizedPnl')">Unr. P&L<span class="sort-arrow" id="arrow-unrealizedPnl"></span></th>
+              <th class="sortable" onclick="sortPositionsBy('pct')">Unr. P&L %<span class="sort-arrow" id="arrow-pct"></span></th>
+              <th class="sortable" onclick="sortPositionsBy('realizedPnl')">Realized P&L<span class="sort-arrow" id="arrow-realizedPnl"></span></th>
+              <th class="sortable" onclick="sortPositionsBy('weight')">Weight<span class="sort-arrow" id="arrow-weight"></span></th>
             </tr>
           </thead>
           <tbody id="pos-tbody"></tbody>
@@ -923,6 +949,9 @@ let activePeriod = '1W', activeBmPeriod = '1M';
 let pnlChartInst = null, bmChartInst = null, expChartInst = null;
 let bmVisible = { SPY: true, XME: true, SLV: true, CPER: false, JJU: false };
 let positionSide = 'long';
+let positionCategoryFilter = '';
+let positionSearch = '';
+let positionSort = { key: null, dir: 1 };
 
 async function loadData() {
   try {
@@ -963,6 +992,7 @@ function renderAll() {
   buildBmToggles();
   renderPnlChart();
   renderStats();
+  buildCategoryFilter();
   renderPositions();
   renderBmChart();
   renderBmTable();
@@ -1226,24 +1256,79 @@ function showPositionSide(side) {
   renderPositions();
 }
 
+function setPositionSearch(val) {
+  positionSearch = val.trim().toLowerCase();
+  renderPositions();
+}
+
+function setPositionCategoryFilter(val) {
+  positionCategoryFilter = val;
+  renderPositions();
+}
+
+function sortPositionsBy(key) {
+  if (positionSort.key === key) positionSort.dir *= -1;
+  else { positionSort.key = key; positionSort.dir = 1; }
+  renderPositions();
+}
+
+function updateSortArrows() {
+  document.querySelectorAll('.sort-arrow').forEach(el => el.textContent = '');
+  if (positionSort.key) {
+    const el = document.getElementById('arrow-' + positionSort.key);
+    if (el) el.textContent = positionSort.dir === 1 ? '▲' : '▼';
+  }
+}
+
+function buildCategoryFilter() {
+  const sel = document.getElementById('pos-category-filter');
+  if (!sel) return;
+  const cats = [...new Set(positions.map(p => p.category))].sort();
+  if (positionCategoryFilter && !cats.includes(positionCategoryFilter)) positionCategoryFilter = '';
+  sel.innerHTML = '<option value="">All Categories</option>' +
+    cats.map(c => `<option value="${esc(c)}"${c === positionCategoryFilter ? ' selected' : ''}>${esc(c)}</option>`).join('');
+}
+
 function renderPositions() {
   const tbody = document.getElementById('pos-tbody');
-  const filtered = positions.filter(p => p.side === positionSide);
-  const totalMktVal = filtered.reduce((s, p) => s + Math.abs(p.mktValue), 0);
+  const sideMatches = positions.filter(p => p.side === positionSide);
+  const totalMktVal = sideMatches.reduce((s, p) => s + Math.abs(p.mktValue), 0);
 
   document.getElementById('pos-count').textContent =
     `${positions.filter(p => p.side === 'long').length} long · ${positions.filter(p => p.side === 'short').length} short`;
 
+  let filtered = sideMatches;
+  if (positionCategoryFilter) filtered = filtered.filter(p => p.category === positionCategoryFilter);
+  if (positionSearch) filtered = filtered.filter(p => p.ticker.toLowerCase().includes(positionSearch));
+
   if (!filtered.length) {
-    tbody.innerHTML = `<tr class="empty-row"><td colspan="8">${positions.length ? 'No ' + positionSide + ' positions' : 'Awaiting position data from IBKR'}</td></tr>`;
+    tbody.innerHTML = `<tr class="empty-row"><td colspan="13">${positions.length ? 'No matching positions' : 'Awaiting position data from IBKR'}</td></tr>`;
+    updateSortArrows();
     return;
   }
 
-  filtered.sort((a, b) => Math.abs(b.mktValue) - Math.abs(a.mktValue));
-
-  tbody.innerHTML = filtered.map(p => {
+  const rows = filtered.map(p => {
     const pct = p.avgCost ? (p.lastPrice - p.avgCost) / p.avgCost * 100 : 0;
     const weight = totalMktVal ? Math.abs(p.mktValue) / totalMktVal * 100 : 0;
+    const costBasis = p.avgCost * p.shares;
+    const dailyPnl = p.dailyPnl || 0;
+    const prevValue = Math.abs(p.mktValue) - dailyPnl;
+    const dayPct = prevValue ? dailyPnl / prevValue * 100 : 0;
+    return { ...p, pct, weight, costBasis, dailyPnl, dayPct };
+  });
+
+  if (positionSort.key) {
+    const k = positionSort.key, dir = positionSort.dir;
+    rows.sort((a, b) => {
+      const av = a[k], bv = b[k];
+      if (typeof av === 'string') return av.localeCompare(bv) * dir;
+      return ((av ?? 0) - (bv ?? 0)) * dir;
+    });
+  } else {
+    rows.sort((a, b) => Math.abs(b.mktValue) - Math.abs(a.mktValue));
+  }
+
+  tbody.innerHTML = rows.map(p => {
     const catClass = 'cat-' + p.category.toLowerCase().replace(/ /g, '').replace('&', '');
     return `
       <tr>
@@ -1251,15 +1336,22 @@ function renderPositions() {
           <span class="ticker-sym">${esc(p.ticker)}</span>
           <span class="category-badge ${catClass}">${esc(p.category)}</span>
         </div></td>
+        <td style="text-align:left;">${esc(p.category)}</td>
         <td>${fmt(p.shares, 0)}</td>
         <td>${fmtDollar(p.avgCost)}</td>
+        <td>${fmtDollar(p.costBasis)}</td>
         <td>${fmtDollar(p.lastPrice)}</td>
         <td>${fmtDollar(Math.abs(p.mktValue))}</td>
+        <td class="${p.dailyPnl >= 0 ? 'positive' : 'negative'}">${fmtDollarSigned(p.dailyPnl)}</td>
+        <td class="${p.dayPct >= 0 ? 'positive' : 'negative'}">${p.dayPct >= 0 ? '+' : ''}${p.dayPct.toFixed(2)}%</td>
         <td class="${p.unrealizedPnl >= 0 ? 'positive' : 'negative'}">${fmtDollarSigned(p.unrealizedPnl)}</td>
-        <td class="${pct >= 0 ? 'positive' : 'negative'}">${pct >= 0 ? '+' : ''}${pct.toFixed(2)}%</td>
-        <td>${weight.toFixed(1)}%</td>
+        <td class="${p.pct >= 0 ? 'positive' : 'negative'}">${p.pct >= 0 ? '+' : ''}${p.pct.toFixed(2)}%</td>
+        <td class="${p.realizedPnl >= 0 ? 'positive' : 'negative'}">${fmtDollarSigned(p.realizedPnl)}</td>
+        <td>${p.weight.toFixed(1)}%</td>
       </tr>`;
   }).join('');
+
+  updateSortArrows();
 }
 
 // ── Benchmark chart & table
