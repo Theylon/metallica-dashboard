@@ -85,10 +85,16 @@ def build_commodities(now):
 
 
 def _consensus_rows(raw):
-    """Flatten TipRanks consensus output into one row per ticker (deduped)."""
+    """Flatten TipRanks consensus output into one row per ticker (deduped).
+
+    TipRanks ask() responses observed in two shapes: a flat list of
+    per-ticker dicts (ticker at top level), or a list of {query, data: [...]}
+    wrappers. Handle both, mirroring build_news's candidates fallback.
+    """
     rows, seen = [], set()
     for q in raw if isinstance(raw, list) else []:
-        for d in (q.get("data") or []):
+        candidates = q.get("data") if "data" in q else [q]
+        for d in (candidates or []):
             tkr = d.get("ticker")
             if not tkr or tkr in seen:
                 continue
