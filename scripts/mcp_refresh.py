@@ -11,7 +11,7 @@ Inputs (raw MCP tool outputs, saved verbatim):
   /tmp/ibkr_balances.json       <- get_account_balances
   /tmp/ibkr_perf.json           <- get_pa_performance_all_periods
   /tmp/ibkr_bench_<TICKER>.json <- get_price_history (STK, ONE_DAY, THREE_MONTHS)
-                                   for SPY, XME, SLV, CPER, JJU (optional)
+                                   for SPY, XME, SLV, CPER (optional)
 """
 import json, datetime, pathlib
 
@@ -32,7 +32,7 @@ CATEGORY = {
 }
 
 # Benchmark ETFs plotted on the dashboard chart.
-BENCH_TICKERS = ["SPY", "XME", "SLV", "CPER", "JJU"]
+BENCH_TICKERS = ["SPY", "XME", "SLV", "CPER"]
 
 
 def load(name):
