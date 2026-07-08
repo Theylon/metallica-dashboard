@@ -513,7 +513,7 @@ td:first-child { text-align: left; }
             <div class="sub-tab" onclick="setChartMode('performance')">Performance</div>
           </div>
         </div>
-        <div class="info-icon" title="Value shows your account's raw dollar balance over time. Performance shows cumulative % return and lets you compare against benchmarks.">i</div>
+        <div class="info-icon" title="Value shows your account's raw dollar balance over time, deposits included. Performance shows time-weighted return (TWR) — the deposit-adjusted measure IBKR itself reports — and lets you compare against benchmarks.">i</div>
       </div>
 
       <div class="chart-hero">
@@ -1242,7 +1242,7 @@ function computeGradient(ctx, isPositive) {
   return g;
 }
 
-function renderChartHero(baseNav, lastNav, isValue, isPositive) {
+function renderChartHero(baseNav, lastNav, perfPct, hasFlows, isValue, isPositive) {
   const cls = isPositive ? 'positive' : 'negative';
   const noun = PERIOD_NOUNS[activePeriod] || 'period';
   const valueEl = document.getElementById('chart-hero-value');
@@ -1254,14 +1254,19 @@ function renderChartHero(baseNav, lastNav, isValue, isPositive) {
 
   if (isValue) {
     const deltaDollar = lastNav - baseNav;
-    const deltaPct = baseNav ? (deltaDollar / baseNav * 100) : NaN;
-    const pctStr = isFinite(deltaPct) ? `${deltaPct >= 0 ? '+' : ''}${deltaPct.toFixed(2)}%` : '∞%';
     valueEl.textContent = fmtDollar(lastNav);
-    subEl.textContent = `${fmtDollarSigned(deltaDollar)} (${pctStr}) this ${noun}`;
+    if (hasFlows) {
+      // The window contains deposits/withdrawals — a % on the $ change would
+      // read as return, which it isn't. State the $ move and flag the flows.
+      subEl.textContent = `${fmtDollarSigned(deltaDollar)} this ${noun} · incl. deposits`;
+    } else {
+      const deltaPct = baseNav ? (deltaDollar / baseNav * 100) : NaN;
+      const pctStr = isFinite(deltaPct) ? `${deltaPct >= 0 ? '+' : ''}${deltaPct.toFixed(2)}%` : '∞%';
+      subEl.textContent = `${fmtDollarSigned(deltaDollar)} (${pctStr}) this ${noun}`;
+    }
   } else {
-    const retPct = baseNav ? (lastNav / baseNav - 1) * 100 : 0;
-    valueEl.textContent = `${retPct >= 0 ? '+' : ''}${retPct.toFixed(2)}%`;
-    subEl.textContent = `Total return this ${noun}`;
+    valueEl.textContent = `${perfPct >= 0 ? '+' : ''}${perfPct.toFixed(2)}%`;
+    subEl.textContent = `Total return this ${noun} (TWR, excl. deposits)`;
   }
 }
 
@@ -1279,11 +1284,25 @@ function renderPnlChart() {
   const baseNav = filtered[0].nav || 1;
   const lastNav = filtered[filtered.length - 1].nav;
   const isValue = chartMode === 'value';
-  const headlineIsPositive = isValue ? (lastNav - baseNav) >= 0 : (lastNav / baseNav - 1) >= 0;
+
+  // Performance must come from IBKR's TWR series (deposit-adjusted, chained to
+  // the window start) — NAV ratios count deposits as gains. NAV math is kept
+  // only as a fallback for history recorded before twr existed.
+  const hasTwr = filtered.every(s => typeof s.twr === 'number');
+  const twrBase = hasTwr ? 1 + filtered[0].twr / 100 : 1;
+  const perfPct = s => hasTwr
+    ? ((1 + s.twr / 100) / twrBase - 1) * 100
+    : (s.nav / baseNav - 1) * 100;
+  const lastPerf = perfPct(filtered[filtered.length - 1]);
+  // NAV growth ≠ TWR growth inside the window ⇒ external deposits/withdrawals.
+  const hasFlows = hasTwr && baseNav
+    && Math.abs((lastNav / baseNav) / (1 + lastPerf / 100) - 1) > 0.005;
+
+  const headlineIsPositive = isValue ? (lastNav - baseNav) >= 0 : lastPerf >= 0;
 
   const stratData = filtered.map(s => ({
     x: new Date(s.timestamp),
-    y: isValue ? s.nav : (s.nav / baseNav - 1) * 100,
+    y: isValue ? s.nav : perfPct(s),
   }));
 
   const style = getComputedStyle(document.documentElement);
@@ -1344,7 +1363,7 @@ function renderPnlChart() {
     options: chartOpts(isValue ? 'Value ($)' : 'Return (%)'),
   });
 
-  renderChartHero(baseNav, lastNav, isValue, headlineIsPositive);
+  renderChartHero(baseNav, lastNav, lastPerf, hasFlows, isValue, headlineIsPositive);
 }
 
 // ── Positions table
@@ -1470,13 +1489,19 @@ function renderBmChart() {
 
   const datasets = [];
 
-  // Strategy line from pnl
+  // Strategy line from pnl — indexed off the TWR series (deposit-adjusted),
+  // not raw NAV, so a cash deposit never shows up as a strategy gain.
   const filtered = pnl.filter(s => new Date(s.timestamp) >= startDate);
   if (filtered.length) {
+    const hasTwr = filtered.every(s => typeof s.twr === 'number');
     const baseNav = filtered[0].nav || 1;
+    const twrBase = hasTwr ? 1 + filtered[0].twr / 100 : 1;
     datasets.push({
       label: 'Metallica',
-      data: filtered.map(s => ({ x: new Date(s.timestamp), y: s.nav / baseNav * 100 })),
+      data: filtered.map(s => ({
+        x: new Date(s.timestamp),
+        y: hasTwr ? (1 + s.twr / 100) / twrBase * 100 : s.nav / baseNav * 100,
+      })),
       borderColor: '#818cf8',
       borderWidth: 2.5,
       fill: false,
@@ -1521,11 +1546,11 @@ function renderBmTable() {
   const startDate = periodStart(activeBmPeriod);
   const rows = [];
 
-  // Strategy row
+  // Strategy row — calcMetrics prefers the deposit-adjusted TWR series
   const filtPnl = pnl.filter(s => new Date(s.timestamp) >= startDate);
   if (filtPnl.length >= 2) {
-    const m = calcMetricsForSeries(filtPnl.map(s => s.nav));
-    rows.push({ name: 'Metallica', color: '#818cf8', ...m, isStrategy: true });
+    const m = calcMetrics(filtPnl);
+    if (m.ret != null) rows.push({ name: 'Metallica', color: '#818cf8', ...m, isStrategy: true });
   }
 
   Object.keys(BENCHMARK_LABELS).forEach(ticker => {
@@ -1734,9 +1759,16 @@ function updateMetaBadges(updatedAt) {
 // ═══════════════════════════════════════════ METRICS ══
 function calcMetrics(pnlArr) {
   if (pnlArr.length < 2) return {};
-  const navs = pnlArr.map(s => s.nav).filter(Boolean);
-  if (navs.length < 2) return {};
-  return calcMetricsForSeries(navs);
+  // Prefer the TWR wealth index (deposit-adjusted) — raw NAV counts deposits
+  // as returns, which poisons every derived metric (vol, Sharpe, win rate).
+  const hasTwr = pnlArr.every(s => typeof s.twr === 'number');
+  let series = hasTwr ? pnlArr.map(s => 1 + s.twr / 100) : pnlArr.map(s => s.nav).filter(Boolean);
+  // Skip the idle pre-trading prefix (flat series) so metrics reflect live days.
+  let start = 0;
+  while (start < series.length - 1 && series[start + 1] === series[start]) start++;
+  series = series.slice(start);
+  if (series.length < 2) return {};
+  return calcMetricsForSeries(series);
 }
 
 function calcMetricsForSeries(prices) {
