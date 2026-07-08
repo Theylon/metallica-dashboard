@@ -221,6 +221,29 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
 .chart-empty .empty-icon { font-size: 32px; opacity: .4; }
 .chart-empty .empty-text { font-size: 13px; }
 
+/* ── Chart hero (Value/Performance mode) ─────────────────────────────── */
+.chart-header-left { display: flex; align-items: center; }
+.chart-mode-tabs { margin: 0; }
+
+.info-icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 1px solid var(--border); color: var(--text-muted);
+  font-size: 11px; font-weight: 700; font-style: italic; cursor: default;
+  user-select: none; transition: all .15s;
+}
+.info-icon:hover { border-color: var(--border-light); color: var(--text); }
+
+.chart-controls-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin: 4px 0 16px; }
+
+.chart-hero { margin-bottom: 4px; }
+.chart-hero-value { font-size: 38px; font-weight: 800; letter-spacing: -1px; line-height: 1.1; color: var(--text); }
+.chart-hero-value.positive { color: var(--green); }
+.chart-hero-value.negative { color: var(--red); }
+.chart-hero-sub { font-size: 13px; font-weight: 600; margin-top: 4px; color: var(--text-muted); }
+.chart-hero-sub.positive { color: var(--green); }
+.chart-hero-sub.negative { color: var(--red); }
+
 /* ── Stats Row ──────────────────────────────────────────────────────── */
 .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
 .stat-block {
@@ -371,6 +394,8 @@ td:first-child { text-align: left; }
   .chart-header { gap: 8px; }
   .benchmark-toggles { margin-left: 0; padding-left: 0; border-left: none; }
   .period-btn { padding: 4px 9px; font-size: 11px; }
+  .chart-hero-value { font-size: 26px; }
+  .chart-hero-sub { font-size: 12px; }
 
   .stats-row { grid-template-columns: 1fr; gap: 12px; margin-bottom: 16px; }
   .two-col { gap: 12px; margin-bottom: 16px; }
@@ -482,18 +507,33 @@ td:first-child { text-align: left; }
     <!-- P&L chart -->
     <div class="chart-panel">
       <div class="chart-header">
-        <div class="chart-title">Cumulative Return — Indexed (100 = period start)</div>
-        <div class="chart-controls">
-          <div style="display:flex;gap:4px;" id="period-btns">
-            <button class="period-btn" onclick="setPeriod('1D')">1D</button>
-            <button class="period-btn active" onclick="setPeriod('1W')">1W</button>
-            <button class="period-btn" onclick="setPeriod('1M')">1M</button>
-            <button class="period-btn" onclick="setPeriod('3M')">3M</button>
-            <button class="period-btn" onclick="setPeriod('ALL')">All</button>
+        <div class="chart-header-left">
+          <div class="chart-mode-tabs sub-tabs" id="chart-mode-tabs">
+            <div class="sub-tab active" onclick="setChartMode('value')">Value</div>
+            <div class="sub-tab" onclick="setChartMode('performance')">Performance</div>
           </div>
-          <div class="benchmark-toggles" id="bm-toggles"></div>
         </div>
+        <div class="info-icon" title="Value shows your account's raw dollar balance over time. Performance shows cumulative % return and lets you compare against benchmarks.">i</div>
       </div>
+
+      <div class="chart-hero">
+        <div class="chart-hero-value" id="chart-hero-value">—</div>
+        <div class="chart-hero-sub" id="chart-hero-sub">awaiting data</div>
+      </div>
+
+      <div class="chart-controls-row">
+        <div style="display:flex;gap:4px;" id="period-btns">
+          <button class="period-btn" data-period="1W" onclick="setPeriod('1W')">1W</button>
+          <button class="period-btn" data-period="MTD" onclick="setPeriod('MTD')">MTD</button>
+          <button class="period-btn" data-period="1M" onclick="setPeriod('1M')">1M</button>
+          <button class="period-btn" data-period="3M" onclick="setPeriod('3M')">3M</button>
+          <button class="period-btn active" data-period="YTD" onclick="setPeriod('YTD')">YTD</button>
+          <button class="period-btn" data-period="1Y" onclick="setPeriod('1Y')">1Y</button>
+          <button class="period-btn" data-period="ALL" onclick="setPeriod('ALL')">All</button>
+        </div>
+        <div class="benchmark-toggles" id="bm-toggles" style="display:none"></div>
+      </div>
+
       <div class="chart-container">
         <canvas id="pnl-chart" style="display:none"></canvas>
         <div id="pnl-empty" class="chart-empty">
@@ -945,7 +985,8 @@ function logout() {
 // ═══════════════════════════════════════════ DATA ══
 let account = {}, positions = [], pnl = [], benchmarks = {}, report = {};
 let intel = { commodities: [], analysts: [], macro: [], news: [] };
-let activePeriod = '1W', activeBmPeriod = '1M';
+let activePeriod = 'YTD', activeBmPeriod = '1M';
+let chartMode = 'value';   // 'value' | 'performance'
 let pnlChartInst = null, bmChartInst = null, expChartInst = null;
 let bmVisible = { SPY: true, XME: true, SLV: true, CPER: false, JJU: false };
 let positionSide = 'long';
@@ -1176,8 +1217,52 @@ function buildBmToggles() {
 function setPeriod(p) {
   activePeriod = p;
   document.querySelectorAll('#period-btns .period-btn').forEach(b =>
-    b.classList.toggle('active', b.textContent === p));
+    b.classList.toggle('active', b.dataset.period === p));
   renderPnlChart();
+}
+
+function setChartMode(mode) {
+  chartMode = mode;
+  document.querySelectorAll('#chart-mode-tabs .sub-tab').forEach((el, i) =>
+    el.classList.toggle('active', (i === 0 ? 'value' : 'performance') === mode));
+  document.getElementById('bm-toggles').style.display = mode === 'performance' ? 'flex' : 'none';
+  renderPnlChart();
+}
+
+function computeGradient(ctx, isPositive) {
+  const { chartArea, ctx: c } = ctx.chart;
+  if (!chartArea) return isPositive ? 'rgba(34,197,94,0.15)' : 'rgba(239,68,68,0.15)'; // first-paint guard
+  const light = document.documentElement.dataset.theme === 'light';
+  const top = isPositive
+    ? (light ? 'rgba(22,163,74,0.28)' : 'rgba(34,197,94,0.28)')
+    : (light ? 'rgba(220,38,38,0.28)' : 'rgba(239,68,68,0.28)');
+  const g = c.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+  g.addColorStop(0, top);
+  g.addColorStop(1, 'rgba(0,0,0,0)');
+  return g;
+}
+
+function renderChartHero(baseNav, lastNav, isValue, isPositive) {
+  const cls = isPositive ? 'positive' : 'negative';
+  const noun = PERIOD_NOUNS[activePeriod] || 'period';
+  const valueEl = document.getElementById('chart-hero-value');
+  const subEl   = document.getElementById('chart-hero-sub');
+  valueEl.classList.remove('positive', 'negative');
+  subEl.classList.remove('positive', 'negative');
+  valueEl.classList.add(cls);
+  subEl.classList.add(cls);
+
+  if (isValue) {
+    const deltaDollar = lastNav - baseNav;
+    const deltaPct = baseNav ? (deltaDollar / baseNav * 100) : NaN;
+    const pctStr = isFinite(deltaPct) ? `${deltaPct >= 0 ? '+' : ''}${deltaPct.toFixed(2)}%` : '∞%';
+    valueEl.textContent = fmtDollar(lastNav);
+    subEl.textContent = `${fmtDollarSigned(deltaDollar)} (${pctStr}) this ${noun}`;
+  } else {
+    const retPct = baseNav ? (lastNav / baseNav - 1) * 100 : 0;
+    valueEl.textContent = `${retPct >= 0 ? '+' : ''}${retPct.toFixed(2)}%`;
+    subEl.textContent = `Total return this ${noun}`;
+  }
 }
 
 function renderPnlChart() {
@@ -1185,20 +1270,30 @@ function renderPnlChart() {
   const empty  = document.getElementById('pnl-empty');
 
   if (!pnl.length) { canvas.style.display = 'none'; empty.style.display = 'flex'; return; }
-  canvas.style.display = 'block'; empty.style.display = 'none';
 
   const startDate = periodStart(activePeriod);
   const filtered  = pnl.filter(s => new Date(s.timestamp) >= startDate);
   if (!filtered.length) { canvas.style.display = 'none'; empty.style.display = 'flex'; return; }
+  canvas.style.display = 'block'; empty.style.display = 'none';
 
   const baseNav = filtered[0].nav || 1;
-  const stratData = filtered.map(s => ({ x: new Date(s.timestamp), y: s.nav / baseNav * 100 }));
+  const lastNav = filtered[filtered.length - 1].nav;
+  const isValue = chartMode === 'value';
+  const headlineIsPositive = isValue ? (lastNav - baseNav) >= 0 : (lastNav / baseNav - 1) >= 0;
+
+  const stratData = filtered.map(s => ({
+    x: new Date(s.timestamp),
+    y: isValue ? s.nav : (s.nav / baseNav - 1) * 100,
+  }));
+
+  const style = getComputedStyle(document.documentElement);
+  const lineColor = (headlineIsPositive ? style.getPropertyValue('--green') : style.getPropertyValue('--red')).trim();
 
   const datasets = [{
     label: 'Metallica',
     data: stratData,
-    borderColor: '#818cf8',
-    backgroundColor: 'rgba(129,140,248,0.06)',
+    borderColor: lineColor,
+    backgroundColor: ctx => computeGradient(ctx, headlineIsPositive),
     borderWidth: 2.5,
     fill: true,
     tension: 0.3,
@@ -1206,46 +1301,50 @@ function renderPnlChart() {
     pointHoverRadius: 4,
   }];
 
-  // Add benchmark lines
-  Object.keys(BENCHMARK_LABELS).forEach(ticker => {
-    if (!bmVisible[ticker] || !benchmarks[ticker]) return;
-    const { color } = BENCHMARK_LABELS[ticker];
+  // Add benchmark lines (Performance mode only — dollar comparison doesn't make sense)
+  if (!isValue) {
+    Object.keys(BENCHMARK_LABELS).forEach(ticker => {
+      if (!bmVisible[ticker] || !benchmarks[ticker]) return;
+      const { color } = BENCHMARK_LABELS[ticker];
 
-    let dates, closes;
-    // For 1D, prefer intraday data
-    if (activePeriod === '1D' && benchmarks[ticker].intraday) {
-      dates  = benchmarks[ticker].intraday.timestamps.map(t => new Date(t));
-      closes = benchmarks[ticker].intraday.closes;
-    } else {
-      dates  = benchmarks[ticker].dates.map(d => new Date(d));
-      closes = benchmarks[ticker].closes;
-    }
+      let dates, closes;
+      // For 1D, prefer intraday data
+      if (activePeriod === '1D' && benchmarks[ticker].intraday) {
+        dates  = benchmarks[ticker].intraday.timestamps.map(t => new Date(t));
+        closes = benchmarks[ticker].intraday.closes;
+      } else {
+        dates  = benchmarks[ticker].dates.map(d => new Date(d));
+        closes = benchmarks[ticker].closes;
+      }
 
-    const bmFiltered = dates
-      .map((d, i) => ({ x: d, y: closes[i] }))
-      .filter(p => p.x >= startDate);
-    if (!bmFiltered.length) return;
+      const bmFiltered = dates
+        .map((d, i) => ({ x: d, y: closes[i] }))
+        .filter(p => p.x >= startDate);
+      if (!bmFiltered.length) return;
 
-    const base = bmFiltered[0].y;
-    datasets.push({
-      label: BENCHMARK_LABELS[ticker].label,
-      data: bmFiltered.map(p => ({ x: p.x, y: p.y / base * 100 })),
-      borderColor: color,
-      borderWidth: 1.5,
-      fill: false,
-      tension: 0.3,
-      pointRadius: 0,
-      pointHoverRadius: 3,
-      borderDash: [4, 3],
+      const base = bmFiltered[0].y;
+      datasets.push({
+        label: BENCHMARK_LABELS[ticker].label,
+        data: bmFiltered.map(p => ({ x: p.x, y: (p.y / base - 1) * 100 })),
+        borderColor: color,
+        borderWidth: 1.5,
+        fill: false,
+        tension: 0.3,
+        pointRadius: 0,
+        pointHoverRadius: 3,
+        borderDash: [4, 3],
+      });
     });
-  });
+  }
 
   if (pnlChartInst) pnlChartInst.destroy();
   pnlChartInst = new Chart(canvas, {
     type: 'line',
     data: { datasets },
-    options: chartOpts('Indexed Return'),
+    options: chartOpts(isValue ? 'Value ($)' : 'Return (%)'),
   });
+
+  renderChartHero(baseNav, lastNav, isValue, headlineIsPositive);
 }
 
 // ── Positions table
@@ -1749,15 +1848,23 @@ function toggleTheme() {
 }
 
 // ═══════════════════════════════════════════ UTILS ══
+const PERIOD_DEFS = {
+  '1W':  { apply: d => d.setDate(d.getDate() - 7),   noun: 'week' },
+  MTD:   { apply: d => d.setDate(1),                 noun: 'month' },
+  '1M':  { apply: d => d.setMonth(d.getMonth() - 1), noun: 'month' },
+  '3M':  { apply: d => d.setMonth(d.getMonth() - 3), noun: '3 months' },
+  YTD:   { apply: d => { d.setMonth(0); d.setDate(1); }, noun: 'year' },
+  '1Y':  { apply: d => d.setFullYear(d.getFullYear() - 1), noun: 'year' },
+  ALL:   { apply: d => d.setFullYear(2000),          noun: 'inception' },
+};
+
 function periodStart(period) {
   const d = new Date();
-  if (period === '1D')  d.setDate(d.getDate() - 1);
-  else if (period === '1W')  d.setDate(d.getDate() - 7);
-  else if (period === '1M')  d.setMonth(d.getMonth() - 1);
-  else if (period === '3M')  d.setMonth(d.getMonth() - 3);
-  else d.setFullYear(2000); // ALL
+  (PERIOD_DEFS[period] || PERIOD_DEFS.ALL).apply(d);
   return d;
 }
+
+const PERIOD_NOUNS = Object.fromEntries(Object.entries(PERIOD_DEFS).map(([k, v]) => [k, v.noun]));
 
 function fmt(n, dec = 2)        { return n != null ? Number(n).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) : '—'; }
 function fmtDollar(n)           { return n != null ? '$' + fmt(n, 0) : '—'; }
