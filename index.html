@@ -236,6 +236,27 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
 
 .chart-controls-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin: 4px 0 16px; }
 
+.custom-date {
+  background: var(--bg-card); border: 1px solid var(--border); color: var(--text);
+  border-radius: 6px; padding: 3px 6px; font-size: 11px; font-family: inherit;
+  color-scheme: dark;
+}
+[data-theme="light"] .custom-date { color-scheme: light; }
+.custom-date:hover { border-color: var(--border-light); }
+
+/* ── Position heatmap (Exposure tab) ─────────────────────────────────── */
+.heatmap-book-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 6px; }
+.heatmap-box { position: relative; height: 300px; border-radius: 6px; overflow: hidden; background: var(--bg-card); }
+.heatmap-tile {
+  position: absolute; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  border: 1px solid var(--bg); border-radius: 3px; overflow: hidden;
+  cursor: default; transition: filter .15s;
+}
+.heatmap-tile:hover { filter: brightness(1.25); z-index: 2; }
+.heatmap-tile .hm-ticker { font-weight: 700; font-size: 12px; color: var(--text); line-height: 1.2; }
+.heatmap-tile .hm-pct { font-size: 10px; font-weight: 600; color: var(--text-muted); line-height: 1.2; }
+
 .chart-hero { margin-bottom: 4px; }
 .chart-hero-value { font-size: 38px; font-weight: 800; letter-spacing: -1px; line-height: 1.1; color: var(--text); }
 .chart-hero-value.positive { color: var(--green); }
@@ -522,14 +543,21 @@ td:first-child { text-align: left; }
       </div>
 
       <div class="chart-controls-row">
-        <div style="display:flex;gap:4px;" id="period-btns">
-          <button class="period-btn" data-period="1W" onclick="setPeriod('1W')">1W</button>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;" id="period-btns">
+          <button class="period-btn" data-period="1D" onclick="setPeriod('1D')">1D</button>
+          <button class="period-btn" data-period="5D" onclick="setPeriod('5D')">5D</button>
           <button class="period-btn" data-period="MTD" onclick="setPeriod('MTD')">MTD</button>
           <button class="period-btn" data-period="1M" onclick="setPeriod('1M')">1M</button>
           <button class="period-btn" data-period="3M" onclick="setPeriod('3M')">3M</button>
           <button class="period-btn active" data-period="YTD" onclick="setPeriod('YTD')">YTD</button>
           <button class="period-btn" data-period="1Y" onclick="setPeriod('1Y')">1Y</button>
           <button class="period-btn" data-period="ALL" onclick="setPeriod('ALL')">All</button>
+          <button class="period-btn" data-period="CUSTOM" onclick="openCustomPeriod()">Custom</button>
+        </div>
+        <div id="custom-range-row" style="display:none;align-items:center;gap:6px;">
+          <input type="date" id="custom-from" class="custom-date" onchange="applyCustomRange()">
+          <span style="color:var(--text-muted);font-size:11px;">→</span>
+          <input type="date" id="custom-to" class="custom-date" onchange="applyCustomRange()">
         </div>
         <div class="benchmark-toggles" id="bm-toggles" style="display:none"></div>
       </div>
@@ -647,10 +675,10 @@ td:first-child { text-align: left; }
         <div class="chart-title">Relative Return — Indexed (100 = period start)</div>
         <div class="chart-controls">
           <div style="display:flex;gap:4px;" id="bm-period-btns">
-            <button class="period-btn" onclick="setBmPeriod('1W')">1W</button>
-            <button class="period-btn active" onclick="setBmPeriod('1M')">1M</button>
-            <button class="period-btn" onclick="setBmPeriod('3M')">3M</button>
-            <button class="period-btn" onclick="setBmPeriod('ALL')">All</button>
+            <button class="period-btn" data-period="1W" onclick="setBmPeriod('1W')">1W</button>
+            <button class="period-btn active" data-period="1M" onclick="setBmPeriod('1M')">1M</button>
+            <button class="period-btn" data-period="3M" onclick="setBmPeriod('3M')">3M</button>
+            <button class="period-btn" data-period="ALL" onclick="setBmPeriod('ALL')">All</button>
           </div>
         </div>
       </div>
@@ -733,16 +761,19 @@ td:first-child { text-align: left; }
       </div>
     </div>
 
-    <!-- Exposure over time chart -->
+    <!-- Position heatmap: tile size = exposure, color = day P&L % -->
     <div class="chart-panel">
       <div class="chart-header">
-        <div class="chart-title">Net Exposure Over Time (from P&L history)</div>
+        <div class="chart-title">Position Heatmap — tile size = exposure · color = day P&L %</div>
       </div>
-      <div class="chart-container">
-        <canvas id="exp-chart" style="display:none"></canvas>
-        <div id="exp-empty" class="chart-empty">
-          <div class="empty-icon">📡</div>
-          <div class="empty-text">Exposure history builds after several data fetches</div>
+      <div class="two-col" style="margin-bottom:0;">
+        <div>
+          <div class="heatmap-book-label">LONG</div>
+          <div id="heatmap-long" class="heatmap-box"></div>
+        </div>
+        <div>
+          <div class="heatmap-book-label">SHORT</div>
+          <div id="heatmap-short" class="heatmap-box"></div>
         </div>
       </div>
     </div>
@@ -949,7 +980,6 @@ const BENCHMARK_LABELS = {
   XME:  { label: 'Mining ETF (XME)', color: '#f97316' },
   SLV:  { label: 'Silver (SLV)',      color: '#94a3b8' },
   CPER: { label: 'Copper (CPER)',     color: '#f59e0b' },
-  JJU:  { label: 'Aluminum (JJU)',    color: '#06b6d4' },
 };
 
 // ═══════════════════════════════════════════ AUTH ══
@@ -986,9 +1016,10 @@ function logout() {
 let account = {}, positions = [], pnl = [], benchmarks = {}, report = {};
 let intel = { commodities: [], analysts: [], macro: [], news: [] };
 let activePeriod = 'YTD', activeBmPeriod = '1M';
+let customFrom = null, customTo = null;   // 'YYYY-MM-DD' bounds for the CUSTOM period
 let chartMode = 'value';   // 'value' | 'performance'
 let pnlChartInst = null, bmChartInst = null, expChartInst = null;
-let bmVisible = { SPY: true, XME: true, SLV: true, CPER: false, JJU: false };
+let bmVisible = { SPY: true, XME: true, SLV: true, CPER: false };
 let positionSide = 'long';
 let positionCategoryFilter = '';
 let positionSearch = '';
@@ -1181,15 +1212,18 @@ function renderStats() {
   pnlColor('stat-rpnl', account.realizedPnl);
   pnlColor('stat-dpnl', account.dailyPnl);
 
-  // Rolling metrics from pnl history
-  const { sharpe, cagr, vol, mdd, winRate } = calcMetrics(pnl);
+  // Rolling metrics from pnl history, clamped to the trailing 90 days the
+  // panel title promises (no-op until the account has that much history)
+  const cutoff90 = Date.now() - 90 * 86400e3;
+  const { sharpe, annRet, vol, mdd, winRate } =
+    calcMetrics(pnl.filter(s => new Date(s.timestamp).getTime() >= cutoff90));
   setText('stat-sharpe',  sharpe  != null ? sharpe.toFixed(2)   : '—');
-  setText('stat-cagr',    cagr    != null ? cagr.toFixed(1)+'%' : '—');
+  setText('stat-cagr',    annRet  != null ? annRet.toFixed(1)+'%' : '—');
   setText('stat-vol',     vol     != null ? vol.toFixed(2)+'%'  : '—');
   setText('stat-mdd',     mdd     != null ? mdd.toFixed(1)+'%'  : '—');
   setText('stat-winrate', winRate != null ? winRate.toFixed(0)+'%' : '—');
-  pnlColor('stat-cagr',  cagr);
-  pnlColor('stat-mdd',   mdd ? -mdd : null); // mdd is already negative-ish
+  pnlColor('stat-cagr',  annRet);
+  pnlColor('stat-mdd',   mdd);
 }
 
 // ── P&L chart with benchmarks
@@ -1218,6 +1252,34 @@ function setPeriod(p) {
   activePeriod = p;
   document.querySelectorAll('#period-btns .period-btn').forEach(b =>
     b.classList.toggle('active', b.dataset.period === p));
+  document.getElementById('custom-range-row').style.display = 'none';
+  renderPnlChart();
+}
+
+// ── Custom date range (from/to, native date inputs) ──────────────────
+function openCustomPeriod() {
+  const fromEl = document.getElementById('custom-from');
+  const toEl   = document.getElementById('custom-to');
+  if (pnl.length && !fromEl.value) {
+    const first = pnl[0].timestamp.slice(0, 10);
+    const today = new Date().toISOString().slice(0, 10);
+    fromEl.min = first; fromEl.max = today; fromEl.value = first;
+    toEl.min   = first; toEl.max   = today; toEl.value   = today;
+  }
+  customFrom = fromEl.value || null;
+  customTo   = toEl.value   || null;
+  document.getElementById('custom-range-row').style.display = 'flex';
+  activePeriod = 'CUSTOM';
+  document.querySelectorAll('#period-btns .period-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.period === 'CUSTOM'));
+  renderPnlChart();
+}
+
+function applyCustomRange() {
+  const from = document.getElementById('custom-from').value;
+  const to   = document.getElementById('custom-to').value;
+  if (!from || !to || from > to) return;
+  customFrom = from; customTo = to;
   renderPnlChart();
 }
 
@@ -1244,7 +1306,13 @@ function computeGradient(ctx, isPositive) {
 
 function renderChartHero(baseNav, lastNav, perfPct, hasFlows, isValue, isPositive) {
   const cls = isPositive ? 'positive' : 'negative';
-  const noun = PERIOD_NOUNS[activePeriod] || 'period';
+  const short = s => new Date(s + 'T00:00:00Z')
+    .toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+  const phrase = activePeriod === 'CUSTOM' && customFrom && customTo
+    ? `from ${short(customFrom)} to ${short(customTo)}`
+    : (PERIOD_PHRASES[activePeriod] || 'this period');
+  // cents matter here: a genuinely flat week is +$0.04, and a bare "+$0" reads as broken
+  const fmtDeltaCents = n => (n >= 0 ? '+$' : '−$') + fmt(Math.abs(n), 2);
   const valueEl = document.getElementById('chart-hero-value');
   const subEl   = document.getElementById('chart-hero-sub');
   valueEl.classList.remove('positive', 'negative');
@@ -1258,15 +1326,15 @@ function renderChartHero(baseNav, lastNav, perfPct, hasFlows, isValue, isPositiv
     if (hasFlows) {
       // The window contains deposits/withdrawals — a % on the $ change would
       // read as return, which it isn't. State the $ move and flag the flows.
-      subEl.textContent = `${fmtDollarSigned(deltaDollar)} this ${noun} · incl. deposits`;
+      subEl.textContent = `${fmtDeltaCents(deltaDollar)} ${phrase} · incl. deposits`;
     } else {
       const deltaPct = baseNav ? (deltaDollar / baseNav * 100) : NaN;
       const pctStr = isFinite(deltaPct) ? `${deltaPct >= 0 ? '+' : ''}${deltaPct.toFixed(2)}%` : '∞%';
-      subEl.textContent = `${fmtDollarSigned(deltaDollar)} (${pctStr}) this ${noun}`;
+      subEl.textContent = `${fmtDeltaCents(deltaDollar)} (${pctStr}) ${phrase}`;
     }
   } else {
     valueEl.textContent = `${perfPct >= 0 ? '+' : ''}${perfPct.toFixed(2)}%`;
-    subEl.textContent = `Total return this ${noun} (TWR, excl. deposits)`;
+    subEl.textContent = `Total return ${phrase} (TWR, excl. deposits)`;
   }
 }
 
@@ -1276,8 +1344,7 @@ function renderPnlChart() {
 
   if (!pnl.length) { canvas.style.display = 'none'; empty.style.display = 'flex'; return; }
 
-  const startDate = periodStart(activePeriod);
-  const filtered  = pnl.filter(s => new Date(s.timestamp) >= startDate);
+  const filtered = sliceWindow(pnl, activePeriod);
   if (!filtered.length) { canvas.style.display = 'none'; empty.style.display = 'flex'; return; }
   canvas.style.display = 'block'; empty.style.display = 'none';
 
@@ -1326,19 +1393,10 @@ function renderPnlChart() {
       if (!bmVisible[ticker] || !benchmarks[ticker]) return;
       const { color } = BENCHMARK_LABELS[ticker];
 
-      let dates, closes;
-      // For 1D, prefer intraday data
-      if (activePeriod === '1D' && benchmarks[ticker].intraday) {
-        dates  = benchmarks[ticker].intraday.timestamps.map(t => new Date(t));
-        closes = benchmarks[ticker].intraday.closes;
-      } else {
-        dates  = benchmarks[ticker].dates.map(d => new Date(d));
-        closes = benchmarks[ticker].closes;
-      }
-
-      const bmFiltered = dates
-        .map((d, i) => ({ x: d, y: closes[i] }))
-        .filter(p => p.x >= startDate);
+      const dates  = benchmarks[ticker].dates.map(d => new Date(d));
+      const closes = benchmarks[ticker].closes;
+      const bmFiltered = sliceWindow(dates.map((d, i) => ({ x: d, y: closes[i] })),
+                                     activePeriod, p => p.x.getTime());
       if (!bmFiltered.length) return;
 
       const base = bmFiltered[0].y;
@@ -1360,7 +1418,7 @@ function renderPnlChart() {
   pnlChartInst = new Chart(canvas, {
     type: 'line',
     data: { datasets },
-    options: chartOpts(isValue ? 'Value ($)' : 'Return (%)'),
+    options: chartOpts(isValue ? 'Value ($)' : 'Return (%)', isValue ? '$' : '%'),
   });
 
   renderChartHero(baseNav, lastNav, lastPerf, hasFlows, isValue, headlineIsPositive);
@@ -1426,11 +1484,14 @@ function renderPositions() {
   }
 
   const rows = filtered.map(p => {
-    const pct = p.avgCost ? (p.lastPrice - p.avgCost) / p.avgCost * 100 : 0;
-    const weight = totalMktVal ? Math.abs(p.mktValue) / totalMktVal * 100 : 0;
+    // % off actual P&L over cost basis — a raw price-move % would show every
+    // profitable short as a loss (price down = short gain)
     const costBasis = p.avgCost * p.shares;
+    const pct = costBasis ? (p.unrealizedPnl ?? 0) / costBasis * 100 : 0;
+    const weight = totalMktVal ? Math.abs(p.mktValue) / totalMktVal * 100 : 0;
     const dailyPnl = p.dailyPnl || 0;
-    const prevValue = Math.abs(p.mktValue) - dailyPnl;
+    // yesterday's exposure: a short's liability shrinks when it profits
+    const prevValue = Math.abs(p.mktValue) + (p.side === 'short' ? dailyPnl : -dailyPnl);
     const dayPct = prevValue ? dailyPnl / prevValue * 100 : 0;
     return { ...p, pct, weight, costBasis, dailyPnl, dayPct };
   });
@@ -1476,7 +1537,7 @@ function renderPositions() {
 function setBmPeriod(p) {
   activeBmPeriod = p;
   document.querySelectorAll('#bm-period-btns .period-btn').forEach(b =>
-    b.classList.toggle('active', b.textContent === p));
+    b.classList.toggle('active', b.dataset.period === p));
   document.getElementById('bm-period-label').textContent = p + ' window';
   renderBmChart();
   renderBmTable();
@@ -1485,13 +1546,12 @@ function setBmPeriod(p) {
 function renderBmChart() {
   const canvas = document.getElementById('bm-chart');
   const empty  = document.getElementById('bm-empty');
-  const startDate = periodStart(activeBmPeriod);
 
   const datasets = [];
 
   // Strategy line from pnl — indexed off the TWR series (deposit-adjusted),
   // not raw NAV, so a cash deposit never shows up as a strategy gain.
-  const filtered = pnl.filter(s => new Date(s.timestamp) >= startDate);
+  const filtered = sliceWindow(pnl, activeBmPeriod);
   if (filtered.length) {
     const hasTwr = filtered.every(s => typeof s.twr === 'number');
     const baseNav = filtered[0].nav || 1;
@@ -1515,7 +1575,8 @@ function renderBmChart() {
     const { label, color } = BENCHMARK_LABELS[ticker];
     const dates  = benchmarks[ticker].dates.map(d => new Date(d));
     const closes = benchmarks[ticker].closes;
-    const filtered = dates.map((d, i) => ({ x: d, y: closes[i] })).filter(p => p.x >= startDate);
+    const filtered = sliceWindow(dates.map((d, i) => ({ x: d, y: closes[i] })),
+                                 activeBmPeriod, p => p.x.getTime());
     if (!filtered.length) return;
     const base = filtered[0].y;
     datasets.push({
@@ -1543,11 +1604,10 @@ function renderBmChart() {
 
 function renderBmTable() {
   const tbody = document.getElementById('bm-tbody');
-  const startDate = periodStart(activeBmPeriod);
   const rows = [];
 
   // Strategy row — calcMetrics prefers the deposit-adjusted TWR series
-  const filtPnl = pnl.filter(s => new Date(s.timestamp) >= startDate);
+  const filtPnl = sliceWindow(pnl, activeBmPeriod);
   if (filtPnl.length >= 2) {
     const m = calcMetrics(filtPnl);
     if (m.ret != null) rows.push({ name: 'Metallica', color: '#818cf8', ...m, isStrategy: true });
@@ -1555,9 +1615,9 @@ function renderBmTable() {
 
   Object.keys(BENCHMARK_LABELS).forEach(ticker => {
     if (!benchmarks[ticker]) return;
-    const dates  = benchmarks[ticker].dates.map(d => new Date(d));
-    const closes = benchmarks[ticker].closes;
-    const filtered = closes.filter((_, i) => dates[i] >= startDate);
+    const pts = benchmarks[ticker].dates.map((d, i) =>
+      ({ t: new Date(d).getTime(), y: benchmarks[ticker].closes[i] }));
+    const filtered = sliceWindow(pts, activeBmPeriod, p => p.t).map(p => p.y);
     if (filtered.length < 2) return;
     const m = calcMetricsForSeries(filtered);
     rows.push({ name: BENCHMARK_LABELS[ticker].label, color: BENCHMARK_LABELS[ticker].color, ...m });
@@ -1620,18 +1680,91 @@ function renderExposure() {
   setText('pos-count-exp', positions.length + ' names');
   setText('cash-val', account.cash != null ? fmtDollar(account.cash) : '—');
 
-  // Exposure over time chart (net exposure from pnl history, if available)
-  const canvas = document.getElementById('exp-chart');
-  const empty  = document.getElementById('exp-empty');
-  // We don't store net exposure in pnl.json snapshots yet — show empty for now
-  if (pnl.length < 5) { canvas.style.display = 'none'; empty.style.display = 'flex'; return; }
-
-  // If we had enough data, we'd compute rolling exposure here. For now skip.
-  canvas.style.display = 'none';
-  empty.style.display = 'flex';
-  document.getElementById('exp-empty').querySelector('.empty-text').textContent =
-    'Exposure timeline builds as the strategy runs (requires position history).';
+  renderHeatmap();
 }
+
+// ── Position heatmap: squarified treemap, no libraries ────────────────
+// Bruls et al. squarified layout: lay items (desc by value) into rows that
+// minimize the worst tile aspect ratio. Returns [{item, x, y, w, h}, ...].
+function squarify(items, x, y, w, h) {
+  const total = items.reduce((s, it) => s + it.value, 0);
+  if (!total || w <= 0 || h <= 0) return [];
+  const scale = (w * h) / total;
+  const rects = [];
+  let rest = items.slice();
+
+  const worst = (row, side) => {
+    const sum = row.reduce((s, it) => s + it.value * scale, 0);
+    const max = Math.max(...row.map(it => it.value * scale));
+    const min = Math.min(...row.map(it => it.value * scale));
+    const s2 = sum * sum;
+    return Math.max((side * side * max) / s2, s2 / (side * side * min));
+  };
+
+  while (rest.length) {
+    const side = Math.min(w, h);
+    let row = [rest[0]], i = 1;
+    while (i < rest.length && worst(row.concat(rest[i]), side) <= worst(row, side)) {
+      row.push(rest[i]); i++;
+    }
+    rest = rest.slice(row.length);
+
+    const rowArea = row.reduce((s, it) => s + it.value * scale, 0);
+    const thickness = rowArea / side;
+    let offset = 0;
+    row.forEach(it => {
+      const len = (it.value * scale) / thickness;
+      if (w <= h) rects.push({ item: it, x: x + offset, y, w: len, h: thickness });
+      else        rects.push({ item: it, x, y: y + offset, w: thickness, h: len });
+      offset += len;
+    });
+    if (w <= h) { y += thickness; h -= thickness; }
+    else        { x += thickness; w -= thickness; }
+  }
+  return rects;
+}
+
+function renderHeatmap() {
+  ['long', 'short'].forEach(side => {
+    const box = document.getElementById('heatmap-' + side);
+    if (!box) return;
+    const W = box.clientWidth, H = box.clientHeight;
+    if (!W || !H) return;   // tab hidden — rendered again via showTab
+    box.innerHTML = '';
+
+    const items = positions
+      .filter(p => p.side === side && Math.abs(p.mktValue) > 0)
+      .map(p => {
+        const dailyPnl = p.dailyPnl || 0;
+        const prevValue = Math.abs(p.mktValue) + (side === 'short' ? dailyPnl : -dailyPnl);
+        return { ...p, value: Math.abs(p.mktValue), dayPct: prevValue ? dailyPnl / prevValue * 100 : 0 };
+      })
+      .sort((a, b) => b.value - a.value);
+    if (!items.length) return;
+
+    squarify(items, 0, 0, W, H).forEach(({ item: p, x, y, w, h }) => {
+      const alpha = 0.18 + 0.72 * Math.min(Math.abs(p.dayPct) / 3, 1);
+      const tile = document.createElement('div');
+      tile.className = 'heatmap-tile';
+      tile.style.cssText = `left:${x}px;top:${y}px;width:${w}px;height:${h}px;` +
+        `background:rgba(${p.dayPct >= 0 ? '34,197,94' : '239,68,68'},${alpha.toFixed(2)});`;
+      tile.title = `${p.ticker} — ${fmtDollar(Math.abs(p.mktValue))} · day ${p.dayPct >= 0 ? '+' : ''}${p.dayPct.toFixed(2)}% · unrl ${fmtDollarSigned(p.unrealizedPnl)}`;
+      if (w >= 34 && h >= 30) {
+        tile.innerHTML = `<span class="hm-ticker">${esc(p.ticker)}</span>` +
+                         `<span class="hm-pct">${p.dayPct >= 0 ? '+' : ''}${p.dayPct.toFixed(2)}%</span>`;
+      }
+      box.appendChild(tile);
+    });
+  });
+}
+
+let heatmapResizeTimer = null;
+window.addEventListener('resize', () => {
+  clearTimeout(heatmapResizeTimer);
+  heatmapResizeTimer = setTimeout(() => {
+    if (document.getElementById('page-exposure').classList.contains('active')) renderHeatmap();
+  }, 150);
+});
 
 // ═══════════════════════════════════════════ REPORT v2 ══
 function renderReport() {
@@ -1758,6 +1891,11 @@ function updateMetaBadges(updatedAt) {
 
 // ═══════════════════════════════════════════ METRICS ══
 function calcMetrics(pnlArr) {
+  // Collapse to one point per UTC date (last wins) — the routine accumulates
+  // intraday snapshots for the 1D chart, but vol/Sharpe/win-rate assume daily bars.
+  const byDay = new Map();
+  pnlArr.forEach(s => byDay.set(s.timestamp.slice(0, 10), s));
+  pnlArr = [...byDay.values()];
   if (pnlArr.length < 2) return {};
   // Prefer the TWR wealth index (deposit-adjusted) — raw NAV counts deposits
   // as returns, which poisons every derived metric (vol, Sharpe, win rate).
@@ -1814,10 +1952,12 @@ function showTab(name) {
   });
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + name).classList.add('active');
+  // heatmap boxes have zero width while their tab is hidden — lay out on reveal
+  if (name === 'exposure') renderHeatmap();
 }
 
 // ═══════════════════════════════════════════ CHART OPTS ══
-function chartOpts(yLabel) {
+function chartOpts(yLabel, unit = null) {   // unit: '$' | '%' | null (bare numbers)
   const light = document.documentElement.dataset.theme === 'light';
   const tick    = light ? '#939ab5' : '#4a5070';
   const grid    = light ? 'rgba(180,188,212,0.30)' : 'rgba(34,40,64,0.6)';
@@ -1843,7 +1983,11 @@ function chartOpts(yLabel) {
         titleColor: ttTitle,
         bodyColor: ttBody,
         callbacks: {
-          label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)}`
+          label: ctx => {
+            const y = ctx.parsed.y;
+            const v = unit === '$' ? '$' + fmt(y, 2) : unit === '%' ? y.toFixed(2) + '%' : y.toFixed(2);
+            return ` ${ctx.dataset.label}: ${v}`;
+          }
         }
       }
     },
@@ -1856,7 +2000,8 @@ function chartOpts(yLabel) {
       },
       y: {
         title: { display: true, text: yLabel, color: tick, font: { size: 10 } },
-        ticks: { color: tick, font: { size: 10 }, callback: v => v.toFixed(1) },
+        ticks: { color: tick, font: { size: 10 },
+                 callback: v => unit === '$' ? '$' + fmt(v, 0) : unit === '%' ? v.toFixed(1) + '%' : v.toFixed(1) },
         grid: { color: grid },
       }
     }
@@ -1880,23 +2025,48 @@ function toggleTheme() {
 }
 
 // ═══════════════════════════════════════════ UTILS ══
+// Each period defines its BASE DAY — IBKR convention: the period's return is
+// measured from the CLOSE of its start day (MTD from the last close of the
+// prior month, 1W from the close 7 days ago). All arithmetic in UTC: data
+// points are 20:00Z closes and benchmark dates parse as UTC midnight, so a
+// local-time cutoff would shift the window edge with the viewer's timezone.
 const PERIOD_DEFS = {
-  '1W':  { apply: d => d.setDate(d.getDate() - 7),   noun: 'week' },
-  MTD:   { apply: d => d.setDate(1),                 noun: 'month' },
-  '1M':  { apply: d => d.setMonth(d.getMonth() - 1), noun: 'month' },
-  '3M':  { apply: d => d.setMonth(d.getMonth() - 3), noun: '3 months' },
-  YTD:   { apply: d => { d.setMonth(0); d.setDate(1); }, noun: 'year' },
-  '1Y':  { apply: d => d.setFullYear(d.getFullYear() - 1), noun: 'year' },
-  ALL:   { apply: d => d.setFullYear(2000),          noun: 'inception' },
+  '1D':  { apply: d => d.setUTCDate(d.getUTCDate() - 1),        phrase: 'today' },
+  '5D':  { apply: d => d.setUTCDate(d.getUTCDate() - 7),        phrase: 'past 5 days' },  // 7 calendar days ≡ 5 trading days
+  MTD:   { apply: d => d.setUTCDate(0),                          phrase: 'this month' },   // day 0 = last day of prev month
+  '1M':  { apply: d => d.setUTCMonth(d.getUTCMonth() - 1),       phrase: 'past month' },
+  '3M':  { apply: d => d.setUTCMonth(d.getUTCMonth() - 3),       phrase: 'past 3 months' },
+  YTD:   { apply: d => { d.setUTCMonth(0); d.setUTCDate(0); },   phrase: 'this year' },    // Dec 31 prev year
+  '1Y':  { apply: d => d.setUTCFullYear(d.getUTCFullYear() - 1), phrase: 'past year' },
+  ALL:   { apply: d => d.setUTCFullYear(2000),                   phrase: 'all time' },
 };
 
-function periodStart(period) {
+function periodBaseTime(period) {
+  if (period === 'CUSTOM' && customFrom) return Date.parse(customFrom + 'T23:59:59.999Z');
   const d = new Date();
+  d.setUTCHours(0, 0, 0, 0);
   (PERIOD_DEFS[period] || PERIOD_DEFS.ALL).apply(d);
-  return d;
+  d.setUTCHours(23, 59, 59, 999);   // END of base day, UTC
+  return d.getTime();
 }
 
-const PERIOD_NOUNS = Object.fromEntries(Object.entries(PERIOD_DEFS).map(([k, v]) => [k, v.noun]));
+function periodEndTime(period) {
+  return period === 'CUSTOM' && customTo ? Date.parse(customTo + 'T23:59:59.999Z') : Infinity;
+}
+
+// Window = [prior close (base point), ...points after it, up to the period end].
+// If nothing predates the window, returns everything up to the end (≡ ALL).
+// Assumes ascending order.
+function sliceWindow(points, period, getTime = p => new Date(p.timestamp).getTime()) {
+  const end = periodEndTime(period);
+  if (end !== Infinity) points = points.filter(p => getTime(p) <= end);
+  const cutoff = periodBaseTime(period);
+  let baseIdx = -1;
+  for (let i = 0; i < points.length && getTime(points[i]) <= cutoff; i++) baseIdx = i;
+  return baseIdx >= 0 ? points.slice(baseIdx) : points.slice();
+}
+
+const PERIOD_PHRASES = Object.fromEntries(Object.entries(PERIOD_DEFS).map(([k, v]) => [k, v.phrase]));
 
 function fmt(n, dec = 2)        { return n != null ? Number(n).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) : '—'; }
 function fmtDollar(n)           { return n != null ? '$' + fmt(n, 0) : '—'; }
