@@ -154,6 +154,19 @@ def main():
             "timestamp": dt.isoformat(), "nav": round(nv, 2),
             "twr": round(cps[i] * 100, 4) if cps[i] is not None else None,
         })
+
+    # Carry forward today's earlier intraday snapshots (accumulated run by run
+    # by the hourly routine) so the dashboard's 1D chart shows a real intraday
+    # curve. Historical days keep only the official close — yesterday's
+    # snapshots fall away automatically once the daily series covers that date.
+    today = now[:10]
+    try:
+        prev = json.loads((DATA / "pnl.json").read_text())
+    except Exception:
+        prev = []
+    carried = [p for p in prev
+               if p["timestamp"][:10] == today and p["timestamp"] < hist[-1]["timestamp"]]
+    hist = hist[:-1] + carried + hist[-1:]
     (DATA / "pnl.json").write_text(json.dumps(hist, indent=2))
 
     # ── Benchmarks (refreshed only when /tmp/ibkr_bench_*.json dumps exist) ─
