@@ -130,12 +130,15 @@ def main():
     }
     (DATA / "account.json").write_text(json.dumps(account, indent=2))
 
-    # ── P&L history (longest available NAV series) ────────────────────────
+    # ── P&L history (longest available NAV + TWR series) ──────────────────
+    # `twr` is IBKR's cumulative time-weighted return (cps, in %) — the
+    # deposit-adjusted performance measure. NAV ratios must never be used for
+    # returns: an external cash deposit moves NAV without being a gain.
     periods = perf["accounts"]["account"]["periods"]
-    ser = periods.get("1M") or periods.get("MTD") or periods.get("YTD")
+    ser = periods.get("1Y") or periods.get("YTD") or periods.get("1M") or periods.get("MTD")
     dates, navs = ser["dates"], ser["nav"]
-    base = navs[0] or 10000
-    hist, prev = [], None
+    cps = ser.get("cps") or [None] * len(dates)
+    hist = []
     for i, (d, nv) in enumerate(zip(dates, navs)):
         dt = datetime.datetime(int(d[:4]), int(d[4:6]), int(d[6:8]), 20, 0, 0,
                                tzinfo=datetime.timezone.utc)
@@ -143,17 +146,14 @@ def main():
         if is_last:
             # get_pa_performance_all_periods can lag or disagree with the
             # account-summary NAV (they're different IBKR endpoints). Use the
-            # same authoritative nav/dailyPnl as account.json for "today" so
-            # the chart's latest point always matches the KPI cards.
+            # same authoritative nav as account.json for "today" so the
+            # chart's latest point always matches the KPI cards.
             dt = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)
             nv = nav
         hist.append({
             "timestamp": dt.isoformat(), "nav": round(nv, 2),
-            "unrealizedPnl": round(nv - base, 2), "realizedPnl": 0.0,
-            "dailyPnl": daily if is_last else (0.0 if prev is None else round(nv - prev, 2)),
-            "totalPnl": round(nv - base, 2),
+            "twr": round(cps[i] * 100, 4) if cps[i] is not None else None,
         })
-        prev = nv
     (DATA / "pnl.json").write_text(json.dumps(hist, indent=2))
 
     # ── Benchmarks (refreshed only when /tmp/ibkr_bench_*.json dumps exist) ─
