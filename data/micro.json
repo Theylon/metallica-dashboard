@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-12T16:58:44+00:00",
+ "updatedAt": "2026-07-12T17:09:32+00:00",
  "methodology": "Composite 0-100 = momentum 20% + commodity-alignment 20% + deep-dive 15% + analyst 15% + TipRanks SmartScore 10% + news sentiment 10% + quality 10% (missing sub-scores redistribute). High = long candidate, low = short candidate. Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner.",
  "macro": "Hawkish Fed (64% Sept hike priced), strong dollar (DXY ~100.8), US-Iran conflict volatility with 60-day peace talks; metals complex broadly correcting after H1 melt-up. Q4 consensus: dollar downtrend -> possible precious rebound window in Q3/Q4.",
  "commodityBias": [
@@ -167,6 +167,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "Toronto (TSX)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 41.81,
    "vs50": 26.6,
    "vs200": 78.0,
@@ -191,6 +197,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Mid-stream; RE exposure reduced post-China divestiture",
    "discovered": false
   },
   {
@@ -201,6 +208,16 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "LU",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 70.67,
+    "upsidePct": 6.95
+   },
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 66.08,
    "vs50": 3.2,
    "vs200": 25.2,
@@ -235,6 +252,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "World's largest; price-cost #1 EBITDA driver",
    "discovered": false,
    "groupRank": "1/14"
   },
@@ -246,6 +264,30 @@
    "capTier": "Large",
    "held": "short",
    "heldMv": -682.11,
+   "position": {
+    "side": "short",
+    "shares": 3.0,
+    "mktValue": -682.11,
+    "unrealizedPnl": -20.18,
+    "avgCost": 220.6423,
+    "lastPrice": 227.37
+   },
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 270.0,
+    "upsidePct": 18.75,
+    "buys": 8,
+    "holds": 2,
+    "sells": 0
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "COVER",
+    "urgency": "high",
+    "rationale": "Thesis conflict: short the strongest US mill while HRC >$1,100 is tariff-tight and consensus is Buy +19%. -$21.8 uPnL says the tape agrees. Free the $684 of short gross for shorts that work."
+   },
    "price": 227.37,
    "vs50": -4.5,
    "vs200": 24.0,
@@ -293,6 +335,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "N.America largest EAF; avg price/ton drives earnings",
    "discovered": false,
    "groupRank": "2/14"
   },
@@ -304,6 +347,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "Toronto (TSX)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 39.26,
    "vs50": 1.1,
    "vs200": 10.3,
@@ -328,6 +377,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 8,
+   "omEvidence": "Copper primary; collars mute short-term sensitivity",
    "discovered": false
   },
   {
@@ -338,6 +388,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 81.68,
    "vs50": -3.7,
    "vs200": 16.8,
@@ -362,6 +418,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 8,
+   "omEvidence": "Copper 51% EBITDA record; iron ore dampens",
    "discovered": false,
    "groupRank": "1/10"
   },
@@ -373,6 +430,23 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 71.97,
+    "upsidePct": 16.99,
+    "buys": 12,
+    "holds": 3,
+    "sells": 0
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "NEW LONG ~$700 (6.4% NAV)",
+    "urgency": "high",
+    "rationale": "The book has ZERO copper exposure against a long-bias, tight-fundamentals copper market with the US tariff decision as a live catalyst. 12/15 buys, +17% PT. This is the single biggest gap in the book."
+   },
    "price": 61.52,
    "vs50": -2.9,
    "vs200": 11.0,
@@ -419,6 +493,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "75% revenue copper; realized price drives earnings",
    "discovered": false,
    "groupRank": "2/10"
   },
@@ -430,6 +505,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "PE",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 14.81,
    "vs50": 5.2,
    "vs200": 40.6,
@@ -454,6 +535,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Zinc is our main product; integrated Americas",
    "discovered": false,
    "groupRank": "1/3"
   },
@@ -465,6 +547,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 1091.57,
    "vs50": 5.1,
    "vs200": 35.4,
@@ -489,6 +577,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 4,
+   "omEvidence": "Transformer capacity doubling; supplier price locks shield",
    "discovered": false,
    "groupRank": "1/2"
   },
@@ -500,6 +589,30 @@
    "capTier": "Large",
    "held": "short",
    "heldMv": -675.0,
+   "position": {
+    "side": "short",
+    "shares": 3.0,
+    "mktValue": -675.0,
+    "unrealizedPnl": -15.16,
+    "avgCost": 219.9453,
+    "lastPrice": 225.0
+   },
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 265.11,
+    "upsidePct": 16.06,
+    "buys": 6,
+    "holds": 3,
+    "sells": 0
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "COVER",
+    "urgency": "high",
+    "rationale": "Same conflict as NUE (Buy +16% PT). Between the two 'quality mill' shorts and RS/CLF, keep only the weak ones."
+   },
    "price": 228.42,
    "vs50": -6.9,
    "vs200": 19.6,
@@ -542,6 +655,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "Record Q1 2026 driven by higher steel prices",
    "discovered": false,
    "groupRank": "3/14"
   },
@@ -553,6 +667,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CL",
+   "exchange": "LSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 3778,
    "vs50": -4.0,
    "vs200": 8.9,
@@ -577,6 +697,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "87-89% revenue copper+moly; top earnings risk",
    "discovered": false
   },
   {
@@ -587,6 +708,16 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "BR",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 5.63,
+    "upsidePct": 25.11
+   },
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 4.5,
    "vs50": -0.5,
    "vs200": 14.3,
@@ -621,6 +752,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "Metal spread is stated primary earnings lever",
    "discovered": false,
    "groupRank": "4/14"
   },
@@ -632,6 +764,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "MX",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 199.23,
    "vs50": -2.9,
    "vs200": 7.2,
@@ -656,6 +794,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 8,
+   "omEvidence": "Mining ~83% rev; copper primary, zinc/silver/moly material",
    "discovered": false,
    "groupRank": "3/10"
   },
@@ -667,6 +806,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 18.83,
    "vs50": -1.4,
    "vs200": 6.0,
@@ -691,6 +836,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "69% revenue copper; pure exposure post-hedge",
    "discovered": false
   },
   {
@@ -701,6 +847,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "JP",
+   "exchange": "Tokyo",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 4480,
    "vs50": 15.6,
    "vs200": 69.7,
@@ -725,6 +877,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 4,
+   "omEvidence": "Energy div cites Li/Co risk; group dilutes",
    "discovered": false
   },
   {
@@ -735,6 +888,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "DE",
+   "exchange": "Xetra",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 11.53,
    "vs50": 4.8,
    "vs200": 17.1,
@@ -759,6 +918,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Electrical steel named segment; EU import pressure cited",
    "discovered": false
   },
   {
@@ -769,6 +929,16 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "MX",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 52.79,
+    "upsidePct": 19.16
+   },
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 44.3,
    "vs50": -3.5,
    "vs200": 8.3,
@@ -803,6 +973,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "20-F: operating income swings 44-49% y/y with HRC",
    "discovered": false,
    "groupRank": "5/14"
   },
@@ -814,6 +985,30 @@
    "capTier": "Large",
    "held": "long",
    "heldMv": 187.04,
+   "position": {
+    "side": "long",
+    "shares": 1.0,
+    "mktValue": 187.04,
+    "unrealizedPnl": -5.64,
+    "avgCost": 192.68,
+    "lastPrice": 187.04
+   },
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 190.83,
+    "upsidePct": 2.03,
+    "buys": 6,
+    "holds": 0,
+    "sells": 0
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP (no add)",
+    "urgency": "none",
+    "rationale": "6/6 buys but +2% PT \u2014 the street says fully priced. Ride the aero cycle, take profit if it stalls under $205 (PT high)."
+   },
    "price": 187.04,
    "vs50": 5.5,
    "vs200": 38.4,
@@ -850,6 +1045,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "Ti mill products ~50% rev; no Bigdata coverage",
    "discovered": false,
    "groupRank": "1/6"
   },
@@ -861,6 +1057,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 89.7,
    "vs50": 10.7,
    "vs200": 10.6,
@@ -885,6 +1087,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 4,
+   "omEvidence": "Covalent Lithium minor segment in conglomerate",
    "discovered": false
   },
   {
@@ -895,6 +1098,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "SE",
+   "exchange": "Nasdaq Stockholm",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 96.5,
    "vs50": 8.1,
    "vs200": 16.9,
@@ -919,6 +1128,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 7,
+   "omEvidence": "Nickel main metal-basket driver; >SEK150M EBIT swings",
    "discovered": false,
    "groupRank": "1/5"
   },
@@ -930,6 +1140,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 257.66,
    "vs50": 11.0,
    "vs200": 59.6,
@@ -954,6 +1170,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 4,
+   "omEvidence": "Precious/specialty passed through; value-add insulated",
    "discovered": false,
    "groupRank": "1/7"
   },
@@ -965,6 +1182,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "IN",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 16.5,
    "vs50": -0.5,
    "vs200": 5.6,
@@ -989,6 +1212,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Zinc India ~40% EBITDA; aluminium now largest",
    "discovered": false
   },
   {
@@ -999,6 +1223,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "IN",
+   "exchange": "NSE India",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 191.2,
    "vs50": -6.0,
    "vs200": -0.1,
@@ -1023,6 +1253,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Steel realisation moves revenue/EBITDA directly",
    "discovered": false
   },
   {
@@ -1033,6 +1264,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CH",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 13.67,
    "vs50": -8.9,
    "vs200": 8.0,
@@ -1057,6 +1294,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 7,
+   "omEvidence": "Copper ~46-50% EBITDA; coal/zinc mute coupling",
    "discovered": false,
    "groupRank": "4/10"
   },
@@ -1068,6 +1306,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 270.85,
    "vs50": 3.1,
    "vs200": 17.9,
@@ -1092,6 +1336,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Engineered Structures consumes Ti; Russia supply risk",
    "discovered": false,
    "groupRank": "2/6"
   },
@@ -1103,6 +1348,16 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": {
+    "consensus": "Neutral",
+    "priceTarget": 60.93,
+    "upsidePct": 1.86
+   },
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 59.82,
    "vs50": -3.8,
    "vs200": 14.2,
@@ -1137,6 +1392,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "Copper >70% production; EBITDA modeled vs copper",
    "discovered": false,
    "groupRank": "5/10"
   },
@@ -1148,6 +1404,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 19.06,
    "vs50": -0.3,
    "vs200": 5.6,
@@ -1172,6 +1434,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 7,
+   "omEvidence": "Specialty SBQ; surcharge mechanism passes costs",
    "discovered": false,
    "groupRank": "6/14"
   },
@@ -1183,6 +1446,19 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 80.45,
+    "upsidePct": 28.43,
+    "buys": 8,
+    "holds": 3,
+    "sells": 0
+   },
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 62.64,
    "vs50": -11.6,
    "vs200": -7.5,
@@ -1219,6 +1495,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "Metal margin on steel is primary earnings driver",
    "discovered": false,
    "groupRank": "7/14"
   },
@@ -1230,6 +1507,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "ID",
+   "exchange": "IDX (Jakarta)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 3470,
    "vs50": 1.4,
    "vs200": 4.1,
@@ -1254,6 +1537,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "State-owned tin monopoly; thin Bigdata coverage",
    "discovered": false
   },
   {
@@ -1264,6 +1548,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 407.28,
    "vs50": 0.4,
    "vs200": 9.4,
@@ -1288,6 +1578,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 4,
+   "omEvidence": "Transformer maker; <$1M sensitivity to 10% commodity move",
    "discovered": false,
    "groupRank": "2/2"
   },
@@ -1299,6 +1590,16 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "TSX Venture",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "OPTIONAL NEW LONG ~$250 (if TSXV tradable)",
+    "urgency": "low",
+    "rationale": "Tin is the tightest metal on the board (Myanmar broken, AI solder demand, $53K). Alphamin = ~7% of world supply, +10% over 200DMA. DRC risk = keep small."
+   },
    "price": 1.38,
    "vs50": -2.7,
    "vs200": 10.2,
@@ -1340,6 +1641,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "Bisie sole asset; filings tie stock to tin",
    "discovered": false
   },
   {
@@ -1350,6 +1652,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "ES",
+   "exchange": "BME Madrid",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 16,
    "vs50": 2.2,
    "vs200": 20.9,
@@ -1374,6 +1682,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Inventory marks move with LME nickel rallies",
    "discovered": false,
    "groupRank": "2/5"
   },
@@ -1385,6 +1694,30 @@
    "capTier": "Large",
    "held": "short",
    "heldMv": -758.44,
+   "position": {
+    "side": "short",
+    "shares": 2.0,
+    "mktValue": -758.44,
+    "unrealizedPnl": -21.58,
+    "avgCost": 368.4314,
+    "lastPrice": 379.22
+   },
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Neutral",
+    "priceTarget": 381.0,
+    "upsidePct": 0.47,
+    "buys": 2,
+    "holds": 4,
+    "sells": 1
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP",
+    "urgency": "none",
+    "rationale": "The one steel short the street endorses: Neutral, PT +0.5% \u2014 fully valued distributor. Serves as the group's valuation short."
+   },
    "price": 379.22,
    "vs50": -0.5,
    "vs200": 17.9,
@@ -1420,6 +1753,7 @@
     }
    ],
    "omLinkage": 7,
+   "omEvidence": "10-K: profitability largely dependent on steel prices; spread-based",
    "discovered": false,
    "groupRank": "8/14"
   },
@@ -1431,6 +1765,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "IT",
+   "exchange": "Borsa Italiana",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 68,
    "vs50": -3.5,
    "vs200": 14.0,
@@ -1455,6 +1795,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 4,
+   "omEvidence": "Plant+steel making; scrap/energy primary drivers",
    "discovered": false
   },
   {
@@ -1465,6 +1806,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 12.28,
    "vs50": 1.2,
    "vs200": 14.5,
@@ -1489,6 +1836,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 5,
+   "omEvidence": "No commercial production; future earnings RE-price dependent",
    "discovered": false,
    "groupRank": "1/8"
   },
@@ -1500,6 +1848,23 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 77.65,
+    "upsidePct": 48.73,
+    "buys": 11,
+    "holds": 0,
+    "sells": 0
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "NEW LONG ~$450 (4% NAV)",
+    "urgency": "high",
+    "rationale": "11/11 buys, +49% PT, NdPr +74% YoY with widening supply gap, and RE equities lag the commodity. Best unheld long in the entire universe scan."
+   },
    "price": 52.21,
    "vs50": -13.8,
    "vs200": -14.9,
@@ -1542,6 +1907,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "Revenue tracks NdPr price; PPA partial hedge only",
    "discovered": false,
    "groupRank": "2/8"
   },
@@ -1553,6 +1919,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "Shenzhen",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 36.45,
    "vs50": -7.7,
    "vs200": 9.5,
@@ -1577,6 +1949,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "LME tin price tracks earnings directly",
    "discovered": false
   },
   {
@@ -1587,6 +1960,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 16.63,
    "vs50": -9.7,
    "vs200": -2.7,
@@ -1611,6 +1990,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Revenue formula references RE pricing; profit swung 10x",
    "discovered": false
   },
   {
@@ -1621,6 +2001,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "UK",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 90.54,
    "vs50": -10.6,
    "vs200": 3.6,
@@ -1645,6 +2031,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Iron ore/aluminum/lithium dilute copper coupling",
    "discovered": false,
    "groupRank": "6/10"
   },
@@ -1656,6 +2043,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "RU",
+   "exchange": "MOEX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 109.74,
    "vs50": -99.5,
    "vs200": -99.5,
@@ -1680,6 +2073,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Namesake; Ni prices drive segment profit",
    "discovered": false
   },
   {
@@ -1690,6 +2084,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 25.58,
    "vs50": -7.7,
    "vs200": -4.8,
@@ -1714,6 +2114,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Pure-play Brazil copper; depends on copper+gold",
    "discovered": false,
    "groupRank": "7/10"
   },
@@ -1725,6 +2126,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "MX",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 28.95,
    "vs50": -3.3,
    "vs200": -2.2,
@@ -1749,6 +2156,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 7,
+   "omEvidence": "SBQ/structural 100% revenue; scrap-finished spread drives margin",
    "discovered": false,
    "groupRank": "9/14"
   },
@@ -1760,6 +2168,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "SE",
+   "exchange": "Nasdaq Stockholm",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 520,
    "vs50": -3.3,
    "vs200": -1.8,
@@ -1784,6 +2198,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 8,
+   "omEvidence": "Zinc ~28% gross profit; explicit $0.10/lb table",
    "discovered": false,
    "groupRank": "2/3"
   },
@@ -1795,6 +2210,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "PE",
+   "exchange": "BVL (Lima)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": null,
    "vs50": null,
    "vs200": null,
@@ -1819,6 +2240,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": null,
+   "omEvidence": null,
    "discovered": false
   },
   {
@@ -1829,6 +2251,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "PE",
+   "exchange": "BVL (Lima)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": null,
    "vs50": null,
    "vs200": null,
@@ -1853,6 +2281,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": null,
+   "omEvidence": null,
    "discovered": false
   },
   {
@@ -1863,6 +2292,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "JP",
+   "exchange": "Tokyo",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 550.2,
    "vs50": -0.7,
    "vs200": -9.0,
@@ -1887,6 +2322,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 7,
+   "omEvidence": "Spread/mix key driver; lagged pass-through",
    "discovered": false
   },
   {
@@ -1897,6 +2333,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "Toronto (TSX)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 0.05,
    "vs50": -99.5,
    "vs200": -99.6,
@@ -1921,6 +2363,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 4,
+   "omEvidence": "Pre-revenue developer; moves with RE sector",
    "discovered": false
   },
   {
@@ -1931,6 +2374,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "TSX Venture",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 12.85,
    "vs50": 2.1,
    "vs200": 12.1,
@@ -1955,6 +2404,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 5,
+   "omEvidence": "Pre-revenue Canadian explorer; no Bigdata coverage",
    "discovered": false
   },
   {
@@ -1965,6 +2415,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 21.64,
    "vs50": -14.6,
    "vs200": 0.3,
@@ -1989,6 +2445,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 8,
+   "omEvidence": "Majority copper; gold 39% partial natural hedge",
    "discovered": false,
    "groupRank": "8/10"
   },
@@ -2000,6 +2457,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "UK",
+   "exchange": "LSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 3621,
    "vs50": -5.7,
    "vs200": 8.4,
@@ -2024,6 +2487,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 5,
+   "omEvidence": "Copper ~39% rev; moly minor by-product",
    "discovered": false
   },
   {
@@ -2034,6 +2498,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "Shanghai",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 30.44,
    "vs50": 0.1,
    "vs200": 8.0,
@@ -2058,6 +2528,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 3,
+   "omEvidence": "Copper-dominant; no Bigdata coverage; moly by-product",
    "discovered": false
   },
   {
@@ -2068,6 +2539,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AT",
+   "exchange": "Vienna",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 72.6,
    "vs50": -4.6,
    "vs200": 5.7,
@@ -2092,6 +2569,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 4,
+   "omEvidence": "Makes GO/NGO lines; demand tracks capex not spot",
    "discovered": false
   },
   {
@@ -2102,6 +2580,19 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 45.5,
+    "upsidePct": 146.21,
+    "buys": 7,
+    "holds": 0,
+    "sells": 0
+   },
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 18.48,
    "vs50": -21.9,
    "vs200": -8.8,
@@ -2136,6 +2627,7 @@
     }
    ],
    "omLinkage": 7,
+   "omEvidence": "Pre-revenue mining; LCM metals operational; price floors",
    "discovered": false,
    "groupRank": "3/8"
   },
@@ -2147,6 +2639,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 67.57,
    "vs50": -6.6,
    "vs200": -1.6,
@@ -2171,6 +2669,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 5,
+   "omEvidence": "Pre-revenue developer; economics assume Mn prices",
    "discovered": false
   },
   {
@@ -2181,6 +2680,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "Shanghai",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 22.4,
    "vs50": -6.0,
    "vs200": 16.2,
@@ -2205,6 +2710,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "~90% revenue from moly; pure-play producer",
    "discovered": false
   },
   {
@@ -2215,6 +2721,27 @@
    "capTier": "Mid",
    "held": "short",
    "heldMv": -58.56,
+   "position": {
+    "side": "short",
+    "shares": 2.0,
+    "mktValue": -58.56,
+    "unrealizedPnl": 0.76,
+    "avgCost": 29.66,
+    "lastPrice": 29.28
+   },
+   "country": "FR",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 36.6,
+    "upsidePct": 25.0
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "COVER",
+    "urgency": "medium",
+    "rationale": "Wrong instrument: a fabricator that PASSES THROUGH metal costs \u2014 falling LME helps its margins. Buy consensus +25%. The short contradicts the very thesis that justifies AA/CENX."
+   },
    "price": 29.28,
    "vs50": -11.1,
    "vs200": 21.6,
@@ -2249,6 +2776,7 @@
     }
    ],
    "omLinkage": 5,
+   "omEvidence": "Not materially exposed to primary aluminum price",
    "discovered": false,
    "groupRank": "2/7"
   },
@@ -2260,6 +2788,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "DE",
+   "exchange": "Xetra",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 152.12,
    "vs50": -8.1,
    "vs200": 6.6,
@@ -2284,6 +2818,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 4,
+   "omEvidence": "Steel a key raw material; price risk managed",
    "discovered": false
   },
   {
@@ -2294,6 +2829,23 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Sell",
+    "priceTarget": 151.58,
+    "upsidePct": -13.79,
+    "buys": 0,
+    "holds": 1,
+    "sells": 5
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "OPTIONAL NEW SHORT ~$350 vs FCX",
+    "urgency": "low",
+    "rationale": "Street's only metals Sell consensus (PT -14%). Pairs the FCX long into a market-neutral copper spread if you want to keep net short unchanged."
+   },
    "price": 175.83,
    "vs50": -2.3,
    "vs200": 7.2,
@@ -2329,6 +2881,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "76% revenue copper; $0.10/lb=$89M net income",
    "discovered": false,
    "groupRank": "9/10"
   },
@@ -2340,6 +2893,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "LU",
+   "exchange": "Euronext Amsterdam",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 45,
    "vs50": -6.2,
    "vs200": 15.9,
@@ -2364,6 +2923,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 3,
+   "omEvidence": "Scrap-based; LME nickel negligible short-term",
    "discovered": false
   },
   {
@@ -2374,6 +2934,16 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 23.25,
+    "upsidePct": 71.21
+   },
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 13.58,
    "vs50": -20.9,
    "vs200": -26.3,
@@ -2409,6 +2979,7 @@
     }
    ],
    "omLinkage": 6,
+   "omEvidence": "RE growing to majority; still split with uranium",
    "discovered": false,
    "groupRank": "4/8"
   },
@@ -2420,6 +2991,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "NO",
+   "exchange": "Oslo Bors",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 30.3,
    "vs50": -2.5,
    "vs200": 4.6,
@@ -2444,6 +3021,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 2,
+   "omEvidence": "Sold Vianode 2024; now silicon/ferrosilicon",
    "discovered": false
   },
   {
@@ -2454,6 +3032,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "Shanghai",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 42.51,
    "vs50": -15.4,
    "vs200": -14.9,
@@ -2478,6 +3062,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "State-owned dominant; results linked to RE market",
    "discovered": false
   },
   {
@@ -2488,6 +3073,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "KR",
+   "exchange": "KOSDAQ",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 82700,
    "vs50": -8.4,
    "vs200": -17.3,
@@ -2512,6 +3103,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Metal drop hits NRV; reversal on price rise",
    "discovered": false
   },
   {
@@ -2522,6 +3114,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "PL",
+   "exchange": "GPW Warsaw",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 308.95,
    "vs50": -9.0,
    "vs200": 10.5,
@@ -2546,6 +3144,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 4,
+   "omEvidence": "Moly by-product; copper dominates >80%",
    "discovered": false
   },
   {
@@ -2556,6 +3155,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 16.22,
    "vs50": -3.3,
    "vs200": 3.1,
@@ -2580,6 +3185,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Moly ~20-25% rev via Langeloth; gold primary",
    "discovered": false,
    "groupRank": "1/1"
   },
@@ -2591,6 +3197,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "MY",
+   "exchange": "Bursa Malaysia",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 1.86,
    "vs50": -8.6,
    "vs200": 4.3,
@@ -2615,6 +3227,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 8,
+   "omEvidence": "Pure-play tin smelter; thin Bigdata coverage",
    "discovered": false
   },
   {
@@ -2625,6 +3238,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "IN",
+   "exchange": "NSE India",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 536.95,
    "vs50": -8.7,
    "vs200": -5.5,
@@ -2649,6 +3268,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "World's largest integrated zinc producer",
    "discovered": false
   },
   {
@@ -2659,6 +3279,30 @@
    "capTier": "Small",
    "held": "long",
    "heldMv": 431.84,
+   "position": {
+    "side": "long",
+    "shares": 36.018,
+    "mktValue": 431.84,
+    "unrealizedPnl": -21.52,
+    "avgCost": 12.5871,
+    "lastPrice": 11.9896
+   },
+   "country": "CA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 21.64,
+    "upsidePct": 81.7,
+    "buys": 2,
+    "holds": 0,
+    "sells": 0
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "ADD ~$200 (to ~5.8% NAV)",
+    "urgency": "medium",
+    "rationale": "Strongest lithium micro: Q2 production beat +6%, AISC falling to $620/t, CF-positive at $1,500/t. Catalyst 8/14 financials."
+   },
    "price": 11.91,
    "vs50": -24.5,
    "vs200": -4.6,
@@ -2706,6 +3350,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "Revenue swings 41%/qtr tracking lithium price",
    "discovered": false,
    "groupRank": "1/6"
   },
@@ -2717,6 +3362,30 @@
    "capTier": "Large",
    "held": "long",
    "heldMv": 378.15,
+   "position": {
+    "side": "long",
+    "shares": 3.0,
+    "mktValue": 378.15,
+    "unrealizedPnl": -26.14,
+    "avgCost": 134.7633,
+    "lastPrice": 126.05
+   },
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 216.17,
+    "upsidePct": 71.5,
+    "buys": 10,
+    "holds": 8,
+    "sells": 0
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP",
+    "urgency": "none",
+    "rationale": "Zacks #1, Buy +71% PT, Q1 EBITDA +148% \u2014 but PT cuts continue; do not add until lithium futures stabilize (CATL restart pressure)."
+   },
    "price": 126.05,
    "vs50": -24.0,
    "vs200": -16.1,
@@ -2764,6 +3433,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "Energy Storage segment index-referenced; earnings strongly lithium-dependent",
    "discovered": false,
    "groupRank": "2/6"
   },
@@ -2775,6 +3445,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "HKEX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 30,
    "vs50": -8.7,
    "vs200": -15.5,
@@ -2799,6 +3475,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Copper #4 globally but gold/zinc/lithium material",
    "discovered": false
   },
   {
@@ -2809,6 +3486,30 @@
    "capTier": "Mid",
    "held": "long",
    "heldMv": 106.86,
+   "position": {
+    "side": "long",
+    "shares": 6.0,
+    "mktValue": 106.86,
+    "unrealizedPnl": -4.03,
+    "avgCost": 18.4817,
+    "lastPrice": 17.81
+   },
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 24.75,
+    "upsidePct": 38.97,
+    "buys": 6,
+    "holds": 3,
+    "sells": 0
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP",
+    "urgency": "none",
+    "rationale": "Buy +39% PT; TiO2 hikes sticking in China (+8% QTD)."
+   },
    "price": 17.81,
    "vs50": -19.5,
    "vs200": 1.0,
@@ -2845,6 +3546,7 @@
     }
    ],
    "omLinkage": 8,
+   "omEvidence": "Ti-Pure ~30% rev; no Bigdata coverage",
    "discovered": false,
    "groupRank": "3/6"
   },
@@ -2856,6 +3558,30 @@
    "capTier": "Large",
    "held": "long",
    "heldMv": 439.14,
+   "position": {
+    "side": "long",
+    "shares": 6.0,
+    "mktValue": 439.14,
+    "unrealizedPnl": -1.66,
+    "avgCost": 73.4667,
+    "lastPrice": 73.19
+   },
+   "country": "CL",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": {
+    "consensus": "Neutral",
+    "priceTarget": 84.5,
+    "upsidePct": 15.45,
+    "buys": 2,
+    "holds": 5,
+    "sells": 1
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP",
+    "urgency": "none",
+    "rationale": "Neutral consensus but cost-curve winner; iodine cushions."
+   },
    "price": 73.19,
    "vs50": -10.1,
    "vs200": 3.5,
@@ -2892,6 +3618,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "Contracts linked to lithium price indices; realized price tracks market",
    "discovered": false,
    "groupRank": "3/6"
   },
@@ -2903,6 +3630,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "ZA",
+   "exchange": "JSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 73681,
    "vs50": 8.4,
    "vs200": 14.4,
@@ -2927,6 +3660,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Pure-play platinum; no Bigdata coverage",
    "discovered": false
   },
   {
@@ -2937,6 +3671,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "Toronto (TSX)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 10.76,
    "vs50": -6.3,
    "vs200": -20.6,
@@ -2961,6 +3701,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Kamoa-Kakula core; positioned for strong copper",
    "discovered": false
   },
   {
@@ -2971,6 +3712,16 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 140.79,
+    "upsidePct": 47.75
+   },
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 95.29,
    "vs50": -9.0,
    "vs200": -8.1,
@@ -3006,6 +3757,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "Gold price significantly affects profit/cash flow; no hedges",
    "discovered": false,
    "groupRank": "1/17"
   },
@@ -3017,6 +3769,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "DE",
+   "exchange": "Xetra",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 47.55,
    "vs50": -5.0,
    "vs200": 0.0,
@@ -3041,6 +3799,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 3,
+   "omEvidence": "CAM minor sub-segment; group buffered; capex paused",
    "discovered": false
   },
   {
@@ -3051,6 +3810,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "JP",
+   "exchange": "Tokyo",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 4700,
    "vs50": -2.9,
    "vs200": -3.9,
@@ -3075,6 +3840,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 3,
+   "omEvidence": "Diversified conglomerate; no Bigdata coverage",
    "discovered": false
   },
   {
@@ -3085,6 +3851,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 0.27,
    "vs50": -0.0,
    "vs200": -1.0,
@@ -3109,6 +3881,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Mgmt: when Mn price up, JMS share price up; 100% Mn",
    "discovered": false
   },
   {
@@ -3119,6 +3892,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "BR",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 14.46,
    "vs50": -8.3,
    "vs200": -0.5,
@@ -3143,6 +3922,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Nickel ~15-20% rev; iron ore dominates",
    "discovered": false,
    "groupRank": "3/5"
   },
@@ -3154,6 +3934,30 @@
    "capTier": "Mega",
    "held": "short",
    "heldMv": -407.59,
+   "position": {
+    "side": "short",
+    "shares": 1.0,
+    "mktValue": -407.59,
+    "unrealizedPnl": -9.44,
+    "avgCost": 398.1466,
+    "lastPrice": 407.59
+   },
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Neutral",
+    "priceTarget": 400.59,
+    "upsidePct": -1.76,
+    "buys": 10,
+    "holds": 16,
+    "sells": 3
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "COVER BEFORE 7/22 EARNINGS",
+    "urgency": "high",
+    "rationale": "Record deliveries (+25% YoY), Carbon Arc US registrations accelerating 5 straight months, UBS sees margin beat. The EV-short is better expressed via the KARS ETF you already hold short \u2014 no single-stock earnings bomb."
+   },
    "price": 407.76,
    "vs50": -0.4,
    "vs200": -2.5,
@@ -3201,6 +4005,7 @@
     }
    ],
    "omLinkage": 5,
+   "omEvidence": "10-K: metal prices reduce profit if unrecouped; LTC-hedged",
    "discovered": false,
    "groupRank": "1/3"
   },
@@ -3212,6 +4017,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "Shanghai",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 5.48,
    "vs50": -7.0,
    "vs200": -19.0,
@@ -3236,6 +4047,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 7,
+   "omEvidence": "Pure-play Chinese flat-steel; price index -9% hit results",
    "discovered": false
   },
   {
@@ -3246,6 +4058,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "TSX Venture",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 10.16,
    "vs50": 0.3,
    "vs200": 2.3,
@@ -3270,6 +4088,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 7,
+   "omEvidence": "Graphite miner; no Bigdata coverage",
    "discovered": false
   },
   {
@@ -3280,6 +4099,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 25.32,
    "vs50": 11.2,
    "vs200": 21.7,
@@ -3304,6 +4129,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 5,
+   "omEvidence": "Pre-revenue developer; Bigdata resolved wrong entity",
    "discovered": false
   },
   {
@@ -3314,6 +4140,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 59.7,
    "vs50": -11.4,
    "vs200": 5.0,
@@ -3338,6 +4170,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Lithium one of three segments; iron ore/services dilute",
    "discovered": false
   },
   {
@@ -3348,6 +4181,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "FI",
+   "exchange": "Nasdaq Helsinki",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 5.155,
    "vs50": -8.6,
    "vs200": 6.7,
@@ -3372,6 +4211,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Nickel primary raw-material risk; surcharge offsets",
    "discovered": false,
    "groupRank": "4/5"
   },
@@ -3383,6 +4223,16 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 170.75,
+    "upsidePct": 55.16
+   },
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 110.05,
    "vs50": -10.7,
    "vs200": -11.4,
@@ -3417,6 +4267,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "51% gold/47% silver; streaming amplifies leverage",
    "discovered": false,
    "groupRank": "2/17"
   },
@@ -3428,6 +4279,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 159.89,
    "vs50": -10.4,
    "vs200": 22.9,
@@ -3452,6 +4309,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 5,
+   "omEvidence": "Metal-price-neutral policy passes LME to customers",
    "discovered": false,
    "groupRank": "3/7"
   },
@@ -3463,6 +4321,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "NASDAQ",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 28.58,
    "vs50": -4.3,
    "vs200": 8.3,
@@ -3472,7 +4337,8 @@
    "quoteSuspect": false,
    "composite": 50.0,
    "subs": {
-    "momentum": 5.0
+    "momentum": 5.0,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -3492,6 +4358,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 76400,
    "vs50": -7.2,
    "vs200": -23.2,
@@ -3516,6 +4388,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 5,
+   "omEvidence": "Pass-through LME; scrap-spread real margin driver",
    "discovered": false
   },
   {
@@ -3526,6 +4399,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "BE",
+   "exchange": "Euronext Brussels",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 20.06,
    "vs50": -12.3,
    "vs200": 7.0,
@@ -3550,6 +4429,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Cobalt one of 4 segments; cobalt upside Q1 2026",
    "discovered": false
   },
   {
@@ -3560,6 +4440,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "KR",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 52.28,
    "vs50": -22.5,
    "vs200": -12.7,
@@ -3584,6 +4470,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 7,
+   "omEvidence": "Steel primary segment; FX/raw-mat spread modulates",
    "discovered": false,
    "groupRank": "10/14"
   },
@@ -3595,6 +4482,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 4.02,
    "vs50": -6.4,
    "vs200": 0.9,
@@ -3619,6 +4512,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Aluminum chain 35-50% rev; +10% price=+$300M EBIT",
    "discovered": false
   },
   {
@@ -3629,6 +4523,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "IN",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": null,
    "vs50": null,
    "vs200": null,
@@ -3653,6 +4553,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Fully integrated; LME volatility core risk",
    "discovered": false
   },
   {
@@ -3663,6 +4564,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "Toronto (TSX)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 43.7999,
    "vs50": 0.1,
    "vs200": 17.6,
@@ -3687,6 +4594,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 5,
+   "omEvidence": "Pre-revenue HPMSM developer; no Bigdata coverage",
    "discovered": false
   },
   {
@@ -3697,6 +4605,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "Toronto (TSX)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 0.155,
    "vs50": 13.8,
    "vs200": -13.8,
@@ -3721,6 +4635,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Earnings explicitly depend on nickel/cobalt prices",
    "discovered": false
   },
   {
@@ -3731,6 +4646,27 @@
    "capTier": "Mid",
    "held": "short",
    "heldMv": -79.1,
+   "position": {
+    "side": "short",
+    "shares": 5.0,
+    "mktValue": -79.1,
+    "unrealizedPnl": 2.03,
+    "avgCost": 16.225,
+    "lastPrice": 15.82
+   },
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 22.54,
+    "upsidePct": 42.48
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP",
+    "urgency": "none",
+    "rationale": "Completes the silver-beta short trio."
+   },
    "price": 15.82,
    "vs50": -5.6,
    "vs200": -12.6,
@@ -3765,6 +4701,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "50-73% silver rev; 90% realized-price margin",
    "discovered": false,
    "groupRank": "1/8"
   },
@@ -3776,6 +4713,30 @@
    "capTier": "Mid",
    "held": "short",
    "heldMv": -686.2,
+   "position": {
+    "side": "short",
+    "shares": 73.0,
+    "mktValue": -686.2,
+    "unrealizedPnl": 27.73,
+    "avgCost": 9.7799,
+    "lastPrice": 9.4
+   },
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Neutral",
+    "priceTarget": 11.25,
+    "upsidePct": 19.68,
+    "buys": 0,
+    "holds": 7,
+    "sells": 1
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "TRIM 1/3 PRE-EARNINGS",
+    "urgency": "high",
+    "rationale": "Best steel short on micro (0 buys, negative EPS revisions, -23%/month) BUT July 23 earnings on a crowded short is binary. Trim 73\u219250 shares before 7/23, re-add on any squeeze."
+   },
    "price": 9.4,
    "vs50": -17.7,
    "vs200": -19.2,
@@ -3823,6 +4784,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "CEO: more impacted by spot steel prices than any company",
    "discovered": false,
    "groupRank": "11/14"
   },
@@ -3834,6 +4796,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "KR",
+   "exchange": "KRX (KOSPI)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 434000,
    "vs50": -23.7,
    "vs200": 8.0,
@@ -3858,6 +4826,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 5,
+   "omEvidence": "Cost pass-through limits EV-project impact",
    "discovered": false
   },
   {
@@ -3868,6 +4837,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "SG",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 1.6,
    "vs50": -2.7,
    "vs200": -4.1,
@@ -3892,6 +4867,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 3,
+   "omEvidence": "Now diversified property/hotels; tin legacy",
    "discovered": false,
    "groupRank": "3/3"
   },
@@ -3903,6 +4879,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "HKEX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 7.16,
    "vs50": -16.6,
    "vs200": -14.8,
@@ -3927,6 +4909,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 8,
+   "omEvidence": "$0.10/lb zinc=$26M EBIT; copper dominant",
    "discovered": false
   },
   {
@@ -3937,6 +4920,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 5.89,
    "vs50": -13.6,
    "vs200": 1.7,
@@ -3972,6 +4961,7 @@
     }
    ],
    "omLinkage": 8,
+   "omEvidence": "TiO2 selling price #1 KPI; 100% TiO2 revenue",
    "discovered": false,
    "groupRank": "4/6"
   },
@@ -3983,6 +4973,30 @@
    "capTier": "Mid",
    "held": "short",
    "heldMv": -87.34,
+   "position": {
+    "side": "short",
+    "shares": 2.0,
+    "mktValue": -87.34,
+    "unrealizedPnl": 1.26,
+    "avgCost": 44.3018,
+    "lastPrice": 43.67
+   },
+   "country": "CA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 68.28,
+    "upsidePct": 56.35,
+    "buys": 5,
+    "holds": 2,
+    "sells": 0
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "COVER",
+    "urgency": "medium",
+    "rationale": "Quality large-cap with Buy 5/2 and +56% PT \u2014 the wrong silver short. Keep the high-beta/high-cost trio AG/CDE/HL instead."
+   },
    "price": 43.67,
    "vs50": -14.7,
    "vs200": -13.1,
@@ -4017,6 +5031,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "Best silver-price correlation; ~38-51% silver rev; no hedge",
    "discovered": false,
    "groupRank": "2/8"
   },
@@ -4028,6 +5043,30 @@
    "capTier": "Small",
    "held": "long",
    "heldMv": 110.52,
+   "position": {
+    "side": "long",
+    "shares": 18.0,
+    "mktValue": 110.52,
+    "unrealizedPnl": 0.89,
+    "avgCost": 6.0906,
+    "lastPrice": 6.14
+   },
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Neutral",
+    "priceTarget": 9.79,
+    "upsidePct": 59.45,
+    "buys": 1,
+    "holds": 5,
+    "sells": 1
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "SWAP INTO KRO",
+    "urgency": "medium",
+    "rationale": "Name-for-name TiO2 swap: TROX Neutral 1/5/1 + leverage vs KRO Zacks Buy, volumes +4%, +33%/yr vs industry -10%. Same commodity exposure, stronger balance sheet and momentum."
+   },
    "price": 6.14,
    "vs50": -21.2,
    "vs200": -2.6,
@@ -4063,6 +5102,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "Vertically integrated TiO2 pure-play",
    "discovered": false,
    "groupRank": "5/6"
   },
@@ -4074,6 +5114,27 @@
    "capTier": "Small",
    "held": "short",
    "heldMv": -63.92,
+   "position": {
+    "side": "short",
+    "shares": 4.0,
+    "mktValue": -63.92,
+    "unrealizedPnl": 2.54,
+    "avgCost": 16.615,
+    "lastPrice": 15.98
+   },
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 24.79,
+    "upsidePct": 55.13
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP",
+    "urgency": "none",
+    "rationale": "Higher-cost Ag/Au beta short."
+   },
    "price": 15.98,
    "vs50": -8.7,
    "vs200": -15.8,
@@ -4108,6 +5169,7 @@
     }
    ],
    "omLinkage": 6,
+   "omEvidence": "~30% silver rev; diversified gold/copper",
    "discovered": false,
    "groupRank": "3/8"
   },
@@ -4119,6 +5181,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "UK",
+   "exchange": "LSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 36.25,
    "vs50": 1.3,
    "vs200": -0.6,
@@ -4143,6 +5211,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 5,
+   "omEvidence": "Pre-revenue explorer; Pitfield 100% titanium",
    "discovered": false
   },
   {
@@ -4153,6 +5222,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "BR",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 1.01,
    "vs50": -14.8,
    "vs200": -31.9,
@@ -4177,6 +5252,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 8,
+   "omEvidence": "Integrated iron ore+steel (Bigdata resolved wrong CSN)",
    "discovered": false,
    "groupRank": "12/14"
   },
@@ -4188,6 +5264,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 4.63,
    "vs50": -21.3,
    "vs200": -1.9,
@@ -4212,6 +5294,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Pure-play; every price move flows to bottom line",
    "discovered": false
   },
   {
@@ -4222,6 +5305,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 0.89,
    "vs50": -10.6,
    "vs200": -0.4,
@@ -4246,6 +5335,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "World's largest listed pure nickel producer",
    "discovered": false
   },
   {
@@ -4256,6 +5346,27 @@
    "capTier": "Small",
    "held": "short",
    "heldMv": -44.67,
+   "position": {
+    "side": "short",
+    "shares": 1.0,
+    "mktValue": -44.67,
+    "unrealizedPnl": 0.74,
+    "avgCost": 45.4092,
+    "lastPrice": 44.67
+   },
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 77.0,
+    "upsidePct": 72.38
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP",
+    "urgency": "none",
+    "rationale": "Higher-cost smelter, same falling-LME thesis."
+   },
    "price": 44.67,
    "vs50": -21.3,
    "vs200": -3.6,
@@ -4295,6 +5406,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "LME/Midwest/EDPP explicit revenue components",
    "discovered": false,
    "groupRank": "4/7"
   },
@@ -4306,6 +5418,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "RU",
+   "exchange": "HKEX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": null,
    "vs50": null,
    "vs200": null,
@@ -4330,6 +5448,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Primary ~80% revenue; +30% rev on +7% LME",
    "discovered": false
   },
   {
@@ -4340,6 +5459,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 5.63,
    "vs50": -24.7,
    "vs200": -31.5,
@@ -4364,6 +5489,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 7,
+   "omEvidence": "Commercial Korean RE magnet ops; recently public",
    "discovered": false,
    "groupRank": "5/8"
   },
@@ -4375,6 +5501,27 @@
    "capTier": "Small",
    "held": "short",
    "heldMv": -67.8,
+   "position": {
+    "side": "short",
+    "shares": 4.0,
+    "mktValue": -67.8,
+    "unrealizedPnl": 0.1,
+    "avgCost": 16.975,
+    "lastPrice": 16.95
+   },
+   "country": "CA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 24.95,
+    "upsidePct": 47.2
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP",
+    "urgency": "none",
+    "rationale": "2-3x unhedged silver beta \u2014 the sharpest silver short while silver bias is down. Respect squeeze history (Jan $115)."
+   },
    "price": 16.95,
    "vs50": -10.7,
    "vs200": -8.7,
@@ -4409,6 +5556,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "~60% silver rev; 2-3x beta to silver; no hedge",
    "discovered": false,
    "groupRank": "4/8"
   },
@@ -4420,6 +5568,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 6.69,
    "vs50": -12.4,
    "vs200": -2.1,
@@ -4444,6 +5598,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Rutile/SR majority rev; TiO2 weakness forced cuts",
    "discovered": false
   },
   {
@@ -4454,6 +5609,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "KR",
+   "exchange": "KRX (KOSPI)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 1043000,
    "vs50": -19.7,
    "vs200": -24.9,
@@ -4478,6 +5639,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 8,
+   "omEvidence": "LME zinc directly tracks operating profit",
    "discovered": false
   },
   {
@@ -4488,6 +5650,27 @@
    "capTier": "Mid",
    "held": "short",
    "heldMv": -48.68,
+   "position": {
+    "side": "short",
+    "shares": 1.0,
+    "mktValue": -48.68,
+    "unrealizedPnl": 0.12,
+    "avgCost": 48.7961,
+    "lastPrice": 48.68
+   },
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 68.5,
+    "upsidePct": 40.71
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP / room to add ~$150",
+    "urgency": "low",
+    "rationale": "Correct instrument for the aluminum-short bias (pure smelter leverage, LME war-premium unwound). Tiny at 0.4% NAV."
+   },
    "price": 48.68,
    "vs50": -23.3,
    "vs200": -11.9,
@@ -4529,6 +5712,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "$40M/yr per $100 LME move; revenue tracks aluminum",
    "discovered": false,
    "groupRank": "5/7"
   },
@@ -4540,6 +5724,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 39.45,
    "vs50": -6.2,
    "vs200": -0.5,
@@ -4564,6 +5754,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "$100/oz=~$650M EBITDA swing",
    "discovered": false
   },
   {
@@ -4574,6 +5765,23 @@
    "capTier": "ETF",
    "held": "short",
    "heldMv": -436.74,
+   "position": {
+    "side": "short",
+    "shares": 6.0,
+    "mktValue": -436.74,
+    "unrealizedPnl": 18.58,
+    "avgCost": 75.8875,
+    "lastPrice": 72.79
+   },
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP",
+    "urgency": "none",
+    "rationale": "The single remaining lithium-complex hedge against ALB/SQM/SGML/LAC longs. Watch: it still holds your longs \u2014 it is a beta hedge, not alpha."
+   },
    "price": 72.32,
    "vs50": -12.5,
    "vs200": 1.2,
@@ -4606,6 +5814,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "Tracks Solactive Global Lithium Index",
    "discovered": false,
    "groupRank": "4/6"
   },
@@ -4617,6 +5826,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 33.05,
    "vs50": -15.4,
    "vs200": -8.9,
@@ -4641,6 +5856,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 5,
+   "omEvidence": "Processor; mirrors contracts to offset price swings",
    "discovered": false,
    "groupRank": "13/14"
   },
@@ -4652,6 +5868,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "JP",
+   "exchange": "Tokyo",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 7275,
    "vs50": -17.3,
    "vs200": -7.5,
@@ -4676,6 +5898,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Ni segment profit moves with LME; copper/gold large",
    "discovered": false
   },
   {
@@ -4686,6 +5909,12 @@
    "capTier": "ETF",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 18.5103,
    "vs50": -11.8,
    "vs200": -12.3,
@@ -4710,6 +5939,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "95-96% RE allocation; tracks Sprott ex-China index",
    "discovered": false
   },
   {
@@ -4720,6 +5950,30 @@
    "capTier": "Small",
    "held": "long",
    "heldMv": 385.12,
+   "position": {
+    "side": "long",
+    "shares": 116.0,
+    "mktValue": 385.12,
+    "unrealizedPnl": -59.58,
+    "avgCost": 3.8336,
+    "lastPrice": 3.32
+   },
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": {
+    "consensus": "Neutral",
+    "priceTarget": 6.39,
+    "upsidePct": 92.47,
+    "buys": 1,
+    "holds": 5,
+    "sells": 0
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP (no add)",
+    "urgency": "none",
+    "rationale": "Funded Thacker Pass option (DOE $2.23B, GM JV) but pre-revenue until 2028 and GS Neutral $4.50. Position is already 3.5% NAV \u2014 right size for an option."
+   },
    "price": 3.32,
    "vs50": -29.4,
    "vs200": -35.2,
@@ -4757,6 +6011,7 @@
     }
    ],
    "omLinkage": 5,
+   "omEvidence": "Pre-revenue developer; future results significantly lithium-affected",
    "discovered": false,
    "groupRank": "5/6"
   },
@@ -4768,6 +6023,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 0.33,
    "vs50": -14.9,
    "vs200": -6.6,
@@ -4792,6 +6053,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 5,
+   "omEvidence": "Pre-revenue developer; NPV driven by tin",
    "discovered": false
   },
   {
@@ -4802,6 +6064,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "AMEX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 3.23,
    "vs50": -3.2,
    "vs200": -1.9,
@@ -4811,7 +6080,8 @@
    "quoteSuspect": false,
    "composite": 43.0,
    "subs": {
-    "momentum": 4.3
+    "momentum": 4.3,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -4831,6 +6101,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "HKEX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 84.9,
    "vs50": -5.3,
    "vs200": -13.1,
@@ -4855,6 +6131,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 4,
+   "omEvidence": "Vertically integrated LFP; low Bigdata signal",
    "discovered": false
   },
   {
@@ -4865,6 +6142,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "Shenzhen",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 3.4,
    "vs50": -7.8,
    "vs200": -24.9,
@@ -4889,6 +6172,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 7,
+   "omEvidence": "China electrical/special steel major; no Bigdata coverage",
    "discovered": false
   },
   {
@@ -4899,6 +6183,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 3.42,
    "vs50": 8.2,
    "vs200": 11.1,
@@ -4923,6 +6213,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "World's largest alumina/aluminum; price primary risk",
    "discovered": false
   },
   {
@@ -4933,6 +6224,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 0.235,
    "vs50": -15.6,
    "vs200": -16.6,
@@ -4957,6 +6254,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Pre-production; CEO: RE price biggest value driver",
    "discovered": false
   },
   {
@@ -4967,6 +6265,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 20.48,
    "vs50": 1.0,
    "vs200": -15.1,
@@ -4991,6 +6295,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Pure-play ASX gold; no Bigdata coverage",
    "discovered": false
   },
   {
@@ -5001,6 +6306,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 3.93,
    "vs50": -6.4,
    "vs200": -13.5,
@@ -5025,6 +6336,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Gold 44% rev; copper ~30%, lithium ~10% dilute",
    "discovered": false,
    "groupRank": "4/17"
   },
@@ -5036,6 +6348,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "Shenzhen",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 348.76,
    "vs50": -14.6,
    "vs200": -10.3,
@@ -5060,6 +6378,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Most lithium cost passed through; upstream buffers",
    "discovered": false
   },
   {
@@ -5070,6 +6389,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 6.89,
    "vs50": -17.8,
    "vs200": -10.1,
@@ -5094,6 +6419,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Nova nickel ~$188M; lithium JV also material",
    "discovered": false
   },
   {
@@ -5104,6 +6430,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 205.52,
    "vs50": -7.4,
    "vs200": -9.2,
@@ -5128,6 +6460,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "110% leverage to gold price; 87% precious revenue",
    "discovered": false,
    "groupRank": "5/17"
   },
@@ -5139,6 +6472,23 @@
    "capTier": "ETF",
    "held": "short",
    "heldMv": -440.4,
+   "position": {
+    "side": "short",
+    "shares": 30.0,
+    "mktValue": -440.4,
+    "unrealizedPnl": 18.26,
+    "avgCost": 15.2887,
+    "lastPrice": 14.68
+   },
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "COVER",
+    "urgency": "medium",
+    "rationale": "Redundant: overlaps LIT (both hold ALB/SQM \u2014 you are shorting your own longs twice). Keep one ETF hedge only; +$18 uPnL banked."
+   },
    "price": 14.68,
    "vs50": -10.4,
    "vs200": -1.8,
@@ -5171,6 +6521,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "Leveraged bet on a single commodity (lithium)",
    "discovered": false
   },
   {
@@ -5181,6 +6532,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "ZA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 82.1,
    "vs50": -8.8,
    "vs200": -9.4,
@@ -5205,6 +6562,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Pure-play gold; ~100% gold revenue; no Bigdata coverage",
    "discovered": false,
    "groupRank": "6/17"
   },
@@ -5216,6 +6574,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "HKEX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 14.95,
    "vs50": -16.2,
    "vs200": -19.9,
@@ -5240,6 +6604,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Moly ~7-8% group rev; copper/cobalt dominate",
    "discovered": false
   },
   {
@@ -5250,6 +6615,23 @@
    "capTier": "Large",
    "held": "short",
    "heldMv": -70.24,
+   "position": {
+    "side": "short",
+    "shares": 8.0,
+    "mktValue": -70.24,
+    "unrealizedPnl": -0.2,
+    "avgCost": 8.755,
+    "lastPrice": 8.78
+   },
+   "country": "NO",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP",
+    "urgency": "none",
+    "rationale": "Integrated so less pure, but consistent with the group bias."
+   },
    "price": 8.78,
    "vs50": -19.8,
    "vs200": -3.2,
@@ -5278,6 +6660,7 @@
    ],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Near-record earnings on strong aluminium prices",
    "discovered": false,
    "groupRank": "6/7"
   },
@@ -5289,6 +6672,23 @@
    "capTier": "Small",
    "held": "short",
    "heldMv": -90.0,
+   "position": {
+    "side": "short",
+    "shares": 3.0,
+    "mktValue": -90.0,
+    "unrealizedPnl": -1.33,
+    "avgCost": 29.5567,
+    "lastPrice": 30.0
+   },
+   "country": "PE",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP",
+    "urgency": "none",
+    "rationale": "Chronic underperformer; note its copper JV (Cerro Verde) partially fights the short if copper rips."
+   },
    "price": 30,
    "vs50": -8.5,
    "vs200": -4.0,
@@ -5317,6 +6717,7 @@
    ],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Diversified Peru; silver one of several metals",
    "discovered": false,
    "groupRank": "5/8"
   },
@@ -5328,6 +6729,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 0.54,
    "vs50": -11.0,
    "vs200": -17.1,
@@ -5352,6 +6759,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 4,
+   "omEvidence": "Primary rutile+graphite; RE emerging by-product",
    "discovered": false
   },
   {
@@ -5362,6 +6770,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 56.99,
    "vs50": -13.3,
    "vs200": -3.9,
@@ -5386,6 +6800,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Copper/brass largest cost; FIFO margins hit by moves",
    "discovered": false,
    "groupRank": "7/7"
   },
@@ -5397,6 +6812,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "Shanghai",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 41.51,
    "vs50": -24.0,
    "vs200": -34.6,
@@ -5421,6 +6842,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 8,
+   "omEvidence": "Cobalt price explicitly drives P&L; integrated",
    "discovered": false
   },
   {
@@ -5431,6 +6853,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "UK",
+   "exchange": "Toronto (TSX)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 69.48,
    "vs50": -11.0,
    "vs200": -6.3,
@@ -5455,6 +6883,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Pure-play W.Africa gold; no Bigdata coverage",
    "discovered": false
   },
   {
@@ -5465,6 +6894,12 @@
    "capTier": "ETF",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 377.01,
    "vs50": -6.0,
    "vs200": -8.2,
@@ -5489,6 +6924,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "1:1 gold bullion tracking; pure pass-through",
    "discovered": false,
    "groupRank": "7/17"
   },
@@ -5500,6 +6936,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "Shanghai",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 26.69,
    "vs50": -18.6,
    "vs200": -14.6,
@@ -5524,6 +6966,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 7,
+   "omEvidence": "High-Ni NCM pure-play; no Bigdata coverage",
    "discovered": false
   },
   {
@@ -5534,6 +6977,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 0.25,
    "vs50": -0.7,
    "vs200": -20.1,
@@ -5558,6 +7007,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 7,
+   "omEvidence": "100% Mn ore revenue; price risk disclosed; producing",
    "discovered": false
   },
   {
@@ -5568,6 +7018,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "ZA",
+   "exchange": "JSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 17410,
    "vs50": -12.1,
    "vs200": -15.2,
@@ -5592,6 +7048,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Mn -84% on lower prices; diversified PGM/Fe",
    "discovered": false
   },
   {
@@ -5602,6 +7059,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 0.12,
    "vs50": 7.3,
    "vs200": -46.5,
@@ -5626,6 +7089,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Performance heavily reliant on graphite price",
    "discovered": false
   },
   {
@@ -5636,6 +7100,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "TSX Venture",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 0.15,
    "vs50": -14.1,
    "vs200": -34.6,
@@ -5660,6 +7130,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 4,
+   "omEvidence": "Early-stage Wicheeda; no Bigdata coverage",
    "discovered": false
   },
   {
@@ -5670,6 +7141,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "Shenzhen",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 6.54,
    "vs50": -15.5,
    "vs200": -20.9,
@@ -5694,6 +7171,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 7,
+   "omEvidence": "Pure-play pCAM+recycling; no Bigdata coverage",
    "discovered": false
   },
   {
@@ -5704,6 +7182,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "KR",
+   "exchange": "KRX (KOSPI)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 151800,
    "vs50": -28.8,
    "vs200": -26.9,
@@ -5728,6 +7212,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Every deck tracks Li/Ni/Co as input-output driver",
    "discovered": false
   },
   {
@@ -5738,6 +7223,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "KR",
+   "exchange": "KOSDAQ",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 121600,
    "vs50": -31.8,
    "vs200": -30.4,
@@ -5762,6 +7253,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Ni smelter spread widens on higher LME; Li tailwind",
    "discovered": false
   },
   {
@@ -5772,6 +7264,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "KR",
+   "exchange": "KOSDAQ",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 85800,
    "vs50": -29.6,
    "vs200": -26.8,
@@ -5796,6 +7294,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 5,
+   "omEvidence": "Cobalt byproduct of Ni smelter; nickel primary",
    "discovered": false
   },
   {
@@ -5806,6 +7305,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "HKEX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 41.62,
    "vs50": -35.8,
    "vs200": -30.7,
@@ -5830,6 +7335,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 8,
+   "omEvidence": "Revenue fell RMB8.6B on lithium price decline",
    "discovered": false
   },
   {
@@ -5840,6 +7346,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CN",
+   "exchange": "HKEX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 33.74,
    "vs50": -31.9,
    "vs200": -31.0,
@@ -5864,6 +7376,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 8,
+   "omEvidence": "Revenue dropped RMB27B on selling-price decline; pure lithium",
    "discovered": false
   },
   {
@@ -5874,6 +7387,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "KR",
+   "exchange": "KRX (KOSPI)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 326000,
    "vs50": -19.3,
    "vs200": -20.3,
@@ -5898,6 +7417,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "ASP tracks Li/Ni with 1-2mo lag; metal-driven",
    "discovered": false
   },
   {
@@ -5908,6 +7428,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "UK",
+   "exchange": "LSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 6.25,
    "vs50": -4.0,
    "vs200": -25.3,
@@ -5932,6 +7458,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Pre-revenue CSPG plant; graphite-only, no cash flow yet",
    "discovered": false
   },
   {
@@ -5942,6 +7469,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 0.1625,
    "vs50": -7.7,
    "vs200": -16.6,
@@ -5966,6 +7499,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 5,
+   "omEvidence": "Pre-revenue ASX explorer; no Bigdata coverage",
    "discovered": false
   },
   {
@@ -5976,6 +7510,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 196.83,
    "vs50": -9.4,
    "vs200": -14.2,
@@ -6000,6 +7540,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Highest gold weighting in royalty sector; ~90% precious",
    "discovered": false,
    "groupRank": "8/17"
   },
@@ -6011,6 +7552,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 24.14,
    "vs50": -11.7,
    "vs200": -16.7,
@@ -6035,6 +7582,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "10% price move=~$860M pre-tax impact",
    "discovered": false,
    "groupRank": "9/17"
   },
@@ -6046,6 +7594,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "KR",
+   "exchange": "KRX (KOSPI)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 10010,
    "vs50": -25.2,
    "vs200": -35.7,
@@ -6070,6 +7624,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 5,
+   "omEvidence": "Korean cobalt sulfate; no Bigdata coverage",
    "discovered": false
   },
   {
@@ -6080,6 +7635,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "Toronto (TSX)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 78.23,
    "vs50": -4.6,
    "vs200": -19.7,
@@ -6104,6 +7665,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Record revenues on gold; 72% AISC margin",
    "discovered": false
   },
   {
@@ -6114,6 +7676,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "FR",
+   "exchange": "Euronext Paris",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 44.1,
    "vs50": -15.3,
    "vs200": -22.1,
@@ -6138,6 +7706,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Nickel one of three; manganese often larger",
    "discovered": false
   },
   {
@@ -6148,6 +7717,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "NYSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 30.24,
    "vs50": -4.8,
    "vs200": -11.2,
@@ -6157,7 +7733,8 @@
    "quoteSuspect": false,
    "composite": 33.0,
    "subs": {
-    "momentum": 3.3
+    "momentum": 3.3,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -6177,6 +7754,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 6.58,
    "vs50": -14.6,
    "vs200": -33.5,
@@ -6201,6 +7784,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 1,
+   "omEvidence": "Pre-revenue; stock VW/tech-milestone driven",
    "discovered": false,
    "groupRank": "2/3"
   },
@@ -6212,6 +7796,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 9.52,
    "vs50": -19.3,
    "vs200": -4.3,
@@ -6236,6 +7826,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "63-72% silver rev; mgmt cites silver primary",
    "discovered": false,
    "groupRank": "6/8"
   },
@@ -6247,6 +7838,30 @@
    "capTier": "Mid",
    "held": "short",
    "heldMv": -111.41,
+   "position": {
+    "side": "short",
+    "shares": 13.0,
+    "mktValue": -111.41,
+    "unrealizedPnl": -2.86,
+    "avgCost": 8.35,
+    "lastPrice": 8.57
+   },
+   "country": "ZA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": {
+    "consensus": "Buy",
+    "priceTarget": 17.25,
+    "upsidePct": 101.75,
+    "buys": 1,
+    "holds": 1,
+    "sells": 0
+   },
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP (best short in book)",
+    "urgency": "none",
+    "rationale": "-42% YTD and still: loss-making palladium ops, high debt, restructuring \u2014 in a structurally-surplus palladium market."
+   },
    "price": 8.55,
    "vs50": -20.7,
    "vs200": -33.5,
@@ -6290,6 +7905,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "PGM ~90% SA segment; platinum +125% drove earnings",
    "discovered": false,
    "groupRank": "1/3"
   },
@@ -6301,6 +7917,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 8.23,
    "vs50": -22.6,
    "vs200": -3.1,
@@ -6325,6 +7947,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 2,
+   "omEvidence": "Pre-revenue S-1; biomass graphite reduces linkage",
    "discovered": false
   },
   {
@@ -6335,6 +7958,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 4.21,
    "vs50": -18.6,
    "vs200": -31.7,
@@ -6359,6 +7988,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 4,
+   "omEvidence": "Pre-production; Mn by-product alongside Ni/Co/Cu",
    "discovered": false,
    "groupRank": "1/1"
   },
@@ -6370,6 +8000,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 25.03,
    "vs50": -26.9,
    "vs200": -35.7,
@@ -6394,6 +8030,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 7,
+   "omEvidence": "Pre-revenue; 100% titanium thesis",
    "discovered": false,
    "groupRank": "6/6"
   },
@@ -6405,6 +8042,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 1.365,
    "vs50": 2.5,
    "vs200": -13.8,
@@ -6429,6 +8072,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 7,
+   "omEvidence": "Pure-play Pd/Pt explorer; no Bigdata coverage",
    "discovered": false
   },
   {
@@ -6439,6 +8083,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "ZA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 34.14,
    "vs50": -11.2,
    "vs200": -22.5,
@@ -6463,6 +8113,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Substantially all revenue from gold; +45% price=+68% rev",
    "discovered": false,
    "groupRank": "11/17"
   },
@@ -6474,6 +8125,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "NYSE / TSX-V",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 1.6,
    "vs50": -8.8,
    "vs200": -33.3,
@@ -6498,6 +8155,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 8,
+   "omEvidence": "All future revenue from graphite; price key viability risk",
    "discovered": false,
    "groupRank": "1/1"
   },
@@ -6509,6 +8167,23 @@
    "capTier": null,
    "held": "short",
    "heldMv": -427.61,
+   "position": {
+    "side": "short",
+    "shares": 14.0,
+    "mktValue": -427.61,
+    "unrealizedPnl": 16.86,
+    "avgCost": 31.7477,
+    "lastPrice": 30.5437
+   },
+   "country": null,
+   "exchange": "AMEX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP",
+    "urgency": "none",
+    "rationale": "Becomes the book's downstream-EV short after TSLA is covered; China-heavy, no earnings-date risk."
+   },
    "price": 30.575,
    "vs50": -11.1,
    "vs200": -5.5,
@@ -6541,6 +8216,7 @@
     }
    ],
    "omLinkage": null,
+   "omEvidence": null,
    "discovered": false
   },
   {
@@ -6551,6 +8227,12 @@
    "capTier": "Mid",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "MX",
+   "exchange": "LSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 2636,
    "vs50": -15.5,
    "vs200": -16.9,
@@ -6575,6 +8257,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "World's largest silver; +44% price=+$651M rev",
    "discovered": false
   },
   {
@@ -6585,6 +8268,12 @@
    "capTier": "Large",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 146.87,
    "vs50": -14.2,
    "vs200": -20.6,
@@ -6609,6 +8298,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 9,
+   "omEvidence": "Gold volatility directly affects revenue/earnings; no hedging",
    "discovered": false,
    "groupRank": "12/17"
   },
@@ -6620,6 +8310,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "PE",
+   "exchange": "LSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 456.4,
    "vs50": -18.5,
    "vs200": -16.6,
@@ -6644,6 +8340,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 6,
+   "omEvidence": "Silver ~33% rev; dual gold-silver focus",
    "discovered": false
   },
   {
@@ -6654,6 +8351,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "Toronto (TSX)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 0.72,
    "vs50": -16.2,
    "vs200": -35.1,
@@ -6678,6 +8381,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 4,
+   "omEvidence": "Pre-revenue LFP licensing; tech-stage",
    "discovered": false
   },
   {
@@ -6688,6 +8392,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 0.5686,
    "vs50": -6.1,
    "vs200": -37.9,
@@ -6712,6 +8422,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 5,
+   "omEvidence": "Cobalt refinery pre-revenue; tolling limits exposure",
    "discovered": false
   },
   {
@@ -6722,6 +8433,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "CA",
+   "exchange": "TSX Venture",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 0.76,
    "vs50": -15.2,
    "vs200": -15.1,
@@ -6746,6 +8463,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 4,
+   "omEvidence": "Pre-revenue converter developer",
    "discovered": false
   },
   {
@@ -6756,6 +8474,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 1.72,
    "vs50": -16.6,
    "vs200": -45.9,
@@ -6780,6 +8504,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 3,
+   "omEvidence": "Development stage; no revenue; going-concern doubt",
    "discovered": false
   },
   {
@@ -6790,6 +8515,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 2.65,
    "vs50": -30.0,
    "vs200": -52.0,
@@ -6814,6 +8545,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 3,
+   "omEvidence": "Mn minor; lithium/nickel drive economics; pre-commercial",
    "discovered": false
   },
   {
@@ -6824,6 +8556,12 @@
    "capTier": "Micro/Dev",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 0.067,
    "vs50": -15.7,
    "vs200": -28.2,
@@ -6848,6 +8586,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 4,
+   "omEvidence": "Pre-revenue; cobalt primary; no Bigdata coverage",
    "discovered": false
   },
   {
@@ -6858,6 +8597,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "AU",
+   "exchange": "ASX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 0.155,
    "vs50": -27.1,
    "vs200": -58.2,
@@ -6882,6 +8627,7 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 8,
+   "omEvidence": "Pure-play synthetic graphite anode; graphite price core risk",
    "discovered": false
   },
   {
@@ -6892,6 +8638,12 @@
    "capTier": "Small",
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": "US",
+   "exchange": "NYSE / Nasdaq",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
    "price": 2.32,
    "vs50": -21.0,
    "vs200": -44.1,
@@ -6916,8 +8668,60 @@
    "risks": [],
    "evidence": [],
    "omLinkage": 1,
+   "omEvidence": "Pre-revenue; stock milestone-driven not metals",
    "discovered": false,
    "groupRank": "3/3"
+  },
+  {
+   "ticker": "HMY",
+   "company": "Harmony Gold Mining",
+   "material": "Gold",
+   "role": "Producer",
+   "capTier": null,
+   "held": null,
+   "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "NYSE",
+   "analyst": {},
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "OPTIONAL NEW SHORT ~$250",
+    "urgency": "low",
+    "rationale": "The book shorts silver/PGM but has no gold short while gold bias is down: HMY = high-cost SA gold, the classic gold-downside name (discovered, not in Excel)."
+   },
+   "omEvidence": null,
+   "price": 15.11,
+   "vs50": -7.7,
+   "vs200": -17.1,
+   "range52w": null,
+   "marketCap": 9540229647,
+   "tradable": true,
+   "quoteSuspect": false,
+   "composite": 26.5,
+   "subs": {
+    "momentum": 2.3,
+    "deep": 3.0
+   },
+   "coverage": 35,
+   "microVerdict": "bearish",
+   "thesis": "High-cost SA gold producer = the natural NEW gold short while gold bias is down (discovered name, not in Excel universe).",
+   "catalysts": [
+    "gold price"
+   ],
+   "risks": [
+    "rand weakness helps costs"
+   ],
+   "evidence": [
+    {
+     "source": "FMP",
+     "date": "2026-07-12",
+     "note": "-7.7% vs 50DMA, -17.1% vs 200DMA"
+    }
+   ],
+   "omLinkage": null,
+   "discovered": true,
+   "groupRank": "13/17"
   },
   {
    "ticker": "FSM",
@@ -6927,6 +8731,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "NYSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 8.52,
    "vs50": -8.1,
    "vs200": -12.6,
@@ -6936,7 +8747,8 @@
    "quoteSuspect": false,
    "composite": 26.0,
    "subs": {
-    "momentum": 2.6
+    "momentum": 2.6,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -6956,6 +8768,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "NYSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 95.99,
    "vs50": -10.9,
    "vs200": -8.0,
@@ -6965,7 +8784,8 @@
    "quoteSuspect": false,
    "composite": 25.0,
    "subs": {
-    "momentum": 2.5
+    "momentum": 2.5,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -6985,6 +8805,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "NYSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 9.67,
    "vs50": -10.7,
    "vs200": -8.7,
@@ -6994,7 +8821,8 @@
    "quoteSuspect": false,
    "composite": 25.0,
    "subs": {
-    "momentum": 2.5
+    "momentum": 2.5,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -7014,6 +8842,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "NYSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 28.1,
    "vs50": -8.3,
    "vs200": -14.6,
@@ -7023,40 +8858,12 @@
    "quoteSuspect": false,
    "composite": 24.0,
    "subs": {
-    "momentum": 2.4
+    "momentum": 2.4,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
    "thesis": "Royalty model = lower operational risk; alternative to WPM/FNV.",
-   "catalysts": [],
-   "risks": [],
-   "evidence": [],
-   "omLinkage": null,
-   "discovered": true,
-   "groupRank": "13/17"
-  },
-  {
-   "ticker": "HMY",
-   "company": "Harmony Gold Mining",
-   "material": "Gold",
-   "role": "Producer",
-   "capTier": null,
-   "held": null,
-   "heldMv": null,
-   "price": 15.11,
-   "vs50": -7.7,
-   "vs200": -17.1,
-   "range52w": null,
-   "marketCap": 9540229647,
-   "tradable": true,
-   "quoteSuspect": false,
-   "composite": 23.0,
-   "subs": {
-    "momentum": 2.3
-   },
-   "coverage": 20,
-   "microVerdict": null,
-   "thesis": "High-cost SA gold producer = high beta to gold downside \u2014 SHORT candidate in a falling-gold tape.",
    "catalysts": [],
    "risks": [],
    "evidence": [],
@@ -7072,6 +8879,23 @@
    "capTier": "Mid",
    "held": "short",
    "heldMv": -122.32,
+   "position": {
+    "side": "short",
+    "shares": 11.0,
+    "mktValue": -122.32,
+    "unrealizedPnl": -0.12,
+    "avgCost": 11.1091,
+    "lastPrice": 11.12
+   },
+   "country": "ZA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP",
+    "urgency": "none",
+    "rationale": "Second PGM short; bias short with high confidence."
+   },
    "price": 11.12,
    "vs50": -15.0,
    "vs200": -23.1,
@@ -7108,6 +8932,7 @@
     }
    ],
    "omLinkage": 9,
+   "omEvidence": "Major PGM; tracks basket; no Bigdata coverage",
    "discovered": false,
    "groupRank": "2/3"
   },
@@ -7119,6 +8944,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "NYSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 8.08,
    "vs50": -10.4,
    "vs200": -15.5,
@@ -7128,7 +8960,8 @@
    "quoteSuspect": false,
    "composite": 20.0,
    "subs": {
-    "momentum": 2.0
+    "momentum": 2.0,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -7148,6 +8981,23 @@
    "capTier": "Micro/Dev",
    "held": "short",
    "heldMv": -107.73,
+   "position": {
+    "side": "short",
+    "shares": 81.0,
+    "mktValue": -107.73,
+    "unrealizedPnl": 4.83,
+    "avgCost": 1.3897,
+    "lastPrice": 1.33
+   },
+   "country": "CA",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "KEEP, cap at current size",
+    "urgency": "none",
+    "rationale": "Pre-revenue developer in weak palladium \u2014 right thesis, but $169M micro-cap: any financing/partner headline squeezes. Do not add."
+   },
    "price": 1.33,
    "vs50": -15.1,
    "vs200": -38.1,
@@ -7183,6 +9033,7 @@
     }
    ],
    "omLinkage": 8,
+   "omEvidence": "Waterberg 72% Pd+Pt; dev-stage, sensitivity documented",
    "discovered": false,
    "groupRank": "3/3"
   },
@@ -7194,6 +9045,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "NYSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 171.05,
    "vs50": -5.3,
    "vs200": -29.6,
@@ -7203,7 +9061,8 @@
    "quoteSuspect": false,
    "composite": 17.0,
    "subs": {
-    "momentum": 1.7
+    "momentum": 1.7,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -7223,6 +9082,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "AMEX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 3.85,
    "vs50": -12.6,
    "vs200": -18.6,
@@ -7232,7 +9098,8 @@
    "quoteSuspect": false,
    "composite": 13.0,
    "subs": {
-    "momentum": 1.3
+    "momentum": 1.3,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -7252,6 +9119,17 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "NASDAQ",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": {
+    "action": "NEW SHORT ~$350 (3% NAV)",
+    "urgency": "medium",
+    "rationale": "Replaces part of the covered NUE/STLD short gross on the RIGHT side of the tariff: Canadian mill selling into a 50%-tariff US market, -23% below 50DMA. Keeps steel-group net roughly balanced (discovered name)."
+   },
+   "omEvidence": null,
    "price": 3.62,
    "vs50": -23.3,
    "vs200": -16.5,
@@ -7261,7 +9139,8 @@
    "quoteSuspect": false,
    "composite": 11.0,
    "subs": {
-    "momentum": 1.1
+    "momentum": 1.1,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -7281,6 +9160,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "NASDAQ",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 4.62,
    "vs50": -14.0,
    "vs200": -23.1,
@@ -7290,7 +9176,8 @@
    "quoteSuspect": false,
    "composite": 7.0,
    "subs": {
-    "momentum": 0.7
+    "momentum": 0.7,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -7310,6 +9197,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "NYSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 6.46,
    "vs50": -24.3,
    "vs200": -23.2,
@@ -7319,7 +9213,8 @@
    "quoteSuspect": false,
    "composite": 6.0,
    "subs": {
-    "momentum": 0.6
+    "momentum": 0.6,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -7339,6 +9234,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "AMEX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 10.53,
    "vs50": -16.9,
    "vs200": -23.9,
@@ -7348,7 +9250,8 @@
    "quoteSuspect": false,
    "composite": 5.0,
    "subs": {
-    "momentum": 0.5
+    "momentum": 0.5,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -7368,6 +9271,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "NYSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 3.52,
    "vs50": -24.5,
    "vs200": -23.5,
@@ -7377,7 +9287,8 @@
    "quoteSuspect": false,
    "composite": 5.0,
    "subs": {
-    "momentum": 0.5
+    "momentum": 0.5,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -7397,6 +9308,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "NYSE",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 29.46,
    "vs50": -19.9,
    "vs200": -24.9,
@@ -7406,7 +9324,8 @@
    "quoteSuspect": false,
    "composite": 4.0,
    "subs": {
-    "momentum": 0.4
+    "momentum": 0.4,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -7426,6 +9345,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "NASDAQ",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 7.95,
    "vs50": -25.8,
    "vs200": -26.6,
@@ -7435,7 +9361,8 @@
    "quoteSuspect": false,
    "composite": 3.0,
    "subs": {
-    "momentum": 0.3
+    "momentum": 0.3,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -7455,6 +9382,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "NASDAQ",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 19.44,
    "vs50": -22.1,
    "vs200": -27.5,
@@ -7464,7 +9398,8 @@
    "quoteSuspect": false,
    "composite": 2.0,
    "subs": {
-    "momentum": 0.2
+    "momentum": 0.2,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -7484,6 +9419,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "AMEX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 9.76,
    "vs50": -16.6,
    "vs200": -29.0,
@@ -7493,7 +9435,8 @@
    "quoteSuspect": false,
    "composite": 1.0,
    "subs": {
-    "momentum": 0.1
+    "momentum": 0.1,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -7513,6 +9456,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "NASDAQ",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 12.33,
    "vs50": -14.3,
    "vs200": -37.6,
@@ -7522,7 +9472,8 @@
    "quoteSuspect": false,
    "composite": 1.0,
    "subs": {
-    "momentum": 0.1
+    "momentum": 0.1,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -7542,6 +9493,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "AMEX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 9.13,
    "vs50": -22.3,
    "vs200": -34.5,
@@ -7551,7 +9509,8 @@
    "quoteSuspect": false,
    "composite": 0.0,
    "subs": {
-    "momentum": 0.0
+    "momentum": 0.0,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,
@@ -7571,6 +9530,13 @@
    "capTier": null,
    "held": null,
    "heldMv": null,
+   "position": null,
+   "country": null,
+   "exchange": "AMEX",
+   "analyst": null,
+   "tipranksExtra": null,
+   "recommendation": null,
+   "omEvidence": null,
    "price": 2.46,
    "vs50": -29.7,
    "vs200": -39.2,
@@ -7580,7 +9546,8 @@
    "quoteSuspect": false,
    "composite": 0.0,
    "subs": {
-    "momentum": 0.0
+    "momentum": 0.0,
+    "deep": null
    },
    "coverage": 20,
    "microVerdict": null,

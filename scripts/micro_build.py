@@ -160,6 +160,7 @@ def main():
     bias_doc = load("commodity_bias.json", {"biases": [], "macro": ""})
     bias_by_material = {b["material"]: b for b in bias_doc.get("biases", [])}
     recs_doc = load("recommendations.json", {"recommendations": [], "tradeList": [], "sizing": ""})
+    rec_by_ticker = {r["ticker"]: r for r in recs_doc.get("recommendations", [])}
     discoveries = load("discoveries.json", {"discoveries": []})["discoveries"]
 
     deep = {}
@@ -189,6 +190,19 @@ def main():
             continue
         wsum = sum(WEIGHTS[k] for k in avail)
         composite = sum(WEIGHTS[k] * v for k, v in avail.items()) / wsum * 10.0
+
+        # full analyst snapshot: deep-dive refresh first, Excel TipRanks as fallback
+        tr = rec.get("tipranks") or {}
+        analyst = dict(d["analyst"]) if d and d.get("analyst") else {}
+        for src_key, dst_key in (("consensus", "consensus"), ("priceTarget", "priceTarget"),
+                                 ("upside", "upsidePct"), ("buy", "buys"), ("hold", "holds"),
+                                 ("sell", "sells"), ("analysts", "analysts")):
+            if analyst.get(dst_key) is None and tr.get(src_key) is not None:
+                analyst[dst_key] = tr.get(src_key)
+        if analyst.get("smartScore") is None and tr.get("smartScore") is not None:
+            analyst["smartScore"] = tr.get("smartScore")
+
+        reco = rec_by_ticker.get(t)
         out_tickers.append({
             "ticker": t,
             "company": rec.get("company"),
@@ -197,6 +211,15 @@ def main():
             "capTier": rec.get("capTier"),
             "held": rec["held"]["side"] if rec.get("held") else None,
             "heldMv": rec["held"]["mktValue"] if rec.get("held") else None,
+            "position": rec.get("held"),
+            "country": rec.get("country"),
+            "exchange": rec.get("exchange") or (q.get("exchange") if q else None),
+            "analyst": analyst or None,
+            "tipranksExtra": {k: tr.get(k) for k in
+                              ("newsSentiment", "newsScore", "newsBuzz", "hedgeFundTrend",
+                               "insiderTrend", "blogger") if tr.get(k) is not None} or None,
+            "recommendation": ({"action": reco["action"], "urgency": reco.get("urgency"),
+                                "rationale": reco["rationale"]} if reco else None),
             "price": q.get("price") if q else None,
             "vs50": q.get("vs50") if q else None,
             "vs200": q.get("vs200") if q else None,
@@ -213,6 +236,8 @@ def main():
             "risks": d.get("risks", []) if d else [],
             "evidence": d.get("evidence", []) if d else [],
             "omLinkage": rec["omLinkage"]["score"] if rec.get("omLinkage") else None,
+            "omEvidence": (rec["omLinkage"].get("evidence") if rec.get("omLinkage") else None)
+                          or (rec["bigdata"].get("evidence") if rec.get("bigdata") else None),
             "discovered": rec.get("discovered", False),
         })
 
@@ -224,17 +249,32 @@ def main():
         q = {"vs50": disc.get("vs50"), "vs200": disc.get("vs200"), "price": disc.get("price"),
              "marketCap": disc.get("marketCap")}
         mom = momentum_score(q)
+        disc_reco = rec_by_ticker.get(disc["ticker"])
+        disc_deep = deep.get(disc["ticker"])
         out_tickers.append({
             "ticker": disc["ticker"], "company": disc.get("company"),
             "material": disc.get("material"), "role": disc.get("role"), "capTier": None,
-            "held": None, "heldMv": None,
+            "held": None, "heldMv": None, "position": None,
+            "country": None, "exchange": disc.get("exchange"),
+            "analyst": disc_deep.get("analyst") if disc_deep else None,
+            "tipranksExtra": None,
+            "recommendation": ({"action": disc_reco["action"], "urgency": disc_reco.get("urgency"),
+                                "rationale": disc_reco["rationale"]} if disc_reco else None),
+            "omEvidence": None,
             "price": disc.get("price"), "vs50": disc.get("vs50"), "vs200": disc.get("vs200"),
             "range52w": None, "marketCap": disc.get("marketCap"),
             "tradable": True, "quoteSuspect": False,
-            "composite": round(mom, 1) * 10 if mom is not None else None,
-            "subs": {"momentum": round(mom, 1) if mom is not None else None},
-            "coverage": 20, "microVerdict": None,
-            "thesis": disc.get("whyRelevant"), "catalysts": [], "risks": [], "evidence": [],
+            "composite": (round((mom + float(disc_deep["microScore"])) / 2 * 10, 1)
+                          if mom is not None and disc_deep and disc_deep.get("microScore") is not None
+                          else round(mom, 1) * 10 if mom is not None else None),
+            "subs": {"momentum": round(mom, 1) if mom is not None else None,
+                     "deep": float(disc_deep["microScore"]) if disc_deep and disc_deep.get("microScore") is not None else None},
+            "coverage": 35 if disc_deep else 20,
+            "microVerdict": disc_deep.get("microVerdict") if disc_deep else None,
+            "thesis": (disc_deep.get("thesis") if disc_deep else None) or disc.get("whyRelevant"),
+            "catalysts": disc_deep.get("catalysts", []) if disc_deep else [],
+            "risks": disc_deep.get("risks", []) if disc_deep else [],
+            "evidence": disc_deep.get("evidence", []) if disc_deep else [],
             "omLinkage": None, "discovered": True,
         })
 
