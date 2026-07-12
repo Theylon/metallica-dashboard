@@ -27,8 +27,8 @@ SRC = pathlib.Path(os.environ.get(
     "/tmp/claude-0/-home-user-metallica-dashboard/a09c6b1b-2269-59e4-b962-3c7699dcd40f/scratchpad"))
 
 WEIGHTS = {
-    "momentum": 0.20, "commodity": 0.20, "deep": 0.15, "analyst": 0.15,
-    "smart": 0.10, "sentiment": 0.10, "quality": 0.10,
+    "momentum": 0.18, "commodity": 0.18, "deep": 0.14, "analyst": 0.13,
+    "fundamentals": 0.12, "sentiment": 0.09, "smart": 0.08, "quality": 0.08,
 }
 
 CONSENSUS_SCORE = {
@@ -147,6 +147,33 @@ def quality_score(rec, q):
     return round(sum(vals) / len(vals), 1) if vals else None
 
 
+def fundamentals_score(f):
+    """0-10 from TrueNorth annual metrics: profitability + balance sheet + growth."""
+    if not f:
+        return None
+    parts = []
+    if f.get("ebitda_margin") is not None:
+        parts.append(clamp(f["ebitda_margin"] * 25.0))            # 40% margin = 10
+    if f.get("return_on_invested_capital") is not None:
+        parts.append(clamp(5.0 + f["return_on_invested_capital"] * 25.0))  # ROIC 20% = 10
+    elif f.get("return_on_equity") is not None:
+        parts.append(clamp(5.0 + f["return_on_equity"] * 20.0))
+    lev = []
+    if f.get("net_debt_to_ebitda") is not None:
+        lev.append(clamp(8.0 - 1.5 * max(0.0, f["net_debt_to_ebitda"])))   # net cash ~8, 4x+ ~2
+    if f.get("debt_to_equity") is not None:
+        lev.append(clamp(9.0 - 4.0 * max(0.0, f["debt_to_equity"])))
+    if lev:
+        parts.append(sum(lev) / len(lev))
+    growth = []
+    for k in ("revenue_growth_yoy", "ebitda_growth_yoy"):
+        if f.get(k) is not None:
+            growth.append(clamp(5.0 + f[k] * 10.0))               # +50% growth = 10
+    if growth:
+        parts.append(sum(growth) / len(growth))
+    return round(sum(parts) / len(parts), 1) if parts else None
+
+
 def tradable(rec, q):
     ex = (rec.get("exchange") or (q.get("exchange") if q else "") or "")
     us = any(k in str(ex).upper() for k in ("NYSE", "NASDAQ", "AMEX", "ADR", "CBOE", "OTC"))
@@ -162,6 +189,9 @@ def main():
     recs_doc = load("recommendations.json", {"recommendations": [], "tradeList": [], "sizing": ""})
     rec_by_ticker = {r["ticker"]: r for r in recs_doc.get("recommendations", [])}
     discoveries = load("discoveries.json", {"discoveries": []})["discoveries"]
+    funda = load("fundamentals.json", {"fundamentals": {}})["fundamentals"]
+    sweep = load("tipranks_sweep.json", {"analyst": {}, "sentiment": {}})
+    sweep_analyst, sweep_sent = sweep.get("analyst", {}), sweep.get("sentiment", {})
 
     deep = {}
     for f in sorted(glob.glob(str(SRC / "deep_*.json"))):
@@ -176,11 +206,25 @@ def main():
         t = rec["ticker"]
         q = quotes.get(t)
         d = deep.get(t)
+        f = funda.get(t)
+        # live TipRanks sweep refresh takes precedence over the Excel snapshot
+        if t in sweep_analyst and not (d and d.get("analyst") and d["analyst"].get("priceTarget")):
+            d = dict(d) if d else {}
+            d["analyst"] = {**(d.get("analyst") or {}), **sweep_analyst[t]}
+        if t in sweep_sent:
+            rec = dict(rec)
+            tr0 = dict(rec.get("tipranks") or {})
+            if sweep_sent[t].get("smartScore") is not None:
+                tr0["smartScore"] = sweep_sent[t]["smartScore"]
+            if sweep_sent[t].get("newsSentiment"):
+                tr0["newsSentiment"] = sweep_sent[t]["newsSentiment"]
+            rec["tipranks"] = tr0
         subs = {
             "momentum": momentum_score(q),
             "commodity": commodity_score(rec, bias_by_material),
             "deep": float(d["microScore"]) if d and d.get("microScore") is not None else None,
             "analyst": analyst_score(rec, d),
+            "fundamentals": fundamentals_score(f),
             "smart": smart_score(rec, d),
             "sentiment": sentiment_score(rec),
             "quality": quality_score(rec, q),
@@ -235,9 +279,21 @@ def main():
             "catalysts": d.get("catalysts", []) if d else [],
             "risks": d.get("risks", []) if d else [],
             "evidence": d.get("evidence", []) if d else [],
+            "deepModelDerived": bool(d.get("modelDerived")) if d else False,
             "omLinkage": rec["omLinkage"]["score"] if rec.get("omLinkage") else None,
             "omEvidence": (rec["omLinkage"].get("evidence") if rec.get("omLinkage") else None)
                           or (rec["bigdata"].get("evidence") if rec.get("bigdata") else None),
+            "exposure": ({
+                "commodity": rec["omLinkage"].get("commodity"),
+                "exposure": rec["omLinkage"].get("exposure"),
+                "priceSens": rec["omLinkage"].get("priceSens"),
+                "coupling": rec["omLinkage"].get("coupling"),
+                "score": rec["omLinkage"].get("score"),
+                "tier": rec["omLinkage"].get("tier"),
+                "confidence": rec["omLinkage"].get("confidence"),
+                "evidence": rec["omLinkage"].get("evidence"),
+            } if rec.get("omLinkage") else None),
+            "fundamentals": f,
             "discovered": rec.get("discovered", False),
         })
 
@@ -275,8 +331,14 @@ def main():
             "catalysts": disc_deep.get("catalysts", []) if disc_deep else [],
             "risks": disc_deep.get("risks", []) if disc_deep else [],
             "evidence": disc_deep.get("evidence", []) if disc_deep else [],
-            "omLinkage": None, "discovered": True,
+            "omLinkage": None, "exposure": None,
+            "fundamentals": funda.get(disc["ticker"]),
+            "discovered": True,
         })
+        if out_tickers[-1]["fundamentals"]:
+            fs = fundamentals_score(out_tickers[-1]["fundamentals"])
+            if fs is not None:
+                out_tickers[-1]["subs"]["fundamentals"] = fs
 
     # rank within material group (tradable names only get ranks)
     by_mat = {}
@@ -292,10 +354,10 @@ def main():
 
     out = {
         "updatedAt": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
-        "methodology": ("Composite 0-100 = momentum 20% + commodity-alignment 20% + deep-dive 15% "
-                        "+ analyst 15% + TipRanks SmartScore 10% + news sentiment 10% + quality 10% "
+        "methodology": ("Composite 0-100 = momentum 18% + commodity-alignment 18% + deep-dive 14% "
+                        "+ analyst 13% + fundamentals 12% + news sentiment 9% + SmartScore 8% + quality 8% "
                         "(missing sub-scores redistribute). High = long candidate, low = short candidate. "
-                        "Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner."),
+                        "Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner, TrueNorth."),
         "macro": bias_doc.get("macro", ""),
         "commodityBias": [
             {"material": b["material"], "bias": b["bias"], "score": b["score"],

@@ -1299,7 +1299,7 @@ function buildPickDetail(r) {
   }
 
   // score breakdown
-  const subNames = { momentum: 'Momentum', commodity: 'Commodity', deep: 'Deep-dive', analyst: 'Analyst', smart: 'SmartScore', sentiment: 'Sentiment', quality: 'Quality' };
+  const subNames = { momentum: 'Momentum', commodity: 'Commodity', deep: 'Deep-dive', analyst: 'Analyst', fundamentals: 'Fundamentals', smart: 'SmartScore', sentiment: 'Sentiment', quality: 'Quality' };
   const subsHtml = Object.entries(r.subs || {}).filter(([, v]) => v !== null && v !== undefined).map(([k, v]) =>
     `<span class="subscore">${subNames[k] || k} <span class="score-bar"><span style="display:block;height:100%;border-radius:3px;width:${v * 10}%;background:${scoreColor(v * 10)};"></span></span> <b>${v}</b></span>`).join('');
   out += section(`Composite score ${r.composite} — sub-scores (0-10)`, `<div class="subscore-grid">${subsHtml}</div>`);
@@ -1321,6 +1321,42 @@ function buildPickDetail(r) {
     out += section('Analyst & sentiment (TipRanks)', bits.join(' · '));
   }
 
+  // fundamentals (TrueNorth annual metrics)
+  if (r.fundamentals) {
+    const f = r.fundamentals;
+    const fp = v => v === null || v === undefined ? null : (v * 100).toFixed(1) + '%';
+    const fx = v => v === null || v === undefined ? null : Number(v).toFixed(2) + 'x';
+    const items = [
+      ['EBITDA margin', fp(f.ebitda_margin)], ['Net margin', fp(f.net_margin)],
+      ['FCF margin', fp(f.free_cash_flow_margin)], ['ROIC', fp(f.return_on_invested_capital)],
+      ['ROE', fp(f.return_on_equity)], ['Net debt/EBITDA', fx(f.net_debt_to_ebitda)],
+      ['Debt/Equity', fx(f.debt_to_equity)], ['Current ratio', fx(f.current_ratio)],
+      ['Revenue YoY', fp(f.revenue_growth_yoy)], ['EBITDA YoY', fp(f.ebitda_growth_yoy)],
+      ['EPS', f.earnings_per_share !== null && f.earnings_per_share !== undefined ? '$' + f.earnings_per_share : null],
+    ].filter(([, v]) => v !== null);
+    if (items.length) {
+      out += section(`Fundamentals (TrueNorth, FY ${f.report_period ? f.report_period.slice(0, 4) : ''})`,
+        `<div class="detail-chips" style="margin:2px 0 0;">${items.map(([k, v]) => chip(k, v)).join('')}</div>`);
+    }
+  }
+
+  // underlying-asset exposure (OM linkage quantification)
+  if (r.exposure) {
+    const e = r.exposure;
+    const bar3 = v => v === null || v === undefined ? '—'
+      : `<span class="score-bar" style="width:30px;display:inline-block;vertical-align:middle;"><span style="display:block;height:100%;border-radius:3px;width:${(v / 3) * 100}%;background:${v >= 3 ? '#22c55e' : v >= 2 ? '#eab308' : '#ef4444'};"></span></span> <b>${v}/3</b>`;
+    out += section(`Underlying-asset exposure — ${e.commodity || r.material}`,
+      `<div class="detail-chips" style="margin:2px 0 4px;">`
+      + chip('Linkage', `${e.score}/9 (${e.tier || '—'})`)
+      + `<span class="detail-chip">Revenue exposure: ${bar3(e.exposure)}</span>`
+      + `<span class="detail-chip">Price sensitivity: ${bar3(e.priceSens)}</span>`
+      + `<span class="detail-chip">Coupling: ${bar3(e.coupling)}</span>`
+      + chip('Confidence', e.confidence || '—') + `</div>`
+      + (e.evidence ? `<span style="color:var(--text-muted);">“${e.evidence}”</span>` : ''));
+  } else if (r.omEvidence) {
+    out += section('Commodity linkage evidence (Bigdata.com)', `<span style="color:var(--text-muted);">${r.omEvidence}</span>`);
+  }
+
   // commodity backdrop for this material
   const bias = (micro.commodityBias || []).find(b => b.material === r.material);
   if (bias) {
@@ -1328,9 +1364,8 @@ function buildPickDetail(r) {
       `<span class="pick-badge ${bias.bias === 'long' ? 'long' : bias.bias === 'short' ? 'short' : 'neutral'}">${bias.bias.toUpperCase()}</span> `
       + `<span style="color:var(--text-muted);">(${bias.confidence}) ${bias.evidence}</span>`);
   }
-  if (r.omEvidence) out += section('Commodity linkage evidence (Bigdata.com)', `<span style="color:var(--text-muted);">${r.omEvidence}</span>`);
 
-  out += section('Thesis', r.thesis ? `${r.thesis}` : '');
+  out += section('Thesis' + (r.deepModelDerived ? ' <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--text-dim);">· model-derived (bias + linkage + analyst, not individually researched)</span>' : ''), r.thesis ? `${r.thesis}` : '');
   out += section('Catalysts', (r.catalysts || []).length ? r.catalysts.join(' · ') : '');
   out += section('Risks', (r.risks || []).length ? r.risks.join(' · ') : '');
   const ev = (r.evidence || []).map(e => `• <b>${e.source}</b> (${e.date}): ${e.note}`).join('<br>');
