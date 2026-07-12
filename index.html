@@ -340,6 +340,18 @@ td:first-child { text-align: left; }
 .cat-other     { background: rgba(74,80,112,.12);   color: var(--text-dim); }
 .empty-row td { text-align: center; color: var(--text-muted); padding: 40px; }
 
+/* Stock Picks tab */
+.pick-badge { display: inline-block; padding: 1px 7px; border-radius: 9px; font-size: 10px; font-weight: 600; }
+.pick-badge.long { background: rgba(34,197,94,0.14); color: var(--green); }
+.pick-badge.short { background: rgba(239,68,68,0.14); color: var(--red); }
+.pick-badge.new { background: rgba(99,102,241,0.16); color: var(--accent); }
+.pick-badge.neutral { background: rgba(123,130,160,0.14); color: var(--text-muted); }
+.score-cell { display: flex; align-items: center; gap: 6px; justify-content: flex-end; }
+.score-bar { width: 54px; height: 5px; border-radius: 3px; background: rgba(123,130,160,0.18); overflow: hidden; flex-shrink: 0; }
+.score-bar > div { height: 100%; border-radius: 3px; }
+.picks-detail td { background: rgba(99,102,241,0.05); font-size: 11.5px; line-height: 1.55; padding: 10px 14px; }
+.picks-row { cursor: pointer; }
+
 /* ── Benchmark Table ────────────────────────────────────────────────── */
 .bm-table-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border); }
 .bm-name { display: flex; align-items: center; gap: 6px; }
@@ -495,6 +507,9 @@ td:first-child { text-align: left; }
     </div>
     <div class="tab" onclick="showTab('intel')">
       <span class="tab-icon">🧠</span> Intel
+    </div>
+    <div class="tab" onclick="showTab('picks')">
+      <span class="tab-icon">🎯</span> Stock Picks
     </div>
   </div>
 
@@ -963,6 +978,85 @@ td:first-child { text-align: left; }
 
   </div><!-- /intel -->
 
+  <!-- ─── Stock Picks page (micro-analysis) ─────────────────────── -->
+  <div id="page-picks" class="page">
+
+    <div class="chart-header"><div class="chart-title">🧭 Commodity Bias — top-down sign per material</div></div>
+    <div class="table-panel">
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th style="text-align:left;">Material</th><th style="text-align:left;">Bias</th><th style="text-align:left;">Conf.</th><th style="text-align:left;">Evidence</th></tr></thead>
+          <tbody id="bias-tbody"><tr class="empty-row"><td colspan="4">Awaiting micro data</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">📇 Micro Scores — full universe</div></div>
+    <div class="table-panel">
+      <div class="table-header">
+        <div class="table-header-left">
+          <div class="sub-tabs">
+            <div class="sub-tab active" id="picks-mode-all" onclick="setPicksMode('all')">All</div>
+            <div class="sub-tab" id="picks-mode-held" onclick="setPicksMode('held')">Held</div>
+            <div class="sub-tab" id="picks-mode-new" onclick="setPicksMode('new')">Discovered</div>
+          </div>
+          <div class="filter-bar">
+            <input type="text" class="filter-input" id="picks-search" placeholder="Search ticker…" oninput="setPicksSearch(this.value)">
+            <select class="filter-select" id="picks-material-filter" onchange="setPicksMaterial(this.value)">
+              <option value="">All Materials</option>
+            </select>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--text-muted);" id="picks-count">—</div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align:left;" class="sortable" onclick="sortPicksBy('ticker')">Ticker<span class="sort-arrow" id="parrow-ticker"></span></th>
+              <th style="text-align:left;">Material</th>
+              <th style="text-align:left;">Held</th>
+              <th class="sortable" onclick="sortPicksBy('composite')">Score<span class="sort-arrow" id="parrow-composite"></span></th>
+              <th class="sortable" onclick="sortPicksBy('mom')">Mom<span class="sort-arrow" id="parrow-mom"></span></th>
+              <th class="sortable" onclick="sortPicksBy('cmdty')">Cmdty<span class="sort-arrow" id="parrow-cmdty"></span></th>
+              <th class="sortable" onclick="sortPicksBy('analyst')">Analyst<span class="sort-arrow" id="parrow-analyst"></span></th>
+              <th class="sortable" onclick="sortPicksBy('vs50')">vs 50d<span class="sort-arrow" id="parrow-vs50"></span></th>
+              <th class="sortable" onclick="sortPicksBy('range52w')">52w Pos<span class="sort-arrow" id="parrow-range52w"></span></th>
+              <th>Grp Rank</th>
+              <th style="text-align:left;">Verdict</th>
+            </tr>
+          </thead>
+          <tbody id="picks-tbody"><tr class="empty-row"><td colspan="11">Awaiting micro data</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">🛠️ Recommendations — per held leg &amp; new ideas</div></div>
+    <div class="table-panel">
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th style="text-align:left;">Ticker</th><th style="text-align:left;">Held</th><th style="text-align:left;">Action</th><th style="text-align:left;">Urgency</th><th style="text-align:left;">Rationale</th></tr></thead>
+          <tbody id="recs-tbody"><tr class="empty-row"><td colspan="5">Awaiting micro data</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">🧾 Trade List (proposed — nothing executed)</div></div>
+    <div class="table-panel">
+      <div class="table-header">
+        <div class="table-title" style="font-size:12px;color:var(--text-muted);font-weight:400;" id="sizing-note">—</div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th style="text-align:left;">Side</th><th style="text-align:left;">Ticker</th><th style="text-align:left;">Qty (~$)</th><th style="text-align:left;">Why</th></tr></thead>
+          <tbody id="trades-tbody"><tr class="empty-row"><td colspan="4">Awaiting micro data</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="font-size:11px;color:var(--text-muted);margin-top:10px;line-height:1.5;" id="picks-methodology">—</div>
+  </div><!-- /picks -->
+
 </div><!-- /dashboard -->
 
 <script>
@@ -1027,7 +1121,7 @@ let positionSort = { key: null, dir: 1 };
 
 async function loadData() {
   try {
-    const [posRes, accRes, pnlRes, bmRes, repRes, comRes, anaRes, macRes, newsRes, techRes, spotRes, resRes] = await Promise.all([
+    const [posRes, accRes, pnlRes, bmRes, repRes, comRes, anaRes, macRes, newsRes, techRes, spotRes, resRes, microRes] = await Promise.all([
       fetch('data/positions.json?' + Date.now()).then(r => r.json()).catch(() => ({ positions: [] })),
       fetch('data/account.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
       fetch('data/pnl.json?' + Date.now()).then(r => r.json()).catch(() => []),
@@ -1040,6 +1134,7 @@ async function loadData() {
       fetch('data/technicals.json?' + Date.now()).then(r => r.json()).catch(() => ({ items: [] })),
       fetch('data/metals_spot.json?' + Date.now()).then(r => r.json()).catch(() => ({ items: [] })),
       fetch('data/research.json?' + Date.now()).then(r => r.json()).catch(() => ({ items: [] })),
+      fetch('data/micro.json?' + Date.now()).then(r => r.json()).catch(() => ({ tickers: [], commodityBias: [], recommendations: [], tradeList: [] })),
     ]);
     positions = posRes.positions || [];
     account   = accRes || {};
@@ -1048,6 +1143,7 @@ async function loadData() {
     report    = repRes || {};
     intel = { commodities: comRes.items || [], analysts: anaRes.items || [], macro: macRes.items || [], news: newsRes.items || [],
               technicals: techRes.items || [], metalsSpot: spotRes.items || [], research: resRes.items || [] };
+    micro = microRes || {};
 
     renderAll();
     updateMetaBadges(accRes.updatedAt);
@@ -1071,6 +1167,138 @@ function renderAll() {
   renderExposure();
   renderReport();
   renderIntel();
+  renderPicks();
+}
+
+// ── Stock Picks: micro-analysis scores · recommendations · trade list ─
+let micro = {};
+let picksMode = 'all', picksSearch = '', picksMaterial = '', picksExpanded = null;
+let picksSortKey = 'composite', picksSortDir = -1;
+
+function setPicksMode(m) {
+  picksMode = m;
+  ['all', 'held', 'new'].forEach(x => {
+    const el = document.getElementById('picks-mode-' + x);
+    if (el) el.classList.toggle('active', x === m);
+  });
+  picksExpanded = null;
+  renderPicksTable();
+}
+function setPicksSearch(v) { picksSearch = v.trim().toUpperCase(); renderPicksTable(); }
+function setPicksMaterial(v) { picksMaterial = v; renderPicksTable(); }
+function sortPicksBy(key) {
+  if (picksSortKey === key) picksSortDir *= -1; else { picksSortKey = key; picksSortDir = key === 'ticker' ? 1 : -1; }
+  renderPicksTable();
+}
+function togglePickDetail(t) { picksExpanded = picksExpanded === t ? null : t; renderPicksTable(); }
+
+function pickVal(r, key) {
+  if (key === 'mom') return r.subs ? r.subs.momentum : null;
+  if (key === 'cmdty') return r.subs ? r.subs.commodity : null;
+  if (key === 'analyst') return r.subs ? r.subs.analyst : null;
+  return r[key];
+}
+function scoreColor(s) { return s >= 60 ? '#22c55e' : s >= 45 ? '#eab308' : '#ef4444'; }
+
+function renderPicks() {
+  const bias = micro.commodityBias || [];
+  const bt = document.getElementById('bias-tbody');
+  if (bt) {
+    const cls = { long: 'long', short: 'short', neutral: 'neutral' };
+    bt.innerHTML = bias.length ? bias.filter(b => !b.material.includes('/') || b.confidence !== 'low').map(b =>
+      `<tr><td style="text-align:left;font-weight:600;">${b.material}</td>`
+      + `<td style="text-align:left;"><span class="pick-badge ${cls[b.bias] || 'neutral'}">${b.bias.toUpperCase()}</span></td>`
+      + `<td style="text-align:left;color:var(--text-muted);">${b.confidence}</td>`
+      + `<td style="text-align:left;font-size:11px;color:var(--text-muted);max-width:640px;">${b.evidence}</td></tr>`
+    ).join('') : '<tr class="empty-row"><td colspan="4">No micro data</td></tr>';
+  }
+
+  const sel = document.getElementById('picks-material-filter');
+  if (sel && sel.options.length <= 1) {
+    [...new Set((micro.tickers || []).map(r => r.material).filter(Boolean))].sort()
+      .forEach(m => { const o = document.createElement('option'); o.value = m; o.textContent = m; sel.appendChild(o); });
+  }
+  renderPicksTable();
+
+  const rt = document.getElementById('recs-tbody');
+  if (rt) {
+    const recs = micro.recommendations || [];
+    const urgCol = { high: 'var(--red)', medium: '#eab308', low: 'var(--text-muted)', none: 'var(--text-dim)' };
+    rt.innerHTML = recs.length ? recs.map(r =>
+      `<tr><td style="text-align:left;font-weight:700;">${r.ticker}</td>`
+      + `<td style="text-align:left;">${r.held ? `<span class="pick-badge ${r.held}">${r.held.toUpperCase()}</span>` : '<span class="pick-badge new">NEW</span>'}</td>`
+      + `<td style="text-align:left;font-weight:600;">${r.action}</td>`
+      + `<td style="text-align:left;color:${urgCol[r.urgency] || 'var(--text-muted)'};">${r.urgency}</td>`
+      + `<td style="text-align:left;font-size:11px;color:var(--text-muted);line-height:1.45;">${r.rationale}</td></tr>`
+    ).join('') : '<tr class="empty-row"><td colspan="5">No recommendations</td></tr>';
+  }
+
+  const tt = document.getElementById('trades-tbody');
+  if (tt) {
+    const trades = micro.tradeList || [];
+    tt.innerHTML = trades.length ? trades.map(t => {
+      const buy = t.side.startsWith('BUY');
+      return `<tr><td style="text-align:left;font-weight:600;color:${buy ? 'var(--green)' : 'var(--red)'};">${t.side}</td>`
+        + `<td style="text-align:left;font-weight:700;">${t.ticker}</td>`
+        + `<td style="text-align:left;">${t.qty}</td>`
+        + `<td style="text-align:left;font-size:11px;color:var(--text-muted);">${t.why}</td></tr>`;
+    }).join('') : '<tr class="empty-row"><td colspan="4">No trades proposed</td></tr>';
+  }
+
+  const sn = document.getElementById('sizing-note');
+  if (sn) sn.textContent = micro.sizingNote || '';
+  const mm = document.getElementById('picks-methodology');
+  if (mm && micro.methodology) mm.textContent = 'Methodology: ' + micro.methodology + (micro.macro ? ' · Macro: ' + micro.macro : '') + ' · Updated ' + (micro.updatedAt || '');
+}
+
+function renderPicksTable() {
+  const tb = document.getElementById('picks-tbody');
+  if (!tb) return;
+  let rows = (micro.tickers || []).filter(r => r.composite !== null && r.composite !== undefined);
+  if (picksMode === 'held') rows = rows.filter(r => r.held);
+  if (picksMode === 'new') rows = rows.filter(r => r.discovered);
+  if (picksSearch) rows = rows.filter(r => r.ticker.toUpperCase().includes(picksSearch) || (r.company || '').toUpperCase().includes(picksSearch));
+  if (picksMaterial) rows = rows.filter(r => r.material === picksMaterial);
+  rows = rows.slice().sort((a, b) => {
+    const va = pickVal(a, picksSortKey), vb = pickVal(b, picksSortKey);
+    if (va === null || va === undefined) return 1;
+    if (vb === null || vb === undefined) return -1;
+    return (va < vb ? -1 : va > vb ? 1 : 0) * picksSortDir;
+  });
+  const cnt = document.getElementById('picks-count');
+  if (cnt) cnt.textContent = rows.length + ' names';
+  document.querySelectorAll('[id^="parrow-"]').forEach(el => el.textContent = '');
+  const arrow = document.getElementById('parrow-' + picksSortKey);
+  if (arrow) arrow.textContent = picksSortDir === -1 ? ' ▼' : ' ▲';
+
+  const fmtN = (v, d = 1) => (v === null || v === undefined) ? '—' : v.toFixed(d);
+  tb.innerHTML = rows.length ? rows.map(r => {
+    const held = r.held ? `<span class="pick-badge ${r.held}">${r.held.toUpperCase()}</span>` : (r.discovered ? '<span class="pick-badge new">NEW</span>' : '');
+    const verdict = r.microVerdict
+      ? `<span class="pick-badge ${r.microVerdict === 'bullish' ? 'long' : r.microVerdict === 'bearish' ? 'short' : 'neutral'}">${r.microVerdict}</span>` : '—';
+    const sus = r.quoteSuspect ? ' <span title="quote data suspect">⚠</span>' : '';
+    let html = `<tr class="picks-row" onclick="togglePickDetail('${r.ticker.replace(/'/g, "\\'")}')">`
+      + `<td style="text-align:left;font-weight:700;">${r.ticker}${sus}</td>`
+      + `<td style="text-align:left;color:var(--text-muted);font-size:11px;">${r.material || '—'}</td>`
+      + `<td style="text-align:left;">${held}</td>`
+      + `<td><div class="score-cell"><div class="score-bar"><div style="width:${Math.min(100, r.composite)}%;background:${scoreColor(r.composite)};"></div></div><b style="color:${scoreColor(r.composite)};">${fmtN(r.composite)}</b></div></td>`
+      + `<td>${fmtN(r.subs && r.subs.momentum)}</td><td>${fmtN(r.subs && r.subs.commodity)}</td><td>${fmtN(r.subs && r.subs.analyst)}</td>`
+      + `<td style="color:${(r.vs50 || 0) >= 0 ? 'var(--green)' : 'var(--red)'};">${r.vs50 === null || r.vs50 === undefined ? '—' : (r.vs50 > 0 ? '+' : '') + r.vs50.toFixed(1) + '%'}</td>`
+      + `<td>${fmtN(r.range52w, 0)}</td>`
+      + `<td style="color:var(--text-muted);">${r.groupRank || '—'}</td>`
+      + `<td style="text-align:left;">${verdict}</td></tr>`;
+    if (picksExpanded === r.ticker) {
+      const ev = (r.evidence || []).map(e => `• <b>${e.source}</b> (${e.date}): ${e.note}`).join('<br>');
+      html += `<tr class="picks-detail"><td colspan="11" style="text-align:left;">`
+        + `<b>${r.company || r.ticker}</b> — ${r.role || ''} · ${r.capTier || ''} · coverage ${r.coverage}%${r.omLinkage !== null && r.omLinkage !== undefined ? ' · OM linkage ' + r.omLinkage + '/9' : ''}<br>`
+        + (r.thesis ? `<b>Thesis:</b> ${r.thesis}<br>` : '')
+        + ((r.catalysts || []).length ? `<b>Catalysts:</b> ${r.catalysts.join(' · ')}<br>` : '')
+        + ((r.risks || []).length ? `<b>Risks:</b> ${r.risks.join(' · ')}<br>` : '')
+        + (ev ? `<b>Evidence:</b><br>${ev}` : '')
+        + `</td></tr>`;
+    }
+    return html;
+  }).join('') : '<tr class="empty-row"><td colspan="11">No names match the filter</td></tr>';
 }
 
 // ── Intel: live commodities · macro · analyst · news ─────────────────
@@ -1947,7 +2175,7 @@ function calcMetricsForSeries(prices) {
 // ═══════════════════════════════════════════ TABS ══
 function showTab(name) {
   document.querySelectorAll('.tab').forEach((t, i) => {
-    const names = ['overview', 'positions', 'benchmarks', 'exposure', 'risk', 'markets', 'intel'];
+    const names = ['overview', 'positions', 'benchmarks', 'exposure', 'risk', 'markets', 'intel', 'picks'];
     t.classList.toggle('active', names[i] === name);
   });
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
