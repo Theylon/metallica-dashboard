@@ -105,20 +105,25 @@ def main(xlsx_path):
                 "Linkage(0-9)": "score", "Tier": "tier", "Confidence": "confidence",
                 "Evidence (Bigdata)": "evidence",
             })
+        # The master sheet ("MM Materials-Stocks") carries TipRanks fields for many
+        # more names than the dedicated TipRanks Enrichment sheet — always capture
+        # them, then overlay the enrichment sheet's richer buy/hold/sell breakdown.
+        tp = row_dict(row, {
+            "TR Consensus": "consensus", "TR Price Target": "priceTarget",
+            "TR SmartScore": "smartScore", "TR News Sentiment": "newsSentiment",
+            "TR HedgeFund Trend": "hedgeFundTrend", "TR Insider Trend": "insiderTrend",
+            "TR Blogger": "blogger", "TR Covered": "covered",
+        })
         if trr is not None:
-            rec["tipranks"] = row_dict(trr, {
+            tp.update({k: v for k, v in row_dict(trr, {
                 "TR Consensus": "consensus", "Buy": "buy", "Hold": "hold", "Sell": "sell",
                 "# Analysts": "analysts", "Avg Price Target": "priceTarget",
                 "Upside %": "upside", "Covered": "covered", "Note": "note",
-                "News Sentiment": "newsSentiment", "News Score(0-1)": "newsScore",
+                "News Sentiment": "newsSentimentTR", "News Score(0-1)": "newsScore",
                 "News Buzz": "newsBuzz",
-            })
-            # SmartScore & trend columns live on the master sheet
-            rec["tipranks"].update(row_dict(row, {
-                "TR SmartScore": "smartScore", "TR News Sentiment": "newsSentimentMM",
-                "TR HedgeFund Trend": "hedgeFundTrend", "TR Insider Trend": "insiderTrend",
-                "TR Blogger": "blogger",
-            }))
+            }).items() if v is not None})
+        if any(v is not None for v in tp.values()):
+            rec["tipranks"] = tp
         if bdr is not None:
             rec["bigdata"] = row_dict(bdr, {
                 "Role": "role", "PriceSens(0-3)": "priceSens", "Confidence": "confidence",

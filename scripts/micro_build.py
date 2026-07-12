@@ -121,7 +121,7 @@ def smart_score(rec, deep):
 def sentiment_score(rec):
     tr = rec.get("tipranks") or {}
     vals = []
-    for key in ("newsSentiment", "newsSentimentMM"):
+    for key in ("newsSentiment", "newsSentimentTR", "newsSentimentMM"):
         v = SENTIMENT_SCORE.get(str(tr.get(key)))
         if v is not None:
             vals.append(v)
