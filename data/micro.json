@@ -1,35 +1,35 @@
 {
- "updatedAt": "2026-07-12T16:36:19+00:00",
- "methodology": "Composite 0-100 = momentum 20% + commodity-alignment 20% + deep-dive 15% + analyst 15% + TipRanks SmartScore 10% + news sentiment 10% + quality 10% (missing sub-scores redistribute). High = long candidate, low = short candidate. Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc.",
+ "updatedAt": "2026-07-12T16:58:44+00:00",
+ "methodology": "Composite 0-100 = momentum 20% + commodity-alignment 20% + deep-dive 15% + analyst 15% + TipRanks SmartScore 10% + news sentiment 10% + quality 10% (missing sub-scores redistribute). High = long candidate, low = short candidate. Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner.",
  "macro": "Hawkish Fed (64% Sept hike priced), strong dollar (DXY ~100.8), US-Iran conflict volatility with 60-day peace talks; metals complex broadly correcting after H1 melt-up. Q4 consensus: dollar downtrend -> possible precious rebound window in Q3/Q4.",
  "commodityBias": [
   {
    "material": "Carbon/Raw Steel",
    "bias": "long",
    "score": 2,
-   "confidence": "high",
-   "evidence": "US HRC >$1,100/st after Q4-25/Q1-26 rebound; 50% S232 tariffs keep imports down 26% YoY; supply tight (outages, lead times); NUE +23% in 3M; Cato/AISI: market likely to stay tight. China HC futures stabilizing/rebounding. Risk: PMI-driven demand softness."
+   "confidence": "high (ceiling risk per Jul MMO)",
+   "evidence": "US HRC >$1,100/st after Q4-25/Q1-26 rebound; 50% S232 tariffs keep imports down 26% YoY; supply tight (outages, lead times); NUE +23% in 3M; Cato/AISI: market likely to stay tight. China HC futures stabilizing/rebounding. Risk: PMI-driven demand softness. | MetalMiner: HRC buy 3-5mo ahead (Jun MMO); Jul: futures sideways = near-term ceiling risk, imports highest since Jul-25; HRC $1,124/st (+3.6% Jun), CRC $1,338 & HDG $1,404 broke resistance (buy 0-3mo); Nucor CSP $1,130; S/R: HRC 1,078/1,207"
   },
   {
    "material": "Electrical Steel",
    "bias": "long",
    "score": 1,
    "confidence": "low",
-   "evidence": "Rides carbon-steel tariff regime + grid/transformer demand; no direct price series."
+   "evidence": "Rides carbon-steel tariff regime + grid/transformer demand; no direct price series. | MetalMiner: GOES sideways range, lower half \u2014 cover near-term + layer on dips; Baosteel hiked GOES +200-300 RMB/mt; transformer/grid demand constructive"
   },
   {
    "material": "Aluminum",
    "bias": "short",
    "score": -1,
    "confidence": "medium",
-   "evidence": "War premium unwound after US-Iran MoU: LME fell from >$3,700 to ~$3,100-3,200; June -16% = worst month since 2008; China/Indonesia supply expansions restoring balance; range-bound $3,300-3,400 cap. LME still +45% YoY (producers' Q results strong)."
+   "evidence": "War premium unwound after US-Iran MoU: LME fell from >$3,700 to ~$3,100-3,200; June -16% = worst month since 2008; China/Indonesia supply expansions restoring balance; range-bound $3,300-3,400 cap. LME still +45% YoY (producers' Q results strong). | MetalMiner: Jul MMO: 'purchase as needed' (downgraded from Jun 'buy ahead 0-3mo'); LME -15.55% Jun to $3,112/mt; drivers flipped negative (Iran resolution, Novelis Oswego return, rising USD); US A356 $2.914/lb flat, 26% of 1M range"
   },
   {
    "material": "Copper",
    "bias": "long",
    "score": 2,
    "confidence": "medium",
-   "evidence": "LME ~$13.4K (+7.2% YTD, -8% off Jan record $14.5K); tight fundamentals (falling LME stocks, TC declining, concentrate shortage); AI/energy-transition demand; live two-sided catalyst = US refined-copper tariff decision (15% 2027/30% 2028) - confirmation bullish; sell-side 'buy dips', $15K targets."
+   "evidence": "LME ~$13.4K (+7.2% YTD, -8% off Jan record $14.5K); tight fundamentals (falling LME stocks, TC declining, concentrate shortage); AI/energy-transition demand; live two-sided catalyst = US refined-copper tariff decision (15% 2027/30% 2028) - confirmation bullish; sell-side 'buy dips', $15K targets. | MetalMiner: Closed above resistance -> buy 3-5mo ahead; MetalMiner shifting primary forecast to Comex; LME cash $13,356.5 (7/9), trend UP strength 2, bullish"
   },
   {
    "material": "Gold",
@@ -43,21 +43,21 @@
    "bias": "short",
    "score": -1,
    "confidence": "low",
-   "evidence": "SI $60.2: -11.5% 1M, -21% 3M, halved from Jan squeeze peak $115; same macro drivers as gold + industrial demand; extremely volatile, squeeze-prone."
+   "evidence": "SI $60.2: -11.5% 1M, -21% 3M, halved from Jan squeeze peak $115; same macro drivers as gold + industrial demand; extremely volatile, squeeze-prone. | MetalMiner: Comex spot $59.81, short-term UP strength 3 but only 14% of 1M range \u2014 bounce within downtrend"
   },
   {
    "material": "PGM",
    "bias": "short",
    "score": -2,
    "confidence": "high",
-   "evidence": "Platinum -21..-27% from Jan record after +125% 2025; UBS cut forecasts $300/oz, surplus risk YE; palladium in clear structural surplus (ICE substitution decline); consensus 'weak oscillation, lower H2 center'; pair idea in street research: long Pt / short Pd. PPLT -15% vs 200DMA, PALL -16%."
+   "evidence": "Platinum -21..-27% from Jan record after +125% 2025; UBS cut forecasts $300/oz, surplus risk YE; palladium in clear structural surplus (ICE substitution decline); consensus 'weak oscillation, lower H2 center'; pair idea in street research: long Pt / short Pd. PPLT -15% vs 200DMA, PALL -16%. | MetalMiner: Platinum sponge US $1,636/ozt flat, 30% of 1M range"
   },
   {
    "material": "Lithium",
    "bias": "neutral",
    "score": 0,
    "confidence": "low",
-   "evidence": "Two-sided: carbonate +1/3 YTD, DoD $300M 5-yr stockpile tender, Zimbabwe export ban, 2026 supply growth < demand (tight balance thesis); BUT July futures weakening on CATL Jianxiawo restart + 3Mt/yr West Africa plant + slowing EV growth; carbonate-spodumene spreads normalizing. LIT -12.5% vs 50DMA after huge run."
+   "evidence": "Two-sided: carbonate +1/3 YTD, DoD $300M 5-yr stockpile tender, Zimbabwe export ban, 2026 supply growth < demand (tight balance thesis); BUT July futures weakening on CATL Jianxiawo restart + 3Mt/yr West Africa plant + slowing EV growth; carbonate-spodumene spreads normalizing. LIT -12.5% vs 50DMA after huge run. | MetalMiner: LiOH China \u20ac18,079.58/mt, trend DOWN strength 2, at bottom of 1M range \u2014 bearish near term; CBC weekly: avoid stockpiling before Jianxiawo output materializes"
   },
   {
    "material": "Cathode/Cells/EV",
@@ -78,21 +78,21 @@
    "bias": "neutral",
    "score": 0,
    "confidence": "medium",
-   "evidence": "LME ~$16.5K; weak oscillation, stainless off-season, Indonesia quota decision (July window) is the swing factor; pessimism largely priced, bottoming, but upside capped unless macro turns; nickel-steel ratio at 3-yr low."
+   "evidence": "LME ~$16.5K; weak oscillation, stainless off-season, Indonesia quota decision (July window) is the swing factor; pessimism largely priced, bottoming, but upside capped unless macro turns; nickel-steel ratio at 3-yr low. | MetalMiner: LME 3M $16,535 flat, 17% of 1M range; stainless off-season, China port nickel-ore stocks record 4.735Mt, ferrochrome tender cuts -> bearish sentiment"
   },
   {
    "material": "Zinc/Lead/Tin",
    "bias": "long",
    "score": 1,
    "confidence": "medium",
-   "evidence": "Tin is the star: $53.3K, Myanmar/Wa State supply extremely inelastic, AI-server solder demand -> leading base-metal gains. Zinc $3.57-3.59K supported by tight mine supply, short-term bullish. Lead weak both ways. Group bias driven by tin."
+   "evidence": "Tin is the star: $53.3K, Myanmar/Wa State supply extremely inelastic, AI-server solder demand -> leading base-metal gains. Zinc $3.57-3.59K supported by tight mine supply, short-term bullish. Lead weak both ways. Group bias driven by tin. | MetalMiner: Tin LME $53,450 UP strength-2 bullish (67% of range); zinc China CNY24,810 at 100% of 1M range, supply tightening (Lady Loretta EOL -22.3kt, Kazzinc -13.8kt, Red Dog); lead below ST support -> buy dips only"
   },
   {
    "material": "Cobalt",
    "bias": "neutral",
    "score": 0,
    "confidence": "low",
-   "evidence": "DRC supply risk underpins hydroxide, but downstream inventories too high for pass-through; relative-value not directional."
+   "evidence": "DRC supply risk underpins hydroxide, but downstream inventories too high for pass-through; relative-value not directional. | MetalMiner: Cobalt sulfate China \u20ac11.195/kg flat, 9% of 1M range"
   },
   {
    "material": "Manganese",
@@ -285,6 +285,11 @@
      "source": "TipRanks",
      "date": "2026-07-12",
      "note": "Buy consensus, PT $270 (+18.8%)"
+    },
+    {
+     "source": "MetalMiner Jul MMO",
+     "date": "2026-07-01",
+     "note": "Nucor CSP hit $1,130/st on successive hikes; mills well-booked, buyers report limited leverage. Jul caveat: HRC futures sideways + imports rising = near-term ceiling risk"
     }
    ],
    "omLinkage": 9,
@@ -406,6 +411,11 @@
      "source": "TipRanks",
      "date": "2026-07-12",
      "note": "Buy, PT $71.97 (+17%)"
+    },
+    {
+     "source": "MetalMiner Jun MMO",
+     "date": "2026-06-01",
+     "note": "Copper closed above resistance -> 'buy 3-5 months ahead'; MetalMiner shifting primary forecasting to Comex (US price premium regime)"
     }
    ],
    "omLinkage": 9,
@@ -524,6 +534,11 @@
      "source": "TipRanks",
      "date": "2026-07-12",
      "note": "Buy consensus, PT $265 (+16%)"
+    },
+    {
+     "source": "MetalMiner Jun MMO",
+     "date": "2026-06-01",
+     "note": "STLD announced 10-13% HDG price increases effective July 6; HDG $1,404/st broke resistance"
     }
    ],
    "omLinkage": 9,
@@ -1317,6 +1332,11 @@
      "source": "Sina/Chinatimes",
      "date": "2026-07-07",
      "note": "LME tin $53.3K; Wa State restart lagging; AI demand"
+    },
+    {
+     "source": "MetalMiner",
+     "date": "2026-07-09",
+     "note": "LME tin $53,450 cash, trend UP strength 2, bullish sentiment"
     }
    ],
    "omLinkage": 9,
@@ -2678,6 +2698,11 @@
      "source": "MT Newswires",
      "date": "2026-07-10",
      "note": "Q2 production beat guidance 6% (35kt vs 33kt)"
+    },
+    {
+     "source": "MetalMiner/CBC",
+     "date": "2026-07-10",
+     "note": "CBC lithium weekly: avoid stockpiling before Jianxiawo output lands \u2014 spodumene price risk into Q3"
     }
    ],
    "omLinkage": 9,
@@ -2731,6 +2756,11 @@
      "source": "Market Screener",
      "date": "2026-07-07",
      "note": "Q1 adj EBITDA +148% YoY to $664M"
+    },
+    {
+     "source": "MetalMiner/CBC",
+     "date": "2026-07-10",
+     "note": "LiOH China \u20ac18,079/mt at bottom of 1M range, trend down \u2014 near-term headwind to adds"
     }
    ],
    "omLinkage": 9,
@@ -3785,6 +3815,11 @@
      "source": "TipRanks",
      "date": "2026-07-12",
      "note": "0 buys / 7 holds / 1 sell"
+    },
+    {
+     "source": "MetalMiner Jul MMO",
+     "date": "2026-07-01",
+     "note": "Completed commissioning (new capacity) amid mills' upcycle; auto-heavy mix vs HDG strength cushions the short slightly"
     }
    ],
    "omLinkage": 9,
@@ -4252,6 +4287,11 @@
      "source": "FMP",
      "date": "2026-07-12",
      "note": "-21% vs 50DMA"
+    },
+    {
+     "source": "MetalMiner Jul MMO",
+     "date": "2026-07-01",
+     "note": "Restarted 50kt Mt. Holly capacity (+10% US primary output) and sold idled Hawesville smelter on unsustainable power costs"
     }
    ],
    "omLinkage": 9,
@@ -4481,6 +4521,11 @@
      "source": "Nikkei/Focus Malaysia",
      "date": "2026-07-09/10",
      "note": "LME back to pre-conflict $3,100-3,200; June -16%, worst since 2008"
+    },
+    {
+     "source": "MetalMiner Jul MMO",
+     "date": "2026-07-01",
+     "note": "Aluminum buying signal downgraded to 'purchase as needed'; LME -15.55% in June, drivers flipped negative"
     }
    ],
    "omLinkage": 9,

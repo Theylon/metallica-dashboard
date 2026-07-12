@@ -255,7 +255,7 @@ def main():
         "methodology": ("Composite 0-100 = momentum 20% + commodity-alignment 20% + deep-dive 15% "
                         "+ analyst 15% + TipRanks SmartScore 10% + news sentiment 10% + quality 10% "
                         "(missing sub-scores redistribute). High = long candidate, low = short candidate. "
-                        "Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc."),
+                        "Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner."),
         "macro": bias_doc.get("macro", ""),
         "commodityBias": [
             {"material": b["material"], "bias": b["bias"], "score": b["score"],

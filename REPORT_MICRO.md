@@ -1,8 +1,28 @@
 # Metallica — Micro-Analysis & Stock-Picking Report
 
 **As of:** 2026-07-12 · **NAV:** ~$10,953 · **Book:** 27 positions, gross ~69%, net ~-31%
-**Sources:** IBKR (live positions), FMP (quotes/momentum), TipRanks (analyst refresh), Bigdata.com (news/filings/transcripts), Carbon Arc (US vehicle registrations), MetalMiner Excel universe (204 names, OM linkage + enrichment).
-**Not available this session:** MetalMiner MCP (tool calls require approval) — commodity biases were derived from FMP price series + ETF momentum + Bigdata.com narrative instead. FMP is on the Free plan (per-symbol commodity quotes and analyst endpoints blocked; batch quotes worked).
+**Sources:** IBKR (live positions), FMP (quotes/momentum), TipRanks (analyst refresh), Bigdata.com (news/filings/transcripts), Carbon Arc (US vehicle registrations), **MetalMiner MCP (live: spot prices, support/resistance, MMO buying strategies)**, MetalMiner Excel universe (204 names, OM linkage + enrichment).
+**Limitations:** FMP is on the Free plan (per-symbol commodity quotes and analyst endpoints blocked; batch quotes worked). MetalMiner answers one entity per query; gold has no MetalMiner series (FMP used).
+
+### MetalMiner live layer (added 2026-07-12)
+
+| Metal | Spot (as of) | MetalMiner read |
+|---|---|---|
+| HRC US | $1,124/st (7/1), S/R $1,078/$1,207 | Jun MMO: buy 3-5mo ahead; **Jul: futures sideways = near-term ceiling risk, imports highest since Jul-25**; Nucor CSP $1,130 |
+| CRC / HDG US | $1,338 / $1,404/st | Both broke above resistance → buy 0-3mo (bullish); STLD hiked HDG 10-13% eff. 7/6 |
+| GOES US | lower half of range | Cover near-term + layer on dips; Baosteel hiking GOES premiums; grid demand constructive |
+| Aluminum | LME $3,112 (-15.55% Jun); US A356 $2.914/lb | **Jul MMO downgraded to "purchase as needed"** (from "buy ahead") — drivers flipped negative. Century restarted Mt. Holly 50kt (+10% US primary), sold Hawesville |
+| Copper | LME cash $13,356.5, trend UP str-2 | Closed above resistance → **buy 3-5mo ahead**; MetalMiner shifting primary forecast to Comex |
+| Nickel | LME 3M $16,535, 17% of range | Stainless off-season; record China port ore stocks (4.74Mt); ferrochrome tender cuts — bearish tilt |
+| Tin | LME $53,450, UP str-2, bullish | 67% of 1M range; China consumption resisting high prices |
+| Zinc | China CNY 24,810 at 100% of 1M range | Supply tightening: Lady Loretta EOL, Kazzinc -13.8kt, Red Dog |
+| Lead | below ST support | "Purchase as needed", dip-buying only |
+| Silver | Comex $59.81, ST UP str-3 | Bounce within downtrend (14% of range) |
+| Platinum | US sponge $1,636, flat | 30% of 1M range |
+| Lithium | LiOH China €18,079.58, DOWN str-2, at range bottom | CBC weekly: avoid stockpiling before CATL Jianxiawo output lands |
+| Cobalt | Sulfate China €11.195/kg, flat | 9% of range, quiet |
+
+**Impact on the calls:** MetalMiner *confirms* every major recommendation — copper long ("buy 3-5mo" = FCX add), aluminum short (signal downgraded to "as needed" = keep AA/CENX shorts), tin long, lithium near-term caution (no ALB add yet), nickel neutral-bearish — and adds one *new nuance*: the July MMO flags a possible **near-term HRC ceiling** (sideways futures + rising imports), which softens the urgency of covering NUE/STLD at any price: covering into weakness/pullbacks is acceptable, but the shorts remain thesis-conflicted and should still go.
 
 ---
 
