@@ -349,8 +349,17 @@ td:first-child { text-align: left; }
 .score-cell { display: flex; align-items: center; gap: 6px; justify-content: flex-end; }
 .score-bar { width: 54px; height: 5px; border-radius: 3px; background: rgba(123,130,160,0.18); overflow: hidden; flex-shrink: 0; }
 .score-bar > div { height: 100%; border-radius: 3px; }
-.picks-detail td { background: rgba(99,102,241,0.05); font-size: 11.5px; line-height: 1.55; padding: 10px 14px; }
+.picks-detail td { background: rgba(99,102,241,0.05); font-size: 11.5px; line-height: 1.55; padding: 12px 16px; }
 .picks-row { cursor: pointer; }
+.detail-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 8px; }
+.detail-chip { background: rgba(123,130,160,0.10); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 10.5px; }
+.detail-chip b { font-size: 11.5px; }
+.detail-section { margin-top: 8px; }
+.detail-section > .ds-title { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3px; }
+.detail-reco { border-left: 3px solid var(--accent); background: rgba(99,102,241,0.10); border-radius: 4px; padding: 6px 10px; margin-top: 8px; }
+.subscore-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.subscore { display: flex; align-items: center; gap: 5px; font-size: 10.5px; color: var(--text-muted); }
+.subscore .score-bar { width: 40px; }
 
 /* ── Benchmark Table ────────────────────────────────────────────────── */
 .bm-table-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border); }
@@ -1251,6 +1260,84 @@ function renderPicks() {
   if (mm && micro.methodology) mm.textContent = 'Methodology: ' + micro.methodology + (micro.macro ? ' · Macro: ' + micro.macro : '') + ' · Updated ' + (micro.updatedAt || '');
 }
 
+// full per-ticker card: everything we know about the name in one expandable panel
+function buildPickDetail(r) {
+  const fmtM = v => v === null || v === undefined ? '—'
+    : v >= 1e12 ? '$' + (v / 1e12).toFixed(2) + 'T' : v >= 1e9 ? '$' + (v / 1e9).toFixed(2) + 'B'
+    : v >= 1e6 ? '$' + (v / 1e6).toFixed(1) + 'M' : '$' + Math.round(v).toLocaleString();
+  const pct = v => v === null || v === undefined ? '—' : (v > 0 ? '+' : '') + Number(v).toFixed(1) + '%';
+  const chip = (label, val) => `<span class="detail-chip">${label}: <b>${val}</b></span>`;
+  const section = (title, body) => body ? `<div class="detail-section"><div class="ds-title">${title}</div>${body}</div>` : '';
+
+  let out = `<b style="font-size:13px;">${r.company || r.ticker}</b>`
+    + ` <span style="color:var(--text-muted);">· ${r.material || '—'} · ${r.role || '—'}${r.capTier ? ' · ' + r.capTier + ' cap' : ''}${r.country ? ' · ' + r.country : ''}${r.exchange ? ' · ' + r.exchange : ''}</span>`;
+
+  // market snapshot chips
+  out += `<div class="detail-chips">`
+    + chip('Price', r.price !== null && r.price !== undefined ? '$' + r.price : '—')
+    + chip('Mkt Cap', fmtM(r.marketCap))
+    + chip('vs 50DMA', pct(r.vs50)) + chip('vs 200DMA', pct(r.vs200))
+    + chip('52w position', r.range52w !== null && r.range52w !== undefined ? Math.round(r.range52w) + '%' : '—')
+    + chip('Group rank', r.groupRank || '—') + chip('Model coverage', r.coverage + '%')
+    + (r.omLinkage !== null && r.omLinkage !== undefined ? chip('OM linkage', r.omLinkage + '/9') : '')
+    + `</div>`;
+
+  // live position
+  if (r.position) {
+    const p = r.position;
+    const pnlCol = (p.unrealizedPnl || 0) >= 0 ? 'var(--green)' : 'var(--red)';
+    out += section('Live position (IBKR)',
+      `<span class="pick-badge ${r.held}">${r.held.toUpperCase()}</span> ${Math.abs(p.shares)} sh · avg cost $${p.avgCost} · last $${p.lastPrice} · MV $${p.mktValue} · `
+      + `unrealized <b style="color:${pnlCol};">${(p.unrealizedPnl >= 0 ? '+$' : '-$') + Math.abs(p.unrealizedPnl).toFixed(2)}</b>`);
+  }
+
+  // recommendation + justification
+  if (r.recommendation) {
+    out += `<div class="detail-reco"><b>Recommendation: ${r.recommendation.action}</b>`
+      + (r.recommendation.urgency && r.recommendation.urgency !== 'none' ? ` <span style="color:var(--text-muted);">(urgency: ${r.recommendation.urgency})</span>` : '')
+      + `<br><span style="color:var(--text-muted);">${r.recommendation.rationale}</span></div>`;
+  }
+
+  // score breakdown
+  const subNames = { momentum: 'Momentum', commodity: 'Commodity', deep: 'Deep-dive', analyst: 'Analyst', smart: 'SmartScore', sentiment: 'Sentiment', quality: 'Quality' };
+  const subsHtml = Object.entries(r.subs || {}).filter(([, v]) => v !== null && v !== undefined).map(([k, v]) =>
+    `<span class="subscore">${subNames[k] || k} <span class="score-bar"><span style="display:block;height:100%;border-radius:3px;width:${v * 10}%;background:${scoreColor(v * 10)};"></span></span> <b>${v}</b></span>`).join('');
+  out += section(`Composite score ${r.composite} — sub-scores (0-10)`, `<div class="subscore-grid">${subsHtml}</div>`);
+
+  // analyst snapshot
+  if (r.analyst && Object.keys(r.analyst).length) {
+    const a = r.analyst;
+    const bits = [];
+    if (a.consensus) bits.push(`Consensus <b>${a.consensus}</b>`);
+    if (a.priceTarget) bits.push(`PT <b>$${a.priceTarget}</b>` + (a.upsidePct !== null && a.upsidePct !== undefined ? ` (<b>${pct(a.upsidePct)}</b>)` : ''));
+    if (a.buys !== undefined && a.buys !== null) bits.push(`B/H/S <b>${a.buys}/${a.holds ?? 0}/${a.sells ?? 0}</b>`);
+    if (a.smartScore) bits.push(`SmartScore <b>${a.smartScore}/10</b>`);
+    const x = r.tipranksExtra || {};
+    if (x.newsSentiment) bits.push(`News sentiment <b>${x.newsSentiment}</b>`);
+    if (x.newsBuzz) bits.push(`Buzz <b>${x.newsBuzz}</b>`);
+    if (x.hedgeFundTrend) bits.push(`Hedge funds <b>${x.hedgeFundTrend}</b>`);
+    if (x.insiderTrend) bits.push(`Insiders <b>${x.insiderTrend}</b>`);
+    if (x.blogger) bits.push(`Bloggers <b>${x.blogger}</b>`);
+    out += section('Analyst & sentiment (TipRanks)', bits.join(' · '));
+  }
+
+  // commodity backdrop for this material
+  const bias = (micro.commodityBias || []).find(b => b.material === r.material);
+  if (bias) {
+    out += section(`Commodity backdrop — ${r.material}`,
+      `<span class="pick-badge ${bias.bias === 'long' ? 'long' : bias.bias === 'short' ? 'short' : 'neutral'}">${bias.bias.toUpperCase()}</span> `
+      + `<span style="color:var(--text-muted);">(${bias.confidence}) ${bias.evidence}</span>`);
+  }
+  if (r.omEvidence) out += section('Commodity linkage evidence (Bigdata.com)', `<span style="color:var(--text-muted);">${r.omEvidence}</span>`);
+
+  out += section('Thesis', r.thesis ? `${r.thesis}` : '');
+  out += section('Catalysts', (r.catalysts || []).length ? r.catalysts.join(' · ') : '');
+  out += section('Risks', (r.risks || []).length ? r.risks.join(' · ') : '');
+  const ev = (r.evidence || []).map(e => `• <b>${e.source}</b> (${e.date}): ${e.note}`).join('<br>');
+  out += section('Evidence', ev);
+  return out;
+}
+
 function renderPicksTable() {
   const tb = document.getElementById('picks-tbody');
   if (!tb) return;
@@ -1288,14 +1375,7 @@ function renderPicksTable() {
       + `<td style="color:var(--text-muted);">${r.groupRank || '—'}</td>`
       + `<td style="text-align:left;">${verdict}</td></tr>`;
     if (picksExpanded === r.ticker) {
-      const ev = (r.evidence || []).map(e => `• <b>${e.source}</b> (${e.date}): ${e.note}`).join('<br>');
-      html += `<tr class="picks-detail"><td colspan="11" style="text-align:left;">`
-        + `<b>${r.company || r.ticker}</b> — ${r.role || ''} · ${r.capTier || ''} · coverage ${r.coverage}%${r.omLinkage !== null && r.omLinkage !== undefined ? ' · OM linkage ' + r.omLinkage + '/9' : ''}<br>`
-        + (r.thesis ? `<b>Thesis:</b> ${r.thesis}<br>` : '')
-        + ((r.catalysts || []).length ? `<b>Catalysts:</b> ${r.catalysts.join(' · ')}<br>` : '')
-        + ((r.risks || []).length ? `<b>Risks:</b> ${r.risks.join(' · ')}<br>` : '')
-        + (ev ? `<b>Evidence:</b><br>${ev}` : '')
-        + `</td></tr>`;
+      html += `<tr class="picks-detail"><td colspan="11" style="text-align:left;">${buildPickDetail(r)}</td></tr>`;
     }
     return html;
   }).join('') : '<tr class="empty-row"><td colspan="11">No names match the filter</td></tr>';
