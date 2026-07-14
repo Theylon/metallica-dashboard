@@ -20,16 +20,15 @@ import glob
 import json
 import os
 import pathlib
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from micro_score import WEIGHTS, clamp, momentum_score, composite_from_subs, rank_within_groups
 
 DATA = pathlib.Path(__file__).resolve().parent.parent / "data"
 SRC = pathlib.Path(os.environ.get(
     "MICRO_SRC",
     "/tmp/claude-0/-home-user-metallica-dashboard/a09c6b1b-2269-59e4-b962-3c7699dcd40f/scratchpad"))
-
-WEIGHTS = {
-    "momentum": 0.18, "commodity": 0.18, "deep": 0.14, "analyst": 0.13,
-    "fundamentals": 0.12, "sentiment": 0.09, "smart": 0.08, "quality": 0.08,
-}
 
 CONSENSUS_SCORE = {
     "StrongBuy": 10, "Strong Buy": 10, "Buy": 8, "ModerateBuy": 7, "Moderate Buy": 7,
@@ -44,28 +43,11 @@ ROLE_SCORE = {"Producer": 8, "Royalty": 9, "Streaming": 9, "Distributor": 6, "Pr
               "Consumer": 5, "ETF": 5, "Explorer": 2, "Developer": 3}
 
 
-def clamp(v, lo=0.0, hi=10.0):
-    return max(lo, min(hi, v))
-
-
 def load(name, default):
     p = SRC / name
     if p.exists():
         return json.loads(p.read_text())
     return default
-
-
-def momentum_score(q):
-    if not q or q.get("suspect"):
-        return None
-    s = 5.0
-    if q.get("vs50") is not None:
-        s += clamp(q["vs50"] / 6.0, -2.5, 2.5)      # ±15% vs 50DMA saturates
-    if q.get("vs200") is not None:
-        s += clamp(q["vs200"] / 12.0, -2.5, 2.5)    # ±30% vs 200DMA saturates
-    if q.get("range52w") is not None:
-        s += (q["range52w"] - 50.0) / 25.0          # 52w-range position, ±2
-    return clamp(s)
 
 
 def commodity_score(rec, bias_by_material):
@@ -229,11 +211,9 @@ def main():
             "sentiment": sentiment_score(rec),
             "quality": quality_score(rec, q),
         }
-        avail = {k: v for k, v in subs.items() if v is not None}
-        if not avail:
+        composite, coverage = composite_from_subs(subs)
+        if composite is None:
             continue
-        wsum = sum(WEIGHTS[k] for k in avail)
-        composite = sum(WEIGHTS[k] * v for k, v in avail.items()) / wsum * 10.0
 
         # full analyst snapshot: deep-dive refresh first, Excel TipRanks as fallback
         tr = rec.get("tipranks") or {}
@@ -271,9 +251,9 @@ def main():
             "marketCap": q.get("marketCap") if q else None,
             "tradable": tradable(rec, q),
             "quoteSuspect": bool(q and q.get("suspect")),
-            "composite": round(composite, 1),
+            "composite": composite,
             "subs": {k: (round(v, 1) if v is not None else None) for k, v in subs.items()},
-            "coverage": round(wsum / sum(WEIGHTS.values()) * 100),
+            "coverage": coverage,
             "microVerdict": d.get("microVerdict") if d else None,
             "thesis": d.get("thesis") if d else None,
             "catalysts": d.get("catalysts", []) if d else [],
@@ -341,19 +321,14 @@ def main():
                 out_tickers[-1]["subs"]["fundamentals"] = fs
 
     # rank within material group (tradable names only get ranks)
-    by_mat = {}
-    for r in out_tickers:
-        if r["composite"] is not None and r["tradable"]:
-            by_mat.setdefault(r["material"], []).append(r)
-    for mat, rows in by_mat.items():
-        rows.sort(key=lambda r: -r["composite"])
-        for i, r in enumerate(rows, 1):
-            r["groupRank"] = f"{i}/{len(rows)}"
+    rank_within_groups(out_tickers)
 
     out_tickers.sort(key=lambda r: (-(r["composite"] or -1)))
 
+    _now = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
     out = {
-        "updatedAt": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
+        "updatedAt": _now,
+        "researchAsOf": _now,   # full MCP research build time; micro_refresh.py bumps only pricesRefreshedAt
         "methodology": ("Composite 0-100 = momentum 18% + commodity-alignment 18% + deep-dive 14% "
                         "+ analyst 13% + fundamentals 12% + news sentiment 9% + SmartScore 8% + quality 8% "
                         "(missing sub-scores redistribute). High = long candidate, low = short candidate. "

@@ -1257,7 +1257,13 @@ function renderPicks() {
   const sn = document.getElementById('sizing-note');
   if (sn) sn.textContent = micro.sizingNote || '';
   const mm = document.getElementById('picks-methodology');
-  if (mm && micro.methodology) mm.textContent = 'Methodology: ' + micro.methodology + (micro.macro ? ' · Macro: ' + micro.macro : '') + ' · Updated ' + (micro.updatedAt || '');
+  if (mm && micro.methodology) {
+    const fmtTs = t => t ? t.replace('T', ' ').replace(/(\+00:00|Z)$/, ' UTC') : '—';
+    const prices = micro.pricesRefreshedAt || micro.updatedAt;
+    const research = micro.researchAsOf || micro.updatedAt;
+    mm.textContent = 'Methodology: ' + micro.methodology + (micro.macro ? ' · Macro: ' + micro.macro : '')
+      + ' · Prices refreshed ' + fmtTs(prices) + ' (4×/day) · Research as of ' + fmtTs(research) + ' (daily pre-market)';
+  }
 }
 
 // full per-ticker card: everything we know about the name in one expandable panel
