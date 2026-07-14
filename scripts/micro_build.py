@@ -250,6 +250,17 @@ def hedge_block(hf):
             "modelDerived": bool(hf.get("modelDerived")), "asOf": hf.get("asOf")}
 
 
+def load_hedge_map():
+    """Merge every hedge_*.json into {ticker: entry}. hedge_auto.json (the fallback)
+    sorts first, so live hedge_r*.json research shards override it (same trick as
+    deep_auto vs deep_r*). Also used by micro_refresh.py to backfill the layer."""
+    hedge = {}
+    for f in sorted(glob.glob(str(SRC / "hedge_*.json"))):
+        for n in json.loads(pathlib.Path(f).read_text()).get("names", []):
+            hedge[n["ticker"]] = n
+    return hedge
+
+
 def main():
     universe = json.loads((DATA / "universe.json").read_text())
     quotes = load("quotes.json", {}).get("quotes", {})
@@ -272,11 +283,7 @@ def main():
     # hedge_auto.json (deterministic fallback) sorts first, so any live hedge_r*.json
     # research shard overwrites it — same load-order trick as deep_auto vs deep_r*.
     yahoo = load("yahoo.json", {"quotes": {}}).get("quotes", {})
-    hedge = {}
-    for f in sorted(glob.glob(str(SRC / "hedge_*.json"))):
-        doc = json.loads(pathlib.Path(f).read_text())
-        for n in doc.get("names", []):
-            hedge[n["ticker"]] = n
+    hedge = load_hedge_map()
 
     out_tickers = []
     for rec in universe["tickers"]:

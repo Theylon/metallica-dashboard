@@ -22,7 +22,7 @@ import yfinance as yf
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from micro_score import momentum_score, composite_from_subs, rank_within_groups
-from micro_build import cross_validation
+from micro_build import cross_validation, hedge_block, load_hedge_map
 
 DATA = pathlib.Path(__file__).resolve().parent.parent / "data"
 CHUNK = 50
@@ -116,6 +116,20 @@ def main():
         refreshed += 1
 
     rank_within_groups(records)
+
+    # Backfill the AI Hedge Fund layer from the committed hedge_*.json (no network,
+    # no cost). The research Routine's micro_build owns creating hedgeFund, but master's
+    # micro.json is refreshed here far more often — so if a row is MISSING the layer
+    # (e.g. right after this feature ships, before the next daily research build), attach
+    # the deterministic fallback verdict. Rows that already carry a (possibly researched)
+    # hedgeFund are left untouched so this never clobbers the richer layer.
+    hedge_map = load_hedge_map()
+    if hedge_map:
+        for r in records:
+            if not r.get("hedgeFund"):
+                hf = hedge_block(hedge_map.get(r["ticker"]))
+                if hf:
+                    r["hedgeFund"] = hf
 
     # Refresh the Yahoo cross-check from the committed yahoo.json (no network here —
     # scripts/micro_yahoo.py produces it). hedgeCrossVal is derived from each row's
