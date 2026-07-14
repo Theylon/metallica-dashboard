@@ -1418,6 +1418,35 @@ function buildPickDetail(r) {
     `<span class="subscore">${subNames[k] || k} <span class="score-bar"><span style="display:block;height:100%;border-radius:3px;width:${v * 10}%;background:${scoreColor(v * 10)};"></span></span> <b>${v}</b></span>`).join('');
   out += section(`Composite score ${r.composite} — sub-scores (0-10)`, `<div class="subscore-grid">${subsHtml}</div>`);
 
+  // AI Hedge Fund multi-analyst verdict (concept ported from virattt/ai-hedge-fund, MIT)
+  if (r.hedgeFund && (r.hedgeFund.analysts || []).length) {
+    const hf = r.hedgeFund, agg = hf.aggregate || {}, tally = agg.tally || {};
+    const hfCls = s => s === 'bullish' ? 'long' : s === 'bearish' ? 'short' : 'neutral';
+    const hfColor = s => s === 'bullish' ? '#22c55e' : s === 'bearish' ? '#ef4444' : '#eab308';
+    let body = `<div style="margin-bottom:5px;">`
+      + `<span class="pick-badge ${hfCls(agg.signal)}">${(agg.signal || 'neutral').toUpperCase()}</span> `
+      + (agg.action ? `<b>${agg.action.toUpperCase()}</b> · ` : '')
+      + `conviction <b>${agg.confidence ?? '—'}%</b> `
+      + `<span style="color:var(--text-muted);">(bull ${tally.bull ?? 0} / bear ${tally.bear ?? 0} / neutral ${tally.neutral ?? 0})</span></div>`;
+    const bar = a => `<span class="subscore" title="${(a.reasoning || '').replace(/"/g, '&quot;')}">${a.name} `
+      + `<span class="score-bar"><span style="display:block;height:100%;border-radius:3px;width:${a.confidence}%;background:${hfColor(a.signal)};"></span></span> <b>${a.confidence}</b></span>`;
+    const others = hf.analysts.filter(a => a.type !== 'persona');
+    const personas = hf.analysts.filter(a => a.type === 'persona');
+    const subhead = t => `<div style="color:var(--text-dim);font-size:10px;margin:5px 0 1px;letter-spacing:.3px;">${t}</div>`;
+    if (others.length) body += subhead('Analytical & managers') + `<div class="subscore-grid">${others.map(bar).join('')}</div>`;
+    if (personas.length) body += subhead('Investor personas') + `<div class="subscore-grid">${personas.map(bar).join('')}</div>`;
+    const cv = r.hedgeCrossVal;
+    if (cv && cv.agreement) {
+      const cvCls = cv.agreement === 'agree' ? 'long' : cv.agreement === 'conflict' ? 'short' : 'neutral';
+      body += `<div class="detail-chips" style="margin-top:7px;">`
+        + `<span class="pick-badge ${cvCls}">Yahoo cross-check: ${cv.agreement.toUpperCase()}</span>`
+        + (cv.flags || []).map(fl => `<span class="detail-chip">${fl}</span>`).join('') + `</div>`;
+    }
+    out += section('AI Hedge Fund verdict'
+      + (hf.modelDerived ? ' <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--text-dim);">· model-derived (lenses over pipeline signals, not individually researched)</span>' : ''),
+      body);
+  }
+
   // analyst snapshot
   if (r.analyst && Object.keys(r.analyst).length) {
     const a = r.analyst;
