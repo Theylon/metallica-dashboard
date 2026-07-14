@@ -14,7 +14,16 @@ on:
     - cron: '0 16 * * 1-5'    # midday            — 12:00 ET
     - cron: '0 18 * * 1-5'    # early afternoon   — 14:00 ET
     - cron: '55 19 * * 1-5'   # just before close — 15:55 ET
-  workflow_dispatch: # Allow manual trigger from the Actions UI
+  workflow_dispatch: # Allow manual trigger from the Actions UI / dashboard button
+    inputs:
+      scope:
+        description: 'full = IBKR + research price refresh · ibkr = IBKR/benchmarks only (skip micro)'
+        type: choice
+        options:
+          - full
+          - ibkr
+        default: full
+        required: false
 
 # contents: commit the rolling P&L history · pages/id-token: deploy to GitHub Pages
 permissions:
@@ -56,7 +65,10 @@ jobs:
       # Refresh the Stock Picks tab's live price/score layer (yfinance, no MCP, no
       # secrets). The research layer in micro.json is untouched — it's rebuilt once
       # a day pre-market by a separate Claude routine. Non-fatal if yfinance hiccups.
+      # Skipped on an IBKR-only dashboard refresh (scope=ibkr). For push/schedule
+      # events inputs are empty, so `!= 'ibkr'` is true and this runs as before.
       - name: Refresh micro scores
+        if: ${{ github.event.inputs.scope != 'ibkr' }}
         run: python scripts/micro_refresh.py || echo "micro_refresh skipped (non-fatal)"
 
       - name: Commit rolling P&L history
