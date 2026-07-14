@@ -1,0 +1,545 @@
+{
+ "group": "bigdata-batch-1",
+ "names": [
+  {
+   "ticker": "ACH",
+   "held": null,
+   "microVerdict": "bearish",
+   "microScore": 4.0,
+   "thesis": "Fitch (Jun 9 2026) flags Chalco as one of the best-positioned APAC producers given its integrated bauxite-alumina-smelter chain and 55% green-power supply, and China spot aluminum ingot prices were ticking up into July (up ~RMB80-100/t on Jul 7 and the A-share aluminum sector rallying on Jul 10 amid claims prices are 'undervalued'). That domestic firmness cuts against the global aluminum SHORT call (LME -15.5% in June), so this reads as a relative-value long within a structurally weak global aluminum tape rather than an outright long; the $1B Guinea alumina JV (May 2026) adds capex/execution risk before it pays off.",
+   "catalysts": [
+    "Guinea alumina refinery (1.2Mt/yr capacity) progress and offtake",
+    "China domestic aluminum ingot price trend reversal",
+    "Green-power cost advantage vs peers"
+   ],
+   "risks": [
+    "Global LME aluminum price at -15.5% June backdrop",
+    "China property/construction demand weakness",
+    "Guinea political/regulatory risk on the $1B JV"
+   ],
+   "analyst": {
+    "Fitch": "Positive credit view on APAC low-cost integrated smelters incl. Chalco (Jun 2026)"
+   },
+   "evidence": [
+    {
+     "source": "Fitch Ratings",
+     "date": "2026-06-09",
+     "note": "Chalco benefits from integrated bauxite-alumina-smelter chain, 55% green power supply, favorable market conditions"
+    },
+    {
+     "source": "MT Newswires - Asia Pacific",
+     "date": "2026-05-22",
+     "note": "Chalco signs amended $1B Guinea mining accord for 1.2Mt/yr alumina refinery"
+    },
+    {
+     "source": "Flush Financial Services Network",
+     "date": "2026-07-10",
+     "note": "China A-share aluminum sector surges; Chalco up on claims aluminum price is undervalued"
+    },
+    {
+     "source": "Flush Financial Services Network",
+     "date": "2026-07-08",
+     "note": "Chalco China spot aluminum ingot prices rising ~RMB80-100/t day-over-day"
+    }
+   ]
+  },
+  {
+   "ticker": "5401.T",
+   "held": null,
+   "microVerdict": "bullish",
+   "microScore": 7.5,
+   "thesis": "Nippon Steel Vice Chairman Takahiro Mori told Reuters (Jun 18 2026) that US Steel, acquired for $14.9B in June 2025, is set for over 100 billion yen in profit this year and 300-400 billion yen long-term annual earnings, driven by steady demand and import tariffs - directly validating the steel LONG thesis (US HRC ~$1,124/st, tariff-tight). JBIC's financing exposure to the US Steel deal ($3.7B loan) and the Sanyo Special Steel merger (May 2026) reinforce a company actively consolidating and leaning into US-market steel exposure, though China steel weakness and Brazil/Usiminas import competition are an offsetting drag noted in Ternium's July 8 6-K.",
+   "catalysts": [
+    "US Steel earnings ramp toward 300-400bn yen annual run-rate",
+    "Sanyo Special Steel merger synergies",
+    "US tariff-driven HRC price ceiling"
+   ],
+   "risks": [
+    "China steel weak demand dragging global pricing",
+    "Brazil/LatAm import competition (Usiminas)",
+    "Yen/FX and integration risk post-US Steel deal"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "MT Newswires - Asia Pacific",
+     "date": "2026-06-18",
+     "note": "Nippon Steel Vice Chair forecasts US Steel profit >100bn yen this year, 300-400bn yen long-term"
+    },
+    {
+     "source": "MT Newswires - Asia Pacific",
+     "date": "2026-07-02",
+     "note": "JBIC financed $3.7B loan for Nippon Steel's US Steel acquisition amid US-China supply chain shift"
+    },
+    {
+     "source": "Edgar SEC Filings (Ternium 6-K)",
+     "date": "2026-07-08",
+     "note": "Ternium/Usiminas notes anti-dumping measures partially recovering Brazil steel prices into 2026"
+    }
+   ]
+  },
+  {
+   "ticker": "WS",
+   "held": null,
+   "microVerdict": "neutral",
+   "microScore": 5.5,
+   "thesis": "Worthington Steel's fiscal Q4 (Jun 24 2026) showed adjusted EPS of $0.74 vs $1.05 y/y and revenue of $929.2M missing the $992M FactSet estimate, with shares down 6.6% after-hours on 'tighter year-over-year value-added spreads' that management says are 'beginning to normalize.' The completed Kloeckner acquisition (largest in company history) and continued electrical-steel/xEV capacity buildout ($85M capex, ~70-100% spent) support a longer-term steel LONG narrative, and the company actively hedges price volatility via futures and CRU-mirrored contracts, but near-term execution has lagged the tariff-driven steel tailwind.",
+   "catalysts": [
+    "Kloeckner integration synergies",
+    "Electrical steel/xEV capacity ramp (new presses, transformer core capacity)",
+    "Value-added spread normalization"
+   ],
+   "risks": [
+    "Further spread compression",
+    "Integration risk from largest-ever acquisition",
+    "Automotive/xEV demand slowdown"
+   ],
+   "analyst": {
+    "FactSet consensus": "EPS $0.75 vs $0.74 actual; revenue $992M est vs $929.2M actual"
+   },
+   "evidence": [
+    {
+     "source": "MT Newswires",
+     "date": "2026-06-24",
+     "note": "FQ4 adjusted EPS $0.74 down from $1.05 y/y; shares down 6.6% after hours"
+    },
+    {
+     "source": "Edgar SEC Filings (8-K/investor deck)",
+     "date": "2026-06-25",
+     "note": "Kloeckner transaction completed; $85M electrical steel capex program; ~100% of contracts mirrored to manage steel price volatility"
+    }
+   ]
+  },
+  {
+   "ticker": "GMEXICOB.MX",
+   "held": null,
+   "microVerdict": "bullish",
+   "microScore": 7.0,
+   "thesis": "Grupo Mexico's Southern Copper subsidiary posted a 'record-breaking' Q1 2026 with net earnings up 67% YoY to $1.58B and EPS of $1.92 beating $1.81 consensus, and the group locked in funding for a long-stalled Peru copper mine (Jul 3 2026) - both squarely consistent with the copper LONG/US tariff-catalyst thesis. Near-term the parent stock slid 4% on Jul 8 amid a broader IPC selloff (Rio Times), and one retirement-stock screen flags 'majority ownership by Grupo Mexico adds concentration risk' to Southern Copper - the leverage cuts both ways.",
+   "catalysts": [
+    "Peru copper mine project funding/development",
+    "Southern Copper earnings momentum",
+    "US tariff-driven copper price support"
+   ],
+   "risks": [
+    "Mexico equity market volatility/IPC drawdown",
+    "Concentration risk / conglomerate discount",
+    "Silver/molybdenum byproduct price swings"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "The Rio Times",
+     "date": "2026-07-03",
+     "note": "Grupo Mexico locks in funding for long-stalled Peru copper mine; Q1 2026 EPS 0.22 beat by 10%"
+    },
+    {
+     "source": "AOL.com / MSN (Southern Copper coverage)",
+     "date": "2026-07-03",
+     "note": "Southern Copper Q1 2026 net income $1.58B, +67% YoY, record quarter; majority owned by Grupo Mexico"
+    },
+    {
+     "source": "The Rio Times",
+     "date": "2026-07-08",
+     "note": "Grupo Mexico slid 4% on ~$38M turnover amid broad IPC selloff"
+    }
+   ]
+  },
+  {
+   "ticker": "ANDR.VI",
+   "held": null,
+   "microVerdict": "bullish",
+   "microScore": 6.5,
+   "thesis": "Andritz confirmed FY2026 revenue guidance of EUR8-8.3bn after Q1 sales of EUR1.79bn and net income of EUR91.7M, and a Simply Wall St/Yahoo Finance screen (May 21 2026) pegs the stock as 35.2% undervalued on DCF; separately its average analyst price target was raised 12.71% to CZK2,138.49 (May 14 2026). New order wins (Saritas Turkey stainless steel plant, Jun 2026) in its Metals segment give it a levered but diversified (Metals/Hydro/Pulp&Paper/Environment) exposure to the electrical-steel and broader metals capex cycle rather than direct commodity price risk.",
+   "catalysts": [
+    "New order intake in Metals segment (stainless/electrical steel equipment)",
+    "FY2026 guidance delivery (EUR8-8.3bn revenue)",
+    "25th listing anniversary momentum/analyst re-rating"
+   ],
+   "risks": [
+    "Order book volatility tied to global steel capex cycles",
+    "Currency (EUR/CZK cross-listing effects)",
+    "Thin recent institutional ownership data (fund positions down ~99% per one screen, likely data artifact)"
+   ],
+   "analyst": {
+    "Consensus": "Avg 1yr PT raised 12.71% to CZK2,138.49 (May 14 2026)"
+   },
+   "evidence": [
+    {
+     "source": "Yahoo! Finance (Simply Wall St)",
+     "date": "2026-05-21",
+     "note": "Andritz ~35.2% below DCF fair value; FY2026 guidance EUR8-8.3bn revenue confirmed"
+    },
+    {
+     "source": "Nasdaq",
+     "date": "2026-05-14",
+     "note": "Average analyst price target raised 12.71% to CZK2,138.49"
+    },
+    {
+     "source": "PubT",
+     "date": "2026-06-11",
+     "note": "Andritz to supply equipment for new 800,000t/yr stainless steel plant in Turkey"
+    }
+   ]
+  },
+  {
+   "ticker": "AU",
+   "held": null,
+   "microVerdict": "bearish",
+   "microScore": 4.5,
+   "thesis": "AngloGold Ashanti's free cash flow surged 190% in Q1 2026 on higher gold prices (Zacks/Nasdaq, Jul 8 2026), with FY2025 revenue up >70% to $9.7B and net income of $2.6B, but 2026 production guidance of 2.80-3.17Moz implies a ~3% YoY decline at the midpoint 'due to cost pressures' - exactly the dynamic behind the gold SHORT-medium (favor low-cost/royalty, avoid high-cost) backdrop call. The Nevada 'Arthur Field' discovery (4Moz+ found) is a genuine long-dated optionality catalyst, but near-term the stock is a beneficiary of price, not of cost discipline.",
+   "catalysts": [
+    "Arthur Field (Nevada) resource growth and Tier-1 jurisdiction re-rating",
+    "Obuasi ramp-up supporting flat 2027 production",
+    "Continued gold price strength"
+   ],
+   "risks": [
+    "Cost pressures driving 2026 production guidance down ~3% YoY",
+    "Multi-country African/South American operational risk",
+    "Peer comparison unfavorable vs low-cost producers under SHORT-medium gold call"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "Zacks.com / Nasdaq",
+     "date": "2026-07-08",
+     "note": "AU FCF +190% in Q1 2026; 2026 gold production guided to 2.80-3.17Moz, ~3% YoY dip at midpoint on cost pressures"
+    },
+    {
+     "source": "Nasdaq",
+     "date": "2026-07-09",
+     "note": "AngloGold vs Agnico Eagle comparison; FY2025 revenue ~$9.7B (+70%), net income ~$2.6B"
+    }
+   ]
+  },
+  {
+   "ticker": "LUG.TO",
+   "held": null,
+   "microVerdict": "bullish",
+   "microScore": 6.5,
+   "thesis": "UBS initiated Lundin Gold at Buy with a C$103 target (May 28 2026), citing AISC below $1,200/oz, ~$1B/yr FCF at spot, and a 'world-class' Fruta del Norte underground mine - the low-cost profile that the gold SHORT-medium backdrop explicitly favors even amid broader caution on the metal. Q2 2026 production of 118,994oz keeps the company on track for 475-525koz full-year guidance, and Q1 adjusted EBITDA rose 75.5% YoY to $424M with record $349M FCF; the key risk flagged by UBS itself is single-asset concentration, and rising AISC from royalty/profit-sharing payments as gold prices climb.",
+   "catalysts": [
+    "Q2 2026 results/webcast Aug 6-7 2026",
+    "Exploration upside (epithermal targets, copper-gold porphyry corridor)",
+    "Continued high realized gold prices"
+   ],
+   "risks": [
+    "Single-asset (Fruta del Norte) concentration",
+    "Rising AISC from royalty and statutory profit-sharing as gold price climbs",
+    "Ecuador country/political risk"
+   ],
+   "analyst": {
+    "UBS": "Buy, C$103 PT (initiated May 28 2026)"
+   },
+   "evidence": [
+    {
+     "source": "MT Newswires",
+     "date": "2026-05-28",
+     "note": "UBS initiates Buy, C$103 PT; AISC <$1,200/oz, ~$1bn/yr FCF at spot"
+    },
+    {
+     "source": "MT Newswires",
+     "date": "2026-07-09",
+     "note": "Q2 2026 production 118,994oz, on track for 475-525koz FY guidance"
+    },
+    {
+     "source": "The Globe And Mail",
+     "date": "2026-07-10",
+     "note": "Q1 2026 revenue +59% YoY to $567M, adjusted EBITDA +75.5% to $424M, record $349M FCF"
+    }
+   ]
+  },
+  {
+   "ticker": "E25.AX",
+   "held": null,
+   "microVerdict": "neutral",
+   "microScore": 5.0,
+   "thesis": "Element 25 is advancing the Butcherbird expansion toward 1.1Mt/yr manganese concentrate capacity, with most main plant orders placed and mining/haulage contracts signed (May-Jun 2026), plus a revised $166M US DOE grant agreement for a proposed Louisiana manganese sulfate facility (Jul 7 2026) - but mechanical completion isn't targeted until Q1 2027, so there is no current production or earnings stream to assess against the NEUTRAL manganese backdrop. This is a binary development-stage story dependent on execution and US battery-supply-chain policy support rather than current commodity price capture.",
+   "catalysts": [
+    "Butcherbird mechanical completion/commissioning (targeted Q1 2027)",
+    "DOE grant finalization for Louisiana MnSO4 facility",
+    "Offtake agreements with ore partners"
+   ],
+   "risks": [
+    "Construction/cost-escalation risk pre-commissioning",
+    "Dependence on US DOE grant terms/timing",
+    "No current production to offset manganese price swings"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "MT Newswires - Asia Pacific",
+     "date": "2026-05-13",
+     "note": "Butcherbird expansion targets 1.1Mt/yr manganese concentrate; commissioning Q1 2027"
+    },
+    {
+     "source": "MT Newswires - Asia Pacific",
+     "date": "2026-07-07",
+     "note": "Element 25 and US DOE amend terms of $166M grant for Louisiana MnSO4 facility"
+    },
+    {
+     "source": "International Mining",
+     "date": "2026-05-27",
+     "note": "Mining and haulage contracts signed for Butcherbird; 18+ year mine life at 10.4% Mn ore reserve"
+    }
+   ]
+  },
+  {
+   "ticker": "TMC",
+   "held": null,
+   "microVerdict": "neutral",
+   "microScore": 3.5,
+   "thesis": "TMC's Q1 2026 10-Q shows continued net losses (including a $2.7M share of losses from its Metals Royalty Company JV) and remains entirely pre-commercial: NOAA advanced TMC USA's consolidated exploration/recovery permit application (covering ~65,000 km\u00b2 with an estimated 15.5Mt nickel, 12.8Mt copper, 2.0Mt cobalt, 345Mt manganese) to certification review in April 2026, but first commercial nodule collection isn't expected to commission until Q4 2027. This is a high-optionality, high-regulatory-risk polymetallic story (nickel/copper/cobalt/manganese) rather than a name that currently captures the NEUTRAL manganese or any near-dated commodity price move.",
+   "catalysts": [
+    "NOAA certification/EIS process progress toward permit issuance",
+    "Allseas nodule collection system commissioning (targeted Q4 2027)",
+    "Potential project-level financing"
+   ],
+   "risks": [
+    "Permit denial or prolonged NOAA/EIS delay",
+    "Environmental opposition and legal challenges to deep-sea mining",
+    "Continued cash burn ahead of first production"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "Edgar SEC Filings (10-Q)",
+     "date": "2026-05-14",
+     "note": "Q1 2026 net loss incl. $2.7M share of Metals Royalty Company loss; NOAA consolidated application reaches certification review"
+    },
+    {
+     "source": "Edgar SEC Filings (8-K)",
+     "date": "2026-05-14",
+     "note": "First commercial nodule collection system (3.0Mt/yr nameplate) targeted for Q4 2027 commissioning"
+    }
+   ]
+  },
+  {
+   "ticker": "5713.T",
+   "held": null,
+   "microVerdict": "bearish",
+   "microScore": 4.0,
+   "thesis": "Sumitomo Metal Mining's FY2025 briefing (May 18 2026) disclosed negative free cash flow 'due to increase in working capital caused by rising metal prices and depreciation of yen' plus high capex, with interest-bearing liabilities up \u00a5106.7bn YoY, and FY2026 dividend guidance was cut to \u00a5207/share from \u00a5228 in FY2025. A DCF-based valuation screen (Jun 13 2026) flags the stock as ~31% above its estimated intrinsic value after a 166% one-year share price surge. This combination of deteriorating cash generation and stretched valuation lines up with the NEUTRAL-bearish nickel backdrop rather than an active long case.",
+   "catalysts": [
+    "Cost/capital structure optimization plan",
+    "Nickel price recovery",
+    "Faraday rotator/advanced materials capacity expansion (non-nickel diversification)"
+   ],
+   "risks": [
+    "Negative free cash flow, rising leverage",
+    "Valuation ~31% above DCF fair value per one screen",
+    "Nickel price weakness (NEUTRAL-bearish backdrop)"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "PubT (company briefing)",
+     "date": "2026-05-18",
+     "note": "FY2025 negative FCF from working capital/capex; interest-bearing liabilities +\u00a5106.7bn YoY; FY2026 dividend guided down to \u00a5207/share"
+    },
+    {
+     "source": "Yahoo! Finance (Simply Wall St)",
+     "date": "2026-06-13",
+     "note": "Stock ~31% above DCF-estimated intrinsic value after 166% one-year rally"
+    }
+   ]
+  },
+  {
+   "ticker": "NIC.AX",
+   "held": null,
+   "microVerdict": "bearish",
+   "microScore": 4.5,
+   "thesis": "Jefferies (May 25, Jun 17, Jul 6 2026 notes) maintains a Hold on Nickel Industries, warning the new Indonesian HPM benchmark price formula could push RKEF operations 'loss-making' and raise HPAL cash costs ~40% industry-wide, even as it holds a Buy-then-Hold rating with price targets moved from AU$1.20 to AU$1.05 to AU$1.00 across the window - a downward drift. Q2 adjusted core profit of $80M and ongoing HPAL stake deals (TMI, CNE, Sampala) show operational progress, but Jefferies explicitly flags 'Indonesia's capricious policy regime' warrants caution, squarely matching the NEUTRAL-bearish nickel backdrop.",
+   "catalysts": [
+    "ENC nickel processing facility reaching full capacity (H2 2027)",
+    "HPAL stake consolidation (TMI/CNE/Sampala) NPV accretion",
+    "Nickel price recovery / supply-led rebalancing"
+   ],
+   "risks": [
+    "Indonesian HPM benchmark price formula raising RKEF/HPAL costs",
+    "Policy unpredictability ('capricious policy regime' per Jefferies)",
+    "Operational downtime (Hengjaya, ANI/ONI maintenance)"
+   ],
+   "analyst": {
+    "Jefferies": "Hold, PT drifted from AU$1.20 (May) to AU$1.05 (Jul) amid Indonesian nickel policy risk"
+   },
+   "evidence": [
+    {
+     "source": "MT Newswires - Asia Pacific",
+     "date": "2026-05-25",
+     "note": "New HPM price formula could swing RKEF ops loss-making; Jefferies Buy, AU$1.20 PT at the time"
+    },
+    {
+     "source": "MT Newswires - Asia Pacific",
+     "date": "2026-06-17",
+     "note": "Q2 adjusted core profit $80M; Jefferies Hold, AU$1.00 PT"
+    },
+    {
+     "source": "MT Newswires - Asia Pacific",
+     "date": "2026-07-06",
+     "note": "Jefferies Hold, AU$1.05 PT; flags Indonesia's 'capricious policy regime' despite NPV-accretive HPAL deals"
+    }
+   ]
+  },
+  {
+   "ticker": "ALOY",
+   "held": null,
+   "microVerdict": "bullish",
+   "microScore": 6.0,
+   "thesis": "REalloys is expanding commercial neodymium-praseodymium output to ~525 tons/yr (targeting Q4 2027 for dysprosium/terbium oxides) and closed a $100M private placement (Jun 26 2026) to fund it, directly levered to the rare earths LONG call (NdPr +74% YoY) as a North American ex-China supply-chain play. However, the Q1 2026 10-Q explicitly carries a going-concern qualification from its auditor and negative operating cash flows, and the company's own filing flags NdPr price volatility as a material risk to margins - this is a real but early-stage, financing-dependent bet on the rare earths re-rating catching up to spot NdPr.",
+   "catalysts": [
+    "Saskatchewan Research Council facility upgrade completion",
+    "Dysprosium/terbium oxide production start (targeted Q4 2027)",
+    "Heavy rare earth metallization plant construction"
+   ],
+   "risks": [
+    "Going-concern doubt / negative operating cash flow (per auditor, Q1 2026 10-Q)",
+    "NdPr/rare earth price volatility and China export-policy swings",
+    "Dilution risk from continued equity financing"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "Edgar SEC Filings (10-Q)",
+     "date": "2026-05-20",
+     "note": "Going-concern doubt from auditor; negative operating cash flows; rare earth price volatility flagged as material risk"
+    },
+    {
+     "source": "MT Newswires",
+     "date": "2026-05-26",
+     "note": "Targeting ~525 tons/yr NdPr production; Dy/Tb oxide production by Q4 2027; $20.6M committed to SRC facility expansion"
+    },
+    {
+     "source": "MT Newswires",
+     "date": "2026-06-26",
+     "note": "Closed $100M private placement at $14.25/share"
+    }
+   ]
+  },
+  {
+   "ticker": "REXC",
+   "held": null,
+   "microVerdict": "bullish",
+   "microScore": 6.5,
+   "thesis": "Bigdata coverage on REXC itself is limited to index/ETF-mechanics news rather than performance commentary - notably that Nasdaq launched the underlying Nasdaq Sprott Rare Earths Ex-China Capped Index effective Jul 7 2026, plus general fund-prospectus risk language (GraniteShares 2x REMX filing, Jul 9 2026) noting rare earth prices are 'subject to significant volatility' and concentrated Chinese supply can cause 'severe price dislocations.' As a basket vehicle explicitly targeting non-China rare earth producers, REXC is a structurally clean way to express the rare earths LONG thesis (NdPr +74% YoY) even though no entity-specific earnings/flow data surfaced.",
+   "catalysts": [
+    "Continued NdPr/rare earth price strength",
+    "Index rebalancing/inflows as ex-China supply chain theme gains investor attention",
+    "China export policy tightening driving ex-China premium"
+   ],
+   "risks": [
+    "No entity-specific (holdings-level) performance data found in this search",
+    "Underlying holdings' individual execution risk (many are early-stage developers)",
+    "High volatility inherent to thematic/leveraged-adjacent rare earth ETFs"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "Nasdaq OMX BX",
+     "date": "2026-07-07",
+     "note": "Nasdaq Sprott Rare Earths Ex-China Capped Index launched effective Jul 7 2026"
+    },
+    {
+     "source": "Edgar SEC Filings (GraniteShares 485APOS)",
+     "date": "2026-07-09",
+     "note": "Rare earth/strategic metals prices flagged as subject to severe volatility and China-concentration risk"
+    }
+   ]
+  },
+  {
+   "ticker": "ILU.AX",
+   "held": null,
+   "microVerdict": "bullish",
+   "microScore": 6.5,
+   "thesis": "Iluka is scored ~16% below fair value by a Simply Wall St DCF screen (Jul 12 2026), and has landed a binding magnet rare-earth-oxide offtake with an unnamed automotive firm (2028 start, $155-172M revenue over the term) plus a long-term REO concentrate supply deal with VHM (Jul 1 2026) to feed its Eneabba refinery, which is now over 50% built with AU$1.65B in non-recourse Australian government loan financing confirmed. This gives Iluka a well-funded rare earths call option layered on top of its core titanium/mineral sands business (NEUTRAL backdrop, aero-constructive), though shares still fell 3% on the offtake news, suggesting the market wants to see revenue land before re-rating.",
+   "catalysts": [
+    "Eneabba refinery construction milestones toward mid-2027 commissioning",
+    "Additional REO offtake agreements",
+    "Government loan drawdown supporting balance sheet"
+   ],
+   "risks": [
+    "Refinery construction/commissioning execution risk",
+    "Offtake revenue doesn't start until 2028",
+    "Mineral sands (titanium) pricing remains base-case NEUTRAL, not a strong standalone catalyst"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "Simply Wall St",
+     "date": "2026-07-12",
+     "note": "Iluka ~16% below fair value following rare earths focus"
+    },
+    {
+     "source": "MT Newswires - Asia Pacific",
+     "date": "2026-06-23",
+     "note": "Binding magnet REO offtake with automotive firm ($155-172M revenue); AU$1.65B government loan confirmed for Eneabba refinery (>50% complete)"
+    },
+    {
+     "source": "MT Newswires - Asia Pacific",
+     "date": "2026-07-01",
+     "note": "Long-term REO concentrate supply deal with VHM (Goschen deposit) feeding Eneabba"
+    }
+   ]
+  },
+  {
+   "ticker": "ELT.AX",
+   "held": null,
+   "microVerdict": "bullish",
+   "microScore": 6.0,
+   "thesis": "Elementos' Oropesa tin project in Spain was granted 'Overriding Public Interest' classification by the Andaluc\u00eda regional government (Jun 23 2026), formally recognizing tin as a national priority raw material and de-risking permitting (including water licenses) - shares jumped ~10% on the news, a concrete de-risking catalyst consistent with the tin LONG backdrop. The company remains pre-production (no earnings/production data surfaced), and recent disclosures are mostly incentive-option administrivia, so this is a speculative, single-project development story rather than a name with current cash-flow leverage to the tin price.",
+   "catalysts": [
+    "Water license and remaining permit approvals following OPI classification",
+    "Project financing/offtake agreements",
+    "Continued tin price strength (LONG backdrop)"
+   ],
+   "risks": [
+    "Still pre-production; no revenue/earnings base",
+    "Financing/dilution risk ahead of construction",
+    "Spain permitting timeline despite OPI classification"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "MT Newswires - Asia Pacific",
+     "date": "2026-06-23",
+     "note": "Oropesa tin project granted Overriding Public Interest classification in Spain; shares up ~10%"
+    },
+    {
+     "source": "Kalkine Media",
+     "date": "2026-07-01",
+     "note": "Director option exercises/lapses around Jun 30 2026 - routine capital structure activity, no operational catalyst"
+    }
+   ]
+  },
+  {
+   "ticker": "VEDL",
+   "held": null,
+   "microVerdict": "bullish",
+   "microScore": 7.0,
+   "thesis": "Vedanta's Q1 FY27 production release (Jul 3 2026) reported record first-quarter mined metal output at Zinc India (268,000t, +1% YoY, highest-ever Q1) with saleable metal +4% and refined zinc +6%, alongside copper sales at an eight-year Q1 high (+3%) - a direct, current-quarter validation of the zinc/tin LONG call. The company completed a four-way demerger (Vedanta Aluminium, Power, Oil&Gas, Iron&Steel spun out, Jun 15 2026), leaving the remaining Vedanta Limited (VEDL) more concentrated in zinc/base metals; Gamsberg Phase 2 is targeted to add production from July 2026. As an India-listed name (NSE/BSE), IBKR tradability is a real constraint - flag this for execution before treating it as an actionable position.",
+   "catalysts": [
+    "Gamsberg Phase 2 ramp (targeted Jul 2026)",
+    "Post-demerger re-rating as a more focused zinc/base-metals entity",
+    "Continued zinc/copper price strength"
+   ],
+   "risks": [
+    "IBKR/foreign-listing tradability - VEDL is NSE/BSE-listed India equity with no current US ADR",
+    "Demerger execution/value-leakage risk across four new listed entities",
+    "India market volatility"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "Model ML - Earnings",
+     "date": "2026-07-03",
+     "note": "Record Q1 FY27 Zinc India mined metal output (268,000t); copper sales +3% to 8-year Q1 high; Gamsberg Phase 2 targeted Jul 2026"
+    },
+    {
+     "source": "Model ML - Regulatory Filings",
+     "date": "2026-06-15",
+     "note": "Vedanta demerger completed; Vedanta Aluminium, Power, Oil&Gas, Iron&Steel listed separately, VEDL retains zinc/base metals concentration"
+    }
+   ]
+  }
+ ]
+}

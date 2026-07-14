@@ -1,0 +1,492 @@
+{
+ "group": "bigdata-batch-3",
+ "names": [
+  {
+   "ticker": "KALU",
+   "held": null,
+   "microVerdict": "neutral",
+   "microScore": 5.0,
+   "thesis": "Kaiser Aluminum delivered a very strong Q1 2026 (revenue +42% YoY, EPS beat, record EBITDA, margins up ~850bps) helped by tariff protection and aerospace demand, and Zacks flags it as a beneficiary of Section-232-style cost/tariff dynamics in metal fabrication. However Wells Fargo just downgraded to underweight (PT cut to $158) on valuation after the run-up, and as a fabricator KALU largely passes through aluminum costs rather than capturing upside directly, consistent with the desk's SHORT-lean aluminum view. Q2 earnings land July 22-23, 2026 as the next catalyst.",
+   "catalysts": [
+    "Q2 2026 earnings/call July 22-23, 2026",
+    "Tariff-driven aerospace/auto demand strength",
+    "Continued margin improvement from facility performance gains"
+   ],
+   "risks": [
+    "Wells Fargo downgrade (underweight, PT $158) flags valuation risk after 2026 rally",
+    "Fabricator model passes through aluminum price moves rather than capturing them",
+    "Elevated input costs (steel, aluminum, freight, labor) industry-wide per Zacks"
+   ],
+   "analyst": {
+    "WellsFargo": "Downgraded to Underweight, PT $158 (from $160), 2026-07-09"
+   },
+   "evidence": [
+    {
+     "source": "MT Newswires",
+     "date": "2026-07-09",
+     "note": "Wells Fargo downgraded KALU to underweight from equal weight, PT cut to $158 from $160; shares fell >2%"
+    },
+    {
+     "source": "Nasdaq (Simply Wall St via Nasdaq)",
+     "date": "2026-05-27",
+     "note": "Q1 2026 revenue +42% YoY, EPS beat $1.78, record EBITDA, margins up ~850bps YoY, FCF $69M, liquidity ~$596M"
+    },
+    {
+     "source": "PubT (Business Wire)",
+     "date": "2026-07-01",
+     "note": "Kaiser Aluminum to report Q2 2026 results July 22, 2026 with call July 23"
+    }
+   ]
+  },
+  {
+   "ticker": "MTUS",
+   "held": null,
+   "microVerdict": "bullish",
+   "microScore": 7.0,
+   "thesis": "Metallus is a clean read-through on the desk's Steel LONG thesis: Section 232 tariffs continue to insulate its primary steel products (April 2026 tariff updates hit only downstream derivatives, not Metallus' core products), order book grew YoY on industrial/defense demand and onshoring, and the company has pushed through bar/tube price actions ($120/ton and $100/ton respectively) while new bloom reheat and roller furnace capacity comes online through Q3 2026. Simply Wall St flags the tariff-support/onshoring narrative but also notes cyclical end-market and leverage risk via its asset-backed credit facility.",
+   "catalysts": [
+    "New bloom reheat furnace (150 tons/hr vs 100 legacy) fully operational early-to-mid Q3 2026; roller furnace late Q3",
+    "Bar/tube price actions flowing through non-contract volume (~30% of annual volume) in H2 2026",
+    "Continued Section 232 tariff protection on primary steel products"
+   ],
+   "risks": [
+    "Heavy reliance on cyclical industrial end markets",
+    "High fixed costs and leverage via asset-backed credit facility",
+    "Exposure to tariffs on certain imported inputs despite core-product protection"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "Nasdaq",
+     "date": "2026-05-13",
+     "note": "Q1 2026 earnings call: shipments +11% sequentially, order book grew YoY, Section 232 tariffs continue to support competitive position"
+    },
+    {
+     "source": "Simply Wall St",
+     "date": "2026-07-03",
+     "note": "Metallus fits US onshoring story as domestic steel producer benefiting from tariffs making imports less competitive; Q1 2026 higher sales/earnings plus buybacks"
+    }
+   ]
+  },
+  {
+   "ticker": "ANTO.L",
+   "held": null,
+   "microVerdict": "bullish",
+   "microScore": 8.0,
+   "thesis": "Antofagasta is a strong fit for the desk's Copper LONG thesis: JPMorgan just upgraded to overweight, raising 2026/2027 copper price forecasts (+2%/+15%) and group EBITDA forecasts (+3%/+24%), citing Centinela's second concentrator project on time/budget and 10-30% copper growth potential by 2027-28 with lower relative risk than peers. Berenberg similarly raised its price target to \u00a344 from \u00a337 ahead of H1 results (Aug 13, 2026), though it flags Q2 as another H2-weighted production year and stays Hold-rated on valuation (2.65x NAV).",
+   "catalysts": [
+    "Q2 2026 production report due July 15, 2026",
+    "H1 2026 results August 13, 2026",
+    "Centinela second concentrator ramp supporting 10-30% copper growth by 2027-28",
+    "30% production growth target by 2030 announced at World Mining Congress 2026"
+   ],
+   "risks": [
+    "H2-weighted production skew creates near-term volume softness (Los Pelambres grade constraints)",
+    "Berenberg remains Hold on valuation (2.65x NAV, 9.2x 2026E EBITDA)",
+    "Chile-concentrated single-country operational risk"
+   ],
+   "analyst": {
+    "JPMorgan": "Upgraded to Overweight, 2026-07-06",
+    "Berenberg": "Hold, PT raised to GBP44 from GBP37, 2026-06-19"
+   },
+   "evidence": [
+    {
+     "source": "Yahoo Finance France",
+     "date": "2026-07-06",
+     "note": "JPMorgan raises ANTO to overweight, copper price forecasts and EBITDA estimates raised, EPS 2026E to $1.96 from $1.79"
+    },
+    {
+     "source": "MT Newswires - EMEA",
+     "date": "2026-06-19",
+     "note": "Berenberg raises PT to GBP44 from GBP37, expects H2-weighted 2026 production, Hold rating"
+    },
+    {
+     "source": "International Mining",
+     "date": "2026-06-25",
+     "note": "Antofagasta targets 30% production increase by 2030 per CEO Ivan Arriagada at World Mining Congress"
+    }
+   ]
+  },
+  {
+   "ticker": "IVN.TO",
+   "held": null,
+   "microVerdict": "bullish",
+   "microScore": 6.0,
+   "thesis": "Ivanhoe fits the Copper LONG thesis on a recovery arc: Kamoa-Kakula copper output is set to rise in H2 2026 as mining rates increase and inventories are drawn down, positioning it as a key source of global copper supply growth into a tighter 2026 market. However, this follows an April 2026 cut to 2026/2027 output guidance after seismic disruption at Kakula, and revised cash cost guidance ($2.60-3.00/lb for 2026) reflects the lower-production, higher-cost base \u2014 so the thesis is a rebound off a reset floor rather than unambiguous strength.",
+   "catalysts": [
+    "H2 2026 ramp in Kamoa-Kakula mining rates and inventory drawdown",
+    "Medium-term cash cost target of ~$2.00/lb from 2028 as smelter efficiencies mature",
+    "Global copper market tightening into 2026 per analyst forecasts"
+   ],
+   "risks": [
+    "April 2026 guidance cut for 2026/2027 output following seismic disruption at Kakula",
+    "Elevated 2026/2027 cash costs ($2.60-3.00/lb) vs. medium-term target",
+    "Execution risk on capex deferral and mill utilization ramp"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "CNBC (Reuters)",
+     "date": "2026-07-08",
+     "note": "Ivanhoe says Kamoa-Kakula copper output set to rise in H2 2026; company cut 2026/2027 output forecasts in April after seismic disruption at Kakula"
+    },
+    {
+     "source": "Model ML - Slides (Investor Presentation)",
+     "date": "2026-06-18",
+     "note": "2026/2027 cash cost guidance revised to $2.60-3.00/lb (2026) reflecting lower production forecast and grade; medium-term target ~$2.00/lb from 2028"
+    }
+   ]
+  },
+  {
+   "ticker": "ENR.DE",
+   "held": null,
+   "microVerdict": "bullish",
+   "microScore": 7.0,
+   "thesis": "Siemens Energy is riding record order momentum in Grid Technologies (electrical-steel-intensive transformers/grid equipment) driven by AI data-center power demand \u2014 Q2 group orders hit an all-time high of EUR17.75bn with backlog at EUR154bn, and Berenberg/BofA have both raised estimates and price targets (Buy-rated) into the fiscal Q3 report, citing above-guidance Grid margins and double-digit order upside. As a downstream consumer of electrical steel rather than a producer, ENR's exposure is to volume/margin capture from grid buildout rather than direct material price risk.",
+   "catalysts": [
+    "Fiscal Q3 2026 results expected to show 'solid' Gas and Grid order strength (BofA)",
+    "Mid-term target update expected at full-year results November 11, 2026",
+    "Possible new share buyback announcement (more likely November per BofA)"
+   ],
+   "risks": [
+    "Gamesa (offshore wind) weakness offsetting Gas/Grid strength (no offshore orders expected in Q3)",
+    "'Peak order' concerns among investors that Q3 results need to reassure against",
+    "Electrical steel input cost inflation could pressure Grid Technologies margins"
+   ],
+   "analyst": {
+    "Berenberg": "Buy, PT EUR205 (from EUR200), 2026-06-02",
+    "BofA": "Buy, PT EUR260 (from EUR250), 2026-07-01"
+   },
+   "evidence": [
+    {
+     "source": "MT Newswires - EMEA",
+     "date": "2026-07-01",
+     "note": "BofA expects solid fiscal Q3 on Gas/Grid upside, PT raised to EUR260 from EUR250, Buy maintained"
+    },
+    {
+     "source": "MT Newswires - EMEA",
+     "date": "2026-05-13",
+     "note": "Q2 group orders at all-time high EUR17.75bn, backlog EUR154bn, FY26 FCF guidance already delivered in H1 alone"
+    }
+   ]
+  },
+  {
+   "ticker": "FNV",
+   "held": null,
+   "microVerdict": "neutral",
+   "microScore": 6.0,
+   "thesis": "Franco-Nevada's royalty/streaming model continues to outperform on record gold prices \u2014 Q1 2026 adjusted EPS of $2.38 beat consensus ($2.11) on revenue of $650.7M (up from $368.4M YoY), and CIBC named it its top pick for precious metals exposure with a C$480 target after its Ontario mine tour. Consistent with the desk's view that royalty companies score higher than operators even as gold is SHORT-medium overall, FNV's insulated cost structure (revenues largely unaffected by input cost inflation) and 2026 GEO guidance (510-570koz) support a defensive-but-not-aggressive stance.",
+   "catalysts": [
+    "Cobre Panama stockpile-ore processing approval adding incremental GEO deliveries (mostly 2027)",
+    "Ontario portfolio growth (Porcupine/Cote/Detour Lake/Island Gold) highlighted on CIBC mine tour",
+    "Continued M&A/deal pipeline deployment in Tier-1 jurisdictions"
+   ],
+   "risks": [
+    "Gold price is the desk's SHORT-medium call; a pullback compresses royalty NAV even without operating leverage",
+    "Cobre Panama GEO contribution remains 'relatively moderate' in 2026, back-half loaded",
+    "New independent chair transition (Tom Albanese) is a governance watch item"
+   ],
+   "analyst": {
+    "CIBC": "Outperform, PT C$480, 2026-06-16"
+   },
+   "evidence": [
+    {
+     "source": "MT Newswires",
+     "date": "2026-05-12",
+     "note": "Q1 2026 adjusted EPS $2.38 vs $1.07 YoY, beat consensus $2.11; revenue $650.7M vs $368.4M YoY"
+    },
+    {
+     "source": "MT Newswires (CIBC note)",
+     "date": "2026-06-16",
+     "note": "CIBC reiterates Outperform, PT C$480, calls FNV 'top pick for precious metals exposure'"
+    },
+    {
+     "source": "Edgar SEC Filings (6-K)",
+     "date": "2026-05-12",
+     "note": "2026 GEO sales guidance maintained at 510,000-570,000 oz, excluding Cobre Panama upside"
+    }
+   ]
+  },
+  {
+   "ticker": "RGLD",
+   "held": null,
+   "microVerdict": "neutral",
+   "microScore": 6.0,
+   "thesis": "Royal Gold posted record Q1 2026 results (revenue $469.1M, +142.5% YoY; 83% adjusted EBITDA margin) on record realized gold ($4,873/oz) and silver ($84.33/oz) prices plus the first full-quarter contribution from the Sandstorm Gold and Horizon Copper acquisitions, consolidating the mid-tier royalty space. RBC trimmed its PT slightly to $305 (from $310) but maintains Outperform, and consensus remains Overweight \u2014 consistent with the desk's view that royalty names deserve a higher score than operating miners even with gold SHORT-medium overall.",
+   "catalysts": [
+    "2026 guidance tracking within range (gold 290-320koz, silver 3.0-3.5Moz, copper 21-25M lbs) through Q1",
+    "Hod Maden project restructuring expected to close H2 2026, preserving ~4% NAV exposure with reduced capex risk",
+    "Full integration of Sandstorm/Horizon Copper deals expanding royalty base"
+   ],
+   "risks": [
+    "Gold desk view is SHORT-medium; elevated realized prices ($4,873/oz) create high bar for continued outperformance",
+    "RGLD down 5.4% since last earnings report despite record results, signaling market skepticism",
+    "Turkish regulatory approval still pending for Hod Maden restructuring"
+   ],
+   "analyst": {
+    "RBC": "Outperform, PT $305 (from $310), 2026-07-09",
+    "Consensus": "Overweight, mean PT $320.08"
+   },
+   "evidence": [
+    {
+     "source": "PubT",
+     "date": "2026-05-12",
+     "note": "Q1 2026 revenue $469.1M (+142.5% YoY), record operating cash flow $293.6M, net income $281.1M, EBITDA margin 83%"
+    },
+    {
+     "source": "MT Newswires",
+     "date": "2026-07-09",
+     "note": "RBC adjusts PT to $305 from $310, maintains Outperform; consensus average rating overweight, mean PT $320.08"
+    },
+    {
+     "source": "Nasdaq",
+     "date": "2026-06-05",
+     "note": "2026 guidance reiterated: gold 290-320koz, silver 3.0-3.5Moz, copper 21-25M lbs, tracking within range"
+    }
+   ]
+  },
+  {
+   "ticker": "EMM",
+   "held": null,
+   "microVerdict": "neutral",
+   "microScore": 4.0,
+   "thesis": "Giyani Metals is a pre-production developer, not a current earner \u2014 it just filed the full NI 43-101 DFS for its 100%-owned K.Hill battery-grade manganese project in Botswana, showing a post-tax NPV of $482M and 20.3% IRR, with project start targeted for April 2027. Manganese is not part of the desk's explicit metal coverage (copper/gold/silver/RE/zinc-tin/nickel/aluminum/steel/moly), and with no near-term production or revenue, this is a battery-materials optionality/financing story rather than a 2026 earnings or price-exposure trade.",
+   "catalysts": [
+    "DFS filing complete, advancing project toward financing/construction decision",
+    "Battery-grade manganese demand tailwind from next-gen battery chemistries",
+    "Project targeted to start production April 2027"
+   ],
+   "risks": [
+    "Pre-revenue TSXV micro-cap with financing/dilution risk ahead of construction decision",
+    "No near-term (2026) production or earnings to benchmark against price moves",
+    "Manganese pricing/demand not covered by desk's current commodity backdrop"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "Investing News / Associated Press",
+     "date": "2026-07-10",
+     "note": "DFS filed for K.Hill Battery-Grade Manganese Project: post-tax NPV $482M at 8% discount, IRR 20.3%, project start April 2027"
+    }
+   ]
+  },
+  {
+   "ticker": "601168.SS",
+   "held": null,
+   "microVerdict": "neutral",
+   "microScore": 6.0,
+   "thesis": "Western Mining pre-announced H1 2026 net profit up 114-130% YoY (to RMB4.0-4.3bn), explicitly attributed to higher copper, gold and silver product prices rather than molybdenum, which the desk scores NEUTRAL. Shares jumped 4-7% on the news as part of a broader A-share copper-sector rally (Jiangxi Copper, Luoyang Molybdenum also up), so the near-term catalyst is more copper/precious-metals beta than a moly-specific signal, though Western Mining's diversified base-and-precious-metals portfolio benefits regardless.",
+   "catalysts": [
+    "H1 2026 profit guidance confirms 114-130% YoY growth on metals price strength",
+    "Broader China copper-sector rally on confirmed price bottom",
+    "Diversified copper/gold/silver exposure buffers single-commodity risk"
+   ],
+   "risks": [
+    "Molybdenum-specific exposure (desk's actual coverage angle) not the primary driver of recent strength",
+    "State-owned parent restructuring (Xinjiang Nonferrous merger) is a governance event to monitor, though company says no operational impact",
+    "P/E already re-rated to ~11.4-12x TTM on the earnings beat, limiting further re-rating room"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "MT Newswires - Asia Pacific",
+     "date": "2026-07-10",
+     "note": "H1 2026 net profit guided +114% to +130% YoY (RMB4.0-4.3bn) on higher copper, gold, silver prices; shares +7%"
+    },
+    {
+     "source": "Flush Financial Services Network",
+     "date": "2026-07-10",
+     "note": "Copper sector surged 2.5% on confirmed price bottom; Western Mining up >4% alongside Jiangxi Copper, Luoyang Molybdenum"
+    }
+   ]
+  },
+  {
+   "ticker": "ALLEI.ST",
+   "held": null,
+   "microVerdict": "neutral",
+   "microScore": 5.0,
+   "thesis": "Alleima continues to win specialty orders (a SEK995M umbilical tube order for Indonesia's Kutei North Hub project, deliveries through 2030) and inaugurated a new Tube Mill 2026 targeting nuclear-power demand, but the available evidence lacks any near-term margin or stainless/nickel price commentary ahead of its Q2 report (due July 17, 2026). This is consistent with the desk's NEUTRAL-bearish stance on nickel/stainless given seasonal off-season dynamics \u2014 order wins are encouraging longer-term but not an immediate 2026 earnings catalyst.",
+   "catalysts": [
+    "Q2 2026 interim report and webcast July 17, 2026",
+    "SEK995M subsea umbilical tube order supports multi-year backlog visibility",
+    "New Tube Mill 2026 capacity aligned with nuclear power demand growth"
+   ],
+   "risks": [
+    "Stainless/nickel seasonal off-season per desk backdrop could pressure near-term volumes/pricing",
+    "No evidence found of updated margin or raw material cost guidance ahead of Q2 print",
+    "Order backlog delivery stretches to 2030, limiting near-term revenue recognition"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "MT Newswires - EMEA",
+     "date": "2026-06-10",
+     "note": "Alleima secures SEK995M order for umbilical tubes for Indonesia's Kutei North Hub project, deliveries through 2030"
+    },
+    {
+     "source": "PubT",
+     "date": "2026-07-03",
+     "note": "Alleima Q2 2026 interim report scheduled July 17, 2026"
+    }
+   ]
+  },
+  {
+   "ticker": "S.TO",
+   "held": null,
+   "microVerdict": "bearish",
+   "microScore": 3.0,
+   "thesis": "Sherritt is facing acute company-specific disruption layered on top of the desk's NEUTRAL-bearish nickel view: the May 1, 2026 US Executive Order expanding Cuba sanctions forced a suspension of mining at the Moa JV in February, driving Q1 2026 finished nickel production down 36% YoY and cobalt down 34%, and the resulting filing delay triggered an OSC cease-trade order (revoked July 10, 2026, trading resumed) \u2014 a governance/liquidity scare on top of weak fundamentals.",
+   "catalysts": [
+    "Cease trade order revoked July 10, 2026, trading resumed on TSX",
+    "Potential recovery in Moa JV output if Cuban raw material supply normalizes"
+   ],
+   "risks": [
+    "Cuba sanctions expansion (May 2026 Executive Order) directly disrupted raw material supply and production",
+    "Q1 2026 nickel/cobalt production and sales down 34-36% YoY",
+    "Regulatory/governance risk evidenced by cease-trade order for late filing"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "Flush Financial Services Network (Argus)",
+     "date": "2026-06-30",
+     "note": "Q1 2026 finished nickel production down 36% YoY to 1,885 tonnes; cobalt down 34% to 213 tonnes, due to Moa JV mining suspension from Cuban supply shortage"
+    },
+    {
+     "source": "PubT",
+     "date": "2026-06-25",
+     "note": "OSC cease trade order issued May 21, 2026 after Sherritt failed to file Q1 2026 statements on time, citing disruption from May 1 US Executive Order expanding Cuba sanctions"
+    },
+    {
+     "source": "PubT",
+     "date": "2026-07-10",
+     "note": "OSC revoked the failure-to-file cease trade order; TSX trading resumed"
+    }
+   ]
+  },
+  {
+   "ticker": "AVL.TO",
+   "held": null,
+   "microVerdict": "neutral",
+   "microScore": 4.0,
+   "thesis": "Avalon sits on a strategically significant North American rare earth resource (Nechalacho) and is advancing a PEA update to its 2013 DFS, which aligns directionally with the desk's Rare Earths LONG thesis (NdPr +74% YoY). However, the dominant recent news is a 180:1 share consolidation completed July 8, 2026 after shares fell to $0.06 \u2014 a balance-sheet/capital-structure distress signal ahead of a potential US listing bid, not a fundamentals-driven catalyst, so this remains a pre-revenue, dilution-risk story rather than a direct way to play RE price strength.",
+   "catalysts": [
+    "180:1 share consolidation completed, intended to support a future US exchange listing",
+    "Nechalacho PEA update advancing, updating the 2013 DFS on North America's most strategically significant RE resource",
+    "Sector tailwind from NdPr price strength (+74% YoY per desk backdrop)"
+   ],
+   "risks": [
+    "180:1 reverse split reflects severe share price deterioration (traded at $0.06 pre-consolidation) and dilution history",
+    "Pre-revenue development stage; no production or near-term earnings to capture RE price upside",
+    "Contingent on future US capital markets access, not yet secured"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "Yahoo! Finance",
+     "date": "2026-07-08",
+     "note": "Avalon completed 180:1 common share consolidation, effective July 8, 2026, to support potential future US exchange listing"
+    },
+    {
+     "source": "Yahoo! Finance",
+     "date": "2026-05-19",
+     "note": "Avalon provides YTD progress update on Nechalacho Rare Earth Elements and Zirconium Project, advancing PEA update to 2013 DFS"
+    }
+   ]
+  },
+  {
+   "ticker": "FRES.L",
+   "held": null,
+   "microVerdict": "bearish",
+   "microScore": 4.0,
+   "thesis": "Fresnillo shows the tension in the desk's SHORT-low silver call: Berenberg expects flat Q2 volumes and an H1 revenue beat (USD3.6bn vs consensus USD3.3bn) but trimmed its price target to \u00a333 from \u00a334 on a stronger Mexican peso as a currency headwind, while Simply Wall St flags that Q1 2026 silver and gold production volumes were actually lower than the prior year despite strong margins (30.3% net margin) as an inflation-hedge play. Zacks upgraded to Buy on rising estimates, but the underlying volume softness and hold-rated valuation support a cautious stance.",
+   "catalysts": [
+    "Zacks upgrade to Buy with consensus estimates raised 10.9% over past three months",
+    "Sinda minority stake acquisition (up to 5%) expanding silver-gold district exposure in Mexico ahead of Sinda's NYSE IPO",
+    "H1 2026 revenue expected to beat consensus per Berenberg"
+   ],
+   "risks": [
+    "Q1 2026 silver and gold production volumes lower YoY despite price tailwinds",
+    "Berenberg cut PT to GBP33 from GBP34 on stronger MXN as FX headwind, maintains Hold",
+    "Aligns with desk's SHORT-low silver view given production softness and currency drag"
+   ],
+   "analyst": {
+    "Berenberg": "Hold, PT GBP33 (from GBP34), 2026-06-19",
+    "Zacks": "Upgraded to Buy, 2026-06-09"
+   },
+   "evidence": [
+    {
+     "source": "MT Newswires - EMEA",
+     "date": "2026-06-19",
+     "note": "Berenberg forecasts broadly flat Q2 volumes, H1 revenue beat (USD3.6bn vs cons USD3.3bn), but cuts PT to GBP33 from GBP34 on MXN strength, Hold maintained"
+    },
+    {
+     "source": "Simply Wall St",
+     "date": "2026-07-06",
+     "note": "Q1 2026 silver and gold production volumes lower than prior year despite ~30.3% net margins and inflation-hedge appeal"
+    }
+   ]
+  },
+  {
+   "ticker": "000960.SZ",
+   "held": null,
+   "microVerdict": "bullish",
+   "microScore": 7.0,
+   "thesis": "Yunnan Tin is a strong direct play on the desk's Zinc/Tin LONG (tin bullish) thesis, benefiting from both tin price strength and an emerging AI-driven indium demand story (indium phosphide substrate prices surged from $800 to $2,500 within a year); 2025 revenue rose 3.7% to RMB43.5bn with net profit up 36.1%, and growth accelerated further in Q1 2026. Dongwu Securities explicitly recommends the tin sector on supply constraints, though the company's structural weakness ('large-scale smelting, small-scale mining') means it relies heavily on externally purchased raw material, pressuring operating cash flow via higher prepayments and margin deposits.",
+   "catalysts": [
+    "AI/data-center-driven indium phosphide demand (indium demand forecast to grow from 19t in 2025 to 419t by 2030)",
+    "Sector-wide tin price strength on supply constraints (Dongwu Securities 'spring of tin, indium, hafnium' thesis)",
+    "Q1 2026 revenue/profit growth accelerating vs. FY2025"
+   ],
+   "risks": [
+    "Structural reliance on externally purchased ore ('large-scale smelting, small-scale mining') pressures cash flow via prepayments/margin deposits",
+    "2025 operating cash flow fell 62% YoY despite profit growth, a working-capital red flag",
+    "China smelting capacity concentration risk"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "Flush Financial Services Network",
+     "date": "2026-06-18",
+     "note": "2025 revenue RMB43.535bn (+3.7% YoY), net profit RMB1.966bn (+36.1% YoY); Q1 2026 growth accelerated further; operating cash flow fell 62% YoY on higher prepayments/margin deposits"
+    },
+    {
+     "source": "Flush Financial Services Network (Dongwu Securities)",
+     "date": "2026-06-30",
+     "note": "Dongwu Securities recommends tin sector (incl. Yunnan Tin) citing supply-side constraints expected to keep mid-price of tin rising; indium phosphide demand for AI data centers to drive indium demand growth >20%"
+    }
+   ]
+  },
+  {
+   "ticker": "MINSURI1(Lima)",
+   "held": null,
+   "microVerdict": "bullish",
+   "microScore": 4.0,
+   "thesis": "Minsur benefits from the desk's tin-bullish thesis (LME tin ~$53,450) even as its own Q1 2026 refined tin output from the Pisco smelter fell 2.9% YoY \u2014 supply softness at Minsur plus disruptions at Renison (Tasmania, -13% QoQ) and the DRC's Bisie mine reinforces low global tin stocks and price support, with BMI/Sucden Financial noting the market stays vulnerable to renewed squeezes into H2 2026 on Indonesia/Myanmar supply risk. IMPORTANT: MINSURI1 trades on the Lima Stock Exchange and is very likely NOT tradable via IBKR \u2014 flag this as an execution/tradability constraint before sizing any position.",
+   "catalysts": [
+    "Global tin stocks low and declining on LME/SHFE, keeping the market exposed to squeezes",
+    "Semiconductor-industry demand expected to keep tin prices elevated through 2026",
+    "Minsur's RDP copper-gold exploration investment (Pacific Ridge, BC) diversifies beyond tin"
+   ],
+   "risks": [
+    "NOT tradable via IBKR (sanctioned/foreign-exchange listing)",
+    "TRADABILITY: Lima-listed (MINSURI1) \u2014 likely not accessible via IBKR; confirm broker access before any trade",
+    "Minsur's own Pisco smelter output declined 2.9% YoY in Q1 2026, an idiosyncratic supply miss even as prices firm",
+    "Indonesia/Myanmar supply risk cuts both ways \u2014 could also ease tightness if resolved"
+   ],
+   "analyst": {},
+   "evidence": [
+    {
+     "source": "BusinessLine",
+     "date": "2026-06-17",
+     "note": "Minsur Q1 2026 refined tin output from Pisco smelter down 2.9% YoY to 8,314 tonnes; global tin stocks low on LME/SHFE, market vulnerable to squeezes into H2 2026"
+    },
+    {
+     "source": "Newsfile / PubT",
+     "date": "2026-07-02",
+     "note": "Minsur invests in Pacific Ridge Exploration's RDP copper-gold project in British Columbia, diversifying beyond core tin business"
+    }
+   ]
+  }
+ ]
+}
