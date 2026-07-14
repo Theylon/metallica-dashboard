@@ -26,9 +26,9 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from micro_score import WEIGHTS, clamp, momentum_score, composite_from_subs, rank_within_groups
 
 DATA = pathlib.Path(__file__).resolve().parent.parent / "data"
-SRC = pathlib.Path(os.environ.get(
-    "MICRO_SRC",
-    "/tmp/claude-0/-home-user-metallica-dashboard/a09c6b1b-2269-59e4-b962-3c7699dcd40f/scratchpad"))
+# Research inputs live in the repo (data/micro_src) so any session can rebuild
+# micro.json deterministically; MICRO_SRC overrides for ad-hoc scratchpad runs.
+SRC = pathlib.Path(os.environ.get("MICRO_SRC", str(DATA / "micro_src")))
 
 CONSENSUS_SCORE = {
     "StrongBuy": 10, "Strong Buy": 10, "Buy": 8, "ModerateBuy": 7, "Moderate Buy": 7,

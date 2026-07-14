@@ -11,10 +11,10 @@ Output: scratchpad/deep_auto.json — consumed by micro_build.py alongside the
 hand-authored deep dives. Every thesis states exactly what it is based on, so the
 card's "Deep-dive" sub-score is honest about being model-derived for these names.
 """
-import glob, json, pathlib
+import glob, json, os, pathlib
 
-SRC = pathlib.Path("/tmp/claude-0/-home-user-metallica-dashboard/a09c6b1b-2269-59e4-b962-3c7699dcd40f/scratchpad")
 DATA = pathlib.Path(__file__).resolve().parent.parent / "data"
+SRC = pathlib.Path(os.environ.get("MICRO_SRC", str(DATA / "micro_src")))
 
 universe = {r["ticker"]: r for r in json.loads((DATA / "universe.json").read_text())["tickers"]}
 bias_by_material = {b["material"]: b for b in json.loads((SRC / "commodity_bias.json").read_text())["biases"]}
