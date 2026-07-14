@@ -152,6 +152,20 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
   color: var(--text-muted); font-size: 14px; transition: all .2s; line-height: 1;
 }
 .theme-toggle:hover { color: var(--text); border-color: var(--border-light); }
+.refresh-btn {
+  display: flex; align-items: center; gap: 6px;
+  height: 30px; padding: 0 10px; border-radius: 8px; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text-muted); font-size: 11px; font-weight: 600;
+  transition: all .2s; line-height: 1;
+}
+.refresh-btn:hover { color: var(--text); border-color: var(--border-light); }
+.refresh-btn:disabled { cursor: progress; }
+.refresh-btn[data-state="loading"] { color: var(--yellow); border-color: var(--yellow); }
+.refresh-btn[data-state="done"]    { color: var(--green);  border-color: var(--green); }
+.refresh-btn[data-state="error"]   { color: var(--red);    border-color: var(--red); }
+.refresh-btn[data-state="loading"] .refresh-ico { animation: spin 1s linear infinite; display: inline-block; }
+@keyframes spin { to { transform: rotate(360deg); } }
 
 /* ── Tabs ───────────────────────────────────────────────────────────── */
 .tabs {
@@ -413,6 +427,8 @@ td:first-child { text-align: left; }
   .topbar-name { font-size: 15px; }
   .topbar-right { gap: 8px; }
   .updated-at { display: none; }
+  .refresh-btn .refresh-lbl { display: none; }
+  .refresh-btn { padding: 0 8px; }
   .market-badge { padding: 4px 8px; font-size: 10px; }
   .stale-badge { padding: 3px 6px; font-size: 10px; }
   .logout-btn { padding: 4px 2px; }
@@ -489,6 +505,9 @@ td:first-child { text-align: left; }
       <div id="stale-badge" class="stale-badge" style="display:none">⚠ Stale</div>
       <div id="market-badge" class="market-badge closed">Market Closed</div>
       <div id="updated-at" class="updated-at">—</div>
+      <button class="refresh-btn" id="refresh-btn" data-state="idle" onclick="refreshIbkr(event)" title="Refresh live IBKR data (NAV, positions, P&L)">
+        <span class="refresh-ico">⟳</span><span class="refresh-lbl">Refresh IBKR</span>
+      </button>
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark">🌙</button>
       <button class="logout-btn" onclick="logout()">Log out</button>
     </div>
@@ -1085,6 +1104,13 @@ const BENCHMARK_LABELS = {
   CPER: { label: 'Copper (CPER)',     color: '#f59e0b' },
 };
 
+// ── Live-refresh: dispatch the GitHub Action that pulls fresh IBKR data.
+// The site is static (GitHub Pages), so the button triggers fetch-data.yml with
+// scope=ibkr (skips the research/micro step), then re-pulls the redeployed JSON.
+const GH_OWNER = 'Theylon', GH_REPO = 'metallica-dashboard';
+const GH_WORKFLOW = 'fetch-data.yml';
+const GH_PAT_KEY = 'metallica_gh_pat';   // fine-grained PAT, stored in THIS browser only
+
 // ═══════════════════════════════════════════ AUTH ══
 async function sha256(str) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
@@ -1159,8 +1185,90 @@ async function loadData() {
   } catch(e) {
     console.error('Data load error', e);
   }
-  // Auto-refresh every 5 minutes
-  setTimeout(loadData, 5 * 60 * 1000);
+  // Auto-refresh every 5 minutes (single timer — clear any prior one so manual
+  // refreshes via refreshIbkr() don't stack multiple concurrent timers).
+  if (window._autoRefresh) clearTimeout(window._autoRefresh);
+  window._autoRefresh = setTimeout(loadData, 5 * 60 * 1000);
+}
+
+// ═══════════════════════════════════════════ LIVE REFRESH ══
+// Fine-grained PAT (Actions: read/write on this repo only), stored in localStorage
+// on this device — never committed. Shift-click the button forces a re-prompt.
+function getGithubPat(forceReprompt) {
+  if (forceReprompt) localStorage.removeItem(GH_PAT_KEY);
+  let t = localStorage.getItem(GH_PAT_KEY);
+  if (!t) {
+    t = prompt(
+      'Paste a GitHub fine-grained token\n' +
+      '(repo: ' + GH_OWNER + '/' + GH_REPO + ' · permission Actions = Read and write).\n' +
+      'Stored only in THIS browser (localStorage); never uploaded.');
+    if (t) { t = t.trim(); localStorage.setItem(GH_PAT_KEY, t); }
+  }
+  return t ? t.trim() : null;
+}
+
+async function refreshIbkr(ev) {
+  const btn = document.getElementById('refresh-btn');
+  const lbl = btn.querySelector('.refresh-lbl');
+  const set = (state, text) => {
+    btn.dataset.state = state;
+    if (text) { lbl.textContent = text; btn.title = text; }
+  };
+  const reset = (ms) => setTimeout(() => { set('idle', 'Refresh IBKR'); btn.disabled = false; }, ms);
+
+  // Shift-click = forget the stored token and re-enter it.
+  const pat = getGithubPat(ev && ev.shiftKey);
+  if (!pat) return;
+
+  // Baseline: the updatedAt currently served by Pages. We poll until it changes,
+  // which only happens once fetch → commit → deploy completes (a true "live" signal).
+  let baseline = null;
+  try { baseline = (await (await fetch('data/account.json?' + Date.now())).json()).updatedAt; } catch (e) {}
+
+  set('loading', 'Refreshing…');
+  btn.disabled = true;
+
+  // 1) Dispatch the IBKR-only run.
+  let disp;
+  try {
+    disp = await fetch(
+      'https://api.github.com/repos/' + GH_OWNER + '/' + GH_REPO + '/actions/workflows/' + GH_WORKFLOW + '/dispatches',
+      { method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + pat,
+                   'Accept': 'application/vnd.github+json',
+                   'X-GitHub-Api-Version': '2022-11-28',
+                   'Content-Type': 'application/json' },
+        body: JSON.stringify({ ref: 'master', inputs: { scope: 'ibkr' } }) });
+  } catch (e) {
+    set('error', 'Network error'); reset(5000); return;
+  }
+
+  if (disp.status === 401 || disp.status === 403) {   // bad/expired/insufficient token
+    localStorage.removeItem(GH_PAT_KEY);
+    set('error', 'Auth failed — click to re-enter'); reset(6000); return;
+  }
+  if (disp.status === 404) {                           // wrong repo/workflow, or PAT can't see repo
+    set('error', 'Not found (repo/workflow)'); reset(6000); return;
+  }
+  if (disp.status !== 204) {                           // 422 = scope input not on master yet, etc.
+    set('error', 'Dispatch failed (' + disp.status + ')'); reset(6000); return;
+  }
+
+  // 2) Poll the deployed account.json until updatedAt changes (~1.5–2.5 min incl. deploy).
+  const started = Date.now(), TIMEOUT = 5 * 60 * 1000;
+  const poll = async () => {
+    if (Date.now() - started > TIMEOUT) {
+      set('error', 'Timed out — try again shortly'); reset(6000); return;
+    }
+    let cur = null;
+    try { cur = (await (await fetch('data/account.json?' + Date.now())).json()).updatedAt; } catch (e) {}
+    if (cur && cur !== baseline) {
+      await loadData();                                // re-pull every JSON + re-render
+      set('done', 'Updated ✓'); reset(4000); return;
+    }
+    setTimeout(poll, 5000);
+  };
+  setTimeout(poll, 15000);                             // give the run time to start, commit, deploy
 }
 
 // ═══════════════════════════════════════════ RENDER ══
