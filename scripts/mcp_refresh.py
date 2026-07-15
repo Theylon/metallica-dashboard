@@ -172,6 +172,15 @@ def main():
     # ── Benchmarks (refreshed only when /tmp/ibkr_bench_*.json dumps exist) ─
     refreshed, kept = build_benchmarks(now)
 
+    # ── Asset→commodity exposure tracking (forward-looking, T1/T2 links) ────
+    try:
+        import sys, pathlib as _pl
+        sys.path.insert(0, str(_pl.Path(__file__).resolve().parent))
+        import exposure
+        exposure.record_and_report()
+    except Exception as e:
+        print(f"exposure tracking skipped (non-fatal): {e}")
+
     print(f"Refreshed @ {now}: NAV {account['nav']} | dailyPnl {account['dailyPnl']} | "
           f"netExp {account['netExposure']}% | {len(positions)} positions | {len(hist)} pnl pts | "
           f"bench refreshed={','.join(refreshed) or '-'} kept={','.join(kept) or '-'}")
