@@ -173,6 +173,16 @@ CONS_DIR = {"StrongBuy": "bull", "Strong Buy": "bull", "Buy": "bull",
             "Sell": "bear", "StrongSell": "bear", "Strong Sell": "bear"}
 
 
+def _num(v):
+    """Coerce to float, or None if not a clean number. Analyst price targets are
+    sometimes free text ('GBP34 (raised from GBP25)', 'HK$77 avg; JPM Buy…'), which
+    must skip a cross-check rather than crash the whole refresh."""
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return None
+
+
 def _yahoo_dir(yq):
     k = str(yq.get("recommendationKey") or "").lower()
     if k in ("strong_buy", "buy"):
@@ -198,13 +208,13 @@ def cross_validation(analyst, fundamentals, price, yq):
         return None
     checks, flags = [], []
 
-    pt = (analyst or {}).get("priceTarget")
-    ytp = yq.get("targetMean")
+    pt = _num((analyst or {}).get("priceTarget"))
+    ytp = _num(yq.get("targetMean"))
     if pt and ytp:
-        d = (float(ytp) / float(pt) - 1.0) * 100.0
+        d = (ytp / pt - 1.0) * 100.0
         status = "agree" if abs(d) <= 15 else "flag"
-        checks.append({"field": "priceTarget", "primary": round(float(pt), 2),
-                       "yahoo": round(float(ytp), 2), "deltaPct": round(d, 1), "status": status})
+        checks.append({"field": "priceTarget", "primary": round(pt, 2),
+                       "yahoo": round(ytp, 2), "deltaPct": round(d, 1), "status": status})
         if status == "flag":
             flags.append(f"Price target: Yahoo ${ytp:.0f} vs primary ${pt:.0f} ({d:+.0f}%)")
 
@@ -216,23 +226,24 @@ def cross_validation(analyst, fundamentals, price, yq):
         if status == "flag":
             flags.append(f"Rating: Yahoo {ydir} vs primary {pdir}")
 
-    pm = (fundamentals or {}).get("ebitda_margin")
-    ym = yq.get("ebitdaMargins")
+    pm = _num((fundamentals or {}).get("ebitda_margin"))
+    ym = _num(yq.get("ebitdaMargins"))
     if pm is not None and ym is not None:
-        dpp = (float(ym) - float(pm)) * 100.0
+        dpp = (ym - pm) * 100.0
         status = "agree" if abs(dpp) <= 5 else "flag"
-        checks.append({"field": "ebitdaMargin", "primary": round(float(pm), 4),
-                       "yahoo": round(float(ym), 4), "deltaPp": round(dpp, 1), "status": status})
+        checks.append({"field": "ebitdaMargin", "primary": round(pm, 4),
+                       "yahoo": round(ym, 4), "deltaPp": round(dpp, 1), "status": status})
         if status == "flag":
             flags.append(f"EBITDA margin: Yahoo {ym * 100:.0f}% vs primary {pm * 100:.0f}% ({dpp:+.0f}pp)")
 
-    yp = yq.get("price")
-    if price and yp:
-        d = (float(yp) / float(price) - 1.0) * 100.0
+    p = _num(price)
+    yp = _num(yq.get("price"))
+    if p and yp:
+        d = (yp / p - 1.0) * 100.0
         if abs(d) > 10:
-            checks.append({"field": "price", "primary": round(float(price), 2),
-                           "yahoo": round(float(yp), 2), "deltaPct": round(d, 1), "status": "flag"})
-            flags.append(f"Price: Yahoo ${yp:.2f} vs snapshot ${price:.2f} ({d:+.0f}%)")
+            checks.append({"field": "price", "primary": round(p, 2),
+                           "yahoo": round(yp, 2), "deltaPct": round(d, 1), "status": "flag"})
+            flags.append(f"Price: Yahoo ${yp:.2f} vs snapshot ${p:.2f} ({d:+.0f}%)")
 
     rec_mismatch = any(c["field"] == "recommendation" and c["status"] == "flag" for c in checks)
     agreement = "agree" if not flags else ("conflict" if (len(flags) >= 2 or rec_mismatch) else "mixed")
