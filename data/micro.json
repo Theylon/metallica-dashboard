@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-15T09:29:50+00:00",
+ "updatedAt": "2026-07-15T10:00:46+00:00",
  "researchAsOf": "2026-07-14T11:10:42+00:00",
  "methodology": "Composite 0-100 = momentum 18% + commodity-alignment 18% + deep-dive 14% + analyst 13% + fundamentals 12% + news sentiment 9% + SmartScore 8% + quality 8% (missing sub-scores redistribute). High = long candidate, low = short candidate. Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner, TrueNorth.",
  "macro": "Hawkish Fed (64% Sept hike priced), strong dollar (DXY ~100.8), US-Iran conflict volatility with 60-day peace talks; metals complex broadly correcting after H1 melt-up. Q4 consensus: dollar downtrend -> possible precious rebound window in Q3/Q4.",
@@ -346,7 +346,20 @@
     "modelDerived": true,
     "asOf": "2026-07-14"
    },
-   "hedgeCrossVal": null
+   "hedgeCrossVal": {
+    "agreement": "agree",
+    "flags": [],
+    "checks": [],
+    "yahoo": {
+     "price": 44.12,
+     "targetMean": 47.726524,
+     "recommendationKey": "strong_buy",
+     "recommendationMean": 1.5,
+     "ebitdaMargins": 0.121309996,
+     "returnOnEquity": -0.025999999,
+     "numberOfAnalysts": 5
+    }
+   }
   },
   {
    "ticker": "FCX",
@@ -452,7 +465,6 @@
     "earnings_per_share": 1.53
    },
    "discovered": false,
-   "groupRank": "1/10",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -601,7 +613,8 @@
      "returnOnEquity": 0.15630999,
      "numberOfAnalysts": 22
     }
-   }
+   },
+   "groupRank": "1/10"
   },
   {
    "ticker": "GEV",
@@ -703,7 +716,6 @@
     "earnings_per_share": 17.92
    },
    "discovered": false,
-   "groupRank": "1/2",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -852,7 +864,8 @@
      "returnOnEquity": 0.75708,
      "numberOfAnalysts": 35
     }
-   }
+   },
+   "groupRank": "1/2"
   },
   {
    "ticker": "FM.TO",
@@ -1054,7 +1067,7 @@
     "checks": [],
     "yahoo": {
      "price": 38.94,
-     "targetMean": 47.233562,
+     "targetMean": 47.239277,
      "recommendationKey": "buy",
      "recommendationMean": 1.86364,
      "ebitdaMargins": 0.3038,
@@ -1176,7 +1189,6 @@
     "earnings_per_share": 7.53
    },
    "discovered": false,
-   "groupRank": "1/14",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -1325,7 +1337,8 @@
      "returnOnEquity": 0.12285,
      "numberOfAnalysts": 16
     }
-   }
+   },
+   "groupRank": "1/14"
   },
   {
    "ticker": "ANTO.L",
@@ -1344,16 +1357,16 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 3770.0,
-   "vs50": -4.3,
-   "vs200": 8.9,
-   "range52w": 74.0,
+   "price": 3761.7976,
+   "vs50": -4.5,
+   "vs200": 8.6,
+   "range52w": 73.7,
    "marketCap": 37245665937,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 77.9,
+   "composite": 77.6,
    "subs": {
-    "momentum": 6.0,
+    "momentum": 5.9,
     "commodity": 9.0,
     "deep": 8.0,
     "analyst": null,
@@ -1528,7 +1541,7 @@
     "checks": [],
     "yahoo": {
      "price": 3766.0,
-     "targetMean": 3818.0703,
+     "targetMean": 3818.8887,
      "recommendationKey": "hold",
      "recommendationMean": 2.90476,
      "ebitdaMargins": 0.57188,
@@ -1622,7 +1635,6 @@
     "earnings_per_share": 4.13
    },
    "discovered": false,
-   "groupRank": "2/14",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -1771,7 +1783,8 @@
      "returnOnEquity": 0.054330003,
      "numberOfAnalysts": 6
     }
-   }
+   },
+   "groupRank": "2/14"
   },
   {
    "ticker": "SFR.AX",
@@ -2075,7 +2088,6 @@
     "earnings_per_share": 3.73
    },
    "discovered": false,
-   "groupRank": "1/6",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -2224,7 +2236,8 @@
      "returnOnEquity": 0.33818,
      "numberOfAnalysts": 20
     }
-   }
+   },
+   "groupRank": "1/6"
   },
   {
    "ticker": "BHP",
@@ -2332,7 +2345,6 @@
     "earnings_per_share": 3.56
    },
    "discovered": false,
-   "groupRank": "4/10",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -2476,7 +2488,8 @@
      "returnOnEquity": 0.24712999,
      "numberOfAnalysts": 7
     }
-   }
+   },
+   "groupRank": "4/10"
   },
   {
    "ticker": "6752.T",
@@ -2789,7 +2802,6 @@
     "earnings_per_share": 1.46
    },
    "discovered": false,
-   "groupRank": "5/10",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -2940,7 +2952,8 @@
      "returnOnEquity": 0.19476,
      "numberOfAnalysts": 6
     }
-   }
+   },
+   "groupRank": "5/10"
   },
   {
    "ticker": "NEXA",
@@ -3039,7 +3052,6 @@
     "earnings_per_share": 1.0
    },
    "discovered": false,
-   "groupRank": "1/3",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -3190,7 +3202,8 @@
      "returnOnEquity": 0.24370001,
      "numberOfAnalysts": 8
     }
-   }
+   },
+   "groupRank": "1/3"
   },
   {
    "ticker": "ERO",
@@ -3292,7 +3305,6 @@
     "earnings_per_share": 2.59
    },
    "discovered": false,
-   "groupRank": "2/10",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -3443,7 +3455,8 @@
      "returnOnEquity": 0.32481,
      "numberOfAnalysts": 3
     }
-   }
+   },
+   "groupRank": "2/10"
   },
   {
    "ticker": "GGB",
@@ -3531,7 +3544,6 @@
     "earnings_per_share": 0.69
    },
    "discovered": false,
-   "groupRank": "3/14",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -3680,7 +3692,8 @@
      "returnOnEquity": 0.03066,
      "numberOfAnalysts": 5
     }
-   }
+   },
+   "groupRank": "3/14"
   },
   {
    "ticker": "GMEXICOB.MX",
@@ -3759,7 +3772,6 @@
    },
    "fundamentals": null,
    "discovered": false,
-   "groupRank": "3/10",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -3880,14 +3892,15 @@
     "checks": [],
     "yahoo": {
      "price": 199.56,
-     "targetMean": 206.58014,
+     "targetMean": 206.56235,
      "recommendationKey": "buy",
      "recommendationMean": 2.35714,
      "ebitdaMargins": 0.56165004,
      "returnOnEquity": 0.25724,
      "numberOfAnalysts": 15
     }
-   }
+   },
+   "groupRank": "3/10"
   },
   {
    "ticker": "ETN",
@@ -3988,7 +4001,6 @@
     "earnings_per_share": 10.49
    },
    "discovered": false,
-   "groupRank": "2/2",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -4137,7 +4149,8 @@
      "returnOnEquity": 0.20844999,
      "numberOfAnalysts": 25
     }
-   }
+   },
+   "groupRank": "2/2"
   },
   {
    "ticker": "TKA.DE",
@@ -4155,16 +4168,16 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 11.825,
-   "vs50": 6.8,
-   "vs200": 20.2,
-   "range52w": 91.2,
+   "price": 11.795,
+   "vs50": 6.5,
+   "vs200": 19.9,
+   "range52w": 90.8,
    "marketCap": 7177790974,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 76.0,
+   "composite": 75.7,
    "subs": {
-    "momentum": 9.5,
+    "momentum": 9.4,
     "commodity": 6.3,
     "deep": 7.0,
     "analyst": null,
@@ -4332,7 +4345,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 11.825,
+     "price": 11.795,
      "targetMean": 13.3125,
      "recommendationKey": "buy",
      "recommendationMean": 1.75,
@@ -4443,7 +4456,6 @@
     "earnings_per_share": 2.92
    },
    "discovered": false,
-   "groupRank": "2/6",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -4592,7 +4604,8 @@
      "returnOnEquity": 0.22674999,
      "numberOfAnalysts": 9
     }
-   }
+   },
+   "groupRank": "2/6"
   },
   {
    "ticker": "VEDL",
@@ -4880,7 +4893,6 @@
     "earnings_per_share": 2.2
    },
    "discovered": false,
-   "groupRank": "4/14",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -5029,7 +5041,8 @@
      "returnOnEquity": 0.03227,
      "numberOfAnalysts": 13
     }
-   }
+   },
+   "groupRank": "4/14"
   },
   {
    "ticker": "STLD",
@@ -5139,7 +5152,6 @@
     "earnings_per_share": 8.02
    },
    "discovered": false,
-   "groupRank": "5/14",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -5288,7 +5300,8 @@
      "returnOnEquity": 0.15247,
      "numberOfAnalysts": 12
     }
-   }
+   },
+   "groupRank": "5/14"
   },
   {
    "ticker": "LYC.AX",
@@ -5715,16 +5728,16 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 185.58,
-   "vs50": -6.8,
-   "vs200": -1.0,
-   "range52w": 53.4,
+   "price": 185.16,
+   "vs50": -7.0,
+   "vs200": -1.2,
+   "range52w": 52.8,
    "marketCap": 2386845200000,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 68.9,
+   "composite": 68.6,
    "subs": {
-    "momentum": 3.9,
+    "momentum": 3.8,
     "commodity": 9.0,
     "deep": 7.0,
     "analyst": null,
@@ -5892,7 +5905,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 185.59,
+     "price": 185.2,
      "targetMean": 222.97221,
      "recommendationKey": "hold",
      "recommendationMean": 2.6,
@@ -6212,7 +6225,6 @@
     "earnings_per_share": 3.61
    },
    "discovered": false,
-   "groupRank": "1/7",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -6354,7 +6366,8 @@
      "returnOnEquity": 0.08293,
      "numberOfAnalysts": 3
     }
-   }
+   },
+   "groupRank": "1/7"
   },
   {
    "ticker": "GLNCY",
@@ -6459,7 +6472,6 @@
     "earnings_per_share": 0.0612
    },
    "discovered": false,
-   "groupRank": "6/10",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -6608,7 +6620,8 @@
      "returnOnEquity": 0.0034599998,
      "numberOfAnalysts": 4
     }
-   }
+   },
+   "groupRank": "6/10"
   },
   {
    "ticker": "WES.AX",
@@ -6890,7 +6903,6 @@
     "earnings_per_share": 2.84
    },
    "discovered": false,
-   "groupRank": "8/10",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -7014,7 +7026,7 @@
      {
       "field": "priceTarget",
       "primary": 60.93,
-      "yahoo": 49.73,
+      "yahoo": 49.72,
       "deltaPct": -18.4,
       "status": "flag"
      },
@@ -7034,14 +7046,15 @@
     ],
     "yahoo": {
      "price": 60.09,
-     "targetMean": 49.72695,
+     "targetMean": 49.720585,
      "recommendationKey": "hold",
      "recommendationMean": 2.70588,
      "ebitdaMargins": 0.41134998,
      "returnOnEquity": 0.0592,
      "numberOfAnalysts": 3
     }
-   }
+   },
+   "groupRank": "8/10"
   },
   {
    "ticker": "RIO",
@@ -7149,7 +7162,6 @@
     "earnings_per_share": 6.15
    },
    "discovered": false,
-   "groupRank": "7/10",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -7291,7 +7303,8 @@
      "returnOnEquity": 0.16399999,
      "numberOfAnalysts": 8
     }
-   }
+   },
+   "groupRank": "7/10"
   },
   {
    "ticker": "AFM.V",
@@ -7593,7 +7606,6 @@
     "earnings_per_share": 5.87
    },
    "discovered": false,
-   "groupRank": "1/17",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -7742,7 +7754,8 @@
      "returnOnEquity": 0.19041,
      "numberOfAnalysts": 9
     }
-   }
+   },
+   "groupRank": "1/17"
   },
   {
    "ticker": "ALLEI.ST",
@@ -7758,10 +7771,10 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 98.15,
-   "vs50": 9.0,
-   "vs200": 21.5,
-   "range52w": 98.5,
+   "price": 98.0,
+   "vs50": 8.8,
+   "vs200": 21.3,
+   "range52w": 98.1,
    "marketCap": 24140167677,
    "tradable": true,
    "quoteSuspect": false,
@@ -7816,7 +7829,6 @@
    },
    "fundamentals": null,
    "discovered": false,
-   "groupRank": "1/5",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -7936,7 +7948,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 98.15,
+     "price": 98.0,
      "targetMean": 83.6,
      "recommendationKey": "hold",
      "recommendationMean": 3.4,
@@ -7944,7 +7956,8 @@
      "returnOnEquity": 0.033770002,
      "numberOfAnalysts": 5
     }
-   }
+   },
+   "groupRank": "1/5"
   },
   {
    "ticker": "NEM",
@@ -8032,7 +8045,6 @@
     "earnings_per_share": 6.41
    },
    "discovered": false,
-   "groupRank": "2/17",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -8181,7 +8193,8 @@
      "returnOnEquity": 0.25832,
      "numberOfAnalysts": 21
     }
-   }
+   },
+   "groupRank": "2/17"
   },
   {
    "ticker": "000960.SZ",
@@ -8484,7 +8497,6 @@
     "earnings_per_share": -0.5
    },
    "discovered": false,
-   "groupRank": "1/8",
    "hedgeFund": {
     "aggregate": {
      "signal": "neutral",
@@ -8633,7 +8645,8 @@
      "returnOnEquity": -0.04167,
      "numberOfAnalysts": 16
     }
-   }
+   },
+   "groupRank": "1/8"
   },
   {
    "ticker": "SCCO",
@@ -8729,7 +8742,6 @@
     "earnings_per_share": 5.24
    },
    "discovered": false,
-   "groupRank": "9/10",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -8878,7 +8890,8 @@
      "returnOnEquity": 0.46343,
      "numberOfAnalysts": 17
     }
-   }
+   },
+   "groupRank": "9/10"
   },
   {
    "ticker": "5916.KL",
@@ -9306,10 +9319,10 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 527.2,
-   "vs50": -2.2,
-   "vs200": 2.0,
-   "range52w": 56.9,
+   "price": 528.2,
+   "vs50": -2.0,
+   "vs200": 2.2,
+   "range52w": 57.1,
    "marketCap": 147656836080,
    "tradable": true,
    "quoteSuspect": false,
@@ -9369,7 +9382,6 @@
    },
    "fundamentals": null,
    "discovered": false,
-   "groupRank": "2/3",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -9489,7 +9501,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 527.2,
+     "price": 528.4,
      "targetMean": 565.05554,
      "recommendationKey": "hold",
      "recommendationMean": 3.0,
@@ -9497,7 +9509,8 @@
      "returnOnEquity": 0.14731,
      "numberOfAnalysts": 18
     }
-   }
+   },
+   "groupRank": "2/3"
   },
   {
    "ticker": "SIM",
@@ -9583,7 +9596,6 @@
     "earnings_per_share": 63.21
    },
    "discovered": false,
-   "groupRank": "6/14",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -9718,7 +9730,8 @@
      "ebitdaMargins": 0.21311001,
      "returnOnEquity": 0.03125
     }
-   }
+   },
+   "groupRank": "6/14"
   },
   {
    "ticker": "RS",
@@ -9821,7 +9834,6 @@
     "earnings_per_share": 14.07
    },
    "discovered": false,
-   "groupRank": "7/14",
    "hedgeFund": {
     "aggregate": {
      "signal": "neutral",
@@ -9970,7 +9982,8 @@
      "returnOnEquity": 0.11326,
      "numberOfAnalysts": 8
     }
-   }
+   },
+   "groupRank": "7/14"
   },
   {
    "ticker": "MTUS",
@@ -10064,7 +10077,6 @@
     "earnings_per_share": -0.0286
    },
    "discovered": false,
-   "groupRank": "8/14",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -10199,7 +10211,8 @@
      "returnOnEquity": 0.00424,
      "numberOfAnalysts": 2
     }
-   }
+   },
+   "groupRank": "8/14"
   },
   {
    "ticker": "VALE",
@@ -10304,7 +10317,6 @@
     "earnings_per_share": 0.58
    },
    "discovered": false,
-   "groupRank": "3/5",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -10455,7 +10467,8 @@
      "returnOnEquity": 0.068390004,
      "numberOfAnalysts": 25
     }
-   }
+   },
+   "groupRank": "3/5"
   },
   {
    "ticker": "DAN.MI",
@@ -10471,16 +10484,16 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 68.4,
-   "vs50": -3.1,
-   "vs200": 14.7,
-   "range52w": 81.8,
+   "price": 68.05,
+   "vs50": -3.6,
+   "vs200": 14.1,
+   "range52w": 81.0,
    "marketCap": 4663402736,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 62.2,
+   "composite": 61.6,
    "subs": {
-    "momentum": 7.0,
+    "momentum": 6.8,
     "commodity": 5.9,
     "deep": 5.0,
     "analyst": null,
@@ -10652,12 +10665,12 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 68.4,
+     "price": 68.05,
      "targetMean": 79.16667,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.5,
-     "ebitdaMargins": 0.11257,
-     "returnOnEquity": 0.08031999,
+     "ebitdaMargins": 0.11408,
+     "returnOnEquity": 0.08031,
      "numberOfAnalysts": 6
     }
    }
@@ -10774,7 +10787,6 @@
     "earnings_per_share": -5.75
    },
    "discovered": false,
-   "groupRank": "1/6",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -10925,7 +10937,8 @@
      "returnOnEquity": -0.0182,
      "numberOfAnalysts": 20
     }
-   }
+   },
+   "groupRank": "1/6"
   },
   {
    "ticker": "CGAU",
@@ -11020,7 +11033,6 @@
     "earnings_per_share": 2.9
    },
    "discovered": false,
-   "groupRank": "1/1",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -11171,7 +11183,8 @@
      "returnOnEquity": 0.3369,
      "numberOfAnalysts": 2
     }
-   }
+   },
+   "groupRank": "1/1"
   },
   {
    "ticker": "ENR.DE",
@@ -11190,16 +11203,16 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 154.8,
-   "vs50": -5.5,
-   "vs200": 9.0,
-   "range52w": 68.3,
+   "price": 154.1,
+   "vs50": -5.9,
+   "vs200": 8.6,
+   "range52w": 67.6,
    "marketCap": 130114974764,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 63.2,
+   "composite": 62.6,
    "subs": {
-    "momentum": 5.6,
+    "momentum": 5.4,
     "commodity": 5.9,
     "deep": 7.0,
     "analyst": null,
@@ -11367,7 +11380,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 154.7,
+     "price": 154.16,
      "targetMean": 197.0784,
      "recommendationKey": "buy",
      "recommendationMean": 1.84,
@@ -11656,7 +11669,6 @@
     "earnings_per_share": 1.95
    },
    "discovered": true,
-   "groupRank": "3/17",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -11792,7 +11804,8 @@
      "returnOnEquity": 0.12415,
      "numberOfAnalysts": 5
     }
-   }
+   },
+   "groupRank": "3/17"
   },
   {
    "ticker": "CDE",
@@ -11891,7 +11904,6 @@
     "earnings_per_share": 0.92
    },
    "discovered": false,
-   "groupRank": "1/8",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -12042,7 +12054,8 @@
      "returnOnEquity": 0.12146,
      "numberOfAnalysts": 11
     }
-   }
+   },
+   "groupRank": "1/8"
   },
   {
    "ticker": "ACX.MC",
@@ -12060,16 +12073,16 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 16.21,
-   "vs50": 4.8,
-   "vs200": 25.2,
-   "range52w": 93.7,
+   "price": 16.16,
+   "vs50": 4.5,
+   "vs200": 24.8,
+   "range52w": 93.0,
    "marketCap": 3989253936,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 63.7,
+   "composite": 63.3,
    "subs": {
-    "momentum": 9.6,
+    "momentum": 9.5,
     "commodity": 5.0,
     "deep": 4.0,
     "analyst": null,
@@ -12118,7 +12131,6 @@
    },
    "fundamentals": null,
    "discovered": false,
-   "groupRank": "2/5",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -12238,7 +12250,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 16.21,
+     "price": 16.16,
      "targetMean": 16.89643,
      "recommendationKey": "buy",
      "recommendationMean": 1.85714,
@@ -12246,7 +12258,8 @@
      "returnOnEquity": -0.025559999,
      "numberOfAnalysts": 14
     }
-   }
+   },
+   "groupRank": "2/5"
   },
   {
    "ticker": "601168.SS",
@@ -12462,10 +12475,10 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 3647.0,
-   "vs50": -4.9,
-   "vs200": 9.3,
-   "range52w": 73.2,
+   "price": 3651.0,
+   "vs50": -4.8,
+   "vs200": 9.4,
+   "range52w": 73.4,
    "marketCap": 38798578561,
    "tradable": false,
    "quoteSuspect": false,
@@ -12644,8 +12657,8 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 3645.0,
-     "targetMean": 3953.916,
+     "price": 3652.0,
+     "targetMean": 3954.7637,
      "recommendationKey": "buy",
      "recommendationMean": 2.4375,
      "ebitdaMargins": 0.32217,
@@ -12954,7 +12967,6 @@
     "earnings_per_share": 1.95
    },
    "discovered": false,
-   "groupRank": "2/7",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -13076,8 +13088,8 @@
      {
       "field": "priceTarget",
       "primary": 36.6,
-      "yahoo": 37.04,
-      "deltaPct": 1.2,
+      "yahoo": 37.02,
+      "deltaPct": 1.1,
       "status": "agree"
      },
      {
@@ -13096,14 +13108,15 @@
     ],
     "yahoo": {
      "price": 29.16,
-     "targetMean": 37.03965,
+     "targetMean": 37.0185,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.4,
      "ebitdaMargins": 0.10626,
      "returnOnEquity": 0.45651,
      "numberOfAnalysts": 5
     }
-   }
+   },
+   "groupRank": "2/7"
   },
   {
    "ticker": "MN",
@@ -13320,16 +13333,16 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 318.75,
-   "vs50": -6.1,
-   "vs200": 13.9,
-   "range52w": 72.9,
+   "price": 318.5,
+   "vs50": -6.2,
+   "vs200": 13.8,
+   "range52w": 72.8,
    "marketCap": 61790000000,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 62.4,
+   "composite": 62.1,
    "subs": {
-    "momentum": 6.1,
+    "momentum": 6.0,
     "commodity": 5.0,
     "deep": 7.0,
     "analyst": null,
@@ -13502,7 +13515,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 318.65,
+     "price": 318.45,
      "targetMean": 313.27505,
      "recommendationKey": "hold",
      "recommendationMean": 3.2,
@@ -13608,7 +13621,6 @@
     "earnings_per_share": 0.49
    },
    "discovered": false,
-   "groupRank": "3/8",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -13759,7 +13771,8 @@
      "returnOnEquity": 0.19894,
      "numberOfAnalysts": 9
     }
-   }
+   },
+   "groupRank": "3/8"
   },
   {
    "ticker": "SVM",
@@ -13861,7 +13874,6 @@
     "earnings_per_share": -0.05
    },
    "discovered": false,
-   "groupRank": "2/8",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -14013,7 +14025,8 @@
      "returnOnEquity": 0.03396,
      "numberOfAnalysts": 2
     }
-   }
+   },
+   "groupRank": "2/8"
   },
   {
    "ticker": "ALOY",
@@ -14112,7 +14125,6 @@
     "earnings_per_share": -1.17
    },
    "discovered": false,
-   "groupRank": "4/8",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -14263,7 +14275,8 @@
      "ebitdaMargins": 0.0,
      "numberOfAnalysts": 1
     }
-   }
+   },
+   "groupRank": "4/8"
   },
   {
    "ticker": "2899.HK",
@@ -14465,7 +14478,7 @@
     "checks": [],
     "yahoo": {
      "price": 30.2,
-     "targetMean": 51.574944,
+     "targetMean": 51.54819,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.2,
      "ebitdaMargins": 0.29301,
@@ -14564,7 +14577,6 @@
     "earnings_per_share": 0.75
    },
    "discovered": false,
-   "groupRank": "9/14",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -14715,7 +14727,8 @@
      "returnOnEquity": 0.13791999,
      "numberOfAnalysts": 11
     }
-   }
+   },
+   "groupRank": "9/14"
   },
   {
    "ticker": "EMN",
@@ -15033,7 +15046,6 @@
     "earnings_per_share": -2.57
    },
    "discovered": false,
-   "groupRank": "3/6",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -15182,7 +15194,8 @@
      "returnOnEquity": -1.0301499,
      "numberOfAnalysts": 9
     }
-   }
+   },
+   "groupRank": "3/6"
   },
   {
    "ticker": "USAR",
@@ -15273,7 +15286,6 @@
     "earnings_per_share": -3.31
    },
    "discovered": false,
-   "groupRank": "2/8",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -15417,7 +15429,8 @@
      "returnOnEquity": -0.44776002,
      "numberOfAnalysts": 8
     }
-   }
+   },
+   "groupRank": "2/8"
   },
   {
    "ticker": "WPM",
@@ -15505,7 +15518,6 @@
     "earnings_per_share": 3.3
    },
    "discovered": false,
-   "groupRank": "5/17",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -15654,7 +15666,8 @@
      "returnOnEquity": 0.21542,
      "numberOfAnalysts": 9
     }
-   }
+   },
+   "groupRank": "5/17"
   },
   {
    "ticker": "AEM",
@@ -15748,7 +15761,6 @@
     "earnings_per_share": 8.89
    },
    "discovered": false,
-   "groupRank": "4/17",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -15897,7 +15909,8 @@
      "returnOnEquity": 0.22298001,
      "numberOfAnalysts": 14
     }
-   }
+   },
+   "groupRank": "4/17"
   },
   {
    "ticker": "UUUU",
@@ -15986,7 +15999,6 @@
     "earnings_per_share": -0.37
    },
    "discovered": false,
-   "groupRank": "3/8",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -16130,7 +16142,8 @@
      "returnOnEquity": -0.10778,
      "numberOfAnalysts": 4
     }
-   }
+   },
+   "groupRank": "3/8"
   },
   {
    "ticker": "TSLA",
@@ -16244,7 +16257,6 @@
     "earnings_per_share": 1.18
    },
    "discovered": false,
-   "groupRank": "1/3",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -16395,7 +16407,8 @@
      "returnOnEquity": 0.04901,
      "numberOfAnalysts": 40
     }
-   }
+   },
+   "groupRank": "1/3"
   },
   {
    "ticker": "KGC",
@@ -16491,7 +16504,6 @@
     "earnings_per_share": 1.99
    },
    "discovered": false,
-   "groupRank": "6/17",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -16642,7 +16654,8 @@
      "returnOnEquity": 0.35467,
      "numberOfAnalysts": 10
     }
-   }
+   },
+   "groupRank": "6/17"
   },
   {
    "ticker": "NVL",
@@ -17024,7 +17037,7 @@
     "checks": [],
     "yahoo": {
      "price": 10.78,
-     "targetMean": 14.413306,
+     "targetMean": 14.415153,
      "recommendationKey": "buy",
      "recommendationMean": 1.93333,
      "ebitdaMargins": 0.0309,
@@ -17102,7 +17115,6 @@
    },
    "fundamentals": null,
    "discovered": false,
-   "groupRank": "3/3",
    "hedgeFund": {
     "aggregate": {
      "signal": "neutral",
@@ -17227,7 +17239,8 @@
      "ebitdaMargins": 0.16685,
      "returnOnEquity": -0.1551
     }
-   }
+   },
+   "groupRank": "3/3"
   },
   {
    "ticker": "601958.SS",
@@ -17539,7 +17552,6 @@
     "earnings_per_share": -0.45
    },
    "discovered": false,
-   "groupRank": "2/6",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -17688,7 +17700,8 @@
      "returnOnEquity": -0.49056998,
      "numberOfAnalysts": 2
     }
-   }
+   },
+   "groupRank": "2/6"
   },
   {
    "ticker": "HINDZINC.NS",
@@ -17704,7 +17717,7 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 527.7,
+   "price": 527.8,
    "vs50": -9.4,
    "vs200": -5.3,
    "range52w": 39.1,
@@ -17881,7 +17894,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 527.9,
+     "price": 528.0,
      "targetMean": 651.6,
      "recommendationKey": "buy",
      "recommendationMean": 2.4,
@@ -17992,7 +18005,6 @@
     "earnings_per_share": 2.06
    },
    "discovered": false,
-   "groupRank": "3/6",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -18144,7 +18156,8 @@
      "returnOnEquity": 0.13402,
      "numberOfAnalysts": 18
     }
-   }
+   },
+   "groupRank": "3/6"
   },
   {
    "ticker": "GMKN.ME",
@@ -18442,7 +18455,6 @@
     "earnings_per_share": 4.47
    },
    "discovered": false,
-   "groupRank": "3/7",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -18591,7 +18603,8 @@
      "returnOnEquity": 0.15427,
      "numberOfAnalysts": 12
     }
-   }
+   },
+   "groupRank": "3/7"
   },
   {
    "ticker": "PAAS",
@@ -18693,7 +18706,6 @@
     "earnings_per_share": 2.61
    },
    "discovered": false,
-   "groupRank": "4/8",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -18842,7 +18854,8 @@
      "returnOnEquity": 0.20796,
      "numberOfAnalysts": 8
     }
-   }
+   },
+   "groupRank": "4/8"
   },
   {
    "ticker": "EML",
@@ -19625,16 +19638,16 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 5.525,
-   "vs50": -1.9,
-   "vs200": 15.1,
-   "range52w": 78.1,
+   "price": 5.52,
+   "vs50": -2.0,
+   "vs200": 15.0,
+   "range52w": 78.0,
    "marketCap": 2429952126,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 60.7,
+   "composite": 60.4,
    "subs": {
-    "momentum": 7.1,
+    "momentum": 7.0,
     "commodity": 5.0,
     "deep": 6.0,
     "analyst": null,
@@ -19683,7 +19696,6 @@
    },
    "fundamentals": null,
    "discovered": false,
-   "groupRank": "4/5",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -19803,7 +19815,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 5.525,
+     "price": 5.52,
      "targetMean": 5.64545,
      "recommendationKey": "buy",
      "recommendationMean": 2.45455,
@@ -19811,7 +19823,8 @@
      "returnOnEquity": -0.035439998,
      "numberOfAnalysts": 11
     }
-   }
+   },
+   "groupRank": "4/5"
   },
   {
    "ticker": "S32.AX",
@@ -20015,7 +20028,7 @@
     "checks": [],
     "yahoo": {
      "price": 4.06,
-     "targetMean": 4.770274,
+     "targetMean": 4.771608,
      "recommendationKey": "buy",
      "recommendationMean": 2.07692,
      "ebitdaMargins": 0.202,
@@ -20121,7 +20134,6 @@
     "earnings_per_share": 4.0
    },
    "discovered": false,
-   "groupRank": "7/17",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -20270,7 +20282,8 @@
      "returnOnEquity": 0.51931,
      "numberOfAnalysts": 8
     }
-   }
+   },
+   "groupRank": "7/17"
   },
   {
    "ticker": "APAM.AS",
@@ -20286,16 +20299,16 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 46.94,
-   "vs50": -1.8,
-   "vs200": 22.4,
-   "range52w": 79.2,
+   "price": 46.8,
+   "vs50": -2.1,
+   "vs200": 22.1,
+   "range52w": 78.8,
    "marketCap": 3255374835,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 57.8,
+   "composite": 57.4,
    "subs": {
-    "momentum": 7.7,
+    "momentum": 7.6,
     "commodity": 5.0,
     "deep": 4.0,
     "analyst": null,
@@ -20468,7 +20481,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 46.94,
+     "price": 46.76,
      "targetMean": 50.74818,
      "recommendationKey": "buy",
      "recommendationMean": 2.5,
@@ -20492,16 +20505,16 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 33.26,
-   "vs50": 6.1,
-   "vs200": 14.7,
-   "range52w": 92.2,
+   "price": 33.04,
+   "vs50": 5.4,
+   "vs200": 13.9,
+   "range52w": 90.1,
    "marketCap": 19216358596,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 62.9,
+   "composite": 62.2,
    "subs": {
-    "momentum": 8.9,
+    "momentum": 8.7,
     "commodity": 5.0,
     "deep": 4.0,
     "analyst": null,
@@ -20662,7 +20675,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 33.26,
+     "price": 33.06,
      "targetMean": 35.0,
      "recommendationKey": "buy",
      "recommendationMean": 2.0,
@@ -20969,7 +20982,6 @@
     "earnings_per_share": 507.88
    },
    "discovered": false,
-   "groupRank": "11/14",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -21105,7 +21117,8 @@
      "returnOnEquity": 0.01125,
      "numberOfAnalysts": 1
     }
-   }
+   },
+   "groupRank": "11/14"
   },
   {
    "ticker": "AG",
@@ -21203,7 +21216,6 @@
     "earnings_per_share": 0.35
    },
    "discovered": false,
-   "groupRank": "5/8",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -21352,7 +21364,8 @@
      "returnOnEquity": 0.11452,
      "numberOfAnalysts": 2
     }
-   }
+   },
+   "groupRank": "5/8"
   },
   {
    "ticker": "6501.T",
@@ -21618,7 +21631,6 @@
     "earnings_per_share": 1.2
    },
    "discovered": true,
-   "groupRank": "10/17",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -21756,7 +21768,8 @@
      "returnOnEquity": 0.15925,
      "numberOfAnalysts": 4
     }
-   }
+   },
+   "groupRank": "10/17"
   },
   {
    "ticker": "WS",
@@ -21853,7 +21866,6 @@
     "earnings_per_share": 0.35
    },
    "discovered": false,
-   "groupRank": "10/14",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -21995,7 +22007,8 @@
      "returnOnEquity": -0.01048,
      "numberOfAnalysts": 1
     }
-   }
+   },
+   "groupRank": "10/14"
   },
   {
    "ticker": "BAS.DE",
@@ -22011,16 +22024,16 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 48.495,
-   "vs50": -2.7,
-   "vs200": 5.3,
-   "range52w": 61.0,
+   "price": 48.715,
+   "vs50": -2.2,
+   "vs200": 5.7,
+   "range52w": 62.6,
    "marketCap": 42113040420,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 55.1,
+   "composite": 55.8,
    "subs": {
-    "momentum": 5.4,
+    "momentum": 5.6,
     "commodity": 5.0,
     "deep": 4.5,
     "analyst": null,
@@ -22181,7 +22194,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 48.495,
+     "price": 48.695,
      "targetMean": 52.54762,
      "recommendationKey": "buy",
      "recommendationMean": 2.28571,
@@ -22562,7 +22575,7 @@
     "checks": [],
     "yahoo": {
      "price": 7.59,
-     "targetMean": 11.720984,
+     "targetMean": 11.72079,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.5,
      "ebitdaMargins": 0.53993,
@@ -22872,7 +22885,6 @@
     "earnings_per_share": 6.96
    },
    "discovered": false,
-   "groupRank": "4/7",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -23021,7 +23033,8 @@
      "returnOnEquity": 0.18775,
      "numberOfAnalysts": 3
     }
-   }
+   },
+   "groupRank": "4/7"
   },
   {
    "ticker": "AU",
@@ -23108,7 +23121,6 @@
     "earnings_per_share": 5.19
    },
    "discovered": false,
-   "groupRank": "8/17",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -23244,7 +23256,8 @@
      "returnOnEquity": 0.42970002,
      "numberOfAnalysts": 8
     }
-   }
+   },
+   "groupRank": "8/17"
   },
   {
    "ticker": "ILU.AX",
@@ -24159,7 +24172,6 @@
     "earnings_per_share": 6.7
    },
    "discovered": false,
-   "groupRank": "9/17",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -24310,7 +24322,8 @@
      "returnOnEquity": 0.119820006,
      "numberOfAnalysts": 12
     }
-   }
+   },
+   "groupRank": "9/17"
   },
   {
    "ticker": "PLS.AX",
@@ -24809,7 +24822,6 @@
     "earnings_per_share": 0.42
    },
    "discovered": false,
-   "groupRank": "5/7",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -24960,7 +24972,8 @@
      "returnOnEquity": 0.32259998,
      "numberOfAnalysts": 3
     }
-   }
+   },
+   "groupRank": "5/7"
   },
   {
    "ticker": "006400.KS",
@@ -25362,7 +25375,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 20.4,
+     "price": 20.42,
      "targetMean": 25.47857,
      "recommendationKey": "buy",
      "recommendationMean": 2.0,
@@ -25447,7 +25460,6 @@
     "earnings_per_share": 1.35
    },
    "discovered": true,
-   "groupRank": "3/5",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -25576,14 +25588,15 @@
     ],
     "yahoo": {
      "price": 91.57,
-     "targetMean": 132.61603,
+     "targetMean": 132.59056,
      "recommendationKey": "buy",
      "recommendationMean": 1.76,
      "ebitdaMargins": 0.25267,
      "returnOnEquity": 0.095979996,
      "numberOfAnalysts": 12
     }
-   }
+   },
+   "groupRank": "3/5"
   },
   {
    "ticker": "010130.KS",
@@ -25850,7 +25863,6 @@
     "earnings_per_share": -0.52
    },
    "discovered": true,
-   "groupRank": "1/5",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -25971,14 +25983,15 @@
     "checks": [],
     "yahoo": {
      "price": 9.36,
-     "targetMean": 19.037863,
+     "targetMean": 19.033665,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.5,
      "ebitdaMargins": 0.0,
      "returnOnEquity": -0.29612,
      "numberOfAnalysts": 1
     }
-   }
+   },
+   "groupRank": "1/5"
   },
   {
    "ticker": "SID",
@@ -26072,7 +26085,6 @@
     "earnings_per_share": -1.48
    },
    "discovered": false,
-   "groupRank": "12/14",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -26207,7 +26219,8 @@
      "returnOnEquity": -0.08274,
      "numberOfAnalysts": 3
     }
-   }
+   },
+   "groupRank": "12/14"
   },
   {
    "ticker": "BVN",
@@ -26311,7 +26324,6 @@
     "earnings_per_share": 3.1
    },
    "discovered": false,
-   "groupRank": "6/8",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -26449,7 +26461,8 @@
      "returnOnEquity": 0.26275998,
      "numberOfAnalysts": 6
     }
-   }
+   },
+   "groupRank": "6/8"
   },
   {
    "ticker": "ELT.AX",
@@ -26665,16 +26678,16 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 39.05,
-   "vs50": 8.1,
-   "vs200": 6.0,
-   "range52w": 29.8,
+   "price": 40.5,
+   "vs50": 12.1,
+   "vs200": 9.9,
+   "range52w": 33.0,
    "marketCap": 267365459,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 53.1,
+   "composite": 56.8,
    "subs": {
-    "momentum": 6.0,
+    "momentum": 7.2,
     "commodity": 5.0,
     "deep": 5.0,
     "analyst": null,
@@ -26842,7 +26855,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 39.05,
+     "price": 40.5,
      "targetMean": 62.0,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
@@ -26964,7 +26977,6 @@
     "earnings_per_share": -3.0
    },
    "discovered": false,
-   "groupRank": "13/14",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -27113,7 +27125,8 @@
      "returnOnEquity": -0.18604,
      "numberOfAnalysts": 10
     }
-   }
+   },
+   "groupRank": "13/14"
   },
   {
    "ticker": "DNN",
@@ -27190,7 +27203,6 @@
     "earnings_per_share": -0.24
    },
    "discovered": true,
-   "groupRank": "2/5",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -27321,14 +27333,15 @@
     ],
     "yahoo": {
      "price": 3.17,
-     "targetMean": 4.860775,
+     "targetMean": 4.8597727,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.42857,
      "ebitdaMargins": 0.0,
      "returnOnEquity": -0.73787004,
      "numberOfAnalysts": 2
     }
-   }
+   },
+   "groupRank": "2/5"
   },
   {
    "ticker": "1211.HK",
@@ -27534,7 +27547,7 @@
     "checks": [],
     "yahoo": {
      "price": 86.95,
-     "targetMean": 124.47191,
+     "targetMean": 124.42886,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.48276,
      "ebitdaMargins": 0.14206,
@@ -27816,7 +27829,6 @@
     "earnings_per_share": 1.95
    },
    "discovered": false,
-   "groupRank": "11/17",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -27949,7 +27961,8 @@
      "ebitdaMargins": 0.29301,
      "returnOnEquity": 0.33777002
     }
-   }
+   },
+   "groupRank": "11/17"
   },
   {
    "ticker": "EMM",
@@ -28429,7 +28442,6 @@
     "earnings_per_share": -0.76
    },
    "discovered": false,
-   "groupRank": "2/3",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -28556,7 +28568,8 @@
      "returnOnEquity": -0.37995997,
      "numberOfAnalysts": 8
     }
-   }
+   },
+   "groupRank": "2/3"
   },
   {
    "ticker": "LIT",
@@ -28630,7 +28643,6 @@
    },
    "fundamentals": null,
    "discovered": false,
-   "groupRank": "4/6",
    "hedgeFund": {
     "aggregate": {
      "signal": "neutral",
@@ -28752,7 +28764,8 @@
     "yahoo": {
      "price": 71.58
     }
-   }
+   },
+   "groupRank": "4/6"
   },
   {
    "ticker": "300750.SZ",
@@ -29577,7 +29590,7 @@
     "checks": [],
     "yahoo": {
      "price": 15.83,
-     "targetMean": 25.929308,
+     "targetMean": 25.920341,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.2,
      "ebitdaMargins": 0.24022,
@@ -29656,7 +29669,6 @@
     "earnings_per_share": 4.33
    },
    "discovered": true,
-   "groupRank": "4/5",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -29794,7 +29806,8 @@
      "returnOnEquity": 0.12254,
      "numberOfAnalysts": 15
     }
-   }
+   },
+   "groupRank": "4/5"
   },
   {
    "ticker": "DEFN.V",
@@ -30083,7 +30096,6 @@
     "earnings_per_share": -0.65
    },
    "discovered": false,
-   "groupRank": "5/8",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -30210,7 +30222,8 @@
      "ebitdaMargins": 0.0,
      "numberOfAnalysts": 1
     }
-   }
+   },
+   "groupRank": "5/8"
   },
   {
    "ticker": "MLI",
@@ -30313,7 +30326,6 @@
     "earnings_per_share": 3.495
    },
    "discovered": false,
-   "groupRank": "6/7",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -30448,7 +30460,8 @@
      "returnOnEquity": 0.28297,
      "numberOfAnalysts": 1
     }
-   }
+   },
+   "groupRank": "6/7"
   },
   {
    "ticker": "TMC",
@@ -30544,7 +30557,6 @@
     "earnings_per_share": -0.83
    },
    "discovered": false,
-   "groupRank": "1/1",
    "hedgeFund": {
     "aggregate": {
      "signal": "neutral",
@@ -30678,7 +30690,8 @@
      "ebitdaMargins": 0.0,
      "numberOfAnalysts": 6
     }
-   }
+   },
+   "groupRank": "1/1"
   },
   {
    "ticker": "603799.SS",
@@ -31711,7 +31724,7 @@
     "checks": [],
     "yahoo": {
      "price": 40.0,
-     "targetMean": 80.61109,
+     "targetMean": 80.58321,
      "recommendationKey": "buy",
      "recommendationMean": 1.94737,
      "ebitdaMargins": 0.17464,
@@ -31987,7 +32000,6 @@
     "earnings_per_share": -1.08
    },
    "discovered": true,
-   "groupRank": "1/2",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -32114,7 +32126,8 @@
      "returnOnEquity": -0.30653998,
      "numberOfAnalysts": 5
     }
-   }
+   },
+   "groupRank": "1/2"
   },
   {
    "ticker": "LUG.TO",
@@ -32427,7 +32440,6 @@
     "earnings_per_share": -0.51
    },
    "discovered": false,
-   "groupRank": "5/6",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -32569,7 +32581,8 @@
      "returnOnEquity": -0.04987,
      "numberOfAnalysts": 9
     }
-   }
+   },
+   "groupRank": "5/6"
   },
   {
    "ticker": "BATT",
@@ -32875,7 +32888,6 @@
     "earnings_per_share": -7.32
    },
    "discovered": false,
-   "groupRank": "1/3",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -33000,8 +33012,8 @@
      {
       "field": "priceTarget",
       "primary": 17.25,
-      "yahoo": 12.99,
-      "deltaPct": -24.7,
+      "yahoo": 12.97,
+      "deltaPct": -24.8,
       "status": "flag"
      },
      {
@@ -33020,14 +33032,15 @@
     ],
     "yahoo": {
      "price": 8.57,
-     "targetMean": 12.986649,
+     "targetMean": 12.973466,
      "recommendationKey": "buy",
      "recommendationMean": 2.25,
      "ebitdaMargins": 0.26377,
      "returnOnEquity": -0.102510005,
      "numberOfAnalysts": 4
     }
-   }
+   },
+   "groupRank": "1/3"
   },
   {
    "ticker": "SPD.AX",
@@ -34257,7 +34270,7 @@
     "checks": [],
     "yahoo": {
      "price": 33.2,
-     "targetMean": 63.188847,
+     "targetMean": 63.166996,
      "recommendationKey": "buy",
      "recommendationMean": 2.26667,
      "ebitdaMargins": 0.49932998,
@@ -34576,7 +34589,6 @@
     "earnings_per_share": 3.41
    },
    "discovered": false,
-   "groupRank": "7/7",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -34721,7 +34733,8 @@
      "returnOnEquity": 0.061880004,
      "numberOfAnalysts": 1
     }
-   }
+   },
+   "groupRank": "7/7"
   },
   {
    "ticker": "003670.KS",
@@ -35204,7 +35217,6 @@
     "earnings_per_share": -0.51
    },
    "discovered": false,
-   "groupRank": "3/3",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -35348,7 +35360,8 @@
      "returnOnEquity": -0.19799,
      "numberOfAnalysts": 2
     }
-   }
+   },
+   "groupRank": "3/3"
   },
   {
    "ticker": "ARI.JO",
@@ -35364,10 +35377,10 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 17407.0,
-   "vs50": -10.7,
-   "vs200": -14.9,
-   "range52w": 8.1,
+   "price": 17440.0,
+   "vs50": -10.6,
+   "vs200": -14.8,
+   "range52w": 8.4,
    "marketCap": 34954641454,
    "tradable": false,
    "quoteSuspect": false,
@@ -35535,7 +35548,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 17394.0,
+     "price": 17440.0,
      "targetMean": 24060.0,
      "recommendationKey": "buy",
      "recommendationMean": 1.8,
@@ -35645,7 +35658,6 @@
     "earnings_per_share": -2.97
    },
    "discovered": false,
-   "groupRank": "5/6",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -35797,7 +35809,8 @@
      "returnOnEquity": -0.3079,
      "numberOfAnalysts": 8
     }
-   }
+   },
+   "groupRank": "5/6"
   },
   {
    "ticker": "EGO",
@@ -35874,7 +35887,6 @@
     "earnings_per_share": 2.54
    },
    "discovered": true,
-   "groupRank": "14/17",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -36012,7 +36024,8 @@
      "returnOnEquity": 0.14039999,
      "numberOfAnalysts": 5
     }
-   }
+   },
+   "groupRank": "14/17"
   },
   {
    "ticker": "247540.KQ",
@@ -36506,7 +36519,6 @@
     "earnings_per_share": -1.2
    },
    "discovered": false,
-   "groupRank": "6/6",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -36634,7 +36646,8 @@
      "returnOnEquity": -0.50415003,
      "numberOfAnalysts": 5
     }
-   }
+   },
+   "groupRank": "6/6"
   },
   {
    "ticker": "486.HK",
@@ -36900,7 +36913,6 @@
     "earnings_per_share": 0.33
    },
    "discovered": true,
-   "groupRank": "12/17",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -37036,7 +37048,8 @@
      "returnOnEquity": 0.41968,
      "numberOfAnalysts": 1
     }
-   }
+   },
+   "groupRank": "12/17"
   },
   {
    "ticker": "086520.KQ",
@@ -37514,7 +37527,6 @@
     "earnings_per_share": -0.42
    },
    "discovered": true,
-   "groupRank": "7/8",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -37652,7 +37664,8 @@
      "returnOnEquity": -0.03884,
      "numberOfAnalysts": 3
     }
-   }
+   },
+   "groupRank": "7/8"
   },
   {
    "ticker": "GLD",
@@ -37733,7 +37746,6 @@
    },
    "fundamentals": null,
    "discovered": false,
-   "groupRank": "13/17",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -37855,7 +37867,8 @@
     "yahoo": {
      "price": 372.15
     }
-   }
+   },
+   "groupRank": "13/17"
   },
   {
    "ticker": "ERA.PA",
@@ -37873,10 +37886,10 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 44.16,
-   "vs50": -13.7,
-   "vs200": -21.8,
-   "range52w": 0.7,
+   "price": 44.12,
+   "vs50": -13.8,
+   "vs200": -21.9,
+   "range52w": 0.6,
    "marketCap": 1256936480,
    "tradable": false,
    "quoteSuspect": false,
@@ -38050,7 +38063,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 44.16,
+     "price": 44.12,
      "targetMean": 53.0,
      "recommendationKey": "hold",
      "recommendationMean": 3.2,
@@ -38146,7 +38159,6 @@
     "earnings_per_share": -0.96
    },
    "discovered": false,
-   "groupRank": "4/6",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -38288,7 +38300,8 @@
      "returnOnEquity": -0.16809,
      "numberOfAnalysts": 2
     }
-   }
+   },
+   "groupRank": "4/6"
   },
   {
    "ticker": "AQMS",
@@ -38786,7 +38799,6 @@
     "earnings_per_share": -0.36
    },
    "discovered": true,
-   "groupRank": "6/8",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -38913,7 +38925,8 @@
      "returnOnEquity": -0.24539,
      "numberOfAnalysts": 5
     }
-   }
+   },
+   "groupRank": "6/8"
   },
   {
    "ticker": "SYR.AX",
@@ -39186,7 +39199,6 @@
     "earnings_per_share": 0.98
    },
    "discovered": true,
-   "groupRank": "8/8",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -39322,7 +39334,8 @@
      "returnOnEquity": 0.21956,
      "numberOfAnalysts": 1
     }
-   }
+   },
+   "groupRank": "8/8"
   },
   {
    "ticker": "UAMY",
@@ -39394,7 +39407,6 @@
     "earnings_per_share": -0.0352
    },
    "discovered": true,
-   "groupRank": "2/2",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -39532,7 +39544,8 @@
      "returnOnEquity": -0.19674,
      "numberOfAnalysts": 4
     }
-   }
+   },
+   "groupRank": "2/2"
   },
   {
    "ticker": "UEC",
@@ -39605,7 +39618,6 @@
     "earnings_per_share": -0.2
    },
    "discovered": true,
-   "groupRank": "5/5",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -39743,7 +39755,8 @@
      "returnOnEquity": -0.0896,
      "numberOfAnalysts": 9
     }
-   }
+   },
+   "groupRank": "5/5"
   },
   {
    "ticker": "005420.KS",
@@ -40424,7 +40437,6 @@
     "earnings_per_share": -0.56
    },
    "discovered": true,
-   "groupRank": "7/8",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -40561,7 +40573,8 @@
      "returnOnEquity": -1.40977,
      "numberOfAnalysts": 1
     }
-   }
+   },
+   "groupRank": "7/8"
   },
   {
    "ticker": "BEM.L",
@@ -40577,16 +40590,16 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 6.5,
-   "vs50": -0.8,
-   "vs200": -22.5,
-   "range52w": 21.4,
+   "price": 5.5,
+   "vs50": -15.8,
+   "vs200": -34.4,
+   "range52w": 7.1,
    "marketCap": 4043981,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 32.1,
+   "composite": 26.6,
    "subs": {
-    "momentum": 1.8,
+    "momentum": 0.0,
     "commodity": 5.0,
     "deep": 2.0,
     "analyst": null,
@@ -40748,7 +40761,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 6.5,
+     "price": 5.5,
      "targetMean": 27.000002,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
@@ -40774,10 +40787,10 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 2516.0,
-   "vs50": -18.4,
+   "price": 2517.0,
+   "vs50": -18.3,
    "vs200": -20.0,
-   "range52w": 36.7,
+   "range52w": 36.8,
    "marketCap": 19424515006,
    "tradable": false,
    "quoteSuspect": false,
@@ -40951,8 +40964,8 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 2516.0,
-     "targetMean": 3624.1116,
+     "price": 2517.0,
+     "targetMean": 3624.8882,
      "recommendationKey": "hold",
      "recommendationMean": 2.76923,
      "ebitdaMargins": 0.56599,
@@ -41027,7 +41040,6 @@
     "earnings_per_share": -0.96
    },
    "discovered": true,
-   "groupRank": "8/8",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -41163,7 +41175,8 @@
      "returnOnEquity": -0.15224,
      "numberOfAnalysts": 8
     }
-   }
+   },
+   "groupRank": "8/8"
   },
   {
    "ticker": "KARS",
@@ -41421,7 +41434,6 @@
     "earnings_per_share": -0.79
    },
    "discovered": true,
-   "groupRank": "10/10",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -41559,7 +41571,8 @@
      "returnOnEquity": -0.022119999,
      "numberOfAnalysts": 6
     }
-   }
+   },
+   "groupRank": "10/10"
   },
   {
    "ticker": "NMG",
@@ -41641,7 +41654,6 @@
     "earnings_per_share": -0.69
    },
    "discovered": false,
-   "groupRank": "1/1",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -41762,13 +41774,14 @@
     "checks": [],
     "yahoo": {
      "price": 1.55,
-     "targetMean": 4.640802,
+     "targetMean": 4.6395144,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
      "returnOnEquity": -0.87418,
      "numberOfAnalysts": 4
     }
-   }
+   },
+   "groupRank": "1/1"
   },
   {
    "ticker": "HOC.L",
@@ -41789,10 +41802,10 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 452.15,
-   "vs50": -18.1,
-   "vs200": -16.6,
-   "range52w": 34.5,
+   "price": 452.6,
+   "vs50": -18.0,
+   "vs200": -16.5,
+   "range52w": 34.6,
    "marketCap": 2347988284,
    "tradable": false,
    "quoteSuspect": false,
@@ -41966,8 +41979,8 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 452.15,
-     "targetMean": 763.88184,
+     "price": 451.39075,
+     "targetMean": 764.0455,
      "recommendationKey": "buy",
      "recommendationMean": 1.8,
      "ebitdaMargins": 0.48031,
@@ -42369,7 +42382,7 @@
     "checks": [],
     "yahoo": {
      "price": 0.5772,
-     "targetMean": 1.6902732,
+     "targetMean": 1.6898643,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
      "returnOnEquity": -1.35241,
@@ -42471,7 +42484,6 @@
     "earnings_per_share": 0.85
    },
    "discovered": false,
-   "groupRank": "2/3",
    "hedgeFund": {
     "aggregate": {
      "signal": "neutral",
@@ -42609,7 +42621,8 @@
      "returnOnEquity": 0.0828,
      "numberOfAnalysts": 2
     }
-   }
+   },
+   "groupRank": "2/3"
   },
   {
    "ticker": "NANO.TO",
@@ -42879,7 +42892,6 @@
     "earnings_per_share": 0.31
    },
    "discovered": true,
-   "groupRank": "15/17",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -43017,7 +43029,8 @@
      "returnOnEquity": 0.16541,
      "numberOfAnalysts": 5
     }
-   }
+   },
+   "groupRank": "15/17"
   },
   {
    "ticker": "RCK.V",
@@ -43278,7 +43291,6 @@
     "earnings_per_share": 23.13
    },
    "discovered": true,
-   "groupRank": "16/17",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -43414,7 +43426,8 @@
      "returnOnEquity": 0.33491,
      "numberOfAnalysts": 3
     }
-   }
+   },
+   "groupRank": "16/17"
   },
   {
    "ticker": "SLI",
@@ -43482,7 +43495,6 @@
     "earnings_per_share": -0.3
    },
    "discovered": true,
-   "groupRank": "6/6",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -43603,12 +43615,13 @@
     "checks": [],
     "yahoo": {
      "price": 2.31,
-     "targetMean": 5.2019377,
+     "targetMean": 5.200421,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
      "returnOnEquity": -0.16599001
     }
-   }
+   },
+   "groupRank": "6/6"
   },
   {
    "ticker": "PLG",
@@ -43698,7 +43711,6 @@
     "earnings_per_share": -0.043
    },
    "discovered": false,
-   "groupRank": "3/3",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -43823,7 +43835,8 @@
      "ebitdaMargins": 0.0,
      "returnOnEquity": -0.0857
     }
-   }
+   },
+   "groupRank": "3/3"
   },
   {
    "ticker": "LZM",
@@ -43890,7 +43903,6 @@
     "earnings_per_share": -0.17
    },
    "discovered": true,
-   "groupRank": "5/5",
    "hedgeFund": {
     "aggregate": {
      "signal": "bearish",
@@ -44027,7 +44039,8 @@
      "returnOnEquity": -0.16388,
      "numberOfAnalysts": 3
     }
-   }
+   },
+   "groupRank": "5/5"
   },
   {
    "ticker": "AGI",
@@ -44104,7 +44117,6 @@
     "earnings_per_share": 2.1
    },
    "discovered": true,
-   "groupRank": "17/17",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -44240,7 +44252,8 @@
      "returnOnEquity": 0.25885,
      "numberOfAnalysts": 4
     }
-   }
+   },
+   "groupRank": "17/17"
   },
   {
    "ticker": "ASTL",
@@ -44321,7 +44334,6 @@
     "earnings_per_share": -9.06
    },
    "discovered": true,
-   "groupRank": "14/14",
    "hedgeFund": {
     "aggregate": {
      "signal": "bullish",
@@ -44447,7 +44459,8 @@
      "ebitdaMargins": -0.24025999,
      "returnOnEquity": -1.2244899
     }
-   }
+   },
+   "groupRank": "14/14"
   }
  ],
  "recommendations": [
@@ -44782,5 +44795,5 @@
   }
  ],
  "sizingNote": "NAV ~$10,950. Rules used: single name \u2264 8% NAV (~$875), commodity group \u2264 20% NAV, keep gross \u2264 75%. Current book: gross ~69%, net ~-31%. After the trade list: gross ~64%, net ~-14% \u2014 the deliberate effect is cutting the net short because the three strongest commodity biases (steel, copper, rare earths) are LONG while the shorts stay concentrated in the confirmed-weak complexes (PGM, silver, aluminum smelters).",
- "pricesRefreshedAt": "2026-07-15T09:29:50+00:00"
+ "pricesRefreshedAt": "2026-07-15T10:00:46+00:00"
 }
