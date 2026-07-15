@@ -43,34 +43,6 @@ listings (Norilsk/Moscow, Lima-only, sanctioned). If the full sweep is too heavy
 one unattended run, refresh a rotating third of the universe each day — the rest
 keeps yesterday's evidence.
 
-## 3b. AI Hedge Fund multi-analyst layer + Yahoo cross-validation
-
-Concept ported from [virattt/ai-hedge-fund](https://github.com/virattt/ai-hedge-fund)
-(MIT — reimplemented as prompt-encoded lenses, no upstream code copied). This produces
-each card's **AI Hedge Fund** verdict.
-
-- **Yahoo cross-validation pull:** run `python3 scripts/micro_yahoo.py` →
-  `data/micro_src/yahoo.json`. This is an independent second source (analyst target,
-  rating, margins, price) that the compiler cross-checks against FMP/TipRanks/TrueNorth.
-  **Yahoo egress is often blocked in headless Claude sessions** — if this fails, the last
-  committed `yahoo.json` is reused (the GitHub Action also refreshes it once/day from CI,
-  where Yahoo is reachable). Google Finance has no free API, so Yahoo is the second source.
-- **Persona verdicts (optional live refresh):** spawn ~14 **parallel sonnet sub-agents**,
-  each handling ~15 names. Each sub-agent applies the FULL roster **in one structured pass
-  per name** (not one call per persona): 4 analytical (Valuation, Fundamentals, Technicals,
-  Sentiment) + 9 investor personas (Buffett, Munger, Graham, Wood, Ackman, Lynch, Burry,
-  Druckenmiller, Fisher) + Risk Manager + Portfolio-Manager aggregate — reasoning over the
-  data ALREADY in the pipeline (the name's `micro.json` row + `yahoo.json`), so **no
-  per-name MCP call is needed**. Write a normalized `{ticker, held, aggregate:{signal,
-  confidence,action,tally}, analysts:[{name,type,signal,confidence,reasoning}]}` per name
-  into `hedge_r0.json … hedge_r13.json` (same shape as `deep_r*.json`; ≤1 sentence/lens to
-  bound tokens). If the full sweep is too heavy for one unattended run, refresh a rotating
-  third of the universe/day — the rest keeps yesterday's shard.
-- **Deterministic fallback (always run):** `python3 scripts/gen_hedge_auto.py` writes
-  `data/micro_src/hedge_auto.json` for all names. It sorts first in the `hedge_*.json` glob,
-  so any live `hedge_r*.json` shard overrides it (same trick as `deep_auto.json`). This
-  guarantees a valid, fully-populated hedgeFund layer even with no live persona run.
-
 ## 4. Refresh fundamentals (TrueNorth, quarterly) → `data/micro_src/fundamentals.json`
 Only worth doing around earnings. `mcp__TrueNorth__financial_metrics` (annual,
 limit 1) for US-listed names missing/stale; append trimmed fields (ebitda_margin,
@@ -81,13 +53,10 @@ current_ratio, revenue_growth_yoy, ebitda_growth_yoy, earnings_per_share).
 ```
 python3 scripts/build_universe.py <xlsx>     # skip if xlsx absent
 python3 scripts/gen_deep_auto.py             # regenerates model-derived deep-dive fillers
-python3 scripts/micro_yahoo.py               # Yahoo cross-validation pull (best-effort)
-python3 scripts/gen_hedge_auto.py            # regenerates AI-Hedge-Fund fallback verdicts
-python3 scripts/micro_build.py               # writes data/micro.json (research + scores + hedgeFund)
+python3 scripts/micro_build.py               # writes data/micro.json (research + scores)
 ```
-Sanity: 204 tickers, evidence≈204/204, deep model-derived=0, fundamentals≈104,
-**hedgeFund present≈204/204** (check hedge modelDerived count + any cross-val `conflict`
-flags). Then `python3 scripts/micro_refresh.py` is NOT needed here (the Action owns
+Sanity: 204 tickers, evidence≈204/204, deep model-derived=0, fundamentals≈104. Then
+`python3 scripts/micro_refresh.py` is NOT needed here (the Action owns
 prices), but running it is harmless and refreshes momentum + the Yahoo cross-check.
 
 ## 6. Commit to master (data + inputs)

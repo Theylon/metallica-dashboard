@@ -163,115 +163,6 @@ def tradable(rec, q):
     return us and liquid
 
 
-# ── AI Hedge Fund layer (concept ported from virattt/ai-hedge-fund, MIT) ─────────────
-# hedgeFund = the per-ticker multi-analyst verdict (merged from hedge_*.json).
-# hedgeCrossVal = a deterministic cross-check of the primary FMP/TipRanks/TrueNorth
-# numbers against an independent Yahoo Finance pull (data/micro_src/yahoo.json).
-CONS_DIR = {"StrongBuy": "bull", "Strong Buy": "bull", "Buy": "bull",
-            "ModerateBuy": "bull", "Moderate Buy": "bull", "Hold": "neutral",
-            "Neutral": "neutral", "ModerateSell": "bear", "Moderate Sell": "bear",
-            "Sell": "bear", "StrongSell": "bear", "Strong Sell": "bear"}
-
-
-def _num(v):
-    """Coerce to float, or None if not a clean number. Analyst price targets are
-    sometimes free text ('GBP34 (raised from GBP25)', 'HK$77 avg; JPM Buy…'), which
-    must skip a cross-check rather than crash the whole refresh."""
-    try:
-        return float(v)
-    except (TypeError, ValueError):
-        return None
-
-
-def _yahoo_dir(yq):
-    k = str(yq.get("recommendationKey") or "").lower()
-    if k in ("strong_buy", "buy"):
-        return "bull"
-    if k in ("sell", "strong_sell", "underperform"):
-        return "bear"
-    if k in ("hold", "neutral"):
-        return "neutral"
-    m = yq.get("recommendationMean")
-    if isinstance(m, (int, float)):
-        return "bull" if m <= 2.5 else "neutral" if m <= 3.5 else "bear"
-    return None
-
-
-def cross_validation(analyst, fundamentals, price, yq):
-    """Compare primary (FMP/TipRanks/TrueNorth) numbers to an independent Yahoo pull.
-
-    Returns {agreement, flags[], checks[], yahoo{}} or None when Yahoo has no entry.
-    Thresholds: price-target |Δ|>15%, recommendation-direction mismatch, EBITDA-margin
-    >5pp, price staleness >10% each raise a flag.
-    """
-    if not yq:
-        return None
-    checks, flags = [], []
-
-    pt = _num((analyst or {}).get("priceTarget"))
-    ytp = _num(yq.get("targetMean"))
-    if pt and ytp:
-        d = (ytp / pt - 1.0) * 100.0
-        status = "agree" if abs(d) <= 15 else "flag"
-        checks.append({"field": "priceTarget", "primary": round(pt, 2),
-                       "yahoo": round(ytp, 2), "deltaPct": round(d, 1), "status": status})
-        if status == "flag":
-            flags.append(f"Price target: Yahoo ${ytp:.0f} vs primary ${pt:.0f} ({d:+.0f}%)")
-
-    pdir = CONS_DIR.get(str((analyst or {}).get("consensus")))
-    ydir = _yahoo_dir(yq)
-    if pdir and ydir:
-        status = "agree" if pdir == ydir else "flag"
-        checks.append({"field": "recommendation", "primary": pdir, "yahoo": ydir, "status": status})
-        if status == "flag":
-            flags.append(f"Rating: Yahoo {ydir} vs primary {pdir}")
-
-    pm = _num((fundamentals or {}).get("ebitda_margin"))
-    ym = _num(yq.get("ebitdaMargins"))
-    if pm is not None and ym is not None:
-        dpp = (ym - pm) * 100.0
-        status = "agree" if abs(dpp) <= 5 else "flag"
-        checks.append({"field": "ebitdaMargin", "primary": round(pm, 4),
-                       "yahoo": round(ym, 4), "deltaPp": round(dpp, 1), "status": status})
-        if status == "flag":
-            flags.append(f"EBITDA margin: Yahoo {ym * 100:.0f}% vs primary {pm * 100:.0f}% ({dpp:+.0f}pp)")
-
-    p = _num(price)
-    yp = _num(yq.get("price"))
-    if p and yp:
-        d = (yp / p - 1.0) * 100.0
-        if abs(d) > 10:
-            checks.append({"field": "price", "primary": round(p, 2),
-                           "yahoo": round(yp, 2), "deltaPct": round(d, 1), "status": "flag"})
-            flags.append(f"Price: Yahoo ${yp:.2f} vs snapshot ${p:.2f} ({d:+.0f}%)")
-
-    rec_mismatch = any(c["field"] == "recommendation" and c["status"] == "flag" for c in checks)
-    agreement = "agree" if not flags else ("conflict" if (len(flags) >= 2 or rec_mismatch) else "mixed")
-    yahoo_subset = {k: yq.get(k) for k in
-                    ("price", "targetMean", "recommendationKey", "recommendationMean",
-                     "ebitdaMargins", "returnOnEquity", "numberOfAnalysts") if yq.get(k) is not None}
-    return {"agreement": agreement, "flags": flags, "checks": checks, "yahoo": yahoo_subset}
-
-
-def hedge_block(hf):
-    """Normalize a merged hedge entry into the per-ticker hedgeFund block (or None)."""
-    if not hf or not hf.get("analysts"):
-        return None
-    return {"aggregate": hf.get("aggregate"), "analysts": hf.get("analysts"),
-            "modelDerived": bool(hf.get("modelDerived")), "asOf": hf.get("asOf")}
-
-
-def load_hedge_map():
-    """Merge every hedge_*.json into {ticker: entry}. hedge_auto.json (the fallback)
-    sorts first, so live hedge_r*.json research shards override it (same trick as
-    deep_auto vs deep_r*). Also used by micro_refresh.py to backfill the layer."""
-    hedge = {}
-    for f in sorted(glob.glob(str(SRC / "hedge_*.json"))):
-        for n in json.loads(pathlib.Path(f).read_text()).get("names", []):
-            hedge[n["ticker"]] = n
-    return hedge
-
-
 def main():
     universe = json.loads((DATA / "universe.json").read_text())
     quotes = load("quotes.json", {}).get("quotes", {})
@@ -290,11 +181,6 @@ def main():
         for n in doc.get("names", []):
             deep[n["ticker"]] = n
 
-    # AI Hedge Fund layer: yahoo.json (Yahoo cross-val source) + hedge_*.json verdicts.
-    # hedge_auto.json (deterministic fallback) sorts first, so any live hedge_r*.json
-    # research shard overwrites it — same load-order trick as deep_auto vs deep_r*.
-    yahoo = load("yahoo.json", {"quotes": {}}).get("quotes", {})
-    hedge = load_hedge_map()
 
     out_tickers = []
     for rec in universe["tickers"]:
@@ -389,8 +275,6 @@ def main():
                 "evidence": rec["omLinkage"].get("evidence"),
             } if rec.get("omLinkage") else None),
             "fundamentals": f,
-            "hedgeFund": hedge_block(hedge.get(t)),
-            "hedgeCrossVal": cross_validation(analyst, f, q.get("price") if q else None, yahoo.get(t)),
             "discovered": rec.get("discovered", False),
         })
 
@@ -430,10 +314,6 @@ def main():
             "evidence": disc_deep.get("evidence", []) if disc_deep else [],
             "omLinkage": None, "exposure": None,
             "fundamentals": funda.get(disc["ticker"]),
-            "hedgeFund": hedge_block(hedge.get(disc["ticker"])),
-            "hedgeCrossVal": cross_validation(disc_deep.get("analyst") if disc_deep else None,
-                                              funda.get(disc["ticker"]), disc.get("price"),
-                                              yahoo.get(disc["ticker"])),
             "discovered": True,
         })
         if out_tickers[-1]["fundamentals"]:
@@ -453,12 +333,7 @@ def main():
         "methodology": ("Composite 0-100 = momentum 18% + commodity-alignment 18% + deep-dive 14% "
                         "+ analyst 13% + fundamentals 12% + news sentiment 9% + SmartScore 8% + quality 8% "
                         "(missing sub-scores redistribute). High = long candidate, low = short candidate. "
-                        "Each card also carries an AI Hedge Fund multi-analyst verdict (4 analytical + "
-                        "investor-persona lenses + a risk/portfolio-manager aggregate; concept ported from "
-                        "virattt/ai-hedge-fund, MIT) plus an independent Yahoo Finance (yfinance) "
-                        "cross-validation of price targets, ratings and margins. The hedge-fund layer is "
-                        "display-only and does not change the composite. "
-                        "Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner, TrueNorth, Yahoo Finance."),
+                        "Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner, TrueNorth."),
         "macro": bias_doc.get("macro", ""),
         "commodityBias": [
             {"material": b["material"], "bias": b["bias"], "score": b["score"],

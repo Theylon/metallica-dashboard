@@ -62,22 +62,11 @@ jobs:
           IBKR_ACCOUNT_ID: ${{ secrets.IBKR_ACCOUNT_ID }}
         run: python scripts/fetch.py
 
-      # Independent Yahoo Finance cross-validation pull for the Stock Picks cards
-      # (yfinance, no secrets). Yahoo egress is reliable from CI but blocked in the
-      # Claude research sessions, so the Action is the dependable home for this pull.
-      # Once/day is plenty for a validation layer, so this runs only on the pre-close
-      # cron plus push/manual full runs (not all 4 crons) to stay light on Yahoo.
-      # Best-effort: a hiccup or rate-limit just leaves the last-good yahoo.json.
-      - name: Yahoo cross-validation pull
-        if: ${{ github.event.inputs.scope != 'ibkr' && (github.event_name != 'schedule' || github.event.schedule == '55 19 * * 1-5') }}
-        run: python scripts/micro_yahoo.py || echo "micro_yahoo skipped (non-fatal)"
-
       # Refresh the Stock Picks tab's live price/score layer (yfinance, no MCP, no
       # secrets). The research layer in micro.json is untouched — it's rebuilt once
-      # a day pre-market by a separate Claude routine. This step also recomputes the
-      # Yahoo cross-check from the committed yahoo.json (no network). Non-fatal if
-      # yfinance hiccups. Skipped on an IBKR-only dashboard refresh (scope=ibkr). For
-      # push/schedule events inputs are empty, so `!= 'ibkr'` is true and this runs.
+      # a day pre-market by a separate Claude routine. Non-fatal if yfinance hiccups.
+      # Skipped on an IBKR-only dashboard refresh (scope=ibkr). For push/schedule
+      # events inputs are empty, so `!= 'ibkr'` is true and this runs.
       - name: Refresh micro scores
         if: ${{ github.event.inputs.scope != 'ibkr' }}
         run: python scripts/micro_refresh.py || echo "micro_refresh skipped (non-fatal)"
