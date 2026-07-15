@@ -127,7 +127,10 @@ def main():
     if hedge_map:
         for r in records:
             if not r.get("hedgeFund"):
-                hf = hedge_block(hedge_map.get(r["ticker"]))
+                try:
+                    hf = hedge_block(hedge_map.get(r["ticker"]))
+                except Exception:
+                    hf = None
                 if hf:
                     r["hedgeFund"] = hf
 
@@ -142,8 +145,11 @@ def main():
         yq = json.loads(ypath.read_text()).get("quotes", {})
     if yq:
         for r in records:
-            r["hedgeCrossVal"] = cross_validation(r.get("analyst"), r.get("fundamentals"),
-                                                  r.get("price"), yq.get(r["ticker"]))
+            try:
+                r["hedgeCrossVal"] = cross_validation(r.get("analyst"), r.get("fundamentals"),
+                                                      r.get("price"), yq.get(r["ticker"]))
+            except Exception:
+                pass  # one odd record must never abort the whole price refresh
 
     micro["updatedAt"] = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
     micro["pricesRefreshedAt"] = micro["updatedAt"]
