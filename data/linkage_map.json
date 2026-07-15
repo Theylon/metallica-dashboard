@@ -1,0 +1,5020 @@
+{
+  "links": [
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "metric ton",
+      "commodity_id": "503",
+      "signals": [
+        "mom_60d"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82101",
+      "signals": [
+        "cs_mom60",
+        "mom_20d",
+        "mom_60d"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82102",
+      "signals": [
+        "cs_mom252",
+        "mom_20d",
+        "mom_60d"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "379",
+      "signals": [
+        "mom_20d",
+        "mom_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "metric ton",
+      "commodity_id": "663",
+      "signals": [
+        "mom_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "metric ton",
+      "commodity_id": "916",
+      "signals": [
+        "mom_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "metric ton",
+      "commodity_id": "1281",
+      "signals": [
+        "mom_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "metric ton",
+      "commodity_id": "1346",
+      "signals": [
+        "mom_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "aluminum n",
+      "category": "non ferrous metals",
+      "unit": "metric ton",
+      "commodity_id": "295",
+      "signals": [
+        "mom_252d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "lithium carbonate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270787",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "lithium hydroxide monohydrate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270789",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "lmo hydroxide-based",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72095",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "mmi_mom_60d",
+        "mom_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "947",
+      "signals": [
+        "cs_mom20"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "1273",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "titanium plate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "271075",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "kilogram",
+      "commodity_id": "270596",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "AA",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "143",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "mmi_mom_60d",
+        "mom_60d"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "titanium plate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "271075",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom20"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "manganese sulfate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270860",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "1273",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "kilogram",
+      "commodity_id": "270596",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "201",
+      "category": "stainless steel",
+      "unit": "pound",
+      "commodity_id": "827",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "379",
+      "signals": [
+        "mom_20d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "metric ton",
+      "commodity_id": "503",
+      "signals": [
+        "mom_60d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "metric ton",
+      "commodity_id": "663",
+      "signals": [
+        "mom_60d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "metric ton",
+      "commodity_id": "916",
+      "signals": [
+        "mom_60d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "metric ton",
+      "commodity_id": "1040",
+      "signals": [
+        "mom_60d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "metric ton",
+      "commodity_id": "1281",
+      "signals": [
+        "mom_60d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "metric ton",
+      "commodity_id": "1346",
+      "signals": [
+        "mom_60d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82101",
+      "signals": [
+        "mom_20d",
+        "mom_60d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "CENX",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "cwt",
+      "commodity_id": "523",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "KALU",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "KALU",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "KALU",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Aluminum Equity",
+      "ticker": "KALU",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82101",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": true
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82102",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": true
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "manganese dioxide",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270840",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom252",
+        "mom_20d",
+        "mom_252d"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "goes mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1476",
+      "signals": [
+        "mmi_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "manganese sulfate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270860",
+      "signals": [
+        "cs_mom60",
+        "mom_60d"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "1273",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "titanium sponge",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "271078",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "201",
+      "category": "stainless steel",
+      "unit": "pound",
+      "commodity_id": "827",
+      "signals": [
+        "mom_252d(\u226510d)"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "lmo carbonate-based",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72094",
+      "signals": [
+        "mom_60d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "lmo hydroxide-based",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72095",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "rare earths mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1477",
+      "signals": [
+        "cs_mom252",
+        "mmi_mom_252d",
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "raw steels mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1478",
+      "signals": [
+        "mmi_mr60",
+        "mr_zscore_60d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "mmi_mom_252d",
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "ruthenium",
+      "category": "precious metals",
+      "unit": "kilogram",
+      "commodity_id": "94902",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "ALB",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "SQM",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82101",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": true
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "SQM",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82102",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": true
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "SQM",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom252",
+        "mom_20d",
+        "mom_252d"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "SQM",
+      "commodity": "manganese dioxide",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270840",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "SQM",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "379",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "SQM",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "SQM",
+      "commodity": "manganese sulfate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270860",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "SQM",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "SQM",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "SQM",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "1273",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "SQM",
+      "commodity": "lmo hydroxide-based",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72095",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "SQM",
+      "commodity": "rare earths mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1477",
+      "signals": [
+        "cs_mom252",
+        "mmi_mom_252d",
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "SQM",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "cs_mom252",
+        "mmi_mom_252d",
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "SQM",
+      "commodity": "rhodium",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "241",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "SQM",
+      "commodity": "ruthenium",
+      "category": "precious metals",
+      "unit": "kilogram",
+      "commodity_id": "94902",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Equity",
+      "ticker": "SQM",
+      "commodity": "stainless mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1480",
+      "signals": [
+        "mmi_mom_252d",
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "BATT",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82101",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": true
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "BATT",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82102",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "BATT",
+      "commodity": "manganese sulfate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270860",
+      "signals": [
+        "cs_mom60",
+        "mom_60d"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "BATT",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom252",
+        "mom_252d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "BATT",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "BATT",
+      "commodity": "raw steels mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1478",
+      "signals": [
+        "mmi_mr60",
+        "mr_zscore_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "BATT",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "cs_mom252",
+        "mmi_mom_252d",
+        "mmi_mom_60d",
+        "mom_252d",
+        "mom_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "BATT",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "BATT",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "379",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "BATT",
+      "commodity": "goes mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1476",
+      "signals": [
+        "mmi_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "BATT",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "143",
+      "signals": [
+        "cs_mom20"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "BATT",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "1273",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "BATT",
+      "commodity": "201",
+      "category": "stainless steel",
+      "unit": "pound",
+      "commodity_id": "827",
+      "signals": [
+        "cs_mom252",
+        "mom_252d(\u226510d)"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "BATT",
+      "commodity": "copper mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1474",
+      "signals": [
+        "mmi_mom_252d",
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "BATT",
+      "commodity": "rare earths mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1477",
+      "signals": [
+        "mmi_mom_252d",
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "BATT",
+      "commodity": "rhodium",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "241",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "KARS",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "KARS",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82101",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": true
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82102",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "cs_mom252",
+        "mmi_mom_252d",
+        "mmi_mom_60d",
+        "mom_252d",
+        "mom_60d"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom252",
+        "mom_252d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "kilogram",
+      "commodity_id": "270596",
+      "signals": [
+        "cs_mom60",
+        "cs_mr60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "metric ton",
+      "commodity_id": "270601",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "manganese sulfate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270860",
+      "signals": [
+        "cs_mom60",
+        "mom_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "379",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "goes mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1476",
+      "signals": [
+        "mmi_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "raw steels mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1478",
+      "signals": [
+        "mmi_mr60",
+        "mr_zscore_60d"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "rhodium",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "241",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "143",
+      "signals": [
+        "cs_mom20"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "1273",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "201",
+      "category": "stainless steel",
+      "unit": "pound",
+      "commodity_id": "827",
+      "signals": [
+        "cs_mom252",
+        "mom_252d(\u226510d)"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "copper mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1474",
+      "signals": [
+        "mmi_mom_252d",
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "rare earths mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1477",
+      "signals": [
+        "mmi_mom_252d",
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "ruthenium",
+      "category": "precious metals",
+      "unit": "kilogram",
+      "commodity_id": "94902",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Battery Etf",
+      "ticker": "LIT",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "FCX",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "metric ton",
+      "commodity_id": "270601",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "FCX",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "FCX",
+      "commodity": "manganese dioxide",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270840",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "FCX",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mom252",
+        "cs_mr60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "FCX",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "mmi_mom_60d",
+        "mom_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "FCX",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "FCX",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "kilogram",
+      "commodity_id": "270596",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "FCX",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "FCX",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "1273",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "FCX",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "143",
+      "signals": [
+        "cs_mom20"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "FCX",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "cwt",
+      "commodity_id": "523",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "HBM",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "HBM",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "HBM",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "SCCO",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "mmi_mom_60d",
+        "mom_60d"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "SCCO",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom20"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "SCCO",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "kilogram",
+      "commodity_id": "270596",
+      "signals": [
+        "cs_mom20",
+        "cs_mom252",
+        "cs_mom60",
+        "cs_mr60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "SCCO",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "metric ton",
+      "commodity_id": "270601",
+      "signals": [
+        "cs_mom20",
+        "cs_mom252",
+        "cs_mom60",
+        "cs_mr60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "SCCO",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "SCCO",
+      "commodity": "manganese dioxide",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270840",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "SCCO",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "SCCO",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "SCCO",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "1273",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "SCCO",
+      "commodity": "201",
+      "category": "stainless steel",
+      "unit": "pound",
+      "commodity_id": "827",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "SCCO",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "cwt",
+      "commodity_id": "523",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "TECK",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Equity",
+      "ticker": "TECK",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "COPX",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82102",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "COPX",
+      "commodity": "copper",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82098",
+      "signals": [
+        "mom_252d"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "COPX",
+      "commodity": "manganese sulfate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270860",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "COPX",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "metric ton",
+      "commodity_id": "270601",
+      "signals": [
+        "cs_mom20",
+        "cs_mom252",
+        "cs_mom60",
+        "cs_mr60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "COPX",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "COPX",
+      "commodity": "lithium hydroxide monohydrate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270789",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "COPX",
+      "commodity": "manganese dioxide",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270840",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "COPX",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mom252",
+        "cs_mr60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "COPX",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "mmi_mom_60d",
+        "mom_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "COPX",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom20"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "COPX",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "kilogram",
+      "commodity_id": "270596",
+      "signals": [
+        "cs_mom20",
+        "cs_mom252",
+        "cs_mom60",
+        "cs_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "COPX",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "143",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "COPX",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "COPX",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "1273",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "COPX",
+      "commodity": "201",
+      "category": "stainless steel",
+      "unit": "pound",
+      "commodity_id": "827",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "COPX",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "cwt",
+      "commodity_id": "523",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "CPER",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "mmi_mom_60d",
+        "mom_60d"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "CPER",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "CPER",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "143",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "CPER",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "CPER",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "1273",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "CPER",
+      "commodity": "lithium hydroxide monohydrate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270789",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "CPER",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "CPER",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "metric ton",
+      "commodity_id": "84289",
+      "signals": [
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "CPER",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Etf",
+      "ticker": "CPER",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "cwt",
+      "commodity_id": "523",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Futures",
+      "ticker": "HG=F",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "mmi_mom_60d",
+        "mom_60d"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Futures",
+      "ticker": "HG=F",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Futures",
+      "ticker": "HG=F",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "143",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Futures",
+      "ticker": "HG=F",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Futures",
+      "ticker": "HG=F",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "1273",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Futures",
+      "ticker": "HG=F",
+      "commodity": "lithium hydroxide monohydrate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270789",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Futures",
+      "ticker": "HG=F",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Futures",
+      "ticker": "HG=F",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Copper Futures",
+      "ticker": "HG=F",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "cwt",
+      "commodity_id": "523",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "BHP",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "BHP",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "BHP",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "RIO",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "kilogram",
+      "commodity_id": "270596",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "RIO",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "RIO",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "RIO",
+      "commodity": "rhodium",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "241",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "RIO",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "VALE",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom20",
+        "cs_mom252",
+        "cs_mom60",
+        "mom_252d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "VALE",
+      "commodity": "goes mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1476",
+      "signals": [
+        "mmi_mr60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "VALE",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "VALE",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "VALE",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "947",
+      "signals": [
+        "cs_mom20"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "VALE",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "kilogram",
+      "commodity_id": "270596",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "VALE",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "VALE",
+      "commodity": "lithium hydroxide monohydrate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270789",
+      "signals": [
+        "cs_mom60",
+        "mom_60d"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "VALE",
+      "commodity": "manganese dioxide",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270840",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "VALE",
+      "commodity": "nmc111 carbonate-based",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72096",
+      "signals": [
+        "mom_60d"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "VALE",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "cs_mom252",
+        "mmi_mom_252d",
+        "mmi_mom_60d",
+        "mom_252d",
+        "mom_60d"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "VALE",
+      "commodity": "rhodium",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "241",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "VALE",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82102",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "VALE",
+      "commodity": "lithium carbonate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270787",
+      "signals": [
+        "mom_60d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "VALE",
+      "commodity": "manganese sulfate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270860",
+      "signals": [
+        "mom_60d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Diversified Mining",
+      "ticker": "VALE",
+      "commodity": "rare earths mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1477",
+      "signals": [
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "1273",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "electrical steel",
+      "category": "stainless steel",
+      "unit": "metric ton",
+      "commodity_id": "270585",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "metric ton",
+      "commodity_id": "270601",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "global precious metals mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1475",
+      "signals": [
+        "mmi_mom_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "mr_zscore_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "lithium hydroxide monohydrate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270789",
+      "signals": [
+        "mr_zscore_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "947",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "kilogram",
+      "commodity_id": "270596",
+      "signals": [
+        "cs_mom20",
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "goes mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1476",
+      "signals": [
+        "mmi_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "lithium carbonate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270787",
+      "signals": [
+        "mr_zscore_60d"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "manganese dioxide",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270840",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "manganese sulfate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270860",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "raw steels mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1478",
+      "signals": [
+        "mmi_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82102",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "automotive mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1472",
+      "signals": [
+        "mmi_mom_252d",
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "copper mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1474",
+      "signals": [
+        "mmi_mom_252d",
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Ev Equity",
+      "ticker": "TSLA",
+      "commodity": "rare earths mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1477",
+      "signals": [
+        "mmi_mom_252d",
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GDXJ",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GLD",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "metric ton",
+      "commodity_id": "270601",
+      "signals": [
+        "cs_mom20",
+        "cs_mom252",
+        "cs_mom60",
+        "cs_mr60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GLD",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mom252",
+        "cs_mr60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GLD",
+      "commodity": "electrical steel",
+      "category": "stainless steel",
+      "unit": "metric ton",
+      "commodity_id": "270585",
+      "signals": [
+        "cs_mom252",
+        "mr_60d(\u226530d)"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GLD",
+      "commodity": "gold",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "82095",
+      "signals": [
+        "mom_252d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GLD",
+      "commodity": "manganese dioxide",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270840",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GLD",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "mmi_mom_60d",
+        "mom_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GLD",
+      "commodity": "titanium sponge",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "271078",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GLD",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "kilogram",
+      "commodity_id": "270596",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GLD",
+      "commodity": "goes mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1476",
+      "signals": [
+        "mmi_mom_60d"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GLD",
+      "commodity": "gold",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "9933",
+      "signals": [
+        "mom_252d"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GLD",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "1273",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GLD",
+      "commodity": "201",
+      "category": "stainless steel",
+      "unit": "pound",
+      "commodity_id": "827",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GLD",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82101",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GLD",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82102",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GLD",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom20"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GLD",
+      "commodity": "copper mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1474",
+      "signals": [
+        "mmi_mom_252d",
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Etf",
+      "ticker": "GLD",
+      "commodity": "titanium plate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "271075",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Futures",
+      "ticker": "GC=F",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "metric ton",
+      "commodity_id": "270601",
+      "signals": [
+        "cs_mom20",
+        "cs_mom252",
+        "cs_mom60",
+        "cs_mr60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Futures",
+      "ticker": "GC=F",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mom252",
+        "cs_mr60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Futures",
+      "ticker": "GC=F",
+      "commodity": "electrical steel",
+      "category": "stainless steel",
+      "unit": "metric ton",
+      "commodity_id": "270585",
+      "signals": [
+        "cs_mom252",
+        "mr_60d(\u226530d)"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Futures",
+      "ticker": "GC=F",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "kilogram",
+      "commodity_id": "270596",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Futures",
+      "ticker": "GC=F",
+      "commodity": "manganese dioxide",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270840",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Futures",
+      "ticker": "GC=F",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "mmi_mom_60d",
+        "mom_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Futures",
+      "ticker": "GC=F",
+      "commodity": "titanium sponge",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "271078",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Futures",
+      "ticker": "GC=F",
+      "commodity": "goes mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1476",
+      "signals": [
+        "mmi_mom_60d"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Futures",
+      "ticker": "GC=F",
+      "commodity": "gold",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "9933",
+      "signals": [
+        "mom_252d"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Futures",
+      "ticker": "GC=F",
+      "commodity": "gold",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "82095",
+      "signals": [
+        "mom_252d"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Futures",
+      "ticker": "GC=F",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "1273",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Futures",
+      "ticker": "GC=F",
+      "commodity": "201",
+      "category": "stainless steel",
+      "unit": "pound",
+      "commodity_id": "827",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Futures",
+      "ticker": "GC=F",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82101",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Futures",
+      "ticker": "GC=F",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom20"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Futures",
+      "ticker": "GC=F",
+      "commodity": "copper mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1474",
+      "signals": [
+        "mmi_mom_252d",
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Gold Futures",
+      "ticker": "GC=F",
+      "commodity": "titanium plate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "271075",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Lithium Miner",
+      "ticker": "LAC",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Lithium Miner",
+      "ticker": "LAC",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Lithium Miner",
+      "ticker": "LAC",
+      "commodity": "rhodium",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "241",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Lithium Miner",
+      "ticker": "MP",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Lithium Miner",
+      "ticker": "MP",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Lithium Miner",
+      "ticker": "MP",
+      "commodity": "rhodium",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "241",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": true
+    },
+    {
+      "equity_group": "Lithium Miner",
+      "ticker": "SGML",
+      "commodity": "nickel",
+      "category": "non ferrous metals",
+      "unit": "kilogram",
+      "commodity_id": "1228",
+      "signals": [
+        "mom_252d(\u226510d)"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Lithium Miner",
+      "ticker": "SGML",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Lithium Miner",
+      "ticker": "SGML",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Lithium Miner",
+      "ticker": "SGML",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "kilogram",
+      "commodity_id": "270596",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Lithium Miner",
+      "ticker": "SGML",
+      "commodity": "rare earths mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1477",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Palladium Etf",
+      "ticker": "PALL",
+      "commodity": "ruthenium",
+      "category": "precious metals",
+      "unit": "kilogram",
+      "commodity_id": "94902",
+      "signals": [
+        "mom_252d"
+      ],
+      "tier": "T1",
+      "passes_all_gates": true
+    },
+    {
+      "equity_group": "Palladium Etf",
+      "ticker": "PALL",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom20",
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Palladium Etf",
+      "ticker": "PALL",
+      "commodity": "global precious metals mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1475",
+      "signals": [
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Palladium Etf",
+      "ticker": "PALL",
+      "commodity": "goes mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1476",
+      "signals": [
+        "mmi_mom_60d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Palladium Etf",
+      "ticker": "PALL",
+      "commodity": "rare earths mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1477",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Palladium Futures",
+      "ticker": "PA=F",
+      "commodity": "ruthenium",
+      "category": "precious metals",
+      "unit": "kilogram",
+      "commodity_id": "94902",
+      "signals": [
+        "mom_252d"
+      ],
+      "tier": "T1",
+      "passes_all_gates": true
+    },
+    {
+      "equity_group": "Palladium Futures",
+      "ticker": "PA=F",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom20",
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Palladium Futures",
+      "ticker": "PA=F",
+      "commodity": "global precious metals mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1475",
+      "signals": [
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Palladium Futures",
+      "ticker": "PA=F",
+      "commodity": "goes mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1476",
+      "signals": [
+        "mmi_mom_60d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Palladium Futures",
+      "ticker": "PA=F",
+      "commodity": "rare earths mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1477",
+      "signals": [
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Palladium Futures",
+      "ticker": "PA=F",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Pgm Equity",
+      "ticker": "SBSW",
+      "commodity": "rhodium",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "241",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Pgm Equity",
+      "ticker": "SBSW",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Pgm Equity",
+      "ticker": "SBSW",
+      "commodity": "rare earths mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1477",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Pgm Equity",
+      "ticker": "SBSW",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Platinum Etf",
+      "ticker": "PPLT",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82102",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Platinum Etf",
+      "ticker": "PPLT",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom20"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Platinum Etf",
+      "ticker": "PPLT",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Platinum Etf",
+      "ticker": "PPLT",
+      "commodity": "lmo carbonate-based",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72094",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Platinum Etf",
+      "ticker": "PPLT",
+      "commodity": "rare earths mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1477",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Platinum Futures",
+      "ticker": "PL=F",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82102",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Platinum Futures",
+      "ticker": "PL=F",
+      "commodity": "raw steels mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1478",
+      "signals": [
+        "mmi_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Platinum Futures",
+      "ticker": "PL=F",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom20"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Platinum Futures",
+      "ticker": "PL=F",
+      "commodity": "lmo carbonate-based",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72094",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Platinum Futures",
+      "ticker": "PL=F",
+      "commodity": "rare earths mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1477",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Rare Earth",
+      "ticker": "REMX",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T1",
+      "passes_all_gates": true
+    },
+    {
+      "equity_group": "Rare Earth",
+      "ticker": "REMX",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Rare Earth",
+      "ticker": "REMX",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Rare Earth",
+      "ticker": "REMX",
+      "commodity": "rhodium",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "241",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Rare Earth",
+      "ticker": "UUUU",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Rare Earth",
+      "ticker": "UUUU",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T1",
+      "passes_all_gates": true
+    },
+    {
+      "equity_group": "Rare Earth",
+      "ticker": "UUUU",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Rare Earth",
+      "ticker": "UUUU",
+      "commodity": "rhodium",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "241",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Rare Earth",
+      "ticker": "UUUU",
+      "commodity": "rare earths mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1477",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Equity",
+      "ticker": "PAAS",
+      "commodity": "rhodium",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "241",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Etf",
+      "ticker": "SIL",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Etf",
+      "ticker": "SIL",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Etf",
+      "ticker": "SIL",
+      "commodity": "rhodium",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "241",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Etf",
+      "ticker": "SLV",
+      "commodity": "gold",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "82095",
+      "signals": [
+        "mom_252d"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Etf",
+      "ticker": "SLV",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "metric ton",
+      "commodity_id": "270601",
+      "signals": [
+        "cs_mom20",
+        "cs_mom252",
+        "cs_mom60",
+        "cs_mr60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Etf",
+      "ticker": "SLV",
+      "commodity": "goes mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1476",
+      "signals": [
+        "mmi_mom_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Etf",
+      "ticker": "SLV",
+      "commodity": "titanium plate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "271075",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Etf",
+      "ticker": "SLV",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom20"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Etf",
+      "ticker": "SLV",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "kilogram",
+      "commodity_id": "270596",
+      "signals": [
+        "cs_mom20",
+        "cs_mom252",
+        "cs_mom60",
+        "cs_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Etf",
+      "ticker": "SLV",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Etf",
+      "ticker": "SLV",
+      "commodity": "titanium sponge",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "271078",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Etf",
+      "ticker": "SLV",
+      "commodity": "201",
+      "category": "stainless steel",
+      "unit": "pound",
+      "commodity_id": "827",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Etf",
+      "ticker": "SLV",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82102",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Etf",
+      "ticker": "SLV",
+      "commodity": "copper mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1474",
+      "signals": [
+        "mmi_mom_252d",
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Futures",
+      "ticker": "SI=F",
+      "commodity": "gold",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "82095",
+      "signals": [
+        "mom_252d"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Futures",
+      "ticker": "SI=F",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "metric ton",
+      "commodity_id": "270601",
+      "signals": [
+        "cs_mom20",
+        "cs_mom252",
+        "cs_mom60",
+        "cs_mr60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Futures",
+      "ticker": "SI=F",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom20"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Futures",
+      "ticker": "SI=F",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "kilogram",
+      "commodity_id": "270596",
+      "signals": [
+        "cs_mom20",
+        "cs_mom252",
+        "cs_mom60",
+        "cs_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Futures",
+      "ticker": "SI=F",
+      "commodity": "goes mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1476",
+      "signals": [
+        "mmi_mom_60d"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Futures",
+      "ticker": "SI=F",
+      "commodity": "molybdenum bar",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270879",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Futures",
+      "ticker": "SI=F",
+      "commodity": "titanium plate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "271075",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Futures",
+      "ticker": "SI=F",
+      "commodity": "titanium sponge",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "271078",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Futures",
+      "ticker": "SI=F",
+      "commodity": "201",
+      "category": "stainless steel",
+      "unit": "pound",
+      "commodity_id": "827",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Futures",
+      "ticker": "SI=F",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82102",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Silver Futures",
+      "ticker": "SI=F",
+      "commodity": "copper mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1474",
+      "signals": [
+        "mmi_mom_252d",
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "CLF",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82101",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "CLF",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "CLF",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "mmi_mom_60d",
+        "mom_60d"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "CLF",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "CLF",
+      "commodity": "manganese sulfate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270860",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "CLF",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60",
+        "mom_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "CLF",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "947",
+      "signals": [
+        "cs_mom20"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "CMC",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "CMC",
+      "commodity": "rare earths mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1477",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82101",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82102",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "lithium carbonate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270787",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "cwt",
+      "commodity_id": "523",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "titanium plate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "271075",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "379",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "manganese sulfate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270860",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "947",
+      "signals": [
+        "cs_mom20",
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "kilogram",
+      "commodity_id": "270596",
+      "signals": [
+        "cs_mom20",
+        "cs_mom60",
+        "cs_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "metric ton",
+      "commodity_id": "270601",
+      "signals": [
+        "cs_mom20",
+        "cs_mom60",
+        "cs_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "lithium hydroxide monohydrate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270789",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "manganese dioxide",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270840",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "mmi_mom_60d",
+        "mom_60d"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60",
+        "mom_60d"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "1273",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "automotive mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1472",
+      "signals": [
+        "mmi_mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "NUE",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "258",
+      "signals": [
+        "mom_252d"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "RS",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "kilogram",
+      "commodity_id": "270596",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "RS",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "cobalt sulfate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270557",
+      "signals": [
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "cwt",
+      "commodity_id": "523",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "titanium plate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "271075",
+      "signals": [
+        "cs_mr60"
+      ],
+      "tier": "T1",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82102",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "lithium carbonate",
+      "category": "minor metals",
+      "unit": "kilogram",
+      "commodity_id": "270787",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "manganese dioxide",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270840",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "rare earths mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1477",
+      "signals": [
+        "mmi_mom_60d",
+        "mom_60d"
+      ],
+      "tier": "T2",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "aluminum",
+      "category": "non ferrous metals",
+      "unit": "pound",
+      "commodity_id": "82101",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "kilogram",
+      "commodity_id": "270596",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "ferro-chrome",
+      "category": "ferro alloys",
+      "unit": "metric ton",
+      "commodity_id": "270601",
+      "signals": [
+        "cs_mom60",
+        "cs_mr60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "lco",
+      "category": "battery prices",
+      "unit": "index",
+      "commodity_id": "72098",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "lithium hydroxide monohydrate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270789",
+      "signals": [
+        "cs_mom20",
+        "cs_mom252",
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "manganese sulfate",
+      "category": "minor metals",
+      "unit": "metric ton",
+      "commodity_id": "270860",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "renewables mmi",
+      "category": "mmi index values",
+      "unit": "index",
+      "commodity_id": "1479",
+      "signals": [
+        "mmi_mom_60d",
+        "mom_60d"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "rhodium",
+      "category": "precious metals",
+      "unit": "troy ounce",
+      "commodity_id": "241",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "143",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "257",
+      "signals": [
+        "cs_mom60",
+        "mom_60d"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "947",
+      "signals": [
+        "cs_mom20"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "steel",
+      "category": "steel",
+      "unit": "short ton",
+      "commodity_id": "1273",
+      "signals": [
+        "cs_mom60"
+      ],
+      "tier": "T3",
+      "passes_all_gates": false
+    },
+    {
+      "equity_group": "Steel Equity",
+      "ticker": "STLD",
+      "commodity": "201",
+      "category": "stainless steel",
+      "unit": "pound",
+      "commodity_id": "827",
+      "signals": [
+        "cs_mom252"
+      ],
+      "tier": "T4",
+      "passes_all_gates": false
+    }
+  ]
+}

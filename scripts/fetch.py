@@ -321,6 +321,17 @@ def main() -> None:
     )
     print(f"  → {', '.join(benchmarks.keys())}")
 
+    # Asset→commodity exposure tracking (forward-looking, T1/T2 signal links).
+    # Best-effort: a hiccup here must never break the core IBKR fetch/deploy.
+    try:
+        import sys, pathlib as _pl
+        sys.path.insert(0, str(_pl.Path(__file__).resolve().parent))
+        import exposure
+        exposure.record_and_report()
+        print("  → recorded commodity exposure snapshot")
+    except Exception as e:
+        print(f"  → exposure tracking skipped (non-fatal): {e}")
+
     print(f"[{now_str}] Done.")
 
 
