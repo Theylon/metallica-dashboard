@@ -539,6 +539,9 @@ td:first-child { text-align: left; }
     <div class="tab" onclick="showTab('picks')">
       <span class="tab-icon">🎯</span> Stock Picks
     </div>
+    <div class="tab" onclick="showTab('rebalance')">
+      <span class="tab-icon">🔁</span> Rebalance
+    </div>
   </div>
 
   <!-- ─── Overview page ─────────────────────────────────────────── -->
@@ -1105,6 +1108,11 @@ td:first-child { text-align: left; }
     <div style="font-size:11px;color:var(--text-muted);margin-top:10px;line-height:1.5;" id="picks-methodology">—</div>
   </div><!-- /picks -->
 
+  <!-- ─── Rebalance page: proposed-book micro review + trade list ── -->
+  <div id="page-rebalance" class="page">
+    <div id="rebalance-content"></div>
+  </div><!-- /rebalance -->
+
 </div><!-- /dashboard -->
 
 <script>
@@ -1164,6 +1172,7 @@ function logout() {
 // ═══════════════════════════════════════════ DATA ══
 let account = {}, positions = [], pnl = [], benchmarks = {}, report = {}, exposureHistory = {};
 let intel = { commodities: [], analysts: [], macro: [], news: [] };
+let rebalance = { rows: [] };
 let activePeriod = 'YTD', activeBmPeriod = '1M';
 let customFrom = null, customTo = null;   // 'YYYY-MM-DD' bounds for the CUSTOM period
 let chartMode = 'value';   // 'value' | 'performance'
@@ -1176,7 +1185,7 @@ let positionSort = { key: null, dir: 1 };
 
 async function loadData() {
   try {
-    const [posRes, accRes, pnlRes, bmRes, repRes, comRes, anaRes, macRes, newsRes, techRes, spotRes, resRes, microRes, expHistRes] = await Promise.all([
+    const [posRes, accRes, pnlRes, bmRes, repRes, comRes, anaRes, macRes, newsRes, techRes, spotRes, resRes, microRes, expHistRes, rebRes] = await Promise.all([
       fetch('data/positions.json?' + Date.now()).then(r => r.json()).catch(() => ({ positions: [] })),
       fetch('data/account.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
       fetch('data/pnl.json?' + Date.now()).then(r => r.json()).catch(() => []),
@@ -1191,6 +1200,7 @@ async function loadData() {
       fetch('data/research.json?' + Date.now()).then(r => r.json()).catch(() => ({ items: [] })),
       fetch('data/micro.json?' + Date.now()).then(r => r.json()).catch(() => ({ tickers: [], commodityBias: [], recommendations: [], tradeList: [] })),
       fetch('data/exposure_history.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
+      fetch('data/rebalance.json?' + Date.now()).then(r => r.json()).catch(() => ({ rows: [] })),
     ]);
     positions = posRes.positions || [];
     account   = accRes || {};
@@ -1201,6 +1211,7 @@ async function loadData() {
               technicals: techRes.items || [], metalsSpot: spotRes.items || [], research: resRes.items || [] };
     micro = microRes || {};
     exposureHistory = expHistRes || {};
+    rebalance = rebRes || { rows: [] };
 
     renderAll();
     updateMetaBadges(accRes.updatedAt);
@@ -1280,6 +1291,7 @@ function renderAll() {
   renderReport();
   renderIntel();
   renderPicks();
+  renderRebalance();
 }
 
 // ── Stock Picks: micro-analysis scores · recommendations · trade list ─
@@ -2450,9 +2462,78 @@ function calcMetricsForSeries(prices) {
 }
 
 // ═══════════════════════════════════════════ TABS ══
+// ── Rebalance: proposed-book micro review + reconciled trade list ─
+function renderRebalance() {
+  const el = document.getElementById('rebalance-content');
+  if (!el) return;
+  const d = rebalance || {};
+  const rows = d.rows || [];
+  if (!rows.length) { el.innerHTML = '<div class="table-panel" style="padding:24px;color:var(--text-muted);">Awaiting rebalance data</div>'; return; }
+  const tone = { pos: '#22c55e', warn: '#eab308', neg: '#ef4444' };
+  const verd = { bull: '#22c55e', bear: '#ef4444', neut: '#eab308', new: '#38bdf8' };
+  const sideBadge = s => s === 'L'
+    ? '<span style="color:#22c55e;font-weight:600;">LONG</span>'
+    : '<span style="color:#ef4444;font-weight:600;">SHORT</span>';
+  const biasColor = b => { const n = parseFloat(String(b).replace('−', '-')); return (isNaN(n) || n === 0) ? 'var(--text-muted)' : n > 0 ? '#22c55e' : '#ef4444'; };
+
+  const head = `
+    <div class="table-panel" style="margin-bottom:16px;">
+      <div class="table-header">
+        <div class="table-title">${esc(d.title || 'Rebalance')}</div>
+        <div style="font-size:12px;color:var(--text-muted);">as of ${esc(d.asOf || '')} · NAV ${d.nav != null ? fmtDollar(d.nav) : '—'}</div>
+      </div>
+      <div style="padding:2px 4px 10px;color:var(--text-dim);font-size:13px;line-height:1.5;">${esc(d.subtitle || '')}</div>
+      <ol style="margin:0 0 4px;padding-left:20px;color:var(--text-dim);font-size:12.5px;line-height:1.65;">
+        ${(d.headlines || []).map(h => `<li>${esc(h)}</li>`).join('')}
+      </ol>
+    </div>`;
+
+  const tbl = `
+    <div class="table-panel" style="margin-bottom:16px;">
+      <div class="table-header">
+        <div class="table-title">Per-name review &amp; trades (${rows.length})</div>
+        <div style="font-size:11px;color:var(--text-muted);max-width:54%;text-align:right;line-height:1.45;">${esc(d.keyNote || '')}</div>
+      </div>
+      <div class="table-wrapper"><table>
+        <thead><tr>
+          <th style="text-align:left;">#</th><th style="text-align:left;">Ticker</th>
+          <th style="text-align:left;">Your rec</th><th>Held</th>
+          <th>Comp</th><th style="text-align:left;">Analyst</th><th>Mom 50/200</th><th>Bias</th><th>Trad</th>
+          <th style="text-align:left;">My call (sharpened)</th><th style="text-align:left;">Trade &rarr; your target</th>
+        </tr></thead>
+        <tbody>${rows.map(r => `
+          <tr>
+            <td style="color:var(--text-muted);">${r.n}</td>
+            <td style="text-align:left;font-weight:700;">${esc(r.ticker)}</td>
+            <td style="text-align:left;">${r.dollar != null ? sideBadge(r.side) + ' · $' + r.dollar + ' · ' + r.target : '<span style="color:var(--text-muted);">— not in table</span>'}</td>
+            <td>${r.held ? esc(r.held) : '<span style="color:var(--text-muted);">—</span>'}</td>
+            <td style="font-weight:600;color:${r.comp != null ? scoreColor(r.comp) : 'var(--text-muted)'};">${r.comp != null ? r.comp : '—'}<span style="font-weight:400;font-size:11px;color:${verd[r.verdict] || 'var(--text-muted)'};"> ${esc(r.verdict || '')}</span></td>
+            <td style="text-align:left;font-size:12px;">${esc(r.analyst || '—')}</td>
+            <td style="font-size:12px;">${esc(r.mom || '—')}</td>
+            <td style="color:${biasColor(r.bias)};white-space:nowrap;">${esc(r.metal || '')} ${esc(r.bias || '')}</td>
+            <td style="font-weight:700;color:${r.tradable ? '#22c55e' : '#ef4444'};">${r.tradable ? 'Y' : 'N'}</td>
+            <td style="text-align:left;"><span style="font-weight:700;color:${tone[r.tone] || 'var(--text)'};">${esc(r.callTag)}</span> <span style="color:var(--text-dim);font-size:12px;">— ${esc(r.callText)}</span></td>
+            <td style="text-align:left;font-size:12px;white-space:nowrap;color:${r.blocked ? '#ef4444' : (r.tradeType === 'cover' ? '#38bdf8' : 'var(--text)')};">${esc(r.trade)}${r.blocked ? ' ⚠' : ''}</td>
+          </tr>`).join('')}</tbody>
+      </table></div>
+    </div>`;
+
+  const sum = d.summary || {};
+  const sumHtml = `
+    <div class="table-panel">
+      <div class="table-header"><div class="table-title">Trade summary — executable vs blocked</div></div>
+      <div style="padding:8px 6px 4px;">
+        ${Object.keys(sum).map(k => `<div style="margin:9px 0;font-size:13px;line-height:1.55;"><span style="color:var(--text-muted);font-weight:600;">${esc(k)}:</span> ${esc(sum[k])}</div>`).join('')}
+      </div>
+      <div style="padding:6px;color:var(--text-muted);font-size:11px;">Analysis, not investment advice. Verify live borrow/quotes in IBKR before any order.</div>
+    </div>`;
+
+  el.innerHTML = head + tbl + sumHtml;
+}
+
 function showTab(name) {
   document.querySelectorAll('.tab').forEach((t, i) => {
-    const names = ['overview', 'positions', 'benchmarks', 'exposure', 'risk', 'markets', 'intel', 'picks'];
+    const names = ['overview', 'positions', 'benchmarks', 'exposure', 'risk', 'markets', 'intel', 'picks', 'rebalance'];
     t.classList.toggle('active', names[i] === name);
   });
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
