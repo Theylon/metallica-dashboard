@@ -10,16 +10,16 @@
 | 2 | **TSLA** | SHORT · $295 · 1 | S/1 | 54.1 · bull · Neut $401 (−2%) · −4/−6 · EV 0 · Y | **HOLD token** — micro bullish; thematic EV short only, do not add | no change |
 | 3 | **BATT** | SHORT · $295 · 21 | S/30 | 40.2 · neut · ETF · −11/−3 · Li 0 · Y | **TRIM ok** — EV ETF; overlaps LIT | BUY TO COVER 9 |
 | 4 | **KARS** | SHORT · $295 · 10 | S/14 | 29.5 · neut · ETF · −12/−8 · EV 0 · Y | **TRIM ok** — weakest score (29.5) | BUY TO COVER 4 |
-| 5 | **LIT** | SHORT · $295 · 4 | S/6 | 42.9 · neut · ETF · −14/−2 · Li 0 · Y | **TRIM ok** — lithium ETF, neutral | BUY TO COVER 2 |
+| 5 | **LIT** | SHORT · $295 · 4 | S/6 | 42.9 · neut · ETF · −14/−1 · Li 0 · Y | **TRIM ok** — lithium ETF, neutral | BUY TO COVER 2 |
 | 6 | **NIC.AX** | SHORT · $262 · 420 | — | 44.1 · bear · Jefferies Hold A$1.0↓ · −11/−2 · Ni 0 · N | **SKIP (no borrow)** — bearish but nickel bottoming = late-cycle | SELL SHORT 420 (open) — ⚠ no borrow |
 | 7 | **ERA.PA** | SHORT · $262 · 5 | — | 34.4 · neut · Oddo Neut €63 · −15/−23 · Ni 0 · N | **SKIP (no borrow)** — distressed (−50% off high), thin liquidity | SELL SHORT 5 (open) — ⚠ no borrow |
-| 8 | **S.TO** | SHORT · $262 · 2374 | — | 43.9 · bear · — (Cuba, +24% today) · +18/−14 · Ni 0 · N | **SKIP** — C$0.15 penny +24% today = squeeze; no borrow | SELL SHORT 2374 (open) — ⚠ no borrow |
+| 8 | **S.TO** | SHORT · $262 · 2374 | — | 43.9 · bear · — (Cuba, +24% today) · +19/−14 · Ni 0 · N | **SKIP** — C$0.15 penny +24% today = squeeze; no borrow | SELL SHORT 2374 (open) — ⚠ no borrow |
 | 9 | **PLG** | SHORT · $196 · 148 | S/81 | 23.1 · bear · — (dev-stage) · −17/−40 · PGM −2 · Y | **ADD** — cleanest short on the board (comp 23.1, PGM −2, −17/−40 mom) | SELL SHORT 67 (add) |
 | 10 | **SBSW** | SHORT · $196 · 23 | S/13 | 40.2 · bear · Buy $17.3 (+102%) · −21/−34 · PGM −2 · Y | **SIZE SMALL** — short is PGM/mom only; analysts Buy +102% → squeeze risk | SELL SHORT 10 (add) |
-| 11 | **ALB** | LONG · $196 · 2 | L/3 | 60.6 · bull · Buy $216 (+71%) · −24/−18 · Li 0 · Y | **DON'T TRIM** — best long by upside (Buy +71%), though momentum weak | SELL 1 (trim) |
+| 11 | **ALB** | LONG · $196 · 2 | L/3 | 60.6 · bull · Buy $216 (+71%) · −24/−18 · Li 0 · Y | **DON'T over-trim** — Buy-rated, +71% PT (3rd-highest long upside), though momentum weak | SELL 1 (trim) |
 | 12 | **SQM** | LONG · $196 · 3 | L/6 | 52.6 · neut · Neut $84.5 (+15%) · −12/−0 · Li 0 · Y | **TRIM ok** — neutral, PT +15% | SELL 3 (trim) |
 | 13 | **LAC** | LONG · $196 · 63 | L/116 | 40.5 · neut · Neut $6.4 (GS $4.5) · −33/−40 · Li 0 · Y | **TRIM / keep tiny** — comp 40.5, momentum −33/−40 (deep value optionality) | SELL 53 (trim) |
-| 14 | **SGML** | LONG · $196 · 17 | L/36 | 52.7 · bull · Buy $21.6 (+82%) · −28/−12 · Li 0 · Y | **KEEP core** — bullish (Buy +82%, SmartScore 10) | SELL 19 (trim) |
+| 14 | **SGML** | LONG · $196 · 17 | L/36 | 52.7 · bull · Buy $21.6 (+82%) · −28/−11 · Li 0 · Y | **KEEP core** — top Buy-rated long by upside (Buy +82%, SmartScore 10) | SELL 19 (trim) |
 | 15 | **TROX** | LONG · $196 · 32 | L/18 | 35.8 · neut · Neut $9.8 (+59%) · −22/−6 · Ti 0 · Y | **DON'T ADD** — weakest long (35.8, fundamentals 2.4) | BUY 14 (add) |
 | 16 | **CC** | LONG · $196 · 11 | L/6 | 58.0 · neut · Buy $24.8 (+39%) · −16/+3 · Ti 0 · Y | **OK add** — Buy +39%, TiO2 price hikes | BUY 5 (add) |
 | 17 | **ATI** | LONG · $196 · 1 | L/1 | 73.6 · neut · Buy $190.8 (+2%) · +7/+40 · Ti 0 · Y | **KEEP** — strong tape (+7/+40) but PT only +2% (priced) | no change |
@@ -35,11 +35,11 @@
 | 27 | **CLF** | SHORT · $157 · 16 | S/73 | 46.7 · bear · Neut $11.3 (+20%) · −15/−17 · Steel +2 · Y | **ADD / keep** — the weak steel name (46.7 bearish, −15/−17) | BUY TO COVER 57 |
 | 28 | **CMC** | SHORT · $157 · 2 | — | 61.5 · bull · Buy $80.5 (+28%) · −7/−3 · Steel +2 · Y | **DON'T OPEN** — bullish (61.5), Buy +28%, steel +2 | SELL SHORT 2 (open) |
 | 29 | **RS** | SHORT · $157 · 0 | S/2 | 64.2 · neut · Neut $381 (+0.5%) · +2/+21 · Steel +2 · Y | **CLOSE ok** — fully valued (Neut +0.5%), $390 too lumpy | BUY TO COVER 2 (close) |
-| 30 | **AA** | SHORT · $112 · 2 | S/1 | 53.3 · bear · Buy $68.5 (+41%) · −24/−13 · Al −1 · Y | **ADD ok** — bearish, alum −1, −24/−13 (Buy +41%) | SELL SHORT 1 (add) |
+| 30 | **AA** | SHORT · $112 · 2 | S/1 | 53.3 · bear · Buy $68.5 (+41%) · −23/−13 · Al −1 · Y | **ADD ok** — bearish, alum −1, −23/−13 (Buy +41%) | SELL SHORT 1 (add) |
 | 31 | **CSTM** | SHORT · $112 · 4 | S/2 | 58.4 · neut · Buy $36.6 (+25%) · −13/+19 · Al −1 · Y | **SIZE SMALL** — neutral (58.4), Buy +25% | SELL SHORT 2 (add) |
 | 32 | **CENX** | SHORT · $112 · 2 | S/1 | 47.3 · bear · Buy $77 (+72%) · −22/−6 · Al −1 · Y | **ADD ok** — bearish, −22/−6 (Buy +72% → squeeze risk) | SELL SHORT 1 (add) |
 | 33 | **KALU** | SHORT · $112 · 1 | — | 50.1 · neut · Hold $165 / WF UW · −9/+23 · Al −1 · Y | **TINY only** — valuation short not Al-price; stale +44%, 1sh | SELL SHORT 1 (open) |
-| 34 | **S32.AX** | SHORT · $112 · 40 | — | 54.9 · bull · — (Alcoa deal) · −5/+2 · Al −1 · N | **SKIP (no borrow)** — bullish, EXITING aluminum (Alcoa deal) | SELL SHORT 40 (open) — ⚠ no borrow |
+| 34 | **S32.AX** | SHORT · $112 · 40 | — | 54.9 · bull · — (Alcoa deal) · −5/+1 · Al −1 · N | **SKIP (no borrow)** — bullish, EXITING aluminum (Alcoa deal) | SELL SHORT 40 (open) — ⚠ no borrow |
 | 35 | **AFM.V** | SHORT · $112 · 128 | — | 70.7 · bull · — (tin $53K) · +0/+13 · Tin +1 · N | **DON'T SHORT / flip** — tin flagship long (70.7); no borrow | SELL SHORT 128 (open) — ⚠ no borrow |
 | 36 | **ELT.AX** | SHORT · $112 · 486 | — | 47.4 · bull · — (dev) · −14/−7 · Tin +1 · N | **SKIP (no borrow)** — pre-production tin developer | SELL SHORT 486 (open) — ⚠ no borrow |
 | 37 | **TINS.JK** | SHORT · $112 · 584 | — | 73.7 · bull · BMI elevated tin · +2/+4 · Tin +1 · N | **DON'T SHORT / flip** — bullish (73.7), tin +82% YoY; no borrow | SELL SHORT 584 (open) — ⚠ no borrow |
@@ -54,7 +54,7 @@
 1. **9 proposed positions can't be executed** — every new foreign short (NIC.AX, ERA.PA, S.TO, FRES.L, S32.AX, AFM.V, ELT.AX, TINS.JK, HINDZINC.NS) is `no-borrow` in IBKR. The foreign short leg is largely theoretical.
 2. **Several shorts point straight at strength.** NUE (comp **80.6**, Buy $270 +19%, +27% v200) and STLD (**72.2**, Buy +16%) are the two best steel names — steel bias **+2**; the whole tin/zinc complex (AFM.V 70.7, TINS.JK 73.7) is bullish with a **+1** bias. **Cover, don't short.** CLF (46.7, −15/−17) is the *right* steel short.
 3. **Many shorts fight a bullish analyst tape.** You'd be short SBSW (Buy **+102%**), CENX (+72%), CDE (+55%), PAAS (+56%), AG (+47%), HL (+42%), AA (+41%) — the short case there rests only on commodity bias + weak momentum, so keep them **small** (upgrade/squeeze risk). The clean shorts with *no* analyst support to fight are PLG (dev-stage, comp 23.1) and the PGM names.
-4. **The best long is being trimmed.** ALB carries the highest analyst upside on the sheet (Buy **+71%**, comp 60.6) yet the plan cuts it 3→2 — I'd hold it. TROX, the *weakest* long (35.8, fundamentals 2.4), is being **added to** 18→32 — I'd not.
+4. **The highest-upside longs are all being trimmed.** By analyst upside the longs rank LAC (+92%, Neutral) > SGML (Buy **+82%**) > ALB (Buy **+71%**) — all three lithium longs are cut, while the *weakest* long TROX (comp 35.8, fundamentals 2.4, only Neutral) is being **added to** 18→32. I'd keep the high-upside Buy-rated names (SGML, ALB) and not add TROX.
 5. **Closing IMPUY & NHYDY removes two aligned shorts** (PGM −2 / Al −1) — fine per your rule, but you'd cover good shorts while trying to open worse (non-executable) ones.
 6. **Lumpy / stale sizing:** HWM & KALU targets sit ~39–44% below live; 1–2 share targets (NUE, STLD, KALU, CMC, HWM, ATI, AA, CENX, RS) can't track weight on a ~$10.8k NAV — re-strike before trading.
 
