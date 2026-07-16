@@ -82,6 +82,19 @@ jobs:
         if: ${{ github.event.inputs.scope != 'ibkr' }}
         run: python scripts/micro_refresh.py || echo "micro_refresh skipped (non-fatal)"
 
+      # Auto-compute the live risk engine (vol/beta/VaR/HHI always; correlation matrix +
+      # per-name risk contribution when price_history.json exists). Pure Python, stdlib
+      # only, reads the freshly-written data/*.json. Runs on every refresh (incl. ibkr
+      # scope) since the core metrics use pnl/positions/benchmarks. Non-fatal.
+      - name: Compute risk metrics
+        run: python scripts/risk.py || echo "risk skipped (non-fatal)"
+
+      # Signal-efficacy scorecard (rank-IC/IR of each micro sub-score vs forward returns)
+      # + portfolio factor tilt. No-ops cheaply until micro_history.jsonl has enough days.
+      - name: Compute signal scorecard
+        if: ${{ github.event.inputs.scope != 'ibkr' }}
+        run: python scripts/signal_ic.py || echo "signal_ic skipped (non-fatal)"
+
       - name: Commit rolling P&L history
         run: |
           git config user.name "metallica-bot"

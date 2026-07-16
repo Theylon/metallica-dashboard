@@ -1,0 +1,48 @@
+{
+ "updatedAt": "2026-07-16T17:33:31+00:00",
+ "status": "accumulating",
+ "daysCollected": 1,
+ "minDaysNeeded": 25,
+ "fwdWindow": 20,
+ "signals": [],
+ "factorTilt": {
+  "asOf": "2026-07-16",
+  "factors": [
+   {
+    "factor": "momentum",
+    "portZ": -0.33,
+    "longZ": -0.15,
+    "shortZ": -0.05,
+    "coverage": 25
+   },
+   {
+    "factor": "value",
+    "portZ": -0.01,
+    "longZ": -0.02,
+    "shortZ": 0.03,
+    "coverage": 22
+   },
+   {
+    "factor": "quality",
+    "portZ": -0.0,
+    "longZ": -0.12,
+    "shortZ": -0.01,
+    "coverage": 22
+   },
+   {
+    "factor": "size",
+    "portZ": -0.01,
+    "longZ": -0.25,
+    "shortZ": -0.14,
+    "coverage": 25
+   },
+   {
+    "factor": "lowVol",
+    "portZ": null,
+    "longZ": null,
+    "shortZ": null,
+    "coverage": 0
+   }
+  ]
+ }
+}

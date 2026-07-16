@@ -90,10 +90,41 @@ Sanity: 204 tickers, evidence≈204/204, deep model-derived=0, fundamentals≈10
 flags). Then `python3 scripts/micro_refresh.py` is NOT needed here (the Action owns
 prices), but running it is harmless and refreshes momentum + the Yahoo cross-check.
 
+## 5b. Automated research layer → `data/{events,positioning,macro_history}.json` (Feature E)
+Extends the Intel tab from the ALB/SQM pair to the **whole book** + adds positioning and a
+macro-regime series. Holdings come from `data/positions.json` (drop the ` @PINK` suffix).
+Save each raw MCP result verbatim to `/tmp`, then `scripts/enrich.py` transforms them (each
+section is independent — a missing dump just leaves that file untouched). Resolve Bigdata
+`rp_entity_id` once via `find_securities` and reuse it (don't re-resolve per run).
+
+Per holding `<TKR>`:
+- `mcp__…__bigdata_sentiment_tearsheet` → `/tmp/bigdata_sent_<TKR>.json` (overall sentiment)
+- FMP `calendar` (earnings) → `/tmp/fmp_cal_<TKR>.json`  (or `bigdata_events_calendar`)
+- FMP `news` (per symbol) → `/tmp/fmp_news_<TKR>.json`
+- FMP `insiderTrades` → `/tmp/fmp_insider_<TKR>.json` (single-name equities; ETFs have none)
+- FMP `form13F`/institutional ownership → `/tmp/fmp_13f_<TKR>.json` (best-effort)
+
+Metals COT (once, not per holding): FMP `commitmentOfTraders` for gold/silver/copper/
+platinum/aluminum → `/tmp/fmp_cot_<metal>.json`.
+
+Macro regime: the `macro_*.json` dumps section 5 (or `enrich`) already saves
+(`macro_yield`, `macro_inflation`, `macro_fed`, `macro_stress`), plus
+`macro_feedoracle recession_risk_v1` → `/tmp/macro_recession.json`.
+
+Then:
+```
+python3 scripts/enrich.py     # builds commodities/analysts/macro/news/... AND events/positioning/macro_history
+```
+First-run check: the FMP news/calendar/insider/COT parsers assume FMP's documented shapes and
+the Bigdata sentiment parser probes a few likely keys — eyeball `data/events.json` /
+`positioning.json` once and adjust the field paths in `enrich.py` if a tool's real output
+differs. `macro_history.json` appends one point per day (idempotent within a day).
+
 ## 6. Commit to master (data + inputs)
 ```
-git add data/micro.json data/micro_src/ data/universe.json
-git commit -m "Daily research refresh: commodity bias, analyst/sentiment, theses"
+git add data/micro.json data/micro_src/ data/universe.json \
+        data/events.json data/positioning.json data/macro_history.json
+git commit -m "Daily research refresh: commodity bias, analyst/sentiment, theses, research layer"
 git push origin master
 ```
 GitHub Pages redeploys on the push. Do **not** open a PR — this is a scheduled
