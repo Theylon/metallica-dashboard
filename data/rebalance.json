@@ -1,12 +1,12 @@
 {
- "asOf": "2026-07-15",
+ "asOf": "2026-07-16",
  "nav": 10852.18,
  "title": "Proposed Rebalance — Micro Review & Trade List",
  "subtitle": "Every proposed row micro-checked against our data; my sharpened call beside the recommendation you were given; trade reconciles to your target.",
  "keyNote": "comp = composite 0–100 · verdict = bottom-up read · analyst = consensus & price target (upside) · mom = % vs 50/200-DMA · bias = metal directional score (−2…+2) · trad = executable/borrowable in IBKR (held names are executable even where the research feed lacks a clean quote). Analysis, not investment advice.",
  "headlines": [
   "9 proposed positions can’t be executed — every new foreign short (NIC.AX, ERA.PA, S.TO, FRES.L, S32.AX, AFM.V, ELT.AX, TINS.JK, HINDZINC.NS) is no-borrow in IBKR.",
-  "Several shorts point at strength: NUE (80.6, +27% v200) and STLD (72.2) are the best steel names (bias +2); the tin/zinc complex is bullish (+1 bias). Cover, don’t short. CLF (46.7) is the right steel short.",
+  "Several shorts point at strength: NUE (81.5, +27% v200) and STLD (73.1) are the best steel names (bias +2); the tin/zinc complex is bullish (+1 bias). Cover, don’t short. CLF (46.7) is the right steel short.",
   "Many shorts fight a bullish analyst tape — SBSW +102%, CENX +72%, CDE +55%, PAAS +56%, AG +47%, HL +42%, AA +41% — so keep those small (upgrade/squeeze risk).",
   "The highest-upside longs are all being trimmed — LAC (+92%, Neutral), SGML (Buy +82%), ALB (Buy +71%) — while the weakest long, TROX (comp 35.8, fundamentals 2.4, only Neutral), is being added to.",
   "Lumpy/stale sizing: HWM & KALU targets ~39–44% below live; 1–2 share targets can’t track weight on a ~$10.8k NAV — re-strike first."
@@ -39,7 +39,12 @@
    "tone": "warn",
    "trade": "SELL SHORT 23",
    "tradeType": "open",
-   "blocked": false
+   "blocked": false,
+   "subs": null,
+   "coverage": null,
+   "thesis": "Not in the micro universe (renewables/utility, not a metal). TipRanks: Buy, PT $37.4 (+14.5%). The short is thematic — short EV/renewables demand & a rates/duration tilt — not a metals-fundamental call; it is also the book's largest single new short (~6.9% of NAV).",
+   "catalysts": [],
+   "risks": []
   },
   {
    "n": 2,
@@ -48,7 +53,7 @@
    "dollar": 295,
    "target": 1,
    "held": "S/1",
-   "comp": 54.1,
+   "comp": 54.0,
    "verdict": "bull",
    "metal": "EV",
    "bias": "0",
@@ -60,7 +65,28 @@
    "tone": "warn",
    "trade": "no change",
    "tradeType": "none",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 3.7,
+    "commodity": 5.0,
+    "deep": 6.0,
+    "analyst": 4.4,
+    "fundamentals": 5.4,
+    "smart": 6.7,
+    "sentiment": 7.5,
+    "quality": 7.0
+   },
+   "coverage": 100,
+   "thesis": "As a lithium-complex short this leg is fighting the tape: record Q2 deliveries 480K (+25% YoY, beat by 74K), Carbon Arc US registrations accelerating every month (Jan 30.3K → May 47.4K), UBS raising PT with margin-surprise potential into July 22 earnings. Only works as a macro/valuation short — the micro is against it right now.",
+   "catalysts": [
+    "Q2 earnings 2026-07-22 (auto GM est 19% vs consensus 17.6%)",
+    "robotaxi expansion (Miami)",
+    "possible SpaceX investment gain"
+   ],
+   "risks": [
+    "for shorts: earnings beat + FSD/robotaxi hype",
+    "IEEPA receivable boosting margins"
+   ]
   },
   {
    "n": 3,
@@ -69,19 +95,35 @@
    "dollar": 295,
    "target": 21,
    "held": "S/30",
-   "comp": 40.2,
+   "comp": 38.6,
    "verdict": "neut",
    "metal": "Li",
    "bias": "0",
    "analyst": "ETF",
-   "mom": "−11/−3",
+   "mom": "−12/−4",
    "tradable": true,
    "callTag": "TRIM ok",
    "callText": "EV ETF; overlaps LIT",
    "tone": "pos",
    "trade": "BUY TO COVER 9",
    "tradeType": "cover",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 3.0,
+    "commodity": 5.0,
+    "deep": 4.0,
+    "analyst": null,
+    "fundamentals": null,
+    "smart": null,
+    "sentiment": null,
+    "quality": 3.0
+   },
+   "coverage": 58,
+   "thesis": "Overlaps LIT heavily (both hold ALB/SQM/CATL complex); redundant second ETF short — consolidate into one.",
+   "catalysts": [],
+   "risks": [
+    "overlap with LIT short"
+   ]
   },
   {
    "n": 4,
@@ -95,14 +137,30 @@
    "metal": "EV",
    "bias": "0",
    "analyst": "ETF",
-   "mom": "−12/−8",
+   "mom": "−10/−6",
    "tradable": true,
    "callTag": "TRIM ok",
    "callText": "weakest score (29.5)",
    "tone": "pos",
    "trade": "BUY TO COVER 4",
    "tradeType": "cover",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 2.6,
+    "commodity": null,
+    "deep": 4.5,
+    "analyst": null,
+    "fundamentals": null,
+    "smart": null,
+    "sentiment": null,
+    "quality": 1.0
+   },
+   "coverage": 40,
+   "thesis": "EV/future-mobility ETF (China-heavy) — cleaner downstream-EV short than TSLA without single-stock earnings risk.",
+   "catalysts": [],
+   "risks": [
+    "China EV stimulus"
+   ]
   },
   {
    "n": 5,
@@ -111,19 +169,35 @@
    "dollar": 295,
    "target": 4,
    "held": "S/6",
-   "comp": 42.9,
+   "comp": 42.0,
    "verdict": "neut",
    "metal": "Li",
    "bias": "0",
    "analyst": "ETF",
-   "mom": "−14/−1",
+   "mom": "−14/−3",
    "tradable": true,
    "callTag": "TRIM ok",
    "callText": "lithium ETF, neutral",
    "tone": "pos",
    "trade": "BUY TO COVER 2",
    "tradeType": "cover",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 2.8,
+    "commodity": 5.0,
+    "deep": 4.5,
+    "analyst": null,
+    "fundamentals": null,
+    "smart": null,
+    "sentiment": null,
+    "quality": 5.0
+   },
+   "coverage": 58,
+   "thesis": "ETF short that hedges lithium beta but holds ALB/SQM inside — it partially cancels the book's own longs. Works as complex-level hedge; -12.5% below 50DMA already.",
+   "catalysts": [],
+   "risks": [
+    "holds the same names we are long"
+   ]
   },
   {
    "n": 6,
@@ -144,7 +218,29 @@
    "tone": "neg",
    "trade": "SELL SHORT 420",
    "tradeType": "open",
-   "blocked": true
+   "blocked": true,
+   "subs": {
+    "momentum": 2.9,
+    "commodity": 5.0,
+    "deep": 4.5,
+    "analyst": null,
+    "fundamentals": null,
+    "smart": null,
+    "sentiment": null,
+    "quality": 6.3
+   },
+   "coverage": 58,
+   "thesis": "Jefferies (May 25, Jun 17, Jul 6 2026 notes) maintains a Hold on Nickel Industries, warning the new Indonesian HPM benchmark price formula could push RKEF operations 'loss-making' and raise HPAL cash costs ~40% industry-wide, even as it holds a Buy-then-Hold rating with price targets moved from AU$1.20 to AU$1.05 to AU$1.00 across the window - a downward drift. Q2 adjusted core profit of $80M and ongoing HPAL stake deals (TMI, CNE, Sampala) show operational progress, but Jefferies explicitly flags 'Indonesia's capricious policy regime' warrants caution, squarely matching the NEUTRAL-bearish nickel backdrop.",
+   "catalysts": [
+    "ENC nickel processing facility reaching full capacity (H2 2027)",
+    "HPAL stake consolidation (TMI/CNE/Sampala) NPV accretion",
+    "Nickel price recovery / supply-led rebalancing"
+   ],
+   "risks": [
+    "Indonesian HPM benchmark price formula raising RKEF/HPAL costs",
+    "Policy unpredictability ('capricious policy regime' per Jefferies)",
+    "Operational downtime (Hengjaya, ANI/ONI maintenance)"
+   ]
   },
   {
    "n": 7,
@@ -158,14 +254,36 @@
    "metal": "Ni",
    "bias": "0",
    "analyst": "Oddo Neut €63",
-   "mom": "−15/−23",
+   "mom": "−14/−23",
    "tradable": false,
    "callTag": "SKIP (no borrow)",
    "callText": "distressed (−50% off high), thin liquidity",
    "tone": "neg",
    "trade": "SELL SHORT 5",
    "tradeType": "open",
-   "blocked": true
+   "blocked": true,
+   "subs": {
+    "momentum": 0.0,
+    "commodity": 5.0,
+    "deep": 4.0,
+    "analyst": null,
+    "fundamentals": null,
+    "smart": null,
+    "sentiment": null,
+    "quality": 6.7
+   },
+   "coverage": 58,
+   "thesis": "Eramet remains consistent with our Nickel NEUTRAL stance: nickel prices near $19,000/t are supportive, but the company hasn't reached full nameplate capacity at its Argentina nickel site and its Indonesian nickel ore mining permits are now exhausted, limiting its ability to capitalize on H2 strength, while manganese prices are softening after a strong start to the year. Oddo BHF maintained a Neutral rating (PT raised to €63) but flagged the stock as 'largely uninvestable' pending clarity on a €500M capital increase, high leverage (ND/EBITDA >5x), and governance uncertainty (interim CEO, rumored Duval family exit).",
+   "catalysts": [
+    "H1 2026 results July 29, 2026",
+    "Senegal Grande Côte mineral sands restart progressing toward 100% nameplate capacity by Q1 2027",
+    "Resolution of €500M capital increase and CEO/governance overhang"
+   ],
+   "risks": [
+    "ND/EBITDA leverage above 5x",
+    "Governance uncertainty (interim CEO, capital increase terms unresolved)",
+    "Nickel ore permit exhaustion in Indonesia capping upside capture"
+   ]
   },
   {
    "n": 8,
@@ -179,14 +297,35 @@
    "metal": "Ni",
    "bias": "0",
    "analyst": "Cuba; +24% today",
-   "mom": "+19/−14",
+   "mom": "+18/−17",
    "tradable": false,
    "callTag": "SKIP",
    "callText": "C$0.15 penny +24% today = squeeze; no borrow",
    "tone": "neg",
    "trade": "SELL SHORT 2374",
    "tradeType": "open",
-   "blocked": true
+   "blocked": true,
+   "subs": {
+    "momentum": 4.9,
+    "commodity": 5.0,
+    "deep": 3.0,
+    "analyst": null,
+    "fundamentals": null,
+    "smart": null,
+    "sentiment": null,
+    "quality": 4.3
+   },
+   "coverage": 58,
+   "thesis": "Sherritt is facing acute company-specific disruption layered on top of the desk's NEUTRAL-bearish nickel view: the May 1, 2026 US Executive Order expanding Cuba sanctions forced a suspension of mining at the Moa JV in February, driving Q1 2026 finished nickel production down 36% YoY and cobalt down 34%, and the resulting filing delay triggered an OSC cease-trade order (revoked July 10, 2026, trading resumed) — a governance/liquidity scare on top of weak fundamentals.",
+   "catalysts": [
+    "Cease trade order revoked July 10, 2026, trading resumed on TSX",
+    "Potential recovery in Moa JV output if Cuban raw material supply normalizes"
+   ],
+   "risks": [
+    "Cuba sanctions expansion (May 2026 Executive Order) directly disrupted raw material supply and production",
+    "Q1 2026 nickel/cobalt production and sales down 34-36% YoY",
+    "Regulatory/governance risk evidenced by cease-trade order for late filing"
+   ]
   },
   {
    "n": 9,
@@ -207,7 +346,26 @@
    "tone": "pos",
    "trade": "SELL SHORT 67",
    "tradeType": "add",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 0.0,
+    "commodity": 1.4,
+    "deep": 2.5,
+    "analyst": null,
+    "fundamentals": 4.8,
+    "smart": null,
+    "sentiment": null,
+    "quality": 5.5
+   },
+   "coverage": 70,
+   "thesis": "Pre-revenue Waterberg developer needing financing in a weak palladium market — classic development-stage short; but micro-cap ($169M) so squeeze/borrow risk is real. Keep small.",
+   "catalysts": [
+    "Waterberg financing decisions"
+   ],
+   "risks": [
+    "financing/strategic partner headline squeezes",
+    "micro-cap float"
+   ]
   },
   {
    "n": 10,
@@ -221,14 +379,36 @@
    "metal": "PGM",
    "bias": "−2",
    "analyst": "Buy $17.3 (+102%)",
-   "mom": "−21/−34",
+   "mom": "−22/−35",
    "tradable": true,
    "callTag": "SIZE SMALL",
    "callText": "short is PGM/mom only; analysts Buy +102% → squeeze risk",
    "tone": "warn",
    "trade": "SELL SHORT 10",
    "tradeType": "add",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 0.0,
+    "commodity": 1.0,
+    "deep": 2.0,
+    "analyst": 9.0,
+    "fundamentals": 6.1,
+    "smart": 8.9,
+    "sentiment": null,
+    "quality": 7.3
+   },
+   "coverage": 91,
+   "thesis": "Perfect-storm short: -42% YTD, high debt, US palladium ops loss-making at current prices, painful SA restructuring — in a structurally-surplus palladium market. Thesis intact; watch borrow and 100%+ stale PT optics.",
+   "catalysts": [
+    "H1 results Aug",
+    "palladium price",
+    "restructuring updates"
+   ],
+   "risks": [
+    "PGM squeeze on SA supply shock",
+    "gold division cushions",
+    "recycling platform build-out"
+   ]
   },
   {
    "n": 11,
@@ -237,19 +417,40 @@
    "dollar": 196,
    "target": 2,
    "held": "L/3",
-   "comp": 60.6,
+   "comp": 60.4,
    "verdict": "bull",
    "metal": "Li",
    "bias": "0",
    "analyst": "Buy $216 (+71%)",
-   "mom": "−24/−18",
+   "mom": "−24/−19",
    "tradable": true,
    "callTag": "DON'T over-trim",
    "callText": "Buy-rated, +71% PT (3rd-highest long upside), though momentum weak",
    "tone": "pos",
    "trade": "SELL 1",
    "tradeType": "trim",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 0.4,
+    "commodity": 5.0,
+    "deep": 7.5,
+    "analyst": 9.0,
+    "fundamentals": 5.0,
+    "smart": 8.9,
+    "sentiment": 10.0,
+    "quality": 8.0
+   },
+   "coverage": 100,
+   "thesis": "World's largest lithium producer; Q1-26 adj EBITDA +148% YoY as lithium rebounded, Zacks #1, Buy consensus with PT $216 (+71%). Near-term chop from lithium futures weakness (CATL restart), but the DoD stockpile tender and tight 2026 balance support the long.",
+   "catalysts": [
+    "Q2 earnings early Aug",
+    "DoD $300M lithium tender",
+    "lithium carbonate price"
+   ],
+   "risks": [
+    "China supply restarts (CATL Jianxiawo)",
+    "PT cuts continuing (UBS 264→205, Baird 224→178)"
+   ]
   },
   {
    "n": 12,
@@ -258,19 +459,39 @@
    "dollar": 196,
    "target": 3,
    "held": "L/6",
-   "comp": 52.6,
+   "comp": 52.0,
    "verdict": "neut",
    "metal": "Li",
    "bias": "0",
    "analyst": "Neut $84.5 (+15%)",
-   "mom": "−12/−0",
+   "mom": "−12/−1",
    "tradable": true,
    "callTag": "TRIM ok",
    "callText": "neutral, PT +15%",
    "tone": "pos",
    "trade": "SELL 3",
    "tradeType": "trim",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 3.1,
+    "commodity": 5.0,
+    "deep": 6.0,
+    "analyst": 5.5,
+    "fundamentals": 5.6,
+    "smart": 4.4,
+    "sentiment": null,
+    "quality": 8.7
+   },
+   "coverage": 91,
+   "thesis": "Chile lithium+iodine major; Neutral consensus (+15% PT), Codelco JV overhang resolved, leverage to the same lithium rebound with lower cost curve position than ALB but political discount.",
+   "catalysts": [
+    "lithium price",
+    "Chile royalty details"
+   ],
+   "risks": [
+    "Chile politics",
+    "oversupply"
+   ]
   },
   {
    "n": 13,
@@ -284,14 +505,35 @@
    "metal": "Li",
    "bias": "0",
    "analyst": "Neut $6.4 (GS $4.5)",
-   "mom": "−33/−40",
+   "mom": "−33/−41",
    "tradable": true,
    "callTag": "TRIM / keep tiny",
    "callText": "comp 40.5, momentum −33/−40 (deep-value optionality)",
    "tone": "warn",
    "trade": "SELL 53",
    "tradeType": "trim",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 0.0,
+    "commodity": 5.0,
+    "deep": 5.5,
+    "analyst": 7.0,
+    "fundamentals": 3.2,
+    "smart": 3.3,
+    "sentiment": null,
+    "quality": 5.7
+   },
+   "coverage": 91,
+   "thesis": "Pre-revenue Thacker Pass builder (62% JV with GM): engineering >95%, $1.2B cash, $2.23B DOE loan, mech completion late 2027. It's a funded call option on US lithium — but no earnings until 2028 and GS just initiated Neutral $4.50.",
+   "catalysts": [
+    "construction milestones",
+    "US strategic-stockpile headlines"
+   ],
+   "risks": [
+    "execution/capex ($1.3-1.6B in 2026)",
+    "dilution via DOE warrants",
+    "lithium price"
+   ]
   },
   {
    "n": 14,
@@ -300,19 +542,40 @@
    "dollar": 196,
    "target": 17,
    "held": "L/36",
-   "comp": 52.7,
+   "comp": 52.2,
    "verdict": "bull",
    "metal": "Li",
    "bias": "0",
    "analyst": "Buy $21.6 (+82%)",
-   "mom": "−28/−11",
+   "mom": "−28/−15",
    "tradable": true,
    "callTag": "KEEP core",
    "callText": "top Buy-rated long by upside (Buy +82%, SmartScore 10)",
    "tone": "pos",
    "trade": "SELL 19",
    "tradeType": "trim",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 0.6,
+    "commodity": 5.0,
+    "deep": 8.0,
+    "analyst": 9.0,
+    "fundamentals": 1.6,
+    "smart": 10.0,
+    "sentiment": null,
+    "quality": 5.7
+   },
+   "coverage": 91,
+   "thesis": "Lowest-quartile-cost Brazilian spodumene: Q2 production 35kt beat guidance by 6%, 70% recovery, AISC $710/t falling to ~$620 with Phase 2, cash-flow positive even at $1,500/t. Strongest micro in the lithium complex.",
+   "catalysts": [
+    "Q2 financials 2026-08-14",
+    "Phase 2 plant within 12 months"
+   ],
+   "risks": [
+    "single-asset Brazil",
+    "spodumene price",
+    "thin analyst coverage (2)"
+   ]
   },
   {
    "n": 15,
@@ -326,14 +589,33 @@
    "metal": "Ti",
    "bias": "0",
    "analyst": "Neut $9.8 (+59%)",
-   "mom": "−22/−6",
+   "mom": "−20/−5",
    "tradable": true,
    "callTag": "DON'T ADD",
    "callText": "weakest long (35.8, fundamentals 2.4)",
    "tone": "neg",
    "trade": "BUY 14",
    "tradeType": "add",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 1.7,
+    "commodity": 5.0,
+    "deep": 4.5,
+    "analyst": 7.0,
+    "fundamentals": 2.4,
+    "smart": 1.1,
+    "sentiment": 0.0,
+    "quality": 5.7
+   },
+   "coverage": 100,
+   "thesis": "Weakest TiO2 holding: Neutral consensus (1 buy/5 hold/1 sell), levered balance sheet, and Zacks prefers KRO in the same space. Swap candidate.",
+   "catalysts": [
+    "TiO2 pricing"
+   ],
+   "risks": [
+    "leverage",
+    "Europe demand"
+   ]
   },
   {
    "n": 16,
@@ -342,19 +624,39 @@
    "dollar": 196,
    "target": 11,
    "held": "L/6",
-   "comp": 58.0,
+   "comp": 58.1,
    "verdict": "neut",
    "metal": "Ti",
    "bias": "0",
    "analyst": "Buy $24.8 (+39%)",
-   "mom": "−16/+3",
+   "mom": "−15/+4",
    "tradable": true,
    "callTag": "OK add",
    "callText": "Buy +39%, TiO2 price hikes",
    "tone": "pos",
    "trade": "BUY 5",
    "tradeType": "add",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 2.6,
+    "commodity": 5.0,
+    "deep": 6.0,
+    "analyst": 8.9,
+    "fundamentals": 2.1,
+    "smart": 8.9,
+    "sentiment": 10.0,
+    "quality": 7.3
+   },
+   "coverage": 100,
+   "thesis": "Chemours: TiO2 bottoming (China prices +8% QTD) + fluoropolymers; Buy consensus +39% PT; litigation overhang known. Keep.",
+   "catalysts": [
+    "TiO2 price hikes",
+    "Q2 earnings early Aug"
+   ],
+   "risks": [
+    "PFAS litigation",
+    "TiO2 off-season weakness"
+   ]
   },
   {
    "n": 17,
@@ -368,14 +670,34 @@
    "metal": "Ti",
    "bias": "0",
    "analyst": "Buy $190.8 (+2%)",
-   "mom": "+7/+40",
+   "mom": "+6/+39",
    "tradable": true,
    "callTag": "KEEP",
    "callText": "strong tape (+7/+40) but PT only +2% (priced)",
    "tone": "pos",
    "trade": "no change",
    "tradeType": "none",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 10.0,
+    "commodity": 5.0,
+    "deep": 6.5,
+    "analyst": 6.6,
+    "fundamentals": 6.1,
+    "smart": 10.0,
+    "sentiment": null,
+    "quality": 8.7
+   },
+   "coverage": 91,
+   "thesis": "Aerospace-grade titanium/superalloys: strong cycle, +38% above 200DMA, 6/6 buys — but PT upside only +2%, i.e. the street says it's now fairly priced. Keep, don't add.",
+   "catalysts": [
+    "aero build rates",
+    "Q2 earnings early Aug"
+   ],
+   "risks": [
+    "rich valuation",
+    "jet-engine destocking"
+   ]
   },
   {
    "n": 18,
@@ -384,19 +706,41 @@
    "dollar": 196,
    "target": 1,
    "held": null,
-   "comp": 77.1,
+   "comp": 77.5,
    "verdict": "bull",
    "metal": "Ti",
    "bias": "0",
    "analyst": "StrongBuy $302.6 (+11%)",
-   "mom": "+3/+18",
+   "mom": "+4/+19",
    "tradable": true,
    "callTag": "OPEN (best long)",
    "callText": "StrongBuy, +11% PT; re-size (1sh, stale)",
    "tone": "pos",
    "trade": "BUY 1",
    "tradeType": "open",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 8.9,
+    "commodity": 5.0,
+    "deep": 7.0,
+    "analyst": 10.0,
+    "fundamentals": 7.6,
+    "smart": 6.7,
+    "sentiment": 10.0,
+    "quality": 7.7
+   },
+   "coverage": 100,
+   "thesis": "Howmet's Q1 2026 results beat expectations across the board — revenue +19% YoY to $2.31B, adjusted EPS $1.22, operating income +52% to $753M, EBITDA +32% to $740M (32% margin), free cash flow more than doubled to $359M — driving raised full-year guidance to $9.65B revenue and $4.94 adjusted EPS, with 18 of 23 analysts rating the stock Strong Buy and an average price target implying ~12.5% upside. This is a demand-driven (aerospace/gas-turbine engine components) rather than raw-titanium-price-driven bull case, but it benefits from the same titanium supply-chain tightness underpinning the broader materials backdrop.",
+   "catalysts": [
+    "Q2 2026 results and webcast (Aug 6)",
+    "Continued aerospace OEM production ramp (narrowbody/widebody)",
+    "Further guidance raises if commercial aerospace demand holds"
+   ],
+   "risks": [
+    "Valuation already reflects strong Strong Buy consensus and 50.9% 52-week outperformance",
+    "Not a pure commodity-price play — more exposed to aerospace build-rate cycles than titanium spot pricing",
+    "Aerospace supply chain disruption or OEM production rate cuts"
+   ]
   },
   {
    "n": 19,
@@ -405,19 +749,37 @@
    "dollar": 180,
    "target": 4,
    "held": "S/2",
-   "comp": 53.3,
+   "comp": 53.1,
    "verdict": "neut",
    "metal": "Ag",
    "bias": "−1",
    "analyst": "Buy $68.3 (+56%)",
-   "mom": "−16/−15",
+   "mom": "−16/−16",
    "tradable": true,
    "callTag": "SIZE SMALL",
    "callText": "silver −1 & mom aligned, but Buy +56%",
    "tone": "warn",
    "trade": "SELL SHORT 2",
    "tradeType": "add",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 0.7,
+    "commodity": 3.0,
+    "deep": 5.5,
+    "analyst": 9.0,
+    "fundamentals": 9.2,
+    "smart": 6.7,
+    "sentiment": null,
+    "quality": 7.3
+   },
+   "coverage": 91,
+   "thesis": "Quality large-cap silver producer with Buy consensus (+56% PT) — the WRONG name to be short in the silver complex; higher-cost juniors are better shorts. Cover and keep AG/CDE/HL as the silver shorts.",
+   "catalysts": [
+    "Q2 results Aug"
+   ],
+   "risks": [
+    "for shorts: quality + La Escondida-type asset base attracts flows"
+   ]
   },
   {
    "n": 20,
@@ -426,19 +788,37 @@
    "dollar": 180,
    "target": 9,
    "held": "S/5",
-   "comp": 57.2,
+   "comp": 56.8,
    "verdict": "bear",
    "metal": "Ag",
    "bias": "−1",
    "analyst": "Buy $22.5 (+42%)",
-   "mom": "−10/−17",
+   "mom": "−10/−18",
    "tradable": true,
    "callTag": "ADD ok",
    "callText": "bearish, silver −1; Buy +42% (squeeze risk)",
    "tone": "pos",
    "trade": "SELL SHORT 4",
    "tradeType": "add",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 1.2,
+    "commodity": 3.0,
+    "deep": 4.5,
+    "analyst": 9.0,
+    "fundamentals": 9.2,
+    "smart": 6.7,
+    "sentiment": 10.0,
+    "quality": 7.3
+   },
+   "coverage": 100,
+   "thesis": "US silver producer post -50% silver crash; still -13% below 200DMA; decent beta short though costs are mid-curve.",
+   "catalysts": [
+    "silver price"
+   ],
+   "risks": [
+    "silver squeeze re-run"
+   ]
   },
   {
    "n": 21,
@@ -447,19 +827,42 @@
    "dollar": 180,
    "target": 6,
    "held": "S/3",
-   "comp": 49.0,
+   "comp": 48.8,
    "verdict": "bear",
    "metal": "Ag",
    "bias": "−1",
    "analyst": "BofA Neut $12",
-   "mom": "−7/−3",
+   "mom": "−7/−2",
    "tradable": true,
    "callTag": "ADD ok",
    "callText": "bearish, BofA cut PT to $12",
    "tone": "pos",
    "trade": "SELL SHORT 3",
    "tradeType": "add",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 3.8,
+    "commodity": 3.7,
+    "deep": 3.0,
+    "analyst": null,
+    "fundamentals": 9.5,
+    "smart": null,
+    "sentiment": null,
+    "quality": 6.3
+   },
+   "coverage": 70,
+   "thesis": "BofA cut its Buenaventura price target to $12 from $14 (Neutral) after Q1 2026 revenue missed estimates ($624.6M vs $651.5M expected), and flagged the stock as likely to stay range-bound near-term pending resolution of financing concerns ahead of 2026 catalysts; despite improved silver (+6% YoY) and gold (+8% YoY) production and a large Q1 net income jump to $335.4M, copper output fell 11% YoY, and the silver price backdrop is short-low (halved from January's $115 squeeze) — consistent with the existing short thesis on BVN.",
+   "catalysts": [
+    "San Gabriel ramp-up continuing to lift gold output",
+    "Resolution of financing concerns cited by BofA as a prerequisite for re-rating",
+    "2026 catalysts referenced by BofA (unspecified timing)"
+   ],
+   "risks": [
+    "Silver price backdrop short-low after halving from January highs",
+    "Revenue miss vs consensus in Q1 2026",
+    "Financing overhang keeping the stock range-bound per BofA",
+    "Copper production declined 11% YoY on ore-processing mix shift"
+   ]
   },
   {
    "n": 22,
@@ -468,19 +871,41 @@
    "dollar": 180,
    "target": 5,
    "held": null,
-   "comp": 30.0,
+   "comp": 29.0,
    "verdict": "bear",
    "metal": "Ag",
    "bias": "−1",
    "analyst": "Berenberg Hold £33",
-   "mom": "−19/−21",
+   "mom": "−20/−22",
    "tradable": false,
    "callTag": "SKIP (no borrow)",
-   "callText": "cleanest short thesis (30.0) but blocked",
+   "callText": "cleanest short thesis (29.0) but blocked",
    "tone": "neg",
    "trade": "SELL SHORT 5",
    "tradeType": "open",
-   "blocked": true
+   "blocked": true,
+   "subs": {
+    "momentum": 0.0,
+    "commodity": 3.0,
+    "deep": 4.0,
+    "analyst": null,
+    "fundamentals": null,
+    "smart": null,
+    "sentiment": null,
+    "quality": 7.3
+   },
+   "coverage": 58,
+   "thesis": "Fresnillo shows the tension in the desk's SHORT-low silver call: Berenberg expects flat Q2 volumes and an H1 revenue beat (USD3.6bn vs consensus USD3.3bn) but trimmed its price target to £33 from £34 on a stronger Mexican peso as a currency headwind, while Simply Wall St flags that Q1 2026 silver and gold production volumes were actually lower than the prior year despite strong margins (30.3% net margin) as an inflation-hedge play. Zacks upgraded to Buy on rising estimates, but the underlying volume softness and hold-rated valuation support a cautious stance.",
+   "catalysts": [
+    "Zacks upgrade to Buy with consensus estimates raised 10.9% over past three months",
+    "Sinda minority stake acquisition (up to 5%) expanding silver-gold district exposure in Mexico ahead of Sinda's NYSE IPO",
+    "H1 2026 revenue expected to beat consensus per Berenberg"
+   ],
+   "risks": [
+    "Q1 2026 silver and gold production volumes lower YoY despite price tailwinds",
+    "Berenberg cut PT to GBP33 from GBP34 on stronger MXN as FX headwind, maintains Hold",
+    "Aligns with desk's SHORT-low silver view given production softness and currency drag"
+   ]
   },
   {
    "n": 23,
@@ -489,19 +914,37 @@
    "dollar": 180,
    "target": 9,
    "held": "S/4",
-   "comp": 59.0,
+   "comp": 57.9,
    "verdict": "bear",
    "metal": "Ag",
    "bias": "−1",
    "analyst": "Buy $24.8 (+55%)",
-   "mom": "−10/−18",
+   "mom": "−12/−20",
    "tradable": true,
    "callTag": "SIZE SMALL",
-   "callText": "high comp (59) & Buy +55% vs a short",
+   "callText": "high comp (57.9) & Buy +55% vs a short",
    "tone": "warn",
    "trade": "SELL SHORT 5",
    "tradeType": "add",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 0.7,
+    "commodity": 3.7,
+    "deep": 4.0,
+    "analyst": 9.0,
+    "fundamentals": 9.6,
+    "smart": 8.9,
+    "sentiment": 10.0,
+    "quality": 6.3
+   },
+   "coverage": 100,
+   "thesis": "Higher-cost Ag/Au producer, classic downside beta in a falling silver tape.",
+   "catalysts": [
+    "silver price"
+   ],
+   "risks": [
+    "Rochester ramp improving costs"
+   ]
   },
   {
    "n": 24,
@@ -510,19 +953,37 @@
    "dollar": 180,
    "target": 11,
    "held": "S/4",
-   "comp": 50.7,
+   "comp": 50.1,
    "verdict": "bear",
    "metal": "Ag",
    "bias": "−1",
    "analyst": "Buy $25.0 (+47%)",
-   "mom": "−13/−12",
+   "mom": "−14/−13",
    "tradable": true,
    "callTag": "ADD ok",
    "callText": "bearish, high-beta silver; Buy +47% (squeeze risk)",
    "tone": "pos",
    "trade": "SELL SHORT 7",
    "tradeType": "add",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 1.0,
+    "commodity": 3.0,
+    "deep": 4.0,
+    "analyst": 9.0,
+    "fundamentals": 8.9,
+    "smart": 6.7,
+    "sentiment": null,
+    "quality": 6.3
+   },
+   "coverage": 91,
+   "thesis": "2-3x beta to silver, no hedging — highest-octane silver short in the book while silver bias is down.",
+   "catalysts": [
+    "silver price"
+   ],
+   "risks": [
+    "violent squeezes (Jan: silver hit $115)"
+   ]
   },
   {
    "n": 25,
@@ -531,19 +992,40 @@
    "dollar": 157,
    "target": 1,
    "held": "S/3",
-   "comp": 80.6,
+   "comp": 81.5,
    "verdict": "bull",
    "metal": "Steel",
    "bias": "+2",
    "analyst": "Buy $270 (+19%)",
-   "mom": "−2/+27",
+   "mom": "+0/+29",
    "tradable": true,
    "callTag": "COVER FULLY",
-   "callText": "top steel score (80.6), Buy +19%, +27% v200, steel +2",
+   "callText": "top steel score (81.5), Buy +19%, +27% v200, steel +2",
    "tone": "neg",
    "trade": "BUY TO COVER 2",
    "tradeType": "cover",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 8.5,
+    "commodity": 9.0,
+    "deep": 8.0,
+    "analyst": 7.7,
+    "fundamentals": 5.5,
+    "smart": 7.8,
+    "sentiment": 10.0,
+    "quality": 8.7
+   },
+   "coverage": 100,
+   "thesis": "Best-in-class US mini-mill riding HRC >$1,100/st with tariff-protected margins; +23% in 3M and analysts still see ~19% more. Being short the strongest name in a bullish commodity is a thesis conflict.",
+   "catalysts": [
+    "Q2 earnings late July",
+    "HRC price momentum",
+    "Section 232 tariffs holding imports -26% YoY"
+   ],
+   "risks": [
+    "Manufacturing PMI weakness",
+    "HRC rollover if demand softens"
+   ]
   },
   {
    "n": 26,
@@ -552,19 +1034,40 @@
    "dollar": 157,
    "target": 1,
    "held": "S/3",
-   "comp": 72.2,
+   "comp": 73.1,
    "verdict": "bull",
    "metal": "Steel",
    "bias": "+2",
    "analyst": "Buy $265 (+16%)",
-   "mom": "−5/+21",
+   "mom": "−4/+23",
    "tradable": true,
    "callTag": "COVER FULLY",
-   "callText": "bullish (72.2), Buy +16%, steel +2",
+   "callText": "bullish (73.1), Buy +16%, steel +2",
    "tone": "neg",
    "trade": "BUY TO COVER 2",
    "tradeType": "cover",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 7.1,
+    "commodity": 9.0,
+    "deep": 8.0,
+    "analyst": 7.5,
+    "fundamentals": 5.3,
+    "smart": 6.7,
+    "sentiment": 5.0,
+    "quality": 8.7
+   },
+   "coverage": 100,
+   "thesis": "Same tariff-tight HRC story as NUE plus Sinton ramp and aluminum flat-roll optionality. Buy consensus, +16% to PT. Wrong side of the tape.",
+   "catalysts": [
+    "Q2 earnings late July",
+    "Sinton utilization",
+    "aluminum segment ramp"
+   ],
+   "risks": [
+    "HRC pullback",
+    "aluminum startup costs"
+   ]
   },
   {
    "n": 27,
@@ -585,7 +1088,28 @@
    "tone": "pos",
    "trade": "BUY TO COVER 57",
    "tradeType": "cover",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 0.0,
+    "commodity": 9.0,
+    "deep": 3.0,
+    "analyst": 5.7,
+    "fundamentals": 2.9,
+    "smart": 6.7,
+    "sentiment": null,
+    "quality": 7.3
+   },
+   "coverage": 91,
+   "thesis": "The idiosyncratically weak steel name: 0 analyst buys, FY EPS estimates around breakeven-to-negative, stock -23% in a month while peers rallied. Auto-heavy mix and balance-sheet load keep it lagging even in a strong HRC tape. Best steel short in the book — but earnings July 23 is a binary squeeze risk on a crowded short.",
+   "catalysts": [
+    "Q2 earnings 2026-07-23",
+    "auto steel contract resets"
+   ],
+   "risks": [
+    "Any Q2 beat squeezes shorts",
+    "tariff windfall on integrated mills",
+    "M&A/asset-sale headlines"
+   ]
   },
   {
    "n": 28,
@@ -594,19 +1118,39 @@
    "dollar": 157,
    "target": 2,
    "held": null,
-   "comp": 61.5,
+   "comp": 62.2,
    "verdict": "bull",
    "metal": "Steel",
    "bias": "+2",
    "analyst": "Buy $80.5 (+28%)",
-   "mom": "−7/−3",
+   "mom": "−5/+0",
    "tradable": true,
    "callTag": "DON'T OPEN",
-   "callText": "bullish (61.5), Buy +28%, steel +2",
+   "callText": "bullish (62.2), Buy +28%, steel +2",
    "tone": "neg",
    "trade": "SELL SHORT 2",
    "tradeType": "open",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 4.3,
+    "commodity": 9.0,
+    "deep": 8.0,
+    "analyst": 8.3,
+    "fundamentals": 4.2,
+    "smart": 6.7,
+    "sentiment": 0.0,
+    "quality": 7.3
+   },
+   "coverage": 100,
+   "thesis": "Rebar/long-products play on tariffs + infrastructure with the best risk-reward in steel: Buy consensus (8/11), +28% to PT, and just beat on earnings (+4.2% on the day).",
+   "catalysts": [
+    "construction season",
+    "infrastructure spend"
+   ],
+   "risks": [
+    "rebar oversupply",
+    "scrap spread compression"
+   ]
   },
   {
    "n": 29,
@@ -615,19 +1159,38 @@
    "dollar": 157,
    "target": 0,
    "held": "S/2",
-   "comp": 64.2,
+   "comp": 65.2,
    "verdict": "neut",
    "metal": "Steel",
    "bias": "+2",
    "analyst": "Neut $381 (+0.5%)",
-   "mom": "+2/+21",
+   "mom": "+3/+23",
    "tradable": true,
    "callTag": "CLOSE ok",
    "callText": "fully valued (Neut +0.5%), $390 too lumpy",
    "tone": "warn",
    "trade": "BUY TO COVER 2 (close)",
    "tradeType": "cover",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 9.0,
+    "commodity": 8.1,
+    "deep": 5.0,
+    "analyst": 4.5,
+    "fundamentals": 5.3,
+    "smart": 4.4,
+    "sentiment": null,
+    "quality": 7.3
+   },
+   "coverage": 91,
+   "thesis": "Service-center/distributor at full valuation — PT upside just +0.5% with a Neutral consensus (2 buy/4 hold/1 sell). The only steel short where the market agrees the price is done; keep as the group's valuation short.",
+   "catalysts": [
+    "Q2 earnings late July"
+   ],
+   "risks": [
+    "Inventory holding gains from rising steel prices",
+    "buyback support"
+   ]
   },
   {
    "n": 30,
@@ -641,14 +1204,34 @@
    "metal": "Al",
    "bias": "−1",
    "analyst": "Buy $68.5 (+41%)",
-   "mom": "−23/−13",
+   "mom": "−24/−15",
    "tradable": true,
    "callTag": "ADD ok",
    "callText": "bearish, alum −1, −24/−13 (Buy +41%)",
    "tone": "pos",
    "trade": "SELL SHORT 1",
    "tradeType": "add",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 0.7,
+    "commodity": 3.0,
+    "deep": 4.5,
+    "analyst": 9.0,
+    "fundamentals": 7.0,
+    "smart": 6.7,
+    "sentiment": 10.0,
+    "quality": 7.3
+   },
+   "coverage": 100,
+   "thesis": "Pure smelter leverage to a falling LME (war premium unwound, June worst month since 2008, supply rising). Analyst PTs (+40%) are stale post-crash. Right instrument for the aluminum short thesis.",
+   "catalysts": [
+    "LME aluminum range $3,100-3,400",
+    "alumina prices"
+   ],
+   "risks": [
+    "Middle East re-escalation spikes LME",
+    "$40M/yr EBITDA per $100 LME move cuts both ways"
+   ]
   },
   {
    "n": 31,
@@ -662,14 +1245,32 @@
    "metal": "Al",
    "bias": "−1",
    "analyst": "Buy $36.6 (+25%)",
-   "mom": "−13/+19",
+   "mom": "−12/+18",
    "tradable": true,
    "callTag": "SIZE SMALL",
    "callText": "neutral (58.4), Buy +25%",
    "tone": "warn",
    "trade": "SELL SHORT 2",
    "tradeType": "add",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 5.2,
+    "commodity": 3.9,
+    "deep": 5.5,
+    "analyst": 8.1,
+    "fundamentals": 5.6,
+    "smart": 7.8,
+    "sentiment": null,
+    "quality": 7.0
+   },
+   "coverage": 91,
+   "thesis": "Fabricator (aero/auto/packaging) that passes LME through — wrong instrument for a falling-LME short; Buy consensus +25% PT.",
+   "catalysts": [
+    "aero build rates"
+   ],
+   "risks": [
+    "for shorts: LME pass-through means falling aluminum HELPS margins"
+   ]
   },
   {
    "n": 32,
@@ -678,19 +1279,37 @@
    "dollar": 112,
    "target": 2,
    "held": "S/1",
-   "comp": 47.3,
+   "comp": 47.1,
    "verdict": "bear",
    "metal": "Al",
    "bias": "−1",
    "analyst": "Buy $77 (+72%)",
-   "mom": "−22/−6",
+   "mom": "−22/−8",
    "tradable": true,
    "callTag": "ADD ok",
    "callText": "bearish, −22/−6 (Buy +72% → squeeze risk)",
    "tone": "pos",
    "trade": "SELL SHORT 1",
    "tradeType": "add",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 1.8,
+    "commodity": 3.0,
+    "deep": 4.0,
+    "analyst": 9.0,
+    "fundamentals": 4.0,
+    "smart": 8.9,
+    "sentiment": null,
+    "quality": 6.3
+   },
+   "coverage": 91,
+   "thesis": "Higher-cost smelter, same falling-LME leverage as AA with more balance-sheet risk; only 1 analyst covers.",
+   "catalysts": [
+    "LME aluminum"
+   ],
+   "risks": [
+    "squeeze in small float"
+   ]
   },
   {
    "n": 33,
@@ -699,19 +1318,41 @@
    "dollar": 112,
    "target": 1,
    "held": null,
-   "comp": 50.1,
+   "comp": 50.5,
    "verdict": "neut",
    "metal": "Al",
    "bias": "−1",
    "analyst": "Hold $165 / WF UW",
-   "mom": "−9/+23",
+   "mom": "−8/+24",
    "tradable": true,
    "callTag": "TINY only",
    "callText": "valuation short not Al-price; stale +44%, 1sh",
    "tone": "warn",
    "trade": "SELL SHORT 1",
    "tradeType": "open",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 6.5,
+    "commodity": 3.9,
+    "deep": 5.0,
+    "analyst": 4.0,
+    "fundamentals": 5.1,
+    "smart": 5.6,
+    "sentiment": null,
+    "quality": 5.5
+   },
+   "coverage": 91,
+   "thesis": "Kaiser Aluminum delivered a very strong Q1 2026 (revenue +42% YoY, EPS beat, record EBITDA, margins up ~850bps) helped by tariff protection and aerospace demand, and Zacks flags it as a beneficiary of Section-232-style cost/tariff dynamics in metal fabrication. However Wells Fargo just downgraded to underweight (PT cut to $158) on valuation after the run-up, and as a fabricator KALU largely passes through aluminum costs rather than capturing upside directly, consistent with the desk's SHORT-lean aluminum view. Q2 earnings land July 22-23, 2026 as the next catalyst.",
+   "catalysts": [
+    "Q2 2026 earnings/call July 22-23, 2026",
+    "Tariff-driven aerospace/auto demand strength",
+    "Continued margin improvement from facility performance gains"
+   ],
+   "risks": [
+    "Wells Fargo downgrade (underweight, PT $158) flags valuation risk after 2026 rally",
+    "Fabricator model passes through aluminum price moves rather than capturing them",
+    "Elevated input costs (steel, aluminum, freight, labor) industry-wide per Zacks"
+   ]
   },
   {
    "n": 34,
@@ -720,19 +1361,41 @@
    "dollar": 112,
    "target": 40,
    "held": null,
-   "comp": 54.9,
+   "comp": 54.3,
    "verdict": "bull",
    "metal": "Al",
    "bias": "−1",
    "analyst": "Alcoa deal",
-   "mom": "−5/+1",
+   "mom": "−6/+2",
    "tradable": false,
    "callTag": "SKIP (no borrow)",
    "callText": "bullish, EXITING aluminum (Alcoa deal)",
    "tone": "neg",
    "trade": "SELL SHORT 40",
    "tradeType": "open",
-   "blocked": true
+   "blocked": true,
+   "subs": {
+    "momentum": 4.8,
+    "commodity": 3.7,
+    "deep": 7.0,
+    "analyst": null,
+    "fundamentals": null,
+    "smart": null,
+    "sentiment": null,
+    "quality": 8.0
+   },
+   "coverage": 58,
+   "thesis": "South32 agreed to sell its bauxite/alumina/aluminum operations to Alcoa for ~$4.1B upfront cash-and-stock plus a CVR worth up to $750M tied to future alumina/aluminum prices, exiting a segment squarely in the SHORT aluminum backdrop and crystallizing value at a premium; separately South32 is set to gain US Forest Service approval for its $2B Arizona zinc-manganese mine (Hermosa) with full production targeted by 2029, shifting the remaining portfolio toward the LONG zinc trade. Divestiture proceeds plus a growth project in a bullish commodity is a favorable re-rating catalyst, though close isn't until H1 2027.",
+   "catalysts": [
+    "Alcoa deal shareholder/regulatory approval and close (H1 2027)",
+    "US Forest Service approval for Hermosa Arizona zinc-manganese mine",
+    "CVR payments if alumina/aluminum prices exceed strike prices"
+   ],
+   "risks": [
+    "Long ~1-year wait to closing introduces deal risk",
+    "CVR payout is contingent on higher alumina/aluminum prices, which are currently under pressure",
+    "ASX/LSE/JSE multi-listing complicates IBKR tradability for US accounts"
+   ]
   },
   {
    "n": 35,
@@ -741,19 +1404,39 @@
    "dollar": 112,
    "target": 128,
    "held": null,
-   "comp": 70.7,
+   "comp": 68.2,
    "verdict": "bull",
    "metal": "Tin",
    "bias": "+1",
    "analyst": "tin $53K",
-   "mom": "+0/+13",
+   "mom": "−2/+11",
    "tradable": false,
    "callTag": "DON'T SHORT / flip",
-   "callText": "tin flagship long (70.7); no borrow",
+   "callText": "tin flagship long (68.2); no borrow",
    "tone": "neg",
    "trade": "SELL SHORT 128",
    "tradeType": "open",
-   "blocked": true
+   "blocked": true,
+   "subs": {
+    "momentum": 6.6,
+    "commodity": 7.0,
+    "deep": 7.5,
+    "analyst": null,
+    "fundamentals": null,
+    "smart": null,
+    "sentiment": null,
+    "quality": 5.7
+   },
+   "coverage": 58,
+   "thesis": "Pure-play tin (Bisie, ~7% of world mine supply) in the tightest metal on the board: Myanmar supply broken, AI-solder demand, LME $53K. +10% above 200DMA while everything else corrects.",
+   "catalysts": [
+    "tin price",
+    "Mpama South ramp"
+   ],
+   "risks": [
+    "DRC security (M23)",
+    "TSXV liquidity for IBKR"
+   ]
   },
   {
    "n": 36,
@@ -762,19 +1445,41 @@
    "dollar": 112,
    "target": 486,
    "held": null,
-   "comp": 47.4,
+   "comp": 48.6,
    "verdict": "bull",
    "metal": "Tin",
    "bias": "+1",
    "analyst": "dev",
-   "mom": "−14/−7",
+   "mom": "−13/−5",
    "tradable": false,
    "callTag": "SKIP (no borrow)",
    "callText": "pre-production tin developer",
    "tone": "neg",
    "trade": "SELL SHORT 486",
    "tradeType": "open",
-   "blocked": true
+   "blocked": true,
+   "subs": {
+    "momentum": 2.9,
+    "commodity": 6.1,
+    "deep": 6.0,
+    "analyst": null,
+    "fundamentals": null,
+    "smart": null,
+    "sentiment": null,
+    "quality": 4.5
+   },
+   "coverage": 58,
+   "thesis": "Elementos' Oropesa tin project in Spain was granted 'Overriding Public Interest' classification by the Andalucía regional government (Jun 23 2026), formally recognizing tin as a national priority raw material and de-risking permitting (including water licenses) - shares jumped ~10% on the news, a concrete de-risking catalyst consistent with the tin LONG backdrop. The company remains pre-production (no earnings/production data surfaced), and recent disclosures are mostly incentive-option administrivia, so this is a speculative, single-project development story rather than a name with current cash-flow leverage to the tin price.",
+   "catalysts": [
+    "Water license and remaining permit approvals following OPI classification",
+    "Project financing/offtake agreements",
+    "Continued tin price strength (LONG backdrop)"
+   ],
+   "risks": [
+    "Still pre-production; no revenue/earnings base",
+    "Financing/dilution risk ahead of construction",
+    "Spain permitting timeline despite OPI classification"
+   ]
   },
   {
    "n": 37,
@@ -783,19 +1488,41 @@
    "dollar": 112,
    "target": 584,
    "held": null,
-   "comp": 73.7,
+   "comp": 75.5,
    "verdict": "bull",
    "metal": "Tin",
    "bias": "+1",
    "analyst": "BMI elevated tin",
-   "mom": "+2/+4",
+   "mom": "+6/+12",
    "tradable": false,
    "callTag": "DON'T SHORT / flip",
-   "callText": "bullish (73.7), tin +82% YoY; no borrow",
+   "callText": "bullish (75.5), tin +82% YoY; no borrow",
    "tone": "neg",
    "trade": "SELL SHORT 584",
    "tradeType": "open",
-   "blocked": true
+   "blocked": true,
+   "subs": {
+    "momentum": 8.0,
+    "commodity": 7.0,
+    "deep": 8.0,
+    "analyst": null,
+    "fundamentals": null,
+    "smart": null,
+    "sentiment": null,
+    "quality": 7.0
+   },
+   "coverage": 58,
+   "thesis": "PT Timah's Q1 2026 refined tin production surged 81.9% YoY to 5,630 tonnes, marking a major operational turnaround after 2024-2025 disruptions from an illegal-mining crackdown and corruption-related scrutiny, with Indonesian tin exports now normalizing (as of May 2026) and management explicitly pivoting focus from volume to profitability. BMI expects tin prices to stay elevated through 2026 on continued supply tightness (Myanmar, Indonesia), though flags possible H2 moderation as supply issues ease -- overall confirming the tin-long thesis with a credible recovery narrative, tempered by a note of caution on the back half.",
+   "catalysts": [
+    "Continued production recovery toward pre-crackdown levels",
+    "New 2026-2028 labor/collective agreement reducing labor disruption risk",
+    "Management's explicit pivot to profitability-focused strategy"
+   ],
+   "risks": [
+    "BMI flags possible H2 2026 tin price moderation as supply issues ease",
+    "Execution risk in translating production recovery into sustained profitability",
+    "Indonesian regulatory/mining policy risk given recent corruption scrutiny"
+   ]
   },
   {
    "n": 38,
@@ -804,19 +1531,41 @@
    "dollar": 112,
    "target": 20,
    "held": null,
-   "comp": 53.9,
+   "comp": 52.9,
    "verdict": "bull",
    "metal": "Zinc",
    "bias": "+1",
    "analyst": "Vedanta",
-   "mom": "−10/−7",
+   "mom": "−10/−6",
    "tradable": false,
    "callTag": "SKIP (no borrow)",
    "callText": "zinc long, bullish (record output)",
    "tone": "neg",
    "trade": "SELL SHORT 20",
    "tradeType": "open",
-   "blocked": true
+   "blocked": true,
+   "subs": {
+    "momentum": 2.3,
+    "commodity": 7.0,
+    "deep": 5.0,
+    "analyst": null,
+    "fundamentals": null,
+    "smart": null,
+    "sentiment": null,
+    "quality": 8.7
+   },
+   "coverage": 58,
+   "thesis": "Hindustan Zinc posted a fifth straight year of record Q1 mined metal output (+1% YoY to 268,000t, zinc output +6% YoY to 213,000t) and Q4 FY26 net profit rose 67.6% YoY, supporting the desk's zinc LONG thesis on strong underlying production. However, the stock fell 16% in June — its second-worst month of 2026 — driven primarily by a sustained drop in global silver prices (silver contributes an estimated 45% of profitability) plus a governance overhang from a potential government stake sale and an ED/FEMA investigation into parent Vedanta, muting the read-through purely to zinc fundamentals.",
+   "catalysts": [
+    "510,000 tpa fertiliser plant and hot acid leaching tech completion (Q2 FY26-27)",
+    "Continued record mined metal output trend",
+    "Chanderiya smelter Zinc Mark/Copper Mark sustainability certification"
+   ],
+   "risks": [
+    "High sensitivity to silver price (~45% of profitability), not pure zinc exposure",
+    "Government stake-sale overhang and ED/FEMA investigation into Vedanta",
+    "Foreign India NSE listing — IBKR tradability risk"
+   ]
   },
   {
    "n": 39,
@@ -830,14 +1579,34 @@
    "metal": "PGM",
    "bias": "−2",
    "analyst": "−34% YTD",
-   "mom": "−17/−40",
+   "mom": "−15/−24",
    "tradable": false,
    "callTag": "RECONSIDER close",
    "callText": "comp 27.9, PGM −2: a good aligned short being closed",
    "tone": "warn",
    "trade": "BUY TO COVER 11 (close)",
    "tradeType": "cover",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 0.0,
+    "commodity": 1.0,
+    "deep": 3.0,
+    "analyst": null,
+    "fundamentals": 6.1,
+    "smart": 3.3,
+    "sentiment": null,
+    "quality": 7.3
+   },
+   "coverage": 78,
+   "thesis": "SA PGM major -34% YTD in a weak-PGM tape; keep as the second PGM short; less balance-sheet stress than SBSW.",
+   "catalysts": [
+    "PGM prices",
+    "SA power/labor"
+   ],
+   "risks": [
+    "OTC ADR liquidity",
+    "rand moves"
+   ]
   },
   {
    "n": 40,
@@ -846,19 +1615,41 @@
    "dollar": null,
    "target": null,
    "held": "S/8",
-   "comp": 39.3,
+   "comp": 38.2,
    "verdict": "bear",
    "metal": "Al",
    "bias": "−1",
    "analyst": "Hold NOK127",
-   "mom": "—",
+   "mom": "−18/−1",
    "tradable": false,
    "callTag": "CLOSE ok",
    "callText": "bearish; aligned aluminum short (fine to keep too)",
    "tone": "pos",
    "trade": "BUY TO COVER 8 (close)",
    "tradeType": "cover",
-   "blocked": false
+   "blocked": false,
+   "subs": {
+    "momentum": 2.1,
+    "commodity": 3.0,
+    "deep": 4.0,
+    "analyst": 4.0,
+    "fundamentals": 6.1,
+    "smart": 5.6,
+    "sentiment": 0.0,
+    "quality": 8.0
+   },
+   "coverage": 100,
+   "thesis": "Recent sell-side commentary cuts against a naive short: AlphaValue/Baader raised its Norsk Hydro price target on May 13, 2026, noting the stock (+20% since late February) has been a top beneficiary of Iran-war-driven aluminum price and energy-cost dynamics, and Arctic Securities upgraded shares to Hold from Sell on July 1, 2026, both citing that Hydro's integrated power-plus-alumina structure cushions it versus pure-play smelters. That integration is exactly why this remains a lower-conviction short rather than a high-conviction one: Hydro is less exposed to a pure aluminum price decline than the MetalMiner-flagged LME weakness would suggest, and continued capex (new NOK1.1bn Karmoy wire rod line with Skanska) signals management sees durable demand, so the short thesis rests more on OTC/ADR liquidity and eventual aluminum price mean-reversion than on company-specific deterioration.",
+   "catalysts": [
+    "LME aluminum price normalization lower as Middle East supply (Qatalum) restores",
+    "Broader base metals demand softening",
+    "Potential reversal of the Iran-war risk premium currently supporting the shares"
+   ],
+   "risks": [
+    "Integrated power+alumina model structurally cushions Hydro versus pure smelters",
+    "Sell-side sentiment has turned more constructive (Hold upgrade, raised PT) in the past two months",
+    "OTC ADR (NHYDY) carries wider spreads/lower liquidity than the Oslo-listed NHY.OL line, complicating short execution and hedging via IBKR"
+   ]
   }
  ]
 }
