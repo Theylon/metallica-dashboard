@@ -51,8 +51,13 @@ def compute_quote(closes):
     return out
 
 
-def fetch_quotes(tickers):
-    """Bulk-fetch 1y daily closes via yfinance, in chunks. Returns {ticker: quote}."""
+def fetch_quotes(tickers, series_out=None, keep=None):
+    """Bulk-fetch 1y daily closes via yfinance, in chunks. Returns {ticker: quote}.
+
+    If series_out is passed, also stash the raw 1y {dates, closes} for every ticker in
+    `keep` (the held book) — the same download already in memory, so risk.py gets a
+    per-name return series with no second network round-trip (see data/price_history.json).
+    """
     quotes = {}
     for i in range(0, len(tickers), CHUNK):
         batch = tickers[i:i + CHUNK]
@@ -74,7 +79,39 @@ def fetch_quotes(tickers):
             q = compute_quote(closes)
             if q:
                 quotes[t] = q
+            if series_out is not None and (keep is None or t in keep):
+                s = closes.dropna()
+                if len(s) >= 2:
+                    series_out[t] = {
+                        "dates": [d.strftime("%Y-%m-%d") for d in s.index],
+                        "closes": [round(float(x), 4) for x in s.values],
+                    }
     return quotes
+
+
+def held_nonotc():
+    """Current held tickers, excluding OTC/@PINK and non-yfinance ('(') symbols."""
+    try:
+        positions = json.loads((DATA / "positions.json").read_text())["positions"]
+    except Exception:
+        return []
+    return [p["ticker"] for p in positions
+            if "@PINK" not in p["ticker"] and "(" not in p["ticker"]]
+
+
+def write_price_history(series):
+    """Write held-name close series to price_history.json (merge-and-keep on gaps)."""
+    path = DATA / "price_history.json"
+    existing = {}
+    if path.exists():
+        try:
+            existing = json.loads(path.read_text()).get("tickers", {})
+        except Exception:
+            existing = {}
+    existing.update({t: s for t, s in series.items() if s})  # refresh present, keep missing
+    now = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
+    path.write_text(json.dumps({"updatedAt": now, "tickers": existing}, indent=1))
+    print(f"price_history.json: {len(series)} held series refreshed, {len(existing)} total")
 
 
 def main():
@@ -84,9 +121,17 @@ def main():
     tickers = [r["ticker"] for r in records
                if not r.get("quoteSuspect") and "(" not in r["ticker"]]
 
-    print(f"Refreshing {len(tickers)} tickers via yfinance…")
-    quotes = fetch_quotes(tickers)
-    print(f"  got fresh quotes for {len(quotes)}/{len(tickers)}")
+    # also fetch any held names not in the picks universe (e.g. ETF shorts) so the risk
+    # engine's per-name return series (price_history.json) covers the whole book
+    held = held_nonotc()
+    held_set = set(held)
+    fetch_list = list(dict.fromkeys(tickers + [h for h in held if h not in set(tickers)]))
+
+    print(f"Refreshing {len(tickers)} tickers via yfinance ({len(fetch_list)} incl. held)…")
+    series = {}
+    quotes = fetch_quotes(fetch_list, series_out=series, keep=held_set)
+    print(f"  got fresh quotes for {len(quotes)}/{len(fetch_list)}")
+    write_price_history(series)
 
     refreshed = 0
     for r in records:
@@ -157,6 +202,13 @@ def main():
     print(f"micro.json: refreshed prices/scores for {refreshed} names "
           f"({len(records) - refreshed} kept last-known), "
           f"cross-val from {len(yq)} Yahoo quotes")
+
+    # append today's scores to micro_history.jsonl (once/day) for the signal scorecard
+    try:
+        import micro_snapshot
+        micro_snapshot.record_snapshot()
+    except Exception as e:
+        print(f"micro snapshot skipped: {e}")
 
 
 if __name__ == "__main__":

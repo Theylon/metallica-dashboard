@@ -521,6 +521,9 @@ td:first-child { text-align: left; }
     <div class="tab" onclick="showTab('positions')">
       <span class="tab-icon">📋</span> Positions
     </div>
+    <div class="tab" onclick="showTab('journal')">
+      <span class="tab-icon">📒</span> Journal
+    </div>
     <div class="tab" onclick="showTab('benchmarks')">
       <span class="tab-icon">⚖️</span> Benchmarks
     </div>
@@ -538,6 +541,9 @@ td:first-child { text-align: left; }
     </div>
     <div class="tab" onclick="showTab('picks')">
       <span class="tab-icon">🎯</span> Stock Picks
+    </div>
+    <div class="tab" onclick="showTab('signals')">
+      <span class="tab-icon">🔬</span> Signals
     </div>
     <div class="tab" onclick="showTab('rebalance')">
       <span class="tab-icon">🔁</span> Rebalance
@@ -712,6 +718,75 @@ td:first-child { text-align: left; }
       </div>
     </div>
   </div><!-- /positions -->
+
+  <!-- ─── Journal page (behavioral trade analytics · Shadow Account) ── -->
+  <div id="page-journal" class="page">
+    <div class="kpi-row">
+      <div class="kpi-card green">
+        <div class="kpi-label">Win Rate</div>
+        <div class="kpi-value" id="jr-winrate">—</div>
+        <div class="kpi-sub" id="jr-closed">closed round-trips</div>
+      </div>
+      <div class="kpi-card silver">
+        <div class="kpi-label">Profit Factor</div>
+        <div class="kpi-value" id="jr-pf">—</div>
+        <div class="kpi-sub">gross win ÷ gross loss</div>
+      </div>
+      <div class="kpi-card yellow">
+        <div class="kpi-label">Avg Hold</div>
+        <div class="kpi-value" id="jr-hold">—</div>
+        <div class="kpi-sub" id="jr-hold-sub">days per round-trip</div>
+      </div>
+      <div class="kpi-card red">
+        <div class="kpi-label">Disposition Effect</div>
+        <div class="kpi-value" id="jr-disp">—</div>
+        <div class="kpi-sub">extra days losers are held</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="table-panel">
+        <div class="table-header"><div class="table-title">Best Trades</div></div>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th style="text-align:left;">Name</th><th>Realized</th><th>Return</th><th>Held</th></tr></thead>
+            <tbody id="jr-best"><tr class="empty-row"><td colspan="4">Awaiting trade history</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="table-panel">
+        <div class="table-header"><div class="table-title">Worst Trades</div></div>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th style="text-align:left;">Name</th><th>Realized</th><th>Return</th><th>Held</th></tr></thead>
+            <tbody id="jr-worst"><tr class="empty-row"><td colspan="4">Awaiting trade history</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="table-panel">
+        <div class="table-header"><div class="table-title">Realized P&L Attribution</div>
+          <div style="font-size:11px;color:var(--text-muted)">by commodity · by side</div></div>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th style="text-align:left;">Bucket</th><th>Realized</th><th>Share</th></tr></thead>
+            <tbody id="jr-attrib"><tr class="empty-row"><td colspan="3">Awaiting trade history</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-block-title">Shadow Account
+          <span style="font-weight:400;color:var(--text-muted);font-size:11px;">· P&L left on the table</span></div>
+        <div class="stat-row"><span class="stat-key">Realized (actual)</span><span class="stat-val" id="jr-shadow-actual">—</span></div>
+        <div class="stat-row"><span class="stat-key">If exits had been held to today</span><span class="stat-val" id="jr-shadow-held">—</span></div>
+        <div class="stat-row"><span class="stat-key"><strong>Edge from exiting</strong></span><span class="stat-val" id="jr-shadow-edge">—</span></div>
+        <div id="jr-shadow-list" style="margin-top:10px;"></div>
+      </div>
+    </div>
+    <div class="report-note-block" id="jr-note"></div>
+  </div><!-- /journal -->
 
   <!-- ─── Benchmarks page ───────────────────────────────────────── -->
   <div id="page-benchmarks" class="page">
@@ -941,6 +1016,25 @@ td:first-child { text-align: left; }
       </div>
     </div>
 
+    <!-- live correlation matrix + per-name risk contribution (auto-computed by scripts/risk.py) -->
+    <div class="two-col" id="risk-matrix-wrap" style="display:none;">
+      <div class="stat-block">
+        <div class="stat-block-title">Correlation Matrix
+          <span id="rk-cov-note" style="font-weight:400;color:var(--text-muted);font-size:11px;"></span></div>
+        <div id="corr-matrix" style="overflow-x:auto;"></div>
+      </div>
+      <div class="table-panel">
+        <div class="table-header"><div class="table-title">Risk Contribution</div>
+          <div style="font-size:11px;color:var(--text-muted)">share of portfolio risk</div></div>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th style="text-align:left;">Name</th><th>Weight</th><th>% of Risk</th><th>VaR Contrib</th></tr></thead>
+            <tbody id="riskcontrib-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
     <div class="report-note-block"><strong>Bottom line.</strong> <span id="risk-bottom"></span></div>
     <div class="report-disclaimer" id="report-sources"></div>
   </div><!-- /risk -->
@@ -995,6 +1089,22 @@ td:first-child { text-align: left; }
     <div class="chart-header" style="margin-top:14px;"><div class="chart-title">🌍 Macro Backdrop</div></div>
     <div class="kpi-row" id="macro-row">
       <div class="kpi-card"><div class="kpi-label">—</div><div class="kpi-value">—</div><div class="kpi-sub">awaiting data</div></div>
+    </div>
+
+    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">🧭 Macro Regime
+      <span id="regime-badge" style="font-size:12px;font-weight:400;color:var(--text-muted);"></span></div></div>
+    <div class="chart-panel" id="macro-regime-wrap" style="display:none;">
+      <canvas id="macroChart" height="90"></canvas>
+    </div>
+
+    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">📅 Upcoming Earnings &amp; Sentiment — Holdings</div></div>
+    <div class="table-panel">
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th style="text-align:left;">Stock</th><th style="text-align:left;">Next Earnings</th><th style="text-align:left;">Sentiment</th><th style="text-align:left;">Latest Headline</th></tr></thead>
+          <tbody id="events-tbody"><tr class="empty-row"><td colspan="4">Awaiting research routine</td></tr></tbody>
+        </table>
+      </div>
     </div>
 
     <div class="chart-header" style="margin-top:14px;"><div class="chart-title">🎯 Analyst Ratings — Holdings</div></div>
@@ -1108,6 +1218,32 @@ td:first-child { text-align: left; }
     <div style="font-size:11px;color:var(--text-muted);margin-top:10px;line-height:1.5;" id="picks-methodology">—</div>
   </div><!-- /picks -->
 
+  <!-- ─── Signals page (IC/IR scorecard + portfolio factor tilt) ──── -->
+  <div id="page-signals" class="page">
+    <div class="stat-block" style="margin-bottom:18px;">
+      <div class="stat-block-title">Portfolio Factor Tilt
+        <span id="ft-asof" style="font-weight:400;color:var(--text-muted);font-size:11px;"></span></div>
+      <div class="kpi-row" id="ft-cards"></div>
+      <div class="report-note" style="margin-top:8px;">Net exposure to each style factor, z-scored across the picks universe and weighted by signed position size. Positive = the book tilts toward that factor.</div>
+    </div>
+
+    <div class="table-panel">
+      <div class="table-header">
+        <div class="table-title">Signal Efficacy — rank-IC / IR</div>
+        <div style="font-size:11px;color:var(--text-muted)" id="sig-status">—</div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr>
+            <th style="text-align:left;">Signal</th><th>Rank-IC</th><th>IR</th><th>Hit Rate</th><th>Windows</th><th>Obs</th>
+          </tr></thead>
+          <tbody id="sig-tbody"><tr class="empty-row"><td colspan="6">Collecting history…</td></tr></tbody>
+        </table>
+      </div>
+      <div class="report-note" style="margin-top:10px;">Rank-IC = Spearman correlation of each score with the forward 20-day return; IR = mean IC ÷ its volatility. Measured on daily snapshots accumulated since this feature shipped — which of our eight sub-scores actually predicts returns.</div>
+    </div>
+  </div><!-- /signals -->
+
   <!-- ─── Rebalance page: proposed-book micro review + trade list ── -->
   <div id="page-rebalance" class="page">
     <div id="rebalance-content"></div>
@@ -1171,12 +1307,13 @@ function logout() {
 
 // ═══════════════════════════════════════════ DATA ══
 let account = {}, positions = [], pnl = [], benchmarks = {}, report = {}, exposureHistory = {};
+let risk = {}, journal = {}, signalScorecard = {};
 let intel = { commodities: [], analysts: [], macro: [], news: [] };
 let rebalance = { rows: [] };
 let activePeriod = 'YTD', activeBmPeriod = '1M';
 let customFrom = null, customTo = null;   // 'YYYY-MM-DD' bounds for the CUSTOM period
 let chartMode = 'value';   // 'value' | 'performance'
-let pnlChartInst = null, bmChartInst = null, expChartInst = null;
+let pnlChartInst = null, bmChartInst = null, expChartInst = null, macroChartInst = null;
 let bmVisible = { SPY: true, XME: true, SLV: true, CPER: false };
 let positionSide = 'long';
 let positionCategoryFilter = '';
@@ -1185,7 +1322,7 @@ let positionSort = { key: null, dir: 1 };
 
 async function loadData() {
   try {
-    const [posRes, accRes, pnlRes, bmRes, repRes, comRes, anaRes, macRes, newsRes, techRes, spotRes, resRes, microRes, expHistRes, rebRes] = await Promise.all([
+    const [posRes, accRes, pnlRes, bmRes, repRes, comRes, anaRes, macRes, newsRes, techRes, spotRes, resRes, microRes, expHistRes, rebRes, riskRes, jrnRes, sigRes, evRes, posgRes, mhRes] = await Promise.all([
       fetch('data/positions.json?' + Date.now()).then(r => r.json()).catch(() => ({ positions: [] })),
       fetch('data/account.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
       fetch('data/pnl.json?' + Date.now()).then(r => r.json()).catch(() => []),
@@ -1201,6 +1338,12 @@ async function loadData() {
       fetch('data/micro.json?' + Date.now()).then(r => r.json()).catch(() => ({ tickers: [], commodityBias: [], recommendations: [], tradeList: [] })),
       fetch('data/exposure_history.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
       fetch('data/rebalance.json?' + Date.now()).then(r => r.json()).catch(() => ({ rows: [] })),
+      fetch('data/risk.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
+      fetch('data/journal.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
+      fetch('data/signal_scorecard.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
+      fetch('data/events.json?' + Date.now()).then(r => r.json()).catch(() => ({ items: [] })),
+      fetch('data/positioning.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
+      fetch('data/macro_history.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
     ]);
     positions = posRes.positions || [];
     account   = accRes || {};
@@ -1208,10 +1351,14 @@ async function loadData() {
     benchmarks = bmRes.tickers || {};
     report    = repRes || {};
     intel = { commodities: comRes.items || [], analysts: anaRes.items || [], macro: macRes.items || [], news: newsRes.items || [],
-              technicals: techRes.items || [], metalsSpot: spotRes.items || [], research: resRes.items || [] };
+              technicals: techRes.items || [], metalsSpot: spotRes.items || [], research: resRes.items || [],
+              events: evRes.items || [], positioning: posgRes || {}, macroHistory: mhRes || {} };
     micro = microRes || {};
     exposureHistory = expHistRes || {};
     rebalance = rebRes || { rows: [] };
+    risk = riskRes || {};
+    journal = jrnRes || {};
+    signalScorecard = sigRes || {};
 
     renderAll();
     updateMetaBadges(accRes.updatedAt);
@@ -1291,6 +1438,8 @@ function renderAll() {
   renderReport();
   renderIntel();
   renderPicks();
+  renderSignals();
+  renderJournal();
   renderRebalance();
 }
 
@@ -1661,6 +1810,56 @@ function renderIntel() {
         + `<div style="font-size:11px;color:${mut};margin-top:4px;">${x.ticker} · ${x.source} · ${x.date}</div></div>`;
     }).join('') : '<div class="empty-text" style="padding:16px;">Awaiting data</div>';
   }
+
+  // Feature E: per-holding upcoming earnings + sentiment + latest headline
+  const et = document.getElementById('events-tbody');
+  if (et) {
+    const ev = intel.events || [];
+    et.innerHTML = ev.length ? ev.map(e => {
+      const stone = e.sentimentLabel === 'Positive' ? 'positive' : e.sentimentLabel === 'Negative' ? 'negative' : '';
+      const sent = e.sentimentScore == null ? '—'
+        : `<span class="${stone}">${esc(e.sentimentLabel || '')} ${e.sentimentScore > 0 ? '+' : ''}${e.sentimentScore.toFixed(2)}</span>`;
+      const news = (e.recentNews && e.recentNews[0]) ? e.recentNews[0] : null;
+      const head = news ? (news.url
+        ? `<a href="${news.url}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">${esc(news.title)}</a>`
+        : esc(news.title)) : '—';
+      return `<tr>
+        <td class="tl"><span class="ticker-sym">${esc(e.ticker)}</span></td>
+        <td class="tl">${esc(e.nextEarnings || '—')}</td>
+        <td class="tl">${sent}</td>
+        <td class="tl report-note">${head}</td>
+      </tr>`;
+    }).join('') : `<tr class="empty-row"><td colspan="4">Awaiting research routine (per-holding sentiment, earnings &amp; news)</td></tr>`;
+  }
+  renderMacroRegime();
+}
+
+// Macro-regime line (yield-curve series) + regime badge from macro_history.json.
+function renderMacroRegime() {
+  const mh = (intel && intel.macroHistory) || {};
+  const badge = document.getElementById('regime-badge');
+  const wrap = document.getElementById('macro-regime-wrap');
+  if (!wrap) return;
+  if (!mh.regime) { if (badge) badge.textContent = ''; wrap.style.display = 'none'; return; }
+  const rg = mh.regime;
+  if (badge) {
+    let txt = '· ' + (rg.label || '');
+    if (rg.marketStress) txt += ' · stress: ' + rg.marketStress;
+    if (rg.recessionRisk != null) txt += ' · recession risk ' + (rg.recessionRisk * 100).toFixed(0) + '%';
+    badge.textContent = txt;
+  }
+  const yc = ((mh.series || {}).yieldCurve) || [];
+  if (yc.length < 2) { wrap.style.display = 'none'; return; }
+  wrap.style.display = '';
+  if (macroChartInst) macroChartInst.destroy();
+  macroChartInst = new Chart(document.getElementById('macroChart'), {
+    type: 'line',
+    data: { labels: yc.map(p => p.date), datasets: [{
+      label: '10Y–2Y Spread', data: yc.map(p => p.v),
+      borderColor: '#6ea8fe', backgroundColor: 'rgba(110,168,254,0.12)',
+      fill: true, tension: 0.25, pointRadius: 0, borderWidth: 2 }] },
+    options: chartOpts('10Y–2Y', null),
+  });
 }
 
 // ── KPI cards
@@ -2285,7 +2484,7 @@ window.addEventListener('resize', () => {
 
 // ═══════════════════════════════════════════ REPORT v2 ══
 function renderReport() {
-  if (!report || !report.headline) return;
+  if (!report.headline && !(risk && risk.headline)) return;
   setText('report-sources', 'Sources: ' + (report.sources || ''));
   setText('risk-asof', 'as of ' + (report.asOf || '—'));
   renderTradeTape();
@@ -2318,13 +2517,17 @@ function renderEtfLookthrough() {
 }
 
 function renderRiskTab() {
-  const h = report.headline, r = report.risk;
+  // prefer the auto-computed risk.json; fall back to the hand-authored report.json
+  const h = (risk && risk.headline) || report.headline;
+  const r = (risk && risk.metrics && risk.metrics.length) ? risk : report.risk;
   if (h) {
-    setText('rk-vol', h.annVol.toFixed(1) + '%');
-    setText('rk-beta', h.betaSpy.toFixed(2) + ' / ' + h.betaXme.toFixed(2));
-    setText('rk-var', fmtDollarSigned(h.var1d95));
-    pnlColor('rk-var', h.var1d95);
+    if (h.annVol != null) setText('rk-vol', h.annVol.toFixed(1) + '%');
+    if (h.betaSpy != null && h.betaXme != null)
+      setText('rk-beta', h.betaSpy.toFixed(2) + ' / ' + h.betaXme.toFixed(2));
+    if (h.var1d95 != null) { setText('rk-var', fmtDollarSigned(h.var1d95)); pnlColor('rk-var', h.var1d95); }
   }
+  setText('risk-asof', 'as of ' + ((risk && risk.asOf) || report.asOf || '—'));
+  renderCorrMatrix();
   if (r && r.metrics) {
     document.getElementById('risk-tbody').innerHTML = r.metrics.map(m => `
       <tr>
@@ -2350,17 +2553,179 @@ function renderRiskTab() {
         <div class="scenario-bar-wrap"><div class="scenario-bar" style="width:${Math.abs(s.pnl) / maxAbs * 100}%"></div></div>
       </div>`).join('');
   }
-  if (report.smartMoney) {
-    document.getElementById('smart-list').innerHTML = report.smartMoney.map(s => `
-      <div class="smart-item">
-        <div class="smart-head"><span class="ticker-sym">${esc(s.stock)}</span>
-        <span class="${s.tone === 'pos' ? 'positive' : 'negative'}" style="font-size:12px;font-weight:600;">${esc(s.read)}</span></div>
-        <div class="report-note">${esc(s.detail)}</div>
-      </div>`).join('');
+  // Smart Money & Positioning: prefer the auto-built positioning.json (13F/insider/COT),
+  // fall back to the hand-authored report.smartMoney. Same markup either way.
+  const smartItem = (stock, read, tone, detail) => `
+    <div class="smart-item">
+      <div class="smart-head"><span class="ticker-sym">${esc(stock)}</span>
+      <span class="${tone === 'pos' ? 'positive' : tone === 'neg' ? 'negative' : ''}" style="font-size:12px;font-weight:600;">${esc(read)}</span></div>
+      <div class="report-note">${esc(detail)}</div>
+    </div>`;
+  const pos = (intel && intel.positioning) || {};
+  const hasPos = (pos.institutional && pos.institutional.length) ||
+                 (pos.insider && pos.insider.length) || (pos.cot && pos.cot.length);
+  const smartEl = document.getElementById('smart-list');
+  if (smartEl && hasPos) {
+    let html = '';
+    (pos.institutional || []).forEach(x => html += smartItem(x.ticker,
+      (x.qoqChange >= 0 ? 'Institutions adding' : 'Institutions trimming'), x.qoqChange >= 0 ? 'pos' : 'neg',
+      `Inst. own ${x.instOwnPct != null ? x.instOwnPct.toFixed(1) + '%' : '—'}` +
+      (x.qoqChange != null ? `, ${x.qoqChange >= 0 ? '+' : ''}${x.qoqChange.toFixed(1)}pp QoQ` : '')));
+    (pos.insider || []).forEach(x => html += smartItem(x.ticker, 'Insiders ' + x.direction,
+      x.direction === 'buying' ? 'pos' : x.direction === 'selling' ? 'neg' : 'neu',
+      `Net ${x.netInsiderShares >= 0 ? '+' : ''}${Number(x.netInsiderShares).toLocaleString()} shares (${x.window})`));
+    (pos.cot || []).forEach(x => html += smartItem(x.commodity, 'Spec net ' + (x.netSpecPosition >= 0 ? 'long' : 'short'),
+      x.netSpecPosition >= 0 ? 'pos' : 'neg',
+      `Net spec ${Number(x.netSpecPosition).toLocaleString()}` +
+      (x.wowChange != null ? `, Δ ${x.wowChange >= 0 ? '+' : ''}${Number(x.wowChange).toLocaleString()} WoW` : '')));
+    smartEl.innerHTML = html;
+  } else if (smartEl && report.smartMoney) {
+    smartEl.innerHTML = report.smartMoney.map(s => smartItem(s.stock, s.read, s.tone, s.detail)).join('');
   }
   if (report.options) setText('opt-note', report.options.note);
   if (report.performance) setText('perf-note', report.performance.note);
   setText('risk-bottom', report.bottomLine || '');
+}
+
+// Live NxN correlation heatmap + per-name risk contribution (from risk.json).
+// Mirrors renderHeatmap()'s alpha coloring: high +corr = red (concentration),
+// negative = green (diversifying). Hidden until price_history.json exists.
+function renderCorrMatrix() {
+  const wrap = document.getElementById('risk-matrix-wrap');
+  const m = risk && risk.matrix;
+  if (!wrap) return;
+  if (!m || !m.tickers || m.tickers.length < 2) { wrap.style.display = 'none'; return; }
+  wrap.style.display = '';
+  setText('rk-cov-note', risk.coverageNote ? '· ' + risk.coverageNote : '');
+
+  const t = m.tickers, n = t.length;
+  const cell = Math.max(15, Math.min(30, Math.floor(360 / (n + 2))));
+  const showVals = cell >= 24;
+  let html = `<div style="display:inline-grid;grid-template-columns:auto repeat(${n},${cell}px);gap:1px;font-size:${cell >= 22 ? 9 : 8}px;">`;
+  html += `<div></div>`;
+  t.forEach(tk => html += `<div style="height:46px;display:flex;align-items:flex-end;justify-content:center;color:var(--text-muted);writing-mode:vertical-rl;transform:rotate(180deg);overflow:hidden;">${esc(tk)}</div>`);
+  for (let i = 0; i < n; i++) {
+    html += `<div style="height:${cell}px;display:flex;align-items:center;justify-content:flex-end;padding-right:5px;color:var(--text-muted);white-space:nowrap;">${esc(t[i])}</div>`;
+    for (let j = 0; j < n; j++) {
+      const v = m.rows[i][j];
+      const rgb = v >= 0 ? '239,68,68' : '34,197,94';
+      const alpha = i === j ? 0.10 : (0.10 + 0.80 * Math.min(Math.abs(v), 1));
+      const label = (i === j) ? '' : (showVals ? v.toFixed(1) : '');
+      html += `<div title="${esc(t[i])} · ${esc(t[j])} = ${v.toFixed(2)}" style="width:${cell}px;height:${cell}px;background:rgba(${rgb},${alpha.toFixed(2)});display:flex;align-items:center;justify-content:center;color:${alpha > 0.5 ? '#fff' : 'var(--text-dim)'};">${label}</div>`;
+    }
+  }
+  html += `</div>`;
+  document.getElementById('corr-matrix').innerHTML = html;
+
+  const contribs = risk.contributions || [];
+  document.getElementById('riskcontrib-tbody').innerHTML = contribs.length ? contribs.map(c => `
+    <tr>
+      <td class="tl"><span class="ticker-sym">${esc(c.ticker)}</span> <span style="color:var(--text-muted);font-size:10px;">${esc(c.side)}</span></td>
+      <td class="${c.weightPct < 0 ? 'negative' : 'positive'}">${c.weightPct.toFixed(1)}%</td>
+      <td>${c.riskContribPct.toFixed(1)}%</td>
+      <td class="negative">${fmtDollarSigned(-Math.abs(c.mVaR))}</td>
+    </tr>`).join('') : `<tr class="empty-row"><td colspan="4">—</td></tr>`;
+}
+
+// ═══════════════════════════════════════════ SIGNALS ══
+// IC/IR scorecard + factor tilt from signal_scorecard.json (scripts/signal_ic.py).
+function renderSignals() {
+  const sc = signalScorecard || {};
+  const ft = sc.factorTilt || {};
+  setText('ft-asof', ft.asOf ? '· as of ' + ft.asOf : '');
+  const labels = { momentum: 'Momentum', value: 'Value', quality: 'Quality', size: 'Size', lowVol: 'Low Vol' };
+  const cards = document.getElementById('ft-cards');
+  if (cards) {
+    cards.innerHTML = (ft.factors || []).map(f => {
+      const z = f.portZ;
+      const cls = z == null ? 'silver' : z > 0.05 ? 'green' : z < -0.05 ? 'red' : 'silver';
+      const val = z == null ? 'n/a' : (z > 0 ? '+' : '') + z.toFixed(2);
+      const sub = (f.longZ != null || f.shortZ != null)
+        ? `L ${f.longZ == null ? '–' : f.longZ.toFixed(2)} · S ${f.shortZ == null ? '–' : f.shortZ.toFixed(2)}`
+        : `${f.coverage || 0} names`;
+      return `<div class="kpi-card ${cls}"><div class="kpi-label">${labels[f.factor] || f.factor}</div>` +
+             `<div class="kpi-value">${val}</div><div class="kpi-sub">${esc(sub)}</div></div>`;
+    }).join('');
+  }
+
+  setText('sig-status', sc.status === 'ready'
+    ? `ready · ${sc.daysCollected} days`
+    : `collecting — ${sc.daysCollected || 0}/${sc.minDaysNeeded || 25} days`);
+  const tb = document.getElementById('sig-tbody');
+  const sigs = sc.signals || [];
+  if (!sigs.length) {
+    tb.innerHTML = `<tr class="empty-row"><td colspan="6">Collecting daily score snapshots — ` +
+      `the scorecard turns on after ${sc.minDaysNeeded || 25} days (${sc.daysCollected || 0} so far).</td></tr>`;
+    return;
+  }
+  const nice = { composite: 'Composite', hedgeAggregate: 'AI Hedge Fund', momentum: 'Momentum',
+    commodity: 'Commodity', deep: 'Deep-dive', analyst: 'Analyst', fundamentals: 'Fundamentals',
+    sentiment: 'Sentiment', smart: 'Smart Money', quality: 'Quality' };
+  tb.innerHTML = sigs.map(r => `
+    <tr>
+      <td class="tl">${esc(nice[r.signal] || r.signal)}</td>
+      <td class="${r.rankIC > 0.02 ? 'positive' : r.rankIC < -0.02 ? 'negative' : ''}">${(r.rankIC > 0 ? '+' : '') + r.rankIC.toFixed(3)}</td>
+      <td>${r.IR == null ? '—' : r.IR.toFixed(2)}</td>
+      <td>${(r.hitRate * 100).toFixed(0)}%</td>
+      <td>${r.windows}</td>
+      <td>${r.n}</td>
+    </tr>`).join('');
+}
+
+// ═══════════════════════════════════════════ JOURNAL ══
+// Behavioral trade analytics + Shadow Account from journal.json (scripts/journal.py).
+function renderJournal() {
+  const j = journal || {};
+  const a = j.aggregate;
+  if (!a) {
+    setText('jr-note', j.updatedAt ? '' :
+      'Awaiting an approved IBKR trade-history pull (get_account_trades). The behavioral ' +
+      'journal populates once trades are dumped to /tmp and scripts/journal.py runs.');
+    return;
+  }
+  setText('jr-winrate', (a.winRate * 100).toFixed(0) + '%');
+  setText('jr-closed', a.closedTrades + ' closed round-trips');
+  setText('jr-pf', a.profitFactor == null ? '—' : a.profitFactor.toFixed(2));
+  setText('jr-hold', a.avgHoldDays == null ? '—' : a.avgHoldDays.toFixed(1) + 'd');
+  setText('jr-hold-sub', `win ${a.avgHoldWinDays == null ? '–' : a.avgHoldWinDays.toFixed(1)}d · ` +
+    `loss ${a.avgHoldLossDays == null ? '–' : a.avgHoldLossDays.toFixed(1)}d`);
+  setText('jr-disp', a.dispositionEffect == null ? '—' :
+    (a.dispositionEffect > 0 ? '+' : '') + a.dispositionEffect.toFixed(1) + 'd');
+
+  const tradeRows = arr => (arr && arr.length) ? arr.map(t => `
+    <tr>
+      <td class="tl"><span class="ticker-sym">${esc(t.ticker)}</span> <span style="color:var(--text-muted);font-size:10px;">${esc(t.side)}</span></td>
+      <td class="${t.realized >= 0 ? 'positive' : 'negative'}">${fmtDollarSigned(t.realized)}</td>
+      <td class="${(t.pctReturn || 0) >= 0 ? 'positive' : 'negative'}">${t.pctReturn == null ? '—' : (t.pctReturn > 0 ? '+' : '') + t.pctReturn.toFixed(1) + '%'}</td>
+      <td>${t.holdDays == null ? '—' : t.holdDays + 'd'}</td>
+    </tr>`).join('') : `<tr class="empty-row"><td colspan="4">—</td></tr>`;
+  document.getElementById('jr-best').innerHTML = tradeRows(j.best);
+  document.getElementById('jr-worst').innerHTML = tradeRows(j.worst);
+
+  const attrib = [];
+  (j.byCommodity || []).forEach(c => attrib.push({ k: c.commodity, v: c.realized, share: c.share }));
+  if (j.bySide) {
+    if (j.bySide.long) attrib.push({ k: 'Long book', v: j.bySide.long.realized, share: null });
+    if (j.bySide.short) attrib.push({ k: 'Short book', v: j.bySide.short.realized, share: null });
+  }
+  document.getElementById('jr-attrib').innerHTML = attrib.length ? attrib.map(x => `
+    <tr>
+      <td class="tl">${esc(x.k)}</td>
+      <td class="${(x.v || 0) >= 0 ? 'positive' : 'negative'}">${x.v == null ? '—' : fmtDollarSigned(x.v)}</td>
+      <td>${x.share == null ? '—' : (x.share * 100).toFixed(0) + '%'}</td>
+    </tr>`).join('') : `<tr class="empty-row"><td colspan="3">—</td></tr>`;
+
+  const sh = j.shadow;
+  if (sh) {
+    setText('jr-shadow-actual', fmtDollarSigned(sh.realizedActual));
+    setText('jr-shadow-held', fmtDollarSigned(sh.ifHeldToNow));
+    setText('jr-shadow-edge', fmtDollarSigned(sh.edge));
+    pnlColor('jr-shadow-edge', sh.edge);
+    document.getElementById('jr-shadow-list').innerHTML = (sh.items || []).slice(0, 6).map(it => `
+      <div class="stat-row"><span class="stat-key">${esc(it.ticker)}</span>
+      <span class="stat-val ${it.shadowDelta >= 0 ? 'positive' : 'negative'}">${fmtDollarSigned(it.shadowDelta)}</span></div>`).join('');
+  }
+  setText('jr-note', j.note || '');
 }
 
 function renderMarkets() {
@@ -2552,7 +2917,7 @@ function renderRebalance() {
 
 function showTab(name) {
   document.querySelectorAll('.tab').forEach((t, i) => {
-    const names = ['overview', 'positions', 'benchmarks', 'exposure', 'risk', 'markets', 'intel', 'picks', 'rebalance'];
+    const names = ['overview', 'positions', 'journal', 'benchmarks', 'exposure', 'risk', 'markets', 'intel', 'picks', 'signals', 'rebalance'];
     t.classList.toggle('active', names[i] === name);
   });
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));

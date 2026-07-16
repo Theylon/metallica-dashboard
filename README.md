@@ -134,6 +134,19 @@ data/micro_src/
 └── yahoo.json              # independent Yahoo pull (generated in CI; not always committed)
 ```
 
+## Research & risk analytics
+
+Four research layers (inspired by [HKUDS/Vibe-Trading](https://github.com/HKUDS/Vibe-Trading)) deepen the dashboard beyond raw account data. Each is additive, resilient (a missing input leaves the last-good file in place), and never overwrites the hand-authored `report.json`.
+
+| Tab | What it shows | Data file | Built by | Cadence |
+|---|---|---|---|---|
+| **Risk** (extended) | Auto-computed vol / β(SPY,XME) / VaR / HHI, plus a live **correlation heatmap** and per-name **risk contribution** (component VaR) | `data/risk.json` | `scripts/risk.py` (pure Python) | Action 4×/day + MCP refresh |
+| **Journal** | Behavioral trade analytics — win rate, profit factor, holding period, **disposition effect**, realized-P&L attribution, and a **Shadow Account** (P&L left on the table by exiting) | `data/journal.json` | `scripts/journal.py` ← `get_account_trades` | daily Journal routine (`scripts/journal_routine.md`) |
+| **Signals** | **IC/IR scorecard** — which of the 8 micro sub-scores actually predict forward returns — plus the book's **factor tilt** (momentum/value/quality/size/low-vol) | `data/signal_scorecard.json` (+ `data/micro_history.jsonl` history) | `scripts/signal_ic.py`; snapshots via `scripts/micro_snapshot.py` | Action 4×/day (scorecard turns on after ~25 days) |
+| **Intel** (extended) | Per-holding **sentiment + next earnings + news** for the whole book, auto **positioning** (13F/insider/COT, feeds the Risk tab's Smart-Money panel), and a **macro-regime** series | `events.json`, `positioning.json`, `macro_history.json` | `scripts/enrich.py` builders | daily research routine (`scripts/micro_refresh_research.md` §5b) |
+
+Pure-Python pieces (`risk.py`, `signal_ic.py`, `micro_snapshot.py`, price-history capture in `micro_refresh.py`) run in the GitHub Action from data that already exists — no new secrets. The MCP-fed pieces (Journal, Intel research layer) run in scheduled Claude routines and degrade gracefully until first populated. `data/price_history.json` (held-name close series, reused from the existing `micro_refresh.py` download) gates the correlation matrix and the low-vol factor.
+
 ## Strategy reference
 
 Metallica is a systematic long/short equity strategy powered by MetalMiner's proprietary industrial-metals price data.

@@ -1,0 +1,64 @@
+{
+ "updatedAt": "2026-07-16T17:33:30+00:00",
+ "asOf": "2026-07-16",
+ "window": 90,
+ "obs": 26,
+ "headline": {
+  "annVol": 16.8,
+  "betaSpy": 0.54,
+  "betaXme": 0.17,
+  "var1d95": -234,
+  "var1d99": -454,
+  "hhi": 645.0,
+  "effectiveN": 15.5
+ },
+ "metrics": [
+  {
+   "k": "Annualized volatility",
+   "v": "16.8%",
+   "note": "from the account's daily TWR, 26 daily obs since inception",
+   "tone": "neutral"
+  },
+  {
+   "k": "Beta vs S&P 500 (SPY)",
+   "v": "0.54",
+   "note": "24 overlapping daily obs",
+   "tone": "neutral"
+  },
+  {
+   "k": "Beta vs metals (XME)",
+   "v": "0.17",
+   "note": "long/short damps directional metals beta",
+   "tone": "pos"
+  },
+  {
+   "k": "1-day VaR (95%, historical)",
+   "v": "\u2212$234",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (\u2212$454)",
+   "tone": "neg"
+  },
+  {
+   "k": "Worst day since inception",
+   "v": "-4.21%",
+   "note": "single worst daily TWR",
+   "tone": "neg"
+  },
+  {
+   "k": "Max drawdown (inception curve)",
+   "v": "-11.5%",
+   "note": "peak-to-trough on the cumulative TWR",
+   "tone": "neg"
+  },
+  {
+   "k": "Concentration (HHI / eff. N)",
+   "v": "645 / 15.5",
+   "note": "27 names, ~15.5 effective",
+   "tone": "pos"
+  }
+ ],
+ "avgCorr": null,
+ "correlations": [],
+ "matrix": null,
+ "contributions": [],
+ "coverageNote": "correlation matrix pending price_history.json (27 holdings)"
+}
