@@ -1,14 +1,14 @@
 {
- "updatedAt": "2026-07-16T18:51:35+00:00",
+ "updatedAt": "2026-07-16T19:10:08+00:00",
  "asOf": "2026-07-16",
  "window": 90,
  "obs": 26,
  "headline": {
   "annVol": 16.8,
   "betaSpy": 0.52,
-  "betaXme": 0.15,
+  "betaXme": 0.16,
   "var1d95": -234,
-  "var1d99": -455,
+  "var1d99": -454,
   "hhi": 646.0,
   "effectiveN": 15.5
  },
@@ -27,7 +27,7 @@
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.15",
+   "v": "0.16",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "\u2212$234",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (\u2212$455)",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (\u2212$454)",
    "tone": "neg"
   },
   {
@@ -51,7 +51,7 @@
   },
   {
    "k": "Max drawdown (inception curve)",
-   "v": "-11.5%",
+   "v": "-11.6%",
    "note": "peak-to-trough on the cumulative TWR",
    "tone": "neg"
   },
@@ -789,21 +789,21 @@
    "side": "short",
    "weightPct": -6.4,
    "riskContribPct": 23.8,
-   "mVaR": 30.2
+   "mVaR": 30.3
   },
   {
    "ticker": "STLD",
    "side": "short",
-   "weightPct": -6.5,
+   "weightPct": -6.6,
    "riskContribPct": 16.0,
    "mVaR": 20.4
   },
   {
    "ticker": "NUE",
    "side": "short",
-   "weightPct": -6.5,
+   "weightPct": -6.6,
    "riskContribPct": 13.2,
-   "mVaR": 16.7
+   "mVaR": 16.8
   },
   {
    "ticker": "RS",
@@ -817,7 +817,7 @@
    "side": "short",
    "weightPct": -3.9,
    "riskContribPct": 7.0,
-   "mVaR": 8.9
+   "mVaR": 9.0
   },
   {
    "ticker": "TSLA",
@@ -831,7 +831,7 @@
    "side": "short",
    "weightPct": -3.8,
    "riskContribPct": 5.3,
-   "mVaR": 6.7
+   "mVaR": 6.8
   },
   {
    "ticker": "LIT",
@@ -845,7 +845,7 @@
    "side": "short",
    "weightPct": -1.0,
    "riskContribPct": 3.3,
-   "mVaR": 4.2
+   "mVaR": 4.3
   },
   {
    "ticker": "PLG",
@@ -858,15 +858,15 @@
    "ticker": "SGML",
    "side": "long",
    "weightPct": 3.4,
-   "riskContribPct": 3.1,
-   "mVaR": 4.0
+   "riskContribPct": 3.0,
+   "mVaR": 3.8
   },
   {
    "ticker": "BVN",
    "side": "short",
    "weightPct": -0.8,
-   "riskContribPct": 2.2,
-   "mVaR": 2.8
+   "riskContribPct": 2.3,
+   "mVaR": 2.9
   },
   {
    "ticker": "HL",
@@ -879,8 +879,15 @@
    "ticker": "PAAS",
    "side": "short",
    "weightPct": -0.8,
-   "riskContribPct": 1.9,
+   "riskContribPct": 2.0,
    "mVaR": 2.5
+  },
+  {
+   "ticker": "AG",
+   "side": "short",
+   "weightPct": -0.6,
+   "riskContribPct": 1.8,
+   "mVaR": 2.2
   },
   {
    "ticker": "CDE",
@@ -888,13 +895,6 @@
    "weightPct": -0.5,
    "riskContribPct": 1.8,
    "mVaR": 2.3
-  },
-  {
-   "ticker": "AG",
-   "side": "short",
-   "weightPct": -0.6,
-   "riskContribPct": 1.7,
-   "mVaR": 2.2
   },
   {
    "ticker": "CSTM",
@@ -908,7 +908,7 @@
    "side": "short",
    "weightPct": -0.4,
    "riskContribPct": 0.9,
-   "mVaR": 1.1
+   "mVaR": 1.2
   },
   {
    "ticker": "CENX",
@@ -929,7 +929,7 @@
    "side": "long",
    "weightPct": 3.7,
    "riskContribPct": -0.3,
-   "mVaR": -0.3
+   "mVaR": -0.4
   },
   {
    "ticker": "CC",
@@ -957,7 +957,7 @@
    "side": "long",
    "weightPct": 3.1,
    "riskContribPct": -4.9,
-   "mVaR": -6.2
+   "mVaR": -6.3
   }
  ],
  "coverageNote": "25 of 27 holdings (2 OTC excluded)"
