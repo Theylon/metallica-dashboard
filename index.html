@@ -3048,8 +3048,8 @@ function normalizePosition(raw) {
   shares = Math.abs(shares);
 
   const avgCost   = num(pick('avgCost', 'avg_cost', 'AvgCost', 'avgPrice', 'Avg Price', 'averageCost', 'Cost Basis Price'));
-  const lastPrice = num(pick('lastPrice', 'last', 'Last', 'price', 'Price', 'marketPrice', 'Market Price', 'Mark Price'));
-  let mktValue = pick('mktValue', 'marketValue', 'Market Value', 'value');
+  const lastPrice = num(pick('lastPrice', 'last', 'Last', 'price', 'Price', 'px_usd', 'px', 'pxUsd', 'marketPrice', 'Market Price', 'Mark Price'));
+  let mktValue = pick('mktValue', 'marketValue', 'Market Value', 'value', 'dollars', 'dollar', 'usd');
   mktValue = (mktValue != null && mktValue !== '') ? num(mktValue) : shares * lastPrice;
   mktValue = side === 'short' ? -Math.abs(mktValue) : Math.abs(mktValue);
 
@@ -3245,8 +3245,8 @@ function buildRebalanceAnalysis(book) {
       <div class="table-wrapper"><table>
         <thead><tr>
           <th style="text-align:left;">#</th><th style="text-align:left;">Ticker</th><th style="text-align:left;">Side</th><th>Shares</th>
-          <th style="text-align:left;">Material</th><th style="text-align:left;">Composite</th>
-          <th>Mom</th><th>Cmdty</th><th>Analyst</th><th>vs50</th><th style="text-align:left;">Verdict</th><th>Trad</th>
+          <th style="text-align:left;">Material</th><th style="text-align:left;">Held</th><th style="text-align:left;">Composite</th>
+          <th>Mom</th><th>Cmdty</th><th>Analyst</th><th>vs50</th><th>52w</th><th>Grp</th><th style="text-align:left;">Verdict</th><th>Trad</th>
         </tr></thead>
         <tbody>${rows.map(r => {
           const p = r.p, m = r.m, ex = rebalanceExpanded === p.ticker;
@@ -3257,6 +3257,9 @@ function buildRebalanceAnalysis(book) {
             : '<span style="color:var(--text-muted);">—</span>';
           const vs50 = (m && m.vs50 != null)
             ? `<span style="color:${m.vs50 >= 0 ? 'var(--green)' : 'var(--red)'};">${(m.vs50 > 0 ? '+' : '') + m.vs50.toFixed(1)}%</span>` : '—';
+          const heldCell = m ? (m.held ? `<span class="pick-badge ${m.held}">${m.held.toUpperCase()}</span>` : (m.discovered ? '<span class="pick-badge new">NEW</span>' : '<span style="color:var(--text-muted);">—</span>')) : '—';
+          const r52 = (m && m.range52w != null) ? Math.round(m.range52w) + '%' : '—';
+          const grp = (m && m.groupRank) ? m.groupRank : '—';
           return `
           <tr class="picks-row" onclick="toggleRebalanceDetail('${tkEsc}')">
             <td style="color:var(--text-muted);">${r.n}</td>
@@ -3264,14 +3267,17 @@ function buildRebalanceAnalysis(book) {
             <td style="text-align:left;">${sideBadge(p.side)}</td>
             <td>${fmt(p.shares, 0)}</td>
             <td style="text-align:left;color:var(--text-muted);font-size:11px;">${m ? esc(m.material || '—') : '—'}</td>
+            <td style="text-align:left;">${heldCell}</td>
             <td style="text-align:left;">${compCell}</td>
             <td>${m ? fmtN(m.subs && m.subs.momentum) : '—'}</td>
             <td>${m ? fmtN(m.subs && m.subs.commodity) : '—'}</td>
             <td>${m ? fmtN(m.subs && m.subs.analyst) : '—'}</td>
             <td>${vs50}</td>
+            <td>${r52}</td>
+            <td style="color:var(--text-muted);">${esc(String(grp))}</td>
             <td style="text-align:left;">${m ? verdictBadge(m.microVerdict) : '<span class="pick-badge new">NEW</span>'}</td>
             <td style="font-weight:700;color:${m == null ? 'var(--text-muted)' : (m.tradable ? '#22c55e' : '#ef4444')};">${m == null ? '—' : (m.tradable ? 'Y' : 'N')}</td>
-          </tr>${ex ? `<tr class="picks-detail"><td colspan="12" style="text-align:left;">${m ? buildPickDetail(m) : '<div style="padding:12px 16px;color:var(--text-muted);">Outside the micro-analysis universe — no detailed card for this name.</div>'}</td></tr>` : ''}`;
+          </tr>${ex ? `<tr class="picks-detail"><td colspan="15" style="text-align:left;">${m ? buildPickDetail(m) : '<div style="padding:12px 16px;color:var(--text-muted);">Outside the micro-analysis universe — no detailed card for this name.</div>'}</td></tr>` : ''}`;
         }).join('')}</tbody>
       </table></div>
       <div style="padding:8px 6px 2px;color:var(--text-muted);font-size:11px;">Names outside the micro-analysis universe show “—”. Same per-name detail as the Stock Picks tab. Analysis, not investment advice.</div>
