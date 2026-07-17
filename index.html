@@ -2941,7 +2941,7 @@ function renderRebalance() {
   const rows = d.rows || [];
   const uploader = buildPositionsUploader();
   // An uploaded book replaces the default proposed table with an analysis of those names.
-  if (rebalUpload) { el.innerHTML = uploader + buildRebalanceAnalysis(rebalUpload); return; }
+  if (rebalUpload) { el.innerHTML = uploader + buildRebalanceAnalysisShell(); renderRebalAnalysisRows(); return; }
   if (!rows.length) { el.innerHTML = uploader + '<div class="table-panel" style="padding:24px;color:var(--text-muted);">Awaiting rebalance data</div>'; return; }
   const tone = { pos: '#22c55e', warn: '#eab308', neg: '#ef4444' };
   const verd = { bull: '#22c55e', bear: '#ef4444', neut: '#eab308', new: '#38bdf8' };
@@ -3133,6 +3133,7 @@ function applyRebalanceBook() {
   saveRebalanceBook(rebalUpload);
   pendingUpload = null;
   rebalanceExpanded = null;
+  rebalResetControls();
   renderRebalance();   // Rebalance-tab only — the portfolio / Positions tab is never touched
 }
 
@@ -3141,6 +3142,7 @@ function clearRebalanceBook() {
   try { localStorage.removeItem(REBAL_BOOK_KEY); } catch (e) {}
   pendingUpload = null;
   rebalanceExpanded = null;
+  rebalResetControls();
   renderRebalance();
 }
 
@@ -3207,83 +3209,182 @@ function buildPositionsUploader() {
   </div>`;
 }
 
-// Join each uploaded position to its full micro record and render, in the Rebalance
-// tab, a per-name table whose rows expand into the SAME rich card as the Stock Picks tab.
-function buildRebalanceAnalysis(book) {
-  const microMap = {}; (micro.tickers || []).forEach(t => { if (t && t.ticker) microMap[String(t.ticker).toUpperCase()] = t; });
-  const fmtN = (v, d = 1) => (v === null || v === undefined) ? '—' : Number(v).toFixed(d);
-  const sideBadge = s => s === 'long'
-    ? '<span class="pick-badge long">LONG</span>'
-    : '<span class="pick-badge short">SHORT</span>';
-  const verdictBadge = v => v
-    ? `<span class="pick-badge ${v === 'bullish' ? 'long' : v === 'bearish' ? 'short' : 'neutral'}">${v}</span>`
-    : '<span class="pick-badge new">NEW</span>';
+// ── Uploaded-book analysis: table shell + filter/sort + tbody-only rows ──
+// The shell (header, controls, sortable thead, empty tbody) is built once by
+// renderRebalance; renderRebalAnalysisRows() refills only the tbody, so the
+// search box keeps focus while typing and filtering/sorting is instant.
+let rebalSearch = '', rebalMaterial = '', rebalSideFilter = 'all';
+let rebalSort = { key: null, dir: 1 };   // null key = original upload order
 
-  const rows = book.positions.map((p, i) => ({ n: i + 1, p, m: microMap[p.ticker] || null }));
-  const matched = rows.filter(r => r.m).length;
+function rebalResetControls() { rebalSearch = ''; rebalMaterial = ''; rebalSideFilter = 'all'; rebalSort = { key: null, dir: 1 }; }
+
+// Join uploaded positions to their micro record and flatten the sortable fields.
+function rebalJoinedRows() {
+  if (!rebalUpload) return [];
+  const microMap = {}; (micro.tickers || []).forEach(t => { if (t && t.ticker) microMap[String(t.ticker).toUpperCase()] = t; });
+  return rebalUpload.positions.map((p, i) => {
+    const m = microMap[p.ticker] || null;
+    return {
+      n: i + 1, p, m,
+      ticker: p.ticker, side: p.side, shares: p.shares,
+      company: (m && m.company) || p.description || p.ticker,
+      material: m ? (m.material || '') : '',
+      composite: (m && m.composite != null) ? m.composite : null,
+      mom: (m && m.subs) ? m.subs.momentum : null,
+      cmdty: (m && m.subs) ? m.subs.commodity : null,
+      analyst: (m && m.subs) ? m.subs.analyst : null,
+      vs50: (m && m.vs50 != null) ? m.vs50 : null,
+      range52w: (m && m.range52w != null) ? m.range52w : null,
+      verdict: m ? m.microVerdict : null,
+      tradable: m ? m.tradable : null,
+      held: m ? m.held : null,
+    };
+  });
+}
+
+function rebalFilteredSorted() {
+  let rows = rebalJoinedRows();
+  if (rebalSideFilter !== 'all') rows = rows.filter(r => r.side === rebalSideFilter);
+  if (rebalMaterial) rows = rows.filter(r => r.material === rebalMaterial);
+  if (rebalSearch) {
+    const q = rebalSearch.toUpperCase();
+    rows = rows.filter(r => r.ticker.toUpperCase().includes(q) || String(r.company).toUpperCase().includes(q));
+  }
+  if (rebalSort.key) {
+    const k = rebalSort.key, dir = rebalSort.dir;
+    rows = rows.slice().sort((a, b) => {
+      let av = a[k], bv = b[k];
+      if (av === null || av === undefined) return 1;
+      if (bv === null || bv === undefined) return -1;
+      if (typeof av === 'string') return av.localeCompare(bv) * dir;
+      return (av - bv) * dir;
+    });
+  }
+  return rows;
+}
+
+function setRebalSearch(v) { rebalSearch = v; renderRebalAnalysisRows(); }
+function setRebalMaterial(v) { rebalMaterial = v; renderRebalAnalysisRows(); }
+function setRebalSide(v) {
+  rebalSideFilter = v;
+  ['all', 'long', 'short'].forEach(x => { const el = document.getElementById('rebal-side-' + x); if (el) el.classList.toggle('active', x === v); });
+  renderRebalAnalysisRows();
+}
+function sortRebal(key) {
+  if (rebalSort.key === key) rebalSort.dir *= -1;
+  else rebalSort = { key, dir: ['ticker', 'company', 'material', 'side', 'verdict'].includes(key) ? 1 : -1 };
+  renderRebalAnalysisRows();
+}
+function toggleRebalAnalysis(t) { rebalanceExpanded = rebalanceExpanded === t ? null : t; renderRebalAnalysisRows(); }
+
+// Header + filter/sort controls + empty table; rows are filled by renderRebalAnalysisRows().
+function buildRebalanceAnalysisShell() {
+  const book = rebalUpload;
+  const all = rebalJoinedRows();
+  const matched = all.filter(r => r.m).length;
+  const materials = [...new Set(all.filter(r => r.material).map(r => r.material))].sort();
+  const sideBtn = (v, label) => `<div class="sub-tab${rebalSideFilter === v ? ' active' : ''}" id="rebal-side-${v}" onclick="setRebalSide('${v}')">${label}</div>`;
+  const sh = (key, label, left) => `<th ${left ? 'style="text-align:left;" ' : ''}class="sortable" onclick="sortRebal('${key}')">${label}<span class="sort-arrow" id="rbarrow-${key}"></span></th>`;
 
   const header = `
     <div class="table-panel" style="margin-bottom:16px;">
       <div class="table-header">
         <div class="table-title">Uploaded book — rebalance analysis</div>
-        <div style="font-size:12px;color:var(--text-muted);">${rows.length} names · ${matched} in analysis universe · micro as of ${esc(String(micro.researchAsOf || micro.updatedAt || '').slice(0, 10))}</div>
+        <div style="font-size:12px;color:var(--text-muted);">${all.length} names · ${matched} in analysis universe · micro as of ${esc(String(micro.researchAsOf || micro.updatedAt || '').slice(0, 10))}</div>
       </div>
       <div style="padding:2px 4px 8px;color:var(--text-dim);font-size:12.5px;line-height:1.5;">
         Micro analysis for <b>${esc(book.name)}</b>, shown in place of the default proposed table.
         <b>Click any row for the full pick card</b> — live position, recommendation, composite score breakdown,
         AI-hedge-fund verdict, analysts &amp; sentiment, fundamentals, commodity linkage, thesis, catalysts and risks —
-        exactly the detail from the Stock Picks tab. Analysis, not investment advice.
+        exactly the detail from the Stock Picks tab. Filter and sort like the Stock Picks table. Analysis, not investment advice.
       </div>
     </div>`;
 
   const tbl = `
     <div class="table-panel" style="margin-bottom:16px;">
       <div class="table-header">
-        <div class="table-title">Per-name analysis (${rows.length})</div>
-        <div style="font-size:11px;color:var(--text-muted);">Click a row for the full detail card</div>
+        <div class="table-header-left">
+          <div class="sub-tabs">${sideBtn('all', 'All')}${sideBtn('long', 'Long')}${sideBtn('short', 'Short')}</div>
+          <div class="filter-bar">
+            <input type="text" class="filter-input" id="rebal-search" placeholder="Search ticker or name…" value="${esc(rebalSearch)}" oninput="setRebalSearch(this.value)">
+            <select class="filter-select" id="rebal-material" onchange="setRebalMaterial(this.value)">
+              <option value="">All Materials</option>
+              ${materials.map(mm => `<option value="${esc(mm)}"${mm === rebalMaterial ? ' selected' : ''}>${esc(mm)}</option>`).join('')}
+            </select>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--text-muted);" id="rebal-analysis-count">—</div>
       </div>
       <div class="table-wrapper"><table>
         <thead><tr>
-          <th style="text-align:left;">#</th><th style="text-align:left;">Ticker</th><th style="text-align:left;">Side</th><th>Shares</th>
-          <th style="text-align:left;">Material</th><th style="text-align:left;">Held</th><th style="text-align:left;">Composite</th>
-          <th>Mom</th><th>Cmdty</th><th>Analyst</th><th>vs50</th><th>52w</th><th>Grp</th><th style="text-align:left;">Verdict</th><th>Trad</th>
+          <th style="text-align:left;">#</th>
+          ${sh('ticker', 'Ticker / Name', true)}
+          ${sh('side', 'Side', true)}
+          ${sh('shares', 'Shares')}
+          ${sh('material', 'Material', true)}
+          <th style="text-align:left;">Held</th>
+          ${sh('composite', 'Composite')}
+          ${sh('mom', 'Mom')}${sh('cmdty', 'Cmdty')}${sh('analyst', 'Analyst')}
+          ${sh('vs50', 'vs50')}${sh('range52w', '52w')}
+          <th>Grp</th>
+          ${sh('verdict', 'Verdict', true)}
+          ${sh('tradable', 'Trad')}
         </tr></thead>
-        <tbody>${rows.map(r => {
-          const p = r.p, m = r.m, ex = rebalanceExpanded === p.ticker;
-          const tkEsc = String(p.ticker).replace(/'/g, "\\'");
-          const sus = (m && m.quoteSuspect) ? ' <span title="quote data suspect">⚠</span>' : '';
-          const compCell = (m && m.composite != null)
-            ? `<div class="score-cell"><div class="score-bar"><div style="width:${Math.min(100, m.composite)}%;background:${scoreColor(m.composite)};"></div></div><b style="color:${scoreColor(m.composite)};">${fmtN(m.composite)}</b></div>`
-            : '<span style="color:var(--text-muted);">—</span>';
-          const vs50 = (m && m.vs50 != null)
-            ? `<span style="color:${m.vs50 >= 0 ? 'var(--green)' : 'var(--red)'};">${(m.vs50 > 0 ? '+' : '') + m.vs50.toFixed(1)}%</span>` : '—';
-          const heldCell = m ? (m.held ? `<span class="pick-badge ${m.held}">${m.held.toUpperCase()}</span>` : (m.discovered ? '<span class="pick-badge new">NEW</span>' : '<span style="color:var(--text-muted);">—</span>')) : '—';
-          const r52 = (m && m.range52w != null) ? Math.round(m.range52w) + '%' : '—';
-          const grp = (m && m.groupRank) ? m.groupRank : '—';
-          return `
-          <tr class="picks-row" onclick="toggleRebalanceDetail('${tkEsc}')">
-            <td style="color:var(--text-muted);">${r.n}</td>
-            <td style="text-align:left;font-weight:700;"><span style="color:var(--text-dim);font-weight:400;font-size:11px;">${ex ? '▾' : '▸'}</span> ${esc(p.ticker)}${sus}</td>
-            <td style="text-align:left;">${sideBadge(p.side)}</td>
-            <td>${fmt(p.shares, 0)}</td>
-            <td style="text-align:left;color:var(--text-muted);font-size:11px;">${m ? esc(m.material || '—') : '—'}</td>
-            <td style="text-align:left;">${heldCell}</td>
-            <td style="text-align:left;">${compCell}</td>
-            <td>${m ? fmtN(m.subs && m.subs.momentum) : '—'}</td>
-            <td>${m ? fmtN(m.subs && m.subs.commodity) : '—'}</td>
-            <td>${m ? fmtN(m.subs && m.subs.analyst) : '—'}</td>
-            <td>${vs50}</td>
-            <td>${r52}</td>
-            <td style="color:var(--text-muted);">${esc(String(grp))}</td>
-            <td style="text-align:left;">${m ? verdictBadge(m.microVerdict) : '<span class="pick-badge new">NEW</span>'}</td>
-            <td style="font-weight:700;color:${m == null ? 'var(--text-muted)' : (m.tradable ? '#22c55e' : '#ef4444')};">${m == null ? '—' : (m.tradable ? 'Y' : 'N')}</td>
-          </tr>${ex ? `<tr class="picks-detail"><td colspan="15" style="text-align:left;">${m ? buildPickDetail(m) : '<div style="padding:12px 16px;color:var(--text-muted);">Outside the micro-analysis universe — no detailed card for this name.</div>'}</td></tr>` : ''}`;
-        }).join('')}</tbody>
+        <tbody id="rebal-analysis-tbody"></tbody>
       </table></div>
       <div style="padding:8px 6px 2px;color:var(--text-muted);font-size:11px;">Names outside the micro-analysis universe show “—”. Same per-name detail as the Stock Picks tab. Analysis, not investment advice.</div>
     </div>`;
 
   return header + tbl;
+}
+
+function renderRebalAnalysisRows() {
+  const tb = document.getElementById('rebal-analysis-tbody');
+  if (!tb) return;
+  const fmtN = (v, d = 1) => (v === null || v === undefined) ? '—' : Number(v).toFixed(d);
+  const sideBadge = s => s === 'long' ? '<span class="pick-badge long">LONG</span>' : '<span class="pick-badge short">SHORT</span>';
+  const verdictBadge = v => v ? `<span class="pick-badge ${v === 'bullish' ? 'long' : v === 'bearish' ? 'short' : 'neutral'}">${v}</span>` : '<span class="pick-badge new">NEW</span>';
+
+  const rows = rebalFilteredSorted();
+  const cnt = document.getElementById('rebal-analysis-count');
+  if (cnt) cnt.textContent = rows.length + ' names';
+  document.querySelectorAll('[id^="rbarrow-"]').forEach(el => el.textContent = '');
+  if (rebalSort.key) { const a = document.getElementById('rbarrow-' + rebalSort.key); if (a) a.textContent = rebalSort.dir === -1 ? ' ▼' : ' ▲'; }
+
+  tb.innerHTML = rows.length ? rows.map(r => {
+    const p = r.p, m = r.m, ex = rebalanceExpanded === p.ticker;
+    const tkEsc = String(p.ticker).replace(/'/g, "\\'");
+    const sus = (m && m.quoteSuspect) ? ' <span title="quote data suspect">⚠</span>' : '';
+    const compCell = (m && m.composite != null)
+      ? `<div class="score-cell"><div class="score-bar"><div style="width:${Math.min(100, m.composite)}%;background:${scoreColor(m.composite)};"></div></div><b style="color:${scoreColor(m.composite)};">${fmtN(m.composite)}</b></div>`
+      : '<span style="color:var(--text-muted);">—</span>';
+    const vs50 = (m && m.vs50 != null)
+      ? `<span style="color:${m.vs50 >= 0 ? 'var(--green)' : 'var(--red)'};">${(m.vs50 > 0 ? '+' : '') + m.vs50.toFixed(1)}%</span>` : '—';
+    const heldCell = m ? (m.held ? `<span class="pick-badge ${m.held}">${m.held.toUpperCase()}</span>` : (m.discovered ? '<span class="pick-badge new">NEW</span>' : '<span style="color:var(--text-muted);">—</span>')) : '—';
+    const r52 = (m && m.range52w != null) ? Math.round(m.range52w) + '%' : '—';
+    const grp = (m && m.groupRank) ? m.groupRank : '—';
+    return `
+      <tr class="picks-row" onclick="toggleRebalAnalysis('${tkEsc}')">
+        <td style="color:var(--text-muted);">${r.n}</td>
+        <td style="text-align:left;">
+          <div style="font-weight:700;"><span style="color:var(--text-dim);font-weight:400;font-size:11px;">${ex ? '▾' : '▸'}</span> ${esc(p.ticker)}${sus}</div>
+          <div style="color:var(--text-muted);font-size:11px;">${esc(r.company)}</div>
+        </td>
+        <td style="text-align:left;">${sideBadge(p.side)}</td>
+        <td>${fmt(p.shares, 0)}</td>
+        <td style="text-align:left;color:var(--text-muted);font-size:11px;">${m ? esc(m.material || '—') : '—'}</td>
+        <td style="text-align:left;">${heldCell}</td>
+        <td style="text-align:left;">${compCell}</td>
+        <td>${m ? fmtN(m.subs && m.subs.momentum) : '—'}</td>
+        <td>${m ? fmtN(m.subs && m.subs.commodity) : '—'}</td>
+        <td>${m ? fmtN(m.subs && m.subs.analyst) : '—'}</td>
+        <td>${vs50}</td>
+        <td>${r52}</td>
+        <td style="color:var(--text-muted);">${esc(String(grp))}</td>
+        <td style="text-align:left;">${m ? verdictBadge(m.microVerdict) : '<span class="pick-badge new">NEW</span>'}</td>
+        <td style="font-weight:700;color:${m == null ? 'var(--text-muted)' : (m.tradable ? '#22c55e' : '#ef4444')};">${m == null ? '—' : (m.tradable ? 'Y' : 'N')}</td>
+      </tr>${ex ? `<tr class="picks-detail"><td colspan="15" style="text-align:left;">${m ? buildPickDetail(m) : '<div style="padding:12px 16px;color:var(--text-muted);">Outside the micro-analysis universe — no detailed card for this name.</div>'}</td></tr>` : ''}`;
+  }).join('') : '<tr class="empty-row"><td colspan="15">No names match the filter</td></tr>';
 }
 
 function showTab(name) {
