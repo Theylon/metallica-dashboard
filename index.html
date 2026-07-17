@@ -3207,43 +3207,20 @@ function buildPositionsUploader() {
   </div>`;
 }
 
-// Join each uploaded position to its micro analysis and render, in the Rebalance
-// tab, a per-name table in the same style as the default proposed review.
+// Join each uploaded position to its full micro record and render, in the Rebalance
+// tab, a per-name table whose rows expand into the SAME rich card as the Stock Picks tab.
 function buildRebalanceAnalysis(book) {
-  const verd = { bull: '#22c55e', bear: '#ef4444', neut: '#eab308', new: '#38bdf8' };
-  const vmap = { bullish: 'bull', bearish: 'bear', neutral: 'neut' };
-  const sideBadge = s => s === 'long'
-    ? '<span style="color:#22c55e;font-weight:600;">LONG</span>'
-    : '<span style="color:#ef4444;font-weight:600;">SHORT</span>';
-  const sg = v => (v == null || isNaN(v)) ? '—' : (v < 0 ? '−' : '+') + Math.round(Math.abs(v));
-  const biasColor = n => (n == null || isNaN(n) || n === 0) ? 'var(--text-muted)' : n > 0 ? '#22c55e' : '#ef4444';
-  const fmtAnalyst = a => {
-    if (!a || a.consensus == null) return '—';
-    const pt = a.priceTarget != null ? ' $' + fmt(a.priceTarget, a.priceTarget < 10 ? 2 : 0) : '';
-    const up = a.upsidePct != null ? ` (${a.upsidePct >= 0 ? '+' : '−'}${Math.round(Math.abs(a.upsidePct))}%)` : '';
-    return esc(a.consensus + pt + up);
-  };
-
   const microMap = {}; (micro.tickers || []).forEach(t => { if (t && t.ticker) microMap[String(t.ticker).toUpperCase()] = t; });
-  const biasMap = {};  (micro.commodityBias || []).forEach(b => { if (b && b.material) biasMap[b.material] = b; });
+  const fmtN = (v, d = 1) => (v === null || v === undefined) ? '—' : Number(v).toFixed(d);
+  const sideBadge = s => s === 'long'
+    ? '<span class="pick-badge long">LONG</span>'
+    : '<span class="pick-badge short">SHORT</span>';
+  const verdictBadge = v => v
+    ? `<span class="pick-badge ${v === 'bullish' ? 'long' : v === 'bearish' ? 'short' : 'neutral'}">${v}</span>`
+    : '<span class="pick-badge new">NEW</span>';
 
-  const rows = book.positions.map((p, i) => {
-    const m = microMap[p.ticker];
-    const bias = m && biasMap[m.material] ? biasMap[m.material].score : null;
-    return {
-      n: i + 1, ticker: p.ticker, side: p.side, shares: p.shares,
-      comp: (m && m.composite != null) ? m.composite : null,
-      verdict: m ? (vmap[m.microVerdict] || 'neut') : 'new',
-      analyst: m ? fmtAnalyst(m.analyst) : '—',
-      mom: m ? (sg(m.vs50) + '/' + sg(m.vs200)) : '—',
-      material: m ? (m.material || '') : '', bias,
-      tradable: m ? m.tradable : null,
-      subs: m ? m.subs : null, coverage: m ? m.coverage : null,
-      thesis: m ? m.thesis : '', catalysts: m ? m.catalysts : [], risks: m ? m.risks : [],
-      inUniverse: !!m,
-    };
-  });
-  const matched = rows.filter(r => r.inUniverse).length;
+  const rows = book.positions.map((p, i) => ({ n: i + 1, p, m: microMap[p.ticker] || null }));
+  const matched = rows.filter(r => r.m).length;
 
   const header = `
     <div class="table-panel" style="margin-bottom:16px;">
@@ -3252,34 +3229,52 @@ function buildRebalanceAnalysis(book) {
         <div style="font-size:12px;color:var(--text-muted);">${rows.length} names · ${matched} in analysis universe · micro as of ${esc(String(micro.researchAsOf || micro.updatedAt || '').slice(0, 10))}</div>
       </div>
       <div style="padding:2px 4px 8px;color:var(--text-dim);font-size:12.5px;line-height:1.5;">
-        Micro analysis for <b>${esc(book.name)}</b>, shown in place of the default proposed table: composite 0–100, verdict,
-        analyst consensus &amp; target, momentum vs 50/200-DMA, metal directional bias, and IBKR tradability per name.
-        Click a row for the thesis. Analysis, not investment advice.
+        Micro analysis for <b>${esc(book.name)}</b>, shown in place of the default proposed table.
+        <b>Click any row for the full pick card</b> — live position, recommendation, composite score breakdown,
+        AI-hedge-fund verdict, analysts &amp; sentiment, fundamentals, commodity linkage, thesis, catalysts and risks —
+        exactly the detail from the Stock Picks tab. Analysis, not investment advice.
       </div>
     </div>`;
 
   const tbl = `
     <div class="table-panel" style="margin-bottom:16px;">
-      <div class="table-header"><div class="table-title">Per-name analysis (${rows.length})</div></div>
+      <div class="table-header">
+        <div class="table-title">Per-name analysis (${rows.length})</div>
+        <div style="font-size:11px;color:var(--text-muted);">Click a row for the full detail card</div>
+      </div>
       <div class="table-wrapper"><table>
         <thead><tr>
           <th style="text-align:left;">#</th><th style="text-align:left;">Ticker</th><th style="text-align:left;">Side</th><th>Shares</th>
-          <th>Comp</th><th style="text-align:left;">Analyst</th><th>Mom 50/200</th><th style="text-align:left;">Bias</th><th>Trad</th>
+          <th style="text-align:left;">Material</th><th style="text-align:left;">Composite</th>
+          <th>Mom</th><th>Cmdty</th><th>Analyst</th><th>vs50</th><th style="text-align:left;">Verdict</th><th>Trad</th>
         </tr></thead>
-        <tbody>${rows.map(r => { const ex = rebalanceExpanded === r.ticker; return `
-          <tr onclick="toggleRebalanceDetail('${esc(r.ticker)}')" style="cursor:pointer;">
+        <tbody>${rows.map(r => {
+          const p = r.p, m = r.m, ex = rebalanceExpanded === p.ticker;
+          const tkEsc = String(p.ticker).replace(/'/g, "\\'");
+          const sus = (m && m.quoteSuspect) ? ' <span title="quote data suspect">⚠</span>' : '';
+          const compCell = (m && m.composite != null)
+            ? `<div class="score-cell"><div class="score-bar"><div style="width:${Math.min(100, m.composite)}%;background:${scoreColor(m.composite)};"></div></div><b style="color:${scoreColor(m.composite)};">${fmtN(m.composite)}</b></div>`
+            : '<span style="color:var(--text-muted);">—</span>';
+          const vs50 = (m && m.vs50 != null)
+            ? `<span style="color:${m.vs50 >= 0 ? 'var(--green)' : 'var(--red)'};">${(m.vs50 > 0 ? '+' : '') + m.vs50.toFixed(1)}%</span>` : '—';
+          return `
+          <tr class="picks-row" onclick="toggleRebalanceDetail('${tkEsc}')">
             <td style="color:var(--text-muted);">${r.n}</td>
-            <td style="text-align:left;font-weight:700;"><span style="color:var(--text-dim);font-weight:400;font-size:11px;">${ex ? '▾' : '▸'}</span> ${esc(r.ticker)}</td>
-            <td style="text-align:left;">${sideBadge(r.side)}</td>
-            <td>${fmt(r.shares, 0)}</td>
-            <td style="font-weight:600;color:${r.comp != null ? scoreColor(r.comp) : 'var(--text-muted)'};">${r.comp != null ? r.comp : '—'}<span style="font-weight:400;font-size:11px;color:${verd[r.verdict] || 'var(--text-muted)'};"> ${r.inUniverse ? esc(r.verdict) : ''}</span></td>
-            <td style="text-align:left;font-size:12px;">${r.analyst}</td>
-            <td style="font-size:12px;">${esc(r.mom)}</td>
-            <td style="text-align:left;color:${biasColor(r.bias)};white-space:nowrap;font-size:12px;">${esc(r.material)}${r.bias != null ? ' ' + sg(r.bias) : ''}</td>
-            <td style="font-weight:700;color:${r.tradable == null ? 'var(--text-muted)' : (r.tradable ? '#22c55e' : '#ef4444')};">${r.tradable == null ? '—' : (r.tradable ? 'Y' : 'N')}</td>
-          </tr>${ex ? `<tr><td colspan="9" style="padding:0;background:rgba(0,0,0,0.15);border-top:2px solid var(--accent);">${buildRebalanceDetail(r)}</td></tr>` : ''}`; }).join('')}</tbody>
+            <td style="text-align:left;font-weight:700;"><span style="color:var(--text-dim);font-weight:400;font-size:11px;">${ex ? '▾' : '▸'}</span> ${esc(p.ticker)}${sus}</td>
+            <td style="text-align:left;">${sideBadge(p.side)}</td>
+            <td>${fmt(p.shares, 0)}</td>
+            <td style="text-align:left;color:var(--text-muted);font-size:11px;">${m ? esc(m.material || '—') : '—'}</td>
+            <td style="text-align:left;">${compCell}</td>
+            <td>${m ? fmtN(m.subs && m.subs.momentum) : '—'}</td>
+            <td>${m ? fmtN(m.subs && m.subs.commodity) : '—'}</td>
+            <td>${m ? fmtN(m.subs && m.subs.analyst) : '—'}</td>
+            <td>${vs50}</td>
+            <td style="text-align:left;">${m ? verdictBadge(m.microVerdict) : '<span class="pick-badge new">NEW</span>'}</td>
+            <td style="font-weight:700;color:${m == null ? 'var(--text-muted)' : (m.tradable ? '#22c55e' : '#ef4444')};">${m == null ? '—' : (m.tradable ? 'Y' : 'N')}</td>
+          </tr>${ex ? `<tr class="picks-detail"><td colspan="12" style="text-align:left;">${m ? buildPickDetail(m) : '<div style="padding:12px 16px;color:var(--text-muted);">Outside the micro-analysis universe — no detailed card for this name.</div>'}</td></tr>` : ''}`;
+        }).join('')}</tbody>
       </table></div>
-      <div style="padding:8px 6px 2px;color:var(--text-muted);font-size:11px;">Names outside the micro-analysis universe show “—”. Analysis, not investment advice.</div>
+      <div style="padding:8px 6px 2px;color:var(--text-muted);font-size:11px;">Names outside the micro-analysis universe show “—”. Same per-name detail as the Stock Picks tab. Analysis, not investment advice.</div>
     </div>`;
 
   return header + tbl;
