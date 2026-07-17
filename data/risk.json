@@ -1,33 +1,33 @@
 {
- "updatedAt": "2026-07-17T14:56:57+00:00",
+ "updatedAt": "2026-07-17T15:08:37+00:00",
  "asOf": "2026-07-17",
  "window": 90,
  "obs": 27,
  "headline": {
-  "annVol": 16.7,
-  "betaSpy": 0.46,
-  "betaXme": 0.16,
-  "var1d95": -235,
-  "var1d99": -456,
-  "hhi": 647.0,
-  "effectiveN": 15.4
+  "annVol": 16.9,
+  "betaSpy": 0.43,
+  "betaXme": 0.15,
+  "var1d95": -236,
+  "var1d99": -458,
+  "hhi": 646.0,
+  "effectiveN": 15.5
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "16.7%",
+   "v": "16.9%",
    "note": "from the account's daily TWR, 27 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.46",
+   "v": "0.43",
    "note": "25 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.16",
+   "v": "0.15",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "\u2212$235",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (\u2212$456)",
+   "v": "\u2212$236",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (\u2212$458)",
    "tone": "neg"
   },
   {
@@ -57,8 +57,8 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "647 / 15.4",
-   "note": "27 names, ~15.4 effective",
+   "v": "646 / 15.5",
+   "note": "27 names, ~15.5 effective",
    "tone": "pos"
   }
  ],
@@ -787,16 +787,16 @@
   {
    "ticker": "CLF",
    "side": "short",
-   "weightPct": -6.3,
-   "riskContribPct": 23.5,
-   "mVaR": 29.8
+   "weightPct": -6.2,
+   "riskContribPct": 23.3,
+   "mVaR": 29.3
   },
   {
    "ticker": "STLD",
    "side": "short",
    "weightPct": -6.5,
    "riskContribPct": 16.0,
-   "mVaR": 20.3
+   "mVaR": 20.2
   },
   {
    "ticker": "NUE",
@@ -810,26 +810,26 @@
    "side": "short",
    "weightPct": -7.3,
    "riskContribPct": 11.5,
-   "mVaR": 14.5
+   "mVaR": 14.4
   },
   {
    "ticker": "BATT",
    "side": "short",
    "weightPct": -3.8,
    "riskContribPct": 7.0,
-   "mVaR": 8.9
+   "mVaR": 8.8
   },
   {
    "ticker": "TSLA",
    "side": "short",
    "weightPct": -3.5,
-   "riskContribPct": 6.5,
-   "mVaR": 8.2
+   "riskContribPct": 6.4,
+   "mVaR": 8.1
   },
   {
    "ticker": "KARS",
    "side": "short",
-   "weightPct": -3.7,
+   "weightPct": -3.8,
    "riskContribPct": 5.2,
    "mVaR": 6.6
   },
@@ -838,7 +838,14 @@
    "side": "short",
    "weightPct": -3.7,
    "riskContribPct": 5.1,
-   "mVaR": 6.5
+   "mVaR": 6.4
+  },
+  {
+   "ticker": "SGML",
+   "side": "long",
+   "weightPct": 3.4,
+   "riskContribPct": 3.4,
+   "mVaR": 4.3
   },
   {
    "ticker": "SBSW",
@@ -846,13 +853,6 @@
    "weightPct": -1.0,
    "riskContribPct": 3.3,
    "mVaR": 4.2
-  },
-  {
-   "ticker": "SGML",
-   "side": "long",
-   "weightPct": 3.4,
-   "riskContribPct": 3.2,
-   "mVaR": 4.1
   },
   {
    "ticker": "PLG",
@@ -872,8 +872,8 @@
    "ticker": "HL",
    "side": "short",
    "weightPct": -0.7,
-   "riskContribPct": 2.0,
-   "mVaR": 2.5
+   "riskContribPct": 1.9,
+   "mVaR": 2.4
   },
   {
    "ticker": "PAAS",
@@ -887,7 +887,7 @@
    "side": "short",
    "weightPct": -0.5,
    "riskContribPct": 1.8,
-   "mVaR": 2.3
+   "mVaR": 2.2
   },
   {
    "ticker": "AG",
@@ -921,15 +921,15 @@
    "ticker": "ALB",
    "side": "long",
    "weightPct": 3.3,
-   "riskContribPct": -0.0,
-   "mVaR": -0.1
+   "riskContribPct": 0.0,
+   "mVaR": 0.1
   },
   {
    "ticker": "SQM",
    "side": "long",
    "weightPct": 3.7,
-   "riskContribPct": -0.2,
-   "mVaR": -0.2
+   "riskContribPct": -0.1,
+   "mVaR": -0.1
   },
   {
    "ticker": "CC",
@@ -949,15 +949,15 @@
    "ticker": "ATI",
    "side": "long",
    "weightPct": 1.7,
-   "riskContribPct": -3.3,
-   "mVaR": -4.2
+   "riskContribPct": -3.4,
+   "mVaR": -4.3
   },
   {
    "ticker": "LAC",
    "side": "long",
-   "weightPct": 3.1,
-   "riskContribPct": -4.8,
-   "mVaR": -6.1
+   "weightPct": 3.2,
+   "riskContribPct": -4.7,
+   "mVaR": -6.0
   }
  ],
  "coverageNote": "25 of 27 holdings (2 OTC excluded)"
