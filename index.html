@@ -167,7 +167,7 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
 .refresh-btn[data-state="loading"] .refresh-ico { animation: spin 1s linear infinite; display: inline-block; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ── Rebalance → "Load positions into portfolio" ────────────────────── */
+/* ── Rebalance → upload positions to analyse ────────────────────────── */
 .pos-up-btn {
   display: inline-flex; align-items: center; gap: 6px;
   height: 30px; padding: 0 14px; border-radius: 8px; cursor: pointer;
@@ -1346,8 +1346,7 @@ let positionSide = 'long';
 let positionCategoryFilter = '';
 let positionSearch = '';
 let positionSort = { key: null, dir: 1 };
-let livePositions = [];          // last book loaded from data/positions.json (live IBKR)
-let positionsOverride = null;    // {name, when, positions[]} when the user has loaded a custom book
+let rebalUpload = null;          // {name, when, positions[]} uploaded book analysed in the Rebalance tab
 let pendingUpload = null;        // {name, positions[], warnings[], error} staged file, pre-apply
 
 async function loadData() {
@@ -1375,10 +1374,7 @@ async function loadData() {
       fetch('data/positioning.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
       fetch('data/macro_history.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
     ]);
-    livePositions = posRes.positions || [];
-    // A user-uploaded book (Rebalance → "Load positions into portfolio") overrides
-    // the live feed until reverted, so it survives reloads and the auto-refresh.
-    positions = positionsOverride ? positionsOverride.positions : livePositions;
+    positions = posRes.positions || [];
     account   = accRes || {};
     pnl       = Array.isArray(pnlRes) ? pnlRes : [];
     benchmarks = bmRes.tickers || {};
@@ -2944,6 +2940,8 @@ function renderRebalance() {
   const d = rebalance || {};
   const rows = d.rows || [];
   const uploader = buildPositionsUploader();
+  // An uploaded book replaces the default proposed table with an analysis of those names.
+  if (rebalUpload) { el.innerHTML = uploader + buildRebalanceAnalysis(rebalUpload); return; }
   if (!rows.length) { el.innerHTML = uploader + '<div class="table-panel" style="padding:24px;color:var(--text-muted);">Awaiting rebalance data</div>'; return; }
   const tone = { pos: '#22c55e', warn: '#eab308', neg: '#ef4444' };
   const verd = { bull: '#22c55e', bear: '#ef4444', neut: '#eab308', new: '#38bdf8' };
@@ -3007,22 +3005,22 @@ function renderRebalance() {
   el.innerHTML = uploader + head + tbl + sumHtml;
 }
 
-// ── Rebalance → "Load positions into portfolio" ─────────────────────
-// Static site, no backend: an uploaded book is parsed in the browser and applied
-// to the live dashboard view, saved to localStorage so it survives reloads and the
-// 5-minute auto-refresh. Nothing here places a trade or touches the IBKR account.
-// "Download positions.json" lets the owner commit the book so the shared site updates.
-const POS_OVERRIDE_KEY = 'metallica_positions_override';
+// ── Rebalance → upload a book and analyse it here ───────────────────
+// Static site, no backend: an uploaded book is parsed in the browser and, while
+// active, REPLACES the default proposed table in the Rebalance tab with our micro
+// analysis of those names. Saved to localStorage so it survives reloads. It never
+// touches the portfolio / Positions tab and never places a trade.
+const REBAL_BOOK_KEY = 'metallica_rebalance_book';
 
-function loadPositionsOverride() {
+function loadRebalanceBook() {
   try {
-    const o = JSON.parse(localStorage.getItem(POS_OVERRIDE_KEY) || 'null');
+    const o = JSON.parse(localStorage.getItem(REBAL_BOOK_KEY) || 'null');
     if (o && Array.isArray(o.positions) && o.positions.length) return o;
   } catch (e) {}
   return null;
 }
-function savePositionsOverride(o) {
-  try { localStorage.setItem(POS_OVERRIDE_KEY, JSON.stringify(o)); } catch (e) {}
+function saveRebalanceBook(o) {
+  try { localStorage.setItem(REBAL_BOOK_KEY, JSON.stringify(o)); } catch (e) {}
 }
 
 // Coerce one loose record (JSON object or CSV row) into the position schema the
@@ -3129,53 +3127,38 @@ function handlePositionsFile(input) {
   reader.readAsText(file);
 }
 
-function applyPendingPositions() {
+function applyRebalanceBook() {
   if (!pendingUpload || !pendingUpload.positions.length) return;
-  positionsOverride = { name: pendingUpload.name, when: new Date().toISOString(), positions: pendingUpload.positions };
-  savePositionsOverride(positionsOverride);
-  positions = positionsOverride.positions;
+  rebalUpload = { name: pendingUpload.name, when: new Date().toISOString(), positions: pendingUpload.positions };
+  saveRebalanceBook(rebalUpload);
   pendingUpload = null;
-  renderAll();
-  showTab('positions');   // jump to the portfolio so the change is visible
+  rebalanceExpanded = null;
+  renderRebalance();   // Rebalance-tab only — the portfolio / Positions tab is never touched
 }
 
-function revertPositionsOverride() {
-  positionsOverride = null;
-  try { localStorage.removeItem(POS_OVERRIDE_KEY); } catch (e) {}
-  positions = livePositions;
+function clearRebalanceBook() {
+  rebalUpload = null;
+  try { localStorage.removeItem(REBAL_BOOK_KEY); } catch (e) {}
   pendingUpload = null;
-  renderAll();
+  rebalanceExpanded = null;
+  renderRebalance();
 }
 
 function clearPendingUpload() { pendingUpload = null; renderRebalance(); }
-
-function downloadPositionsJson() {
-  const src = (pendingUpload && pendingUpload.positions.length) ? pendingUpload.positions
-            : (positionsOverride ? positionsOverride.positions : positions);
-  if (!src || !src.length) return;
-  const payload = { updatedAt: new Date().toISOString(), positions: src };
-  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'positions.json';
-  document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
 
 function buildPositionsUploader() {
   const bookSummary = list => {
     const L = list.filter(p => p.side === 'long').length;
     const S = list.filter(p => p.side === 'short').length;
-    const gross = list.reduce((s, p) => s + Math.abs(p.mktValue || 0), 0);
-    return `${list.length} names · ${L} long · ${S} short · gross ${fmtDollar(gross)}`;
+    return `${list.length} names · ${L} long · ${S} short`;
   };
 
   let banner = '';
-  if (positionsOverride) {
+  if (rebalUpload) {
     banner = `<div class="pos-override-banner">
-      <span style="flex:1 1 260px;">⚠️ <b>Uploaded book active</b> — showing <b>${esc(positionsOverride.name)}</b>
-      (${esc(bookSummary(positionsOverride.positions))}), loaded ${esc(fmtTime(new Date(positionsOverride.when)))}, not live IBKR data.</span>
-      <button class="pos-up-btn danger" onclick="revertPositionsOverride()">Revert to live IBKR</button>
+      <span style="flex:1 1 260px;">📊 <b>Analysing uploaded book</b> — <b>${esc(rebalUpload.name)}</b>
+      (${esc(bookSummary(rebalUpload.positions))}), loaded ${esc(fmtTime(new Date(rebalUpload.when)))}, shown instead of the default proposed table.</span>
+      <button class="pos-up-btn danger" onclick="clearRebalanceBook()">Back to default rebalance</button>
     </div>`;
   }
 
@@ -3193,8 +3176,7 @@ function buildPositionsUploader() {
       <div style="font-size:12.5px;color:var(--text-dim);">Parsed <b>${esc(pendingUpload.name)}</b> — ${esc(bookSummary(pendingUpload.positions))}</div>
       ${warn}
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
-        <button class="pos-up-btn primary" onclick="applyPendingPositions()">Apply to portfolio</button>
-        <button class="pos-up-btn" onclick="downloadPositionsJson()">Download positions.json</button>
+        <button class="pos-up-btn primary" onclick="applyRebalanceBook()">Analyse in Rebalance</button>
         <button class="pos-up-btn" onclick="clearPendingUpload()">Cancel</button>
       </div>
     </div>`;
@@ -3202,28 +3184,105 @@ function buildPositionsUploader() {
 
   return `<div class="table-panel" style="margin-bottom:16px;">
     <div class="table-header">
-      <div class="table-title">Load positions into portfolio</div>
-      <div style="font-size:11px;color:var(--text-muted);">Upload a book instead of editing it in code</div>
+      <div class="table-title">Upload positions to analyse</div>
+      <div style="font-size:11px;color:var(--text-muted);">See the rebalance analysis for a book you upload</div>
     </div>
     <div style="padding:4px 4px 12px;">
       ${banner}
       <div style="font-size:12.5px;color:var(--text-dim);line-height:1.6;margin-bottom:10px;">
-        Upload a positions file — a <b>.json</b> in the <code>positions.json</code> shape (or a bare array), or a
-        <b>.csv</b> with <code>Symbol</code> / <code>Position</code> / <code>Avg&nbsp;Price</code> / <code>Market&nbsp;Price</code>
-        columns. It loads straight into this dashboard and is saved in your browser, so it survives reloads and the
-        5-minute auto-refresh — no need to update it from code.
-        <b>Client-side only: nothing here places a trade or changes your IBKR account.</b>
-        To update the live site for everyone, use <b>Download positions.json</b> and commit it to <code>data/</code>.
+        Upload a set of positions — a <b>.json</b> (an array of <code>{ticker, side, shares}</code>, or the
+        <code>positions.json</code> shape) or a <b>.csv</b> with a <code>Symbol</code> column (plus optional
+        <code>Position</code>/<code>Side</code>). The Rebalance tab then runs its per-name analysis on them —
+        composite score, verdict, analysts, momentum, metal bias, tradability and thesis — <b>in place of the default
+        proposed table</b>. Saved in your browser so it survives reloads.
+        <b>This does not change your portfolio (Positions tab) and never places a trade.</b>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
         <label class="pos-up-btn primary" style="cursor:pointer;">📄 Choose file (.json / .csv)
           <input type="file" accept=".json,.csv,application/json,text/csv" onchange="handlePositionsFile(this)" style="display:none;">
         </label>
-        <button class="pos-up-btn" onclick="downloadPositionsJson()" title="Download the current book as data/positions.json">⬇ Download current positions.json</button>
       </div>
       ${preview}
     </div>
   </div>`;
+}
+
+// Join each uploaded position to its micro analysis and render, in the Rebalance
+// tab, a per-name table in the same style as the default proposed review.
+function buildRebalanceAnalysis(book) {
+  const verd = { bull: '#22c55e', bear: '#ef4444', neut: '#eab308', new: '#38bdf8' };
+  const vmap = { bullish: 'bull', bearish: 'bear', neutral: 'neut' };
+  const sideBadge = s => s === 'long'
+    ? '<span style="color:#22c55e;font-weight:600;">LONG</span>'
+    : '<span style="color:#ef4444;font-weight:600;">SHORT</span>';
+  const sg = v => (v == null || isNaN(v)) ? '—' : (v < 0 ? '−' : '+') + Math.round(Math.abs(v));
+  const biasColor = n => (n == null || isNaN(n) || n === 0) ? 'var(--text-muted)' : n > 0 ? '#22c55e' : '#ef4444';
+  const fmtAnalyst = a => {
+    if (!a || a.consensus == null) return '—';
+    const pt = a.priceTarget != null ? ' $' + fmt(a.priceTarget, a.priceTarget < 10 ? 2 : 0) : '';
+    const up = a.upsidePct != null ? ` (${a.upsidePct >= 0 ? '+' : '−'}${Math.round(Math.abs(a.upsidePct))}%)` : '';
+    return esc(a.consensus + pt + up);
+  };
+
+  const microMap = {}; (micro.tickers || []).forEach(t => { if (t && t.ticker) microMap[String(t.ticker).toUpperCase()] = t; });
+  const biasMap = {};  (micro.commodityBias || []).forEach(b => { if (b && b.material) biasMap[b.material] = b; });
+
+  const rows = book.positions.map((p, i) => {
+    const m = microMap[p.ticker];
+    const bias = m && biasMap[m.material] ? biasMap[m.material].score : null;
+    return {
+      n: i + 1, ticker: p.ticker, side: p.side, shares: p.shares,
+      comp: (m && m.composite != null) ? m.composite : null,
+      verdict: m ? (vmap[m.microVerdict] || 'neut') : 'new',
+      analyst: m ? fmtAnalyst(m.analyst) : '—',
+      mom: m ? (sg(m.vs50) + '/' + sg(m.vs200)) : '—',
+      material: m ? (m.material || '') : '', bias,
+      tradable: m ? m.tradable : null,
+      subs: m ? m.subs : null, coverage: m ? m.coverage : null,
+      thesis: m ? m.thesis : '', catalysts: m ? m.catalysts : [], risks: m ? m.risks : [],
+      inUniverse: !!m,
+    };
+  });
+  const matched = rows.filter(r => r.inUniverse).length;
+
+  const header = `
+    <div class="table-panel" style="margin-bottom:16px;">
+      <div class="table-header">
+        <div class="table-title">Uploaded book — rebalance analysis</div>
+        <div style="font-size:12px;color:var(--text-muted);">${rows.length} names · ${matched} in analysis universe · micro as of ${esc(String(micro.researchAsOf || micro.updatedAt || '').slice(0, 10))}</div>
+      </div>
+      <div style="padding:2px 4px 8px;color:var(--text-dim);font-size:12.5px;line-height:1.5;">
+        Micro analysis for <b>${esc(book.name)}</b>, shown in place of the default proposed table: composite 0–100, verdict,
+        analyst consensus &amp; target, momentum vs 50/200-DMA, metal directional bias, and IBKR tradability per name.
+        Click a row for the thesis. Analysis, not investment advice.
+      </div>
+    </div>`;
+
+  const tbl = `
+    <div class="table-panel" style="margin-bottom:16px;">
+      <div class="table-header"><div class="table-title">Per-name analysis (${rows.length})</div></div>
+      <div class="table-wrapper"><table>
+        <thead><tr>
+          <th style="text-align:left;">#</th><th style="text-align:left;">Ticker</th><th style="text-align:left;">Side</th><th>Shares</th>
+          <th>Comp</th><th style="text-align:left;">Analyst</th><th>Mom 50/200</th><th style="text-align:left;">Bias</th><th>Trad</th>
+        </tr></thead>
+        <tbody>${rows.map(r => { const ex = rebalanceExpanded === r.ticker; return `
+          <tr onclick="toggleRebalanceDetail('${esc(r.ticker)}')" style="cursor:pointer;">
+            <td style="color:var(--text-muted);">${r.n}</td>
+            <td style="text-align:left;font-weight:700;"><span style="color:var(--text-dim);font-weight:400;font-size:11px;">${ex ? '▾' : '▸'}</span> ${esc(r.ticker)}</td>
+            <td style="text-align:left;">${sideBadge(r.side)}</td>
+            <td>${fmt(r.shares, 0)}</td>
+            <td style="font-weight:600;color:${r.comp != null ? scoreColor(r.comp) : 'var(--text-muted)'};">${r.comp != null ? r.comp : '—'}<span style="font-weight:400;font-size:11px;color:${verd[r.verdict] || 'var(--text-muted)'};"> ${r.inUniverse ? esc(r.verdict) : ''}</span></td>
+            <td style="text-align:left;font-size:12px;">${r.analyst}</td>
+            <td style="font-size:12px;">${esc(r.mom)}</td>
+            <td style="text-align:left;color:${biasColor(r.bias)};white-space:nowrap;font-size:12px;">${esc(r.material)}${r.bias != null ? ' ' + sg(r.bias) : ''}</td>
+            <td style="font-weight:700;color:${r.tradable == null ? 'var(--text-muted)' : (r.tradable ? '#22c55e' : '#ef4444')};">${r.tradable == null ? '—' : (r.tradable ? 'Y' : 'N')}</td>
+          </tr>${ex ? `<tr><td colspan="9" style="padding:0;background:rgba(0,0,0,0.15);border-top:2px solid var(--accent);">${buildRebalanceDetail(r)}</td></tr>` : ''}`; }).join('')}</tbody>
+      </table></div>
+      <div style="padding:8px 6px 2px;color:var(--text-muted);font-size:11px;">Names outside the micro-analysis universe show “—”. Analysis, not investment advice.</div>
+    </div>`;
+
+  return header + tbl;
 }
 
 function showTab(name) {
@@ -3370,7 +3429,7 @@ function pnlColor(id, val) {
 // ═══════════════════════════════════════════ INIT ══
 (async () => {
   applyTheme(localStorage.getItem('metallica_theme') || 'dark');
-  positionsOverride = loadPositionsOverride();   // restore an uploaded book from a prior session
+  rebalUpload = loadRebalanceBook();   // restore an uploaded book analysed in the Rebalance tab
   if (sessionStorage.getItem('metallica_auth') === '1') {
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('dashboard').style.display = 'block';
