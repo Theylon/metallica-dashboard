@@ -1615,11 +1615,7 @@ function buildPickDetail(r) {
       + `<span style="color:var(--text-muted);">(bull ${tally.bull ?? 0} / bear ${tally.bear ?? 0} / neutral ${tally.neutral ?? 0})</span></div>`;
     const bar = a => `<span class="subscore" title="${(a.reasoning || '').replace(/"/g, '&quot;')}">${a.name} `
       + `<span class="score-bar"><span style="display:block;height:100%;border-radius:3px;width:${a.confidence}%;background:${hfColor(a.signal)};"></span></span> <b>${a.confidence}</b></span>`;
-    const others = hf.analysts.filter(a => a.type !== 'persona');
-    const personas = hf.analysts.filter(a => a.type === 'persona');
-    const subhead = t => `<div style="color:var(--text-dim);font-size:10px;margin:5px 0 1px;letter-spacing:.3px;">${t}</div>`;
-    if (others.length) body += subhead('Analytical & managers') + `<div class="subscore-grid">${others.map(bar).join('')}</div>`;
-    if (personas.length) body += subhead('Investor personas') + `<div class="subscore-grid">${personas.map(bar).join('')}</div>`;
+    if (hf.analysts.length) body += `<div class="subscore-grid">${hf.analysts.map(bar).join('')}</div>`;
     const cv = r.hedgeCrossVal;
     if (cv && cv.agreement) {
       const cvCls = cv.agreement === 'agree' ? 'long' : cv.agreement === 'conflict' ? 'short' : 'neutral';

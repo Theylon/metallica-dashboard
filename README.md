@@ -115,7 +115,7 @@ Action (`scripts/micro_refresh.py`).
 
 Each card also carries an **AI Hedge Fund** multi-analyst verdict — concept ported from
 [virattt/ai-hedge-fund](https://github.com/virattt/ai-hedge-fund) (MIT; no upstream code
-copied). A full roster (4 analytical agents + 9 investor personas + risk/portfolio
+copied). A roster of lenses (4 analytical agents + a risk/portfolio
 manager) gives each name a bullish/bearish/neutral signal, conviction, and an aggregate
 action. It is **display-only** (does not change the composite). A deterministic fallback
 (`scripts/gen_hedge_auto.py`) keeps all names populated even without a live research run.
