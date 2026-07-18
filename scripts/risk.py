@@ -45,11 +45,20 @@ def _is_otc(ticker):
 
 # ── return series ────────────────────────────────────────────────────────────
 def daily_twr_returns(pnl):
-    """Collapse pnl.json (mixed daily + intraday) to one TWR return per calendar day."""
+    """Collapse pnl.json (mixed daily + intraday) to one TWR return per calendar day.
+
+    Rows without a numeric twr are skipped (rather than KeyError) so a pnl.json
+    written in another schema degrades to "no metrics" instead of crashing the
+    refresh. Leading flat days (twr unchanged, i.e. pre-inception placeholders)
+    are collapsed to a single baseline so they can't inflate the obs count.
+    """
     by_day = {}
     for p in pnl:
-        by_day[p["timestamp"][:10]] = p          # chronological → last point of the day wins
+        if isinstance(p.get("twr"), (int, float)):
+            by_day[p["timestamp"][:10]] = p      # chronological → last point of the day wins
     days = sorted(by_day)
+    while len(days) > 1 and by_day[days[0]]["twr"] == by_day[days[1]]["twr"]:
+        days.pop(0)
     rets, dates = [], []
     for i in range(1, len(days)):
         prev = 1 + by_day[days[i - 1]]["twr"] / 100.0
@@ -108,7 +117,10 @@ def hist_var(rets, conf):
 def max_drawdown_twr(pnl):
     by_day = {}
     for p in pnl:
-        by_day[p["timestamp"][:10]] = p["twr"]
+        if isinstance(p.get("twr"), (int, float)):
+            by_day[p["timestamp"][:10]] = p["twr"]
+    if not by_day:
+        return None
     curve = [1 + by_day[d] / 100.0 for d in sorted(by_day)]
     peak, mdd = curve[0], 0.0
     for v in curve:
@@ -212,7 +224,7 @@ def matrix_and_contributions(positions, nav, price_hist):
 
 # ── assemble ─────────────────────────────────────────────────────────────────
 def _fmt_usd(x):
-    return f"−${abs(x):,.0f}" if x < 0 else f"${x:,.0f}"
+    return f"-${abs(x):,.0f}" if x < 0 else f"${x:,.0f}"
 
 
 def build_risk():

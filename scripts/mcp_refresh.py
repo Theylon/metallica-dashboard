@@ -18,17 +18,19 @@ import json, datetime, pathlib
 SRC = pathlib.Path("/tmp")
 DATA = pathlib.Path(__file__).resolve().parent.parent / "data"
 
-# ticker -> dashboard category badge (mirrors scripts/fetch.py)
+# ticker -> dashboard category badge
 CATEGORY = {
     "SQM": "Lithium", "ALB": "Lithium", "SGML": "Lithium", "TSLA": "Lithium",
-    "LIT": "Lithium", "BATT": "Lithium",
+    "LIT": "Lithium", "BATT": "Lithium", "LAC": "Lithium", "KARS": "Lithium",
     "FCX": "Copper", "SCCO": "Copper", "HBM": "Copper", "COPX": "Copper",
-    "NUE": "Steel", "CLF": "Steel", "RS": "Steel", "STLD": "Steel",
-    "AA": "Aluminum", "CENX": "Aluminum", "KALU": "Aluminum",
+    "NUE": "Steel", "CLF": "Steel", "RS": "Steel", "STLD": "Steel", "CMC": "Steel",
+    "AA": "Aluminum", "CENX": "Aluminum", "KALU": "Aluminum", "CSTM": "Aluminum",
     "MP": "Rare Earth", "REMX": "Rare Earth", "UUUU": "Uranium",
     "GLD": "Precious", "SLV": "Precious", "PALL": "Precious", "SBSW": "Precious",
+    "AG": "Precious", "CDE": "Precious", "HL": "Precious", "PAAS": "Precious",
+    "BVN": "Precious", "PLG": "Precious",
     "BHP": "Diversified", "RIO": "Diversified", "VALE": "Diversified",
-    "XME": "Mining ETF",
+    "XME": "Mining ETF", "BEPC": "Renewables",
 }
 
 # Benchmark ETFs plotted on the dashboard chart.
@@ -109,24 +111,47 @@ def main():
             "realizedPnl": round(float(p.get("realized_pnl", 0)), 2),
             "dailyPnl": round(float(p.get("daily_pnl", 0)), 2),
             "currency": p.get("currency", "USD"),
-            "category": CATEGORY.get(tkr.upper(), "Other"),
+            "category": CATEGORY.get(tkr.split(" @")[0].upper(), "Other"),
         })
     (DATA / "positions.json").write_text(
         json.dumps({"updatedAt": now, "positions": positions}, indent=2))
 
     # ── Account ───────────────────────────────────────────────────────────
     nav = float(summary.get("net_liquidation") or 0)
+    cash = round(float(summary.get("total_cash_value", 0)), 2)
     bal_list = balances.get("balances", []) or [{}]
     bal = next((b for b in bal_list if b.get("currency") in ("BASE", "USD")), bal_list[0])
+    # dailyPnl sums the RAW dump — including qty-0 rows exited today, whose
+    # realized-today P&L is real daily P&L even though their table row is gone.
+    # dailyPnlClosed carries that closed-name slice separately so the header
+    # always reconciles: dailyPnl == Σ(table dailyPnl) + dailyPnlClosed.
     daily = round(sum(float(p.get("daily_pnl", 0)) for p in posdata["positions"]), 2)
+    daily_closed = round(sum(float(p.get("daily_pnl", 0)) for p in posdata["positions"]
+                             if float(p.get("position", 0)) == 0), 2)
+    # unrealizedPnl comes from the positions just written (not the balances
+    # endpoint, a different snapshot moment) so the KPI always equals the table
+    # sum. nav stays IBKR's official net_liquidation (includes accruals);
+    # navResidual tracks the inherent multi-endpoint skew for verify_data.py.
+    unrealized = round(sum(p["unrealizedPnl"] for p in positions), 2)
+    # realizedPnl is IBKR's day-realized figure; realizedPnlTotal is the
+    # since-inception total FIFO-matched by scripts/journal.py.
+    realized_total = None
+    try:
+        journal = json.loads((DATA / "journal.json").read_text())
+        realized_total = journal["aggregate"]["totalRealized"]
+    except Exception:
+        pass
     navd = nav or 1
     account = {
         "updatedAt": now,
         "nav": round(nav, 2),
-        "cash": round(float(summary.get("total_cash_value", 0)), 2),
-        "unrealizedPnl": round(float(bal.get("unrealized_pnl", 0)), 2),
+        "cash": cash,
+        "unrealizedPnl": unrealized,
         "realizedPnl": round(float(bal.get("realized_pnl", 0)), 2),
+        "realizedPnlTotal": realized_total,
         "dailyPnl": daily,
+        "dailyPnlClosed": daily_closed,
+        "navResidual": round(nav - (cash + sum(p["mktValue"] for p in positions)), 2),
         "longExposure": round(long_val / navd * 100, 2),
         "shortExposure": round(short_val / navd * 100, 2),
         "netExposure": round((long_val - short_val) / navd * 100, 2),
@@ -159,6 +184,14 @@ def main():
             "timestamp": dt.isoformat(), "nav": round(nv, 2),
             "twr": round(cps[i] * 100, 4) if cps[i] is not None else None,
         })
+
+    # IBKR's 1Y series leads with flat placeholder days that predate the book's
+    # real inception (twr pinned at 0). They inflate the risk engine's daily-obs
+    # count and damp its vol estimate, so drop them — keeping one flat baseline
+    # row so the first live day still yields a day-over-day return.
+    first_live = next((i for i, h in enumerate(hist) if h["twr"] not in (None, 0)), None)
+    if first_live:
+        hist = hist[first_live - 1:]
 
     # Carry forward today's earlier intraday snapshots (accumulated run by run
     # by the hourly routine) so the dashboard's 1D chart shows a real intraday
