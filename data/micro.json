@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-18T13:23:13+00:00",
+ "updatedAt": "2026-07-18T13:56:12+00:00",
  "researchAsOf": "2026-07-14T11:10:42+00:00",
  "methodology": "Composite 0-100 = momentum 18% + commodity-alignment 18% + deep-dive 14% + analyst 13% + fundamentals 12% + news sentiment 9% + SmartScore 8% + quality 8% (missing sub-scores redistribute). High = long candidate, low = short candidate. Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner, TrueNorth.",
  "macro": "Hawkish Fed (64% Sept hike priced), strong dollar (DXY ~100.8), US-Iran conflict volatility with 60-day peace talks; metals complex broadly correcting after H1 melt-up. Q4 consensus: dollar downtrend -> possible precious rebound window in Q3/Q4.",
@@ -2719,19 +2719,6 @@
     "flags": [],
     "checks": [
      {
-      "field": "priceTarget",
-      "primary": 5.63,
-      "yahoo": 5.58,
-      "deltaPct": -0.9,
-      "status": "agree"
-     },
-     {
-      "field": "recommendation",
-      "primary": "bull",
-      "yahoo": "bull",
-      "status": "agree"
-     },
-     {
       "field": "ebitdaMargin",
       "primary": 0.1083,
       "yahoo": 0.1328,
@@ -2741,12 +2728,9 @@
     ],
     "yahoo": {
      "price": 4.72,
-     "targetMean": 5.5788136,
-     "recommendationKey": "buy",
-     "recommendationMean": 1.83333,
+     "recommendationKey": "none",
      "ebitdaMargins": 0.13281,
-     "returnOnEquity": 0.03066,
-     "numberOfAnalysts": 5
+     "returnOnEquity": 0.03066
     }
    },
    "groupRank": "2/14"
@@ -2885,12 +2869,9 @@
     "checks": [],
     "yahoo": {
      "price": 200.6,
-     "targetMean": 207.46454,
-     "recommendationKey": "buy",
-     "recommendationMean": 2.35714,
+     "recommendationKey": "none",
      "ebitdaMargins": 0.56165004,
-     "returnOnEquity": 0.25724,
-     "numberOfAnalysts": 15
+     "returnOnEquity": 0.25724
     }
    },
    "groupRank": "2/10"
@@ -3207,7 +3188,20 @@
     "modelDerived": true,
     "asOf": "2026-07-14"
    },
-   "hedgeCrossVal": null
+   "hedgeCrossVal": {
+    "agreement": "agree",
+    "flags": [],
+    "checks": [],
+    "yahoo": {
+     "price": 11.815,
+     "targetMean": 13.3125,
+     "recommendationKey": "buy",
+     "recommendationMean": 1.75,
+     "ebitdaMargins": 0.00053,
+     "returnOnEquity": 0.0051700003,
+     "numberOfAnalysts": 8
+    }
+   }
   },
   {
    "ticker": "ATI",
@@ -7237,19 +7231,6 @@
     "flags": [],
     "checks": [
      {
-      "field": "priceTarget",
-      "primary": 381.0,
-      "yahoo": 381.88,
-      "deltaPct": 0.2,
-      "status": "agree"
-     },
-     {
-      "field": "recommendation",
-      "primary": "neutral",
-      "yahoo": "neutral",
-      "status": "agree"
-     },
-     {
       "field": "ebitdaMargin",
       "primary": 0.0912,
       "yahoo": 0.0957,
@@ -7259,12 +7240,9 @@
     ],
     "yahoo": {
      "price": 395.93,
-     "targetMean": 381.875,
-     "recommendationKey": "hold",
-     "recommendationMean": 2.625,
+     "recommendationKey": "none",
      "ebitdaMargins": 0.09571,
-     "returnOnEquity": 0.11326,
-     "numberOfAnalysts": 8
+     "returnOnEquity": 0.11326
     }
    },
    "groupRank": "7/14"
@@ -10658,19 +10636,6 @@
     ],
     "checks": [
      {
-      "field": "priceTarget",
-      "primary": 80.45,
-      "yahoo": 80.09,
-      "deltaPct": -0.4,
-      "status": "agree"
-     },
-     {
-      "field": "recommendation",
-      "primary": "bull",
-      "yahoo": "bull",
-      "status": "agree"
-     },
-     {
       "field": "ebitdaMargin",
       "primary": 0.0563,
       "yahoo": 0.1361,
@@ -10680,12 +10645,9 @@
     ],
     "yahoo": {
      "price": 66.41,
-     "targetMean": 80.09091,
-     "recommendationKey": "buy",
-     "recommendationMean": 1.91667,
+     "recommendationKey": "none",
      "ebitdaMargins": 0.1361,
-     "returnOnEquity": 0.13791999,
-     "numberOfAnalysts": 11
+     "returnOnEquity": 0.13791999
     }
    },
    "groupRank": "9/14"
@@ -11697,43 +11659,7 @@
     "modelDerived": true,
     "asOf": "2026-07-14"
    },
-   "hedgeCrossVal": {
-    "agreement": "mixed",
-    "flags": [
-     "EBITDA margin: Yahoo -96% vs primary -124% (+28pp)"
-    ],
-    "checks": [
-     {
-      "field": "priceTarget",
-      "primary": 23.25,
-      "yahoo": 26.12,
-      "deltaPct": 12.4,
-      "status": "agree"
-     },
-     {
-      "field": "recommendation",
-      "primary": "bull",
-      "yahoo": "bull",
-      "status": "agree"
-     },
-     {
-      "field": "ebitdaMargin",
-      "primary": -1.2387,
-      "yahoo": -0.9565,
-      "deltaPp": 28.2,
-      "status": "flag"
-     }
-    ],
-    "yahoo": {
-     "price": 11.49,
-     "targetMean": 26.125,
-     "recommendationKey": "strong_buy",
-     "recommendationMean": 1.42857,
-     "ebitdaMargins": -0.95653,
-     "returnOnEquity": -0.10778,
-     "numberOfAnalysts": 4
-    }
-   },
+   "hedgeCrossVal": null,
    "groupRank": "2/8"
   },
   {
@@ -16551,7 +16477,41 @@
     "modelDerived": true,
     "asOf": "2026-07-14"
    },
-   "hedgeCrossVal": null,
+   "hedgeCrossVal": {
+    "agreement": "agree",
+    "flags": [],
+    "checks": [
+     {
+      "field": "priceTarget",
+      "primary": 165.25,
+      "yahoo": 159.67,
+      "deltaPct": -3.4,
+      "status": "agree"
+     },
+     {
+      "field": "recommendation",
+      "primary": "neutral",
+      "yahoo": "neutral",
+      "status": "agree"
+     },
+     {
+      "field": "ebitdaMargin",
+      "primary": 0.0956,
+      "yahoo": 0.0981,
+      "deltaPp": 0.3,
+      "status": "agree"
+     }
+    ],
+    "yahoo": {
+     "price": 157.78,
+     "targetMean": 159.66667,
+     "recommendationKey": "hold",
+     "recommendationMean": 3.25,
+     "ebitdaMargins": 0.098129995,
+     "returnOnEquity": 0.18775,
+     "numberOfAnalysts": 3
+    }
+   },
    "groupRank": "4/7"
   },
   {
@@ -17123,12 +17083,9 @@
     "checks": [],
     "yahoo": {
      "price": 0.2,
-     "targetMean": 0.285,
-     "recommendationKey": "hold",
-     "recommendationMean": 3.0,
+     "recommendationKey": "none",
      "ebitdaMargins": 0.0,
-     "returnOnEquity": -0.03173,
-     "numberOfAnalysts": 2
+     "returnOnEquity": -0.03173
     }
    }
   },
@@ -18201,12 +18158,9 @@
     "checks": [],
     "yahoo": {
      "price": 19.33,
-     "targetMean": 25.47857,
-     "recommendationKey": "buy",
-     "recommendationMean": 2.0,
+     "recommendationKey": "none",
      "ebitdaMargins": 0.06482,
-     "returnOnEquity": 0.18576999,
-     "numberOfAnalysts": 14
+     "returnOnEquity": 0.18576999
     }
    }
   },
@@ -27847,12 +27801,9 @@
     "checks": [],
     "yahoo": {
      "price": 0.11,
-     "targetMean": 0.1855,
-     "recommendationKey": "hold",
-     "recommendationMean": 3.5,
+     "recommendationKey": "none",
      "ebitdaMargins": -1.9852,
-     "returnOnEquity": -0.28437,
-     "numberOfAnalysts": 2
+     "returnOnEquity": -0.28437
     }
    }
   },
@@ -30826,12 +30777,9 @@
     ],
     "yahoo": {
      "price": 14.65,
-     "targetMean": 21.89204,
-     "recommendationKey": "buy",
-     "recommendationMean": 2.33333,
+     "recommendationKey": "none",
      "ebitdaMargins": 0.37956002,
-     "returnOnEquity": 0.33491,
-     "numberOfAnalysts": 3
+     "returnOnEquity": 0.33491
     }
    },
    "groupRank": "16/17"
@@ -30959,7 +30907,6 @@
     "checks": [],
     "yahoo": {
      "price": 2.26,
-     "targetMean": 5.2154064,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
      "returnOnEquity": -0.16599001
@@ -31884,5 +31831,5 @@
   }
  ],
  "sizingNote": "NAV ~$10,950. Rules used: single name \u2264 8% NAV (~$875), commodity group \u2264 20% NAV, keep gross \u2264 75%. Current book: gross ~69%, net ~-31%. After the trade list: gross ~64%, net ~-14% \u2014 the deliberate effect is cutting the net short because the three strongest commodity biases (steel, copper, rare earths) are LONG while the shorts stay concentrated in the confirmed-weak complexes (PGM, silver, aluminum smelters).",
- "pricesRefreshedAt": "2026-07-18T13:23:13+00:00"
+ "pricesRefreshedAt": "2026-07-18T13:56:12+00:00"
 }
