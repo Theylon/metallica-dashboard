@@ -25,6 +25,12 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 DUMP = pathlib.Path("/tmp/ibkr_trades.json")
 
+# Fractional-share trading leaves sub-milli-share FIFO residuals (e.g. a 0.0002-share
+# lot) that close as "round-trips" with ~$0 P&L but pad the trade count and can carry a
+# whole commission on a dust lot. Drop anything below this size — the smallest genuine
+# fractional round-trip in the book is ~0.04 shares, so 0.01 cleanly isolates the dust.
+MIN_ROUND_TRIP_QTY = 0.01
+
 
 # ── dump parsing (defensive against field-name variants) ─────────────────────
 def _first(d, *keys, default=None):
@@ -254,6 +260,7 @@ def build():
     if not trades:
         return None
     closed, _open = pair_round_trips(trades)
+    closed = [c for c in closed if c["qty"] >= MIN_ROUND_TRIP_QTY]
     if not closed:
         return None
     cats = _category_map()
