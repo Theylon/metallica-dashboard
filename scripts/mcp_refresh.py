@@ -90,6 +90,11 @@ def main():
     for p in posdata["positions"]:
         tkr = (p.get("contract_description") or "?").strip()
         qty = float(p.get("position", 0))
+        # Skip flat rows (names fully exited today still come back with position 0).
+        # Their same-day realized P&L stays in account.dailyPnl below, which sums the
+        # raw dump — so the header total is unaffected; only the empty table row is gone.
+        if qty == 0:
+            continue
         mv = float(p.get("market_value", 0))
         long_val += mv if mv >= 0 else 0
         short_val += abs(mv) if mv < 0 else 0

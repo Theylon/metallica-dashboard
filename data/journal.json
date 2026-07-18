@@ -1,18 +1,18 @@
 {
- "updatedAt": "2026-07-18T09:22:46+00:00",
+ "updatedAt": "2026-07-18T09:58:13+00:00",
  "aggregate": {
-  "closedTrades": 104,
-  "winRate": 0.19,
+  "closedTrades": 96,
+  "winRate": 0.21,
   "avgWin": 2.54,
-  "avgLoss": -12.8,
+  "avgLoss": -13.12,
   "profitFactor": 0.05,
-  "avgHoldDays": 6.0,
+  "avgHoldDays": 6.1,
   "avgHoldWinDays": 5.3,
-  "avgHoldLossDays": 6.2,
-  "dispositionEffect": 0.9,
+  "avgHoldLossDays": 6.3,
+  "dispositionEffect": 1.0,
   "turnover": 1.84,
-  "tradesPerWeek": 60.7,
-  "totalRealized": -947.44
+  "tradesPerWeek": 56.0,
+  "totalRealized": -946.43
  },
  "byName": [
   {
@@ -39,9 +39,9 @@
   {
    "ticker": "REMX",
    "commodity": "Other",
-   "realized": -115.88,
-   "trades": 10,
-   "winRate": 0.2
+   "realized": -114.88,
+   "trades": 9,
+   "winRate": 0.22
   },
   {
    "ticker": "SQM",
@@ -103,14 +103,14 @@
    "ticker": "HBM",
    "commodity": "Other",
    "realized": -12.76,
-   "trades": 4,
+   "trades": 3,
    "winRate": 0.0
   },
   {
    "ticker": "CENX",
    "commodity": "Aluminum",
    "realized": -8.78,
-   "trades": 5,
+   "trades": 4,
    "winRate": 0.0
   },
   {
@@ -130,8 +130,8 @@
   {
    "ticker": "RS",
    "commodity": "Steel",
-   "realized": -5.03,
-   "trades": 2,
+   "realized": -5.02,
+   "trades": 1,
    "winRate": 0.0
   },
   {
@@ -166,15 +166,15 @@
    "ticker": "BHP",
    "commodity": "Other",
    "realized": 0.16,
-   "trades": 4,
-   "winRate": 0.5
+   "trades": 3,
+   "winRate": 0.67
   },
   {
    "ticker": "SCCO",
    "commodity": "Other",
    "realized": 2.05,
-   "trades": 4,
-   "winRate": 0.75
+   "trades": 3,
+   "winRate": 1.0
   },
   {
    "ticker": "COPX",
@@ -194,15 +194,15 @@
    "ticker": "TECK",
    "commodity": "Other",
    "realized": 5.09,
-   "trades": 3,
-   "winRate": 0.67
+   "trades": 2,
+   "winRate": 1.0
   },
   {
    "ticker": "GLD",
    "commodity": "Other",
    "realized": 7.05,
-   "trades": 2,
-   "winRate": 0.5
+   "trades": 1,
+   "winRate": 1.0
   },
   {
    "ticker": "SLV",
@@ -216,11 +216,11 @@
   {
    "commodity": "Lithium",
    "realized": -628.03,
-   "share": 0.663
+   "share": 0.664
   },
   {
    "commodity": "Other",
-   "realized": -222.01,
+   "realized": -221.01,
    "share": 0.234
   },
   {
@@ -230,7 +230,7 @@
   },
   {
    "commodity": "Steel",
-   "realized": -24.06,
+   "realized": -24.05,
    "share": 0.025
   },
   {
@@ -241,8 +241,8 @@
  ],
  "bySide": {
   "long": {
-   "realized": -930.64,
-   "trades": 100
+   "realized": -929.63,
+   "trades": 92
   },
   "short": {
    "realized": -16.8,
@@ -374,9 +374,9 @@
   }
  ],
  "shadow": {
-  "realizedActual": -947.44,
-  "ifHeldToNow": -1731.66,
-  "edge": 784.22,
+  "realizedActual": -946.43,
+  "ifHeldToNow": -1730.68,
+  "edge": 784.25,
   "items": [
    {
     "ticker": "LIT",
@@ -431,7 +431,7 @@
    {
     "ticker": "RS",
     "currentPrice": 395.93,
-    "shadowDelta": 21.57
+    "shadowDelta": 21.55
    },
    {
     "ticker": "STLD",
@@ -450,5 +450,5 @@
    }
   ]
  },
- "note": "104 closed round-trips FIFO-matched from 175 fills. Shadow Account marks exited lots to current price. Analysis only."
+ "note": "96 closed round-trips FIFO-matched from 175 fills. Shadow Account marks exited lots to current price. Analysis only."
 }
