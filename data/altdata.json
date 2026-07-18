@@ -1,0 +1,1566 @@
+{
+  "updatedAt": "2026-07-18T10:02:40+00:00",
+  "counts": {
+    "book": 30,
+    "watchlist": 12,
+    "researched": 6
+  },
+  "items": [
+    {
+      "ticker": "TSLA",
+      "group": "book",
+      "name": "Tesla",
+      "sector": "Lithium / EV",
+      "signal": "neutral",
+      "conviction": "med",
+      "asOf": "2026-07-18",
+      "narrative": "Consensus revenue for the Jul-26 quarter is $25.99B (reports 2026-07-22). Street accuracy has tightened to ~0.5-1.3% vs reported the last two quarters after a -5.5% miss in Oct-25. Lithium hydroxide (China) is flat at ~EUR17.5k/mt near the low end of its range - soft battery-input pricing consistent with the book's short EV/lithium tilt.",
+      "drivers": [
+        {
+          "dim": "KPI",
+          "label": "Q rev consensus $25.99B",
+          "note": "Reports 2026-07-22; consensus accuracy improving"
+        },
+        {
+          "dim": "Commodity",
+          "label": "Lithium flat, near lows",
+          "note": "LiOH China EUR17.5k/mt at range low - soft input costs"
+        }
+      ],
+      "trend": null,
+      "kpi": {
+        "name": "Revenue",
+        "unit": "$M",
+        "ourEst": null,
+        "consensus": 25985.66,
+        "deltaPct": null,
+        "yoyPct": null,
+        "earningsDate": "2026-07-22"
+      },
+      "trackRecord": [
+        {
+          "period": "Q Oct-25",
+          "ourEst": null,
+          "consensus": 26540,
+          "reported": 28095,
+          "deltaToReported": -5.53
+        },
+        {
+          "period": "Q Jan-26",
+          "ourEst": null,
+          "consensus": 24776,
+          "reported": 24901,
+          "deltaToReported": -0.5
+        },
+        {
+          "period": "Q Apr-26",
+          "ourEst": null,
+          "consensus": 22101,
+          "reported": 22387,
+          "deltaToReported": -1.28
+        }
+      ],
+      "sources": [
+        {
+          "name": "FMP \u2014 consensus & reported revenue",
+          "date": "2026-07-18",
+          "url": ""
+        },
+        {
+          "name": "MetalMiner \u2014 lithium hydroxide (China)",
+          "date": "2026-07-17",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "ticker": "AA",
+      "group": "book",
+      "name": "AA",
+      "sector": "Aluminum",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: aluminum primary 3M \u2014 LME.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Aluminum",
+          "note": "Driver series: aluminum primary 3M \u2014 LME"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Aluminum exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "AG",
+      "group": "book",
+      "name": "AG",
+      "sector": "Other",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: per-name commodity exposure.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Mixed",
+          "note": "Driver series: per-name commodity exposure"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Other exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "ALB",
+      "group": "book",
+      "name": "Albemarle",
+      "sector": "Lithium",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": "2026-07-18",
+      "narrative": "Lithium hydroxide (China) is flat at ~EUR17.5k/mt, sitting near the low end of its recent range after a prolonged decline - a stabilizing input backdrop for lithium producers. MetalMiner reads the trend as flat/low-volatility. Held long in the book as the primary lithium-price recovery expression.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "LiOH flat EUR17.5k/mt",
+          "note": "Near range low; declines abating"
+        },
+        {
+          "dim": "Position",
+          "label": "Held long",
+          "note": "Levered to a lithium-price recovery"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": [
+        {
+          "name": "MetalMiner \u2014 lithium hydroxide (China)",
+          "date": "2026-07-17",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "ticker": "ATI",
+      "group": "book",
+      "name": "ATI",
+      "sector": "Other",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: per-name commodity exposure.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Mixed",
+          "note": "Driver series: per-name commodity exposure"
+        },
+        {
+          "dim": "Position",
+          "label": "Held long",
+          "note": "Other exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "BATT",
+      "group": "book",
+      "name": "BATT",
+      "sector": "Lithium",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: lithium hydroxide monohydrate \u2014 China.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Lithium",
+          "note": "Driver series: lithium hydroxide monohydrate \u2014 China"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Lithium exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "BEPC",
+      "group": "book",
+      "name": "BEPC",
+      "sector": "Other",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: per-name commodity exposure.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Mixed",
+          "note": "Driver series: per-name commodity exposure"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Other exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "BVN",
+      "group": "book",
+      "name": "BVN",
+      "sector": "Other",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: per-name commodity exposure.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Mixed",
+          "note": "Driver series: per-name commodity exposure"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Other exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "CC",
+      "group": "book",
+      "name": "CC",
+      "sector": "Other",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: per-name commodity exposure.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Mixed",
+          "note": "Driver series: per-name commodity exposure"
+        },
+        {
+          "dim": "Position",
+          "label": "Held long",
+          "note": "Other exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "CDE",
+      "group": "book",
+      "name": "CDE",
+      "sector": "Other",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: per-name commodity exposure.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Mixed",
+          "note": "Driver series: per-name commodity exposure"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Other exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "CENX",
+      "group": "book",
+      "name": "CENX",
+      "sector": "Aluminum",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: aluminum primary 3M \u2014 LME.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Aluminum",
+          "note": "Driver series: aluminum primary 3M \u2014 LME"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Aluminum exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "CLF",
+      "group": "book",
+      "name": "Cleveland-Cliffs",
+      "sector": "Steel",
+      "signal": "bearish",
+      "conviction": "med",
+      "asOf": "2026-07-18",
+      "narrative": "Steel HRC (China) is flat at ~CNY3,077/short ton, range-bound with low volatility over the past month. A range-bound Chinese steel complex is consistent with the book's short U.S. flat-rolled steel tilt (CLF / NUE / RS / STLD).",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "HRC China flat ~CNY3,077/st",
+          "note": "Range-bound, low vol (1m)"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "U.S. flat-rolled steel producer"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": [
+        {
+          "name": "MetalMiner \u2014 steel HRC (China)",
+          "date": "2026-07-17",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "ticker": "CMC",
+      "group": "book",
+      "name": "CMC",
+      "sector": "Other",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: per-name commodity exposure.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Mixed",
+          "note": "Driver series: per-name commodity exposure"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Other exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "CSTM",
+      "group": "book",
+      "name": "CSTM",
+      "sector": "Other",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: per-name commodity exposure.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Mixed",
+          "note": "Driver series: per-name commodity exposure"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Other exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "HL",
+      "group": "book",
+      "name": "HL",
+      "sector": "Other",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: per-name commodity exposure.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Mixed",
+          "note": "Driver series: per-name commodity exposure"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Other exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "IMPUY",
+      "group": "book",
+      "name": "IMPUY",
+      "sector": "Other",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: per-name commodity exposure.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Mixed",
+          "note": "Driver series: per-name commodity exposure"
+        },
+        {
+          "dim": "Position",
+          "label": "Held long",
+          "note": "Other exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "KALU",
+      "group": "book",
+      "name": "KALU",
+      "sector": "Aluminum",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: aluminum primary 3M \u2014 LME.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Aluminum",
+          "note": "Driver series: aluminum primary 3M \u2014 LME"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Aluminum exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "KARS",
+      "group": "book",
+      "name": "KARS",
+      "sector": "Other",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: per-name commodity exposure.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Mixed",
+          "note": "Driver series: per-name commodity exposure"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Other exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "LAC",
+      "group": "book",
+      "name": "LAC",
+      "sector": "Other",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: per-name commodity exposure.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Mixed",
+          "note": "Driver series: per-name commodity exposure"
+        },
+        {
+          "dim": "Position",
+          "label": "Held long",
+          "note": "Other exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "LIT",
+      "group": "book",
+      "name": "LIT",
+      "sector": "Lithium",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: lithium hydroxide monohydrate \u2014 China.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Lithium",
+          "note": "Driver series: lithium hydroxide monohydrate \u2014 China"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Lithium exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "NHYDY",
+      "group": "book",
+      "name": "NHYDY",
+      "sector": "Other",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: per-name commodity exposure.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Mixed",
+          "note": "Driver series: per-name commodity exposure"
+        },
+        {
+          "dim": "Position",
+          "label": "Held long",
+          "note": "Other exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "NUE",
+      "group": "book",
+      "name": "NUE",
+      "sector": "Steel",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: steel HRC \u2014 China.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Steel HRC",
+          "note": "Driver series: steel HRC \u2014 China"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Steel exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "PAAS",
+      "group": "book",
+      "name": "PAAS",
+      "sector": "Other",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: per-name commodity exposure.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Mixed",
+          "note": "Driver series: per-name commodity exposure"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Other exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "PLG",
+      "group": "book",
+      "name": "PLG",
+      "sector": "Other",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: per-name commodity exposure.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Mixed",
+          "note": "Driver series: per-name commodity exposure"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Other exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "RS",
+      "group": "book",
+      "name": "RS",
+      "sector": "Steel",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: steel HRC \u2014 China.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Steel HRC",
+          "note": "Driver series: steel HRC \u2014 China"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Steel exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "SBSW",
+      "group": "book",
+      "name": "SBSW",
+      "sector": "Precious",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: silver / gold spot.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Silver",
+          "note": "Driver series: silver / gold spot"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Precious exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "SGML",
+      "group": "book",
+      "name": "SGML",
+      "sector": "Lithium",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: lithium hydroxide monohydrate \u2014 China.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Lithium",
+          "note": "Driver series: lithium hydroxide monohydrate \u2014 China"
+        },
+        {
+          "dim": "Position",
+          "label": "Held long",
+          "note": "Lithium exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "SQM",
+      "group": "book",
+      "name": "SQM",
+      "sector": "Lithium",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: lithium hydroxide monohydrate \u2014 China.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Lithium",
+          "note": "Driver series: lithium hydroxide monohydrate \u2014 China"
+        },
+        {
+          "dim": "Position",
+          "label": "Held long",
+          "note": "Lithium exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "STLD",
+      "group": "book",
+      "name": "STLD",
+      "sector": "Steel",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: steel HRC \u2014 China.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Steel HRC",
+          "note": "Driver series: steel HRC \u2014 China"
+        },
+        {
+          "dim": "Position",
+          "label": "Held short",
+          "note": "Steel exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "TROX",
+      "group": "book",
+      "name": "TROX",
+      "sector": "Other",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh. Metals-mosaic driver: per-name commodity exposure.",
+      "drivers": [
+        {
+          "dim": "Commodity",
+          "label": "Mixed",
+          "note": "Driver series: per-name commodity exposure"
+        },
+        {
+          "dim": "Position",
+          "label": "Held long",
+          "note": "Other exposure"
+        }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "NKE",
+      "group": "watchlist",
+      "name": "Nike",
+      "sector": "Footwear",
+      "signal": "neutral",
+      "conviction": "med",
+      "asOf": "2026-07-18",
+      "narrative": "NIKE U.S. card spend (CarbonArc 9-source panel) shows the usual seasonal peaks (back-to-school Jul-Aug, holiday Nov-Dec). Latest full month Jun-26 ~$4.86M, down M/M from May ($5.72M); the Apr-Jun'26 run-rate is broadly in line with Jan-Mar'26 and below the seasonal peaks. Online is ~55% of tracked spend. Consensus revenue for the Sep-26 quarter is $11.38B; Street has modestly under-forecast NIKE the last three prints.",
+      "drivers": [
+        {
+          "dim": "Channel",
+          "label": "Online ~55% of spend",
+          "note": "Physical stabilizing; online carries the seasonality"
+        },
+        {
+          "dim": "Seasonality",
+          "label": "Jun-26 softer M/M",
+          "note": "$4.86M vs May $5.72M; below Jul-Aug & Nov-Dec peaks"
+        },
+        {
+          "dim": "Consensus",
+          "label": "Street under-forecasts",
+          "note": "Consensus -0.4% to -1.8% vs reported, last 3Q"
+        }
+      ],
+      "trend": {
+        "label": "US card spend",
+        "unit": "$M/mo",
+        "points": [
+          {
+            "date": "2025-01",
+            "v": 2.16
+          },
+          {
+            "date": "2025-02",
+            "v": 5.39
+          },
+          {
+            "date": "2025-03",
+            "v": 6.22
+          },
+          {
+            "date": "2025-04",
+            "v": 5.78
+          },
+          {
+            "date": "2025-05",
+            "v": 6.38
+          },
+          {
+            "date": "2025-06",
+            "v": 5.03
+          },
+          {
+            "date": "2025-07",
+            "v": 7.4
+          },
+          {
+            "date": "2025-08",
+            "v": 8.53
+          },
+          {
+            "date": "2025-09",
+            "v": 4.46
+          },
+          {
+            "date": "2025-10",
+            "v": 5.08
+          },
+          {
+            "date": "2025-11",
+            "v": 9.59
+          },
+          {
+            "date": "2025-12",
+            "v": 10.0
+          },
+          {
+            "date": "2026-01",
+            "v": 4.57
+          },
+          {
+            "date": "2026-02",
+            "v": 5.24
+          },
+          {
+            "date": "2026-03",
+            "v": 5.7
+          },
+          {
+            "date": "2026-04",
+            "v": 5.1
+          },
+          {
+            "date": "2026-05",
+            "v": 5.72
+          },
+          {
+            "date": "2026-06",
+            "v": 4.86
+          }
+        ]
+      },
+      "kpi": {
+        "name": "Revenue",
+        "unit": "$M",
+        "ourEst": null,
+        "consensus": 11378.71,
+        "deltaPct": null,
+        "yoyPct": null,
+        "earningsDate": "2026-09-29"
+      },
+      "trackRecord": [
+        {
+          "period": "FQ Dec-25",
+          "ourEst": null,
+          "consensus": 12205,
+          "reported": 12427,
+          "deltaToReported": -1.79
+        },
+        {
+          "period": "FQ Mar-26",
+          "ourEst": null,
+          "consensus": 11230,
+          "reported": 11279,
+          "deltaToReported": -0.43
+        },
+        {
+          "period": "FQ Jun-26",
+          "ourEst": null,
+          "consensus": 10850,
+          "reported": 10972,
+          "deltaToReported": -1.11
+        }
+      ],
+      "sources": [
+        {
+          "name": "CarbonArc \u2014 US Credit Card Spend (Core Panel)",
+          "date": "2026-07-04",
+          "url": ""
+        },
+        {
+          "name": "FMP \u2014 consensus & reported revenue",
+          "date": "2026-07-18",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "ticker": "UBER",
+      "group": "watchlist",
+      "name": "Uber",
+      "sector": "Rideshare",
+      "signal": "neutral",
+      "conviction": "med",
+      "asOf": "2026-07-18",
+      "narrative": "Consensus revenue for the Aug-5 print is $14.23B; Street has been within ~0.3-1.4% of reported the last three quarters. A rideshare card-spend panel is available for a fuller gross-bookings nowcast (not pulled this cycle).",
+      "drivers": [
+        {
+          "dim": "KPI",
+          "label": "Q rev consensus $14.23B",
+          "note": "Reports 2026-08-05"
+        },
+        {
+          "dim": "Accuracy",
+          "label": "Consensus ~\u00b11% recently",
+          "note": "-1.4% / -0.3% / +0.6% last 3Q"
+        }
+      ],
+      "trend": null,
+      "kpi": {
+        "name": "Revenue",
+        "unit": "$M",
+        "ourEst": null,
+        "consensus": 14225.97,
+        "deltaPct": null,
+        "yoyPct": null,
+        "earningsDate": "2026-08-05"
+      },
+      "trackRecord": [
+        {
+          "period": "Q Nov-25",
+          "ourEst": null,
+          "consensus": 13284,
+          "reported": 13467,
+          "deltaToReported": -1.36
+        },
+        {
+          "period": "Q Feb-26",
+          "ourEst": null,
+          "consensus": 14323,
+          "reported": 14366,
+          "deltaToReported": -0.3
+        },
+        {
+          "period": "Q May-26",
+          "ourEst": null,
+          "consensus": 13280,
+          "reported": 13203,
+          "deltaToReported": 0.58
+        }
+      ],
+      "sources": [
+        {
+          "name": "FMP \u2014 consensus & reported revenue",
+          "date": "2026-07-18",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "ticker": "AFRM",
+      "group": "watchlist",
+      "name": "Affirm",
+      "sector": "Payments / Fintech",
+      "signal": "neutral",
+      "conviction": "med",
+      "asOf": "2026-07-18",
+      "narrative": "Affirm U.S. card spend (CarbonArc, company-level) is up ~27% Y/Y in Jun-26 (May +29%, Apr +44%) - healthy GMV growth, though the series has softened sequentially from the Dec-25/Jan-26 holiday peak (16.4 \u2192 16.7 \u2192 14.6M). Directionally supportive of continued double-digit GMV growth. Consensus pull awaiting (FMP free-tier gated); routine fills consensus + \u0394.",
+      "drivers": [
+        {
+          "dim": "Growth",
+          "label": "Card spend +27% Y/Y (Jun)",
+          "note": "May +29%, Apr +44% - strong but decelerating"
+        },
+        {
+          "dim": "Trend",
+          "label": "Softening since Jan peak",
+          "note": "16.7M (Jan-26) \u2192 14.6M (Jun-26)"
+        }
+      ],
+      "trend": {
+        "label": "US card spend",
+        "unit": "$M/mo",
+        "points": [
+          {
+            "date": "2025-01",
+            "v": 4.72
+          },
+          {
+            "date": "2025-02",
+            "v": 10.3
+          },
+          {
+            "date": "2025-03",
+            "v": 11.61
+          },
+          {
+            "date": "2025-04",
+            "v": 10.52
+          },
+          {
+            "date": "2025-05",
+            "v": 11.52
+          },
+          {
+            "date": "2025-06",
+            "v": 11.45
+          },
+          {
+            "date": "2025-07",
+            "v": 12.45
+          },
+          {
+            "date": "2025-08",
+            "v": 12.5
+          },
+          {
+            "date": "2025-09",
+            "v": 12.87
+          },
+          {
+            "date": "2025-10",
+            "v": 13.57
+          },
+          {
+            "date": "2025-11",
+            "v": 14.3
+          },
+          {
+            "date": "2025-12",
+            "v": 16.4
+          },
+          {
+            "date": "2026-01",
+            "v": 16.74
+          },
+          {
+            "date": "2026-02",
+            "v": 15.24
+          },
+          {
+            "date": "2026-03",
+            "v": 15.72
+          },
+          {
+            "date": "2026-04",
+            "v": 15.17
+          },
+          {
+            "date": "2026-05",
+            "v": 14.9
+          },
+          {
+            "date": "2026-06",
+            "v": 14.58
+          }
+        ]
+      },
+      "kpi": {
+        "name": "Total GMV",
+        "unit": "$M",
+        "ourEst": null,
+        "consensus": null,
+        "deltaPct": null,
+        "yoyPct": null,
+        "earningsDate": null
+      },
+      "trackRecord": [],
+      "sources": [
+        {
+          "name": "CarbonArc \u2014 US Credit Card Spend (Core Panel)",
+          "date": "2026-07-04",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "ticker": "CMG",
+      "group": "watchlist",
+      "name": "Chipotle",
+      "sector": "Restaurants",
+      "signal": "neutral",
+      "conviction": "med",
+      "asOf": "2026-07-18",
+      "narrative": "Chipotle U.S. card spend (CarbonArc) is roughly flat-to-slightly-positive Y/Y in recent months (Jun-26 +0.3%, May +2.0%, Apr +1.9%), consistent with a low-single-digit SSS backdrop. Physical is ~60% of tracked spend; online steady. Consensus/SSS estimate awaiting (FMP free-tier gated).",
+      "drivers": [
+        {
+          "dim": "Traffic",
+          "label": "Card spend ~flat Y/Y (Jun +0.3%)",
+          "note": "May +2.0%, Apr +1.9% - low single digits"
+        },
+        {
+          "dim": "Channel",
+          "label": "Physical ~60% of spend",
+          "note": "In-store dominant; online steady"
+        }
+      ],
+      "trend": {
+        "label": "US card spend",
+        "unit": "$M/mo",
+        "points": [
+          {
+            "date": "2025-01",
+            "v": 4.78
+          },
+          {
+            "date": "2025-02",
+            "v": 9.74
+          },
+          {
+            "date": "2025-03",
+            "v": 11.68
+          },
+          {
+            "date": "2025-04",
+            "v": 11.19
+          },
+          {
+            "date": "2025-05",
+            "v": 11.76
+          },
+          {
+            "date": "2025-06",
+            "v": 11.15
+          },
+          {
+            "date": "2025-07",
+            "v": 10.94
+          },
+          {
+            "date": "2025-08",
+            "v": 11.08
+          },
+          {
+            "date": "2025-09",
+            "v": 10.55
+          },
+          {
+            "date": "2025-10",
+            "v": 11.23
+          },
+          {
+            "date": "2025-11",
+            "v": 10.08
+          },
+          {
+            "date": "2025-12",
+            "v": 10.64
+          },
+          {
+            "date": "2026-01",
+            "v": 10.4
+          },
+          {
+            "date": "2026-02",
+            "v": 10.07
+          },
+          {
+            "date": "2026-03",
+            "v": 11.64
+          },
+          {
+            "date": "2026-04",
+            "v": 11.41
+          },
+          {
+            "date": "2026-05",
+            "v": 11.99
+          },
+          {
+            "date": "2026-06",
+            "v": 11.19
+          }
+        ]
+      },
+      "kpi": {
+        "name": "SSS Y/Y",
+        "unit": "%",
+        "ourEst": null,
+        "consensus": null,
+        "deltaPct": null,
+        "yoyPct": null,
+        "earningsDate": null
+      },
+      "trackRecord": [],
+      "sources": [
+        {
+          "name": "CarbonArc \u2014 US Credit Card Spend (Core Panel)",
+          "date": "2026-07-04",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "ticker": "LYFT",
+      "group": "watchlist",
+      "name": "Lyft",
+      "sector": "Rideshare",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": "2026-07-18",
+      "narrative": "Lyft U.S. card spend (CarbonArc) is up low-single-digits Y/Y (Jun-26 +2.9%, May +3.2%), directionally positive but modest. Note the card panel is a partial proxy for gross bookings (app wallets / other payment methods sit outside it), so read as a demand direction rather than a GB level. Consensus/estimate awaiting (FMP free-tier gated).",
+      "drivers": [
+        {
+          "dim": "Growth",
+          "label": "Card spend +3% Y/Y",
+          "note": "Jun +2.9%, May +3.2% - low single digits"
+        },
+        {
+          "dim": "Caveat",
+          "label": "Partial GB proxy",
+          "note": "Card panel understates app-paid bookings"
+        }
+      ],
+      "trend": {
+        "label": "US card spend",
+        "unit": "$M/mo",
+        "points": [
+          {
+            "date": "2025-01",
+            "v": 3.07
+          },
+          {
+            "date": "2025-02",
+            "v": 6.74
+          },
+          {
+            "date": "2025-03",
+            "v": 8.43
+          },
+          {
+            "date": "2025-04",
+            "v": 7.85
+          },
+          {
+            "date": "2025-05",
+            "v": 8.52
+          },
+          {
+            "date": "2025-06",
+            "v": 8.24
+          },
+          {
+            "date": "2025-07",
+            "v": 7.92
+          },
+          {
+            "date": "2025-08",
+            "v": 7.8
+          },
+          {
+            "date": "2025-09",
+            "v": 7.57
+          },
+          {
+            "date": "2025-10",
+            "v": 8.29
+          },
+          {
+            "date": "2025-11",
+            "v": 7.54
+          },
+          {
+            "date": "2025-12",
+            "v": 7.95
+          },
+          {
+            "date": "2026-01",
+            "v": 6.88
+          },
+          {
+            "date": "2026-02",
+            "v": 7.04
+          },
+          {
+            "date": "2026-03",
+            "v": 8.41
+          },
+          {
+            "date": "2026-04",
+            "v": 7.98
+          },
+          {
+            "date": "2026-05",
+            "v": 8.79
+          },
+          {
+            "date": "2026-06",
+            "v": 8.48
+          }
+        ]
+      },
+      "kpi": {
+        "name": "Gross Bookings",
+        "unit": "$M",
+        "ourEst": null,
+        "consensus": null,
+        "deltaPct": null,
+        "yoyPct": null,
+        "earningsDate": null
+      },
+      "trackRecord": [],
+      "sources": [
+        {
+          "name": "CarbonArc \u2014 US Credit Card Spend (Core Panel)",
+          "date": "2026-07-04",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "ticker": "ABNB",
+      "group": "watchlist",
+      "name": "Airbnb",
+      "sector": "Online Travel",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh \u2014 KPI tracked: Gross Booking Value ($M) via US card spend + travel panel (CarbonArc).",
+      "drivers": [],
+      "trend": null,
+      "kpi": {
+        "name": "Gross Booking Value",
+        "unit": "$M",
+        "ourEst": null,
+        "consensus": null,
+        "deltaPct": null,
+        "yoyPct": null,
+        "earningsDate": null
+      },
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "BIRK",
+      "group": "watchlist",
+      "name": "Birkenstock",
+      "sector": "Footwear",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh \u2014 KPI tracked: Revenue (\u20acM) via US/EU DTC digital purchase (CarbonArc).",
+      "drivers": [],
+      "trend": null,
+      "kpi": {
+        "name": "Revenue",
+        "unit": "\u20acM",
+        "ourEst": null,
+        "consensus": null,
+        "deltaPct": null,
+        "yoyPct": null,
+        "earningsDate": null
+      },
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "CROX",
+      "group": "watchlist",
+      "name": "Crocs",
+      "sector": "Footwear",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh \u2014 KPI tracked: Revenue ($M) via Crocs.com + TikTok Shop spend (CarbonArc).",
+      "drivers": [],
+      "trend": null,
+      "kpi": {
+        "name": "Revenue",
+        "unit": "$M",
+        "ourEst": null,
+        "consensus": null,
+        "deltaPct": null,
+        "yoyPct": null,
+        "earningsDate": null
+      },
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "DASH",
+      "group": "watchlist",
+      "name": "DoorDash",
+      "sector": "Internet",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh \u2014 KPI tracked: Marketplace GOV ($M) via US card spend + delivery panel (CarbonArc).",
+      "drivers": [],
+      "trend": null,
+      "kpi": {
+        "name": "Marketplace GOV",
+        "unit": "$M",
+        "ourEst": null,
+        "consensus": null,
+        "deltaPct": null,
+        "yoyPct": null,
+        "earningsDate": null
+      },
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "DECK",
+      "group": "watchlist",
+      "name": "Deckers (UGG/HOKA)",
+      "sector": "Footwear",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh \u2014 KPI tracked: Revenue ($M) via US/EU digital purchase, DTC (CarbonArc).",
+      "drivers": [],
+      "trend": null,
+      "kpi": {
+        "name": "Revenue",
+        "unit": "$M",
+        "ourEst": null,
+        "consensus": null,
+        "deltaPct": null,
+        "yoyPct": null,
+        "earningsDate": null
+      },
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "ONON",
+      "group": "watchlist",
+      "name": "On Holding",
+      "sector": "Footwear",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh \u2014 KPI tracked: Net Sales (CHF M) via US/EU digital purchase (CarbonArc).",
+      "drivers": [],
+      "trend": null,
+      "kpi": {
+        "name": "Net Sales",
+        "unit": "CHF M",
+        "ourEst": null,
+        "consensus": null,
+        "deltaPct": null,
+        "yoyPct": null,
+        "earningsDate": null
+      },
+      "trackRecord": [],
+      "sources": []
+    },
+    {
+      "ticker": "SBUX",
+      "group": "watchlist",
+      "name": "Starbucks",
+      "sector": "Restaurants",
+      "signal": "neutral",
+      "conviction": "low",
+      "asOf": null,
+      "narrative": "Awaiting alt-data refresh \u2014 KPI tracked: SSS Y/Y (%) via US card spend + transactions (CarbonArc).",
+      "drivers": [],
+      "trend": null,
+      "kpi": {
+        "name": "SSS Y/Y",
+        "unit": "%",
+        "ourEst": null,
+        "consensus": null,
+        "deltaPct": null,
+        "yoyPct": null,
+        "earningsDate": null
+      },
+      "trackRecord": [],
+      "sources": []
+    }
+  ]
+}

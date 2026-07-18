@@ -127,6 +127,11 @@ def fetch_positions() -> list[dict]:
         ticker = p.get("ticker") or p.get("contractDesc", "?")
         mkt_val = float(p.get("mktValue", 0))
         pos_size = float(p.get("position", 0))
+        # Skip flat rows (names fully exited today still come back with position 0).
+        # dailyPnl is fetched from a separate endpoint, so their same-day realized P&L
+        # stays in the account total — only the empty positions-table row is dropped.
+        if pos_size == 0:
+            continue
         positions.append(
             {
                 "ticker": ticker,

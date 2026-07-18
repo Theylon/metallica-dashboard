@@ -1,0 +1,79 @@
+{
+  "_comment": "Phase-2 coverage shard (2026-07-18). Real CarbonArc US card-spend trends + Y/Y for AFRM/CMG/LYFT, and FMP consensus+reported for UBER. Overrides the 'awaiting' cards in alt_r0.json (higher shard number wins). ourEst stays null — a calibrated card-spend→KPI dollar estimate needs current-quarter months in the panel, which the routine adds as quarters progress.",
+  "items": [
+    {
+      "ticker": "AFRM", "group": "watchlist", "name": "Affirm", "sector": "Payments / Fintech",
+      "signal": "neutral", "conviction": "med", "asOf": "2026-07-18",
+      "narrative": "Affirm U.S. card spend (CarbonArc, company-level) is up ~27% Y/Y in Jun-26 (May +29%, Apr +44%) - healthy GMV growth, though the series has softened sequentially from the Dec-25/Jan-26 holiday peak (16.4 → 16.7 → 14.6M). Directionally supportive of continued double-digit GMV growth. Consensus pull awaiting (FMP free-tier gated); routine fills consensus + Δ.",
+      "drivers": [
+        { "dim": "Growth", "label": "Card spend +27% Y/Y (Jun)", "note": "May +29%, Apr +44% - strong but decelerating" },
+        { "dim": "Trend",  "label": "Softening since Jan peak",   "note": "16.7M (Jan-26) → 14.6M (Jun-26)" }
+      ],
+      "trend": { "label": "US card spend", "unit": "$M/mo", "points": [
+        {"date":"2025-01","v":4.72},{"date":"2025-02","v":10.30},{"date":"2025-03","v":11.61},{"date":"2025-04","v":10.52},
+        {"date":"2025-05","v":11.52},{"date":"2025-06","v":11.45},{"date":"2025-07","v":12.45},{"date":"2025-08","v":12.50},
+        {"date":"2025-09","v":12.87},{"date":"2025-10","v":13.57},{"date":"2025-11","v":14.30},{"date":"2025-12","v":16.40},
+        {"date":"2026-01","v":16.74},{"date":"2026-02","v":15.24},{"date":"2026-03","v":15.72},{"date":"2026-04","v":15.17},
+        {"date":"2026-05","v":14.90},{"date":"2026-06","v":14.58}
+      ]},
+      "kpi": { "name": "Total GMV", "unit": "$M", "ourEst": null, "consensus": null, "deltaPct": null, "yoyPct": null, "earningsDate": null },
+      "trackRecord": [],
+      "sources": [ { "name": "CarbonArc — US Credit Card Spend (Core Panel)", "date": "2026-07-04", "url": "" } ]
+    },
+    {
+      "ticker": "CMG", "group": "watchlist", "name": "Chipotle", "sector": "Restaurants",
+      "signal": "neutral", "conviction": "med", "asOf": "2026-07-18",
+      "narrative": "Chipotle U.S. card spend (CarbonArc) is roughly flat-to-slightly-positive Y/Y in recent months (Jun-26 +0.3%, May +2.0%, Apr +1.9%), consistent with a low-single-digit SSS backdrop. Physical is ~60% of tracked spend; online steady. Consensus/SSS estimate awaiting (FMP free-tier gated).",
+      "drivers": [
+        { "dim": "Traffic", "label": "Card spend ~flat Y/Y (Jun +0.3%)", "note": "May +2.0%, Apr +1.9% - low single digits" },
+        { "dim": "Channel", "label": "Physical ~60% of spend",           "note": "In-store dominant; online steady" }
+      ],
+      "trend": { "label": "US card spend", "unit": "$M/mo", "points": [
+        {"date":"2025-01","v":4.78},{"date":"2025-02","v":9.74},{"date":"2025-03","v":11.68},{"date":"2025-04","v":11.19},
+        {"date":"2025-05","v":11.76},{"date":"2025-06","v":11.15},{"date":"2025-07","v":10.94},{"date":"2025-08","v":11.08},
+        {"date":"2025-09","v":10.55},{"date":"2025-10","v":11.23},{"date":"2025-11","v":10.08},{"date":"2025-12","v":10.64},
+        {"date":"2026-01","v":10.40},{"date":"2026-02","v":10.07},{"date":"2026-03","v":11.64},{"date":"2026-04","v":11.41},
+        {"date":"2026-05","v":11.99},{"date":"2026-06","v":11.19}
+      ]},
+      "kpi": { "name": "SSS Y/Y", "unit": "%", "ourEst": null, "consensus": null, "deltaPct": null, "yoyPct": null, "earningsDate": null },
+      "trackRecord": [],
+      "sources": [ { "name": "CarbonArc — US Credit Card Spend (Core Panel)", "date": "2026-07-04", "url": "" } ]
+    },
+    {
+      "ticker": "LYFT", "group": "watchlist", "name": "Lyft", "sector": "Rideshare",
+      "signal": "neutral", "conviction": "low", "asOf": "2026-07-18",
+      "narrative": "Lyft U.S. card spend (CarbonArc) is up low-single-digits Y/Y (Jun-26 +2.9%, May +3.2%), directionally positive but modest. Note the card panel is a partial proxy for gross bookings (app wallets / other payment methods sit outside it), so read as a demand direction rather than a GB level. Consensus/estimate awaiting (FMP free-tier gated).",
+      "drivers": [
+        { "dim": "Growth", "label": "Card spend +3% Y/Y", "note": "Jun +2.9%, May +3.2% - low single digits" },
+        { "dim": "Caveat", "label": "Partial GB proxy",   "note": "Card panel understates app-paid bookings" }
+      ],
+      "trend": { "label": "US card spend", "unit": "$M/mo", "points": [
+        {"date":"2025-01","v":3.07},{"date":"2025-02","v":6.74},{"date":"2025-03","v":8.43},{"date":"2025-04","v":7.85},
+        {"date":"2025-05","v":8.52},{"date":"2025-06","v":8.24},{"date":"2025-07","v":7.92},{"date":"2025-08","v":7.80},
+        {"date":"2025-09","v":7.57},{"date":"2025-10","v":8.29},{"date":"2025-11","v":7.54},{"date":"2025-12","v":7.95},
+        {"date":"2026-01","v":6.88},{"date":"2026-02","v":7.04},{"date":"2026-03","v":8.41},{"date":"2026-04","v":7.98},
+        {"date":"2026-05","v":8.79},{"date":"2026-06","v":8.48}
+      ]},
+      "kpi": { "name": "Gross Bookings", "unit": "$M", "ourEst": null, "consensus": null, "deltaPct": null, "yoyPct": null, "earningsDate": null },
+      "trackRecord": [],
+      "sources": [ { "name": "CarbonArc — US Credit Card Spend (Core Panel)", "date": "2026-07-04", "url": "" } ]
+    },
+    {
+      "ticker": "UBER", "group": "watchlist", "name": "Uber", "sector": "Rideshare",
+      "signal": "neutral", "conviction": "med", "asOf": "2026-07-18",
+      "narrative": "Consensus revenue for the Aug-5 print is $14.23B; Street has been within ~0.3-1.4% of reported the last three quarters. A rideshare card-spend panel is available for a fuller gross-bookings nowcast (not pulled this cycle).",
+      "drivers": [
+        { "dim": "KPI",      "label": "Q rev consensus $14.23B", "note": "Reports 2026-08-05" },
+        { "dim": "Accuracy", "label": "Consensus ~±1% recently", "note": "-1.4% / -0.3% / +0.6% last 3Q" }
+      ],
+      "trend": null,
+      "kpi": { "name": "Revenue", "unit": "$M", "ourEst": null, "consensus": 14225.97, "deltaPct": null, "yoyPct": null, "earningsDate": "2026-08-05" },
+      "trackRecord": [
+        { "period": "Q Nov-25", "ourEst": null, "consensus": 13284, "reported": 13467, "deltaToReported": -1.36 },
+        { "period": "Q Feb-26", "ourEst": null, "consensus": 14323, "reported": 14366, "deltaToReported": -0.30 },
+        { "period": "Q May-26", "ourEst": null, "consensus": 13280, "reported": 13203, "deltaToReported":  0.58 }
+      ],
+      "sources": [ { "name": "FMP — consensus & reported revenue", "date": "2026-07-18", "url": "" } ]
+    }
+  ]
+}

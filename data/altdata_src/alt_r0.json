@@ -1,0 +1,114 @@
+{
+  "_comment": "Research shard for the Alt-Data tab (seed, hand-authored from live MCP pulls on 2026-07-18: CarbonArc US card spend, MetalMiner metal prices, FMP consensus+reported revenue). The refresh routine (scripts/altdata_refresh.md) regenerates/extends this as alt_r0.json..alt_rN.json. Builder overlays these onto the auto-generated defaults by ticker. Numbers here are our own MCP/web reads — no third-party proprietary report text is reproduced.",
+  "items": [
+    {
+      "ticker": "NKE", "group": "watchlist", "name": "Nike", "sector": "Footwear",
+      "signal": "neutral", "conviction": "med", "asOf": "2026-07-18",
+      "narrative": "NIKE U.S. card spend (CarbonArc 9-source panel) shows the usual seasonal peaks (back-to-school Jul-Aug, holiday Nov-Dec). Latest full month Jun-26 ~$4.86M, down M/M from May ($5.72M); the Apr-Jun'26 run-rate is broadly in line with Jan-Mar'26 and below the seasonal peaks. Online is ~55% of tracked spend. Consensus revenue for the Sep-26 quarter is $11.38B; Street has modestly under-forecast NIKE the last three prints.",
+      "drivers": [
+        { "dim": "Channel",     "label": "Online ~55% of spend", "note": "Physical stabilizing; online carries the seasonality" },
+        { "dim": "Seasonality", "label": "Jun-26 softer M/M",     "note": "$4.86M vs May $5.72M; below Jul-Aug & Nov-Dec peaks" },
+        { "dim": "Consensus",   "label": "Street under-forecasts","note": "Consensus -0.4% to -1.8% vs reported, last 3Q" }
+      ],
+      "trend": { "label": "US card spend", "unit": "$M/mo", "points": [
+        {"date":"2025-01","v":2.16},{"date":"2025-02","v":5.39},{"date":"2025-03","v":6.22},{"date":"2025-04","v":5.78},
+        {"date":"2025-05","v":6.38},{"date":"2025-06","v":5.03},{"date":"2025-07","v":7.40},{"date":"2025-08","v":8.53},
+        {"date":"2025-09","v":4.46},{"date":"2025-10","v":5.08},{"date":"2025-11","v":9.59},{"date":"2025-12","v":10.00},
+        {"date":"2026-01","v":4.57},{"date":"2026-02","v":5.24},{"date":"2026-03","v":5.70},{"date":"2026-04","v":5.10},
+        {"date":"2026-05","v":5.72},{"date":"2026-06","v":4.86}
+      ]},
+      "kpi": { "name": "Revenue", "unit": "$M", "ourEst": null, "consensus": 11378.71, "deltaPct": null, "yoyPct": null, "earningsDate": "2026-09-29" },
+      "trackRecord": [
+        { "period": "FQ Dec-25", "ourEst": null, "consensus": 12205, "reported": 12427, "deltaToReported": -1.79 },
+        { "period": "FQ Mar-26", "ourEst": null, "consensus": 11230, "reported": 11279, "deltaToReported": -0.43 },
+        { "period": "FQ Jun-26", "ourEst": null, "consensus": 10850, "reported": 10972, "deltaToReported": -1.11 }
+      ],
+      "sources": [
+        { "name": "CarbonArc — US Credit Card Spend (Core Panel)", "date": "2026-07-04", "url": "" },
+        { "name": "FMP — consensus & reported revenue",           "date": "2026-07-18", "url": "" }
+      ]
+    },
+    {
+      "ticker": "TSLA", "group": "book", "name": "Tesla", "sector": "Lithium / EV",
+      "signal": "neutral", "conviction": "med", "asOf": "2026-07-18",
+      "narrative": "Consensus revenue for the Jul-26 quarter is $25.99B (reports 2026-07-22). Street accuracy has tightened to ~0.5-1.3% vs reported the last two quarters after a -5.5% miss in Oct-25. Lithium hydroxide (China) is flat at ~EUR17.5k/mt near the low end of its range - soft battery-input pricing consistent with the book's short EV/lithium tilt.",
+      "drivers": [
+        { "dim": "KPI",       "label": "Q rev consensus $25.99B", "note": "Reports 2026-07-22; consensus accuracy improving" },
+        { "dim": "Commodity", "label": "Lithium flat, near lows", "note": "LiOH China EUR17.5k/mt at range low - soft input costs" }
+      ],
+      "trend": null,
+      "kpi": { "name": "Revenue", "unit": "$M", "ourEst": null, "consensus": 25985.66, "deltaPct": null, "yoyPct": null, "earningsDate": "2026-07-22" },
+      "trackRecord": [
+        { "period": "Q Oct-25", "ourEst": null, "consensus": 26540, "reported": 28095, "deltaToReported": -5.53 },
+        { "period": "Q Jan-26", "ourEst": null, "consensus": 24776, "reported": 24901, "deltaToReported": -0.50 },
+        { "period": "Q Apr-26", "ourEst": null, "consensus": 22101, "reported": 22387, "deltaToReported": -1.28 }
+      ],
+      "sources": [
+        { "name": "FMP — consensus & reported revenue",      "date": "2026-07-18", "url": "" },
+        { "name": "MetalMiner — lithium hydroxide (China)", "date": "2026-07-17", "url": "" }
+      ]
+    },
+    {
+      "ticker": "ALB", "group": "book", "name": "Albemarle", "sector": "Lithium",
+      "signal": "neutral", "conviction": "low", "asOf": "2026-07-18",
+      "narrative": "Lithium hydroxide (China) is flat at ~EUR17.5k/mt, sitting near the low end of its recent range after a prolonged decline - a stabilizing input backdrop for lithium producers. MetalMiner reads the trend as flat/low-volatility. Held long in the book as the primary lithium-price recovery expression.",
+      "drivers": [
+        { "dim": "Commodity", "label": "LiOH flat EUR17.5k/mt", "note": "Near range low; declines abating" },
+        { "dim": "Position",  "label": "Held long",             "note": "Levered to a lithium-price recovery" }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": [ { "name": "MetalMiner — lithium hydroxide (China)", "date": "2026-07-17", "url": "" } ]
+    },
+    {
+      "ticker": "CLF", "group": "book", "name": "Cleveland-Cliffs", "sector": "Steel",
+      "signal": "bearish", "conviction": "med", "asOf": "2026-07-18",
+      "narrative": "Steel HRC (China) is flat at ~CNY3,077/short ton, range-bound with low volatility over the past month. A range-bound Chinese steel complex is consistent with the book's short U.S. flat-rolled steel tilt (CLF / NUE / RS / STLD).",
+      "drivers": [
+        { "dim": "Commodity", "label": "HRC China flat ~CNY3,077/st", "note": "Range-bound, low vol (1m)" },
+        { "dim": "Position",  "label": "Held short",                   "note": "U.S. flat-rolled steel producer" }
+      ],
+      "trend": null,
+      "kpi": null,
+      "trackRecord": [],
+      "sources": [ { "name": "MetalMiner — steel HRC (China)", "date": "2026-07-17", "url": "" } ]
+    },
+    {
+      "ticker": "AFRM", "group": "watchlist", "name": "Affirm", "sector": "Payments / Fintech",
+      "signal": "neutral", "conviction": "low", "asOf": "2026-07-18",
+      "narrative": "KPI tracked: Total GMV, nowcast from CarbonArc US card-spend + digital-purchase decomposed by merchant partner (large partners vs the long tail). Live consensus pull awaiting (FMP free-tier gated) - the refresh routine fills consensus, Y/Y and the estimate-vs-consensus delta.",
+      "drivers": [
+        { "dim": "Merchant", "label": "Merchant-mix drives GMV", "note": "Large partners vs long-tail split is the nowcast core" }
+      ],
+      "trend": null,
+      "kpi": { "name": "Total GMV", "unit": "$M", "ourEst": null, "consensus": null, "deltaPct": null, "yoyPct": null, "earningsDate": null },
+      "trackRecord": [],
+      "sources": [ { "name": "CarbonArc — US card spend / digital purchase", "date": "2026-07-18", "url": "" } ]
+    },
+    {
+      "ticker": "CMG", "group": "watchlist", "name": "Chipotle", "sector": "Restaurants",
+      "signal": "neutral", "conviction": "low", "asOf": "2026-07-18",
+      "narrative": "KPI tracked: same-store sales (SSS) Y/Y, nowcast from CarbonArc US card spend + transactions, with menu-item attach tracking for new LTOs. Live consensus/estimate awaiting the refresh routine.",
+      "drivers": [
+        { "dim": "Traffic", "label": "Card spend + transactions", "note": "Traffic vs check split underpins the SSS nowcast" }
+      ],
+      "trend": null,
+      "kpi": { "name": "SSS Y/Y", "unit": "%", "ourEst": null, "consensus": null, "deltaPct": null, "yoyPct": null, "earningsDate": null },
+      "trackRecord": [],
+      "sources": [ { "name": "CarbonArc — US card spend / transactions", "date": "2026-07-18", "url": "" } ]
+    },
+    {
+      "ticker": "LYFT", "group": "watchlist", "name": "Lyft", "sector": "Rideshare",
+      "signal": "neutral", "conviction": "low", "asOf": "2026-07-18",
+      "narrative": "KPI tracked: Gross Bookings, nowcast from a rideshare card-spend/volume panel with market-share tracking vs Uber and Waymo. Live consensus/estimate awaiting the refresh routine.",
+      "drivers": [
+        { "dim": "Share", "label": "Share vs Uber / Waymo", "note": "City-level share swings drive bookings surprises" }
+      ],
+      "trend": null,
+      "kpi": { "name": "Gross Bookings", "unit": "$M", "ourEst": null, "consensus": null, "deltaPct": null, "yoyPct": null, "earningsDate": null },
+      "trackRecord": [],
+      "sources": [ { "name": "CarbonArc — rideshare card spend / volume", "date": "2026-07-18", "url": "" } ]
+    }
+  ]
+}

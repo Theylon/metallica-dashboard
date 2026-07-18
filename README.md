@@ -147,6 +147,33 @@ Four research layers (inspired by [HKUDS/Vibe-Trading](https://github.com/HKUDS/
 
 Pure-Python pieces (`risk.py`, `signal_ic.py`, `micro_snapshot.py`, price-history capture in `micro_refresh.py`) run in the GitHub Action from data that already exists — no new secrets. The MCP-fed pieces (Journal, Intel research layer) run in scheduled Claude routines and degrade gracefully until first populated. `data/price_history.json` (held-name close series, reused from the existing `micro_refresh.py` download) gates the correlation matrix and the low-vol factor.
 
+## Alt-Data tab — M Science-style nowcast & research
+
+The **Alt-Data** tab ports the alternative-data research *method* used by desks like M Science
+(pre-earnings **KPI nowcast vs. consensus**, a **track record** of estimate/consensus vs.
+reported, **driver drill-down**, and a concise analyst **narrative**) — fed by our **own** live
+feeds, never by redistributing anyone's proprietary report.
+
+Two sub-tab groups:
+
+- **Book · Metals** — the held names, with a metals-relevant mosaic (MetalMiner physical
+  prices/buying-strategy, inventories/premiums, EV/battery & China demand, Bigdata sentiment).
+- **Watchlist · Consumer/TMT** — the consumer/TMT names where card-spend / web-traffic panels
+  make a real nowcast feasible (NKE, AFRM, CMG, LYFT, UBER, DASH, ABNB, ONON, DECK, CROX, BIRK, SBUX).
+
+| Item | Source | Notes |
+|---|---|---|
+| Data file | `data/altdata.json` (`{updatedAt, counts, items}`) | built from committed inputs; resilient |
+| Config | `data/altdata_src/watchlist.json` | watchlist + KPI mapping + metal→driver map |
+| Research shards | `data/altdata_src/alt_r*.json` | narratives, trends, nowcast, track record (higher shard wins) |
+| Builder | `scripts/altdata_build.py` (pure Python) | book group derived from `positions.json`; auto-defaults keep the tab populated |
+| Refresh routine | `scripts/altdata_refresh.md` | scheduled Claude Routine → CarbonArc / MetalMiner / Bigdata.com / FMP·TipRanks / web, commits data-only to `master` |
+
+Sourcing is **live MCP + web only** — no automated inbox/Drive ingestion, and no third-party
+report text is committed (those feeds are licensed to the user personally). Like the other
+research layers it is additive and degrades gracefully (a missing input leaves the last-good
+file in place; `report.json`/`benchmarks.json` are never touched).
+
 ## Strategy reference
 
 Metallica is a systematic long/short equity strategy powered by MetalMiner's proprietary industrial-metals price data.
