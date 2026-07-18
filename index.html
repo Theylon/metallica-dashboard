@@ -152,20 +152,6 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
   color: var(--text-muted); font-size: 14px; transition: all .2s; line-height: 1;
 }
 .theme-toggle:hover { color: var(--text); border-color: var(--border-light); }
-.refresh-btn {
-  display: flex; align-items: center; gap: 6px;
-  height: 30px; padding: 0 10px; border-radius: 8px; cursor: pointer;
-  background: var(--surface); border: 1px solid var(--border);
-  color: var(--text-muted); font-size: 11px; font-weight: 600;
-  transition: all .2s; line-height: 1;
-}
-.refresh-btn:hover { color: var(--text); border-color: var(--border-light); }
-.refresh-btn:disabled { cursor: progress; }
-.refresh-btn[data-state="loading"] { color: var(--yellow); border-color: var(--yellow); }
-.refresh-btn[data-state="done"]    { color: var(--green);  border-color: var(--green); }
-.refresh-btn[data-state="error"]   { color: var(--red);    border-color: var(--red); }
-.refresh-btn[data-state="loading"] .refresh-ico { animation: spin 1s linear infinite; display: inline-block; }
-@keyframes spin { to { transform: rotate(360deg); } }
 
 /* ── Rebalance → upload positions to analyse ────────────────────────── */
 .pos-up-btn {
@@ -467,8 +453,6 @@ td:first-child { text-align: left; }
   .topbar-name { font-size: 15px; }
   .topbar-right { gap: 8px; }
   .updated-at { display: none; }
-  .refresh-btn .refresh-lbl { display: none; }
-  .refresh-btn { padding: 0 8px; }
   .market-badge { padding: 4px 8px; font-size: 10px; }
   .stale-badge { padding: 3px 6px; font-size: 10px; }
   .logout-btn { padding: 4px 2px; }
@@ -545,9 +529,6 @@ td:first-child { text-align: left; }
       <div id="stale-badge" class="stale-badge" style="display:none">⚠ Stale</div>
       <div id="market-badge" class="market-badge closed">Market Closed</div>
       <div id="updated-at" class="updated-at">—</div>
-      <button class="refresh-btn" id="refresh-btn" data-state="idle" onclick="refreshIbkr(event)" title="Refresh live IBKR data (NAV, positions, P&L)">
-        <span class="refresh-ico">⟳</span><span class="refresh-lbl">Refresh IBKR</span>
-      </button>
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark">🌙</button>
       <button class="logout-btn" onclick="logout()">Log out</button>
     </div>
@@ -1362,13 +1343,6 @@ const BENCHMARK_LABELS = {
   CPER: { label: 'Copper (CPER)',     color: '#f59e0b' },
 };
 
-// ── Live-refresh: the site is static (GitHub Pages) with no backend, so the
-// button opens the GitHub Action's "Run workflow" page — the logged-in owner
-// clicks Run (scope=ibkr) using their own GitHub session, no token needed here.
-// We then poll the redeployed account.json so the dashboard updates itself.
-const GH_OWNER = 'Theylon', GH_REPO = 'metallica-dashboard';
-const GH_WORKFLOW = 'fetch-data.yml';
-
 // ═══════════════════════════════════════════ AUTH ══
 async function sha256(str) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
@@ -1465,62 +1439,8 @@ async function loadData() {
   } catch(e) {
     console.error('Data load error', e);
   }
-  // Auto-refresh every 5 minutes (single timer — clear any prior one so manual
-  // refreshes via refreshIbkr() don't stack multiple concurrent timers).
-  if (window._autoRefresh) clearTimeout(window._autoRefresh);
-  window._autoRefresh = setTimeout(loadData, 5 * 60 * 1000);
-}
-
-// ═══════════════════════════════════════════ LIVE REFRESH ══
-// Static site + no backend → open the workflow's GitHub "Run workflow" page in a
-// new tab (the owner is already logged in; they pick scope=ibkr and click Run).
-// No token lives in the browser. We then poll the redeployed account.json so the
-// dashboard refreshes itself and confirms "Updated ✓" once the new data lands.
-let _refreshPolling = false;
-
-function refreshIbkr() {
-  const btn = document.getElementById('refresh-btn');
-  const lbl = btn.querySelector('.refresh-lbl');
-  const set = (state, text) => {
-    btn.dataset.state = state;
-    if (text) { lbl.textContent = text; btn.title = text; }
-  };
-
-  // Open the workflow page so the owner can trigger the IBKR-only run themselves.
-  window.open(
-    'https://github.com/' + GH_OWNER + '/' + GH_REPO + '/actions/workflows/' + GH_WORKFLOW,
-    '_blank', 'noopener');
-
-  if (_refreshPolling) return;   // a poll from a previous click is already watching
-  _refreshPolling = true;
-  set('loading', "Run 'Run workflow'→ibkr→Run; updating…");
-  btn.disabled = true;
-
-  const finish = (state, text, ms) => {
-    _refreshPolling = false; set(state, text);
-    setTimeout(() => { set('idle', 'Refresh IBKR'); btn.disabled = false; }, ms);
-  };
-
-  // Baseline updatedAt; poll until it changes (fetch → commit → deploy landed).
-  (async () => {
-    let baseline = null;
-    try { baseline = (await (await fetch('data/account.json?' + Date.now())).json()).updatedAt; } catch (e) {}
-
-    const started = Date.now(), TIMEOUT = 8 * 60 * 1000;   // allow time to click Run on GitHub
-    const poll = async () => {
-      if (Date.now() - started > TIMEOUT) {
-        finish('idle', 'Refresh IBKR', 0); return;         // gave up quietly (5-min auto-refresh still runs)
-      }
-      let cur = null;
-      try { cur = (await (await fetch('data/account.json?' + Date.now())).json()).updatedAt; } catch (e) {}
-      if (cur && cur !== baseline) {
-        await loadData();                                  // re-pull every JSON + re-render
-        finish('done', 'Updated ✓', 4000); return;
-      }
-      setTimeout(poll, 10000);
-    };
-    setTimeout(poll, 20000);   // give the user time to click Run and the run to start
-  })();
+  // Auto-refresh every 5 minutes
+  setTimeout(loadData, 5 * 60 * 1000);
 }
 
 // ═══════════════════════════════════════════ RENDER ══
