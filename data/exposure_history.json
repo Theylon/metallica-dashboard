@@ -1,25 +1,16 @@
 {
   "2026-07-15": {
     "commodityExposure": {
-      "nickel": 0.03932,
-      "manganese dioxide": 0.005613,
+      "manganese dioxide": 0.037778,
+      "cobalt sulfate": 0.000198,
       "aluminum n": -0.002275,
-      "lmo hydroxide-based": -0.002275,
+      "aluminum": -0.00455,
       "rhodium": -0.005089,
-      "electrical steel": -0.018215,
-      "global precious metals mmi": -0.018215,
-      "raw steels mmi": -0.02029,
-      "lithium hydroxide monohydrate": -0.02049,
-      "rare earths mmi": -0.032165,
-      "ferro-chrome": -0.073639,
-      "cobalt sulfate": -0.084003,
-      "lithium carbonate": -0.09895,
-      "manganese sulfate": -0.12755,
-      "renewables mmi": -0.131994,
-      "titanium plate": -0.135337,
-      "lco": -0.140653,
-      "aluminum": -0.171456,
-      "steel": -0.222817
+      "lithium hydroxide monohydrate": -0.018215,
+      "ferro-chrome": -0.03569,
+      "lco": -0.038272,
+      "manganese sulfate": -0.060313,
+      "steel": -0.16171
     },
     "byTicker": {
       "AA": [
@@ -29,57 +20,12 @@
           "weight": -0.00455
         },
         {
-          "commodity": "cobalt sulfate",
-          "tier": "T1",
-          "weight": -0.00455
-        },
-        {
           "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.002275
-        },
-        {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.002275
-        },
-        {
-          "commodity": "lithium carbonate",
-          "tier": "T2",
-          "weight": -0.002275
-        },
-        {
-          "commodity": "lithium hydroxide monohydrate",
-          "tier": "T2",
-          "weight": -0.002275
-        },
-        {
-          "commodity": "lmo hydroxide-based",
-          "tier": "T2",
-          "weight": -0.002275
-        },
-        {
-          "commodity": "renewables mmi",
-          "tier": "T2",
-          "weight": -0.002275
-        },
-        {
-          "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.002275
-        },
-        {
-          "commodity": "titanium plate",
           "tier": "T2",
           "weight": -0.002275
         }
       ],
       "ALB": [
-        {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": 0.035334
-        },
         {
           "commodity": "manganese dioxide",
           "tier": "T2",
@@ -88,11 +34,6 @@
       ],
       "BATT": [
         {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": -0.04058
-        },
-        {
           "commodity": "manganese sulfate",
           "tier": "T1",
           "weight": -0.04058
@@ -106,81 +47,9 @@
           "commodity": "lco",
           "tier": "T2",
           "weight": -0.02029
-        },
-        {
-          "commodity": "raw steels mmi",
-          "tier": "T2",
-          "weight": -0.02029
-        },
-        {
-          "commodity": "renewables mmi",
-          "tier": "T2",
-          "weight": -0.02029
-        },
-        {
-          "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.02029
-        }
-      ],
-      "CENX": [
-        {
-          "commodity": "renewables mmi",
-          "tier": "T1",
-          "weight": -0.004222
-        },
-        {
-          "commodity": "titanium plate",
-          "tier": "T1",
-          "weight": -0.004222
-        },
-        {
-          "commodity": "cobalt sulfate",
-          "tier": "T2",
-          "weight": -0.002111
-        },
-        {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.002111
-        },
-        {
-          "commodity": "manganese sulfate",
-          "tier": "T2",
-          "weight": -0.002111
-        },
-        {
-          "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.002111
         }
       ],
       "CLF": [
-        {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": -0.06574
-        },
-        {
-          "commodity": "lco",
-          "tier": "T1",
-          "weight": -0.06574
-        },
-        {
-          "commodity": "renewables mmi",
-          "tier": "T1",
-          "weight": -0.06574
-        },
-        {
-          "commodity": "cobalt sulfate",
-          "tier": "T2",
-          "weight": -0.03287
-        },
-        {
-          "commodity": "manganese sulfate",
-          "tier": "T2",
-          "weight": -0.03287
-        },
         {
           "commodity": "steel",
           "tier": "T2",
@@ -196,22 +65,7 @@
       ],
       "LIT": [
         {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": -0.039467
-        },
-        {
-          "commodity": "renewables mmi",
-          "tier": "T1",
-          "weight": -0.039467
-        },
-        {
           "commodity": "cobalt sulfate",
-          "tier": "T2",
-          "weight": -0.019734
-        },
-        {
-          "commodity": "ferro-chrome",
           "tier": "T2",
           "weight": -0.019734
         },
@@ -223,34 +77,9 @@
       ],
       "NUE": [
         {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": -0.06451
-        },
-        {
-          "commodity": "lithium carbonate",
-          "tier": "T1",
-          "weight": -0.06451
-        },
-        {
           "commodity": "steel",
           "tier": "T1",
           "weight": -0.06451
-        },
-        {
-          "commodity": "titanium plate",
-          "tier": "T1",
-          "weight": -0.06451
-        },
-        {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.032255
-        },
-        {
-          "commodity": "manganese sulfate",
-          "tier": "T2",
-          "weight": -0.032255
         }
       ],
       "RS": [
@@ -269,27 +98,12 @@
       ],
       "SGML": [
         {
-          "commodity": "nickel",
-          "tier": "T1",
-          "weight": 0.03932
-        },
-        {
-          "commodity": "cobalt sulfate",
-          "tier": "T2",
-          "weight": 0.01966
-        },
-        {
           "commodity": "lco",
           "tier": "T2",
           "weight": 0.01966
         }
       ],
       "SQM": [
-        {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": 0.040222
-        },
         {
           "commodity": "cobalt sulfate",
           "tier": "T1",
@@ -303,62 +117,12 @@
       ],
       "STLD": [
         {
-          "commodity": "cobalt sulfate",
-          "tier": "T1",
-          "weight": -0.06433
-        },
-        {
           "commodity": "steel",
           "tier": "T1",
           "weight": -0.06433
-        },
-        {
-          "commodity": "titanium plate",
-          "tier": "T1",
-          "weight": -0.06433
-        },
-        {
-          "commodity": "aluminum",
-          "tier": "T2",
-          "weight": -0.032165
-        },
-        {
-          "commodity": "lithium carbonate",
-          "tier": "T2",
-          "weight": -0.032165
-        },
-        {
-          "commodity": "manganese dioxide",
-          "tier": "T2",
-          "weight": -0.032165
-        },
-        {
-          "commodity": "rare earths mmi",
-          "tier": "T2",
-          "weight": -0.032165
         }
       ],
       "TSLA": [
-        {
-          "commodity": "steel",
-          "tier": "T1",
-          "weight": -0.036431
-        },
-        {
-          "commodity": "electrical steel",
-          "tier": "T2",
-          "weight": -0.018215
-        },
-        {
-          "commodity": "ferro-chrome",
-          "tier": "T2",
-          "weight": -0.018215
-        },
-        {
-          "commodity": "global precious metals mmi",
-          "tier": "T2",
-          "weight": -0.018215
-        },
         {
           "commodity": "lco",
           "tier": "T2",
@@ -374,25 +138,16 @@
   },
   "2026-07-16": {
     "commodityExposure": {
-      "nickel": 0.037729,
-      "manganese dioxide": 0.00446,
+      "manganese dioxide": 0.037072,
+      "cobalt sulfate": -0.00041,
       "aluminum n": -0.002237,
-      "lmo hydroxide-based": -0.002237,
+      "aluminum": -0.004473,
       "rhodium": -0.005099,
-      "electrical steel": -0.018192,
-      "global precious metals mmi": -0.018192,
-      "raw steels mmi": -0.020351,
-      "lithium hydroxide monohydrate": -0.020428,
-      "rare earths mmi": -0.032611,
-      "ferro-chrome": -0.074026,
-      "cobalt sulfate": -0.086551,
-      "lithium carbonate": -0.100432,
-      "manganese sulfate": -0.128468,
-      "renewables mmi": -0.132536,
-      "titanium plate": -0.137098,
-      "lco": -0.142849,
-      "aluminum": -0.17512,
-      "steel": -0.225087
+      "lithium hydroxide monohydrate": -0.018192,
+      "ferro-chrome": -0.036171,
+      "lco": -0.039228,
+      "manganese sulfate": -0.060365,
+      "steel": -0.164089
     },
     "byTicker": {
       "AA": [
@@ -402,57 +157,12 @@
           "weight": -0.004473
         },
         {
-          "commodity": "cobalt sulfate",
-          "tier": "T1",
-          "weight": -0.004473
-        },
-        {
           "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.002237
-        },
-        {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.002237
-        },
-        {
-          "commodity": "lithium carbonate",
-          "tier": "T2",
-          "weight": -0.002237
-        },
-        {
-          "commodity": "lithium hydroxide monohydrate",
-          "tier": "T2",
-          "weight": -0.002237
-        },
-        {
-          "commodity": "lmo hydroxide-based",
-          "tier": "T2",
-          "weight": -0.002237
-        },
-        {
-          "commodity": "renewables mmi",
-          "tier": "T2",
-          "weight": -0.002237
-        },
-        {
-          "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.002237
-        },
-        {
-          "commodity": "titanium plate",
           "tier": "T2",
           "weight": -0.002237
         }
       ],
       "ALB": [
-        {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": 0.034538
-        },
         {
           "commodity": "manganese dioxide",
           "tier": "T2",
@@ -461,11 +171,6 @@
       ],
       "BATT": [
         {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": -0.040701
-        },
-        {
           "commodity": "manganese sulfate",
           "tier": "T1",
           "weight": -0.040701
@@ -479,81 +184,9 @@
           "commodity": "lco",
           "tier": "T2",
           "weight": -0.020351
-        },
-        {
-          "commodity": "raw steels mmi",
-          "tier": "T2",
-          "weight": -0.020351
-        },
-        {
-          "commodity": "renewables mmi",
-          "tier": "T2",
-          "weight": -0.020351
-        },
-        {
-          "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.020351
-        }
-      ],
-      "CENX": [
-        {
-          "commodity": "renewables mmi",
-          "tier": "T1",
-          "weight": -0.004055
-        },
-        {
-          "commodity": "titanium plate",
-          "tier": "T1",
-          "weight": -0.004055
-        },
-        {
-          "commodity": "cobalt sulfate",
-          "tier": "T2",
-          "weight": -0.002027
-        },
-        {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.002027
-        },
-        {
-          "commodity": "manganese sulfate",
-          "tier": "T2",
-          "weight": -0.002027
-        },
-        {
-          "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.002027
         }
       ],
       "CLF": [
-        {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": -0.066566
-        },
-        {
-          "commodity": "lco",
-          "tier": "T1",
-          "weight": -0.066566
-        },
-        {
-          "commodity": "renewables mmi",
-          "tier": "T1",
-          "weight": -0.066566
-        },
-        {
-          "commodity": "cobalt sulfate",
-          "tier": "T2",
-          "weight": -0.033283
-        },
-        {
-          "commodity": "manganese sulfate",
-          "tier": "T2",
-          "weight": -0.033283
-        },
         {
           "commodity": "steel",
           "tier": "T2",
@@ -569,22 +202,7 @@
       ],
       "LIT": [
         {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": -0.039328
-        },
-        {
-          "commodity": "renewables mmi",
-          "tier": "T1",
-          "weight": -0.039328
-        },
-        {
           "commodity": "cobalt sulfate",
-          "tier": "T2",
-          "weight": -0.019664
-        },
-        {
-          "commodity": "ferro-chrome",
           "tier": "T2",
           "weight": -0.019664
         },
@@ -596,34 +214,9 @@
       ],
       "NUE": [
         {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": -0.065584
-        },
-        {
-          "commodity": "lithium carbonate",
-          "tier": "T1",
-          "weight": -0.065584
-        },
-        {
           "commodity": "steel",
           "tier": "T1",
           "weight": -0.065584
-        },
-        {
-          "commodity": "titanium plate",
-          "tier": "T1",
-          "weight": -0.065584
-        },
-        {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.032792
-        },
-        {
-          "commodity": "manganese sulfate",
-          "tier": "T2",
-          "weight": -0.032792
         }
       ],
       "RS": [
@@ -642,27 +235,12 @@
       ],
       "SGML": [
         {
-          "commodity": "nickel",
-          "tier": "T1",
-          "weight": 0.037729
-        },
-        {
-          "commodity": "cobalt sulfate",
-          "tier": "T2",
-          "weight": 0.018864
-        },
-        {
           "commodity": "lco",
           "tier": "T2",
           "weight": 0.018864
         }
       ],
       "SQM": [
-        {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": 0.039605
-        },
         {
           "commodity": "cobalt sulfate",
           "tier": "T1",
@@ -676,62 +254,12 @@
       ],
       "STLD": [
         {
-          "commodity": "cobalt sulfate",
-          "tier": "T1",
-          "weight": -0.065222
-        },
-        {
           "commodity": "steel",
           "tier": "T1",
           "weight": -0.065222
-        },
-        {
-          "commodity": "titanium plate",
-          "tier": "T1",
-          "weight": -0.065222
-        },
-        {
-          "commodity": "aluminum",
-          "tier": "T2",
-          "weight": -0.032611
-        },
-        {
-          "commodity": "lithium carbonate",
-          "tier": "T2",
-          "weight": -0.032611
-        },
-        {
-          "commodity": "manganese dioxide",
-          "tier": "T2",
-          "weight": -0.032611
-        },
-        {
-          "commodity": "rare earths mmi",
-          "tier": "T2",
-          "weight": -0.032611
         }
       ],
       "TSLA": [
-        {
-          "commodity": "steel",
-          "tier": "T1",
-          "weight": -0.036384
-        },
-        {
-          "commodity": "electrical steel",
-          "tier": "T2",
-          "weight": -0.018192
-        },
-        {
-          "commodity": "ferro-chrome",
-          "tier": "T2",
-          "weight": -0.018192
-        },
-        {
-          "commodity": "global precious metals mmi",
-          "tier": "T2",
-          "weight": -0.018192
-        },
         {
           "commodity": "lco",
           "tier": "T2",
@@ -747,25 +275,16 @@
   },
   "2026-07-17": {
     "commodityExposure": {
-      "nickel": 0.034296,
-      "manganese dioxide": 0.002073,
+      "manganese dioxide": 0.034689,
+      "cobalt sulfate": -0.001688,
       "aluminum n": -0.002136,
-      "lmo hydroxide-based": -0.002136,
+      "aluminum": -0.004272,
       "rhodium": -0.004811,
-      "electrical steel": -0.017799,
-      "global precious metals mmi": -0.017799,
-      "raw steels mmi": -0.019502,
-      "lithium hydroxide monohydrate": -0.019935,
-      "rare earths mmi": -0.032615,
-      "ferro-chrome": -0.073457,
-      "cobalt sulfate": -0.087762,
-      "lithium carbonate": -0.100173,
-      "manganese sulfate": -0.124446,
-      "renewables mmi": -0.127103,
-      "titanium plate": -0.136731,
-      "lco": -0.13955,
-      "aluminum": -0.173458,
-      "steel": -0.221608
+      "lithium hydroxide monohydrate": -0.017799,
+      "ferro-chrome": -0.036645,
+      "lco": -0.039235,
+      "manganese sulfate": -0.058016,
+      "steel": -0.162401
     },
     "byTicker": {
       "AA": [
@@ -775,57 +294,12 @@
           "weight": -0.004272
         },
         {
-          "commodity": "cobalt sulfate",
-          "tier": "T1",
-          "weight": -0.004272
-        },
-        {
           "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.002136
-        },
-        {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.002136
-        },
-        {
-          "commodity": "lithium carbonate",
-          "tier": "T2",
-          "weight": -0.002136
-        },
-        {
-          "commodity": "lithium hydroxide monohydrate",
-          "tier": "T2",
-          "weight": -0.002136
-        },
-        {
-          "commodity": "lmo hydroxide-based",
-          "tier": "T2",
-          "weight": -0.002136
-        },
-        {
-          "commodity": "renewables mmi",
-          "tier": "T2",
-          "weight": -0.002136
-        },
-        {
-          "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.002136
-        },
-        {
-          "commodity": "titanium plate",
           "tier": "T2",
           "weight": -0.002136
         }
       ],
       "ALB": [
-        {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": 0.032551
-        },
         {
           "commodity": "manganese dioxide",
           "tier": "T2",
@@ -834,11 +308,6 @@
       ],
       "BATT": [
         {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": -0.039003
-        },
-        {
           "commodity": "manganese sulfate",
           "tier": "T1",
           "weight": -0.039003
@@ -852,81 +321,9 @@
           "commodity": "lco",
           "tier": "T2",
           "weight": -0.019502
-        },
-        {
-          "commodity": "raw steels mmi",
-          "tier": "T2",
-          "weight": -0.019502
-        },
-        {
-          "commodity": "renewables mmi",
-          "tier": "T2",
-          "weight": -0.019502
-        },
-        {
-          "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.019502
-        }
-      ],
-      "CENX": [
-        {
-          "commodity": "renewables mmi",
-          "tier": "T1",
-          "weight": -0.003942
-        },
-        {
-          "commodity": "titanium plate",
-          "tier": "T1",
-          "weight": -0.003942
-        },
-        {
-          "commodity": "cobalt sulfate",
-          "tier": "T2",
-          "weight": -0.001971
-        },
-        {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.001971
-        },
-        {
-          "commodity": "manganese sulfate",
-          "tier": "T2",
-          "weight": -0.001971
-        },
-        {
-          "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.001971
         }
       ],
       "CLF": [
-        {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": -0.063497
-        },
-        {
-          "commodity": "lco",
-          "tier": "T1",
-          "weight": -0.063497
-        },
-        {
-          "commodity": "renewables mmi",
-          "tier": "T1",
-          "weight": -0.063497
-        },
-        {
-          "commodity": "cobalt sulfate",
-          "tier": "T2",
-          "weight": -0.031748
-        },
-        {
-          "commodity": "manganese sulfate",
-          "tier": "T2",
-          "weight": -0.031748
-        },
         {
           "commodity": "steel",
           "tier": "T2",
@@ -942,22 +339,7 @@
       ],
       "LIT": [
         {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": -0.038026
-        },
-        {
-          "commodity": "renewables mmi",
-          "tier": "T1",
-          "weight": -0.038026
-        },
-        {
           "commodity": "cobalt sulfate",
-          "tier": "T2",
-          "weight": -0.019013
-        },
-        {
-          "commodity": "ferro-chrome",
           "tier": "T2",
           "weight": -0.019013
         },
@@ -969,34 +351,9 @@
       ],
       "NUE": [
         {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": -0.065422
-        },
-        {
-          "commodity": "lithium carbonate",
-          "tier": "T1",
-          "weight": -0.065422
-        },
-        {
           "commodity": "steel",
           "tier": "T1",
           "weight": -0.065422
-        },
-        {
-          "commodity": "titanium plate",
-          "tier": "T1",
-          "weight": -0.065422
-        },
-        {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.032711
-        },
-        {
-          "commodity": "manganese sulfate",
-          "tier": "T2",
-          "weight": -0.032711
         }
       ],
       "RS": [
@@ -1015,27 +372,12 @@
       ],
       "SGML": [
         {
-          "commodity": "nickel",
-          "tier": "T1",
-          "weight": 0.034296
-        },
-        {
-          "commodity": "cobalt sulfate",
-          "tier": "T2",
-          "weight": 0.017148
-        },
-        {
           "commodity": "lco",
           "tier": "T2",
           "weight": 0.017148
         }
       ],
       "SQM": [
-        {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": 0.036827
-        },
         {
           "commodity": "cobalt sulfate",
           "tier": "T1",
@@ -1049,62 +391,12 @@
       ],
       "STLD": [
         {
-          "commodity": "cobalt sulfate",
-          "tier": "T1",
-          "weight": -0.065231
-        },
-        {
           "commodity": "steel",
           "tier": "T1",
           "weight": -0.065231
-        },
-        {
-          "commodity": "titanium plate",
-          "tier": "T1",
-          "weight": -0.065231
-        },
-        {
-          "commodity": "aluminum",
-          "tier": "T2",
-          "weight": -0.032615
-        },
-        {
-          "commodity": "lithium carbonate",
-          "tier": "T2",
-          "weight": -0.032615
-        },
-        {
-          "commodity": "manganese dioxide",
-          "tier": "T2",
-          "weight": -0.032615
-        },
-        {
-          "commodity": "rare earths mmi",
-          "tier": "T2",
-          "weight": -0.032615
         }
       ],
       "TSLA": [
-        {
-          "commodity": "steel",
-          "tier": "T1",
-          "weight": -0.035598
-        },
-        {
-          "commodity": "electrical steel",
-          "tier": "T2",
-          "weight": -0.017799
-        },
-        {
-          "commodity": "ferro-chrome",
-          "tier": "T2",
-          "weight": -0.017799
-        },
-        {
-          "commodity": "global precious metals mmi",
-          "tier": "T2",
-          "weight": -0.017799
-        },
         {
           "commodity": "lco",
           "tier": "T2",
@@ -1120,25 +412,16 @@
   },
   "2026-07-18": {
     "commodityExposure": {
-      "nickel": 0.02316,
-      "manganese dioxide": 0.013161,
+      "manganese dioxide": 0.024024,
       "aluminum n": -0.006086,
-      "lmo hydroxide-based": -0.006086,
-      "rare earths mmi": -0.010863,
+      "cobalt sulfate": -0.006818,
       "rhodium": -0.01144,
-      "raw steels mmi": -0.016809,
-      "electrical steel": -0.017531,
-      "global precious metals mmi": -0.017531,
-      "lithium hydroxide monohydrate": -0.023617,
-      "lithium carbonate": -0.038779,
-      "cobalt sulfate": -0.051079,
-      "ferro-chrome": -0.051567,
-      "titanium plate": -0.06099,
-      "manganese sulfate": -0.074967,
-      "aluminum": -0.079957,
-      "lco": -0.081121,
-      "renewables mmi": -0.083765,
-      "steel": -0.116177
+      "aluminum": -0.012172,
+      "lithium hydroxide monohydrate": -0.017531,
+      "ferro-chrome": -0.018264,
+      "lco": -0.040468,
+      "manganese sulfate": -0.04939,
+      "steel": -0.052545
     },
     "byTicker": {
       "AA": [
@@ -1148,57 +431,12 @@
           "weight": -0.012172
         },
         {
-          "commodity": "cobalt sulfate",
-          "tier": "T1",
-          "weight": -0.012172
-        },
-        {
           "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.006086
-        },
-        {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.006086
-        },
-        {
-          "commodity": "lithium carbonate",
-          "tier": "T2",
-          "weight": -0.006086
-        },
-        {
-          "commodity": "lithium hydroxide monohydrate",
-          "tier": "T2",
-          "weight": -0.006086
-        },
-        {
-          "commodity": "lmo hydroxide-based",
-          "tier": "T2",
-          "weight": -0.006086
-        },
-        {
-          "commodity": "renewables mmi",
-          "tier": "T2",
-          "weight": -0.006086
-        },
-        {
-          "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.006086
-        },
-        {
-          "commodity": "titanium plate",
           "tier": "T2",
           "weight": -0.006086
         }
       ],
       "ALB": [
-        {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": 0.022286
-        },
         {
           "commodity": "manganese dioxide",
           "tier": "T2",
@@ -1207,11 +445,6 @@
       ],
       "BATT": [
         {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": -0.033618
-        },
-        {
           "commodity": "manganese sulfate",
           "tier": "T1",
           "weight": -0.033618
@@ -1225,92 +458,13 @@
           "commodity": "lco",
           "tier": "T2",
           "weight": -0.016809
-        },
-        {
-          "commodity": "raw steels mmi",
-          "tier": "T2",
-          "weight": -0.016809
-        },
-        {
-          "commodity": "renewables mmi",
-          "tier": "T2",
-          "weight": -0.016809
-        },
-        {
-          "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.016809
-        }
-      ],
-      "CENX": [
-        {
-          "commodity": "renewables mmi",
-          "tier": "T1",
-          "weight": -0.011348
-        },
-        {
-          "commodity": "titanium plate",
-          "tier": "T1",
-          "weight": -0.011348
-        },
-        {
-          "commodity": "cobalt sulfate",
-          "tier": "T2",
-          "weight": -0.005674
-        },
-        {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.005674
-        },
-        {
-          "commodity": "manganese sulfate",
-          "tier": "T2",
-          "weight": -0.005674
-        },
-        {
-          "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.005674
         }
       ],
       "CLF": [
         {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": -0.017979
-        },
-        {
-          "commodity": "lco",
-          "tier": "T1",
-          "weight": -0.017979
-        },
-        {
-          "commodity": "renewables mmi",
-          "tier": "T1",
-          "weight": -0.017979
-        },
-        {
-          "commodity": "cobalt sulfate",
-          "tier": "T2",
-          "weight": -0.008989
-        },
-        {
-          "commodity": "manganese sulfate",
-          "tier": "T2",
-          "weight": -0.008989
-        },
-        {
           "commodity": "steel",
           "tier": "T2",
           "weight": -0.008989
-        }
-      ],
-      "KALU": [
-        {
-          "commodity": "cobalt sulfate",
-          "tier": "T2",
-          "weight": -0.007278
         }
       ],
       "KARS": [
@@ -1322,22 +476,7 @@
       ],
       "LIT": [
         {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": -0.031543
-        },
-        {
-          "commodity": "renewables mmi",
-          "tier": "T1",
-          "weight": -0.031543
-        },
-        {
           "commodity": "cobalt sulfate",
-          "tier": "T2",
-          "weight": -0.015772
-        },
-        {
-          "commodity": "ferro-chrome",
           "tier": "T2",
           "weight": -0.015772
         },
@@ -1349,34 +488,9 @@
       ],
       "NUE": [
         {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": -0.021829
-        },
-        {
-          "commodity": "lithium carbonate",
-          "tier": "T1",
-          "weight": -0.021829
-        },
-        {
           "commodity": "steel",
           "tier": "T1",
           "weight": -0.021829
-        },
-        {
-          "commodity": "titanium plate",
-          "tier": "T1",
-          "weight": -0.021829
-        },
-        {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.010915
-        },
-        {
-          "commodity": "manganese sulfate",
-          "tier": "T2",
-          "weight": -0.010915
         }
       ],
       "RS": [
@@ -1395,27 +509,12 @@
       ],
       "SGML": [
         {
-          "commodity": "nickel",
-          "tier": "T1",
-          "weight": 0.02316
-        },
-        {
-          "commodity": "cobalt sulfate",
-          "tier": "T2",
-          "weight": 0.01158
-        },
-        {
           "commodity": "lco",
           "tier": "T2",
           "weight": 0.01158
         }
       ],
       "SQM": [
-        {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": 0.025762
-        },
         {
           "commodity": "cobalt sulfate",
           "tier": "T1",
@@ -1429,62 +528,12 @@
       ],
       "STLD": [
         {
-          "commodity": "cobalt sulfate",
-          "tier": "T1",
-          "weight": -0.021727
-        },
-        {
           "commodity": "steel",
           "tier": "T1",
           "weight": -0.021727
-        },
-        {
-          "commodity": "titanium plate",
-          "tier": "T1",
-          "weight": -0.021727
-        },
-        {
-          "commodity": "aluminum",
-          "tier": "T2",
-          "weight": -0.010863
-        },
-        {
-          "commodity": "lithium carbonate",
-          "tier": "T2",
-          "weight": -0.010863
-        },
-        {
-          "commodity": "manganese dioxide",
-          "tier": "T2",
-          "weight": -0.010863
-        },
-        {
-          "commodity": "rare earths mmi",
-          "tier": "T2",
-          "weight": -0.010863
         }
       ],
       "TSLA": [
-        {
-          "commodity": "steel",
-          "tier": "T1",
-          "weight": -0.035062
-        },
-        {
-          "commodity": "electrical steel",
-          "tier": "T2",
-          "weight": -0.017531
-        },
-        {
-          "commodity": "ferro-chrome",
-          "tier": "T2",
-          "weight": -0.017531
-        },
-        {
-          "commodity": "global precious metals mmi",
-          "tier": "T2",
-          "weight": -0.017531
-        },
         {
           "commodity": "lco",
           "tier": "T2",
