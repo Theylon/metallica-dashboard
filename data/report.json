@@ -1,260 +1,260 @@
 {
-  "asOf": "2026-07-16",
-  "title": "IBKR Portfolio Report v2 \u2014 Long/Short Metals Book",
+  "asOf": "2026-07-18",
+  "title": "IBKR Portfolio Report v2 — Long/Short Metals Book",
   "headline": {
-    "netLiq": 10835.03,
-    "sinceInception": -11.29,
-    "unrealizedPnl": -238.06,
-    "annVol": 19.0,
-    "betaSpy": 0.91,
-    "betaXme": 0.25,
+    "netLiq": 10839.19,
+    "sinceInception": -11.25,
+    "unrealizedPnl": 0.15,
+    "annVol": 18.5,
+    "betaSpy": 0.66,
+    "betaXme": 0.19,
     "var1d95": -235
   },
   "tradeTape": {
-    "note": "The book was rebuilt from the original 6-name long-only lithium basket into a 27-name long/short metals book \u2014 long lithium & specialty-materials producers vs. short precious/PGM, steel, aluminum and battery/EV ETFs. Rows show the largest current holdings at average entry cost (not intraday fills; live trade history needs an approved IBKR pull).",
+    "note": "The book was rebuilt from the original 6-name long-only lithium basket into a 25-name long/short metals book - long lithium & specialty-materials producers vs. short precious/PGM, steel, aluminum and battery/EV ETFs. Rows show the largest current holdings (current share count at average cost - not intraday fills; live trade history needs an approved IBKR pull).",
     "fills": [
       {
-        "time": "\u2014",
+        "time": "-",
+        "ticker": "BEPC",
+        "shares": 31,
+        "fill": 33.85,
+        "order": "SELL SHORT"
+      },
+      {
+        "time": "-",
         "ticker": "RS",
-        "shares": 2,
-        "fill": 368.43,
+        "shares": 1,
+        "fill": 366.7,
         "order": "SELL SHORT"
       },
       {
-        "time": "\u2014",
-        "ticker": "CLF",
-        "shares": 73,
-        "fill": 9.78,
-        "order": "SELL SHORT"
-      },
-      {
-        "time": "\u2014",
-        "ticker": "NUE",
-        "shares": 3,
-        "fill": 220.64,
-        "order": "SELL SHORT"
-      },
-      {
-        "time": "\u2014",
-        "ticker": "STLD",
-        "shares": 3,
-        "fill": 219.95,
-        "order": "SELL SHORT"
-      },
-      {
-        "time": "\u2014",
-        "ticker": "BATT",
-        "shares": 30,
-        "fill": 15.29,
-        "order": "SELL SHORT"
-      },
-      {
-        "time": "\u2014",
+        "time": "-",
         "ticker": "KARS",
-        "shares": 14,
+        "shares": 13,
         "fill": 31.75,
         "order": "SELL SHORT"
       },
       {
-        "time": "\u2014",
-        "ticker": "SQM",
-        "shares": 6,
-        "fill": 73.47,
-        "order": "BUY"
+        "time": "-",
+        "ticker": "TSLA",
+        "shares": 1,
+        "fill": 398.15,
+        "order": "SELL SHORT"
       },
       {
-        "time": "\u2014",
+        "time": "-",
+        "ticker": "BATT",
+        "shares": 26,
+        "fill": 15.29,
+        "order": "SELL SHORT"
+      },
+      {
+        "time": "-",
         "ticker": "LIT",
-        "shares": 6,
+        "shares": 5,
         "fill": 75.89,
         "order": "SELL SHORT"
       },
       {
-        "time": "\u2014",
-        "ticker": "ALB",
-        "shares": 3,
-        "fill": 134.76,
+        "time": "-",
+        "ticker": "SQM",
+        "shares": 4,
+        "fill": 73.47,
         "order": "BUY"
       },
       {
-        "time": "\u2014",
-        "ticker": "LAC",
-        "shares": 116,
-        "fill": 3.83,
+        "time": "-",
+        "ticker": "SGML",
+        "shares": 24,
+        "fill": 12.53,
         "order": "BUY"
+      },
+      {
+        "time": "-",
+        "ticker": "LAC",
+        "shares": 85,
+        "fill": 2.98,
+        "order": "BUY"
+      },
+      {
+        "time": "-",
+        "ticker": "PLG",
+        "shares": 200,
+        "fill": 1.21,
+        "order": "SELL SHORT"
       }
     ]
   },
   "etfLookThrough": {
-    "chinaExposure": -11.9,
-    "albTrue": 14.5,
-    "sqmTrue": -33.0,
+    "chinaExposure": -10.1,
+    "albTrue": 9.4,
+    "sqmTrue": -43.0,
     "hidden": [
       {
-        "name": "RS \u00b7 steel short",
-        "wt": 10.4
+        "name": "BEPC · renewables short",
+        "wt": 9.7
       },
       {
-        "name": "CLF \u00b7 steel short",
-        "wt": 9.6
+        "name": "RS · steel short",
+        "wt": 3.7
       },
       {
-        "name": "NUE \u00b7 steel short",
-        "wt": 9.4
+        "name": "KARS · EV-ETF short",
+        "wt": 3.5
       },
       {
-        "name": "STLD \u00b7 steel short",
-        "wt": 9.4
+        "name": "TSLA · EV short",
+        "wt": 3.5
       },
       {
-        "name": "BATT \u00b7 EV-ETF short",
-        "wt": 5.8
+        "name": "BATT · EV-ETF short",
+        "wt": 3.4
       },
       {
-        "name": "SQM \u00b7 lithium long",
-        "wt": 5.7
+        "name": "LIT · EV-ETF short",
+        "wt": 3.2
       }
     ],
-    "concentrationNote": "Long lithium producers (+14.5% of NAV) while short the BATT/LIT/KARS ETFs (\u221211.9%) that themselves hold those same miners \u2014 a partial internal self-hedge. HHI 635 (~15.7 effective names): far more diversified than the retired 6-name book (HHI 1,924 / ~5.2)."
+    "concentrationNote": "Long lithium producers (+9.4% of NAV) while short the BATT/LIT/KARS ETFs (-10.1%) that themselves hold those same miners - a partial internal self-hedge. HHI 578 (~17.3 effective names): far more diversified than the retired 6-name book (HHI 1,924 / ~5.2). Largest single position is the off-theme BEPC renewables short at 9.7% of NAV - roughly 2x the next name."
   },
   "risk": {
     "metrics": [
       {
         "k": "Annualized volatility",
-        "v": "19.0%",
-        "note": "from the account's daily TWR since inception; ~half the old book's 38% \u2014 the long/short structure damps it",
+        "v": "18.5%",
+        "note": "from the account's daily TWR, 21 daily obs since inception",
         "tone": "neutral"
       },
       {
         "k": "Beta vs S&P 500 (SPY)",
-        "v": "0.91",
-        "note": "~17 daily obs; a net-short metals book still carries market beta",
+        "v": "0.66",
+        "note": "19 overlapping daily obs",
         "tone": "neutral"
       },
       {
         "k": "Beta vs metals (XME)",
-        "v": "0.25",
-        "note": "low \u2014 long/short largely neutralises directional metals beta (old book 0.69)",
+        "v": "0.19",
+        "note": "long/short damps directional metals beta",
         "tone": "pos"
       },
       {
         "k": "Avg pairwise correlation",
-        "v": "0.44",
-        "note": "90-day daily returns, 25 of 27 holdings (OTC lines ex.); well below the old book's 0.67 \u2014 real diversification from the long/short mix",
+        "v": "0.47",
+        "note": "trailing 90d daily returns, 25 of 25 holdings (0 OTC ex.)",
         "tone": "pos"
       },
       {
         "k": "1-day VaR (95%, historical)",
-        "v": "\u2212$235",
-        "note": "\u22122.17% of NAV; 99% VaR \u22124.21% (\u2212$456)",
+        "v": "-$235",
+        "note": "-2.17% of NAV; 99% VaR -4.21% (-$456)",
         "tone": "neg"
       },
       {
         "k": "Worst day since inception",
-        "v": "\u22124.21%",
-        "note": "single worst daily TWR in the ~4-week window",
+        "v": "-4.21%",
+        "note": "single worst daily TWR",
         "tone": "neg"
       },
       {
         "k": "Max drawdown (inception curve)",
-        "v": "\u221211.4%",
+        "v": "-11.6%",
         "note": "peak-to-trough on the cumulative TWR",
         "tone": "neg"
       },
       {
         "k": "Concentration (HHI / eff. N)",
-        "v": "635 / 15.7",
-        "note": "27 names, ~15.7 effective \u2014 well spread vs the old 1,924 / 5.2",
+        "v": "578 / 17.3",
+        "note": "25 names, ~17.3 effective",
         "tone": "pos"
       }
     ],
-    "avgCorr": 0.44,
+    "avgCorr": 0.47,
     "correlations": [
       {
-        "pair": "AG \u2013 PAAS",
-        "v": 0.95
-      },
-      {
-        "pair": "AG \u2013 HL",
+        "pair": "AG – PAAS",
         "v": 0.94
       },
       {
-        "pair": "NUE \u2013 TSLA",
-        "v": 0.06
+        "pair": "BATT – KARS",
+        "v": 0.93
+      },
+      {
+        "pair": "ALB – BEPC",
+        "v": 0.11
       }
     ]
   },
   "scenarios": [
     {
-      "name": "Steel complex \u221215%",
-      "pnl": 570,
-      "pct": 5.3,
-      "note": "net short NUE/STLD/CLF/RS \u2192 gain \u00b7 first-order est"
+      "name": "Steel complex -15%",
+      "pnl": 246,
+      "pct": 2.3,
+      "note": "net short NUE/STLD/CLF/RS/CMC -> gain · first-order est"
     },
     {
-      "name": "Broad base metals \u221210%",
-      "pnl": 504,
-      "pct": 4.6,
-      "note": "net-short book benefits \u00b7 est"
+      "name": "Broad base metals -10%",
+      "pnl": 469,
+      "pct": 4.3,
+      "note": "net-short book benefits (ex-BEPC) · est"
     },
     {
       "name": "Lithium/battery +20%",
-      "pnl": 151,
-      "pct": 1.4,
-      "note": "long miners > short ETFs \u00b7 est"
+      "pnl": -18,
+      "pct": -0.2,
+      "note": "longs ~= short ETFs after the trim - near flat · est"
     },
     {
       "name": "Precious/PGM +20% squeeze",
-      "pnl": -189,
-      "pct": -1.7,
-      "note": "short silver/PGM pain \u00b7 est"
+      "pnl": -350,
+      "pct": -3.2,
+      "note": "short silver/PGM pain - now the largest bucket · est"
     }
   ],
   "drivers": [
     {
-      "driver": "Steel \u2014 US HRC",
+      "driver": "Steel — US HRC",
       "level": "> $1,100/st",
-      "trend": "firm; 50% S232 tariffs, imports \u221226% YoY",
-      "read": "Headwind \u2014 steel shorts NUE/STLD/CLF/RS (largest bucket)",
+      "trend": "firm; 50% S232 tariffs, imports -26% YoY",
+      "read": "Headwind - steel shorts NUE/STLD/CLF/RS/CMC (~19% of gross)",
       "dir": "up"
     },
     {
       "driver": "Silver",
       "level": "~$60/oz",
-      "trend": "\u221211.5% 1M, \u221221% 3M off the Jan squeeze",
-      "read": "Tailwind \u2014 silver shorts PAAS/HL/CDE/AG/BVN",
+      "trend": "-11.5% 1M, -21% 3M off the Jan squeeze",
+      "read": "Tailwind — silver shorts PAAS/HL/CDE/AG/BVN",
       "dir": "down"
     },
     {
       "driver": "Platinum / PGM",
-      "level": "\u221221..27% from Jan",
+      "level": "-21..27% from Jan",
       "trend": "structural surplus, forecasts cut",
-      "read": "Tailwind \u2014 PGM shorts PLG/SBSW/IMPUY",
+      "read": "Tailwind - PGM shorts PLG/SBSW",
       "dir": "down"
     },
     {
       "driver": "Gold",
       "level": "off $5,366 Feb peak",
-      "trend": "\u22123% 1M, \u221214% 3M",
-      "read": "Tailwind \u2014 precious shorts",
+      "trend": "-3% 1M, -14% 3M",
+      "read": "Tailwind — precious shorts",
       "dir": "down"
     },
     {
       "driver": "Aluminum",
-      "level": "LME ~$3,100\u20133,200",
-      "trend": "\u221216% June (war premium unwound)",
-      "read": "Mild tailwind \u2014 Al shorts AA/CENX/CSTM",
+      "level": "LME ~$3,100–3,200",
+      "trend": "-16% June (war premium unwound)",
+      "read": "Mild tailwind — Al shorts AA/CENX/CSTM",
       "dir": "down"
     },
     {
       "driver": "Lithium carbonate",
       "level": "two-sided",
-      "trend": "neutral \u2014 tight-balance vs 2026 supply",
-      "read": "Mixed \u2014 long ALB/SQM/LAC/SGML vs short BATT/LIT/KARS",
+      "trend": "neutral — tight-balance vs 2026 supply",
+      "read": "Mixed — long ALB/SQM/LAC/SGML vs short BATT/LIT/KARS",
       "dir": "up"
     }
   ],
-  "driversNote": "Net-short-friendly backdrop: precious metals (silver \u221221% 3M, gold \u221214%, PGM in surplus) and aluminum are correcting \u2014 a tailwind to the book's short precious/PGM/aluminum leg \u2014 while steel stays firm (HRC >$1,100 on 50% S232 tariffs), a headwind to the steel shorts, which are the book's largest bucket (~39% of gross). Lithium is two-sided. Macro: the Fed is on a dovish hold at 3.63%, CPI has eased to 3.46%, the curve is normal (10Y\u20132Y +0.40) and the VIX is calm at 16.5.",
+  "driversNote": "Net-short-friendly backdrop: precious metals (silver -21% 3M, gold -14%, PGM in surplus) and aluminum are correcting - a tailwind to the book's short precious/PGM/aluminum leg, now the largest bucket (~20% of gross) - while steel stays firm (HRC >$1,100 on 50% S232 tariffs), a headwind to the steel shorts (~19% of gross). Lithium is two-sided. Macro: the Fed is on a dovish hold at 3.63%, CPI has eased to 3.46%, the curve is normal (10Y-2Y +0.41) and the VIX is calm at 16.7.",
   "catalysts": [
     {
       "date": "Jul 23",
@@ -266,19 +266,19 @@
       "date": "Late Jul",
       "status": "scheduled",
       "event": "Nucor (NUE) & Steel Dynamics (STLD) Q2 earnings",
-      "affects": "Steel shorts \u2014 largest bucket"
+      "affects": "Steel shorts — largest bucket"
     },
     {
-      "date": "Jul 28\u201329",
+      "date": "Jul 28–29",
       "status": "confirmed",
       "event": "FOMC meeting (no dot plot)",
-      "affects": "All \u2014 rates/macro"
+      "affects": "All — rates/macro"
     },
     {
       "date": "Early Aug",
       "status": "scheduled",
       "event": "Albemarle (ALB) Q2 2026 earnings",
-      "affects": "ALB long \u00b7 LIT/BATT"
+      "affects": "ALB long · LIT/BATT"
     },
     {
       "date": "Aug 14",
@@ -293,10 +293,10 @@
       "affects": "SQM long"
     },
     {
-      "date": "Sep 16\u201317",
+      "date": "Sep 16–17",
       "status": "confirmed",
       "event": "FOMC meeting (with dot plot)",
-      "affects": "All \u2014 higher impact"
+      "affects": "All — higher impact"
     }
   ],
   "smartMoney": [
@@ -304,24 +304,24 @@
       "stock": "ALB",
       "read": "Analyst accumulation",
       "tone": "pos",
-      "detail": "Buy consensus, mean PT ~$216 (+71% upside), SmartScore 9 \u2014 supports the long lithium leg (though price momentum is weak)."
+      "detail": "Buy consensus, mean PT ~$207 (+72% upside), SmartScore 9 - supports the long lithium leg (though price momentum is weak)."
     },
     {
       "stock": "NUE",
       "read": "Bullish tape vs the short",
       "tone": "neg",
-      "detail": "Buy consensus, PT ~$270 (+19%), +27% vs 200DMA, composite 80.6 \u2014 the steel short is fighting a strong tape; the highest-rated steel name is the wrong one to be short."
+      "detail": "Buy consensus, PT ~$270 (+14%), +27% vs 200DMA, composite 80.6 - the steel short is fighting a strong tape; the highest-rated steel name is the wrong one to be short."
     }
   ],
   "options": {
-    "note": "The book holds no options \u2014 it is cash equities/ETFs, net short \u221233% of NAV. There is no embedded vega or convexity; the risk is linear and directional, captured by the scenarios above."
+    "note": "The book holds no options - it is cash equities/ETFs, net short -43% of NAV. There is no embedded vega or convexity; the risk is linear and directional, captured by the scenarios above."
   },
   "performance": {
-    "note": "Since inception (2026-06-22) the account's time-weighted return is \u221211.3%. Over the same window SPY returned +1.4% and the metals ETF XME \u221210.4% \u2014 the book tracked the metals complex down through the transition from the old long-only basket. The sample is ~4 weeks and spans the rebuild, so treat this as indicative, not a track record.",
+    "note": "Since inception (2026-06-22) the account's time-weighted return is -11.3%. Over the same window SPY was roughly flat (-0.1%) and the metals ETF XME fell -14.6% - the book tracked the metals complex down through the transition but fell less than XME. The sample is ~4 weeks and spans the rebuild, so treat this as indicative, not a track record.",
     "book": -11.3,
-    "spy": 1.4,
-    "xme": -10.4
+    "spy": -0.1,
+    "xme": -14.6
   },
-  "bottomLine": "The book was rebuilt from a concentrated long-lithium bet into a diversified 27-name long/short metals book: net short \u221233% of NAV, gross ~70%, ~15.7 effective names (HHI 635 vs the old 1,924). Realised vol has roughly halved to ~19% and metals beta is low (XME 0.25) as the long/short structure neutralises directional metals exposure, though SPY beta stays ~0.9. Since inception (Jun 22) the account is \u221211.3% TWR, tracking XME (\u221210.4%) down through the transition. Crucially the book now PROFITS from a metals selloff (steel \u221215% \u2248 +$570, broad base metals \u221210% \u2248 +$500) and is hurt by a precious/steel squeeze \u2014 the opposite of the old long book. The largest risk bucket is steel (~39% of gross, all short) into Q2 earnings (CLF Jul 23, NUE/STLD late Jul), where the shorts fight a firm tape. Watch the Jul 28\u201329 FOMC and the lithium longs' prints (ALB early Aug, SQM Aug 19).",
-  "sources": "IBKR (live account, refreshed 2026-07-16) \u00b7 FMP \u00b7 TipRanks \u00b7 our micro.json commodity-bias & analyst layer \u00b7 macro feeds. Risk metrics computed from the account's daily TWR series since inception (2026-06-22, ~18 daily obs) \u2014 a short sample spanning the book's rebuild, so vol/beta are indicative. Scenario P&L are first-order estimates (miner \u03b2\u22481.3). Informational only \u2014 not investment advice."
+  "bottomLine": "The book was rebuilt from a concentrated long-lithium bet into a diversified 25-name long/short metals book: net short -43% of NAV, gross ~62%, ~17.3 effective names (HHI 578 vs the old 1,924). Realised vol is ~18.5% (about half the old book's 38%) and metals beta is low (XME 0.19) as the long/short structure neutralises directional metals exposure; SPY beta is ~0.66. Since inception (Jun 22) the account is -11.3% TWR vs XME -14.6%. The book PROFITS from a metals selloff (steel -15% ~ +$246, broad base metals -10% ~ +$469) and is hurt by a precious/PGM squeeze (+20% ~ -$350), now the largest bucket (~20% of gross) after the deleverage. The single largest position is the off-theme BEPC renewables short (9.7% of NAV, top risk contributor) - flagged for review. Watch steel Q2 earnings (CLF Jul 23, NUE/STLD late Jul), the Jul 28-29 FOMC and the lithium longs' prints (ALB early Aug, SQM Aug 19).",
+  "sources": "IBKR (live account, refreshed 2026-07-18) · FMP · TipRanks · our micro.json commodity-bias & analyst layer · macro feeds. Risk metrics computed from the account's daily TWR series since inception (2026-06-22, 21 daily obs) - a short sample spanning the book's rebuild, so vol/beta are indicative. Scenario P&L are first-order estimates (miner beta ~1.3). Informational only - not investment advice."
 }

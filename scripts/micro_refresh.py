@@ -22,7 +22,7 @@ import yfinance as yf
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from micro_score import momentum_score, composite_from_subs, rank_within_groups
-from micro_build import cross_validation, hedge_block, load_hedge_map
+from micro_build import cross_validation, hedge_block, load_hedge_map, load_held
 
 DATA = pathlib.Path(__file__).resolve().parent.parent / "data"
 CHUNK = 50
@@ -117,6 +117,17 @@ def write_price_history(series):
 def main():
     micro = json.loads((DATA / "micro.json").read_text())
     records = micro.get("tickers", [])
+
+    # Re-sync the held overlay from the live book on every refresh, so the
+    # "Held" view can never drift from data/positions.json between full research
+    # rebuilds (micro_build owns ADDING rows for brand-new held names; this
+    # keeps the existing rows' held/heldMv/position truthful 4x/day).
+    held_book = load_held()
+    for r in records:
+        h = held_book.get(r["ticker"])
+        r["held"] = h["side"] if h else None
+        r["heldMv"] = h["mktValue"] if h else None
+        r["position"] = h
     # skip names flagged as untradable / suspect quotes and obviously non-yfinance symbols
     tickers = [r["ticker"] for r in records
                if not r.get("quoteSuspect") and "(" not in r["ticker"]]

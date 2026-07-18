@@ -1,40 +1,47 @@
 {
- "updatedAt": "2026-07-18T09:58:13+00:00",
+ "updatedAt": "2026-07-18T19:50:53+00:00",
  "aggregate": {
-  "closedTrades": 96,
-  "winRate": 0.21,
-  "avgWin": 2.54,
-  "avgLoss": -13.12,
-  "profitFactor": 0.05,
-  "avgHoldDays": 6.1,
-  "avgHoldWinDays": 5.3,
-  "avgHoldLossDays": 6.3,
-  "dispositionEffect": 1.0,
-  "turnover": 1.84,
-  "tradesPerWeek": 56.0,
-  "totalRealized": -946.43
+  "closedTrades": 123,
+  "winRate": 0.25,
+  "avgWin": 3.4,
+  "avgLoss": -13.78,
+  "profitFactor": 0.08,
+  "avgHoldDays": 7.3,
+  "avgHoldWinDays": 8.0,
+  "avgHoldLossDays": 7.1,
+  "dispositionEffect": -0.9,
+  "turnover": 2.21,
+  "tradesPerWeek": 37.4,
+  "totalRealized": -1162.36
  },
  "byName": [
   {
    "ticker": "ALB",
    "commodity": "Lithium",
-   "realized": -184.96,
-   "trades": 5,
+   "realized": -201.72,
+   "trades": 6,
    "winRate": 0.0
   },
   {
    "ticker": "BATT",
    "commodity": "Lithium",
-   "realized": -181.45,
-   "trades": 7,
+   "realized": -176.91,
+   "trades": 8,
+   "winRate": 0.12
+  },
+  {
+   "ticker": "SQM",
+   "commodity": "Lithium",
+   "realized": -126.54,
+   "trades": 6,
    "winRate": 0.0
   },
   {
    "ticker": "LIT",
    "commodity": "Lithium",
-   "realized": -130.39,
-   "trades": 6,
-   "winRate": 0.0
+   "realized": -123.52,
+   "trades": 7,
+   "winRate": 0.14
   },
   {
    "ticker": "REMX",
@@ -44,10 +51,10 @@
    "winRate": 0.22
   },
   {
-   "ticker": "SQM",
+   "ticker": "LAC",
    "commodity": "Lithium",
-   "realized": -114.62,
-   "trades": 5,
+   "realized": -102.34,
+   "trades": 2,
    "winRate": 0.0
   },
   {
@@ -55,6 +62,34 @@
    "commodity": "Other",
    "realized": -81.33,
    "trades": 6,
+   "winRate": 0.0
+  },
+  {
+   "ticker": "STLD",
+   "commodity": "Steel",
+   "realized": -48.05,
+   "trades": 3,
+   "winRate": 0.0
+  },
+  {
+   "ticker": "NUE",
+   "commodity": "Steel",
+   "realized": -39.8,
+   "trades": 5,
+   "winRate": 0.0
+  },
+  {
+   "ticker": "SGML",
+   "commodity": "Lithium",
+   "realized": -30.62,
+   "trades": 2,
+   "winRate": 0.0
+  },
+  {
+   "ticker": "RS",
+   "commodity": "Steel",
+   "realized": -29.04,
+   "trades": 2,
    "winRate": 0.0
   },
   {
@@ -79,25 +114,18 @@
    "winRate": 0.29
   },
   {
-   "ticker": "STLD",
-   "commodity": "Steel",
-   "realized": -17.95,
-   "trades": 2,
-   "winRate": 0.0
-  },
-  {
-   "ticker": "SBSW",
-   "commodity": "Precious",
-   "realized": -16.8,
-   "trades": 4,
-   "winRate": 0.0
-  },
-  {
    "ticker": "TSLA",
    "commodity": "Lithium",
    "realized": -16.61,
    "trades": 1,
    "winRate": 0.0
+  },
+  {
+   "ticker": "SBSW",
+   "commodity": "Precious",
+   "realized": -14.48,
+   "trades": 8,
+   "winRate": 0.5
   },
   {
    "ticker": "HBM",
@@ -121,16 +149,16 @@
    "winRate": 0.0
   },
   {
-   "ticker": "NUE",
-   "commodity": "Steel",
-   "realized": -6.17,
-   "trades": 3,
+   "ticker": "ATI",
+   "commodity": "Other",
+   "realized": -5.92,
+   "trades": 1,
    "winRate": 0.0
   },
   {
-   "ticker": "RS",
-   "commodity": "Steel",
-   "realized": -5.02,
+   "ticker": "CC",
+   "commodity": "Other",
+   "realized": -5.81,
    "trades": 1,
    "winRate": 0.0
   },
@@ -142,10 +170,24 @@
    "winRate": 0.0
   },
   {
+   "ticker": "NHYDY",
+   "commodity": "Other",
+   "realized": -4.56,
+   "trades": 1,
+   "winRate": 0.0
+  },
+  {
    "ticker": "RIO",
    "commodity": "Other",
    "realized": -4.24,
    "trades": 2,
+   "winRate": 0.0
+  },
+  {
+   "ticker": "TROX",
+   "commodity": "Other",
+   "realized": -3.26,
+   "trades": 1,
    "winRate": 0.0
   },
   {
@@ -156,18 +198,25 @@
    "winRate": 0.67
   },
   {
-   "ticker": "KARS",
-   "commodity": "Other",
-   "realized": -0.32,
-   "trades": 2,
-   "winRate": 0.0
-  },
-  {
    "ticker": "BHP",
    "commodity": "Other",
    "realized": 0.16,
    "trades": 3,
    "winRate": 0.67
+  },
+  {
+   "ticker": "KARS",
+   "commodity": "Lithium",
+   "realized": 1.09,
+   "trades": 3,
+   "winRate": 0.33
+  },
+  {
+   "ticker": "IMPUY",
+   "commodity": "Other",
+   "realized": 1.74,
+   "trades": 1,
+   "winRate": 1.0
   },
   {
    "ticker": "SCCO",
@@ -184,11 +233,11 @@
    "winRate": 0.5
   },
   {
-   "ticker": "CLF",
-   "commodity": "Steel",
-   "realized": 5.09,
+   "ticker": "PAAS",
+   "commodity": "Precious",
+   "realized": 3.27,
    "trades": 2,
-   "winRate": 1.0
+   "winRate": 0.5
   },
   {
    "ticker": "TECK",
@@ -210,46 +259,72 @@
    "realized": 9.61,
    "trades": 3,
    "winRate": 1.0
+  },
+  {
+   "ticker": "PLG",
+   "commodity": "Precious",
+   "realized": 13.15,
+   "trades": 1,
+   "winRate": 1.0
+  },
+  {
+   "ticker": "CLF",
+   "commodity": "Steel",
+   "realized": 24.8,
+   "trades": 4,
+   "winRate": 0.75
   }
  ],
  "byCommodity": [
   {
    "commodity": "Lithium",
-   "realized": -628.03,
-   "share": 0.664
+   "realized": -777.17,
+   "share": 0.666
   },
   {
    "commodity": "Other",
-   "realized": -221.01,
-   "share": 0.234
+   "realized": -238.5,
+   "share": 0.205
+  },
+  {
+   "commodity": "Steel",
+   "realized": -92.09,
+   "share": 0.079
   },
   {
    "commodity": "Aluminum",
    "realized": -56.54,
-   "share": 0.06
-  },
-  {
-   "commodity": "Steel",
-   "realized": -24.05,
-   "share": 0.025
+   "share": 0.048
   },
   {
    "commodity": "Precious",
-   "realized": -16.8,
-   "share": 0.018
+   "realized": 1.94,
+   "share": 0.002
   }
  ],
  "bySide": {
   "long": {
-   "realized": -929.63,
-   "trades": 92
+   "realized": -1106.26,
+   "trades": 101
   },
   "short": {
-   "realized": -16.8,
-   "trades": 4
+   "realized": -56.1,
+   "trades": 22
   }
  },
  "best": [
+  {
+   "ticker": "CLF",
+   "side": "short",
+   "qty": 53.0,
+   "entry": 9.78,
+   "exit": 9.378,
+   "openDate": "2026-07-06",
+   "closeDate": "2026-07-17",
+   "realized": 20.31,
+   "pctReturn": 3.9,
+   "holdDays": 11.1
+  },
   {
    "ticker": "PALL",
    "side": "long",
@@ -261,6 +336,18 @@
    "realized": 14.03,
    "pctReturn": 4.6,
    "holdDays": 5.8
+  },
+  {
+   "ticker": "PLG",
+   "side": "short",
+   "qty": 81.0,
+   "entry": 1.402,
+   "exit": 1.215,
+   "openDate": "2026-07-06",
+   "closeDate": "2026-07-17",
+   "realized": 13.15,
+   "pctReturn": 11.6,
+   "holdDays": 11.0
   },
   {
    "ticker": "SLV",
@@ -285,30 +372,6 @@
    "realized": 7.05,
    "pctReturn": 2.2,
    "holdDays": 5.8
-  },
-  {
-   "ticker": "CLF",
-   "side": "long",
-   "qty": 33.0,
-   "entry": 9.568,
-   "exit": 9.78,
-   "openDate": "2026-06-30",
-   "closeDate": "2026-07-06",
-   "realized": 5.0,
-   "pctReturn": 1.6,
-   "holdDays": 5.9
-  },
-  {
-   "ticker": "TECK",
-   "side": "long",
-   "qty": 5.0,
-   "entry": 59.5265,
-   "exit": 60.845,
-   "openDate": "2026-06-30",
-   "closeDate": "2026-07-06",
-   "realized": 4.59,
-   "pctReturn": 1.5,
-   "holdDays": 5.9
   }
  ],
  "worst": [
@@ -349,6 +412,18 @@
    "holdDays": 8.0
   },
   {
+   "ticker": "LAC",
+   "side": "long",
+   "qty": 100.0,
+   "entry": 3.825,
+   "exit": 2.96,
+   "openDate": "2026-07-06",
+   "closeDate": "2026-07-17",
+   "realized": -88.36,
+   "pctReturn": -23.1,
+   "holdDays": 10.9
+  },
+  {
    "ticker": "REMX",
    "side": "long",
    "qty": 9.0,
@@ -359,44 +434,32 @@
    "realized": -84.05,
    "pctReturn": -9.6,
    "holdDays": 7.9
-  },
-  {
-   "ticker": "LIT",
-   "side": "long",
-   "qty": 18.0,
-   "entry": 82.555,
-   "exit": 78.2,
-   "openDate": "2026-06-22",
-   "closeDate": "2026-06-30",
-   "realized": -80.06,
-   "pctReturn": -5.4,
-   "holdDays": 7.9
   }
  ],
  "shadow": {
-  "realizedActual": -946.43,
-  "ifHeldToNow": -1730.68,
-  "edge": 784.25,
+  "realizedActual": -1162.36,
+  "ifHeldToNow": -1943.06,
+  "edge": 780.7,
   "items": [
    {
     "ticker": "LIT",
     "currentPrice": 68.38,
-    "shadowDelta": -269.25
+    "shadowDelta": -269.62
    },
    {
     "ticker": "BATT",
     "currentPrice": 14.02,
-    "shadowDelta": -196.66
+    "shadowDelta": -197.1
    },
    {
     "ticker": "SQM",
     "currentPrice": 69.81,
-    "shadowDelta": -142.53
+    "shadowDelta": -138.92
    },
    {
     "ticker": "ALB",
     "currentPrice": 120.78,
-    "shadowDelta": -109.71
+    "shadowDelta": -107.93
    },
    {
     "ticker": "KALU",
@@ -416,39 +479,74 @@
    {
     "ticker": "SBSW",
     "currentPrice": 8.0,
-    "shadowDelta": 24.25
+    "shadowDelta": 25.48
    },
    {
     "ticker": "KARS",
     "currentPrice": 29.53,
-    "shadowDelta": -23.13
+    "shadowDelta": -23.33
    },
    {
     "ticker": "NUE",
     "currentPrice": 236.61,
-    "shadowDelta": 22.69
-   },
-   {
-    "ticker": "RS",
-    "currentPrice": 395.93,
-    "shadowDelta": 21.55
+    "shadowDelta": 22.6
    },
    {
     "ticker": "STLD",
     "currentPrice": 235.5,
-    "shadowDelta": 20.85
+    "shadowDelta": 19.73
    },
    {
-    "ticker": "CLF",
-    "currentPrice": 9.28,
-    "shadowDelta": -16.72
+    "ticker": "RS",
+    "currentPrice": 395.93,
+    "shadowDelta": 18.8
    },
    {
     "ticker": "TSLA",
     "currentPrice": 380.04,
     "shadowDelta": -14.03
+   },
+   {
+    "ticker": "CLF",
+    "currentPrice": 9.28,
+    "shadowDelta": -11.43
+   },
+   {
+    "ticker": "SGML",
+    "currentPrice": 10.46,
+    "shadowDelta": 2.76
+   },
+   {
+    "ticker": "TROX",
+    "currentPrice": 5.84,
+    "shadowDelta": -2.25
+   },
+   {
+    "ticker": "PLG",
+    "currentPrice": 1.24,
+    "shadowDelta": -2.02
+   },
+   {
+    "ticker": "PAAS",
+    "currentPrice": 41.77,
+    "shadowDelta": 1.81
+   },
+   {
+    "ticker": "ATI",
+    "currentPrice": 186.17,
+    "shadowDelta": -1.59
+   },
+   {
+    "ticker": "LAC",
+    "currentPrice": 2.95,
+    "shadowDelta": -1.16
+   },
+   {
+    "ticker": "CC",
+    "currentPrice": 17.52,
+    "shadowDelta": -0.96
    }
   ]
  },
- "note": "96 closed round-trips FIFO-matched from 175 fills. Shadow Account marks exited lots to current price. Analysis only."
+ "note": "123 closed round-trips FIFO-matched from 214 fills. Shadow Account marks exited lots to current price. Analysis only."
 }

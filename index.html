@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Metallica — Performance Dashboard</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a1f33'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23e8b64c' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 <style>
@@ -526,6 +527,7 @@ td:first-child { text-align: left; }
       </div>
     </div>
     <div class="topbar-right">
+      <div id="load-error-badge" class="stale-badge" style="display:none">⚠ Data refresh failed — showing last-loaded data</div>
       <div id="stale-badge" class="stale-badge" style="display:none">⚠ Stale</div>
       <div id="market-badge" class="market-badge closed">Market Closed</div>
       <div id="updated-at" class="updated-at">—</div>
@@ -535,41 +537,41 @@ td:first-child { text-align: left; }
   </div>
 
   <!-- Tab nav -->
-  <div class="tabs">
-    <div class="tab active" onclick="showTab('overview')">
+  <div class="tabs" role="tablist">
+    <div class="tab active" role="tab" tabindex="0" data-tab="overview" onclick="showTab('overview')">
       <span class="tab-icon">📈</span> Overview
     </div>
-    <div class="tab" onclick="showTab('positions')">
+    <div class="tab" role="tab" tabindex="0" data-tab="positions" onclick="showTab('positions')">
       <span class="tab-icon">📋</span> Positions
     </div>
-    <div class="tab" onclick="showTab('journal')">
+    <div class="tab" role="tab" tabindex="0" data-tab="journal" onclick="showTab('journal')">
       <span class="tab-icon">📒</span> Journal
     </div>
-    <div class="tab" onclick="showTab('benchmarks')">
+    <div class="tab" role="tab" tabindex="0" data-tab="benchmarks" onclick="showTab('benchmarks')">
       <span class="tab-icon">⚖️</span> Benchmarks
     </div>
-    <div class="tab" onclick="showTab('exposure')">
+    <div class="tab" role="tab" tabindex="0" data-tab="exposure" onclick="showTab('exposure')">
       <span class="tab-icon">🔭</span> Exposure
     </div>
-    <div class="tab" onclick="showTab('risk')">
+    <div class="tab" role="tab" tabindex="0" data-tab="risk" onclick="showTab('risk')">
       <span class="tab-icon">🛡️</span> Risk
     </div>
-    <div class="tab" onclick="showTab('markets')">
+    <div class="tab" role="tab" tabindex="0" data-tab="markets" onclick="showTab('markets')">
       <span class="tab-icon">🌐</span> Markets
     </div>
-    <div class="tab" onclick="showTab('intel')">
+    <div class="tab" role="tab" tabindex="0" data-tab="intel" onclick="showTab('intel')">
       <span class="tab-icon">🧠</span> Intel
     </div>
-    <div class="tab" onclick="showTab('picks')">
+    <div class="tab" role="tab" tabindex="0" data-tab="picks" onclick="showTab('picks')">
       <span class="tab-icon">🎯</span> Stock Picks
     </div>
-    <div class="tab" onclick="showTab('signals')">
+    <div class="tab" role="tab" tabindex="0" data-tab="signals" onclick="showTab('signals')">
       <span class="tab-icon">🔬</span> Signals
     </div>
-    <div class="tab" onclick="showTab('rebalance')">
+    <div class="tab" role="tab" tabindex="0" data-tab="rebalance" onclick="showTab('rebalance')">
       <span class="tab-icon">🔁</span> Rebalance
     </div>
-    <div class="tab" onclick="showTab('altdata')">
+    <div class="tab" role="tab" tabindex="0" data-tab="altdata" onclick="showTab('altdata')">
       <span class="tab-icon">🛰️</span> Alt-Data
     </div>
   </div>
@@ -653,17 +655,20 @@ td:first-child { text-align: left; }
         <div class="stat-block-title">Live Performance</div>
         <div class="stat-row"><span class="stat-key">Portfolio NAV</span><span class="stat-val" id="stat-nav">—</span></div>
         <div class="stat-row"><span class="stat-key">Unrealized P&L</span><span class="stat-val" id="stat-upnl">—</span></div>
-        <div class="stat-row"><span class="stat-key">Realized P&L</span><span class="stat-val" id="stat-rpnl">—</span></div>
+        <div class="stat-row"><span class="stat-key">Realized P&L (incep.)</span><span class="stat-val" id="stat-rpnl">—</span></div>
         <div class="stat-row"><span class="stat-key">Daily P&L</span><span class="stat-val" id="stat-dpnl">—</span></div>
         <div class="stat-row"><span class="stat-key">Currency</span><span class="stat-val" id="stat-ccy">USD</span></div>
       </div>
       <div class="stat-block">
-        <div class="stat-block-title">Rolling Metrics (90d)</div>
+        <div class="stat-block-title" id="stat-metrics-title">Rolling Metrics</div>
         <div class="stat-row"><span class="stat-key">Sharpe Ratio</span><span class="stat-val" id="stat-sharpe">—</span></div>
         <div class="stat-row"><span class="stat-key">Ann. Return</span><span class="stat-val" id="stat-cagr">—</span></div>
         <div class="stat-row"><span class="stat-key">Daily Volatility</span><span class="stat-val" id="stat-vol">—</span></div>
         <div class="stat-row"><span class="stat-key">Max Drawdown</span><span class="stat-val" id="stat-mdd">—</span></div>
         <div class="stat-row"><span class="stat-key">Win Rate (days)</span><span class="stat-val" id="stat-winrate">—</span></div>
+        <div style="font-size:10px;color:var(--text-muted);padding-top:6px;line-height:1.4;">
+          Sharpe assumes rf&nbsp;=&nbsp;0; annualized from a short since-inception sample — indicative only.
+        </div>
       </div>
       <div class="stat-block">
         <div class="stat-block-title">OOS Track Record (brief)</div>
@@ -713,7 +718,7 @@ td:first-child { text-align: left; }
               <th class="sortable" onclick="sortPositionsBy('unrealizedPnl')">Unr. P&L<span class="sort-arrow" id="arrow-unrealizedPnl"></span></th>
               <th class="sortable" onclick="sortPositionsBy('pct')">Unr. P&L %<span class="sort-arrow" id="arrow-pct"></span></th>
               <th class="sortable" onclick="sortPositionsBy('realizedPnl')">Realized P&L<span class="sort-arrow" id="arrow-realizedPnl"></span></th>
-              <th class="sortable" onclick="sortPositionsBy('weight')">Weight<span class="sort-arrow" id="arrow-weight"></span></th>
+              <th class="sortable" onclick="sortPositionsBy('weight')">% of NAV<span class="sort-arrow" id="arrow-weight"></span></th>
             </tr>
           </thead>
           <tbody id="pos-tbody"></tbody>
@@ -954,14 +959,14 @@ td:first-child { text-align: left; }
     <div class="section-title" style="margin-top:8px;">Book Look-Through — Long Miners vs Short ETFs</div>
     <div class="two-col">
       <div class="stat-block">
-        <div class="stat-block-title">Exposure (decomposed)</div>
+        <div class="stat-block-title">Exposure (decomposed) <span id="etf-asof"></span></div>
         <div class="stat-row"><span class="stat-key">Short EV/battery ETFs (BATT+LIT+KARS)</span><span class="stat-val" id="etf-china">—</span></div>
         <div class="stat-row"><span class="stat-key">Long lithium miners (ALB/SQM/LAC/SGML)</span><span class="stat-val" id="etf-alb">—</span></div>
         <div class="stat-row"><span class="stat-key">Net book exposure</span><span class="stat-val" id="etf-sqm">—</span></div>
         <div class="stat-row" style="border:none;padding-top:12px;"><span class="report-note" id="etf-conc"></span></div>
       </div>
       <div class="stat-block">
-        <div class="stat-block-title">Largest positions (% of NAV)</div>
+        <div class="stat-block-title">Largest positions (% of NAV) <span id="etf-asof2"></span></div>
         <div id="etf-hidden"></div>
       </div>
     </div>
@@ -981,7 +986,9 @@ td:first-child { text-align: left; }
       </div>
       <div class="report-note" style="padding:8px 16px;">
         Weighted by each held ticker's % of NAV × linkage tier (T1=1.0, T2=0.5), summed across
-        holdings linked to that commodity via metallica-fund's equity–commodity linkage map.
+        holdings linked to that commodity via metallica-fund's equity–commodity linkage map,
+        filtered to each equity group's product family (signal-mined links outside the family,
+        e.g. a smelter "linked" to cobalt, are dropped as statistical artifacts).
         Forward-looking only — accumulates from the day this tracker went live, no backfilled history.
       </div>
     </div>
@@ -1027,7 +1034,7 @@ td:first-child { text-align: left; }
         </div>
       </div>
       <div class="stat-block">
-        <div class="stat-block-title">Scenario Stress Tests</div>
+        <div class="stat-block-title">Scenario Stress Tests <span id="scenario-asof"></span></div>
         <div id="scenario-list"></div>
         <div class="stat-block-title" style="margin-top:20px;">Key Correlations</div>
         <div id="corr-list"></div>
@@ -1436,8 +1443,12 @@ async function loadData() {
 
     renderAll();
     updateMetaBadges(accRes.updatedAt);
+    const errBadge = document.getElementById('load-error-badge');
+    if (errBadge) errBadge.style.display = 'none';
   } catch(e) {
     console.error('Data load error', e);
+    const errBadge = document.getElementById('load-error-badge');
+    if (errBadge) errBadge.style.display = '';
   }
   // Auto-refresh every 5 minutes
   setTimeout(loadData, 5 * 60 * 1000);
@@ -1445,24 +1456,20 @@ async function loadData() {
 
 // ═══════════════════════════════════════════ RENDER ══
 function renderAll() {
-  renderKPIs();
-  buildBmToggles();
-  renderPnlChart();
-  renderStats();
-  buildCategoryFilter();
-  renderPositions();
-  renderBmChart();
-  renderBmTable();
-  renderExposure();
-  renderCommodityExposure();
-  renderReport();
-  renderIntel();
-  renderPicks();
-  renderSignals();
-  renderJournal();
-  renderRebalance();
-  renderAltData();
+  // Each renderer is isolated so one failure (e.g. Chart.js CDN blocked, or a
+  // malformed data field) can't blank every panel that renders after it.
+  [renderKPIs, buildBmToggles, renderPnlChart, renderStats, buildCategoryFilter,
+   renderPositions, renderBmChart, renderBmTable, renderExposure,
+   renderCommodityExposure, renderReport, renderIntel, renderPicks,
+   renderSignals, renderJournal, renderRebalance, renderAltData
+  ].forEach(fn => {
+    try { fn(); } catch (e) { console.error(fn.name + ' failed', e); }
+  });
 }
+
+// Chart.js loads from a CDN; if that's blocked the charts are skipped but every
+// table/KPI still renders (the chart canvas keeps its "awaiting data" state).
+function hasChartJs() { return typeof Chart !== 'undefined'; }
 
 // ── Stock Picks: micro-analysis scores · recommendations · trade list ─
 let micro = {};
@@ -1503,7 +1510,7 @@ function renderPicks() {
       `<tr><td style="text-align:left;font-weight:600;">${b.material}</td>`
       + `<td style="text-align:left;"><span class="pick-badge ${cls[b.bias] || 'neutral'}">${b.bias.toUpperCase()}</span></td>`
       + `<td style="text-align:left;color:var(--text-muted);">${b.confidence}</td>`
-      + `<td style="text-align:left;font-size:11px;color:var(--text-muted);max-width:640px;">${b.evidence}</td></tr>`
+      + `<td style="text-align:left;font-size:11px;color:var(--text-muted);max-width:640px;">${esc(b.evidence)}</td></tr>`
     ).join('') : '<tr class="empty-row"><td colspan="4">No micro data</td></tr>';
   }
 
@@ -1521,9 +1528,9 @@ function renderPicks() {
     rt.innerHTML = recs.length ? recs.map(r =>
       `<tr><td style="text-align:left;font-weight:700;">${r.ticker}</td>`
       + `<td style="text-align:left;">${r.held ? `<span class="pick-badge ${r.held}">${r.held.toUpperCase()}</span>` : '<span class="pick-badge new">NEW</span>'}</td>`
-      + `<td style="text-align:left;font-weight:600;">${r.action}</td>`
-      + `<td style="text-align:left;color:${urgCol[r.urgency] || 'var(--text-muted)'};">${r.urgency}</td>`
-      + `<td style="text-align:left;font-size:11px;color:var(--text-muted);line-height:1.45;">${r.rationale}</td></tr>`
+      + `<td style="text-align:left;font-weight:600;">${esc(r.action)}</td>`
+      + `<td style="text-align:left;color:${urgCol[r.urgency] || 'var(--text-muted)'};">${esc(r.urgency)}</td>`
+      + `<td style="text-align:left;font-size:11px;color:var(--text-muted);line-height:1.45;">${esc(r.rationale)}</td></tr>`
     ).join('') : '<tr class="empty-row"><td colspan="5">No recommendations</td></tr>';
   }
 
@@ -1535,7 +1542,7 @@ function renderPicks() {
       return `<tr><td style="text-align:left;font-weight:600;color:${buy ? 'var(--green)' : 'var(--red)'};">${t.side}</td>`
         + `<td style="text-align:left;font-weight:700;">${t.ticker}</td>`
         + `<td style="text-align:left;">${t.qty}</td>`
-        + `<td style="text-align:left;font-size:11px;color:var(--text-muted);">${t.why}</td></tr>`;
+        + `<td style="text-align:left;font-size:11px;color:var(--text-muted);">${esc(t.why)}</td></tr>`;
     }).join('') : '<tr class="empty-row"><td colspan="4">No trades proposed</td></tr>';
   }
 
@@ -1670,21 +1677,21 @@ function buildPickDetail(r) {
       + chip('Confidence', e.confidence || '—') + `</div>`
       + (e.evidence ? `<span style="color:var(--text-muted);">“${e.evidence}”</span>` : ''));
   } else if (r.omEvidence) {
-    out += section('Commodity linkage evidence (Bigdata.com)', `<span style="color:var(--text-muted);">${r.omEvidence}</span>`);
+    out += section('Commodity linkage evidence (Bigdata.com)', `<span style="color:var(--text-muted);">${esc(r.omEvidence)}</span>`);
   }
 
   // commodity backdrop for this material
   const bias = (micro.commodityBias || []).find(b => b.material === r.material);
   if (bias) {
-    out += section(`Commodity backdrop — ${r.material}`,
-      `<span class="pick-badge ${bias.bias === 'long' ? 'long' : bias.bias === 'short' ? 'short' : 'neutral'}">${bias.bias.toUpperCase()}</span> `
-      + `<span style="color:var(--text-muted);">(${bias.confidence}) ${bias.evidence}</span>`);
+    out += section(`Commodity backdrop — ${esc(r.material)}`,
+      `<span class="pick-badge ${bias.bias === 'long' ? 'long' : bias.bias === 'short' ? 'short' : 'neutral'}">${esc(bias.bias.toUpperCase())}</span> `
+      + `<span style="color:var(--text-muted);">(${esc(bias.confidence)}) ${esc(bias.evidence)}</span>`);
   }
 
-  out += section('Thesis' + (r.deepModelDerived ? ' <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--text-dim);">· model-derived (bias + linkage + analyst, not individually researched)</span>' : ''), r.thesis ? `${r.thesis}` : '');
-  out += section('Catalysts', (r.catalysts || []).length ? r.catalysts.join(' · ') : '');
-  out += section('Risks', (r.risks || []).length ? r.risks.join(' · ') : '');
-  const ev = (r.evidence || []).map(e => `• <b>${e.source}</b> (${e.date}): ${e.note}`).join('<br>');
+  out += section('Thesis' + (r.deepModelDerived ? ' <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--text-dim);">· model-derived (bias + linkage + analyst, not individually researched)</span>' : ''), r.thesis ? esc(r.thesis) : '');
+  out += section('Catalysts', (r.catalysts || []).length ? esc(r.catalysts.join(' · ')) : '');
+  out += section('Risks', (r.risks || []).length ? esc(r.risks.join(' · ')) : '');
+  const ev = (r.evidence || []).map(e => `• <b>${esc(e.source)}</b> (${esc(e.date)}): ${esc(e.note)}`).join('<br>');
   out += section('Evidence', ev);
   return out;
 }
@@ -1692,8 +1699,11 @@ function buildPickDetail(r) {
 function renderPicksTable() {
   const tb = document.getElementById('picks-tbody');
   if (!tb) return;
-  let rows = (micro.tickers || []).filter(r => r.composite !== null && r.composite !== undefined);
+  // held-only rows (no research coverage, e.g. an off-theme short) have no
+  // composite but must still appear in the Held view — never hide a live position
+  let rows = (micro.tickers || []).filter(r => (r.composite !== null && r.composite !== undefined) || r.held);
   if (picksMode === 'held') rows = rows.filter(r => r.held);
+  else rows = rows.filter(r => r.composite !== null && r.composite !== undefined);
   if (picksMode === 'new') rows = rows.filter(r => r.discovered);
   if (picksSearch) rows = rows.filter(r => r.ticker.toUpperCase().includes(picksSearch) || (r.company || '').toUpperCase().includes(picksSearch));
   if (picksMaterial) rows = rows.filter(r => r.material === picksMaterial);
@@ -1716,8 +1726,8 @@ function renderPicksTable() {
       ? `<span class="pick-badge ${r.microVerdict === 'bullish' ? 'long' : r.microVerdict === 'bearish' ? 'short' : 'neutral'}">${r.microVerdict}</span>` : '—';
     const sus = r.quoteSuspect ? ' <span title="quote data suspect">⚠</span>' : '';
     let html = `<tr class="picks-row" onclick="togglePickDetail('${r.ticker.replace(/'/g, "\\'")}')">`
-      + `<td style="text-align:left;font-weight:700;">${r.ticker}${sus}</td>`
-      + `<td style="text-align:left;color:var(--text-muted);font-size:11px;">${r.material || '—'}</td>`
+      + `<td style="text-align:left;font-weight:700;">${esc(r.ticker)}${sus}</td>`
+      + `<td style="text-align:left;color:var(--text-muted);font-size:11px;">${esc(r.material || '—')}</td>`
       + `<td style="text-align:left;">${held}</td>`
       + `<td><div class="score-cell"><div class="score-bar"><div style="width:${Math.min(100, r.composite)}%;background:${scoreColor(r.composite)};"></div></div><b style="color:${scoreColor(r.composite)};">${fmtN(r.composite)}</b></div></td>`
       + `<td>${fmtN(r.subs && r.subs.momentum)}</td><td>${fmtN(r.subs && r.subs.commodity)}</td><td>${fmtN(r.subs && r.subs.analyst)}</td>`
@@ -1754,9 +1764,9 @@ function renderIntel() {
     const tone = { good: '#22c55e', warn: '#f59e0b', bad: '#ef4444' };
     const r = intel.macro || [];
     mr.innerHTML = r.length ? r.map(m =>
-      `<div class="kpi-card"><div class="kpi-label">${m.label}</div>`
-      + `<div class="kpi-value" style="color:${tone[m.tone] || 'inherit'};">${m.value}</div>`
-      + `<div class="kpi-sub">${m.sub}</div></div>`
+      `<div class="kpi-card"><div class="kpi-label">${esc(m.label)}</div>`
+      + `<div class="kpi-value" style="color:${tone[m.tone] || 'inherit'};">${esc(m.value)}</div>`
+      + `<div class="kpi-sub">${esc(m.sub)}</div></div>`
     ).join('') : '<div class="kpi-card"><div class="kpi-label">—</div><div class="kpi-value">—</div><div class="kpi-sub">awaiting data</div></div>';
   }
 
@@ -1765,7 +1775,7 @@ function renderIntel() {
     const cc = { Buy: '#22c55e', 'Strong Buy': '#22c55e', Neutral: '#f59e0b', Hold: '#f59e0b', Sell: '#ef4444' };
     const r = intel.analysts || [];
     at.innerHTML = r.length ? r.map(a =>
-      `<tr><td style="text-align:left;"><strong>${a.ticker}</strong> <span style="color:${mut};">${a.name}</span></td>`
+      `<tr><td style="text-align:left;"><strong>${esc(a.ticker)}</strong> <span style="color:${mut};">${esc(a.name)}</span></td>`
       + `<td style="text-align:left;color:${cc[a.consensus] || 'inherit'};font-weight:600;">${a.consensus}</td>`
       + `<td>${a.priceTarget != null ? '$' + fmt(a.priceTarget, 2) : '—'}</td>`
       + `<td style="color:${col(a.upside)};font-weight:600;">${a.upside != null ? sgn(a.upside) + '%' : '—'}</td>`
@@ -1780,7 +1790,7 @@ function renderIntel() {
     nl.innerHTML = r.length ? r.map(n => {
       const c = sc[n.sentiment] || mut;
       const title = n.url
-        ? `<a href="${n.url}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">${n.title}</a>`
+        ? `<a href="${safeUrl(n.url)}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">${esc(n.title)}</a>`
         : n.title;
       return `<div style="display:flex;gap:10px;align-items:baseline;padding:9px 14px;border-bottom:1px solid var(--border);">`
         + `<span style="flex:0 0 56px;font-size:11px;font-weight:700;color:${c};">${n.sentiment}</span>`
@@ -1820,10 +1830,10 @@ function renderIntel() {
   if (rl) {
     const r = intel.research || [];
     rl.innerHTML = r.length ? r.map(x => {
-      const head = x.url ? `<a href="${x.url}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">${x.headline}</a>` : x.headline;
+      const head = x.url ? `<a href="${safeUrl(x.url)}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">${esc(x.headline)}</a>` : esc(x.headline);
       return `<div style="padding:11px 14px;border-bottom:1px solid var(--border);">`
         + `<div style="font-size:13px;font-weight:600;margin-bottom:3px;">${head}</div>`
-        + `<div style="font-size:12px;color:${mut};line-height:1.4;">${x.snippet}</div>`
+        + `<div style="font-size:12px;color:${mut};line-height:1.4;">${esc(x.snippet)}</div>`
         + `<div style="font-size:11px;color:${mut};margin-top:4px;">${x.ticker} · ${x.source} · ${x.date}</div></div>`;
     }).join('') : '<div class="empty-text" style="padding:16px;">Awaiting data</div>';
   }
@@ -1868,6 +1878,7 @@ function renderMacroRegime() {
   const yc = ((mh.series || {}).yieldCurve) || [];
   if (yc.length < 2) { wrap.style.display = 'none'; return; }
   wrap.style.display = '';
+  if (!hasChartJs()) { wrap.style.display = 'none'; return; }
   if (macroChartInst) macroChartInst.destroy();
   macroChartInst = new Chart(document.getElementById('macroChart'), {
     type: 'line',
@@ -1891,14 +1902,22 @@ function renderKPIs() {
 
   if (daily != null) {
     setText('kpi-daily', fmtDollarSigned(daily));
-    setText('kpi-daily-sub', nav ? `${(daily/nav*100).toFixed(2)}% of NAV` : '');
+    // dailyPnlClosed = same-day P&L realized on names exited today (their rows
+    // are gone from the table, so say where the difference lives)
+    const closed = account.dailyPnlClosed;
+    const closedNote = closed ? ` · incl. ${fmtDollarSigned(closed)} on closed` : '';
+    setText('kpi-daily-sub', (nav ? `${(daily/nav*100).toFixed(2)}% of NAV` : '') + closedNote);
     pnlColor('kpi-daily', daily);
     document.getElementById('kpi-daily-card').className = 'kpi-card ' + (daily >= 0 ? 'green' : 'red');
   }
 
   if (upnl != null) {
     setText('kpi-total', fmtDollarSigned(upnl));
-    setText('kpi-total-sub', `Realized: ${fmtDollarSigned(account.realizedPnl || 0)}`);
+    // prefer the since-inception realized total (journal) over IBKR's day figure
+    const rTotal = account.realizedPnlTotal;
+    setText('kpi-total-sub', rTotal != null
+      ? `Realized (incep.): ${fmtDollarSigned(rTotal)}`
+      : `Realized: ${fmtDollarSigned(account.realizedPnl || 0)}`);
     pnlColor('kpi-total', upnl);
     document.getElementById('kpi-total-card').className = 'kpi-card ' + (upnl >= 0 ? 'green' : 'red');
   }
@@ -1913,19 +1932,23 @@ function renderKPIs() {
 // ── Stats panel
 function renderStats() {
   const fmtNull = v => v != null ? fmtDollarSigned(v) : '—';
+  const rlz = account.realizedPnlTotal != null ? account.realizedPnlTotal : account.realizedPnl;
   setText('stat-nav',  account.nav  != null ? fmtDollar(account.nav)  : '—');
   setText('stat-upnl', fmtNull(account.unrealizedPnl));
-  setText('stat-rpnl', fmtNull(account.realizedPnl));
+  setText('stat-rpnl', fmtNull(rlz));
   setText('stat-dpnl', fmtNull(account.dailyPnl));
   pnlColor('stat-upnl', account.unrealizedPnl);
-  pnlColor('stat-rpnl', account.realizedPnl);
+  pnlColor('stat-rpnl', rlz);
   pnlColor('stat-dpnl', account.dailyPnl);
 
-  // Rolling metrics from pnl history, clamped to the trailing 90 days the
-  // panel title promises (no-op until the account has that much history)
+  // Rolling metrics from pnl history, clamped to the trailing 90 days (the
+  // title reports how many daily observations that window actually contains)
   const cutoff90 = Date.now() - 90 * 86400e3;
-  const { sharpe, annRet, vol, mdd, winRate } =
-    calcMetrics(pnl.filter(s => new Date(s.timestamp).getTime() >= cutoff90));
+  const series90 = pnl.filter(s => new Date(s.timestamp).getTime() >= cutoff90);
+  const nDays = new Set(series90.map(s => String(s.timestamp).slice(0, 10))).size;
+  const titleEl = document.getElementById('stat-metrics-title');
+  if (titleEl) titleEl.textContent = `Rolling Metrics (${nDays} daily obs)`;
+  const { sharpe, annRet, vol, mdd, winRate } = calcMetrics(series90);
   setText('stat-sharpe',  sharpe  != null ? sharpe.toFixed(2)   : '—');
   setText('stat-cagr',    annRet  != null ? annRet.toFixed(1)+'%' : '—');
   setText('stat-vol',     vol     != null ? vol.toFixed(2)+'%'  : '—');
@@ -2021,7 +2044,7 @@ function renderChartHero(baseNav, lastNav, perfPct, hasFlows, isValue, isPositiv
     ? `from ${short(customFrom)} to ${short(customTo)}`
     : (PERIOD_PHRASES[activePeriod] || 'this period');
   // cents matter here: a genuinely flat week is +$0.04, and a bare "+$0" reads as broken
-  const fmtDeltaCents = n => (n >= 0 ? '+$' : '−$') + fmt(Math.abs(n), 2);
+  const fmtDeltaCents = n => (n >= 0 ? '+$' : '-$') + fmt(Math.abs(n), 2);
   const valueEl = document.getElementById('chart-hero-value');
   const subEl   = document.getElementById('chart-hero-sub');
   valueEl.classList.remove('positive', 'negative');
@@ -2123,6 +2146,7 @@ function renderPnlChart() {
     });
   }
 
+  if (!hasChartJs()) return;
   if (pnlChartInst) pnlChartInst.destroy();
   pnlChartInst = new Chart(canvas, {
     type: 'line',
@@ -2179,7 +2203,10 @@ function renderPositions() {
   const sideMatches = positionSide === 'all'
     ? positions.slice()
     : positions.filter(p => p.side === positionSide);
-  const totalMktVal = sideMatches.reduce((s, p) => s + Math.abs(p.mktValue), 0);
+  // weight is |mv| / NAV — a stable "% of portfolio" that doesn't change with
+  // the selected side tab (falls back to gross mv only if account is missing)
+  const weightBase = (account && account.nav)
+    || positions.reduce((s, p) => s + Math.abs(p.mktValue), 0);
 
   document.getElementById('pos-count').textContent =
     `${positions.filter(p => p.side === 'long').length} long · ${positions.filter(p => p.side === 'short').length} short`;
@@ -2199,7 +2226,7 @@ function renderPositions() {
     // profitable short as a loss (price down = short gain)
     const costBasis = p.avgCost * p.shares;
     const pct = costBasis ? (p.unrealizedPnl ?? 0) / costBasis * 100 : 0;
-    const weight = totalMktVal ? Math.abs(p.mktValue) / totalMktVal * 100 : 0;
+    const weight = weightBase ? Math.abs(p.mktValue) / weightBase * 100 : 0;
     const dailyPnl = p.dailyPnl || 0;
     // yesterday's exposure: a short's liability shrinks when it profits
     const prevValue = Math.abs(p.mktValue) + (p.side === 'short' ? dailyPnl : -dailyPnl);
@@ -2235,9 +2262,9 @@ function renderPositions() {
         </div></td>
         <td style="text-align:left;">${esc(p.category)}</td>
         <td>${fmt(p.shares, 0)}</td>
-        <td>${fmtDollar(p.avgCost)}</td>
+        <td>${fmtPrice(p.avgCost)}</td>
         <td>${fmtDollar(p.costBasis)}</td>
-        <td>${fmtDollar(p.lastPrice)}</td>
+        <td>${fmtPrice(p.lastPrice)}</td>
         <td>${fmtDollar(Math.abs(p.mktValue))}</td>
         <td class="${p.dailyPnl >= 0 ? 'positive' : 'negative'}">${fmtDollarSigned(p.dailyPnl)}</td>
         <td class="${p.dayPct >= 0 ? 'positive' : 'negative'}">${p.dayPct >= 0 ? '+' : ''}${p.dayPct.toFixed(2)}%</td>
@@ -2369,6 +2396,7 @@ function renderBmChart() {
   if (!datasets.length) { canvas.style.display = 'none'; empty.style.display = 'flex'; return; }
   canvas.style.display = 'block'; empty.style.display = 'none';
 
+  if (!hasChartJs()) return;
   if (bmChartInst) bmChartInst.destroy();
   bmChartInst = new Chart(canvas, {
     type: 'line',
@@ -2590,8 +2618,22 @@ function renderTradeTape() {
     </tr>`).join('');
 }
 
+// Hand-authored report.json sections (scenarios, look-through) have no live
+// fallback — label them with their as-of date and flag amber when > 3 days old
+// so a reviewer never mistakes them for auto-computed numbers.
+function reportAsOfHtml() {
+  const asOf = report.asOf;
+  if (!asOf) return '';
+  const stale = (Date.now() - new Date(asOf).getTime()) / 86400e3 > 3;
+  return `<span style="float:right;font-weight:400;font-size:10px;color:${stale ? '#d9a441' : 'var(--text-muted)'};">`
+    + `hand-authored · as of ${esc(asOf)}${stale ? ' ⚠' : ''}</span>`;
+}
+
 function renderEtfLookthrough() {
   const e = report.etfLookThrough; if (!e) return;
+  ['etf-asof', 'etf-asof2'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.innerHTML = reportAsOfHtml();
+  });
   setText('etf-china', e.chinaExposure + '% of NAV');
   setText('etf-alb', e.albTrue + '% of NAV');
   setText('etf-sqm', e.sqmTrue + '% of NAV');
@@ -2627,6 +2669,8 @@ function renderRiskTab() {
       <span class="stat-val ${c.v >= 0.8 ? 'negative' : c.v <= 0.4 ? 'positive' : 'neutral'}">${c.v.toFixed(2)}</span></div>`).join('');
   }
   if (report.scenarios) {
+    const scenBadge = document.getElementById('scenario-asof');
+    if (scenBadge) scenBadge.innerHTML = reportAsOfHtml();
     const maxAbs = Math.max(...report.scenarios.map(s => Math.abs(s.pnl)));
     document.getElementById('scenario-list').innerHTML = report.scenarios.map(s => `
       <div style="padding:8px 0;border-bottom:1px solid var(--border);">
@@ -3502,15 +3546,23 @@ function renderAltData() {
 }
 
 function showTab(name) {
-  document.querySelectorAll('.tab').forEach((t, i) => {
-    const names = ['overview', 'positions', 'journal', 'benchmarks', 'exposure', 'risk', 'markets', 'intel', 'picks', 'signals', 'rebalance', 'altdata'];
-    t.classList.toggle('active', names[i] === name);
+  document.querySelectorAll('.tab').forEach(t => {
+    const active = t.dataset.tab === name;
+    t.classList.toggle('active', active);
+    t.setAttribute('aria-selected', active ? 'true' : 'false');
   });
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + name).classList.add('active');
   // heatmap boxes have zero width while their tab is hidden — lay out on reveal
   if (name === 'exposure') renderHeatmap();
 }
+
+// keyboard support for the (div-based) tab strip: Enter / Space activates
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const tab = e.target.closest && e.target.closest('.tab[data-tab]');
+  if (tab) { e.preventDefault(); showTab(tab.dataset.tab); }
+});
 
 // ═══════════════════════════════════════════ CHART OPTS ══
 function chartOpts(yLabel, unit = null) {   // unit: '$' | '%' | null (bare numbers)
@@ -3631,10 +3683,13 @@ const PERIOD_PHRASES = Object.fromEntries(Object.entries(PERIOD_DEFS).map(([k, v
 
 function fmt(n, dec = 2)        { return n != null ? Number(n).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) : '—'; }
 function fmtDollar(n)           { return n != null ? '$' + fmt(n, 0) : '—'; }
-function fmtDollarSigned(n)     { return n != null ? (n >= 0 ? '+$' : '−$') + fmt(Math.abs(n), 0) : '—'; }
+function fmtPrice(n)            { return n != null ? '$' + fmt(n, 2) : '—'; }  // per-share prices keep cents
+function fmtDollarSigned(n)     { return n != null ? (n >= 0 ? '+$' : '-$') + fmt(Math.abs(n), 0) : '—'; }
 function fmtTime(d)             { return d.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }); }
 function setText(id, text)      { const el = document.getElementById(id); if (el) el.textContent = text; }
 function esc(s)                 { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+// data-supplied URLs go into href attributes — escape AND require http(s)
+function safeUrl(u)             { return /^https?:\/\//i.test(String(u || '')) ? esc(u) : ''; }
 function pnlColor(id, val) {
   const el = document.getElementById(id);
   if (!el || val == null) return;

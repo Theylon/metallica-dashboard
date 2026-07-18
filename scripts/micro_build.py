@@ -50,6 +50,30 @@ def load(name, default):
     return default
 
 
+def load_held():
+    """Current held book keyed by ticker, straight from data/positions.json.
+
+    universe.json also carries a `held` overlay, but that file is only rebuilt
+    by build_universe.py from a source Excel that lives outside the repo — so
+    its held blocks freeze at whatever the book looked like at the last Excel
+    run. Positions.json is refreshed every IBKR cycle and is the only truthful
+    source; every consumer of held/heldMv/position must read from here.
+    """
+    try:
+        positions = json.loads((DATA / "positions.json").read_text())["positions"]
+    except Exception:
+        return {}
+    held = {}
+    for p in positions:
+        t = p["ticker"].split(" @")[0]          # "IMPUY @PINK" -> "IMPUY"
+        held[t] = {
+            "side": p["side"], "shares": p["shares"], "mktValue": p["mktValue"],
+            "unrealizedPnl": p["unrealizedPnl"], "avgCost": p["avgCost"],
+            "lastPrice": p["lastPrice"],
+        }
+    return held
+
+
 def commodity_score(rec, bias_by_material):
     mats = rec.get("materials") or []
     if not mats:
@@ -274,6 +298,7 @@ def load_hedge_map():
 
 def main():
     universe = json.loads((DATA / "universe.json").read_text())
+    held_map = load_held()          # live book overrides universe.json's stale held blocks
     quotes = load("quotes.json", {}).get("quotes", {})
     bias_doc = load("commodity_bias.json", {"biases": [], "macro": ""})
     bias_by_material = {b["material"]: b for b in bias_doc.get("biases", [])}
@@ -342,15 +367,16 @@ def main():
             analyst["smartScore"] = tr.get("smartScore")
 
         reco = rec_by_ticker.get(t)
+        h = held_map.get(t)
         out_tickers.append({
             "ticker": t,
             "company": rec.get("company"),
             "material": (rec.get("materials") or [None])[0],
             "role": rec.get("role"),
             "capTier": rec.get("capTier"),
-            "held": rec["held"]["side"] if rec.get("held") else None,
-            "heldMv": rec["held"]["mktValue"] if rec.get("held") else None,
-            "position": rec.get("held"),
+            "held": h["side"] if h else None,
+            "heldMv": h["mktValue"] if h else None,
+            "position": h,
             "country": rec.get("country"),
             "exchange": rec.get("exchange") or (q.get("exchange") if q else None),
             "analyst": analyst or None,
@@ -404,10 +430,13 @@ def main():
         mom = momentum_score(q)
         disc_reco = rec_by_ticker.get(disc["ticker"])
         disc_deep = deep.get(disc["ticker"])
+        disc_h = held_map.get(disc["ticker"])
         out_tickers.append({
             "ticker": disc["ticker"], "company": disc.get("company"),
             "material": disc.get("material"), "role": disc.get("role"), "capTier": None,
-            "held": None, "heldMv": None, "position": None,
+            "held": disc_h["side"] if disc_h else None,
+            "heldMv": disc_h["mktValue"] if disc_h else None,
+            "position": disc_h,
             "country": None, "exchange": disc.get("exchange"),
             "analyst": disc_deep.get("analyst") if disc_deep else None,
             "tipranksExtra": None,
@@ -440,6 +469,31 @@ def main():
             fs = fundamentals_score(out_tickers[-1]["fundamentals"])
             if fs is not None:
                 out_tickers[-1]["subs"]["fundamentals"] = fs
+
+    # held names outside both the universe and the discoveries (e.g. an ETF or
+    # off-theme short) still get a minimal row, so the Stock Picks "Held" view
+    # always shows the entire live book rather than silently dropping positions
+    covered = {r["ticker"] for r in out_tickers}
+    for t, h in held_map.items():
+        if t in covered:
+            continue
+        out_tickers.append({
+            "ticker": t, "company": t, "material": None, "role": None, "capTier": None,
+            "held": h["side"], "heldMv": h["mktValue"], "position": h,
+            "country": None, "exchange": None, "analyst": None, "tipranksExtra": None,
+            "recommendation": None, "omEvidence": None,
+            "price": h.get("lastPrice"), "vs50": None, "vs200": None,
+            "range52w": None, "marketCap": None,
+            "tradable": False, "quoteSuspect": False,
+            "composite": None, "subs": {}, "coverage": 0,
+            "microVerdict": None, "thesis": None,
+            "catalysts": [], "risks": [], "evidence": [],
+            "omLinkage": None, "exposure": None,
+            "fundamentals": funda.get(t),
+            "hedgeFund": hedge_block(hedge.get(t)),
+            "hedgeCrossVal": None,
+            "discovered": False, "heldOnly": True,
+        })
 
     # rank within material group (tradable names only get ranks)
     rank_within_groups(out_tickers)

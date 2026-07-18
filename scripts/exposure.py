@@ -4,8 +4,8 @@
 Forward-looking only: appends one dated snapshot per refresh to
 data/position_history.jsonl (never backfilled, since no historical trade
 ledger exists). Joins the accumulated history against data/linkage_map.json
-(T1/T2 signal-validated equity<->commodity pairs only; T3/T4 are dropped as
-too weak to act on) to produce a per-day, per-commodity weighted exposure
+(T1/T2 pairs only, family-filtered — see FAMILY — so signal-mined artifacts
+like smelter->cobalt links are dropped) to produce a per-day, per-commodity weighted exposure
 series, written to data/exposure_history.json and a human-readable report at
 reports/asset_commodity_exposure.md.
 
@@ -27,6 +27,46 @@ REPORTS = ROOT / "reports"
 
 TIER_WEIGHT = {"T1": 1.0, "T2": 0.5}  # T3/T4 excluded per methodology tier cutoff
 
+# equity_group -> commodity substrings that are economically plausible exposure.
+# The linkage map is signal-mined from rolling price correlations, so it carries
+# statistical artifacts (e.g. an aluminum smelter "linked" T1 to cobalt sulfate).
+# Its own validation gates reject nearly every link (364/375 sampled fail
+# passes_all_gates), so gating alone would keep almost nothing — this allowlist
+# is the sanity layer instead: a link only counts when the commodity belongs to
+# the equity group's actual product family. Groups not listed pass through
+# unfiltered (new groups should be added here as the map grows).
+FAMILY = {
+    "Aluminum Equity": ("aluminum",),
+    "Battery Equity": ("lithium", "lco", "lmo", "cobalt", "manganese", "nickel"),
+    "Battery Etf": ("lithium", "lco", "lmo", "cobalt", "manganese", "nickel"),
+    "Copper Equity": ("copper", "molybdenum"),
+    "Copper Etf": ("copper",),
+    "Copper Futures": ("copper",),
+    "Diversified Mining": ("iron", "copper", "aluminum", "nickel", "steel"),
+    "Ev Equity": ("lithium", "lco", "cobalt", "nickel", "manganese"),
+    "Gold Etf": ("gold",),
+    "Gold Futures": ("gold",),
+    "Lithium Miner": ("lithium", "lco"),
+    "Palladium Etf": ("platinum", "palladium", "rhodium", "ruthenium"),
+    "Palladium Futures": ("platinum", "palladium", "rhodium", "ruthenium"),
+    "Pgm Equity": ("platinum", "palladium", "rhodium", "ruthenium"),
+    "Platinum Etf": ("platinum", "palladium", "rhodium", "ruthenium"),
+    "Platinum Futures": ("platinum", "palladium", "rhodium", "ruthenium"),
+    "Rare Earth": ("rare earth",),
+    "Silver Equity": ("silver",),
+    "Silver Etf": ("silver",),
+    "Silver Futures": ("silver",),
+    "Steel Equity": ("steel", "ferro-chrome"),
+}
+
+
+def _family_ok(link):
+    fam = FAMILY.get(link.get("equity_group"))
+    if fam is None:
+        return True
+    commodity = str(link.get("commodity", "")).lower()
+    return any(sub in commodity for sub in fam)
+
 
 def load_linkage_map():
     """Ticker -> one entry per distinct commodity (best tier wins).
@@ -35,12 +75,15 @@ def load_linkage_map():
     exchange/unit contracts for the same underlying commodity, e.g. aluminum
     quoted in both pounds and metric tons). Collapsing to one row per
     (ticker, commodity) avoids counting the same real-world exposure several
-    times over.
+    times over. Links outside their equity group's product family (see FAMILY)
+    are dropped as statistical artifacts.
     """
     links = json.loads((DATA / "linkage_map.json").read_text())["links"]
     best = {}
     for link in links:
         if link["tier"] not in TIER_WEIGHT:
+            continue
+        if not _family_ok(link):
             continue
         key = (link["ticker"], link["commodity"])
         if key not in best or TIER_WEIGHT[link["tier"]] > TIER_WEIGHT[best[key]["tier"]]:
@@ -125,8 +168,8 @@ def write_report(exposure_history):
         "# Asset -> Commodity Exposure Over Time",
         "",
         "Tracks each held ticker's exposure to its linked commodities (T1/T2 "
-        "signal-validated links only, from metallica-fund's "
-        "equity_commodity_linkage.md) weighted by that position's % of NAV. "
+        "links from metallica-fund's equity_commodity_linkage.md, filtered to "
+        "each equity group's product family) weighted by that position's % of NAV. "
         "Forward-looking only: history starts the day this tracker was turned "
         "on, there is no backfilled trade ledger.",
         "",

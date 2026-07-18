@@ -1,6 +1,23 @@
 # Metallica Dashboard
 
-Password-protected GitHub Pages dashboard for the Metallica systematic L/S equity strategy. Shows live IBKR positions, P&L (hourly/daily/weekly), and benchmark comparisons.
+Password-protected GitHub Pages dashboard for the Metallica systematic L/S equity strategy. Shows live IBKR positions, P&L, and benchmark comparisons.
+
+## ⚠ Security — read before adding users
+
+The dashboard password is a **client-side gate only**. The `data/*.json` files are
+served by GitHub Pages and directly fetchable by anyone with the URL, password or not,
+and a public repo additionally exposes the full git history of every position snapshot.
+
+1. **Now:** keep the repo **private** (Settings → General → Danger Zone → Change
+   visibility) and rotate the dashboard password (see below). GitHub Pages on a private
+   repo requires a paid plan (Pro/Team/Enterprise); the Pages *site* itself remains
+   publicly reachable unless you're on Enterprise access control.
+2. **Next (recommended):** encrypt `data/*.json` at deploy time (AES-GCM with a key
+   derived from the dashboard passphrase via PBKDF2, passphrase in a GitHub secret) and
+   decrypt client-side at login — this makes the password real protection while keeping
+   GitHub Pages. Planned as a follow-up PR; see REVIEW.md.
+3. **Long term:** host behind real auth (Cloudflare Access has a free tier, or Netlify
+   password protection).
 
 ## Setup
 
@@ -10,35 +27,16 @@ Password-protected GitHub Pages dashboard for the Metallica systematic L/S equit
 gh repo create metallica-dashboard --private --source=. --remote=origin --push
 ```
 
-> **Recommend: private repo** — the `data/` JSONs contain live position data.
-
 ### 2. Enable GitHub Pages
 
-Deployment is handled by the **Fetch IBKR Data & Deploy** GitHub Action (it builds
+Deployment is handled by the **Refresh Derived Data & Deploy** GitHub Action (it builds
 and publishes the site on every data refresh). The workflow auto-enables Pages on its
 first run, so you usually don't need to touch any settings. If it doesn't, set it
 manually: **Settings → Pages → Source → GitHub Actions**.
 
 Your dashboard will be at: `https://<your-username>.github.io/metallica-dashboard/`
 
-> **Private repo note:** GitHub Pages on a **private** repository requires a paid plan
-> (Pro/Team/Enterprise). The dashboard password is a client-side gate only — the
-> `data/*.json` files are directly fetchable — so do **not** make this repo public to
-> get free Pages, or you'll expose live position data. Keep it private + paid.
-
-### 3. Add GitHub Secrets
-
-Go to **Settings → Secrets and variables → Actions** and add:
-
-| Secret | Value |
-|--------|-------|
-| `IBKR_CONSUMER_KEY` | Your IBKR OAuth consumer key |
-| `IBKR_PRIVATE_KEY` | RSA private key PEM (paste the full `-----BEGIN RSA PRIVATE KEY-----...` block) |
-| `IBKR_ACCOUNT_ID` | Your account number (e.g. `U1234567`) |
-
-> The IBKR Web API uses OAuth 1.0a with RSA-SHA256. Generate a key pair, register the public key with IBKR, and paste the private key as the `IBKR_PRIVATE_KEY` secret.
-
-### 4. Change the dashboard password
+### 3. Change the dashboard password
 
 The default password is `metallica`. To change it:
 
@@ -52,32 +50,30 @@ Copy the hash, then edit `index.html` and replace the value of `PASSWORD_HASH` n
 const PASSWORD_HASH = 'paste-your-new-hash-here';
 ```
 
-### 5. Test locally
+### 4. Test locally
+
+No secrets needed — the committed `data/` files are the state:
 
 ```bash
-pip install requests yfinance cryptography
-
-export IBKR_CONSUMER_KEY="your-key"
-export IBKR_PRIVATE_KEY="$(cat your-private-key.pem)"
-export IBKR_ACCOUNT_ID="U1234567"
-
-python scripts/fetch.py
+python3 -m http.server 8000   # then open http://localhost:8000
 ```
 
-Then open `index.html` in a browser (or run `python3 -m http.server 8000`).
+To sanity-check the data before serving: `python3 scripts/verify_data.py`.
 
-### 6. Trigger first data fetch
+## Data refresh — two layers
 
-Go to **Actions → Fetch IBKR Data → Run workflow** to trigger manually and confirm everything works before waiting for the cron.
+**IBKR book data** (`positions/account/pnl/benchmarks.json`) is refreshed by the **MCP
+pipeline**: a Claude session (SessionStart hook or scheduled Routine) calls the IBKR MCP
+tools, saves the raw results to `/tmp`, and runs `scripts/mcp_refresh.py`, which rewrites
+the four files, then recomputes exposure + risk. Commits land on `master`, which triggers
+a deploy.
 
-## Data refresh
-
-The GitHub Action runs every **30 minutes** Monday–Friday 9am–4pm ET. It:
-
-1. Calls the IBKR Web API for positions, NAV, and P&L
-2. Fetches 90-day benchmark closes (SPY, XME, SLV, CPER, JJU) from Yahoo Finance
-3. Appends a timestamped snapshot to `data/pnl.json`
-4. Commits and pushes the updated `data/` files
+**Derived layers** are refreshed by the GitHub Action **4×/day** on trading days
+(~09:30 / 12:00 / 14:00 / 15:55 ET): Yahoo cross-validation, Stock-Picks prices/scores
+(`micro_refresh.py`), risk metrics (`risk.py`), and the signal scorecard (`signal_ic.py`).
+Before committing, the Action runs `scripts/verify_data.py` — a cross-file consistency
+gate (account↔positions identities, pnl schema, benchmark set, micro book vs live book).
+**A failed check fails the run and nothing deploys.**
 
 The dashboard auto-refreshes every 5 minutes from the browser.
 
@@ -89,21 +85,28 @@ The dashboard auto-refreshes every 5 minutes from the browser.
 | XME    | SPDR Metals & Mining ETF |
 | SLV    | Silver |
 | CPER   | Copper ETF |
-| JJU    | Aluminum ETF (iPath) |
 
 ## Files
 
 ```
 ├── index.html                  # Dashboard (single file, all CSS/JS inline)
-├── scripts/fetch.py            # Data fetcher — IBKR + Yahoo Finance
+├── scripts/
+│   ├── mcp_refresh.py          # IBKR book refresh (from MCP dumps in /tmp)
+│   ├── verify_data.py          # cross-file consistency gate (run by the Action pre-deploy)
+│   ├── risk.py · exposure.py · journal.py · signal_ic.py · enrich.py
+│   └── micro_*.py              # Stock Picks pipeline (see below)
 ├── .github/workflows/
-│   └── fetch-data.yml         # Scheduled cron pipeline
+│   └── fetch-data.yml          # derived-data refresh + verify + deploy (4×/day cron)
 └── data/
-    ├── positions.json          # Current positions (updated each fetch)
-    ├── account.json            # NAV, exposure, P&L summary
-    ├── pnl.json                # Rolling 90-day P&L history (hourly snapshots)
-    └── benchmarks.json         # Benchmark daily closes + today's intraday
+    ├── positions.json          # Current positions (updated each MCP refresh)
+    ├── account.json            # NAV, exposure, P&L summary (reconciles to positions)
+    ├── pnl.json                # NAV + TWR history since inception (+ today's intraday)
+    └── benchmarks.json         # Benchmark daily closes
 ```
+
+> `data/universe.json` still carries a `held` overlay from its original Excel build; it
+> is **superseded** — `micro_build.py`/`micro_refresh.py` overlay held/heldMv/position
+> straight from `positions.json` on every run.
 
 ## Stock Picks — micro-analysis & AI Hedge Fund layer
 

@@ -1,4 +1,9 @@
-name: Fetch IBKR Data & Deploy
+# IBKR book data (positions/account/pnl/benchmarks) is refreshed by the MCP
+# pipeline (scripts/mcp_refresh.py, run from Claude sessions/Routines) and
+# committed to master. This workflow refreshes the DERIVED layers (Yahoo
+# cross-val, micro prices/scores, risk, signal scorecard), verifies the data,
+# and deploys the static site to GitHub Pages.
+name: Refresh Derived Data & Deploy
 
 on:
   push:
@@ -14,10 +19,12 @@ on:
     - cron: '0 16 * * 1-5'    # midday            — 12:00 ET
     - cron: '0 18 * * 1-5'    # early afternoon   — 14:00 ET
     - cron: '55 19 * * 1-5'   # just before close — 15:55 ET
-  workflow_dispatch: # Allow manual trigger from the Actions UI / dashboard button
+  workflow_dispatch: # Allow manual trigger from the Actions UI
     inputs:
       scope:
-        description: 'full = IBKR + research price refresh · ibkr = IBKR/benchmarks only (skip micro)'
+        # value 'ibkr' kept for backward compatibility with old triggers;
+        # it now just means "risk/deploy only, skip the micro price refresh"
+        description: 'full = derived-data refresh · ibkr = risk/deploy only (skip micro)'
         type: choice
         options:
           - full
@@ -53,14 +60,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests yfinance cryptography
-
-      - name: Fetch data
-        env:
-          IBKR_CONSUMER_KEY: ${{ secrets.IBKR_CONSUMER_KEY }}
-          IBKR_PRIVATE_KEY: ${{ secrets.IBKR_PRIVATE_KEY }}
-          IBKR_ACCOUNT_ID: ${{ secrets.IBKR_ACCOUNT_ID }}
-        run: python scripts/fetch.py
+        run: pip install yfinance
 
       # Independent Yahoo Finance cross-validation pull for the Stock Picks cards
       # (yfinance, no secrets). Yahoo egress is reliable from CI but blocked in the
@@ -94,6 +94,12 @@ jobs:
       - name: Compute signal scorecard
         if: ${{ github.event.inputs.scope != 'ibkr' }}
         run: python scripts/signal_ic.py || echo "signal_ic skipped (non-fatal)"
+
+      # Cross-file reconciliation gate: account vs positions identities, pnl
+      # schema, benchmark set, micro book vs live book, freshness. DELIBERATELY
+      # fatal — broken data must fail the run rather than deploy.
+      - name: Verify data consistency
+        run: python scripts/verify_data.py
 
       - name: Commit rolling P&L history
         run: |
