@@ -680,6 +680,7 @@ td:first-child { text-align: left; }
         <div class="table-header-left">
           <div class="table-title">Positions</div>
           <div class="sub-tabs">
+            <div class="sub-tab" onclick="showPositionSide('all')">All</div>
             <div class="sub-tab active" onclick="showPositionSide('long')">Long</div>
             <div class="sub-tab" onclick="showPositionSide('short')">Short</div>
           </div>
@@ -2188,7 +2189,9 @@ function buildCategoryFilter() {
 
 function renderPositions() {
   const tbody = document.getElementById('pos-tbody');
-  const sideMatches = positions.filter(p => p.side === positionSide);
+  const sideMatches = positionSide === 'all'
+    ? positions.slice()
+    : positions.filter(p => p.side === positionSide);
   const totalMktVal = sideMatches.reduce((s, p) => s + Math.abs(p.mktValue), 0);
 
   document.getElementById('pos-count').textContent =
@@ -2228,12 +2231,19 @@ function renderPositions() {
     rows.sort((a, b) => Math.abs(b.mktValue) - Math.abs(a.mktValue));
   }
 
+  // In the combined "All" view longs and shorts are interleaved and the table
+  // has no Side column, so tag each row with its book; hidden on the single-side
+  // tabs where every row shares the same side.
+  const sideChip = s => positionSide === 'all'
+    ? `<span class="pick-badge ${s}">${s === 'long' ? 'LONG' : 'SHORT'}</span>`
+    : '';
   tbody.innerHTML = rows.map(p => {
     const catClass = 'cat-' + p.category.toLowerCase().replace(/ /g, '').replace('&', '');
     return `
       <tr>
         <td><div class="ticker-cell">
           <span class="ticker-sym">${esc(p.ticker)}</span>
+          ${sideChip(p.side)}
           <span class="category-badge ${catClass}">${esc(p.category)}</span>
         </div></td>
         <td style="text-align:left;">${esc(p.category)}</td>
