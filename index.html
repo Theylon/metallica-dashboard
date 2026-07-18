@@ -330,6 +330,26 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
   border: 1px solid var(--border); color: var(--text-muted);
 }
 .sub-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+/* Alt-Data tab */
+.ad-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 12px; }
+.ad-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 13px 15px; }
+.ad-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.ad-tkr { font-size: 15px; font-weight: 700; }
+.ad-name { font-size: 12px; color: var(--text-muted); font-weight: 400; margin-left: 6px; }
+.ad-sig { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: .3px; }
+.ad-sig.bullish { background: rgba(34,197,94,.14); color: #22c55e; }
+.ad-sig.bearish { background: rgba(239,68,68,.14); color: #ef4444; }
+.ad-sig.neutral { background: rgba(148,163,184,.16); color: var(--text-muted); }
+.ad-narr { font-size: 12.5px; line-height: 1.45; color: var(--text); margin-bottom: 8px; }
+.ad-chip { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 20px; border: 1px solid var(--border); color: var(--text-muted); margin: 2px 4px 2px 0; }
+.ad-chip b { color: var(--text); font-weight: 600; }
+.ad-src { font-size: 10.5px; color: var(--text-dim); margin-top: 8px; line-height: 1.5; }
+.ad-spark { margin: 4px 0 8px; }
+.ad-tr { margin: 8px 0 2px; }
+.ad-tr-h { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .3px; margin-bottom: 3px; }
+.ad-tr table { width: 100%; border-collapse: collapse; font-size: 11px; }
+.ad-tr th { color: var(--text-dim); font-weight: 500; text-align: right; padding: 2px 4px; }
+.ad-tr td { text-align: right; padding: 2px 4px; border-top: 1px solid var(--border); }
 .filter-bar { display: flex; align-items: center; gap: 8px; margin-left: 8px; padding-left: 8px; border-left: 1px solid var(--border); }
 .filter-input, .filter-select {
   padding: 5px 10px; border-radius: 6px; font-size: 12px;
@@ -567,6 +587,9 @@ td:first-child { text-align: left; }
     </div>
     <div class="tab" onclick="showTab('rebalance')">
       <span class="tab-icon">🔁</span> Rebalance
+    </div>
+    <div class="tab" onclick="showTab('altdata')">
+      <span class="tab-icon">🛰️</span> Alt-Data
     </div>
   </div>
 
@@ -1276,6 +1299,50 @@ td:first-child { text-align: left; }
     <div id="rebalance-content"></div>
   </div><!-- /rebalance -->
 
+  <!-- ─── Alt-Data page (M Science-style nowcast + research) ─────── -->
+  <div id="page-altdata" class="page">
+    <div class="chart-header"><div class="chart-title">🛰️ Alt-Data — nowcast &amp; research (M Science method)</div></div>
+    <div style="font-size:12px;color:var(--text-muted);line-height:1.5;margin:2px 2px 12px;">
+      Ports the alternative-data research <em>method</em> — a pre-earnings KPI nowcast vs. consensus,
+      a track record, driver drill-down and an analyst read — fed by our own live feeds
+      (CarbonArc card-spend, MetalMiner, Bigdata.com, FMP/TipRanks). No third-party report content is redistributed.
+      <span id="ad-updated"></span>
+    </div>
+
+    <div class="table-panel">
+      <div class="table-header">
+        <div class="table-header-left">
+          <div class="sub-tabs">
+            <div class="sub-tab active" id="ad-grp-book" onclick="setAltGroup('book')">📦 Book · Metals</div>
+            <div class="sub-tab" id="ad-grp-watchlist" onclick="setAltGroup('watchlist')">🛒 Watchlist · Consumer/TMT</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--text-muted);" id="ad-count">—</div>
+      </div>
+    </div>
+
+    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">📊 Nowcast — estimate vs. consensus</div></div>
+    <div class="table-panel">
+      <div class="table-wrapper">
+        <table>
+          <thead><tr>
+            <th style="text-align:left;">Stock</th>
+            <th style="text-align:left;">KPI</th>
+            <th>Our Est.</th>
+            <th>Consensus</th>
+            <th>Δ vs Cons.</th>
+            <th>Y/Y</th>
+            <th style="text-align:left;">Earnings</th>
+          </tr></thead>
+          <tbody id="ad-nowcast-tbody"><tr class="empty-row"><td colspan="7">Awaiting data</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">🗂️ Research feed</div></div>
+    <div id="ad-cards"><div class="empty-text" style="padding:16px;">Awaiting data</div></div>
+  </div><!-- /altdata -->
+
 </div><!-- /dashboard -->
 
 <script>
@@ -1337,6 +1404,7 @@ let account = {}, positions = [], pnl = [], benchmarks = {}, report = {}, exposu
 let risk = {}, journal = {}, signalScorecard = {};
 let intel = { commodities: [], analysts: [], macro: [], news: [] };
 let rebalance = { rows: [] };
+let altdata = { items: [] }, altGroup = 'book';
 let activePeriod = 'YTD', activeBmPeriod = '1M';
 let customFrom = null, customTo = null;   // 'YYYY-MM-DD' bounds for the Overview CUSTOM period
 let bmCustomFrom = null, bmCustomTo = null;   // 'YYYY-MM-DD' bounds for the Benchmarks CUSTOM period
@@ -1352,7 +1420,7 @@ let pendingUpload = null;        // {name, positions[], warnings[], error} stage
 
 async function loadData() {
   try {
-    const [posRes, accRes, pnlRes, bmRes, repRes, comRes, anaRes, macRes, newsRes, techRes, spotRes, resRes, microRes, expHistRes, rebRes, riskRes, jrnRes, sigRes, evRes, posgRes, mhRes] = await Promise.all([
+    const [posRes, accRes, pnlRes, bmRes, repRes, comRes, anaRes, macRes, newsRes, techRes, spotRes, resRes, microRes, expHistRes, rebRes, riskRes, jrnRes, sigRes, evRes, posgRes, mhRes, adRes] = await Promise.all([
       fetch('data/positions.json?' + Date.now()).then(r => r.json()).catch(() => ({ positions: [] })),
       fetch('data/account.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
       fetch('data/pnl.json?' + Date.now()).then(r => r.json()).catch(() => []),
@@ -1374,6 +1442,7 @@ async function loadData() {
       fetch('data/events.json?' + Date.now()).then(r => r.json()).catch(() => ({ items: [] })),
       fetch('data/positioning.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
       fetch('data/macro_history.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
+      fetch('data/altdata.json?' + Date.now()).then(r => r.json()).catch(() => ({ items: [] })),
     ]);
     positions = posRes.positions || [];
     account   = accRes || {};
@@ -1386,6 +1455,7 @@ async function loadData() {
     micro = microRes || {};
     exposureHistory = expHistRes || {};
     rebalance = rebRes || { rows: [] };
+    altdata = (adRes && Array.isArray(adRes.items)) ? adRes : { items: [] };
     risk = riskRes || {};
     journal = jrnRes || {};
     signalScorecard = sigRes || {};
@@ -1471,6 +1541,7 @@ function renderAll() {
   renderSignals();
   renderJournal();
   renderRebalance();
+  renderAltData();
 }
 
 // ── Stock Picks: micro-analysis scores · recommendations · trade list ─
@@ -3397,9 +3468,126 @@ function renderRebalAnalysisRows() {
   }).join('') : '<tr class="empty-row"><td colspan="15">No names match the filter</td></tr>';
 }
 
+// ── Alt-Data: M Science-style nowcast + research feed ───────────────
+function setAltGroup(g) {
+  altGroup = g;
+  ['book', 'watchlist'].forEach(x => {
+    const el = document.getElementById('ad-grp-' + x);
+    if (el) el.classList.toggle('active', x === g);
+  });
+  renderAltData();
+}
+
+function adSpark(trend) {
+  if (!trend || !Array.isArray(trend.points) || trend.points.length < 2) return '';
+  const pts = trend.points, vs = pts.map(p => p.v);
+  const min = Math.min(...vs), max = Math.max(...vs), span = (max - min) || 1;
+  const W = 300, H = 34, n = pts.length;
+  const x = i => (i / (n - 1)) * (W - 4) + 2;
+  const y = v => H - 3 - ((v - min) / span) * (H - 6);
+  const line = pts.map((p, i) => `${x(i).toFixed(1)},${y(p.v).toFixed(1)}`).join(' ');
+  const up = vs[vs.length - 1] >= vs[0];
+  const c = up ? '#22c55e' : '#ef4444';
+  const last = pts[pts.length - 1];
+  return `<div class="ad-spark"><svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="none">`
+    + `<polyline points="${line}" fill="none" stroke="${c}" stroke-width="1.5" stroke-linejoin="round"/>`
+    + `<circle cx="${x(n - 1).toFixed(1)}" cy="${y(last.v).toFixed(1)}" r="2.2" fill="${c}"/></svg>`
+    + `<div style="font-size:10.5px;color:var(--text-dim);display:flex;justify-content:space-between;">`
+    + `<span>${esc(trend.label || '')} (${esc(trend.unit || '')})</span>`
+    + `<span>${esc(pts[0].date)} → ${esc(last.date)} · last ${fmt(last.v, 2)}</span></div></div>`;
+}
+
+function adTrack(tr) {
+  if (!Array.isArray(tr) || !tr.length) return '';
+  const mut = 'var(--text-muted)';
+  const rows = tr.map(r => {
+    const d = r.deltaToReported;
+    const dc = d == null ? mut : Math.abs(d) <= 2 ? '#22c55e' : Math.abs(d) <= 4 ? '#eab308' : '#ef4444';
+    return `<tr><td style="text-align:left;color:${mut};">${esc(r.period || '')}</td>`
+      + `<td>${r.ourEst == null ? '—' : fmt(r.ourEst, 0)}</td>`
+      + `<td>${r.consensus == null ? '—' : fmt(r.consensus, 0)}</td>`
+      + `<td>${r.reported == null ? '—' : fmt(r.reported, 0)}</td>`
+      + `<td style="color:${dc};">${d == null ? '—' : (d > 0 ? '+' : '') + d.toFixed(1) + '%'}</td></tr>`;
+  }).join('');
+  return `<div class="ad-tr"><div class="ad-tr-h">Track record · est / consensus vs reported</div>`
+    + `<table><thead><tr><th style="text-align:left;">Period</th><th>Est.</th><th>Cons.</th><th>Rep.</th><th>Δ cons.</th></tr></thead>`
+    + `<tbody>${rows}</tbody></table></div>`;
+}
+
+function renderAltData() {
+  const upd = document.getElementById('ad-updated');
+  if (upd) upd.textContent = altdata.updatedAt ? '· updated ' + altdata.updatedAt.replace('T', ' ').replace(/(\+00:00|Z)$/, ' UTC') : '';
+
+  const items = (altdata.items || []).filter(i => i.group === altGroup);
+  const mut = 'var(--text-muted)';
+
+  const cnt = document.getElementById('ad-count');
+  if (cnt) {
+    const withData = items.filter(i => i.trend || (i.kpi && i.kpi.consensus != null) || (i.trackRecord && i.trackRecord.length)).length;
+    cnt.textContent = `${items.length} names · ${withData} with live reads`;
+  }
+
+  // Nowcast table — names that carry a tracked KPI
+  const nb = document.getElementById('ad-nowcast-tbody');
+  if (nb) {
+    const isPct = u => (u || '').includes('%');
+    const num = (v, u) => v == null ? '—' : (isPct(u) ? (v > 0 ? '+' : '') + v.toFixed(1) + '%' : fmt(v, 0));
+    const rows = items.filter(i => i.kpi && i.kpi.name);
+    const daysTo = d => {
+      if (!d) return '';
+      const ms = new Date(d + 'T00:00:00Z') - Date.now();
+      if (isNaN(ms)) return '';
+      const days = Math.round(ms / 86400000);
+      return days >= 0 ? ` <span style="color:${mut};">(${days}d)</span>` : '';
+    };
+    nb.innerHTML = rows.length ? rows.map(i => {
+      const k = i.kpi;
+      let delta = k.deltaPct;
+      if (delta == null && k.ourEst != null && k.consensus != null)
+        delta = isPct(k.unit) ? (k.ourEst - k.consensus) : (k.ourEst / k.consensus - 1) * 100;
+      const dc = delta == null ? mut : delta > 0 ? '#22c55e' : delta < 0 ? '#ef4444' : mut;
+      const dtxt = delta == null ? '—' : (delta > 0 ? '+' : '') + delta.toFixed(isPct(k.unit) ? 1 : 1) + (isPct(k.unit) ? ' pp' : '%');
+      const yc = k.yoyPct == null ? mut : k.yoyPct > 0 ? '#22c55e' : '#ef4444';
+      return `<tr>`
+        + `<td style="text-align:left;"><strong>${esc(i.ticker)}</strong> <span style="color:${mut};">${esc(i.name || '')}</span></td>`
+        + `<td style="text-align:left;">${esc(k.name)} <span style="color:${mut};">${esc(k.unit || '')}</span></td>`
+        + `<td>${num(k.ourEst, k.unit)}</td>`
+        + `<td>${num(k.consensus, k.unit)}</td>`
+        + `<td style="color:${dc};font-weight:600;">${dtxt}</td>`
+        + `<td style="color:${yc};">${k.yoyPct == null ? '—' : (k.yoyPct > 0 ? '+' : '') + k.yoyPct.toFixed(1) + '%'}</td>`
+        + `<td style="text-align:left;">${esc(k.earningsDate || '—')}${daysTo(k.earningsDate)}</td></tr>`;
+    }).join('') : `<tr class="empty-row"><td colspan="7">No tracked KPI names in this group yet</td></tr>`;
+  }
+
+  // Research cards
+  const cards = document.getElementById('ad-cards');
+  if (cards) {
+    cards.innerHTML = items.length ? `<div class="ad-grid">` + items.map(i => {
+      const sig = ['bullish', 'bearish', 'neutral'].includes(i.signal) ? i.signal : 'neutral';
+      const conv = i.conviction ? `<span class="ad-chip">conviction: <b>${esc(i.conviction)}</b></span>` : '';
+      const chips = (i.drivers || []).map(d =>
+        `<span class="ad-chip" title="${esc(d.note || '')}">${esc(d.dim || '')}: <b>${esc(d.label || '')}</b></span>`).join('');
+      const src = (i.sources || []).map(s => {
+        const t = `${esc(s.name || '')}${s.date ? ' · ' + esc(s.date) : ''}`;
+        return s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener" style="color:inherit;">${t}</a>` : t;
+      }).join(' &nbsp;|&nbsp; ');
+      return `<div class="ad-card">`
+        + `<div class="ad-card-head"><div><span class="ad-tkr">${esc(i.ticker)}</span>`
+        + `<span class="ad-name">${esc(i.name || '')}${i.sector ? ' · ' + esc(i.sector) : ''}</span></div>`
+        + `<span class="ad-sig ${sig}">${sig}</span></div>`
+        + (i.narrative ? `<div class="ad-narr">${esc(i.narrative)}</div>` : '')
+        + adSpark(i.trend)
+        + `<div>${conv}${chips}</div>`
+        + adTrack(i.trackRecord)
+        + (src ? `<div class="ad-src">📎 ${src}</div>` : '')
+        + `</div>`;
+    }).join('') + `</div>` : `<div class="empty-text" style="padding:16px;">Awaiting data — run scripts/altdata_build.py</div>`;
+  }
+}
+
 function showTab(name) {
   document.querySelectorAll('.tab').forEach((t, i) => {
-    const names = ['overview', 'positions', 'journal', 'benchmarks', 'exposure', 'risk', 'markets', 'intel', 'picks', 'signals', 'rebalance'];
+    const names = ['overview', 'positions', 'journal', 'benchmarks', 'exposure', 'risk', 'markets', 'intel', 'picks', 'signals', 'rebalance', 'altdata'];
     t.classList.toggle('active', names[i] === name);
   });
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));

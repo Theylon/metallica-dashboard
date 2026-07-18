@@ -1,0 +1,24 @@
+{
+  "_comment": "Alt-Data tab config. 'watchlist' = consumer/TMT names covered by M Science-style alt-data (KPI nowcast feasible via CarbonArc card-spend / web-traffic + consensus). 'bookDrivers' = metal→driver map for the held metals book (group='book' names are derived at build time from data/positions.json). Edited by hand; the refresh routine reads this to know which KPI to nowcast per name.",
+  "watchlist": [
+    { "ticker": "NKE",  "name": "Nike",                 "sector": "Footwear",          "kpi": "Revenue",            "unit": "$M",   "altProxy": "US card spend (CarbonArc), EU/US digital purchase" },
+    { "ticker": "AFRM", "name": "Affirm",               "sector": "Payments / Fintech","kpi": "Total GMV",          "unit": "$M",   "altProxy": "US card spend + digital purchase by merchant (CarbonArc)" },
+    { "ticker": "CMG",  "name": "Chipotle",             "sector": "Restaurants",       "kpi": "SSS Y/Y",            "unit": "%",    "altProxy": "US card spend, transactions, menu attach (CarbonArc)" },
+    { "ticker": "LYFT", "name": "Lyft",                 "sector": "Rideshare",         "kpi": "Gross Bookings",     "unit": "$M",   "altProxy": "US card spend + rideshare panel (CarbonArc)" },
+    { "ticker": "UBER", "name": "Uber",                 "sector": "Rideshare",         "kpi": "Gross Bookings",     "unit": "$M",   "altProxy": "US card spend + rideshare panel (CarbonArc)" },
+    { "ticker": "DASH", "name": "DoorDash",             "sector": "Internet",          "kpi": "Marketplace GOV",    "unit": "$M",   "altProxy": "US card spend + delivery panel (CarbonArc)" },
+    { "ticker": "ABNB", "name": "Airbnb",               "sector": "Online Travel",     "kpi": "Gross Booking Value","unit": "$M",   "altProxy": "US card spend + travel panel (CarbonArc)" },
+    { "ticker": "ONON", "name": "On Holding",           "sector": "Footwear",          "kpi": "Net Sales",          "unit": "CHF M","altProxy": "US/EU digital purchase (CarbonArc)" },
+    { "ticker": "DECK", "name": "Deckers (UGG/HOKA)",   "sector": "Footwear",          "kpi": "Revenue",            "unit": "$M",   "altProxy": "US/EU digital purchase, DTC (CarbonArc)" },
+    { "ticker": "CROX", "name": "Crocs",                "sector": "Footwear",          "kpi": "Revenue",            "unit": "$M",   "altProxy": "Crocs.com + TikTok Shop spend (CarbonArc)" },
+    { "ticker": "BIRK", "name": "Birkenstock",          "sector": "Footwear",          "kpi": "Revenue",            "unit": "€M",   "altProxy": "US/EU DTC digital purchase (CarbonArc)" },
+    { "ticker": "SBUX", "name": "Starbucks",            "sector": "Restaurants",       "kpi": "SSS Y/Y",            "unit": "%",    "altProxy": "US card spend + transactions (CarbonArc)" }
+  ],
+  "bookDrivers": {
+    "Aluminum": { "metal": "Aluminum",  "series": "aluminum primary 3M — LME" },
+    "Lithium":  { "metal": "Lithium",   "series": "lithium hydroxide monohydrate — China" },
+    "Steel":    { "metal": "Steel HRC", "series": "steel HRC — China" },
+    "Precious": { "metal": "Silver",    "series": "silver / gold spot" },
+    "Other":    { "metal": "Mixed",     "series": "per-name commodity exposure" }
+  }
+}
