@@ -74,3 +74,27 @@ Tracks each held ticker's exposure to its linked commodities (T1/T2 signal-valid
 | aluminum | -17.35% |
 | steel | -22.16% |
 
+## 2026-07-18
+
+| Commodity | Exposure (% NAV, tier-weighted) |
+|---|---|
+| nickel | 2.32% |
+| manganese dioxide | 1.32% |
+| aluminum n | -0.61% |
+| lmo hydroxide-based | -0.61% |
+| rare earths mmi | -1.09% |
+| rhodium | -1.14% |
+| raw steels mmi | -1.68% |
+| electrical steel | -1.75% |
+| global precious metals mmi | -1.75% |
+| lithium hydroxide monohydrate | -2.36% |
+| lithium carbonate | -3.88% |
+| cobalt sulfate | -5.11% |
+| ferro-chrome | -5.16% |
+| titanium plate | -6.10% |
+| manganese sulfate | -7.50% |
+| aluminum | -8.00% |
+| lco | -8.11% |
+| renewables mmi | -8.38% |
+| steel | -11.62% |
+
