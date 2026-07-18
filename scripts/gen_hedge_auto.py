@@ -2,9 +2,10 @@
 """Generate a data-grounded AI-Hedge-Fund verdict for every universe name.
 
 Ports the multi-analyst idea of virattt/ai-hedge-fund (MIT) into this pipeline as a
-DETERMINISTIC fallback: a full roster of investor-persona + analytical lenses, each
-emitting a signal (bullish/bearish/neutral) + confidence (0-100) + one-line reasoning,
-plus a Portfolio-Manager aggregate. No upstream code is copied and NO LLM/API key is
+DETERMINISTIC fallback: a roster of analytical lenses (Valuation, Fundamentals,
+Technicals, Sentiment) plus a Risk-Manager lens, each emitting a signal
+(bullish/bearish/neutral) + confidence (0-100) + one-line reasoning, plus a
+Portfolio-Manager aggregate. No upstream code is copied and NO LLM/API key is
 used — every lens is a tilt over signals already in the pipeline (commodity bias, OM
 linkage, momentum, analyst snapshot, TrueNorth fundamentals), reusing the exact
 sub-score helpers in micro_build/micro_score so it can't drift from the composite.
@@ -31,12 +32,10 @@ from micro_build import (analyst_score, commodity_score, fundamentals_score,
 DATA = pathlib.Path(__file__).resolve().parent.parent / "data"
 SRC = pathlib.Path(os.environ.get("MICRO_SRC", str(DATA / "micro_src")))
 
-# Full roster (concept ported from virattt/ai-hedge-fund, MIT). Portfolio Manager is
+# Roster (concept ported from virattt/ai-hedge-fund, MIT). Portfolio Manager is
 # emitted as the `aggregate`, so it is named in the roster but not in `analysts[]`.
 ROSTER = ["Valuation", "Fundamentals", "Technicals", "Sentiment",
-          "Warren Buffett", "Charlie Munger", "Ben Graham", "Cathie Wood",
-          "Bill Ackman", "Peter Lynch", "Michael Burry", "Stanley Druckenmiller",
-          "Phil Fisher", "Risk Manager", "Portfolio Manager"]
+          "Risk Manager", "Portfolio Manager"]
 
 BULL, BEAR = 6.3, 4.0   # same thresholds as gen_deep_auto's verdict cut
 
@@ -99,9 +98,7 @@ def pct(v):
 def build_verdicts(subs, f, fc, mom_q, bias, role, linkage, is_tradable, suspect, upside):
     """Return (analysts[], aggregate) for one name from its already-computed signals."""
     mom = subs.get("momentum")
-    contra = clamp(10.0 - mom) if mom is not None else None   # cheap/oversold proxy
-    margin, roic, balance = fc.get("margin"), fc.get("roic"), fc.get("balance")
-    growth, fcf = fc.get("growth"), fc.get("fcf")
+    balance = fc.get("balance")
 
     def r_mom():
         v50 = mom_q.get("vs50") if mom_q else None
@@ -123,29 +120,6 @@ def build_verdicts(subs, f, fc, mom_q, bias, role, linkage, is_tradable, suspect
     lenses.append(("Technicals", "analytical", mom, f"Price trend: {r_mom()}."))
     lenses.append(("Sentiment", "analytical", avg(subs.get("sentiment"), subs.get("smart")),
                    "News/SmartScore sentiment read from TipRanks."))
-
-    # ── Investor personas ───────────────────────────────────────────────
-    lenses.append(("Warren Buffett", "persona", avg(margin, roic, balance, subs.get("quality")),
-                   (f"Wants a durable, low-debt compounder — margin {pct(f.get('ebitda_margin')) if f else 'n/a'}, "
-                    f"ROIC {pct(f.get('return_on_invested_capital')) if f else 'n/a'}." )))
-    lenses.append(("Charlie Munger", "persona", avg(roic, margin, subs.get("quality")),
-                   "Concentrated quality: high returns on capital and a rational business."))
-    lenses.append(("Ben Graham", "persona", avg(balance, contra, fcf),
-                   "Margin of safety: strong balance sheet plus a beaten-down price."))
-    lenses.append(("Cathie Wood", "persona", avg(growth, mom, growth),
-                   (f"Growth/innovation: revenue growth {pct(f.get('revenue_growth_yoy')) if f else 'n/a'} and momentum.")))
-    lenses.append(("Bill Ackman", "persona", avg(subs.get("quality"), margin, mom, subs.get("analyst")),
-                   "Quality business with a catalyst and analyst support."))
-    lenses.append(("Peter Lynch", "persona", avg(growth, subs.get("analyst"), subs.get("quality")),
-                   "Growth at a reasonable price with a clear story."))
-    lenses.append(("Michael Burry", "persona", avg(contra, balance, margin),
-                   (f"Contrarian value: {'cheap/oversold' if (mom or 5) < 5 else 'extended — hard to be contrarian long'} "
-                    "with a solid balance sheet.")))
-    lenses.append(("Stanley Druckenmiller", "persona", avg(subs.get("commodity"), mom),
-                   (f"Macro/commodity + tape: {bias['bias'].upper() if bias else 'neutral'} "
-                    f"{'metal' if bias else 'backdrop'} bias, momentum aligned or not.")))
-    lenses.append(("Phil Fisher", "persona", avg(growth, margin, subs.get("quality")),
-                   "Scuttlebutt quality-growth: durable margins and reinvestment runway."))
 
     # ── Risk Manager ────────────────────────────────────────────────────
     risk_flags = []

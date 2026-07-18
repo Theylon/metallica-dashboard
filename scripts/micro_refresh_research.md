@@ -55,21 +55,20 @@ each card's **AI Hedge Fund** verdict.
   **Yahoo egress is often blocked in headless Claude sessions** — if this fails, the last
   committed `yahoo.json` is reused (the GitHub Action also refreshes it once/day from CI,
   where Yahoo is reachable). Google Finance has no free API, so Yahoo is the second source.
-- **Persona verdicts (optional live refresh):** spawn ~14 **parallel sonnet sub-agents**,
+- **Hedge-fund verdicts (optional live refresh):** spawn ~14 **parallel sonnet sub-agents**,
   each handling ~15 names. Each sub-agent applies the FULL roster **in one structured pass
-  per name** (not one call per persona): 4 analytical (Valuation, Fundamentals, Technicals,
-  Sentiment) + 9 investor personas (Buffett, Munger, Graham, Wood, Ackman, Lynch, Burry,
-  Druckenmiller, Fisher) + Risk Manager + Portfolio-Manager aggregate — reasoning over the
-  data ALREADY in the pipeline (the name's `micro.json` row + `yahoo.json`), so **no
-  per-name MCP call is needed**. Write a normalized `{ticker, held, aggregate:{signal,
-  confidence,action,tally}, analysts:[{name,type,signal,confidence,reasoning}]}` per name
-  into `hedge_r0.json … hedge_r13.json` (same shape as `deep_r*.json`; ≤1 sentence/lens to
-  bound tokens). If the full sweep is too heavy for one unattended run, refresh a rotating
-  third of the universe/day — the rest keeps yesterday's shard.
+  per name**: 4 analytical lenses (Valuation, Fundamentals, Technicals, Sentiment) + Risk
+  Manager + Portfolio-Manager aggregate — reasoning over the data ALREADY in the pipeline
+  (the name's `micro.json` row + `yahoo.json`), so **no per-name MCP call is needed**. Write
+  a normalized `{ticker, held, aggregate:{signal, confidence,action,tally},
+  analysts:[{name,type,signal,confidence,reasoning}]}` per name into
+  `hedge_r0.json … hedge_r13.json` (same shape as `deep_r*.json`; ≤1 sentence/lens to bound
+  tokens). If the full sweep is too heavy for one unattended run, refresh a rotating third of
+  the universe/day — the rest keeps yesterday's shard.
 - **Deterministic fallback (always run):** `python3 scripts/gen_hedge_auto.py` writes
   `data/micro_src/hedge_auto.json` for all names. It sorts first in the `hedge_*.json` glob,
   so any live `hedge_r*.json` shard overrides it (same trick as `deep_auto.json`). This
-  guarantees a valid, fully-populated hedgeFund layer even with no live persona run.
+  guarantees a valid, fully-populated hedgeFund layer even with no live run.
 
 ## 4. Refresh fundamentals (TrueNorth, quarterly) → `data/micro_src/fundamentals.json`
 Only worth doing around earnings. `mcp__TrueNorth__financial_metrics` (annual,
