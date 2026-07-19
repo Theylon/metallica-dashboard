@@ -52,9 +52,12 @@ an order was placed; say an *instruction* was created and link the URL.
    ```
    Exit 1 (FAIL) → stop and present; proceed only on an explicit owner
    override of the named gate. Sizing rule of thumb: new positions ~2–3% NAV.
-5. **Confirm with the owner** — present the exact ticket + gate summary
-   (notional, % NAV, position before→after, book gross after). Ask explicitly
-   (AskUserQuestion when available). Anything other than a clear yes = no.
+5. **Confirm with the owner — and capture the why.** Present the exact ticket
+   + gate summary (notional, % NAV, position before→after, book gross after)
+   and ask explicitly (AskUserQuestion when available). Anything other than a
+   clear yes = no. Every order carries a **reason**: take it from the owner's
+   message, or from the triggering recommendation/rebalance row (confirm it
+   with the owner), or ask for one — never log an empty reason.
 6. **Create the instruction** —
    `create_order_instruction(contract_id_ex="<conid>", side, quantity,
    order_type, limit_price, time_in_force)`. Show the returned **URL**
@@ -64,16 +67,51 @@ an order was placed; say an *instruction* was created and link the URL.
    python3 scripts/order_log.py --append --ticker SGML --side BUY --qty 10 \
        --order-type LIMIT --limit 10.25 --tif DAY --conid 511477158 \
        --instruction-id <id> --url <url> \
-       --gates "size_order:PASS,..." --note "<owner's rationale, overrides>"
+       --trigger-source owner|recommendation|rebalance|alert \
+       --trigger-ref "<compact snapshot of the triggering row>" \
+       --reason "<the owner's why, verbatim>" \
+       --gates "size_order:PASS,..." --note "<operational context, overrides>"
    ```
-   Commit `data/orders.jsonl` to `master` (data-only), message like
-   `data: order log — BUY 10 SGML (instruction <id>)`.
+   The dashboard's Orders tab renders trigger + reason — it is the
+   execution-side mirror of the decision log. Commit `data/orders.jsonl` to
+   `master` (data-only), message like `data: order log — BUY 10 SGML
+   (instruction <id>)`.
 8. **Follow through** — `get_order_instructions` shows it pending; after the
    owner submits: `get_account_orders` (live/filled) →
    `order_log.py --set-status --instruction-id <id> --status submitted|filled`.
    Fills: `get_account_trades` (TODAY). After a fill, run the standard
    IBKR refresh (`scripts/mcp_refresh.py` flow) and commit so NAV/positions
    update; the daily Journal routine picks up the round-trip analytics.
+
+## Trading from a recommendation or the Rebalance plan
+
+When the owner says "execute the recommendation on X" / «בצע את ההמלצה על X»
+or "do the rebalance row on Y" / «תבצע את שורת הריבאלנס של Y», the trigger is
+documentable — capture it:
+
+1. Look the row up **fresh**: recommendations in `data/micro.json`
+   (`recommendations[]`: action/urgency/rationale; `tradeList[]`: side/qty/why)
+   or the plan row in `data/rebalance.json` (`rows[]`: callTag/callText/target/
+   dollar/verdict). Show it to the owner; the row suggests, the owner decides
+   the final side/qty.
+2. Run the normal flow above (live state → quote → gate → confirm). The gate
+   and confirmation are NEVER skipped because a row "already says so".
+3. Log with the linkage: `--trigger-source recommendation` (or `rebalance`),
+   `--trigger-ref` = a compact snapshot (e.g. `"COVER, urgency high — thesis
+   conflict with bullish steel"` or `"HALVE → target $23 (row 1)"`), and
+   `--reason` = the rationale the owner confirmed (default: the row's own
+   rationale/why text, edited as the owner wishes).
+4. An alert-driven trade (pre-earnings de-risk from the Overview banner) uses
+   `--trigger-source alert` the same way.
+
+Owner-initiated trades with no source row default to `--trigger-source owner`
+— the reason is still required.
+
+The dashboard's Rebalance / Recommendations / Trade-List rows carry a ⧉
+button that copies exactly such a command (`/trade TICKER — מהריבאלנס שורה N…`
+/ `בצע את ההמלצה…` with the row's rationale as the reason seed). Treat a
+pasted command as the matching flow above: look the row up fresh, let the
+owner adjust side/qty/reason, and never skip the gate or the confirmation.
 
 ## Cancel / status
 
@@ -87,7 +125,13 @@ an order was placed; say an *instruction* was created and link the URL.
 
 ## Examples
 
-- «קנה 10 מניות SGML בלימיט 10.20» → full flow above.
+- «קנה 10 מניות SGML בלימיט 10.20» → full flow above (trigger: owner; ask for
+  the reason if not given).
+- «בצע את ההמלצה על NUE» → look up the COVER recommendation in micro.json,
+  present it, run the flow; log with trigger-source recommendation + its
+  rationale as the default reason.
+- «תבצע את שורה 1 מהריבאלנס» → same, from rebalance.json rows (trigger-source
+  rebalance, ref e.g. "HALVE → target $23").
 - «תכסה חצי מהשורט ב‑CLF» → qty = ceil(shares/2), side BUY (reduces short —
   gate treats it as de-risking), same flow.
 - «שים שורט על FCX, 2% מהתיק» → size from live NAV, off-universe/known-name
