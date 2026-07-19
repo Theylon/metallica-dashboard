@@ -823,12 +823,14 @@ td:first-child { text-align: left; }
 
     <div class="chart-panel">
       <div class="chart-header">
-        <div class="chart-title">Relative Return — Indexed (100 = period start)</div>
+        <div class="chart-title">Relative Return — Indexed (100 = shared start)</div>
         <div class="chart-controls">
-          <div style="display:flex;gap:4px;" id="bm-period-btns">
-            <button class="period-btn" data-period="1W" onclick="setBmPeriod('1W')">1W</button>
+          <div style="display:flex;gap:4px;flex-wrap:wrap;" id="bm-period-btns">
+            <button class="period-btn" data-period="5D" onclick="setBmPeriod('5D')">5D</button>
             <button class="period-btn active" data-period="1M" onclick="setBmPeriod('1M')">1M</button>
             <button class="period-btn" data-period="3M" onclick="setBmPeriod('3M')">3M</button>
+            <button class="period-btn" data-period="YTD" onclick="setBmPeriod('YTD')">YTD</button>
+            <button class="period-btn" data-period="1Y" onclick="setBmPeriod('1Y')">1Y</button>
             <button class="period-btn" data-period="ALL" onclick="setBmPeriod('ALL')">All</button>
             <button class="period-btn" data-period="CUSTOM" onclick="openBmCustomPeriod()">Custom</button>
           </div>
@@ -2344,26 +2346,48 @@ function updateBmPeriodLabel() {
   }
 }
 
+// The benchmark chart & table compare Metallica against the benchmarks over a
+// SHARED baseline for the active period. `start` is the latest first-day across
+// all series (so "100" is a date every line reaches — the book's inception in
+// windows older than it, otherwise the period start); `end` is the earliest
+// last-day (so no line overruns another on the right). Day-granular so a 20:00Z
+// pnl close pairs with a benchmark's 00:00Z date on the same day. Null if empty.
+function bmSharedWindow(bmCustom) {
+  const startOfDay = t => { const d = new Date(t); d.setUTCHours(0, 0, 0, 0); return d.getTime(); };
+  const endOfDay   = t => { const d = new Date(t); d.setUTCHours(23, 59, 59, 999); return d.getTime(); };
+  const firsts = [], lasts = [];
+  const add = times => { if (times.length) { firsts.push(times[0]); lasts.push(times[times.length - 1]); } };
+  add(sliceWindow(pnl, activeBmPeriod, undefined, bmCustom).map(s => new Date(s.timestamp).getTime()));
+  Object.keys(BENCHMARK_LABELS).forEach(t => {
+    if (benchmarks[t]) add(sliceWindow(benchmarks[t].dates.map(d => Date.parse(d)), activeBmPeriod, x => x, bmCustom));
+  });
+  if (!firsts.length) return null;
+  return { start: startOfDay(Math.max(...firsts)), end: endOfDay(Math.min(...lasts)) };
+}
+
 function renderBmChart() {
   const canvas = document.getElementById('bm-chart');
   const empty  = document.getElementById('bm-empty');
 
   const datasets = [];
   const bmCustom = { from: bmCustomFrom, to: bmCustomTo };
+  const win = bmSharedWindow(bmCustom);
 
   // Strategy line from pnl — indexed off the TWR series (deposit-adjusted),
-  // not raw NAV, so a cash deposit never shows up as a strategy gain.
+  // not raw NAV, so a cash deposit never shows up as a strategy gain. Indexed
+  // to 100 at the shared start so it lines up with the benchmarks; clipped to
+  // the shared end so it never runs past them.
   const filtered = sliceWindow(pnl, activeBmPeriod, undefined, bmCustom);
-  if (filtered.length) {
+  if (win && filtered.length) {
     const hasTwr = filtered.every(s => typeof s.twr === 'number');
-    const baseNav = filtered[0].nav || 1;
-    const twrBase = hasTwr ? 1 + filtered[0].twr / 100 : 1;
+    const raw = s => hasTwr ? 1 + s.twr / 100 : s.nav;
+    const baseS = filtered.find(s => new Date(s.timestamp).getTime() >= win.start) || filtered[0];
+    const base = raw(baseS) || 1;
     datasets.push({
       label: 'Metallica',
-      data: filtered.map(s => ({
-        x: new Date(s.timestamp),
-        y: hasTwr ? (1 + s.twr / 100) / twrBase * 100 : s.nav / baseNav * 100,
-      })),
+      data: filtered
+        .filter(s => new Date(s.timestamp).getTime() <= win.end)
+        .map(s => ({ x: new Date(s.timestamp), y: raw(s) / base * 100 })),
       borderColor: '#818cf8',
       borderWidth: 2.5,
       fill: false,
@@ -2372,18 +2396,22 @@ function renderBmChart() {
     });
   }
 
+  // Benchmarks keep their full in-window history (so wider periods still show
+  // more context, Yahoo-style), but each is indexed to 100 at the SAME shared
+  // start day and clipped to the shared end — so the overlap is a fair compare.
   Object.keys(BENCHMARK_LABELS).forEach(ticker => {
-    if (!benchmarks[ticker]) return;
+    if (!benchmarks[ticker] || !win) return;
     const { label, color } = BENCHMARK_LABELS[ticker];
     const dates  = benchmarks[ticker].dates.map(d => new Date(d));
     const closes = benchmarks[ticker].closes;
-    const filtered = sliceWindow(dates.map((d, i) => ({ x: d, y: closes[i] })),
-                                 activeBmPeriod, p => p.x.getTime(), bmCustom);
-    if (!filtered.length) return;
-    const base = filtered[0].y;
+    const pts = sliceWindow(dates.map((d, i) => ({ x: d, y: closes[i] })),
+                            activeBmPeriod, p => p.x.getTime(), bmCustom);
+    if (!pts.length) return;
+    const baseP = pts.find(p => p.x.getTime() >= win.start) || pts[0];
+    const base = baseP.y || 1;
     datasets.push({
       label,
-      data: filtered.map(p => ({ x: p.x, y: p.y / base * 100 })),
+      data: pts.filter(p => p.x.getTime() <= win.end).map(p => ({ x: p.x, y: p.y / base * 100 })),
       borderColor: color,
       borderWidth: 1.5,
       fill: false,
@@ -2392,16 +2420,6 @@ function renderBmChart() {
       borderDash: [4, 3],
     });
   });
-
-  // All lines must end on the same day. pnl.json carries a live intraday point while
-  // benchmarks.json only advances on daily closes — without this the Metallica line runs
-  // past the benchmark lines. Clip at day granularity so a 20:00Z pnl close is not dropped
-  // against a benchmark's 00:00Z date on the same day.
-  if (datasets.length) {
-    const endOfDay = t => { const d = new Date(t); d.setUTCHours(23, 59, 59, 999); return d.getTime(); };
-    const sharedEnd = Math.min(...datasets.map(ds => endOfDay(ds.data[ds.data.length - 1].x.getTime())));
-    datasets.forEach(ds => { ds.data = ds.data.filter(pt => pt.x.getTime() <= sharedEnd); });
-  }
 
   if (!datasets.length) { canvas.style.display = 'none'; empty.style.display = 'flex'; return; }
   canvas.style.display = 'block'; empty.style.display = 'none';
@@ -2420,8 +2438,14 @@ function renderBmTable() {
   const rows = [];
   const bmCustom = { from: bmCustomFrom, to: bmCustomTo };
 
-  // Strategy row — calcMetrics prefers the deposit-adjusted TWR series
-  const filtPnl = sliceWindow(pnl, activeBmPeriod, undefined, bmCustom);
+  const win = bmSharedWindow(bmCustom);
+  const inWin = t => win && t >= win.start && t <= win.end;
+
+  // Strategy row — calcMetrics prefers the deposit-adjusted TWR series. Every
+  // row is measured over the SAME shared window as the chart, so a benchmark is
+  // never credited with returns from before the book existed.
+  const filtPnl = sliceWindow(pnl, activeBmPeriod, undefined, bmCustom)
+    .filter(s => inWin(new Date(s.timestamp).getTime()));
   if (filtPnl.length >= 2) {
     const m = calcMetrics(filtPnl);
     if (m.ret != null) rows.push({ name: 'Metallica', color: '#818cf8', ...m, isStrategy: true });
@@ -2431,7 +2455,8 @@ function renderBmTable() {
     if (!benchmarks[ticker]) return;
     const pts = benchmarks[ticker].dates.map((d, i) =>
       ({ t: new Date(d).getTime(), y: benchmarks[ticker].closes[i] }));
-    const filtered = sliceWindow(pts, activeBmPeriod, p => p.t, bmCustom).map(p => p.y);
+    const filtered = sliceWindow(pts, activeBmPeriod, p => p.t, bmCustom)
+      .filter(p => inWin(p.t)).map(p => p.y);
     if (filtered.length < 2) return;
     const m = calcMetricsForSeries(filtered);
     rows.push({ name: BENCHMARK_LABELS[ticker].label, color: BENCHMARK_LABELS[ticker].color, ...m });
