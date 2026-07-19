@@ -96,6 +96,14 @@ gate (account↔positions identities, pnl schema, benchmark set, micro book vs l
 
 The dashboard auto-refreshes every 5 minutes from the browser.
 
+**Daily full-data snapshots**: every refresh also freezes the complete content of all live
+data files — analyst recommendations, sentiment, fundamentals, scores, positioning, KPI
+nowcasts, risk, alerts — verbatim into `history/daily/<date>.json.gz`
+(`scripts/daily_snapshot.py`; today's file is rewritten each run so it converges to
+end-of-day state). Review with `python3 scripts/daily_snapshot.py --list` /
+`--show 2026-07-19 analysts` / `--series TSLA analyst.priceTarget` (CSV time series for
+pandas/spreadsheets). Kept outside `data/` so the Pages site doesn't ship the archive.
+
 ## Benchmarks
 
 | Ticker | What it represents |
