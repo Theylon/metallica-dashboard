@@ -107,6 +107,12 @@ documentable — capture it:
 Owner-initiated trades with no source row default to `--trigger-source owner`
 — the reason is still required.
 
+The dashboard's Rebalance / Recommendations / Trade-List rows carry a ⧉
+button that copies exactly such a command (`/trade TICKER — מהריבאלנס שורה N…`
+/ `בצע את ההמלצה…` with the row's rationale as the reason seed). Treat a
+pasted command as the matching flow above: look the row up fresh, let the
+owner adjust side/qty/reason, and never skip the gate or the confirmation.
+
 ## Cancel / status
 
 - **Cancel**: `get_order_instructions` → find the id → confirm with the owner
