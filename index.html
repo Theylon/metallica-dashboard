@@ -574,10 +574,16 @@ td:first-child { text-align: left; }
     <div class="tab" role="tab" tabindex="0" data-tab="altdata" onclick="showTab('altdata')">
       <span class="tab-icon">🛰️</span> Alt-Data
     </div>
+    <div class="tab" role="tab" tabindex="0" data-tab="process" onclick="showTab('process')">
+      <span class="tab-icon">🧭</span> Process
+    </div>
   </div>
 
   <!-- ─── Overview page ─────────────────────────────────────────── -->
   <div id="page-overview" class="page active">
+
+    <!-- Process-rule alerts (earnings proximity etc.) — hidden until alerts exist -->
+    <div id="ov-alerts" style="display:none;margin-bottom:14px;"></div>
 
     <!-- KPI cards -->
     <div class="kpi-row">
@@ -1333,6 +1339,131 @@ td:first-child { text-align: left; }
     <div id="ad-cards"><div class="empty-text" style="padding:16px;">Awaiting data</div></div>
   </div><!-- /altdata -->
 
+  <!-- ─── Process page: channel accuracy · decision log · rules ──── -->
+  <div id="page-process" class="page">
+    <div class="chart-header"><div class="chart-title">🧭 Process — validate channels, log decisions, enforce rules</div></div>
+    <div style="font-size:12px;color:var(--text-muted);line-height:1.5;margin:2px 2px 12px;">
+      Every information channel is backtested against what it claims to predict (Median Absolute
+      Error / hit rate) and only <b>trusted</b> channels (≥80% accuracy) may drive decisions.
+      Every recommendation change is logged with its trigger and reviewed against the +30/+90-day
+      outcome. Full write-up: <b>PROCESS.md</b> in the repo. <span id="proc-updated"></span>
+    </div>
+
+    <!-- Alerts strip -->
+    <div id="proc-alerts" style="margin-bottom:14px;"></div>
+
+    <!-- Channel accuracy -->
+    <div class="table-panel">
+      <div class="table-header">
+        <div class="table-title">Channel Accuracy — the 80% trust gate</div>
+        <div style="font-size:12px;color:var(--text-muted);" id="ca-summary">—</div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr>
+            <th style="text-align:left;">Channel</th>
+            <th style="text-align:left;">Kind</th>
+            <th>N</th>
+            <th>MedAE %</th>
+            <th>Beat cons. / Hit %</th>
+            <th>Accuracy %</th>
+            <th style="text-align:left;">Status</th>
+          </tr></thead>
+          <tbody id="ca-tbody"><tr class="empty-row"><td colspan="7">Awaiting channel data</td></tr></tbody>
+        </table>
+      </div>
+      <div class="report-note" style="margin-top:10px;">KPI channels: MedAE = median |estimate − reported| per quarter, accuracy = 100 − MedAE. Score channels: hit rate of positive rank-IC windows. Direction channels: hit rate of each call vs the 20-snapshot-forward return. <b>Probation</b> and <b>accumulating</b> channels are display-only — never a decision input.</div>
+    </div>
+
+    <!-- Decision log -->
+    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">📜 Decision &amp; Trigger Log</div></div>
+    <div class="table-panel">
+      <div class="table-header">
+        <div class="table-header-left">
+          <input type="text" class="filter-input" id="dlog-search" placeholder="Search ticker…" oninput="setDlogSearch(this.value)">
+          <select class="filter-select" id="dlog-class" onchange="setDlogClass(this.value)">
+            <option value="">All actions</option>
+          </select>
+          <label style="font-size:11px;color:var(--text-muted);display:flex;align-items:center;gap:5px;cursor:pointer;">
+            <input type="checkbox" id="dlog-override" onchange="setDlogOverrideOnly(this.checked)"> overrides only
+          </label>
+        </div>
+        <div style="font-size:12px;color:var(--text-muted);" id="dlog-count">—</div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr>
+            <th style="text-align:left;">Date</th>
+            <th style="text-align:left;">Ticker</th>
+            <th style="text-align:left;">Event</th>
+            <th style="text-align:left;">Action (prev → new)</th>
+            <th style="text-align:left;">Urgency</th>
+            <th style="text-align:left;">Trigger</th>
+            <th style="text-align:left;">Bias context</th>
+            <th>+30d</th>
+            <th>+90d</th>
+          </tr></thead>
+          <tbody id="dlog-tbody"><tr class="empty-row"><td colspan="9">No decisions logged yet — entries appear automatically when a refresh changes a recommendation or a position</td></tr></tbody>
+        </table>
+      </div>
+      <div class="report-note" style="margin-top:10px;">Auto-written by micro_build/micro_refresh (scripts/decision_log.py). ⚠ rows are <b>micro overrides</b> — the micro call contradicts the commodity bias. +30d/+90d = raw forward price return after the decision (interpret vs the held side: a short wants a negative number); backfilled by the Action once entries age.</div>
+    </div>
+
+    <!-- Insiders & politicians -->
+    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">🕴️ Smart Money — insiders &amp; politicians</div></div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
+      <div class="table-panel" style="flex:1;min-width:340px;">
+        <div class="table-header"><div class="table-title">Insider activity (discretionary vs technical)</div></div>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr>
+              <th style="text-align:left;">Ticker</th>
+              <th style="text-align:left;">Signal</th>
+              <th>Buys</th>
+              <th>Disc. sells</th>
+              <th>Tech. sells</th>
+              <th>Net shares</th>
+            </tr></thead>
+            <tbody id="proc-insider-tbody"><tr class="empty-row"><td colspan="6">Awaiting positioning refresh (scripts/positioning_refresh.md)</td></tr></tbody>
+          </table>
+        </div>
+        <div class="report-note" style="margin-top:8px;">Many reasons to sell, only one reason to buy: open-market buys always count; sells count only when discretionary (RSU / 10b5-1 / option-exercise / small trims are technical).</div>
+      </div>
+      <div class="table-panel" style="flex:1;min-width:340px;">
+        <div class="table-header"><div class="table-title">Politician / congressional trades</div></div>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr>
+              <th style="text-align:left;">Who</th>
+              <th style="text-align:left;">Ticker</th>
+              <th style="text-align:left;">Tx</th>
+              <th style="text-align:left;">Amount</th>
+              <th style="text-align:left;">Traded</th>
+              <th>Lag (d)</th>
+            </tr></thead>
+            <tbody id="proc-politicians-tbody"><tr class="empty-row"><td colspan="6">Awaiting positioning refresh (scripts/positioning_refresh.md)</td></tr></tbody>
+          </table>
+        </div>
+        <div class="report-note" style="margin-top:8px;">Tracked portfolios (config in data/positioning_src/config.json) + any congressional trade touching the universe/watchlist. Lag = disclosure delay in days.</div>
+      </div>
+    </div>
+
+    <!-- Process rules -->
+    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">📏 Hard rules (override any score)</div></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+      <div class="kpi-card"><div class="kpi-label">Earnings</div>
+        <div style="font-size:12px;line-height:1.5;margin-top:4px;">Close or reduce single-stock positions <b>before earnings</b> — binary event, elevated volatility — even when the alt-data is favorable.</div></div>
+      <div class="kpi-card"><div class="kpi-label">Hedging</div>
+        <div style="font-size:12px;line-height:1.5;margin-top:4px;">Express sector risk via <b>ETFs</b> (XME metals, KARS EV) over adding single-name event risk; accept imperfect coverage.</div></div>
+      <div class="kpi-card"><div class="kpi-label">Leading indicators</div>
+        <div style="font-size:12px;line-height:1.5;margin-top:4px;"><b>HRC price</b> leads steel equities: HRC strength ⇒ cover / avoid shorts on domestic mills (CLF, STLD, NUE).</div></div>
+      <div class="kpi-card"><div class="kpi-label">Insider asymmetry</div>
+        <div style="font-size:12px;line-height:1.5;margin-top:4px;">Open-market insider <b>buys always count</b>; sells only when discretionary — RSU / plan sales are noise.</div></div>
+      <div class="kpi-card"><div class="kpi-label">Micro overrides</div>
+        <div style="font-size:12px;line-height:1.5;margin-top:4px;">Macro bias sets the default direction; a contradicting micro call is allowed but is <b>flagged in the log</b> until resolved.</div></div>
+    </div>
+  </div><!-- /process -->
+
 </div><!-- /dashboard -->
 
 <script>
@@ -1388,6 +1519,8 @@ let risk = {}, journal = {}, signalScorecard = {};
 let intel = { commodities: [], analysts: [], macro: [], news: [] };
 let rebalance = { rows: [] };
 let altdata = { items: [] }, altGroup = 'book';
+let channelAcc = { channels: [] }, decisionLog = [], alertsData = { items: [] };
+let dlogSearch = '', dlogClass = '', dlogOverrideOnly = false;
 let activePeriod = 'YTD', activeBmPeriod = '1M';
 let customFrom = null, customTo = null;   // 'YYYY-MM-DD' bounds for the Overview CUSTOM period
 let bmCustomFrom = null, bmCustomTo = null;   // 'YYYY-MM-DD' bounds for the Benchmarks CUSTOM period
@@ -1403,7 +1536,7 @@ let pendingUpload = null;        // {name, positions[], warnings[], error} stage
 
 async function loadData() {
   try {
-    const [posRes, accRes, pnlRes, bmRes, repRes, comRes, anaRes, macRes, newsRes, techRes, spotRes, resRes, microRes, expHistRes, rebRes, riskRes, jrnRes, sigRes, evRes, posgRes, mhRes, adRes] = await Promise.all([
+    const [posRes, accRes, pnlRes, bmRes, repRes, comRes, anaRes, macRes, newsRes, techRes, spotRes, resRes, microRes, expHistRes, rebRes, riskRes, jrnRes, sigRes, evRes, posgRes, mhRes, adRes, caRes, alRes, dlRes] = await Promise.all([
       fetch('data/positions.json?' + Date.now()).then(r => r.json()).catch(() => ({ positions: [] })),
       fetch('data/account.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
       fetch('data/pnl.json?' + Date.now()).then(r => r.json()).catch(() => []),
@@ -1426,6 +1559,12 @@ async function loadData() {
       fetch('data/positioning.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
       fetch('data/macro_history.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
       fetch('data/altdata.json?' + Date.now()).then(r => r.json()).catch(() => ({ items: [] })),
+      fetch('data/channel_accuracy.json?' + Date.now()).then(r => r.json()).catch(() => ({ channels: [] })),
+      fetch('data/alerts.json?' + Date.now()).then(r => r.json()).catch(() => ({ items: [] })),
+      // JSONL: parsed line-by-line; the catch also swallows the 404-HTML parse
+      // failure before the log file exists, so the tab degrades to empty.
+      fetch('data/decision_log.jsonl?' + Date.now()).then(r => r.text())
+        .then(t => t.split('\n').filter(Boolean).map(l => JSON.parse(l))).catch(() => []),
     ]);
     positions = posRes.positions || [];
     account   = accRes || {};
@@ -1439,6 +1578,9 @@ async function loadData() {
     exposureHistory = expHistRes || {};
     rebalance = rebRes || { rows: [] };
     altdata = (adRes && Array.isArray(adRes.items)) ? adRes : { items: [] };
+    channelAcc = (caRes && Array.isArray(caRes.channels)) ? caRes : { channels: [] };
+    alertsData = (alRes && Array.isArray(alRes.items)) ? alRes : { items: [] };
+    decisionLog = Array.isArray(dlRes) ? dlRes : [];
     risk = riskRes || {};
     journal = jrnRes || {};
     signalScorecard = sigRes || {};
@@ -1463,7 +1605,8 @@ function renderAll() {
   [renderKPIs, buildBmToggles, renderPnlChart, renderStats, buildCategoryFilter,
    renderPositions, renderBmChart, renderBmTable, renderExposure,
    renderCommodityExposure, renderReport, renderIntel, renderPicks,
-   renderSignals, renderJournal, renderRebalance, renderAltData
+   renderSignals, renderJournal, renderRebalance, renderAltData,
+   renderProcess, renderOverviewAlerts
   ].forEach(fn => {
     try { fn(); } catch (e) { console.error(fn.name + ' failed', e); }
   });
@@ -2713,7 +2856,8 @@ function renderRiskTab() {
     </div>`;
   const pos = (intel && intel.positioning) || {};
   const hasPos = (pos.institutional && pos.institutional.length) ||
-                 (pos.insider && pos.insider.length) || (pos.cot && pos.cot.length);
+                 (pos.insider && pos.insider.length) || (pos.cot && pos.cot.length) ||
+                 (pos.politicians && pos.politicians.length);
   const smartEl = document.getElementById('smart-list');
   if (smartEl && hasPos) {
     let html = '';
@@ -2724,6 +2868,11 @@ function renderRiskTab() {
     (pos.insider || []).forEach(x => html += smartItem(x.ticker, 'Insiders ' + x.direction,
       x.direction === 'buying' ? 'pos' : x.direction === 'selling' ? 'neg' : 'neu',
       `Net ${x.netInsiderShares >= 0 ? '+' : ''}${Number(x.netInsiderShares).toLocaleString()} shares (${x.window})`));
+    (pos.politicians || []).slice(0, 5).forEach(x => html += smartItem(x.ticker,
+      (x.name || 'Congress') + ' ' + (x.transaction === 'buy' ? 'bought' : x.transaction === 'sell' ? 'sold' : x.transaction),
+      x.transaction === 'buy' ? 'pos' : x.transaction === 'sell' ? 'neg' : 'neu',
+      `${x.chamber || ''} · ${x.amountRange || '—'} · traded ${x.txDate || '—'}` +
+      (x.disclosureLagDays != null ? `, disclosed +${x.disclosureLagDays}d` : '')));
     (pos.cot || []).forEach(x => html += smartItem(x.commodity, 'Spec net ' + (x.netSpecPosition >= 0 ? 'long' : 'short'),
       x.netSpecPosition >= 0 ? 'pos' : 'neg',
       `Net spec ${Number(x.netSpecPosition).toLocaleString()}` +
@@ -3636,6 +3785,169 @@ function chartOpts(yLabel, unit = null) {   // unit: '$' | '%' | null (bare numb
       }
     }
   };
+}
+
+// ═══════════════════════════════════════════ PROCESS ══
+// Channel accuracy (80% trust gate) · decision & trigger log · smart money ·
+// process-rule alerts. Data: channel_accuracy.json, decision_log.jsonl,
+// alerts.json, positioning.json (see PROCESS.md).
+function setDlogSearch(v) { dlogSearch = v.trim().toUpperCase(); renderDlogTable(); }
+function setDlogClass(v) { dlogClass = v; renderDlogTable(); }
+function setDlogOverrideOnly(v) { dlogOverrideOnly = !!v; renderDlogTable(); }
+
+function alertCardHtml(a) {
+  const warn = a.severity === 'warn';
+  const bg = warn ? 'rgba(239,68,68,0.08)' : 'rgba(99,102,241,0.08)';
+  const bdr = warn ? 'rgba(239,68,68,0.35)' : 'rgba(99,102,241,0.3)';
+  const icon = a.type === 'earnings_proximity' ? '📅' : '⚠️';
+  // messages already lead with the ticker — bold it without repeating it
+  const msg = a.ticker && (a.message || '').startsWith(a.ticker)
+    ? a.message.slice(a.ticker.length).replace(/^[:\s]+/, '') : (a.message || '');
+  return `<div style="background:${bg};border:1px solid ${bdr};border-radius:8px;padding:9px 12px;margin-bottom:8px;font-size:12px;line-height:1.5;">`
+    + `${icon} <b>${esc(a.ticker || '')}</b> ${esc(msg)}`
+    + (a.rule ? ` <span style="color:var(--text-muted);">· ${esc(a.rule)}</span>` : '')
+    + `</div>`;
+}
+
+function renderOverviewAlerts() {
+  const el = document.getElementById('ov-alerts');
+  if (!el) return;
+  const items = (alertsData.items || []).filter(a => a.severity === 'warn');
+  el.style.display = items.length ? '' : 'none';
+  el.innerHTML = items.map(alertCardHtml).join('');
+}
+
+function caStatusBadge(st) {
+  if (st === 'trusted') return '<span class="pick-badge long">TRUSTED</span>';
+  if (st === 'probation') return '<span class="pick-badge" style="background:rgba(234,179,8,0.14);color:#eab308;">PROBATION</span>';
+  if (st === 'info') return '<span class="pick-badge new">INFO</span>';
+  return '<span class="pick-badge neutral">ACCUMULATING</span>';
+}
+
+const dlogUrgCol = { high: 'var(--red)', medium: '#eab308', med: '#eab308', low: 'var(--text-muted)', none: 'var(--text-dim)' };
+
+function dlogOutcomeCell(v, held) {
+  if (v === null || v === undefined) return '<td style="color:var(--text-dim);">—</td>';
+  // color by whether the move was GOOD for the decision's side: a short wants
+  // the price down. Unknown side → plain.
+  let col = 'var(--text)';
+  if (held === 'short') col = v < 0 ? 'var(--green)' : 'var(--red)';
+  else if (held === 'long') col = v >= 0 ? 'var(--green)' : 'var(--red)';
+  return `<td style="color:${col};">${v > 0 ? '+' : ''}${Number(v).toFixed(1)}%</td>`;
+}
+
+function renderDlogTable() {
+  const tb = document.getElementById('dlog-tbody');
+  if (!tb) return;
+  const all = decisionLog.slice().sort((a, b) => (b.ts || '').localeCompare(a.ts || ''));
+  const rows = all.filter(e =>
+    (!dlogSearch || (e.ticker || '').toUpperCase().includes(dlogSearch)) &&
+    (!dlogClass || e.actionClass === dlogClass) &&
+    (!dlogOverrideOnly || e.microOverride)
+  ).slice(0, 200);
+  const cnt = document.getElementById('dlog-count');
+  if (cnt) cnt.textContent = decisionLog.length ? `${rows.length} of ${all.length} entries` : '—';
+  if (!rows.length) {
+    tb.innerHTML = `<tr class="empty-row"><td colspan="9">${decisionLog.length ? 'No entries match the filters' : 'No decisions logged yet — entries appear automatically when a refresh changes a recommendation or a position'}</td></tr>`;
+    return;
+  }
+  tb.innerHTML = rows.map(e => {
+    const mv = ((e.trigger || {}).movers || [])
+      .map(m => `${esc(m.field.replace('subs.', ''))} ${m.from}→${m.to}`).join(', ');
+    const comp = (e.trigger || {});
+    const trig = [mv, (comp.compositeFrom != null && comp.compositeTo != null && comp.compositeFrom !== comp.compositeTo)
+      ? `composite ${comp.compositeFrom}→${comp.compositeTo}` : ''].filter(Boolean).join(' · ') || '—';
+    const mc = e.macroContext;
+    const bias = mc && mc.bias
+      ? `<span class="pick-badge ${mc.bias === 'long' ? 'long' : mc.bias === 'short' ? 'short' : 'neutral'}">${mc.bias.toUpperCase()}</span> <span style="color:var(--text-muted);">${esc(mc.material || '')}</span>`
+      : '<span style="color:var(--text-dim);">—</span>';
+    const held = (e.snapshot || {}).held;
+    return `<tr${e.microOverride ? ' style="background:rgba(239,68,68,0.05);"' : ''}>`
+      + `<td style="text-align:left;white-space:nowrap;color:var(--text-muted);">${esc((e.ts || '').slice(0, 10))}</td>`
+      + `<td style="text-align:left;font-weight:700;">${e.microOverride ? '⚠ ' : ''}${esc(e.ticker || '')}</td>`
+      + `<td style="text-align:left;color:var(--text-muted);">${e.event === 'position_change' ? 'position' : 'recommendation'}<div style="font-size:10px;color:var(--text-dim);">${esc(e.source || '')}</div></td>`
+      + `<td style="text-align:left;"><span style="color:var(--text-muted);">${esc(e.prevAction || '—')}</span> → <b>${esc(e.action || '—')}</b></td>`
+      + `<td style="text-align:left;color:${dlogUrgCol[e.urgency] || 'var(--text-muted)'};">${esc(e.urgency || '—')}</td>`
+      + `<td style="text-align:left;font-size:11px;color:var(--text-muted);max-width:260px;">${trig}</td>`
+      + `<td style="text-align:left;font-size:11px;">${bias}</td>`
+      + dlogOutcomeCell((e.outcome || {}).d30, held)
+      + dlogOutcomeCell((e.outcome || {}).d90, held)
+      + `</tr>`;
+  }).join('');
+}
+
+function renderProcess() {
+  // header timestamp + alerts strip (all severities on the Process tab)
+  const upd = document.getElementById('proc-updated');
+  if (upd && channelAcc.updatedAt) upd.textContent = '· Updated ' + channelAcc.updatedAt.replace('T', ' ').replace(/(\+00:00|Z)$/, ' UTC');
+  const strip = document.getElementById('proc-alerts');
+  if (strip) strip.innerHTML = (alertsData.items || []).map(alertCardHtml).join('');
+
+  // channel accuracy table
+  const cs = channelAcc.channels || [];
+  const sum = channelAcc.summary || {};
+  const gatePct = (channelAcc.gate || {}).trustedMinPct || 80;
+  const cSum = document.getElementById('ca-summary');
+  if (cSum) cSum.textContent = cs.length
+    ? `${sum.trusted || 0} trusted · ${sum.probation || 0} probation · ${sum.accumulating || 0} accumulating · gate ≥${gatePct}%`
+    : '—';
+  const ct = document.getElementById('ca-tbody');
+  if (ct) {
+    ct.innerHTML = cs.length ? cs.map(c => {
+      const acc = c.accuracyPct;
+      const accCol = acc == null ? 'var(--text-dim)' : acc >= gatePct ? 'var(--green)' : '#eab308';
+      const beatHit = c.beatConsensusPct != null ? c.beatConsensusPct.toFixed(0) + '%'
+        : c.hitRatePct != null ? c.hitRatePct.toFixed(0) + '%' : '—';
+      return `<tr><td style="text-align:left;">${esc(c.label)}`
+        + `<div style="font-size:10px;color:var(--text-dim);">${esc(c.note || c.source || '')}</div></td>`
+        + `<td style="text-align:left;color:var(--text-muted);">${esc(c.kind)}</td>`
+        + `<td>${c.n || 0}</td>`
+        + `<td>${c.medAbsErrPct != null ? c.medAbsErrPct.toFixed(2) + '%' : '—'}</td>`
+        + `<td>${beatHit}</td>`
+        + `<td style="font-weight:700;color:${accCol};">${acc != null ? acc.toFixed(1) : '—'}</td>`
+        + `<td style="text-align:left;">${caStatusBadge(c.status)}</td></tr>`;
+    }).join('') : '<tr class="empty-row"><td colspan="7">Awaiting channel data</td></tr>';
+  }
+
+  // decision log: populate the action-class filter once, then the table
+  const sel = document.getElementById('dlog-class');
+  if (sel && sel.options.length <= 1) {
+    [...new Set(decisionLog.map(e => e.actionClass).filter(Boolean))].sort()
+      .forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; sel.appendChild(o); });
+  }
+  renderDlogTable();
+
+  // smart money panels (positioning.json — insider classification + politicians)
+  const pos = (intel && intel.positioning) || {};
+  const it = document.getElementById('proc-insider-tbody');
+  if (it) {
+    const ins = pos.insider || [];
+    const sigBadge = s => s === 'bullish' ? '<span class="pick-badge long">BULLISH</span>'
+      : s === 'bearish' ? '<span class="pick-badge short">BEARISH</span>'
+      : '<span class="pick-badge neutral">NEUTRAL</span>';
+    it.innerHTML = ins.length ? ins.map(x =>
+      `<tr><td style="text-align:left;font-weight:700;">${esc(x.ticker)}`
+      + `<div style="font-size:10px;color:var(--text-dim);max-width:220px;">${esc(x.note || '')}</div></td>`
+      + `<td style="text-align:left;">${sigBadge(x.signal)}</td>`
+      + `<td>${x.buys != null ? x.buys : '—'}</td>`
+      + `<td>${x.discretionarySells != null ? x.discretionarySells : '—'}</td>`
+      + `<td style="color:var(--text-muted);">${x.technicalSells != null ? x.technicalSells : '—'}</td>`
+      + `<td style="color:${(x.netInsiderShares || 0) >= 0 ? 'var(--green)' : 'var(--red)'};">${x.netInsiderShares != null ? (x.netInsiderShares >= 0 ? '+' : '') + Number(x.netInsiderShares).toLocaleString() : '—'}</td></tr>`
+    ).join('') : '<tr class="empty-row"><td colspan="6">Awaiting positioning refresh (scripts/positioning_refresh.md)</td></tr>';
+  }
+  const pt = document.getElementById('proc-politicians-tbody');
+  if (pt) {
+    const pol = pos.politicians || [];
+    pt.innerHTML = pol.length ? pol.slice(0, 40).map(x =>
+      `<tr><td style="text-align:left;">${esc(x.name || '—')}`
+      + `<div style="font-size:10px;color:var(--text-dim);">${esc([x.chamber, x.party].filter(Boolean).join(' · '))}</div></td>`
+      + `<td style="text-align:left;font-weight:700;">${esc(x.ticker || '')}</td>`
+      + `<td style="text-align:left;"><span class="pick-badge ${x.transaction === 'buy' ? 'long' : x.transaction === 'sell' ? 'short' : 'neutral'}">${esc((x.transaction || '?').toUpperCase())}</span></td>`
+      + `<td style="text-align:left;color:var(--text-muted);white-space:nowrap;">${esc(x.amountRange || '—')}</td>`
+      + `<td style="text-align:left;color:var(--text-muted);white-space:nowrap;">${esc(x.txDate || '—')}</td>`
+      + `<td>${x.disclosureLagDays != null ? x.disclosureLagDays : '—'}</td></tr>`
+    ).join('') : '<tr class="empty-row"><td colspan="6">Awaiting positioning refresh (scripts/positioning_refresh.md)</td></tr>';
+  }
 }
 
 // ═══════════════════════════════════════════ THEME ══

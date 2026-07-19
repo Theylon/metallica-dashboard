@@ -13,6 +13,7 @@ and scores move at the same times as the live dashboard. The heavier research la
 is refreshed once a day pre-market by a separate Claude Routine (see
 scripts/micro_refresh_research.md).
 """
+import copy
 import datetime
 import json
 import pathlib
@@ -116,6 +117,7 @@ def write_price_history(series):
 
 def main():
     micro = json.loads((DATA / "micro.json").read_text())
+    prev_micro = copy.deepcopy(micro)   # pre-refresh state for the decision log diff
     records = micro.get("tickers", [])
 
     # Re-sync the held overlay from the live book on every refresh, so the
@@ -192,6 +194,14 @@ def main():
 
     micro["updatedAt"] = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
     micro["pricesRefreshedAt"] = micro["updatedAt"]
+
+    # record recommendation/held changes + their triggers before overwriting
+    try:
+        import decision_log
+        decision_log.log_diff(prev_micro, micro, "micro_refresh")
+    except Exception as e:
+        print(f"decision log skipped: {e}")
+
     (DATA / "micro.json").write_text(json.dumps(micro, indent=1))
     print(f"micro.json: refreshed prices/scores for {refreshed} names "
           f"({len(records) - refreshed} kept last-known), "

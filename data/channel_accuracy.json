@@ -1,0 +1,229 @@
+{
+ "updatedAt": "2026-07-19T09:38:34+00:00",
+ "gate": {
+  "trustedMinPct": 80
+ },
+ "summary": {
+  "trusted": 3,
+  "probation": 0,
+  "accumulating": 5
+ },
+ "channels": [
+  {
+   "id": "kpi.consensus.UBER",
+   "label": "Street consensus \u2014 UBER Revenue",
+   "kind": "kpi",
+   "source": "FMP consensus vs reported (altdata trackRecord)",
+   "ticker": "UBER",
+   "n": 3,
+   "medAbsErrPct": 0.58,
+   "meanAbsErrPct": 0.75,
+   "beatConsensusPct": null,
+   "hitRatePct": null,
+   "accuracyPct": 99.4,
+   "status": "trusted",
+   "gated": true,
+   "note": null,
+   "detail": [
+    {
+     "period": "Q Nov-25",
+     "est": 13284,
+     "reported": 13467,
+     "absErrPct": 1.36
+    },
+    {
+     "period": "Q Feb-26",
+     "est": 14323,
+     "reported": 14366,
+     "absErrPct": 0.3
+    },
+    {
+     "period": "Q May-26",
+     "est": 13280,
+     "reported": 13203,
+     "absErrPct": 0.58
+    }
+   ]
+  },
+  {
+   "id": "kpi.consensus.NKE",
+   "label": "Street consensus \u2014 NKE Revenue",
+   "kind": "kpi",
+   "source": "FMP consensus vs reported (altdata trackRecord)",
+   "ticker": "NKE",
+   "n": 3,
+   "medAbsErrPct": 1.11,
+   "meanAbsErrPct": 1.11,
+   "beatConsensusPct": null,
+   "hitRatePct": null,
+   "accuracyPct": 98.9,
+   "status": "trusted",
+   "gated": true,
+   "note": null,
+   "detail": [
+    {
+     "period": "FQ Dec-25",
+     "est": 12205,
+     "reported": 12427,
+     "absErrPct": 1.79
+    },
+    {
+     "period": "FQ Mar-26",
+     "est": 11230,
+     "reported": 11279,
+     "absErrPct": 0.43
+    },
+    {
+     "period": "FQ Jun-26",
+     "est": 10850,
+     "reported": 10972,
+     "absErrPct": 1.11
+    }
+   ]
+  },
+  {
+   "id": "kpi.consensus.TSLA",
+   "label": "Street consensus \u2014 TSLA Revenue",
+   "kind": "kpi",
+   "source": "FMP consensus vs reported (altdata trackRecord)",
+   "ticker": "TSLA",
+   "n": 3,
+   "medAbsErrPct": 1.28,
+   "meanAbsErrPct": 2.44,
+   "beatConsensusPct": null,
+   "hitRatePct": null,
+   "accuracyPct": 98.7,
+   "status": "trusted",
+   "gated": true,
+   "note": null,
+   "detail": [
+    {
+     "period": "Q Oct-25",
+     "est": 26540,
+     "reported": 28095,
+     "absErrPct": 5.53
+    },
+    {
+     "period": "Q Jan-26",
+     "est": 24776,
+     "reported": 24901,
+     "absErrPct": 0.5
+    },
+    {
+     "period": "Q Apr-26",
+     "est": 22101,
+     "reported": 22387,
+     "absErrPct": 1.28
+    }
+   ]
+  },
+  {
+   "id": "direction.commodityBias",
+   "label": "Commodity bias (long/short per material)",
+   "kind": "direction",
+   "source": "micro_history.jsonl biasDir vs 20-snapshot-forward return",
+   "ticker": null,
+   "n": 0,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": null,
+   "accuracyPct": null,
+   "status": "accumulating",
+   "gated": true,
+   "note": "needs \u226525 snapshot days with biasDir recorded (4 days so far, 0 directional rows)",
+   "detail": []
+  },
+  {
+   "id": "direction.insider",
+   "label": "Insider buys/sells (discretionary only)",
+   "kind": "direction",
+   "source": "positioning_history.jsonl vs 20-snapshot-forward return",
+   "ticker": null,
+   "n": 0,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": null,
+   "accuracyPct": null,
+   "status": "accumulating",
+   "gated": true,
+   "note": "needs \u226510 aged observations (0 directional rows so far)",
+   "detail": []
+  },
+  {
+   "id": "direction.politician",
+   "label": "Politician / congressional trades",
+   "kind": "direction",
+   "source": "positioning_history.jsonl vs 20-snapshot-forward return",
+   "ticker": null,
+   "n": 0,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": null,
+   "accuracyPct": null,
+   "status": "accumulating",
+   "gated": true,
+   "note": "needs \u226510 aged observations (0 directional rows so far)",
+   "detail": []
+  },
+  {
+   "id": "kpi.ourEst",
+   "label": "Our nowcast \u2014 all names",
+   "kind": "kpi",
+   "source": "Alt-data calibrated estimate vs reported",
+   "ticker": null,
+   "n": 0,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": null,
+   "accuracyPct": null,
+   "status": "accumulating",
+   "gated": true,
+   "note": "No calibrated nowcasts yet \u2014 fills once altdata Phase 2 sets kpi.ourEst (needs \u22652 quarters of paired alt-data \u2194 reported history per name).",
+   "detail": []
+  },
+  {
+   "id": "score.microScores",
+   "label": "Micro sub-scores + composite vs forward returns",
+   "kind": "score",
+   "source": "signal_scorecard.json (rank-IC engine)",
+   "ticker": null,
+   "n": 0,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": null,
+   "accuracyPct": null,
+   "status": "accumulating",
+   "gated": true,
+   "note": "needs 25 daily snapshots (4 so far)",
+   "detail": []
+  },
+  {
+   "id": "crossval.yahoo",
+   "label": "Source consistency \u2014 Yahoo vs FMP/TipRanks",
+   "kind": "crossval",
+   "source": "micro.json crossVal (independent yfinance pull)",
+   "ticker": null,
+   "n": 188,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": null,
+   "accuracyPct": 78.2,
+   "status": "info",
+   "gated": false,
+   "note": null,
+   "detail": [
+    {
+     "agree": 147,
+     "mixed": 31,
+     "conflict": 10
+    }
+   ]
+  }
+ ]
+}

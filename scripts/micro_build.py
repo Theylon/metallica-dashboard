@@ -278,6 +278,10 @@ def cross_validation(analyst, fundamentals, price, yq):
 
 def main():
     universe = json.loads((DATA / "universe.json").read_text())
+    try:                            # pre-rebuild state for the decision log diff
+        prev_micro = json.loads((DATA / "micro.json").read_text())
+    except Exception:
+        prev_micro = {}
     held_map = load_held()          # live book overrides universe.json's stale held blocks
     quotes = load("quotes.json", {}).get("quotes", {})
     bias_doc = load("commodity_bias.json", {"biases": [], "macro": ""})
@@ -496,6 +500,13 @@ def main():
         "tradeList": recs_doc.get("tradeList", []),
         "sizingNote": recs_doc.get("sizing", ""),
     }
+    # record recommendation/held changes + their triggers before overwriting
+    try:
+        import decision_log
+        decision_log.log_diff(prev_micro, out, "micro_build")
+    except Exception as e:
+        print(f"decision log skipped: {e}")
+
     (DATA / "micro.json").write_text(json.dumps(out, indent=1))
     held = [r for r in out_tickers if r["held"]]
     print(f"micro.json: {len(out_tickers)} scored ({len(held)} held, "
