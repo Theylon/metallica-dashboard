@@ -496,7 +496,28 @@ td:first-child { text-align: left; }
   .gauge-center-label { font-size: 20px; }
   .report-note-block { padding: 14px; }
   .section-title { margin-bottom: 10px; }
+  .tenh-bar, .tenh-filter-row { padding-left: 14px; padding-right: 14px; }
 }
+
+/* ── Universal table controls: column show/hide · per-column filter · sort ── */
+.tenh-bar { display: flex; justify-content: flex-end; align-items: center; gap: 8px; padding: 8px 20px; border-bottom: 1px solid var(--border); }
+.tenh-btn { padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; background: transparent; border: 1px solid var(--border); color: var(--text-muted); }
+.tenh-btn:hover { color: var(--text); border-color: var(--accent); }
+.tenh-btn.tenh-on { color: var(--accent); border-color: var(--accent); }
+.tenh-menu-wrap { position: relative; }
+.tenh-menu { position: absolute; right: 0; top: calc(100% + 4px); z-index: 50; min-width: 180px; max-height: 300px; overflow: auto; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 6px; box-shadow: 0 8px 24px rgba(0,0,0,0.35); }
+.tenh-menu label { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text); padding: 4px 6px; cursor: pointer; white-space: nowrap; border-radius: 4px; }
+.tenh-menu label:hover { background: var(--surface); }
+.tenh-menu input { accent-color: var(--accent); }
+.tenh-filter-row { display: none; flex-wrap: wrap; gap: 10px; padding: 10px 20px; border-bottom: 1px solid var(--border); background: var(--surface); }
+.tenh-filter-row.open { display: flex; }
+.tenh-filter-field { display: flex; flex-direction: column; gap: 3px; }
+.tenh-filter-field label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; }
+.tenh-filter-field .filter-input { width: 120px; }
+.tenh-hidden { display: none !important; }
+th.tenh-sortable { cursor: pointer; user-select: none; }
+th.tenh-sortable:hover { color: var(--text); }
+.tenh-arrow { font-size: 9px; opacity: 0.75; }
 </style>
 </head>
 <body>
@@ -698,6 +719,9 @@ td:first-child { text-align: left; }
             <select class="filter-select" id="pos-category-filter" onchange="setPositionCategoryFilter(this.value)">
               <option value="">All Categories</option>
             </select>
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-muted);cursor:pointer;white-space:nowrap;">
+              <input type="checkbox" id="pos-show-closed" onchange="setShowClosedPositions(this.checked)"> Show closed
+            </label>
           </div>
         </div>
         <div style="font-size:12px;color:var(--text-muted);" id="pos-count">—</div>
@@ -1398,6 +1422,7 @@ let positionSide = 'long';
 let positionCategoryFilter = '';
 let positionSearch = '';
 let positionSort = { key: null, dir: 1 };
+let showClosedPositions = false;   // 0-share (closed-today) rows hidden by default
 let rebalUpload = null;          // {name, when, positions[]} uploaded book analysed in the Rebalance tab
 let pendingUpload = null;        // {name, positions[], warnings[], error} staged file, pre-apply
 
@@ -1463,7 +1488,8 @@ function renderAll() {
   [renderKPIs, buildBmToggles, renderPnlChart, renderStats, buildCategoryFilter,
    renderPositions, renderBmChart, renderBmTable, renderExposure,
    renderCommodityExposure, renderReport, renderIntel, renderPicks,
-   renderSignals, renderJournal, renderRebalance, renderAltData
+   renderSignals, renderJournal, renderRebalance, renderAltData,
+   enhanceAllTables   // add column show/hide · per-column filter · sort to every table
   ].forEach(fn => {
     try { fn(); } catch (e) { console.error(fn.name + ' failed', e); }
   });
@@ -2164,6 +2190,11 @@ function setPositionCategoryFilter(val) {
   renderPositions();
 }
 
+function setShowClosedPositions(on) {
+  showClosedPositions = !!on;
+  renderPositions();
+}
+
 function sortPositionsBy(key) {
   if (positionSort.key === key) positionSort.dir *= -1;
   else { positionSort.key = key; positionSort.dir = 1; }
@@ -2189,16 +2220,20 @@ function buildCategoryFilter() {
 
 function renderPositions() {
   const tbody = document.getElementById('pos-tbody');
+  // Closed positions (0 shares) are names flattened during the session; IBKR still
+  // returns them carrying the day's P&L. Hide by default — the "Show closed" toggle
+  // brings them back. The global `positions` array is untouched (exposure/risk use it).
+  const book = showClosedPositions ? positions : positions.filter(p => p.shares > 0);
   const sideMatches = positionSide === 'all'
-    ? positions.slice()
-    : positions.filter(p => p.side === positionSide);
+    ? book.slice()
+    : book.filter(p => p.side === positionSide);
   // weight is |mv| / NAV — a stable "% of portfolio" that doesn't change with
   // the selected side tab (falls back to gross mv only if account is missing)
   const weightBase = (account && account.nav)
     || positions.reduce((s, p) => s + Math.abs(p.mktValue), 0);
 
   document.getElementById('pos-count').textContent =
-    `${positions.filter(p => p.side === 'long').length} long · ${positions.filter(p => p.side === 'short').length} short`;
+    `${book.filter(p => p.side === 'long').length} long · ${book.filter(p => p.side === 'short').length} short`;
 
   let filtered = sideMatches;
   if (positionCategoryFilter) filtered = filtered.filter(p => p.category === positionCategoryFilter);
@@ -3719,6 +3754,255 @@ function pnlColor(id, val) {
   if (!el || val == null) return;
   el.classList.remove('positive', 'negative', 'neutral');
   el.classList.add(val > 0 ? 'positive' : val < 0 ? 'negative' : 'neutral');
+}
+
+// ═══════════════════════════════════════════ TABLE ENHANCER ══
+// Generic, data-model-agnostic controls added to every <table> on the page:
+//   • column show/hide picker   • per-column row filter   • ascending/descending sort
+// Operates purely on the rendered DOM so it works uniformly across ~two dozen tables
+// with different shapes. State is in-memory only (resets on reload — no persistence),
+// keyed by a stable signature so it survives in-session re-renders (tbody rewrites and
+// the Rebalance tab's full innerHTML rebuilds).
+const tenhState = new Map();       // signature -> { hidden:Set, filters:Map, sort, ... }
+const tenhWired = new WeakSet();   // <table> nodes already wired (idempotency)
+let tenhRebalObserved = false;
+let tenhMenusBound = false;
+
+function tenhHeaderCells(table) {
+  const thead = table.querySelector(':scope > thead');
+  if (!thead) return [];
+  const rows = thead.querySelectorAll(':scope > tr');
+  if (!rows.length) return [];
+  return Array.from(rows[rows.length - 1].querySelectorAll(':scope > th'));
+}
+function tenhRowCells(tr) {
+  return Array.from(tr.children).filter(c => c.tagName === 'TD');
+}
+function tenhDataRows(table) {
+  const tb = table.querySelector(':scope > tbody');
+  if (!tb) return [];
+  // Skip placeholder/empty rows and detail/expand rows — they are a single td[colspan].
+  return Array.from(tb.children).filter(tr => tr.tagName === 'TR' && !tr.querySelector(':scope > td[colspan]'));
+}
+function tenhSignature(table) {
+  const page = table.closest('.page');
+  const labels = tenhHeaderCells(table).map(th => th.textContent.replace(/[▲▼]/g, '').trim()).join('|');
+  return (page ? page.id : 'nopage') + '::' + labels;
+}
+function tenhIsNative(table) {
+  // Tables that already own their sort (Positions/Picks/Rebalance) — don't add ours.
+  return !!table.querySelector('th.sortable, thead th[onclick]');
+}
+
+function tenhParseCell(cell) {
+  let s = (cell ? cell.textContent : '').replace(/[▲▼]/g, '').trim().replace(/−/g, '-');
+  if (s === '' || s === '—' || s === '–' || s === '-' || /^n\/?a$/i.test(s)) return { kind: 'empty' };
+  let neg = false, t = s;
+  if (/^\(.*\)$/.test(t)) { neg = true; t = t.slice(1, -1); }
+  t = t.replace(/[$,%+\s]/g, '');
+  let mult = 1;
+  const m = t.match(/^(-?\d*\.?\d+)([kmbt])$/i);
+  if (m) { t = m[1]; mult = { k: 1e3, m: 1e6, b: 1e9, t: 1e12 }[m[2].toLowerCase()]; }
+  if (/^-?\d*\.?\d+$/.test(t)) { let v = parseFloat(t) * mult; return { kind: 'num', val: neg ? -v : v }; }
+  if (/[A-Za-z]{3}\s+\d/.test(s)) { const d = Date.parse(s); if (!isNaN(d)) return { kind: 'num', val: d }; }
+  return { kind: 'str', val: s.toLowerCase() };
+}
+function tenhCompare(a, b, idx, dir) {
+  const pa = tenhParseCell(tenhRowCells(a)[idx]);
+  const pb = tenhParseCell(tenhRowCells(b)[idx]);
+  const natTie = (+a.dataset.tenhIdx || 0) - (+b.dataset.tenhIdx || 0);
+  if (pa.kind === 'empty' && pb.kind === 'empty') return natTie;
+  if (pa.kind === 'empty') return 1;    // empties always last, regardless of direction
+  if (pb.kind === 'empty') return -1;
+  let c;
+  if (pa.kind === 'num' && pb.kind === 'num') c = pa.val - pb.val;
+  else if (pa.kind === 'num') c = -1;   // numbers before strings
+  else if (pb.kind === 'num') c = 1;
+  else c = String(pa.val).localeCompare(String(pb.val));
+  return c === 0 ? natTie : c * dir;
+}
+
+function tenhApply(table, state) {
+  const obs = state._obs;
+  if (obs) obs.disconnect();            // our own reorder must not retrigger the observer
+  state.applying = true;
+  try {
+    const headers = tenhHeaderCells(table);
+    const rows = tenhDataRows(table);
+    rows.forEach((tr, i) => { if (tr.dataset.tenhIdx == null) tr.dataset.tenhIdx = i; });
+
+    headers.forEach((th, i) => th.classList.toggle('tenh-hidden', state.hidden.has(i)));
+    rows.forEach(tr => {
+      const tds = tenhRowCells(tr);
+      tds.forEach((td, i) => td.classList.toggle('tenh-hidden', state.hidden.has(i)));
+      let show = true;
+      state.filters.forEach((q, i) => {
+        if (!q) return;
+        const txt = (tds[i] ? tds[i].textContent : '').toLowerCase();
+        if (!txt.includes(q.toLowerCase())) show = false;
+      });
+      tr.style.display = show ? '' : 'none';
+    });
+
+    if (!state.nativeSort) {
+      const tb = table.querySelector(':scope > tbody');
+      if (tb) {
+        const order = state.sort
+          ? rows.slice().sort((a, b) => tenhCompare(a, b, state.sort.idx, state.sort.dir))
+          : rows.slice().sort((a, b) => (+a.dataset.tenhIdx || 0) - (+b.dataset.tenhIdx || 0));
+        order.forEach(tr => tb.appendChild(tr));
+      }
+      headers.forEach((th, i) => {
+        const ar = th.querySelector(':scope > .tenh-arrow');
+        if (ar) ar.textContent = (state.sort && state.sort.idx === i) ? (state.sort.dir === 1 ? ' ▲' : ' ▼') : '';
+      });
+    }
+  } finally {
+    state.applying = false;
+    if (obs && state._tb && state._tb.isConnected) { obs.takeRecords(); obs.observe(state._tb, { childList: true }); }
+  }
+}
+
+function tenhCloseMenus() { document.querySelectorAll('.tenh-menu').forEach(m => m.style.display = 'none'); }
+
+function tenhBuildFilterRow(table, state, headers) {
+  const row = state._filterRow;
+  if (!row) return;
+  row.innerHTML = '';
+  headers.forEach((th, i) => {
+    if (state.hidden.has(i)) return;
+    const field = document.createElement('div');
+    field.className = 'tenh-filter-field';
+    const lab = document.createElement('label');
+    lab.textContent = th.textContent.replace(/[▲▼]/g, '').trim() || ('Col ' + (i + 1));
+    const inp = document.createElement('input');
+    inp.type = 'text'; inp.className = 'filter-input'; inp.placeholder = 'filter…';
+    inp.value = state.filters.get(i) || '';
+    inp.addEventListener('input', () => { state.filters.set(i, inp.value); tenhApply(table, state); });
+    field.appendChild(lab); field.appendChild(inp);
+    row.appendChild(field);
+  });
+}
+
+function tenhBuildBar(table, state, headers) {
+  const wrapper = table.closest('.table-wrapper') || table;
+  const host = wrapper.parentNode;
+  if (!host) return;
+
+  const bar = document.createElement('div');
+  bar.className = 'tenh-bar';
+
+  const colWrap = document.createElement('div');
+  colWrap.className = 'tenh-menu-wrap';
+  const colBtn = document.createElement('button');
+  colBtn.type = 'button'; colBtn.className = 'tenh-btn'; colBtn.textContent = 'Columns ▾';
+  const menu = document.createElement('div');
+  menu.className = 'tenh-menu'; menu.style.display = 'none';
+  menu.addEventListener('click', e => e.stopPropagation());
+  headers.forEach((th, i) => {
+    const label = document.createElement('label');
+    const cb = document.createElement('input');
+    cb.type = 'checkbox'; cb.checked = !state.hidden.has(i);
+    cb.addEventListener('change', () => {
+      if (cb.checked) state.hidden.delete(i); else state.hidden.add(i);
+      tenhApply(table, state);
+      tenhBuildFilterRow(table, state, headers);
+    });
+    const span = document.createElement('span');
+    span.textContent = th.textContent.replace(/[▲▼]/g, '').trim() || ('Col ' + (i + 1));
+    label.appendChild(cb); label.appendChild(span);
+    menu.appendChild(label);
+  });
+  colBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = menu.style.display !== 'none';
+    tenhCloseMenus();
+    menu.style.display = open ? 'none' : 'block';
+  });
+  colWrap.appendChild(colBtn); colWrap.appendChild(menu);
+
+  const filtBtn = document.createElement('button');
+  filtBtn.type = 'button'; filtBtn.className = 'tenh-btn'; filtBtn.textContent = 'Filter ▾';
+  const filterRow = document.createElement('div');
+  filterRow.className = 'tenh-filter-row';
+  filtBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    filterRow.classList.toggle('open');
+    filtBtn.classList.toggle('tenh-on', filterRow.classList.contains('open'));
+  });
+
+  bar.appendChild(colWrap); bar.appendChild(filtBtn);
+  host.insertBefore(bar, wrapper);
+  host.insertBefore(filterRow, wrapper);
+  state._filterRow = filterRow;
+  tenhBuildFilterRow(table, state, headers);
+
+  if (!state.nativeSort) {
+    headers.forEach((th, i) => {
+      th.classList.add('tenh-sortable');
+      if (!th.querySelector(':scope > .tenh-arrow')) {
+        const ar = document.createElement('span');
+        ar.className = 'tenh-arrow';
+        th.appendChild(ar);
+      }
+      th.addEventListener('click', () => {
+        if (!state.sort || state.sort.idx !== i) state.sort = { idx: i, dir: 1 };
+        else if (state.sort.dir === 1) state.sort.dir = -1;
+        else state.sort = null;                  // asc → desc → none
+        tenhApply(table, state);
+      });
+    });
+  }
+}
+
+function tenhEnhance(table) {
+  if (table.closest('td')) return;                        // skip tables nested in a cell
+  if (!table.querySelector(':scope > tbody')) return;
+  const headers = tenhHeaderCells(table);
+  if (headers.length < 2) return;
+
+  const sig = tenhSignature(table);
+  let state = tenhState.get(sig);
+  if (!state) { state = { hidden: new Set(), filters: new Map(), sort: null, applying: false }; tenhState.set(sig, state); }
+  state.nativeSort = tenhIsNative(table);
+
+  if (!tenhWired.has(table)) {
+    tenhWired.add(table);
+    tenhBuildBar(table, state, headers);
+    const tb = table.querySelector(':scope > tbody');
+    if (tb) {
+      if (state._obs) state._obs.disconnect();          // drop observer from a prior (rebuilt) node
+      const obs = new MutationObserver(() => { if (!state.applying) tenhApply(table, state); });
+      obs.observe(tb, { childList: true });
+      state._obs = obs; state._tb = tb;
+    }
+  }
+  tenhApply(table, state);
+}
+
+function tenhInstallRebalObserver() {
+  if (tenhRebalObserved) return;
+  const el = document.getElementById('rebalance-content');
+  if (!el) return;
+  tenhRebalObserved = true;
+  // The Rebalance tab replaces its whole subtree on every render/expand, destroying any
+  // toolbar we injected. Re-enhance only when a genuinely new <table> appears (not when we
+  // insert our own .tenh-bar, which contains no table — so this can't loop).
+  new MutationObserver(muts => {
+    for (const mu of muts) {
+      for (const node of mu.addedNodes) {
+        if (node.nodeType !== 1) continue;
+        const t = node.tagName === 'TABLE' ? node : (node.querySelector ? node.querySelector('table') : null);
+        if (t && !tenhWired.has(t)) { enhanceAllTables(); return; }
+      }
+    }
+  }).observe(el, { childList: true, subtree: true });
+}
+
+function enhanceAllTables() {
+  if (!tenhMenusBound) { tenhMenusBound = true; document.addEventListener('click', tenhCloseMenus); }
+  document.querySelectorAll('table').forEach(t => { try { tenhEnhance(t); } catch (e) { /* never break the dashboard */ } });
+  tenhInstallRebalObserver();
 }
 
 // ═══════════════════════════════════════════ INIT ══
