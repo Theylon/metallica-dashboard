@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Independent Yahoo Finance cross-validation pull for the Stock Picks tab.
 
-The micro-analysis composite and the AI-Hedge-Fund layer are built from FMP /
-TipRanks / TrueNorth data. This script pulls the SAME kinds of numbers (price,
+The micro-analysis composite is built from FMP / TipRanks / TrueNorth data.
+This script pulls the SAME kinds of numbers (price,
 analyst target + rating, margins/returns/leverage) from an INDEPENDENT source —
 Yahoo Finance via `yfinance` — so the compiler can flag when the two disagree.
 (Google Finance has no free/official API, so Yahoo is the practical second source;

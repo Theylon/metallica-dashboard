@@ -41,13 +41,11 @@ def record_snapshot(date=None):
             if composite is None or price is None:
                 continue  # a forward return needs a real price anchor
             subs = {k: v for k, v in (r.get("subs") or {}).items() if v is not None}
-            hedge = ((r.get("hedgeFund") or {}).get("aggregate") or {}).get("signal")
             row = {
                 "date": date,
                 "ticker": r["ticker"],
                 "composite": round(float(composite), 2),
                 "subs": subs,
-                "hedgeSignal": hedge,
                 "priceAnchor": round(float(price), 4),
             }
             f.write(json.dumps(row) + "\n")

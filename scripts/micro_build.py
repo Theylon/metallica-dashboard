@@ -187,10 +187,9 @@ def tradable(rec, q):
     return us and liquid
 
 
-# ── AI Hedge Fund layer (concept ported from virattt/ai-hedge-fund, MIT) ─────────────
-# hedgeFund = the per-ticker multi-analyst verdict (merged from hedge_*.json).
-# hedgeCrossVal = a deterministic cross-check of the primary FMP/TipRanks/TrueNorth
-# numbers against an independent Yahoo Finance pull (data/micro_src/yahoo.json).
+# ── Yahoo Finance cross-validation layer ─────────────────────────────────────────────
+# crossVal = a deterministic cross-check of the primary FMP/TipRanks/TrueNorth numbers
+# against an independent Yahoo Finance pull (data/micro_src/yahoo.json).
 CONS_DIR = {"StrongBuy": "bull", "Strong Buy": "bull", "Buy": "bull",
             "ModerateBuy": "bull", "Moderate Buy": "bull", "Hold": "neutral",
             "Neutral": "neutral", "ModerateSell": "bear", "Moderate Sell": "bear",
@@ -277,25 +276,6 @@ def cross_validation(analyst, fundamentals, price, yq):
     return {"agreement": agreement, "flags": flags, "checks": checks, "yahoo": yahoo_subset}
 
 
-def hedge_block(hf):
-    """Normalize a merged hedge entry into the per-ticker hedgeFund block (or None)."""
-    if not hf or not hf.get("analysts"):
-        return None
-    return {"aggregate": hf.get("aggregate"), "analysts": hf.get("analysts"),
-            "modelDerived": bool(hf.get("modelDerived")), "asOf": hf.get("asOf")}
-
-
-def load_hedge_map():
-    """Merge every hedge_*.json into {ticker: entry}. hedge_auto.json (the fallback)
-    sorts first, so live hedge_r*.json research shards override it (same trick as
-    deep_auto vs deep_r*). Also used by micro_refresh.py to backfill the layer."""
-    hedge = {}
-    for f in sorted(glob.glob(str(SRC / "hedge_*.json"))):
-        for n in json.loads(pathlib.Path(f).read_text()).get("names", []):
-            hedge[n["ticker"]] = n
-    return hedge
-
-
 def main():
     universe = json.loads((DATA / "universe.json").read_text())
     held_map = load_held()          # live book overrides universe.json's stale held blocks
@@ -315,11 +295,8 @@ def main():
         for n in doc.get("names", []):
             deep[n["ticker"]] = n
 
-    # AI Hedge Fund layer: yahoo.json (Yahoo cross-val source) + hedge_*.json verdicts.
-    # hedge_auto.json (deterministic fallback) sorts first, so any live hedge_r*.json
-    # research shard overwrites it — same load-order trick as deep_auto vs deep_r*.
+    # Yahoo cross-validation source (data/micro_src/yahoo.json, produced by micro_yahoo.py).
     yahoo = load("yahoo.json", {"quotes": {}}).get("quotes", {})
-    hedge = load_hedge_map()
 
     out_tickers = []
     for rec in universe["tickers"]:
@@ -415,8 +392,7 @@ def main():
                 "evidence": rec["omLinkage"].get("evidence"),
             } if rec.get("omLinkage") else None),
             "fundamentals": f,
-            "hedgeFund": hedge_block(hedge.get(t)),
-            "hedgeCrossVal": cross_validation(analyst, f, q.get("price") if q else None, yahoo.get(t)),
+            "crossVal": cross_validation(analyst, f, q.get("price") if q else None, yahoo.get(t)),
             "discovered": rec.get("discovered", False),
         })
 
@@ -459,10 +435,9 @@ def main():
             "evidence": disc_deep.get("evidence", []) if disc_deep else [],
             "omLinkage": None, "exposure": None,
             "fundamentals": funda.get(disc["ticker"]),
-            "hedgeFund": hedge_block(hedge.get(disc["ticker"])),
-            "hedgeCrossVal": cross_validation(disc_deep.get("analyst") if disc_deep else None,
-                                              funda.get(disc["ticker"]), disc.get("price"),
-                                              yahoo.get(disc["ticker"])),
+            "crossVal": cross_validation(disc_deep.get("analyst") if disc_deep else None,
+                                         funda.get(disc["ticker"]), disc.get("price"),
+                                         yahoo.get(disc["ticker"])),
             "discovered": True,
         })
         if out_tickers[-1]["fundamentals"]:
@@ -490,8 +465,7 @@ def main():
             "catalysts": [], "risks": [], "evidence": [],
             "omLinkage": None, "exposure": None,
             "fundamentals": funda.get(t),
-            "hedgeFund": hedge_block(hedge.get(t)),
-            "hedgeCrossVal": None,
+            "crossVal": None,
             "discovered": False, "heldOnly": True,
         })
 
@@ -507,11 +481,9 @@ def main():
         "methodology": ("Composite 0-100 = momentum 18% + commodity-alignment 18% + deep-dive 14% "
                         "+ analyst 13% + fundamentals 12% + news sentiment 9% + SmartScore 8% + quality 8% "
                         "(missing sub-scores redistribute). High = long candidate, low = short candidate. "
-                        "Each card also carries an AI Hedge Fund multi-analyst verdict (4 analytical "
-                        "lenses + a risk/portfolio-manager aggregate; concept ported from "
-                        "virattt/ai-hedge-fund, MIT) plus an independent Yahoo Finance (yfinance) "
-                        "cross-validation of price targets, ratings and margins. The hedge-fund layer is "
-                        "display-only and does not change the composite. "
+                        "Each card also carries an independent Yahoo Finance (yfinance) cross-validation "
+                        "of price targets, ratings and margins. The cross-check is display-only and does "
+                        "not change the composite. "
                         "Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner, TrueNorth, Yahoo Finance."),
         "macro": bias_doc.get("macro", ""),
         "commodityBias": [
