@@ -34,13 +34,20 @@ directive = (
     "   get_account_positions          -> /tmp/ibkr_positions.json\n"
     "   get_account_balances           -> /tmp/ibkr_balances.json\n"
     "   get_pa_performance_all_periods -> /tmp/ibkr_perf.json\n"
-    "2) Run: python3 scripts/mcp_refresh.py  (rewrites data/positions.json, account.json, pnl.json; "
-    "leaves benchmarks.json and report.json untouched).\n"
+    "   Then pull benchmark price history so benchmarks.json stays current. For each ETF call\n"
+    "   get_price_history (security_type=STK, step=ONE_DAY, period=THREE_MONTHS, outside_rth=false)\n"
+    "   and save the raw JSON verbatim to /tmp/ibkr_bench_<TICKER>.json (conids from BENCH_CONIDS in mcp_refresh.py):\n"
+    "   SPY  contract_id 756733    -> /tmp/ibkr_bench_SPY.json\n"
+    "   XME  contract_id 45540699  -> /tmp/ibkr_bench_XME.json\n"
+    "   SLV  contract_id 39039301  -> /tmp/ibkr_bench_SLV.json\n"
+    "   CPER contract_id 97462781  -> /tmp/ibkr_bench_CPER.json\n"
+    "2) Run: python3 scripts/mcp_refresh.py  (rewrites data/positions.json, account.json, pnl.json, "
+    "and benchmarks.json; leaves report.json untouched).\n"
     "3) Commit the data/ change and get it onto master so GitHub Pages redeploys "
     "(push to master, or open a PR and merge — it is a data-only refresh).\n"
     "4) Briefly tell the user: refreshed NAV and daily P&L, with the live URL "
     "https://theylon.github.io/metallica-dashboard/ .\n"
-    "If the IBKR MCP is unavailable, just say so and skip. Do not modify benchmarks.json or report.json unless asked."
+    "If the IBKR MCP is unavailable, just say so and skip. Do not modify report.json unless asked."
 )
 
 print(json.dumps({"hookSpecificOutput": {

@@ -36,6 +36,12 @@ CATEGORY = {
 # Benchmark ETFs plotted on the dashboard chart.
 BENCH_TICKERS = ["SPY", "XME", "SLV", "CPER"]
 
+# IBKR contract_ids for the benchmark ETFs (US primary listing, STK/SMART),
+# resolved once via search_contracts. The SessionStart hook uses these to pull
+# get_price_history into /tmp/ibkr_bench_<TICKER>.json so build_benchmarks below
+# advances benchmarks.json alongside pnl.json instead of going stale.
+BENCH_CONIDS = {"SPY": 756733, "XME": 45540699, "SLV": 39039301, "CPER": 97462781}
+
 
 def load(name):
     return json.loads((SRC / name).read_text())
