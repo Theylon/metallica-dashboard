@@ -1,1 +1,14 @@
 __pycache__/
+*.pyc
+
+# Secrets — never commit. IBKR keys + account id live in GitHub Actions secrets.
+.env
+.env.*
+*.pem
+*.key
+id_rsa
+id_rsa.*
+
+# Local build / server cruft
+_site/
+.DS_Store
