@@ -167,6 +167,64 @@ def check_categories(positions):
         ok("no held position falls back to category 'Other'")
 
 
+def check_process_files():
+    """Process-layer files (channel_accuracy/alerts/decision_log) — WARN-only.
+
+    These are additive display layers; a malformed one should never block a
+    deploy of the book data, so nothing in here may call fail().
+    """
+    for name in ("channel_accuracy.json", "alerts.json"):
+        p = DATA / name
+        if not p.exists():
+            continue   # optional until their scripts have run once
+        try:
+            doc = json.loads(p.read_text())
+        except Exception as e:
+            warn(f"{name} unparseable: {e}")
+            continue
+        if not doc.get("updatedAt"):
+            warn(f"{name} missing updatedAt")
+        if name == "channel_accuracy.json":
+            bad = [c.get("id") for c in doc.get("channels", [])
+                   if c.get("accuracyPct") is not None
+                   and not (0 <= c["accuracyPct"] <= 100)]
+            if bad:
+                warn(f"channel_accuracy accuracyPct outside [0,100]: {bad}")
+            else:
+                ok(f"channel_accuracy.json: {len(doc.get('channels', []))} channels sane")
+        if name == "alerts.json":
+            today = datetime.date.today().isoformat()
+            stale = [a.get("ticker") for a in doc.get("items", [])
+                     if a.get("type") == "earnings_proximity"
+                     and (a.get("earningsDate") or today) < today]
+            if stale:
+                warn(f"alerts.json has past earnings dates: {stale}")
+            else:
+                ok(f"alerts.json: {len(doc.get('items', []))} alerts, none stale")
+
+    log = DATA / "decision_log.jsonl"
+    if log.exists():
+        prev_ts, bad_lines, n = "", 0, 0
+        for line in log.read_text().splitlines():
+            if not line.strip():
+                continue
+            n += 1
+            try:
+                ts = json.loads(line).get("ts") or ""
+            except Exception:
+                bad_lines += 1
+                continue
+            if ts < prev_ts:
+                warn(f"decision_log.jsonl ts not monotonic near entry {n}")
+                prev_ts = ts
+            else:
+                prev_ts = ts
+        if bad_lines:
+            warn(f"decision_log.jsonl has {bad_lines} unparseable lines")
+        else:
+            ok(f"decision_log.jsonl: {n} entries parse, ts monotonic")
+
+
 def check_freshness(account, risk, pnl):
     now = datetime.datetime.now(datetime.timezone.utc)
     try:
@@ -209,6 +267,7 @@ def main():
     if micro:
         check_micro(micro, positions)
     check_categories(positions)
+    check_process_files()
     check_freshness(account, risk, pnl)
 
     print(f"\n{len(FAILS)} failure(s), {len(WARNS)} warning(s)")

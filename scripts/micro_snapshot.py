@@ -34,6 +34,11 @@ def record_snapshot(date=None):
     if date in existing_dates:
         return  # already recorded today; refresh runs multiple times/day
 
+    # per-material macro direction at snapshot time, so channel_accuracy.py can
+    # later score the commodity-bias channel against realized forward returns
+    bias_by_material = {b.get("material"): b.get("bias")
+                        for b in micro.get("commodityBias", [])}
+
     with history_path.open("a") as f:
         for r in records:
             composite = r.get("composite")
@@ -46,6 +51,7 @@ def record_snapshot(date=None):
                 "ticker": r["ticker"],
                 "composite": round(float(composite), 2),
                 "subs": subs,
+                "biasDir": bias_by_material.get(r.get("material")),
                 "priceAnchor": round(float(price), 4),
             }
             f.write(json.dumps(row) + "\n")

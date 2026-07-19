@@ -95,6 +95,23 @@ jobs:
         if: ${{ github.event.inputs.scope != 'ibkr' }}
         run: python scripts/signal_ic.py || echo "signal_ic skipped (non-fatal)"
 
+      # Process layer (see PROCESS.md): normalize committed FMP positioning dumps
+      # (no-op until the positioning Routine commits them), score every data
+      # channel against what it predicts (80% trust gate), backfill decision-log
+      # outcomes, and rebuild the process-rule alerts. All offline from committed
+      # data/, all non-fatal.
+      - name: Normalize positioning (insiders + politicians)
+        run: python scripts/positioning_build.py || echo "positioning skipped (non-fatal)"
+
+      - name: Channel accuracy engine
+        if: ${{ github.event.inputs.scope != 'ibkr' }}
+        run: python scripts/channel_accuracy.py || echo "channel_accuracy skipped (non-fatal)"
+
+      - name: Decision-log outcomes + process alerts
+        run: |
+          python scripts/decision_log.py --update-outcomes || echo "outcomes skipped (non-fatal)"
+          python scripts/alerts_build.py || echo "alerts skipped (non-fatal)"
+
       # Cross-file reconciliation gate: account vs positions identities, pnl
       # schema, benchmark set, micro book vs live book, freshness. DELIBERATELY
       # fatal — broken data must fail the run rather than deploy.

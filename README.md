@@ -113,6 +113,8 @@ The dashboard auto-refreshes every 5 minutes from the browser.
 │   ├── mcp_refresh.py          # IBKR book refresh (from MCP dumps in /tmp)
 │   ├── verify_data.py          # cross-file consistency gate (run by the Action pre-deploy)
 │   ├── risk.py · exposure.py · journal.py · signal_ic.py · enrich.py
+│   ├── channel_accuracy.py · decision_log.py · alerts_build.py · positioning_build.py
+│   │                           # Process layer (see PROCESS.md + the Process tab)
 │   └── micro_*.py              # Stock Picks pipeline (see below)
 ├── .github/workflows/
 │   └── fetch-data.yml          # derived-data refresh + verify + deploy (4×/day cron)
@@ -160,6 +162,7 @@ Four research layers (inspired by [HKUDS/Vibe-Trading](https://github.com/HKUDS/
 | **Journal** | Behavioral trade analytics — win rate, profit factor, holding period, **disposition effect**, realized-P&L attribution, and a **Shadow Account** (P&L left on the table by exiting) | `data/journal.json` | `scripts/journal.py` ← `get_account_trades` | daily Journal routine (`scripts/journal_routine.md`) |
 | **Signals** | **IC/IR scorecard** — which of the 8 micro sub-scores actually predict forward returns — plus the book's **factor tilt** (momentum/value/quality/size/low-vol) | `data/signal_scorecard.json` (+ `data/micro_history.jsonl` history) | `scripts/signal_ic.py`; snapshots via `scripts/micro_snapshot.py` | Action 4×/day (scorecard turns on after ~25 days) |
 | **Intel** (extended) | Per-holding **sentiment + next earnings + news** for the whole book, auto **positioning** (13F/insider/COT, feeds the Risk tab's Smart-Money panel), and a **macro-regime** series | `events.json`, `positioning.json`, `macro_history.json` | `scripts/enrich.py` builders | daily research routine (`scripts/micro_refresh_research.md` §5b) |
+| **Process** | **Channel accuracy** (MedAE / hit-rate per data channel, ≥80% trust gate), the auto-written **decision & trigger log** with +30/+90-day outcome review, **insider (discretionary vs technical) + politician** trades, hard-rule cards and **pre-earnings alerts** (also shown as an Overview banner) | `channel_accuracy.json`, `decision_log.jsonl`, `alerts.json`, `positioning.json` | `scripts/channel_accuracy.py`, `scripts/decision_log.py` (hooked into the micro pipeline), `scripts/alerts_build.py`, `scripts/positioning_build.py` | Action 4×/day; insider/politician dumps via `scripts/positioning_refresh.md` Routine. Methodology: **PROCESS.md** |
 
 Pure-Python pieces (`risk.py`, `signal_ic.py`, `micro_snapshot.py`, price-history capture in `micro_refresh.py`) run in the GitHub Action from data that already exists — no new secrets. The MCP-fed pieces (Journal, Intel research layer) run in scheduled Claude routines and degrade gracefully until first populated. `data/price_history.json` (held-name close series, reused from the existing `micro_refresh.py` download) gates the correlation matrix and the low-vol factor.
 
