@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-19T18:57:01+00:00",
+ "updatedAt": "2026-07-19T18:59:13+00:00",
  "researchAsOf": "2026-07-18T19:50:53+00:00",
  "methodology": "Composite 0-100 = momentum 18% + commodity-alignment 18% + deep-dive 14% + analyst 13% + fundamentals 12% + news sentiment 9% + SmartScore 8% + quality 8% (missing sub-scores redistribute). High = long candidate, low = short candidate. Each card also carries an independent Yahoo Finance (yfinance) cross-validation of price targets, ratings and margins. The cross-check is display-only and does not change the composite. Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner, TrueNorth, Yahoo Finance.",
  "macro": "Hawkish Fed (64% Sept hike priced), strong dollar (DXY ~100.8), US-Iran conflict volatility with 60-day peace talks; metals complex broadly correcting after H1 melt-up. Q4 consensus: dollar downtrend -> possible precious rebound window in Q3/Q4.",
@@ -237,7 +237,7 @@
     "checks": [],
     "yahoo": {
      "price": 39.66,
-     "targetMean": 50.652576,
+     "targetMean": 50.630898,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.5,
      "ebitdaMargins": 0.121309996,
@@ -610,7 +610,7 @@
     "checks": [],
     "yahoo": {
      "price": 36.79,
-     "targetMean": 47.71617,
+     "targetMean": 47.69575,
      "recommendationKey": "buy",
      "recommendationMean": 1.77273,
      "ebitdaMargins": 0.3038,
@@ -3604,8 +3604,8 @@
      {
       "field": "priceTarget",
       "primary": 60.93,
-      "yahoo": 53.27,
-      "deltaPct": -12.6,
+      "yahoo": 53.29,
+      "deltaPct": -12.5,
       "status": "agree"
      },
      {
@@ -3624,7 +3624,7 @@
     ],
     "yahoo": {
      "price": 55.05,
-     "targetMean": 53.26908,
+     "targetMean": 53.291885,
      "recommendationKey": "hold",
      "recommendationMean": 2.70588,
      "ebitdaMargins": 0.41134998,
@@ -8607,7 +8607,7 @@
     "checks": [],
     "yahoo": {
      "price": 9.81,
-     "targetMean": 14.402563,
+     "targetMean": 14.3963995,
      "recommendationKey": "buy",
      "recommendationMean": 1.93333,
      "ebitdaMargins": 0.0309,
@@ -12599,7 +12599,7 @@
     ],
     "yahoo": {
      "price": 85.62,
-     "targetMean": 132.1587,
+     "targetMean": 132.21529,
      "recommendationKey": "buy",
      "recommendationMean": 1.76,
      "ebitdaMargins": 0.25267,
@@ -12766,7 +12766,7 @@
     "checks": [],
     "yahoo": {
      "price": 8.8,
-     "targetMean": 19.087019,
+     "targetMean": 19.09519,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.5,
      "ebitdaMargins": 0.0,
@@ -13433,7 +13433,7 @@
     ],
     "yahoo": {
      "price": 2.82,
-     "targetMean": 4.8733954,
+     "targetMean": 4.8754816,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.42857,
      "ebitdaMargins": 0.0,
@@ -19995,7 +19995,7 @@
     "checks": [],
     "yahoo": {
      "price": 1.42,
-     "targetMean": 4.6528177,
+     "targetMean": 4.6548095,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.5,
      "ebitdaMargins": 0.0,
@@ -20262,7 +20262,7 @@
     "checks": [],
     "yahoo": {
      "price": 0.501,
-     "targetMean": 1.6947218,
+     "targetMean": 1.6954473,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
      "returnOnEquity": -1.35241,
@@ -20804,7 +20804,7 @@
     "checks": [],
     "yahoo": {
      "price": 2.26,
-     "targetMean": 5.2154064,
+     "targetMean": 5.2176394,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
      "returnOnEquity": -0.16599001
@@ -21589,5 +21589,5 @@
   }
  ],
  "sizingNote": "NAV ~$10,950. Rules used: single name \u2264 8% NAV (~$875), commodity group \u2264 20% NAV, keep gross \u2264 75%. Current book: gross ~69%, net ~-31%. After the trade list: gross ~64%, net ~-14% \u2014 the deliberate effect is cutting the net short because the three strongest commodity biases (steel, copper, rare earths) are LONG while the shorts stay concentrated in the confirmed-weak complexes (PGM, silver, aluminum smelters).",
- "pricesRefreshedAt": "2026-07-19T18:57:01+00:00"
+ "pricesRefreshedAt": "2026-07-19T18:59:13+00:00"
 }
