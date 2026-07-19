@@ -113,3 +113,17 @@ rules?"* — not merely whether the trade made money.
 | Commodity-bias direction channel | ≥25 snapshot days of `biasDir` (recorded from 2026-07-20) |
 | Insider / politician channels | ≥10 calls aged ≥20 snapshots after the first positioning Routine run |
 | Decision-log outcomes | 30/90 days after each entry |
+
+## 7. Execution — orders leave through the same discipline
+
+A decision becomes an order only through the guarded workflow in
+`.claude/skills/trade/SKILL.md`: every ticket passes the deterministic
+pre-trade gate (`scripts/trade_gate.py` — sizing, exposure, fat-finger, the
+rule-4a earnings window, the rule-4e macro-bias flag) and is explicitly
+confirmed by the owner before an IBKR **order instruction** is created. IBKR
+then requires the owner to submit the instruction in its own app — Claude
+prepares, the owner executes. Every instruction and its outcome
+(created → submitted → filled/cancelled) is appended to `data/orders.jsonl`
+(`scripts/order_log.py`), including any gate overrides and their rationale, so
+execution is auditable the same way recommendations are: *did the process
+follow its own rules?*

@@ -152,6 +152,9 @@ def main():
         "updatedAt": now,
         "nav": round(nav, 2),
         "cash": cash,
+        # additive keys consumed by scripts/trade_gate.py (affordability gate)
+        "availableFunds": round(float(summary.get("available_funds", 0) or 0), 2),
+        "buyingPower": round(float(summary.get("buying_power", 0) or 0), 2),
         "unrealizedPnl": unrealized,
         "realizedPnl": round(float(bal.get("realized_pnl", 0)), 2),
         "realizedPnlTotal": realized_total,
