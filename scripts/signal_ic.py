@@ -5,7 +5,7 @@ Two products, written to data/signal_scorecard.json:
 
   IC/IR scorecard — reads the daily snapshots in data/micro_history.jsonl and, for
     every sub-score (momentum, commodity, deep, analyst, fundamentals, sentiment, smart,
-    quality), the composite, and the AI-Hedge-Fund aggregate, computes the rank-IC
+    quality) and the composite, computes the rank-IC
     (Spearman correlation of the score at date t with the fwdWindow-forward return) and
     the IR (mean IC / std IC). This is the "Alpha Zoo" idea applied to our own signals:
     it tells us which of the eight actually works. It needs history to accrue, so until
@@ -28,7 +28,6 @@ FWD_WINDOW = 20          # forward trading days (≈ snapshots) for the IC horiz
 MIN_DAYS = 25            # snapshots needed before the scorecard is "ready"
 MIN_NAMES = 5            # min cross-section per date to compute a rank-IC
 SUBS = ["momentum", "commodity", "deep", "analyst", "fundamentals", "sentiment", "smart", "quality"]
-HEDGE_MAP = {"bullish": 1.0, "neutral": 0.0, "bearish": -1.0}
 
 
 def _load(name, default):
@@ -102,14 +101,12 @@ def load_history():
 def signal_value(rec, signal):
     if signal == "composite":
         return rec.get("composite")
-    if signal == "hedgeAggregate":
-        return HEDGE_MAP.get(rec.get("hedgeSignal"))
     return (rec.get("subs") or {}).get(signal)
 
 
 def scorecard(by_date):
     dates = sorted(by_date)
-    signals = SUBS + ["composite", "hedgeAggregate"]
+    signals = SUBS + ["composite"]
     per_signal = {s: {"ics": [], "n": 0} for s in signals}
 
     for i, d in enumerate(dates):

@@ -108,7 +108,7 @@ The dashboard auto-refreshes every 5 minutes from the browser.
 > is **superseded** — `micro_build.py`/`micro_refresh.py` overlay held/heldMv/position
 > straight from `positions.json` on every run.
 
-## Stock Picks — micro-analysis & AI Hedge Fund layer
+## Stock Picks — micro-analysis & Yahoo cross-check
 
 The **Stock Picks** tab scores a ~204-name universe (0-100 composite) and expands each
 name into a research card. Its data (`data/micro.json`) is built offline from committed
@@ -116,24 +116,18 @@ inputs in `data/micro_src/` by `scripts/micro_build.py`, refreshed daily by a Cl
 research Routine (`scripts/micro_refresh_research.md`) and 4×/day for prices by the
 Action (`scripts/micro_refresh.py`).
 
-Each card also carries an **AI Hedge Fund** multi-analyst verdict — concept ported from
-[virattt/ai-hedge-fund](https://github.com/virattt/ai-hedge-fund) (MIT; no upstream code
-copied). A roster of lenses (4 analytical agents + a risk/portfolio
-manager) gives each name a bullish/bearish/neutral signal, conviction, and an aggregate
-action. It is **display-only** (does not change the composite). A deterministic fallback
-(`scripts/gen_hedge_auto.py`) keeps all names populated even without a live research run.
-An independent **Yahoo Finance** pull (`scripts/micro_yahoo.py`, `yfinance`) cross-checks
-analyst targets, ratings and margins against the primary sources and flags divergences.
+Each card also carries an independent **Yahoo Finance** data cross-check
+(`scripts/micro_yahoo.py`, `yfinance`): it pulls analyst targets, ratings and margins
+from a second source and flags where they diverge from the primary FMP/TipRanks/TrueNorth
+numbers. It is **display-only** (does not change the composite).
 
 ```
 scripts/
-├── micro_build.py          # compiler → data/micro.json (composite + hedgeFund + cross-val)
+├── micro_build.py          # compiler → data/micro.json (composite + Yahoo cross-check)
 ├── micro_refresh.py        # 4×/day price/score refresh (Action); recomputes Yahoo cross-check
-├── gen_hedge_auto.py       # deterministic AI-Hedge-Fund fallback → data/micro_src/hedge_auto.json
 ├── micro_yahoo.py          # Yahoo Finance cross-validation pull → data/micro_src/yahoo.json
 └── micro_refresh_research.md   # daily research Routine runbook
 data/micro_src/
-├── hedge_auto.json         # fallback verdicts (hedge_r*.json research shards override it)
 └── yahoo.json              # independent Yahoo pull (generated in CI; not always committed)
 ```
 

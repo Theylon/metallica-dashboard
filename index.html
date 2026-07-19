@@ -1604,28 +1604,15 @@ function buildPickDetail(r) {
     `<span class="subscore">${subNames[k] || k} <span class="score-bar"><span style="display:block;height:100%;border-radius:3px;width:${v * 10}%;background:${scoreColor(v * 10)};"></span></span> <b>${v}</b></span>`).join('');
   out += section(`Composite score ${r.composite} — sub-scores (0-10)`, `<div class="subscore-grid">${subsHtml}</div>`);
 
-  // AI Hedge Fund multi-analyst verdict (concept ported from virattt/ai-hedge-fund, MIT)
-  if (r.hedgeFund && (r.hedgeFund.analysts || []).length) {
-    const hf = r.hedgeFund, agg = hf.aggregate || {}, tally = agg.tally || {};
-    const hfCls = s => s === 'bullish' ? 'long' : s === 'bearish' ? 'short' : 'neutral';
-    const hfColor = s => s === 'bullish' ? '#22c55e' : s === 'bearish' ? '#ef4444' : '#eab308';
-    let body = `<div style="margin-bottom:5px;">`
-      + `<span class="pick-badge ${hfCls(agg.signal)}">${(agg.signal || 'neutral').toUpperCase()}</span> `
-      + (agg.action ? `<b>${agg.action.toUpperCase()}</b> · ` : '')
-      + `conviction <b>${agg.confidence ?? '—'}%</b> `
-      + `<span style="color:var(--text-muted);">(bull ${tally.bull ?? 0} / bear ${tally.bear ?? 0} / neutral ${tally.neutral ?? 0})</span></div>`;
-    const bar = a => `<span class="subscore" title="${(a.reasoning || '').replace(/"/g, '&quot;')}">${a.name} `
-      + `<span class="score-bar"><span style="display:block;height:100%;border-radius:3px;width:${a.confidence}%;background:${hfColor(a.signal)};"></span></span> <b>${a.confidence}</b></span>`;
-    if (hf.analysts.length) body += `<div class="subscore-grid">${hf.analysts.map(bar).join('')}</div>`;
-    const cv = r.hedgeCrossVal;
-    if (cv && cv.agreement) {
-      const cvCls = cv.agreement === 'agree' ? 'long' : cv.agreement === 'conflict' ? 'short' : 'neutral';
-      body += `<div class="detail-chips" style="margin-top:7px;">`
-        + `<span class="pick-badge ${cvCls}">Yahoo cross-check: ${cv.agreement.toUpperCase()}</span>`
-        + (cv.flags || []).map(fl => `<span class="detail-chip">${fl}</span>`).join('') + `</div>`;
-    }
-    out += section('AI Hedge Fund verdict'
-      + (hf.modelDerived ? ' <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--text-dim);">· model-derived (lenses over pipeline signals, not individually researched)</span>' : ''),
+  // Independent Yahoo Finance cross-check of the primary numbers (data reliability, display-only)
+  const cv = r.crossVal;
+  if (cv && cv.agreement) {
+    const cvCls = cv.agreement === 'agree' ? 'long' : cv.agreement === 'conflict' ? 'short' : 'neutral';
+    const body = `<div class="detail-chips">`
+      + `<span class="pick-badge ${cvCls}">${cv.agreement.toUpperCase()}</span>`
+      + (cv.flags || []).map(fl => `<span class="detail-chip">${fl}</span>`).join('') + `</div>`;
+    out += section('Data cross-check (Yahoo Finance)'
+      + ' <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--text-dim);">· independent second source vs FMP/TipRanks/TrueNorth</span>',
       body);
   }
 
@@ -2821,7 +2808,7 @@ function renderSignals() {
       `the scorecard turns on after ${sc.minDaysNeeded || 25} days (${sc.daysCollected || 0} so far).</td></tr>`;
     return;
   }
-  const nice = { composite: 'Composite', hedgeAggregate: 'AI Hedge Fund', momentum: 'Momentum',
+  const nice = { composite: 'Composite', momentum: 'Momentum',
     commodity: 'Commodity', deep: 'Deep-dive', analyst: 'Analyst', fundamentals: 'Fundamentals',
     sentiment: 'Sentiment', smart: 'Smart Money', quality: 'Quality' };
   tb.innerHTML = sigs.map(r => `
@@ -3371,7 +3358,7 @@ function buildRebalanceAnalysisShell() {
       <div style="padding:2px 4px 8px;color:var(--text-dim);font-size:12.5px;line-height:1.5;">
         Micro analysis for <b>${esc(book.name)}</b>, shown in place of the default proposed table.
         <b>Click any row for the full pick card</b> — live position, recommendation, composite score breakdown,
-        AI-hedge-fund verdict, analysts &amp; sentiment, fundamentals, commodity linkage, thesis, catalysts and risks —
+        Yahoo data cross-check, analysts &amp; sentiment, fundamentals, commodity linkage, thesis, catalysts and risks —
         exactly the detail from the Stock Picks tab. Filter and sort like the Stock Picks table. Analysis, not investment advice.
       </div>
     </div>`;
