@@ -38,6 +38,8 @@ IBKR Web API / Yahoo / research  ──▶  scripts/*.py  ──▶  data/*.json
 | `.claude/skills/trade/SKILL.md` | The `/trade` skill — the guarded execution workflow a session follows. |
 | `data/*.json` | Machine-generated dashboard inputs. |
 | `data/report.json` | **Static** hand-authored strategy report. Not written by any refresh script. |
+| `scripts/daily_snapshot.py` | Freezes every live `data/*.json` verbatim into `history/daily/<date>.json.gz` on each refresh (converges to EOD) for later analysis. Kept outside `data/` so Pages doesn't ship the archive. |
+| `history/daily/` | The per-day full-data snapshots (gzipped JSON). Immutable once the day passes. |
 | `.github/workflows/fetch-data.yml` | Scheduled fetch + Pages deploy (owns `master`). |
 | `.github/workflows/standards.yml` | Standards gate on PRs / working branches. |
 | `.claude/hooks/session-start.sh` | Injects the IBKR auto-refresh directive on web sessions. |

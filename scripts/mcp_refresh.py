@@ -235,6 +235,13 @@ def main():
     except Exception as e:
         print(f"risk metrics skipped (non-fatal): {e}")
 
+    # ── Daily full-data snapshot (history/daily/) — converges to EOD state ─
+    try:
+        import daily_snapshot
+        daily_snapshot.record()
+    except Exception as e:
+        print(f"daily snapshot skipped (non-fatal): {e}")
+
     print(f"Refreshed @ {now}: NAV {account['nav']} | dailyPnl {account['dailyPnl']} | "
           f"netExp {account['netExposure']}% | {len(positions)} positions | {len(hist)} pnl pts | "
           f"bench refreshed={','.join(refreshed) or '-'} kept={','.join(kept) or '-'}")

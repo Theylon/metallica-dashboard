@@ -112,6 +112,12 @@ jobs:
           python scripts/decision_log.py --update-outcomes || echo "outcomes skipped (non-fatal)"
           python scripts/alerts_build.py || echo "alerts skipped (non-fatal)"
 
+      # Freeze every live data point (analysts, sentiment, fundamentals, scores,
+      # positioning, nowcasts, ...) into history/daily/<date>.json.gz for later
+      # analysis. Rewrites today's file each run -> converges to EOD state.
+      - name: Record daily data snapshot
+        run: python scripts/daily_snapshot.py || echo "daily snapshot skipped (non-fatal)"
+
       # Cross-file reconciliation gate: account vs positions identities, pnl
       # schema, benchmark set, micro book vs live book, freshness. DELIBERATELY
       # fatal — broken data must fail the run rather than deploy.
@@ -122,7 +128,7 @@ jobs:
         run: |
           git config user.name "metallica-bot"
           git config user.email "bot@metallica-dashboard.local"
-          git add data/ reports/
+          git add data/ reports/ history/
           if git diff --staged --quiet; then
             echo "No data changes this cycle."
           else
