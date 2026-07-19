@@ -2393,6 +2393,16 @@ function renderBmChart() {
     });
   });
 
+  // All lines must end on the same day. pnl.json carries a live intraday point while
+  // benchmarks.json only advances on daily closes — without this the Metallica line runs
+  // past the benchmark lines. Clip at day granularity so a 20:00Z pnl close is not dropped
+  // against a benchmark's 00:00Z date on the same day.
+  if (datasets.length) {
+    const endOfDay = t => { const d = new Date(t); d.setUTCHours(23, 59, 59, 999); return d.getTime(); };
+    const sharedEnd = Math.min(...datasets.map(ds => endOfDay(ds.data[ds.data.length - 1].x.getTime())));
+    datasets.forEach(ds => { ds.data = ds.data.filter(pt => pt.x.getTime() <= sharedEnd); });
+  }
+
   if (!datasets.length) { canvas.style.display = 'none'; empty.style.display = 'flex'; return; }
   canvas.style.display = 'block'; empty.style.display = 'none';
 
