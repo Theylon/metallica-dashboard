@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-19T15:58:48+00:00",
+ "updatedAt": "2026-07-19T16:11:48+00:00",
  "researchAsOf": "2026-07-18T19:50:53+00:00",
  "methodology": "Composite 0-100 = momentum 18% + commodity-alignment 18% + deep-dive 14% + analyst 13% + fundamentals 12% + news sentiment 9% + SmartScore 8% + quality 8% (missing sub-scores redistribute). High = long candidate, low = short candidate. Each card also carries an independent Yahoo Finance (yfinance) cross-validation of price targets, ratings and margins. The cross-check is display-only and does not change the composite. Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner, TrueNorth, Yahoo Finance.",
  "macro": "Hawkish Fed (64% Sept hike priced), strong dollar (DXY ~100.8), US-Iran conflict volatility with 60-day peace talks; metals complex broadly correcting after H1 melt-up. Q4 consensus: dollar downtrend -> possible precious rebound window in Q3/Q4.",
@@ -1953,6 +1953,19 @@
     "flags": [],
     "checks": [
      {
+      "field": "priceTarget",
+      "primary": 5.63,
+      "yahoo": 5.58,
+      "deltaPct": -0.9,
+      "status": "agree"
+     },
+     {
+      "field": "recommendation",
+      "primary": "bull",
+      "yahoo": "bull",
+      "status": "agree"
+     },
+     {
       "field": "ebitdaMargin",
       "primary": 0.1083,
       "yahoo": 0.1328,
@@ -1962,9 +1975,12 @@
     ],
     "yahoo": {
      "price": 4.72,
-     "recommendationKey": "none",
+     "targetMean": 5.5794683,
+     "recommendationKey": "buy",
+     "recommendationMean": 1.83333,
      "ebitdaMargins": 0.13281,
-     "returnOnEquity": 0.03066
+     "returnOnEquity": 0.03066,
+     "numberOfAnalysts": 5
     }
    },
    "discovered": false,
@@ -5033,6 +5049,19 @@
     "flags": [],
     "checks": [
      {
+      "field": "priceTarget",
+      "primary": 381.0,
+      "yahoo": 381.88,
+      "deltaPct": 0.2,
+      "status": "agree"
+     },
+     {
+      "field": "recommendation",
+      "primary": "neutral",
+      "yahoo": "neutral",
+      "status": "agree"
+     },
+     {
       "field": "ebitdaMargin",
       "primary": 0.0912,
       "yahoo": 0.0957,
@@ -5042,9 +5071,12 @@
     ],
     "yahoo": {
      "price": 395.93,
-     "recommendationKey": "none",
+     "targetMean": 381.875,
+     "recommendationKey": "hold",
+     "recommendationMean": 2.625,
      "ebitdaMargins": 0.09571,
-     "returnOnEquity": 0.11326
+     "returnOnEquity": 0.11326,
+     "numberOfAnalysts": 8
     }
    },
    "discovered": false,
@@ -7374,6 +7406,19 @@
     ],
     "checks": [
      {
+      "field": "priceTarget",
+      "primary": 80.45,
+      "yahoo": 80.09,
+      "deltaPct": -0.4,
+      "status": "agree"
+     },
+     {
+      "field": "recommendation",
+      "primary": "bull",
+      "yahoo": "bull",
+      "status": "agree"
+     },
+     {
       "field": "ebitdaMargin",
       "primary": 0.0563,
       "yahoo": 0.1361,
@@ -7383,9 +7428,12 @@
     ],
     "yahoo": {
      "price": 66.41,
-     "recommendationKey": "none",
+     "targetMean": 80.09091,
+     "recommendationKey": "buy",
+     "recommendationMean": 1.91667,
      "ebitdaMargins": 0.1361,
-     "returnOnEquity": 0.13791999
+     "returnOnEquity": 0.13791999,
+     "numberOfAnalysts": 11
     }
    },
    "discovered": false,
@@ -11732,9 +11780,12 @@
     "checks": [],
     "yahoo": {
      "price": 0.2,
-     "recommendationKey": "none",
+     "targetMean": 0.285,
+     "recommendationKey": "hold",
+     "recommendationMean": 3.0,
      "ebitdaMargins": 0.0,
-     "returnOnEquity": -0.03173
+     "returnOnEquity": -0.03173,
+     "numberOfAnalysts": 2
     }
    },
    "discovered": false
@@ -12450,9 +12501,12 @@
     "checks": [],
     "yahoo": {
      "price": 19.33,
-     "recommendationKey": "none",
+     "targetMean": 25.47857,
+     "recommendationKey": "buy",
+     "recommendationMean": 2.0,
      "ebitdaMargins": 0.06482,
-     "returnOnEquity": 0.18576999
+     "returnOnEquity": 0.18576999,
+     "numberOfAnalysts": 14
     }
    },
    "discovered": false
@@ -18764,9 +18818,12 @@
     "checks": [],
     "yahoo": {
      "price": 0.11,
-     "recommendationKey": "none",
+     "targetMean": 0.1855,
+     "recommendationKey": "hold",
+     "recommendationMean": 3.5,
      "ebitdaMargins": -1.9852,
-     "returnOnEquity": -0.28437
+     "returnOnEquity": -0.28437,
+     "numberOfAnalysts": 2
     }
    },
    "discovered": false
@@ -19051,9 +19108,12 @@
     ],
     "yahoo": {
      "price": 9.28,
-     "recommendationKey": "none",
+     "targetMean": 18.02778,
+     "recommendationKey": "strong_buy",
+     "recommendationMean": 1.44444,
      "ebitdaMargins": 0.0,
-     "returnOnEquity": -0.0896
+     "returnOnEquity": -0.0896,
+     "numberOfAnalysts": 9
     }
    },
    "discovered": true,
@@ -20662,9 +20722,12 @@
     ],
     "yahoo": {
      "price": 14.65,
-     "recommendationKey": "none",
+     "targetMean": 21.89204,
+     "recommendationKey": "buy",
+     "recommendationMean": 2.33333,
      "ebitdaMargins": 0.37956002,
-     "returnOnEquity": 0.33491
+     "returnOnEquity": 0.33491,
+     "numberOfAnalysts": 3
     }
    },
    "discovered": true,
@@ -20741,6 +20804,7 @@
     "checks": [],
     "yahoo": {
      "price": 2.26,
+     "targetMean": 5.2154064,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
      "returnOnEquity": -0.16599001
@@ -20842,7 +20906,8 @@
     "checks": [],
     "yahoo": {
      "price": 1.24,
-     "recommendationKey": "none",
+     "recommendationKey": "hold",
+     "recommendationMean": 3.0,
      "ebitdaMargins": 0.0,
      "returnOnEquity": -0.05336
     }
@@ -21524,5 +21589,5 @@
   }
  ],
  "sizingNote": "NAV ~$10,950. Rules used: single name \u2264 8% NAV (~$875), commodity group \u2264 20% NAV, keep gross \u2264 75%. Current book: gross ~69%, net ~-31%. After the trade list: gross ~64%, net ~-14% \u2014 the deliberate effect is cutting the net short because the three strongest commodity biases (steel, copper, rare earths) are LONG while the shorts stay concentrated in the confirmed-weak complexes (PGM, silver, aluminum smelters).",
- "pricesRefreshedAt": "2026-07-19T15:58:48+00:00"
+ "pricesRefreshedAt": "2026-07-19T16:11:48+00:00"
 }
