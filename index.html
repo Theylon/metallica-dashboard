@@ -2231,7 +2231,7 @@ function renderPositions() {
     // yesterday's exposure: a short's liability shrinks when it profits
     const prevValue = Math.abs(p.mktValue) + (p.side === 'short' ? dailyPnl : -dailyPnl);
     const dayPct = prevValue ? dailyPnl / prevValue * 100 : 0;
-    return { ...p, pct, weight, costBasis, dailyPnl, dayPct };
+    return { ...p, shares: signedShares(p), pct, weight, costBasis, dailyPnl, dayPct };
   });
 
   if (positionSort.key) {
@@ -3422,7 +3422,7 @@ function renderRebalAnalysisRows() {
           <div style="color:var(--text-muted);font-size:11px;">${esc(r.company)}</div>
         </td>
         <td style="text-align:left;">${sideBadge(p.side)}</td>
-        <td>${fmt(p.shares, 0)}</td>
+        <td>${fmt(signedShares(p), 0)}</td>
         <td style="text-align:left;color:var(--text-muted);font-size:11px;">${m ? esc(m.material || '—') : '—'}</td>
         <td style="text-align:left;">${heldCell}</td>
         <td style="text-align:left;">${compCell}</td>
@@ -3696,6 +3696,8 @@ function fmtDollar(n)           { return n != null ? '$' + fmt(n, 0) : '—'; }
 function fmtPrice(n)            { return n != null ? '$' + fmt(n, 2) : '—'; }  // per-share prices keep cents
 function fmtDollarSigned(n)     { return n != null ? (n >= 0 ? '+$' : '-$') + fmt(Math.abs(n), 0) : '—'; }
 function fmtTime(d)             { return d.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }); }
+// Shares are stored as a magnitude with a separate `side`; shorts display as negative (e.g. BEPC short → -31).
+function signedShares(p)        { const s = p ? p.shares : null; return s == null ? s : (p.side === 'short' ? -Math.abs(s) : Math.abs(s)); }
 function setText(id, text)      { const el = document.getElementById(id); if (el) el.textContent = text; }
 function esc(s)                 { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 // data-supplied URLs go into href attributes — escape AND require http(s)
