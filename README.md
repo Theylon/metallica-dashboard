@@ -166,6 +166,17 @@ Four research layers (inspired by [HKUDS/Vibe-Trading](https://github.com/HKUDS/
 
 Pure-Python pieces (`risk.py`, `signal_ic.py`, `micro_snapshot.py`, price-history capture in `micro_refresh.py`) run in the GitHub Action from data that already exists — no new secrets. The MCP-fed pieces (Journal, Intel research layer) run in scheduled Claude routines and degrade gracefully until first populated. `data/price_history.json` (held-name close series, reused from the existing `micro_refresh.py` download) gates the correlation matrix and the low-vol factor.
 
+## Trading from a Claude session
+
+The account is traded directly from a Claude session through **IBKR order
+instructions** (`.claude/skills/trade/SKILL.md`): the session sizes the ticket
+against live account data, runs it through the deterministic pre-trade gate
+(`scripts/trade_gate.py` — sizing / exposure / fat-finger / earnings-window /
+macro-bias checks), gets the owner's explicit confirmation, creates the
+instruction via the IBKR MCP, and logs it to `data/orders.jsonl`
+(`scripts/order_log.py`). IBKR requires the owner to submit the instruction in
+its own app — Claude prepares, the owner executes. Details: PROCESS.md §7.
+
 ## Alt-Data tab — M Science-style nowcast & research
 
 The **Alt-Data** tab ports the alternative-data research *method* used by desks like M Science

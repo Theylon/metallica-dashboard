@@ -33,6 +33,9 @@ IBKR Web API / Yahoo / research  ──▶  scripts/*.py  ──▶  data/*.json
 | `scripts/micro_*.py`, `gen_*.py`, `build_universe.py` | Stock Picks pipeline → `data/micro.json` from `data/micro_src/`. |
 | `scripts/validate_data.py` | **Data-contract validator** (see below). |
 | `scripts/check.sh` | One-command local standards gate. |
+| `scripts/trade_gate.py` | **Pre-trade risk gate** — deterministic checks before any IBKR order instruction (see Trading below). |
+| `scripts/order_log.py` | Append-only order audit trail → `data/orders.jsonl`. |
+| `.claude/skills/trade/SKILL.md` | The `/trade` skill — the guarded execution workflow a session follows. |
 | `data/*.json` | Machine-generated dashboard inputs. |
 | `data/report.json` | **Static** hand-authored strategy report. Not written by any refresh script. |
 | `.github/workflows/fetch-data.yml` | Scheduled fetch + Pages deploy (owns `master`). |
@@ -91,6 +94,25 @@ Refresh-script invariants:
   is worse than no refresh.
 - **Degrade, don't blank.** On a missing/errored input, keep the last-good value
   (as `mcp_refresh.build_benchmarks` does) rather than writing an empty file.
+
+## Trading — how an order leaves a Claude session
+
+Execution runs through **IBKR order instructions** (the IBKR MCP's
+`create_order_instruction`): the session prepares the ticket, IBKR requires the
+owner to open the returned deep-link and submit it in the IBKR app. Claude
+prepares, the owner executes. The full workflow lives in
+`.claude/skills/trade/SKILL.md`; the rules that never bend:
+
+- **Only trade what the owner asked for in the session** — no unprompted or
+  autonomous orders, one order at a time, each explicitly confirmed.
+- **Every ticket passes `scripts/trade_gate.py`** (sizing, exposure,
+  fat-finger, earnings-window rule 4a, macro-bias rule 4e). A FAIL blocks
+  unless the owner overrides that named gate; overrides are logged.
+- **Every instruction is recorded** in `data/orders.jsonl` via
+  `scripts/order_log.py` (created → submitted → filled/cancelled). The log is
+  process record, not dashboard input — no `validate_data.py` contract.
+- **After fills, refresh** (`mcp_refresh.py` flow) so the dashboard shows the
+  real book. `orders.jsonl` commits are data-only → straight to `master` is fine.
 
 ## Coding conventions
 
