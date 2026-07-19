@@ -1,0 +1,63 @@
+name: Standards
+
+# Carries the repo's engineering standards automatically: every pull request and
+# every push to a working branch is checked for a valid data/ contract, compilable
+# scripts, and no committed secrets — the same gate as `./scripts/check.sh`.
+#
+# Deliberately does NOT run on master. master is deploy-only: the Fetch IBKR Data
+# & Deploy workflow owns it, and the bot commits fresh data/*.json there every ~30
+# min. Those commits are already validated before merge (or are machine-generated),
+# so re-running the gate on each would be noise. Standards are enforced at the gate
+# into master — the pull request — not after.
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches-ignore: [master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: standards-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  standards:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # Blocking checks: syntax + data contract + secret guard. No third-party
+      # deps needed, so nothing to install — this stays fast and deterministic.
+      - name: Compile scripts
+        run: python -m py_compile scripts/*.py
+
+      - name: Validate data contract
+        run: python scripts/validate_data.py
+
+      - name: Secret guard
+        run: |
+          hits=$(git grep -nI -E '^-{5}BEGIN [A-Z ]*PRIVATE KEY-{5}' || true)
+          keyfiles=$(git ls-files -- '*.pem' '*.key' 'id_rsa' 'id_rsa*' '*.env' '.env' || true)
+          if [ -n "$hits" ] || [ -n "$keyfiles" ]; then
+            echo "::error::Possible secret committed — remove it and rotate the key."
+            [ -n "$hits" ] && echo "$hits"
+            [ -n "$keyfiles" ] && echo "tracked key/env files: $keyfiles"
+            exit 1
+          fi
+          echo "No private keys, key files, or .env files tracked."
+
+      # Advisory: style findings are surfaced but never fail the build, so
+      # pre-existing lint debt in the pipeline scripts doesn't block a data fix.
+      - name: Lint (advisory)
+        continue-on-error: true
+        run: |
+          pip install ruff
+          ruff check scripts/

@@ -2,6 +2,25 @@
 
 Password-protected GitHub Pages dashboard for the Metallica systematic L/S equity strategy. Shows live IBKR positions, P&L, and benchmark comparisons.
 
+## Development workflow & standards
+
+Engineering standards live in the repo so the workflow carries them for us —
+you don't have to remember them, and CI won't let a break through:
+
+- **[`CLAUDE.md`](CLAUDE.md)** — the working agreement: architecture, the data
+  contract, security rules, and conventions. Read first (loaded into every
+  Claude Code session automatically).
+- **[`CONTRIBUTING.md`](CONTRIBUTING.md)** — how to set up and ship a change.
+- **`./scripts/check.sh`** — one local command that runs the same gate as CI
+  (data-contract validation, script compile, secret guard). Run it before every PR.
+- **Standards CI** (`.github/workflows/standards.yml`) — runs that gate on every
+  PR and working-branch push. The [PR template](.github/pull_request_template.md)
+  mirrors the checklist.
+
+The load-bearing invariant is the **data contract**: `index.html` fetches static
+`data/*.json` with no server to catch a bad shape, so
+[`scripts/validate_data.py`](scripts/validate_data.py) encodes and enforces it.
+
 ## ⚠ Security — read before adding users
 
 The dashboard password is a **client-side gate only**. The `data/*.json` files are
