@@ -89,6 +89,12 @@ SPECS: dict[str, dict] = {
                          "rows": ("items", ["ticker"])},
     "metals_spot.json": {"container": DICT, "required": ["updatedAt", "items"],
                          "rows": ("items", ["name"])},
+    # Process tab (see PROCESS.md). decision_log.jsonl is line-delimited and
+    # covered by verify_data.check_process_files() instead.
+    "channel_accuracy.json": {"container": DICT, "required": ["updatedAt", "gate", "channels"],
+                              "rows": ("channels", ["id", "kind", "status"])},
+    "alerts.json":      {"container": DICT, "required": ["updatedAt", "items"],
+                         "rows": ("items", ["type", "severity", "message"])},
 }
 
 
