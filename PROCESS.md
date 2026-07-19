@@ -124,6 +124,8 @@ confirmed by the owner before an IBKR **order instruction** is created. IBKR
 then requires the owner to submit the instruction in its own app — Claude
 prepares, the owner executes. Every instruction and its outcome
 (created → submitted → filled/cancelled) is appended to `data/orders.jsonl`
-(`scripts/order_log.py`), including any gate overrides and their rationale, so
-execution is auditable the same way recommendations are: *did the process
-follow its own rules?*
+(`scripts/order_log.py`) with its **trigger** — the owner's ask, a Stock-Picks
+recommendation, a Rebalance row, or an alert — the owner's **reason**, and any
+gate overrides. The dashboard's Orders tab renders the trail read-only, so
+execution is reviewed the same way recommendations are: *was the trigger
+right, and did the process follow its own rules?*

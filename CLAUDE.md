@@ -109,8 +109,11 @@ prepares, the owner executes. The full workflow lives in
   fat-finger, earnings-window rule 4a, macro-bias rule 4e). A FAIL blocks
   unless the owner overrides that named gate; overrides are logged.
 - **Every instruction is recorded** in `data/orders.jsonl` via
-  `scripts/order_log.py` (created → submitted → filled/cancelled). The log is
-  process record, not dashboard input — no `validate_data.py` contract.
+  `scripts/order_log.py` (created → submitted → filled/cancelled), including
+  its **trigger** (owner ask / recommendation / rebalance row / alert) and the
+  owner's **reason**. The dashboard's **Orders tab** renders it read-only;
+  every line must parse (`validate_data.py`'s JSONL step) — semantic checks
+  stay warn-only in `verify_data.py`.
 - **After fills, refresh** (`mcp_refresh.py` flow) so the dashboard shows the
   real book. `orders.jsonl` commits are data-only → straight to `master` is fine.
 

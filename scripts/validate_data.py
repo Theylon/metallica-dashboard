@@ -89,8 +89,10 @@ SPECS: dict[str, dict] = {
                          "rows": ("items", ["ticker"])},
     "metals_spot.json": {"container": DICT, "required": ["updatedAt", "items"],
                          "rows": ("items", ["name"])},
-    # Process tab (see PROCESS.md). decision_log.jsonl is line-delimited and
-    # covered by verify_data.check_process_files() instead.
+    # Process tab (see PROCESS.md). Line-delimited files (decision_log.jsonl,
+    # orders.jsonl — the latter feeds the Orders tab) can't live in SPECS
+    # (validate_file whole-file-parses); they get a per-line parse in step 3
+    # of main() plus warn-only semantic checks in verify_data.check_process_files().
     "channel_accuracy.json": {"container": DICT, "required": ["updatedAt", "gate", "channels"],
                               "rows": ("channels", ["id", "kind", "status"])},
     "alerts.json":      {"container": DICT, "required": ["updatedAt", "items"],
@@ -193,6 +195,20 @@ def main() -> int:
             json.loads(path.read_text())
         except json.JSONDecodeError as e:
             errors.append(f"data/{path.name}: invalid JSON — {e}")
+
+    # 3) Line-delimited data/*.jsonl (orders log, history files): every
+    #    non-blank line must parse — the dashboard's Orders tab collapses the
+    #    whole log to empty on a single bad line. An absent or empty file is
+    #    fine (logs legitimately start empty): blanked-is-legal,
+    #    malformed-is-fatal, same as above.
+    for path in sorted(data_dir.glob("*.jsonl")):
+        for i, line in enumerate(path.read_text().splitlines(), 1):
+            if not line.strip():
+                continue
+            try:
+                json.loads(line)
+            except json.JSONDecodeError as e:
+                errors.append(f"data/{path.name}: line {i} invalid JSON — {e}")
 
     for w in warnings:
         print(f"  war: {w}")

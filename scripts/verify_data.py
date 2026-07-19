@@ -168,7 +168,7 @@ def check_categories(positions):
 
 
 def check_process_files():
-    """Process-layer files (channel_accuracy/alerts/decision_log) — WARN-only.
+    """Process-layer files (channel_accuracy/alerts/decision_log/orders) — WARN-only.
 
     These are additive display layers; a malformed one should never block a
     deploy of the book data, so nothing in here may call fail().
@@ -223,6 +223,41 @@ def check_process_files():
             warn(f"decision_log.jsonl has {bad_lines} unparseable lines")
         else:
             ok(f"decision_log.jsonl: {n} entries parse, ts monotonic")
+
+    # Orders audit log (rendered by the Orders tab; written by order_log.py).
+    # Same shape as the decision-log check: per-line parse + monotonic ts,
+    # plus the fixed status vocabulary and the identifying fields.
+    log = DATA / "orders.jsonl"
+    if log.exists():
+        statuses = {"created", "submitted", "filled", "cancelled", "expired"}
+        sources = {"owner", "recommendation", "rebalance", "alert"}
+        prev_ts, bad_lines, bad_rows, n = "", 0, 0, 0
+        for line in log.read_text().splitlines():
+            if not line.strip():
+                continue
+            n += 1
+            try:
+                e = json.loads(line)
+            except Exception:
+                bad_lines += 1
+                continue
+            ts = e.get("ts") or ""
+            if ts < prev_ts:
+                warn(f"orders.jsonl ts not monotonic near entry {n}")
+            prev_ts = ts
+            trig = e.get("trigger")  # optional (older entries); source vocab fixed
+            trig_ok = trig is None or (isinstance(trig, dict)
+                                       and trig.get("source") in sources)
+            if (e.get("status") not in statuses or not e.get("ticker")
+                    or e.get("side") not in ("BUY", "SELL") or not e.get("qty")
+                    or not trig_ok):
+                bad_rows += 1
+        if bad_lines:
+            warn(f"orders.jsonl has {bad_lines} unparseable lines")
+        if bad_rows:
+            warn(f"orders.jsonl has {bad_rows} rows with bad status or missing ticker/side/qty")
+        if not bad_lines and not bad_rows:
+            ok(f"orders.jsonl: {n} instructions parse, statuses valid, ts monotonic")
 
 
 def check_freshness(account, risk, pnl):

@@ -6,14 +6,17 @@ session creates the IBKR order instruction and records it here; when the owner
 submits/cancels it in IBKR (or it fills), the status is updated in place. The
 result is a complete audit trail of what was ordered, why, what the gate said,
 and what became of it — data/orders.jsonl, append-only, one JSON object per
-line. Not consumed by the dashboard (no validate_data.py contract); it is the
-process record, like decision_log.jsonl.
+line. The dashboard's Orders tab renders it read-only; validate_data.py
+enforces per-line parseability (a bad line blanks the tab) and
+verify_data.check_process_files() adds warn-only semantic checks.
 
 Usage:
   append (after create_order_instruction):
     python3 scripts/order_log.py --append --ticker SGML --side BUY --qty 10 \
         --order-type LIMIT --limit 10.25 --tif DAY --conid 511477158 \
         --instruction-id 1234 --url https://... \
+        --trigger-source recommendation --trigger-ref "COVER, urgency high" \
+        --reason "thesis conflict with bullish steel" \
         --gates "size_order:WARN" --note "owner confirmed in session"
   update (after submission/cancel/fill):
     python3 scripts/order_log.py --set-status --instruction-id 1234 --status submitted
@@ -54,8 +57,12 @@ def append(a) -> int:
         "url": a.url,
         "status": a.status or "created",
         "statusUpdatedAt": _now(),
+        # what prompted the ticket — the execution-side analog of the decision
+        # log's trigger, so the later review can ask "was the trigger right?"
+        "trigger": {"source": a.trigger_source, "ref": a.trigger_ref or None},
+        "reason": a.reason or None,    # the owner's why, verbatim
         "gates": a.gates or None,      # e.g. "size_order:WARN,earnings_window:FAIL-overridden"
-        "note": a.note or None,        # owner rationale / context
+        "note": a.note or None,        # operational context / follow-ups
     }
     LOG.parent.mkdir(parents=True, exist_ok=True)
     with LOG.open("a") as f:
@@ -110,10 +117,13 @@ def list_tail(a) -> int:
         except Exception:
             continue
     for e in rows[-a.n:]:
+        trig = e.get("trigger") or {}
         print(f"{e.get('ts', '?')}  {e.get('status', '?'):9}  "
               f"{e.get('side', '?')} {e.get('qty', '?')} {e.get('ticker', '?')} "
               f"@ {e.get('limit') if e.get('limit') is not None else 'MKT'} "
               f"({e.get('tif', '?')})  instr={e.get('instructionId') or '—'}"
+              + (f"  [{trig.get('source')}]" if trig.get("source") else "")
+              + (f"  reason={e['reason']}" if e.get("reason") else "")
               + (f"  note={e['note']}" if e.get("note") else ""))
     return 0
 
@@ -134,6 +144,11 @@ def main() -> int:
     ap.add_argument("--instruction-id", default=None)
     ap.add_argument("--url", default=None)
     ap.add_argument("--status", choices=STATUSES, default=None)
+    ap.add_argument("--trigger-source", default="owner",
+                    choices=["owner", "recommendation", "rebalance", "alert"])
+    ap.add_argument("--trigger-ref", default=None,
+                    help="compact snapshot of the triggering row, e.g. 'COVER, urgency high, composite 38'")
+    ap.add_argument("--reason", default=None, help="the owner's rationale, verbatim")
     ap.add_argument("--gates", default=None)
     ap.add_argument("--note", default=None)
     ap.add_argument("-n", type=int, default=10)

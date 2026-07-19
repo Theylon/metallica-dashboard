@@ -178,7 +178,7 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
 .tabs {
   position: sticky; top: 56px; z-index: 99;
   background: var(--surface); border-bottom: 1px solid var(--border);
-  display: flex; padding: 0 24px;
+  display: flex; padding: 0 24px; overflow-x: auto;
 }
 .tab {
   padding: 14px 20px; cursor: pointer; font-size: 13px; font-weight: 500;
@@ -597,6 +597,9 @@ th.tenh-sortable:hover { color: var(--text); }
     </div>
     <div class="tab" role="tab" tabindex="0" data-tab="process" onclick="showTab('process')">
       <span class="tab-icon">🧭</span> Process
+    </div>
+    <div class="tab" role="tab" tabindex="0" data-tab="orders" onclick="showTab('orders')">
+      <span class="tab-icon">🧾</span> Orders
     </div>
   </div>
 
@@ -1488,6 +1491,39 @@ th.tenh-sortable:hover { color: var(--text); }
     </div>
   </div><!-- /process -->
 
+  <!-- ═══════════════════ ORDERS ═══════════════════ -->
+  <div id="page-orders" class="page">
+    <div class="chart-header"><div class="chart-title">🧾 Order Instructions</div></div>
+    <div class="table-panel">
+      <div class="table-header">
+        <div class="table-header-left">
+          <input type="text" class="filter-input" id="ord-search" placeholder="Search ticker…" oninput="setOrdSearch(this.value)">
+          <select class="filter-select" id="ord-status" onchange="setOrdStatus(this.value)">
+            <option value="">All statuses</option>
+          </select>
+        </div>
+        <div style="font-size:12px;color:var(--text-muted);" id="ord-count">—</div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr>
+            <th style="text-align:left;">Created</th>
+            <th style="text-align:left;">Ticker</th>
+            <th style="text-align:left;">Side</th>
+            <th>Qty</th>
+            <th style="text-align:left;">Order</th>
+            <th style="text-align:left;">Status</th>
+            <th style="text-align:left;">Trigger</th>
+            <th style="text-align:left;">Why &amp; gates</th>
+            <th style="text-align:left;">IBKR</th>
+          </tr></thead>
+          <tbody id="ord-tbody"><tr class="empty-row"><td colspan="9">No orders yet — tickets appear here when a /trade session logs an instruction</td></tr></tbody>
+        </table>
+      </div>
+      <div class="report-note" style="margin-top:10px;">Append-only audit trail (data/orders.jsonl, written by scripts/order_log.py from the /trade workflow). <b>CREATED</b> = instruction awaiting the owner's submission — open the IBKR link on a phone with the IBKR app to review &amp; submit; the link errors in a plain desktop browser without an IBKR session. Statuses are updated by sessions as instructions are submitted, filled or cancelled. <b>Trigger</b> = what prompted the ticket (owner ask, a Stock-Picks recommendation, a Rebalance row, or an alert) and <b>Why</b> = the owner's rationale — the execution-side mirror of the decision log, so the review can ask "was the trigger right?". Claude prepares, the owner executes.</div>
+    </div>
+  </div><!-- /orders -->
+
 </div><!-- /dashboard -->
 
 <script>
@@ -1545,6 +1581,7 @@ let rebalance = { rows: [] };
 let altdata = { items: [] }, altGroup = 'book';
 let channelAcc = { channels: [] }, decisionLog = [], alertsData = { items: [] };
 let dlogSearch = '', dlogClass = '', dlogOverrideOnly = false;
+let ordersLog = [], ordSearch = '', ordStatus = '';
 let activePeriod = 'YTD', activeBmPeriod = '1M';
 let customFrom = null, customTo = null;   // 'YYYY-MM-DD' bounds for the Overview CUSTOM period
 let bmCustomFrom = null, bmCustomTo = null;   // 'YYYY-MM-DD' bounds for the Benchmarks CUSTOM period
@@ -1561,7 +1598,7 @@ let pendingUpload = null;        // {name, positions[], warnings[], error} stage
 
 async function loadData() {
   try {
-    const [posRes, accRes, pnlRes, bmRes, repRes, comRes, anaRes, macRes, newsRes, techRes, spotRes, resRes, microRes, expHistRes, rebRes, riskRes, jrnRes, sigRes, evRes, posgRes, mhRes, adRes, caRes, alRes, dlRes] = await Promise.all([
+    const [posRes, accRes, pnlRes, bmRes, repRes, comRes, anaRes, macRes, newsRes, techRes, spotRes, resRes, microRes, expHistRes, rebRes, riskRes, jrnRes, sigRes, evRes, posgRes, mhRes, adRes, caRes, alRes, dlRes, ordRes] = await Promise.all([
       fetch('data/positions.json?' + Date.now()).then(r => r.json()).catch(() => ({ positions: [] })),
       fetch('data/account.json?' + Date.now()).then(r => r.json()).catch(() => ({})),
       fetch('data/pnl.json?' + Date.now()).then(r => r.json()).catch(() => []),
@@ -1590,6 +1627,8 @@ async function loadData() {
       // failure before the log file exists, so the tab degrades to empty.
       fetch('data/decision_log.jsonl?' + Date.now()).then(r => r.text())
         .then(t => t.split('\n').filter(Boolean).map(l => JSON.parse(l))).catch(() => []),
+      fetch('data/orders.jsonl?' + Date.now()).then(r => r.text())
+        .then(t => t.split('\n').filter(Boolean).map(l => JSON.parse(l))).catch(() => []),
     ]);
     positions = posRes.positions || [];
     account   = accRes || {};
@@ -1606,6 +1645,7 @@ async function loadData() {
     channelAcc = (caRes && Array.isArray(caRes.channels)) ? caRes : { channels: [] };
     alertsData = (alRes && Array.isArray(alRes.items)) ? alRes : { items: [] };
     decisionLog = Array.isArray(dlRes) ? dlRes : [];
+    ordersLog = Array.isArray(ordRes) ? ordRes : [];
     risk = riskRes || {};
     journal = jrnRes || {};
     signalScorecard = sigRes || {};
@@ -1631,7 +1671,7 @@ function renderAll() {
    renderPositions, renderBmChart, renderBmTable, renderExposure,
    renderCommodityExposure, renderReport, renderIntel, renderPicks,
    renderSignals, renderJournal, renderRebalance, renderAltData,
-   renderProcess, renderOverviewAlerts,
+   renderProcess, renderOrders, renderOverviewAlerts,
    enhanceAllTables   // add column show/hide · per-column filter · sort to every table
   ].forEach(fn => {
     try { fn(); } catch (e) { console.error(fn.name + ' failed', e); }
@@ -3820,6 +3860,78 @@ function chartOpts(yLabel, unit = null) {   // unit: '$' | '%' | null (bare numb
       }
     }
   };
+}
+
+// ═══════════════════════════════════════════ ORDERS ══
+// Order-instruction audit trail (data/orders.jsonl, written by
+// scripts/order_log.py from the /trade workflow — see CLAUDE.md "Trading").
+function setOrdSearch(v) { ordSearch = v.trim().toUpperCase(); renderOrdersTable(); }
+function setOrdStatus(v) { ordStatus = v; renderOrdersTable(); }
+
+function ordStatusBadge(st) {
+  if (st === 'filled') return '<span class="pick-badge long">FILLED</span>';
+  if (st === 'submitted') return '<span class="pick-badge" style="background:rgba(234,179,8,0.14);color:#eab308;">SUBMITTED</span>';
+  if (st === 'created') return '<span class="pick-badge new">CREATED</span>';
+  return `<span class="pick-badge neutral">${esc(String(st || '—').toUpperCase())}</span>`;
+}
+
+// what prompted the ticket; older entries without `trigger` default to OWNER
+function ordTriggerBadge(trig) {
+  const src = (trig || {}).source || 'owner';
+  const badge = src === 'recommendation' ? '<span class="pick-badge new">RECO</span>'
+    : src === 'rebalance' ? '<span class="pick-badge new">REBALANCE</span>'
+    : src === 'alert' ? '<span class="pick-badge" style="background:rgba(234,179,8,0.14);color:#eab308;">ALERT</span>'
+    : '<span class="pick-badge neutral">OWNER</span>';
+  const ref = (trig || {}).ref;
+  return badge + (ref ? `<div style="font-size:10px;color:var(--text-dim);max-width:200px;">${esc(ref)}</div>` : '');
+}
+
+function renderOrdersTable() {
+  const tb = document.getElementById('ord-tbody');
+  if (!tb) return;
+  const all = ordersLog.slice().sort((a, b) => (b.ts || '').localeCompare(a.ts || ''));
+  const rows = all.filter(e =>
+    (!ordSearch || (e.ticker || '').toUpperCase().includes(ordSearch)) &&
+    (!ordStatus || e.status === ordStatus)
+  ).slice(0, 200);
+  const cnt = document.getElementById('ord-count');
+  if (cnt) cnt.textContent = ordersLog.length ? `${rows.length} of ${all.length} instructions` : '—';
+  if (!rows.length) {
+    tb.innerHTML = `<tr class="empty-row"><td colspan="9">${ordersLog.length ? 'No orders match the filters' : 'No orders yet — tickets appear here when a /trade session logs an instruction'}</td></tr>`;
+    return;
+  }
+  tb.innerHTML = rows.map(e => {
+    const order = e.orderType === 'MARKET' ? 'MKT' : `LMT ${fmt(e.limit, 2)}`;
+    const qty = Number.isInteger(e.qty) ? fmt(e.qty, 0) : fmt(e.qty, 2);
+    const gn = [e.gates ? `gates: ${e.gates}` : '', e.note || ''].filter(Boolean).join(' · ');
+    const why = (e.reason ? `${esc(e.reason)}` : '')
+      + (gn ? `<div style="font-size:10px;color:var(--text-dim);">${esc(gn)}</div>` : '');
+    const url = safeUrl(e.url);
+    const link = e.status === 'created' && url
+      ? `<a href="${url}" target="_blank" rel="noopener" title="Open on a phone with the IBKR app to review &amp; submit">submit ↗</a>`
+      : '<span style="color:var(--text-dim);">—</span>';
+    return `<tr>`
+      + `<td style="text-align:left;white-space:nowrap;color:var(--text-muted);">${esc((e.ts || '').slice(0, 16).replace('T', ' '))}</td>`
+      + `<td style="text-align:left;font-weight:700;">${esc(e.ticker || '')}<div style="font-size:10px;color:var(--text-dim);">#${esc(e.instructionId || '—')}</div></td>`
+      + `<td style="text-align:left;"><span class="pick-badge ${e.side === 'BUY' ? 'long' : 'short'}">${esc(e.side || '')}</span></td>`
+      + `<td>${qty}</td>`
+      + `<td style="text-align:left;white-space:nowrap;">${esc(order)}<span style="color:var(--text-muted);"> · ${esc(e.tif || 'DAY')}</span></td>`
+      + `<td style="text-align:left;">${ordStatusBadge(e.status)}<div style="font-size:10px;color:var(--text-dim);white-space:nowrap;">${esc((e.statusUpdatedAt || '').slice(0, 16).replace('T', ' '))}</div></td>`
+      + `<td style="text-align:left;">${ordTriggerBadge(e.trigger)}</td>`
+      + `<td style="text-align:left;font-size:11px;max-width:280px;">${why || '<span style="color:var(--text-dim);">—</span>'}</td>`
+      + `<td style="text-align:left;">${link}</td>`
+      + `</tr>`;
+  }).join('');
+}
+
+function renderOrders() {
+  // populate the status filter once (fixed vocabulary from scripts/order_log.py)
+  const sel = document.getElementById('ord-status');
+  if (sel && sel.options.length <= 1) {
+    ['created', 'submitted', 'filled', 'cancelled', 'expired']
+      .forEach(s => { const o = document.createElement('option'); o.value = s; o.textContent = s; sel.appendChild(o); });
+  }
+  renderOrdersTable();
 }
 
 // ═══════════════════════════════════════════ PROCESS ══
