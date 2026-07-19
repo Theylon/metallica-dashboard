@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-19T14:35:30+00:00",
+ "updatedAt": "2026-07-19T14:49:08+00:00",
  "researchAsOf": "2026-07-18T19:50:53+00:00",
  "methodology": "Composite 0-100 = momentum 18% + commodity-alignment 18% + deep-dive 14% + analyst 13% + fundamentals 12% + news sentiment 9% + SmartScore 8% + quality 8% (missing sub-scores redistribute). High = long candidate, low = short candidate. Each card also carries an independent Yahoo Finance (yfinance) cross-validation of price targets, ratings and margins. The cross-check is display-only and does not change the composite. Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner, TrueNorth, Yahoo Finance.",
  "macro": "Hawkish Fed (64% Sept hike priced), strong dollar (DXY ~100.8), US-Iran conflict volatility with 60-day peace talks; metals complex broadly correcting after H1 melt-up. Q4 consensus: dollar downtrend -> possible precious rebound window in Q3/Q4.",
@@ -1953,6 +1953,19 @@
     "flags": [],
     "checks": [
      {
+      "field": "priceTarget",
+      "primary": 5.63,
+      "yahoo": 5.58,
+      "deltaPct": -0.9,
+      "status": "agree"
+     },
+     {
+      "field": "recommendation",
+      "primary": "bull",
+      "yahoo": "bull",
+      "status": "agree"
+     },
+     {
       "field": "ebitdaMargin",
       "primary": 0.1083,
       "yahoo": 0.1328,
@@ -1962,9 +1975,12 @@
     ],
     "yahoo": {
      "price": 4.72,
-     "recommendationKey": "none",
+     "targetMean": 5.5794683,
+     "recommendationKey": "buy",
+     "recommendationMean": 1.83333,
      "ebitdaMargins": 0.13281,
-     "returnOnEquity": 0.03066
+     "returnOnEquity": 0.03066,
+     "numberOfAnalysts": 5
     }
    },
    "discovered": false,
@@ -12450,12 +12466,9 @@
     "checks": [],
     "yahoo": {
      "price": 19.33,
-     "targetMean": 25.47857,
-     "recommendationKey": "buy",
-     "recommendationMean": 2.0,
+     "recommendationKey": "none",
      "ebitdaMargins": 0.06482,
-     "returnOnEquity": 0.18576999,
-     "numberOfAnalysts": 14
+     "returnOnEquity": 0.18576999
     }
    },
    "discovered": false
@@ -21527,5 +21540,5 @@
   }
  ],
  "sizingNote": "NAV ~$10,950. Rules used: single name \u2264 8% NAV (~$875), commodity group \u2264 20% NAV, keep gross \u2264 75%. Current book: gross ~69%, net ~-31%. After the trade list: gross ~64%, net ~-14% \u2014 the deliberate effect is cutting the net short because the three strongest commodity biases (steel, copper, rare earths) are LONG while the shorts stay concentrated in the confirmed-weak complexes (PGM, silver, aluminum smelters).",
- "pricesRefreshedAt": "2026-07-19T14:35:30+00:00"
+ "pricesRefreshedAt": "2026-07-19T14:49:08+00:00"
 }
