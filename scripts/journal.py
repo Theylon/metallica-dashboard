@@ -31,6 +31,12 @@ DUMP = pathlib.Path("/tmp/ibkr_trades.json")
 # fractional round-trip in the book is ~0.04 shares, so 0.01 cleanly isolates the dust.
 MIN_ROUND_TRIP_QTY = 0.01
 
+# The book was rebuilt from a long-only lithium basket into the current long/short
+# metals strategy on this date. Behavioral stats over the retired era don't describe
+# the current strategy (they were dominated by the long-only drawdown), so the primary
+# journal is the current era; the full history is kept under the `allTime` key.
+INCEPTION = "2026-06-22"
+
 
 # ── dump parsing (defensive against field-name variants) ─────────────────────
 def _first(d, *keys, default=None):
@@ -259,17 +265,23 @@ def build():
     trades = load_trades()
     if not trades:
         return None
-    closed, _open = pair_round_trips(trades)
-    closed = [c for c in closed if c["qty"] >= MIN_ROUND_TRIP_QTY]
-    if not closed:
+    closed_all = [c for c in pair_round_trips(trades)[0] if c["qty"] >= MIN_ROUND_TRIP_QTY]
+    if not closed_all:
         return None
+    # Primary journal = the current long/short era; retired long-only trades are
+    # excluded from the headline stats but preserved under `allTime`.
+    closed = [c for c in closed_all if (c["closeDate"] or "9999-99-99") >= INCEPTION]
+    if not closed:                     # nothing closed in the current era yet
+        closed = closed_all
     cats = _category_map()
     prices = _current_prices()
     by_name, by_com, by_side = attribute(closed, cats)
     ranked = sorted(closed, key=lambda c: c["realized"])
+    retired = len(closed_all) - len(closed)
     now = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
     return {
         "updatedAt": now,
+        "era": {"since": INCEPTION, "label": "current long/short book"},
         "aggregate": aggregate(closed),
         "byName": by_name,
         "byCommodity": by_com,
@@ -277,7 +289,12 @@ def build():
         "best": [dict(c) for c in ranked[-5:][::-1]],
         "worst": [dict(c) for c in ranked[:5]],
         "shadow": shadow_counterfactual(closed, prices),
-        "note": f"{len(closed)} closed round-trips FIFO-matched from {len(trades)} fills. "
+        # full history (both eras) for reference — not shown in the headline stats
+        "allTime": {"since": (min(c["closeDate"] for c in closed_all if c["closeDate"]) or None),
+                    "aggregate": aggregate(closed_all)},
+        "note": f"{len(closed)} closed round-trips in the current long/short era "
+                f"(since {INCEPTION}); {retired} earlier long-only-era trades excluded from "
+                f"these stats (see allTime). FIFO-matched from {len(trades)} fills. "
                 f"Shadow Account marks exited lots to current price. Analysis only.",
     }
 

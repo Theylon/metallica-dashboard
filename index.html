@@ -1787,9 +1787,9 @@ function renderPicks() {
   if (bt) {
     const cls = { long: 'long', short: 'short', neutral: 'neutral' };
     bt.innerHTML = bias.length ? bias.filter(b => !b.material.includes('/') || b.confidence !== 'low').map(b =>
-      `<tr><td style="text-align:left;font-weight:600;">${b.material}</td>`
-      + `<td style="text-align:left;"><span class="pick-badge ${cls[b.bias] || 'neutral'}">${b.bias.toUpperCase()}</span></td>`
-      + `<td style="text-align:left;color:var(--text-muted);">${b.confidence}</td>`
+      `<tr><td style="text-align:left;font-weight:600;">${esc(b.material)}</td>`
+      + `<td style="text-align:left;"><span class="pick-badge ${cls[b.bias] || 'neutral'}">${esc(b.bias.toUpperCase())}</span></td>`
+      + `<td style="text-align:left;color:var(--text-muted);">${esc(b.confidence)}</td>`
       + `<td style="text-align:left;font-size:11px;color:var(--text-muted);max-width:640px;">${esc(b.evidence)}</td></tr>`
     ).join('') : '<tr class="empty-row"><td colspan="4">No micro data</td></tr>';
   }
@@ -1819,12 +1819,17 @@ function renderPicks() {
   if (tt) {
     const trades = micro.tradeList || [];
     tt.innerHTML = trades.length ? trades.map(t => {
-      const buy = t.side.startsWith('BUY');
+      const buy = String(t.side || '').startsWith('BUY');
+      // ground-truth held position (stamped from the live book at refresh), so a
+      // stale prose qty like "cover 23 of 73" is shown next to the real holding
+      const hn = t.heldNow
+        ? ` <span style="color:var(--text-dim);">· held now: ${fmt(t.heldNow.shares, 0)} ${esc(t.heldNow.side)}</span>`
+        : '';
       return `<tr><td>${tradeBtn(tlTradeHref(t))}</td>`
-        + `<td style="text-align:left;font-weight:600;color:${buy ? 'var(--green)' : 'var(--red)'};">${t.side}</td>`
-        + `<td style="text-align:left;font-weight:700;">${t.ticker}</td>`
-        + `<td style="text-align:left;">${t.qty}</td>`
-        + `<td style="text-align:left;font-size:11px;color:var(--text-muted);">${esc(t.why)}</td></tr>`;
+        + `<td style="text-align:left;font-weight:600;color:${buy ? 'var(--green)' : 'var(--red)'};">${esc(t.side)}</td>`
+        + `<td style="text-align:left;font-weight:700;">${esc(t.ticker)}</td>`
+        + `<td style="text-align:left;">${esc(String(t.qty))}</td>`
+        + `<td style="text-align:left;font-size:11px;color:var(--text-muted);">${esc(t.why)}${hn}</td></tr>`;
     }).join('') : '<tr class="empty-row"><td colspan="5">No trades proposed</td></tr>';
   }
 
@@ -1873,9 +1878,9 @@ function buildPickDetail(r) {
 
   // recommendation + justification
   if (r.recommendation) {
-    out += `<div class="detail-reco"><b>Recommendation: ${r.recommendation.action}</b>`
-      + (r.recommendation.urgency && r.recommendation.urgency !== 'none' ? ` <span style="color:var(--text-muted);">(urgency: ${r.recommendation.urgency})</span>` : '')
-      + `<br><span style="color:var(--text-muted);">${r.recommendation.rationale}</span></div>`;
+    out += `<div class="detail-reco"><b>Recommendation: ${esc(r.recommendation.action)}</b>`
+      + (r.recommendation.urgency && r.recommendation.urgency !== 'none' ? ` <span style="color:var(--text-muted);">(urgency: ${esc(r.recommendation.urgency)})</span>` : '')
+      + `<br><span style="color:var(--text-muted);">${esc(r.recommendation.rationale)}</span></div>`;
   }
 
   // score breakdown
@@ -1937,14 +1942,14 @@ function buildPickDetail(r) {
     const e = r.exposure;
     const bar3 = v => v === null || v === undefined ? '—'
       : `<span class="score-bar" style="width:30px;display:inline-block;vertical-align:middle;"><span style="display:block;height:100%;border-radius:3px;width:${(v / 3) * 100}%;background:${v >= 3 ? '#22c55e' : v >= 2 ? '#eab308' : '#ef4444'};"></span></span> <b>${v}/3</b>`;
-    out += section(`Underlying-asset exposure — ${e.commodity || r.material}`,
+    out += section(`Underlying-asset exposure — ${esc(e.commodity || r.material)}`,
       `<div class="detail-chips" style="margin:2px 0 4px;">`
-      + chip('Linkage', `${e.score}/9 (${e.tier || '—'})`)
+      + chip('Linkage', `${esc(e.score)}/9 (${esc(e.tier || '—')})`)
       + `<span class="detail-chip">Revenue exposure: ${bar3(e.exposure)}</span>`
       + `<span class="detail-chip">Price sensitivity: ${bar3(e.priceSens)}</span>`
       + `<span class="detail-chip">Coupling: ${bar3(e.coupling)}</span>`
-      + chip('Confidence', e.confidence || '—') + `</div>`
-      + (e.evidence ? `<span style="color:var(--text-muted);">“${e.evidence}”</span>` : ''));
+      + chip('Confidence', esc(e.confidence || '—')) + `</div>`
+      + (e.evidence ? `<span style="color:var(--text-muted);">“${esc(e.evidence)}”</span>` : ''));
   } else if (r.omEvidence) {
     out += section('Commodity linkage evidence (Bigdata.com)', `<span style="color:var(--text-muted);">${esc(r.omEvidence)}</span>`);
   }
@@ -2086,7 +2091,7 @@ function stkResearchSection(d) {
   const body = d.research.map(r => `<div style="margin:6px 0;font-size:12px;line-height:1.5;">`
     + `<b>${esc(r.headline || '')}</b> <span style="color:var(--text-dim);">— ${esc(r.source || '')}${r.date ? ' · ' + esc(r.date) : ''}</span>`
     + (r.snippet ? `<br><span style="color:var(--text-muted);">${esc(r.snippet)}</span>` : '')
-    + (r.url ? ` <a href="${esc(r.url)}" target="_blank" rel="noopener" style="color:var(--accent-light);">↗</a>` : '')
+    + (r.url ? ` <a href="${safeUrl(r.url)}" target="_blank" rel="noopener" style="color:var(--accent-light);">↗</a>` : '')
     + `</div>`).join('');
   return mkSection('Research headlines', body);
 }
@@ -2145,11 +2150,17 @@ function buildStockModalBody(tk) {
   return out.trim() ? out : `<div style="color:var(--text-muted);">No data on file for ${esc(d.ticker)}.</div>`;
 }
 
+let stkModalReturnFocus = null;   // element to restore focus to on close
+
 function ensureStockModal() {
   if (document.getElementById('stock-modal')) return;
   const el = document.createElement('div');
   el.id = 'stock-modal';
   el.className = 'stk-modal';
+  // dialog semantics so screen readers announce it and know it's modal
+  el.setAttribute('role', 'dialog');
+  el.setAttribute('aria-modal', 'true');
+  el.setAttribute('aria-labelledby', 'stk-modal-title');
   el.innerHTML = `<div class="stk-modal-box">
       <div class="stk-modal-head">
         <div class="stk-modal-title" id="stk-modal-title"></div>
@@ -2159,6 +2170,15 @@ function ensureStockModal() {
     </div>`;
   // backdrop click closes; clicks inside the box do not
   el.addEventListener('click', e => { if (e.target === el) closeStockModal(); });
+  // trap Tab within the modal while it's open
+  el.addEventListener('keydown', e => {
+    if (e.key !== 'Tab') return;
+    const f = el.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
   document.body.appendChild(el);
 }
 
@@ -2174,12 +2194,19 @@ function openStockModal(tk) {
   const m = document.getElementById('stock-modal');
   m.classList.add('open');
   document.body.style.overflow = 'hidden';
+  // remember the trigger, move focus into the modal (its close button)
+  stkModalReturnFocus = (document.activeElement instanceof HTMLElement) ? document.activeElement : null;
+  const closeBtn = m.querySelector('.stk-modal-close');
+  if (closeBtn) closeBtn.focus();
 }
 
 function closeStockModal() {
   const m = document.getElementById('stock-modal');
   if (m) m.classList.remove('open');
   document.body.style.overflow = '';
+  // restore focus to the ticker cell that opened it
+  if (stkModalReturnFocus && document.contains(stkModalReturnFocus)) stkModalReturnFocus.focus();
+  stkModalReturnFocus = null;
 }
 
 // Flag every ticker cell across every table as a link. Reads a dedicated
@@ -2385,7 +2412,7 @@ function renderIntel() {
         : `<span class="${stone}">${esc(e.sentimentLabel || '')} ${e.sentimentScore > 0 ? '+' : ''}${e.sentimentScore.toFixed(2)}</span>`;
       const news = (e.recentNews && e.recentNews[0]) ? e.recentNews[0] : null;
       const head = news ? (news.url
-        ? `<a href="${news.url}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">${esc(news.title)}</a>`
+        ? `<a href="${safeUrl(news.url)}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">${esc(news.title)}</a>`
         : esc(news.title)) : '—';
       return `<tr>
         <td class="tl"><span class="ticker-sym">${esc(e.ticker)}</span></td>
@@ -3396,6 +3423,13 @@ function renderJournal() {
       'journal populates once trades are dumped to /tmp and scripts/journal.py runs.');
     return;
   }
+  // headline stats cover the current long/short era; note the excluded retired era
+  if (j.era) {
+    const at = j.allTime && j.allTime.aggregate;
+    const extra = at ? Math.max(0, at.closedTrades - a.closedTrades) : 0;
+    setText('jr-note', `Current ${esc(j.era.label || 'strategy')} era (since ${esc(j.era.since)})`
+      + (extra ? ` · ${extra} earlier long-only-era trades excluded from these stats` : ''));
+  }
   setText('jr-winrate', (a.winRate * 100).toFixed(0) + '%');
   setText('jr-closed', a.closedTrades + ' closed round-trips');
   setText('jr-pf', a.profitFactor == null ? '—' : a.profitFactor.toFixed(2));
@@ -3679,7 +3713,7 @@ function renderRebalance() {
 
   // ── Table 4 · Recommendations (the data read on each order) ───────
   const recsBody = orderRows.length ? orderRows.map(r => { const ex = rebalanceExpanded === r.ticker; return `
-      <tr onclick="toggleRebalanceDetail('${r.ticker}')" style="cursor:pointer;">
+      <tr onclick="toggleRebalanceDetail('${String(r.ticker).replace(/[\\'"]/g, '\\$&')}')" style="cursor:pointer;">
         <td style="text-align:left;font-weight:700;"><span style="color:var(--text-dim);font-weight:400;font-size:11px;">${ex ? '▾' : '▸'}</span> ${esc(r.ticker)}</td>
         <td style="font-weight:600;color:${r.comp != null ? scoreColor(r.comp) : 'var(--text-muted)'};">${r.comp != null ? r.comp : '—'}<span style="font-weight:400;font-size:11px;color:${verd[r.verdict] || 'var(--text-muted)'};"> ${esc(r.verdict || '')}</span></td>
         <td style="text-align:left;font-size:12px;">${esc(r.analyst || '—')}</td>
@@ -4200,7 +4234,7 @@ function renderAltData() {
         `<span class="ad-chip" title="${esc(d.note || '')}">${esc(d.dim || '')}: <b>${esc(d.label || '')}</b></span>`).join('');
       const src = (i.sources || []).map(s => {
         const t = `${esc(s.name || '')}${s.date ? ' · ' + esc(s.date) : ''}`;
-        return s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener" style="color:inherit;">${t}</a>` : t;
+        return s.url ? `<a href="${safeUrl(s.url)}" target="_blank" rel="noopener" style="color:inherit;">${t}</a>` : t;
       }).join(' &nbsp;|&nbsp; ');
       return `<div class="ad-card">`
         + `<div class="ad-card-head"><div><span class="ad-tkr">${esc(i.ticker)}</span>`
@@ -4625,7 +4659,9 @@ function signedShares(p)        { const s = p ? p.shares : null; return s == nul
 function setText(id, text)      { const el = document.getElementById(id); if (el) el.textContent = text; }
 function esc(s)                 { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 // data-supplied URLs go into href attributes — escape AND require http(s)
-function safeUrl(u)             { return /^https?:\/\//i.test(String(u || '')) ? esc(u) : ''; }
+// Only http(s) URLs, and neutralize quotes too (esc leaves " intact, which would
+// otherwise break out of href="${safeUrl(...)}") — rejects javascript:/data: schemes.
+function safeUrl(u)             { const s = String(u || ''); return /^https?:\/\//i.test(s) ? esc(s).replace(/"/g, '%22').replace(/'/g, '%27') : ''; }
 function pnlColor(id, val) {
   const el = document.getElementById(id);
   if (!el || val == null) return;

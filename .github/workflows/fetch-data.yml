@@ -118,6 +118,13 @@ jobs:
       - name: Record daily data snapshot
         run: python scripts/daily_snapshot.py || echo "daily snapshot skipped (non-fatal)"
 
+      # Data-contract / schema gate (same one standards.yml runs on PRs). The bot
+      # commits data straight to master, bypassing the PR gate, so run it here too
+      # or a schema break (e.g. a data file blanked, micro.json losing
+      # `recommendations`) would deploy. DELIBERATELY fatal.
+      - name: Validate data contract
+        run: python scripts/validate_data.py
+
       # Cross-file reconciliation gate: account vs positions identities, pnl
       # schema, benchmark set, micro book vs live book, freshness. DELIBERATELY
       # fatal — broken data must fail the run rather than deploy.
@@ -128,7 +135,7 @@ jobs:
         run: |
           git config user.name "metallica-bot"
           git config user.email "bot@metallica-dashboard.local"
-          git add data/ reports/ history/
+          git add data/ history/
           if git diff --staged --quiet; then
             echo "No data changes this cycle."
           else

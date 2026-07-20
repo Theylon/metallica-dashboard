@@ -2,7 +2,7 @@
  "updatedAt": "2026-07-20T17:14:01+00:00",
  "researchAsOf": "2026-07-18T19:50:53+00:00",
  "methodology": "Composite 0-100 = momentum 18% + commodity-alignment 18% + deep-dive 14% + analyst 13% + fundamentals 12% + news sentiment 9% + SmartScore 8% + quality 8% (missing sub-scores redistribute). High = long candidate, low = short candidate. Each card also carries an independent Yahoo Finance (yfinance) cross-validation of price targets, ratings and margins. The cross-check is display-only and does not change the composite. Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner, TrueNorth, Yahoo Finance.",
- "macro": "Hawkish Fed (64% Sept hike priced), strong dollar (DXY ~100.8), US-Iran conflict volatility with 60-day peace talks; metals complex broadly correcting after H1 melt-up. Q4 consensus: dollar downtrend -> possible precious rebound window in Q3/Q4.",
+ "macro": "Fed Funds Rate 3.63% (dovish hold); CPI (YoY) 3.46% (above 2% target); 10Y\u20132Y Spread +0.37 (normal curve). [macro feed 2026-07-20]",
  "commodityBias": [
   {
    "material": "Carbon/Raw Steel",
@@ -21242,231 +21242,321 @@
    "held": "short",
    "action": "COVER",
    "urgency": "high",
-   "rationale": "Thesis conflict: short the strongest US mill while HRC >$1,100 is tariff-tight and consensus is Buy +19%. -$21.8 uPnL says the tape agrees. Free the $684 of short gross for shorts that work."
+   "rationale": "Thesis conflict: short the strongest US mill while HRC >$1,100 is tariff-tight and consensus is Buy +19%. -$21.8 uPnL says the tape agrees. Free the $684 of short gross for shorts that work.",
+   "heldNow": null
   },
   {
    "ticker": "STLD",
    "held": "short",
    "action": "COVER",
    "urgency": "high",
-   "rationale": "Same conflict as NUE (Buy +16% PT). Between the two 'quality mill' shorts and RS/CLF, keep only the weak ones."
+   "rationale": "Same conflict as NUE (Buy +16% PT). Between the two 'quality mill' shorts and RS/CLF, keep only the weak ones.",
+   "heldNow": null
   },
   {
    "ticker": "RS",
    "held": "short",
    "action": "KEEP",
    "urgency": "none",
-   "rationale": "The one steel short the street endorses: Neutral, PT +0.5% \u2014 fully valued distributor. Serves as the group's valuation short."
+   "rationale": "The one steel short the street endorses: Neutral, PT +0.5% \u2014 fully valued distributor. Serves as the group's valuation short.",
+   "heldNow": {
+    "shares": 1.0,
+    "side": "short"
+   }
   },
   {
    "ticker": "CLF",
    "held": "short",
    "action": "TRIM 1/3 PRE-EARNINGS",
    "urgency": "high",
-   "rationale": "Best steel short on micro (0 buys, negative EPS revisions, -23%/month) BUT July 23 earnings on a crowded short is binary. Trim 73\u219250 shares before 7/23, re-add on any squeeze."
+   "rationale": "Best steel short on micro (0 buys, negative EPS revisions, -23%/month) BUT July 23 earnings on a crowded short is binary. Trim 73\u219250 shares before 7/23, re-add on any squeeze.",
+   "heldNow": {
+    "shares": 14.0,
+    "side": "short"
+   }
   },
   {
    "ticker": "ASTL",
    "held": null,
    "action": "NEW SHORT ~$350 (3% NAV)",
    "urgency": "medium",
-   "rationale": "Replaces part of the covered NUE/STLD short gross on the RIGHT side of the tariff: Canadian mill selling into a 50%-tariff US market, -23% below 50DMA. Keeps steel-group net roughly balanced (discovered name)."
+   "rationale": "Replaces part of the covered NUE/STLD short gross on the RIGHT side of the tariff: Canadian mill selling into a 50%-tariff US market, -23% below 50DMA. Keeps steel-group net roughly balanced (discovered name).",
+   "heldNow": null
   },
   {
    "ticker": "TSLA",
    "held": "short",
    "action": "COVER BEFORE 7/22 EARNINGS",
    "urgency": "high",
-   "rationale": "Record deliveries (+25% YoY), Carbon Arc US registrations accelerating 5 straight months, UBS sees margin beat. The EV-short is better expressed via the KARS ETF you already hold short \u2014 no single-stock earnings bomb."
+   "rationale": "Record deliveries (+25% YoY), Carbon Arc US registrations accelerating 5 straight months, UBS sees margin beat. The EV-short is better expressed via the KARS ETF you already hold short \u2014 no single-stock earnings bomb.",
+   "heldNow": null
   },
   {
    "ticker": "KARS",
    "held": "short",
    "action": "KEEP",
    "urgency": "none",
-   "rationale": "Becomes the book's downstream-EV short after TSLA is covered; China-heavy, no earnings-date risk."
+   "rationale": "Becomes the book's downstream-EV short after TSLA is covered; China-heavy, no earnings-date risk.",
+   "heldNow": {
+    "shares": 13.0,
+    "side": "short"
+   }
   },
   {
    "ticker": "BATT",
    "held": "short",
    "action": "COVER",
    "urgency": "medium",
-   "rationale": "Redundant: overlaps LIT (both hold ALB/SQM \u2014 you are shorting your own longs twice). Keep one ETF hedge only; +$18 uPnL banked."
+   "rationale": "Redundant: overlaps LIT (both hold ALB/SQM \u2014 you are shorting your own longs twice). Keep one ETF hedge only; +$18 uPnL banked.",
+   "heldNow": {
+    "shares": 26.0,
+    "side": "short"
+   }
   },
   {
    "ticker": "LIT",
    "held": "short",
    "action": "KEEP",
    "urgency": "none",
-   "rationale": "The single remaining lithium-complex hedge against ALB/SQM/SGML/LAC longs. Watch: it still holds your longs \u2014 it is a beta hedge, not alpha."
+   "rationale": "The single remaining lithium-complex hedge against ALB/SQM/SGML/LAC longs. Watch: it still holds your longs \u2014 it is a beta hedge, not alpha.",
+   "heldNow": {
+    "shares": 5.0,
+    "side": "short"
+   }
   },
   {
    "ticker": "ALB",
    "held": "long",
    "action": "KEEP",
    "urgency": "none",
-   "rationale": "Zacks #1, Buy +71% PT, Q1 EBITDA +148% \u2014 but PT cuts continue; do not add until lithium futures stabilize (CATL restart pressure)."
+   "rationale": "Zacks #1, Buy +71% PT, Q1 EBITDA +148% \u2014 but PT cuts continue; do not add until lithium futures stabilize (CATL restart pressure).",
+   "heldNow": {
+    "shares": 2.0,
+    "side": "long"
+   }
   },
   {
    "ticker": "SQM",
    "held": "long",
    "action": "KEEP",
    "urgency": "none",
-   "rationale": "Neutral consensus but cost-curve winner; iodine cushions."
+   "rationale": "Neutral consensus but cost-curve winner; iodine cushions.",
+   "heldNow": {
+    "shares": 4.0,
+    "side": "long"
+   }
   },
   {
    "ticker": "SGML",
    "held": "long",
    "action": "ADD ~$200 (to ~5.8% NAV)",
    "urgency": "medium",
-   "rationale": "Strongest lithium micro: Q2 production beat +6%, AISC falling to $620/t, CF-positive at $1,500/t. Catalyst 8/14 financials."
+   "rationale": "Strongest lithium micro: Q2 production beat +6%, AISC falling to $620/t, CF-positive at $1,500/t. Catalyst 8/14 financials.",
+   "heldNow": {
+    "shares": 24.0,
+    "side": "long"
+   }
   },
   {
    "ticker": "LAC",
    "held": "long",
    "action": "KEEP (no add)",
    "urgency": "none",
-   "rationale": "Funded Thacker Pass option (DOE $2.23B, GM JV) but pre-revenue until 2028 and GS Neutral $4.50. Position is already 3.5% NAV \u2014 right size for an option."
+   "rationale": "Funded Thacker Pass option (DOE $2.23B, GM JV) but pre-revenue until 2028 and GS Neutral $4.50. Position is already 3.5% NAV \u2014 right size for an option.",
+   "heldNow": {
+    "shares": 85.0,
+    "side": "long"
+   }
   },
   {
    "ticker": "AA",
    "held": "short",
    "action": "KEEP / room to add ~$150",
    "urgency": "low",
-   "rationale": "Correct instrument for the aluminum-short bias (pure smelter leverage, LME war-premium unwound). Tiny at 0.4% NAV."
+   "rationale": "Correct instrument for the aluminum-short bias (pure smelter leverage, LME war-premium unwound). Tiny at 0.4% NAV.",
+   "heldNow": {
+    "shares": 3.0,
+    "side": "short"
+   }
   },
   {
    "ticker": "CENX",
    "held": "short",
    "action": "KEEP",
    "urgency": "none",
-   "rationale": "Higher-cost smelter, same falling-LME thesis."
+   "rationale": "Higher-cost smelter, same falling-LME thesis.",
+   "heldNow": {
+    "shares": 3.0,
+    "side": "short"
+   }
   },
   {
    "ticker": "NHYDY",
    "held": "short",
    "action": "KEEP",
    "urgency": "none",
-   "rationale": "Integrated so less pure, but consistent with the group bias."
+   "rationale": "Integrated so less pure, but consistent with the group bias.",
+   "heldNow": null
   },
   {
    "ticker": "CSTM",
    "held": "short",
    "action": "COVER",
    "urgency": "medium",
-   "rationale": "Wrong instrument: a fabricator that PASSES THROUGH metal costs \u2014 falling LME helps its margins. Buy consensus +25%. The short contradicts the very thesis that justifies AA/CENX."
+   "rationale": "Wrong instrument: a fabricator that PASSES THROUGH metal costs \u2014 falling LME helps its margins. Buy consensus +25%. The short contradicts the very thesis that justifies AA/CENX.",
+   "heldNow": {
+    "shares": 5.0,
+    "side": "short"
+   }
   },
   {
    "ticker": "FCX",
    "held": null,
    "action": "NEW LONG ~$700 (6.4% NAV)",
    "urgency": "high",
-   "rationale": "The book has ZERO copper exposure against a long-bias, tight-fundamentals copper market with the US tariff decision as a live catalyst. 12/15 buys, +17% PT. This is the single biggest gap in the book."
+   "rationale": "The book has ZERO copper exposure against a long-bias, tight-fundamentals copper market with the US tariff decision as a live catalyst. 12/15 buys, +17% PT. This is the single biggest gap in the book.",
+   "heldNow": null
   },
   {
    "ticker": "SCCO",
    "held": null,
    "action": "OPTIONAL NEW SHORT ~$350 vs FCX",
    "urgency": "low",
-   "rationale": "Street's only metals Sell consensus (PT -14%). Pairs the FCX long into a market-neutral copper spread if you want to keep net short unchanged."
+   "rationale": "Street's only metals Sell consensus (PT -14%). Pairs the FCX long into a market-neutral copper spread if you want to keep net short unchanged.",
+   "heldNow": null
   },
   {
    "ticker": "MP",
    "held": null,
    "action": "NEW LONG ~$450 (4% NAV)",
    "urgency": "high",
-   "rationale": "11/11 buys, +49% PT, NdPr +74% YoY with widening supply gap, and RE equities lag the commodity. Best unheld long in the entire universe scan."
+   "rationale": "11/11 buys, +49% PT, NdPr +74% YoY with widening supply gap, and RE equities lag the commodity. Best unheld long in the entire universe scan.",
+   "heldNow": null
   },
   {
    "ticker": "SBSW",
    "held": "short",
    "action": "KEEP (best short in book)",
    "urgency": "none",
-   "rationale": "-42% YTD and still: loss-making palladium ops, high debt, restructuring \u2014 in a structurally-surplus palladium market."
+   "rationale": "-42% YTD and still: loss-making palladium ops, high debt, restructuring \u2014 in a structurally-surplus palladium market.",
+   "heldNow": {
+    "shares": 31.0,
+    "side": "short"
+   }
   },
   {
    "ticker": "IMPUY",
    "held": "short",
    "action": "KEEP",
    "urgency": "none",
-   "rationale": "Second PGM short; bias short with high confidence."
+   "rationale": "Second PGM short; bias short with high confidence.",
+   "heldNow": null
   },
   {
    "ticker": "PLG",
    "held": "short",
    "action": "KEEP, cap at current size",
    "urgency": "none",
-   "rationale": "Pre-revenue developer in weak palladium \u2014 right thesis, but $169M micro-cap: any financing/partner headline squeezes. Do not add."
+   "rationale": "Pre-revenue developer in weak palladium \u2014 right thesis, but $169M micro-cap: any financing/partner headline squeezes. Do not add.",
+   "heldNow": {
+    "shares": 200.0,
+    "side": "short"
+   }
   },
   {
    "ticker": "BVN",
    "held": "short",
    "action": "KEEP",
    "urgency": "none",
-   "rationale": "Chronic underperformer; note its copper JV (Cerro Verde) partially fights the short if copper rips."
+   "rationale": "Chronic underperformer; note its copper JV (Cerro Verde) partially fights the short if copper rips.",
+   "heldNow": {
+    "shares": 6.0,
+    "side": "short"
+   }
   },
   {
    "ticker": "PAAS",
    "held": "short",
    "action": "COVER",
    "urgency": "medium",
-   "rationale": "Quality large-cap with Buy 5/2 and +56% PT \u2014 the wrong silver short. Keep the high-beta/high-cost trio AG/CDE/HL instead."
+   "rationale": "Quality large-cap with Buy 5/2 and +56% PT \u2014 the wrong silver short. Keep the high-beta/high-cost trio AG/CDE/HL instead.",
+   "heldNow": {
+    "shares": 4.0,
+    "side": "short"
+   }
   },
   {
    "ticker": "AG",
    "held": "short",
    "action": "KEEP",
    "urgency": "none",
-   "rationale": "2-3x unhedged silver beta \u2014 the sharpest silver short while silver bias is down. Respect squeeze history (Jan $115)."
+   "rationale": "2-3x unhedged silver beta \u2014 the sharpest silver short while silver bias is down. Respect squeeze history (Jan $115).",
+   "heldNow": {
+    "shares": 10.0,
+    "side": "short"
+   }
   },
   {
    "ticker": "CDE",
    "held": "short",
    "action": "KEEP",
    "urgency": "none",
-   "rationale": "Higher-cost Ag/Au beta short."
+   "rationale": "Higher-cost Ag/Au beta short.",
+   "heldNow": {
+    "shares": 12.0,
+    "side": "short"
+   }
   },
   {
    "ticker": "HL",
    "held": "short",
    "action": "KEEP",
    "urgency": "none",
-   "rationale": "Completes the silver-beta short trio."
+   "rationale": "Completes the silver-beta short trio.",
+   "heldNow": {
+    "shares": 12.0,
+    "side": "short"
+   }
   },
   {
    "ticker": "HMY",
    "held": null,
    "action": "OPTIONAL NEW SHORT ~$250",
    "urgency": "low",
-   "rationale": "The book shorts silver/PGM but has no gold short while gold bias is down: HMY = high-cost SA gold, the classic gold-downside name (discovered, not in Excel)."
+   "rationale": "The book shorts silver/PGM but has no gold short while gold bias is down: HMY = high-cost SA gold, the classic gold-downside name (discovered, not in Excel).",
+   "heldNow": null
   },
   {
    "ticker": "ATI",
    "held": "long",
    "action": "KEEP (no add)",
    "urgency": "none",
-   "rationale": "6/6 buys but +2% PT \u2014 the street says fully priced. Ride the aero cycle, take profit if it stalls under $205 (PT high)."
+   "rationale": "6/6 buys but +2% PT \u2014 the street says fully priced. Ride the aero cycle, take profit if it stalls under $205 (PT high).",
+   "heldNow": null
   },
   {
    "ticker": "CC",
    "held": "long",
    "action": "KEEP",
    "urgency": "none",
-   "rationale": "Buy +39% PT; TiO2 hikes sticking in China (+8% QTD)."
+   "rationale": "Buy +39% PT; TiO2 hikes sticking in China (+8% QTD).",
+   "heldNow": null
   },
   {
    "ticker": "TROX",
    "held": "long",
    "action": "SWAP INTO KRO",
    "urgency": "medium",
-   "rationale": "Name-for-name TiO2 swap: TROX Neutral 1/5/1 + leverage vs KRO Zacks Buy, volumes +4%, +33%/yr vs industry -10%. Same commodity exposure, stronger balance sheet and momentum."
+   "rationale": "Name-for-name TiO2 swap: TROX Neutral 1/5/1 + leverage vs KRO Zacks Buy, volumes +4%, +33%/yr vs industry -10%. Same commodity exposure, stronger balance sheet and momentum.",
+   "heldNow": null
   },
   {
    "ticker": "AFM.V",
    "held": null,
    "action": "OPTIONAL NEW LONG ~$250 (if TSXV tradable)",
    "urgency": "low",
-   "rationale": "Tin is the tightest metal on the board (Myanmar broken, AI solder demand, $53K). Alphamin = ~7% of world supply, +10% over 200DMA. DRC risk = keep small."
+   "rationale": "Tin is the tightest metal on the board (Myanmar broken, AI solder demand, $53K). Alphamin = ~7% of world supply, +10% over 200DMA. DRC risk = keep small.",
+   "heldNow": null
   }
  ],
  "tradeList": [
@@ -21474,99 +21564,130 @@
    "side": "BUY TO COVER",
    "ticker": "NUE",
    "qty": "3 sh (~$682)",
-   "why": "thesis conflict with bullish steel"
+   "why": "thesis conflict with bullish steel",
+   "heldNow": null
   },
   {
    "side": "BUY TO COVER",
    "ticker": "STLD",
    "qty": "3 sh (~$685)",
-   "why": "thesis conflict with bullish steel"
+   "why": "thesis conflict with bullish steel",
+   "heldNow": null
   },
   {
    "side": "BUY TO COVER",
    "ticker": "CLF",
    "qty": "23 sh of 73 (~$216)",
-   "why": "de-risk crowded short into 7/23 earnings"
+   "why": "de-risk crowded short into 7/23 earnings",
+   "heldNow": {
+    "shares": 14.0,
+    "side": "short"
+   }
   },
   {
    "side": "BUY TO COVER",
    "ticker": "TSLA",
    "qty": "1 sh (~$408)",
-   "why": "record deliveries + 7/22 earnings margin-beat risk"
+   "why": "record deliveries + 7/22 earnings margin-beat risk",
+   "heldNow": null
   },
   {
    "side": "BUY TO COVER",
    "ticker": "BATT",
    "qty": "30 sh (~$440)",
-   "why": "redundant with LIT short"
+   "why": "redundant with LIT short",
+   "heldNow": {
+    "shares": 26.0,
+    "side": "short"
+   }
   },
   {
    "side": "BUY TO COVER",
    "ticker": "CSTM",
    "qty": "2 sh (~$59)",
-   "why": "fabricator benefits from falling LME \u2014 wrong short"
+   "why": "fabricator benefits from falling LME \u2014 wrong short",
+   "heldNow": {
+    "shares": 5.0,
+    "side": "short"
+   }
   },
   {
    "side": "BUY TO COVER",
    "ticker": "PAAS",
    "qty": "2 sh (~$87)",
-   "why": "quality name, wrong silver short"
+   "why": "quality name, wrong silver short",
+   "heldNow": {
+    "shares": 4.0,
+    "side": "short"
+   }
   },
   {
    "side": "BUY",
    "ticker": "FCX",
    "qty": "11 sh (~$677)",
-   "why": "copper gap: long-bias commodity, tariff catalyst, 12/15 buys"
+   "why": "copper gap: long-bias commodity, tariff catalyst, 12/15 buys",
+   "heldNow": null
   },
   {
    "side": "BUY",
    "ticker": "MP",
    "qty": "9 sh (~$470)",
-   "why": "rare-earth leader, 11/11 buys, commodity +74% YoY"
+   "why": "rare-earth leader, 11/11 buys, commodity +74% YoY",
+   "heldNow": null
   },
   {
    "side": "BUY",
    "ticker": "SGML",
    "qty": "17 sh (~$202)",
-   "why": "add to strongest lithium micro"
+   "why": "add to strongest lithium micro",
+   "heldNow": {
+    "shares": 24.0,
+    "side": "long"
+   }
   },
   {
    "side": "SELL",
    "ticker": "TROX",
    "qty": "18 sh (~$110)",
-   "why": "swap leg 1"
+   "why": "swap leg 1",
+   "heldNow": null
   },
   {
    "side": "BUY",
    "ticker": "KRO",
    "qty": "18 sh (~$106)",
-   "why": "swap leg 2 \u2014 stronger TiO2 name"
+   "why": "swap leg 2 \u2014 stronger TiO2 name",
+   "heldNow": null
   },
   {
    "side": "SELL SHORT",
    "ticker": "ASTL",
    "qty": "97 sh (~$351)",
-   "why": "tariff-losing steel replaces covered mill shorts"
+   "why": "tariff-losing steel replaces covered mill shorts",
+   "heldNow": null
   },
   {
    "side": "SELL SHORT (optional)",
    "ticker": "SCCO",
    "qty": "2 sh (~$352)",
-   "why": "Sell-consensus pair vs FCX long"
+   "why": "Sell-consensus pair vs FCX long",
+   "heldNow": null
   },
   {
    "side": "SELL SHORT (optional)",
    "ticker": "HMY",
    "qty": "17 sh (~$257)",
-   "why": "adds the missing gold-downside short"
+   "why": "adds the missing gold-downside short",
+   "heldNow": null
   },
   {
    "side": "BUY (optional)",
    "ticker": "AFM.V",
    "qty": "180 sh (~C$250)",
-   "why": "tin tightness pure-play, if TSXV accessible"
+   "why": "tin tightness pure-play, if TSXV accessible",
+   "heldNow": null
   }
  ],
- "sizingNote": "NAV ~$10,950. Rules used: single name \u2264 8% NAV (~$875), commodity group \u2264 20% NAV, keep gross \u2264 75%. Current book: gross ~69%, net ~-31%. After the trade list: gross ~64%, net ~-14% \u2014 the deliberate effect is cutting the net short because the three strongest commodity biases (steel, copper, rare earths) are LONG while the shorts stay concentrated in the confirmed-weak complexes (PGM, silver, aluminum smelters).",
+ "sizingNote": "NAV ~$10,852. Rules: single name \u2264 8% NAV (~$868), commodity group \u2264 20% NAV, keep gross \u2264 75%. Current book: gross ~53%, net ~-34%. [book 2026-07-20]",
  "pricesRefreshedAt": "2026-07-20T17:14:01+00:00"
 }

@@ -1,5 +1,9 @@
 {
- "updatedAt": "2026-07-18T19:50:53+00:00",
+ "updatedAt": "2026-07-20T17:21:53+00:00",
+ "era": {
+  "since": "2026-06-22",
+  "label": "current long/short book"
+ },
  "aggregate": {
   "closedTrades": 123,
   "winRate": 0.25,
@@ -66,14 +70,14 @@
   },
   {
    "ticker": "STLD",
-   "commodity": "Steel",
+   "commodity": "Other",
    "realized": -48.05,
    "trades": 3,
    "winRate": 0.0
   },
   {
    "ticker": "NUE",
-   "commodity": "Steel",
+   "commodity": "Other",
    "realized": -39.8,
    "trades": 5,
    "winRate": 0.0
@@ -115,7 +119,7 @@
   },
   {
    "ticker": "TSLA",
-   "commodity": "Lithium",
+   "commodity": "Other",
    "realized": -16.61,
    "trades": 1,
    "winRate": 0.0
@@ -278,23 +282,23 @@
  "byCommodity": [
   {
    "commodity": "Lithium",
-   "realized": -777.17,
-   "share": 0.666
+   "realized": -760.56,
+   "share": 0.652
   },
   {
    "commodity": "Other",
-   "realized": -238.5,
-   "share": 0.205
-  },
-  {
-   "commodity": "Steel",
-   "realized": -92.09,
-   "share": 0.079
+   "realized": -342.96,
+   "share": 0.294
   },
   {
    "commodity": "Aluminum",
    "realized": -56.54,
    "share": 0.048
+  },
+  {
+   "commodity": "Steel",
+   "realized": -4.24,
+   "share": 0.004
   },
   {
    "commodity": "Precious",
@@ -438,83 +442,83 @@
  ],
  "shadow": {
   "realizedActual": -1162.36,
-  "ifHeldToNow": -1943.06,
-  "edge": 780.7,
+  "ifHeldToNow": -2092.84,
+  "edge": 930.48,
   "items": [
    {
     "ticker": "LIT",
-    "currentPrice": 68.38,
-    "shadowDelta": -269.62
-   },
-   {
-    "ticker": "BATT",
-    "currentPrice": 14.02,
-    "shadowDelta": -197.1
+    "currentPrice": 67.27,
+    "shadowDelta": -299.43
    },
    {
     "ticker": "SQM",
-    "currentPrice": 69.81,
-    "shadowDelta": -138.92
+    "currentPrice": 67.45,
+    "shadowDelta": -213.79
+   },
+   {
+    "ticker": "BATT",
+    "currentPrice": 13.97,
+    "shadowDelta": -203.21
    },
    {
     "ticker": "ALB",
-    "currentPrice": 120.78,
-    "shadowDelta": -107.93
-   },
-   {
-    "ticker": "KALU",
-    "currentPrice": 157.78,
-    "shadowDelta": -35.22
+    "currentPrice": 118.05,
+    "shadowDelta": -133.88
    },
    {
     "ticker": "AA",
-    "currentPrice": 43.98,
-    "shadowDelta": -34.89
+    "currentPrice": 43.35,
+    "shadowDelta": -38.66
+   },
+   {
+    "ticker": "KALU",
+    "currentPrice": 156.11,
+    "shadowDelta": -37.98
    },
    {
     "ticker": "CENX",
-    "currentPrice": 41.0,
-    "shadowDelta": -31.43
-   },
-   {
-    "ticker": "SBSW",
-    "currentPrice": 8.0,
-    "shadowDelta": 25.48
+    "currentPrice": 40.91,
+    "shadowDelta": -32.09
    },
    {
     "ticker": "KARS",
-    "currentPrice": 29.53,
-    "shadowDelta": -23.33
+    "currentPrice": 29.21,
+    "shadowDelta": -26.19
    },
    {
     "ticker": "NUE",
-    "currentPrice": 236.61,
-    "shadowDelta": 22.6
+    "currentPrice": 232.25,
+    "shadowDelta": 25.08
+   },
+   {
+    "ticker": "SBSW",
+    "currentPrice": 8.07,
+    "shadowDelta": 22.48
    },
    {
     "ticker": "STLD",
-    "currentPrice": 235.5,
-    "shadowDelta": 19.73
+    "currentPrice": 232.4,
+    "shadowDelta": 21.65
    },
    {
     "ticker": "RS",
-    "currentPrice": 395.93,
-    "shadowDelta": 18.8
+    "currentPrice": 385.02,
+    "shadowDelta": 20.4
    },
    {
     "ticker": "TSLA",
-    "currentPrice": 380.04,
-    "shadowDelta": -14.03
+    "currentPrice": 373.95,
+    "shadowDelta": -18.69
    },
    {
     "ticker": "CLF",
-    "currentPrice": 9.28,
-    "shadowDelta": -11.43
+    "currentPrice": 9.0,
+    "shadowDelta": -5.67
    },
    {
-    "ticker": "SGML",
-    "currentPrice": 10.46,
-    "shadowDelta": 2.76
+    "ticker": "LAC",
+    "currentPrice": 2.92,
+    "shadowDelta": -4.06
    },
    {
     "ticker": "TROX",
@@ -522,31 +526,48 @@
     "shadowDelta": -2.25
    },
    {
-    "ticker": "PLG",
-    "currentPrice": 1.24,
-    "shadowDelta": -2.02
-   },
-   {
-    "ticker": "PAAS",
-    "currentPrice": 41.77,
-    "shadowDelta": 1.81
-   },
-   {
     "ticker": "ATI",
     "currentPrice": 186.17,
     "shadowDelta": -1.59
    },
    {
-    "ticker": "LAC",
-    "currentPrice": 2.95,
-    "shadowDelta": -1.16
+    "ticker": "PAAS",
+    "currentPrice": 42.16,
+    "shadowDelta": -1.27
+   },
+   {
+    "ticker": "PLG",
+    "currentPrice": 1.23,
+    "shadowDelta": -1.21
    },
    {
     "ticker": "CC",
     "currentPrice": 17.52,
     "shadowDelta": -0.96
+   },
+   {
+    "ticker": "SGML",
+    "currentPrice": 10.3,
+    "shadowDelta": 0.84
    }
   ]
  },
- "note": "123 closed round-trips FIFO-matched from 214 fills. Shadow Account marks exited lots to current price. Analysis only."
+ "allTime": {
+  "since": "2026-06-24",
+  "aggregate": {
+   "closedTrades": 123,
+   "winRate": 0.25,
+   "avgWin": 3.4,
+   "avgLoss": -13.78,
+   "profitFactor": 0.08,
+   "avgHoldDays": 7.3,
+   "avgHoldWinDays": 8.0,
+   "avgHoldLossDays": 7.1,
+   "dispositionEffect": -0.9,
+   "turnover": 2.21,
+   "tradesPerWeek": 37.4,
+   "totalRealized": -1162.36
+  }
+ },
+ "note": "123 closed round-trips in the current long/short era (since 2026-06-22); 0 earlier long-only-era trades excluded from these stats (see allTime). FIFO-matched from 214 fills. Shadow Account marks exited lots to current price. Analysis only."
 }

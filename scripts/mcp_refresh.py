@@ -82,7 +82,12 @@ def build_benchmarks(now):
             tickers[t] = existing[t]
             kept.append(t)
 
-    bench_file.write_text(json.dumps({"updatedAt": now, "tickers": tickers}, indent=2))
+    # Stamp updatedAt with the latest close date actually present, not "now" —
+    # markets are closed on weekends, so a Sunday refresh would otherwise claim
+    # freshness the series (last Friday's close) doesn't have.
+    last_date = max((e["dates"][-1] for e in tickers.values() if e.get("dates")),
+                    default=now[:10])
+    bench_file.write_text(json.dumps({"updatedAt": last_date, "tickers": tickers}, indent=2))
     return refreshed, kept
 
 

@@ -74,6 +74,67 @@ def load_held():
     return held
 
 
+def _stamp_held_now(rows, held_map):
+    """Attach the live held {shares, side} to each recommendation / trade-list row
+    by ticker, so the dashboard can show the true current position next to any
+    research-time prose ('cover 23 of 73' while the book is actually 21). Leaves
+    the hand-authored prose untouched — just adds ground truth alongside it.
+    """
+    out = []
+    for r in rows or []:
+        r = dict(r)
+        h = held_map.get(str(r.get("ticker", "")).split(" @")[0])
+        r["heldNow"] = {"shares": h["shares"], "side": h["side"]} if h else None
+        out.append(r)
+    return out
+
+
+def live_macro_banner():
+    """Build the Stock-Picks macro banner from the live macro feed (data/macro.json)
+    instead of freezing a research-time sentence — which otherwise drifts (e.g. a
+    'Hawkish Fed' banner still showing while macro.json says 'dovish hold').
+    Returns None when the feed is missing so callers keep the existing string.
+    """
+    try:
+        macro = json.loads((DATA / "macro.json").read_text())
+    except Exception:
+        return None
+    items = macro.get("items") or []
+    if not items:
+        return None
+    parts = []
+    for it in items:
+        lbl, val, sub = it.get("label"), it.get("value"), (it.get("sub") or "")
+        if not lbl or val is None:
+            continue
+        sub = sub.split("·")[0].strip().replace("_", " ")
+        parts.append(f"{lbl} {val}" + (f" ({sub})" if sub else ""))
+    if not parts:
+        return None
+    asof = (macro.get("updatedAt") or "")[:10]
+    return "; ".join(parts) + (f". [macro feed {asof}]" if asof else ".")
+
+
+def live_sizing_note():
+    """Rebuild the sizing note's book stats (NAV / gross / net) from account.json,
+    keeping the static risk-rule text but never re-freezing stale exposures.
+    Returns None when account is missing so callers keep the existing string.
+    """
+    try:
+        acc = json.loads((DATA / "account.json").read_text())
+    except Exception:
+        return None
+    nav = acc.get("nav")
+    if nav is None:
+        return None
+    cap = nav * 0.08
+    return (f"NAV ~${nav:,.0f}. Rules: single name ≤ 8% NAV (~${cap:,.0f}), "
+            f"commodity group ≤ 20% NAV, keep gross ≤ 75%. "
+            f"Current book: gross ~{acc.get('grossExposurePct', 0):.0f}%, "
+            f"net ~{acc.get('netExposure', 0):.0f}%. "
+            f"[book {(acc.get('updatedAt') or '')[:10]}]")
+
+
 def commodity_score(rec, bias_by_material):
     mats = rec.get("materials") or []
     if not mats:
@@ -489,16 +550,18 @@ def main():
                         "of price targets, ratings and margins. The cross-check is display-only and does "
                         "not change the composite. "
                         "Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner, TrueNorth, Yahoo Finance."),
-        "macro": bias_doc.get("macro", ""),
+        # macro banner + sizing note come from the live feeds (not the frozen
+        # research strings) so they can't contradict the current book/regime
+        "macro": live_macro_banner() or bias_doc.get("macro", ""),
         "commodityBias": [
             {"material": b["material"], "bias": b["bias"], "score": b["score"],
              "confidence": b["confidence"], "evidence": b["evidence"]}
             for b in bias_doc.get("biases", [])
         ],
         "tickers": out_tickers,
-        "recommendations": recs_doc.get("recommendations", []),
-        "tradeList": recs_doc.get("tradeList", []),
-        "sizingNote": recs_doc.get("sizing", ""),
+        "recommendations": _stamp_held_now(recs_doc.get("recommendations", []), held_map),
+        "tradeList": _stamp_held_now(recs_doc.get("tradeList", []), held_map),
+        "sizingNote": live_sizing_note() or recs_doc.get("sizing", ""),
     }
     # record recommendation/held changes + their triggers before overwriting
     try:
