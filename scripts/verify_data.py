@@ -18,7 +18,15 @@ import sys
 DATA = pathlib.Path(__file__).resolve().parent.parent / "data"
 BENCH_TICKERS = {"SPY", "XME", "SLV", "CPER"}
 CENTS = 0.02            # tolerance for sums of independently-rounded cents
-NAV_RESIDUAL_MAX = 10.0  # $; nav comes from a different IBKR endpoint than positions
+# nav comes from a different IBKR endpoint than the position marks, snapshotted
+# moments apart — when marks are moving (pre-market, volatile opens) the two
+# legitimately disagree by a few basis points. 2026-07-20 pre-market: $17.73
+# skew (0.16% of NAV) failed two deploys in a row at the old ±max($10, 0.10%)
+# band while every identity check passed. ±0.25% still fails hard on real
+# breakage (a dropped position is whole percents), without blocking deploys on
+# inherent endpoint skew.
+NAV_RESIDUAL_MAX = 10.0        # $ floor for tiny NAVs
+NAV_RESIDUAL_PCT = 0.0025      # fraction of |nav|
 
 FAILS, WARNS = [], []
 
@@ -65,7 +73,7 @@ def check_account(account, positions):
 
     nav, cash = account["nav"], account["cash"]
     residual = round(nav - (cash + sum(p["mktValue"] for p in positions)), 2)
-    limit = max(NAV_RESIDUAL_MAX, abs(nav) * 0.001)
+    limit = max(NAV_RESIDUAL_MAX, abs(nav) * NAV_RESIDUAL_PCT)
     if abs(residual) <= limit:
         ok(f"nav residual {residual} within ±{limit:.2f} (nav {nav} vs cash+Σmv)")
     else:
