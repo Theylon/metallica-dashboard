@@ -3926,15 +3926,15 @@ function tradeBtn(href) {
 }
 function rebalTradeHref(r) {
   const side = r.side === 'L' ? 'LONG' : 'SHORT';
-  return tradeHref(`/trade ${r.ticker} — מהריבאלנס שורה ${r.n}: ${side}`
-    + (r.dollar != null ? ` ~$${r.dollar}` : '') + ` · ${r.callTag || ''} (${r.trade || '—'}). סיבה: ${r.callText || ''}`);
+  return tradeHref(`/trade ${r.ticker} — from Rebalance row ${r.n}: ${side}`
+    + (r.dollar != null ? ` ~$${r.dollar}` : '') + ` · ${r.callTag || ''} (${r.trade || '—'}). Reason: ${r.callText || ''}`);
 }
 function recoTradeHref(r) {
-  return tradeHref(`/trade ${r.ticker} — בצע את ההמלצה: ${r.action}`
-    + (r.urgency ? ` (דחיפות ${r.urgency})` : '') + `. סיבה: ${r.rationale || ''}`);
+  return tradeHref(`/trade ${r.ticker} — execute the recommendation: ${r.action}`
+    + (r.urgency ? ` (urgency ${r.urgency})` : '') + `. Reason: ${r.rationale || ''}`);
 }
 function tlTradeHref(t) {
-  return tradeHref(`/trade ${t.ticker} — ${t.side} ${t.qty} מרשימת הטריידים של ההמלצות. סיבה: ${t.why || ''}`);
+  return tradeHref(`/trade ${t.ticker} — ${t.side} ${t.qty} from the recommendations trade list. Reason: ${t.why || ''}`);
 }
 function setOrdSearch(v) { ordSearch = v.trim().toUpperCase(); renderOrdersTable(); }
 function setOrdStatus(v) { ordStatus = v; renderOrdersTable(); }
