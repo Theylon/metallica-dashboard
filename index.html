@@ -387,10 +387,11 @@ td:first-child { text-align: left; }
 .pick-badge.short { background: rgba(239,68,68,0.14); color: var(--red); }
 .pick-badge.new { background: rgba(99,102,241,0.16); color: var(--accent); }
 .pick-badge.neutral { background: rgba(123,130,160,0.14); color: var(--text-muted); }
-/* copy-a-/trade-command button on Rebalance / recommendation rows */
-.copy-trade-btn { background: none; border: 1px solid var(--border); color: var(--text-muted);
-  border-radius: 6px; padding: 2px 7px; font-size: 11px; cursor: pointer; line-height: 1.4; }
-.copy-trade-btn:hover { color: var(--text); border-color: var(--border-light); }
+/* open-in-Claude trade button on Rebalance / recommendation rows */
+.trade-btn { display: inline-block; background: none; border: 1px solid var(--border);
+  color: var(--text-muted); border-radius: 6px; padding: 2px 8px; font-size: 11px;
+  cursor: pointer; line-height: 1.4; text-decoration: none; }
+.trade-btn:hover { color: var(--accent-light); border-color: var(--border-light); text-decoration: none; }
 .score-cell { display: flex; align-items: center; gap: 6px; justify-content: flex-end; }
 .score-bar { width: 54px; height: 5px; border-radius: 3px; background: rgba(123,130,160,0.18); overflow: hidden; flex-shrink: 0; }
 .score-bar > div { height: 100%; border-radius: 3px; }
@@ -1263,7 +1264,7 @@ th.tenh-sortable:hover { color: var(--text); }
     <div class="table-panel">
       <div class="table-wrapper">
         <table>
-          <thead><tr><th title="Copy a ready /trade command"></th><th style="text-align:left;">Ticker</th><th style="text-align:left;">Held</th><th style="text-align:left;">Action</th><th style="text-align:left;">Urgency</th><th style="text-align:left;">Rationale</th></tr></thead>
+          <thead><tr><th title="Open in Claude Code with this trade pre-filled"></th><th style="text-align:left;">Ticker</th><th style="text-align:left;">Held</th><th style="text-align:left;">Action</th><th style="text-align:left;">Urgency</th><th style="text-align:left;">Rationale</th></tr></thead>
           <tbody id="recs-tbody"><tr class="empty-row"><td colspan="6">Awaiting micro data</td></tr></tbody>
         </table>
       </div>
@@ -1276,7 +1277,7 @@ th.tenh-sortable:hover { color: var(--text); }
       </div>
       <div class="table-wrapper">
         <table>
-          <thead><tr><th style="text-align:left;">Side</th><th style="text-align:left;">Ticker</th><th style="text-align:left;">Qty (~$)</th><th style="text-align:left;">Why</th><th title="Copy a ready /trade command"></th></tr></thead>
+          <thead><tr><th title="Open in Claude Code with this trade pre-filled"></th><th style="text-align:left;">Side</th><th style="text-align:left;">Ticker</th><th style="text-align:left;">Qty (~$)</th><th style="text-align:left;">Why</th></tr></thead>
           <tbody id="trades-tbody"><tr class="empty-row"><td colspan="5">Awaiting micro data</td></tr></tbody>
         </table>
       </div>
@@ -1740,8 +1741,8 @@ function renderPicks() {
   if (rt) {
     const recs = micro.recommendations || [];
     const urgCol = { high: 'var(--red)', medium: '#eab308', low: 'var(--text-muted)', none: 'var(--text-dim)' };
-    rt.innerHTML = recs.length ? recs.map((r, i) =>
-      `<tr><td><button class="copy-trade-btn" title="Copy a ready /trade command" onclick="copyRecoCmd(event, ${i})">⧉</button></td>`
+    rt.innerHTML = recs.length ? recs.map(r =>
+      `<tr><td>${tradeBtn(recoTradeHref(r))}</td>`
       + `<td style="text-align:left;font-weight:700;">${r.ticker}</td>`
       + `<td style="text-align:left;">${r.held ? `<span class="pick-badge ${r.held}">${r.held.toUpperCase()}</span>` : '<span class="pick-badge new">NEW</span>'}</td>`
       + `<td style="text-align:left;font-weight:600;">${esc(r.action)}</td>`
@@ -1753,13 +1754,13 @@ function renderPicks() {
   const tt = document.getElementById('trades-tbody');
   if (tt) {
     const trades = micro.tradeList || [];
-    tt.innerHTML = trades.length ? trades.map((t, i) => {
+    tt.innerHTML = trades.length ? trades.map(t => {
       const buy = t.side.startsWith('BUY');
-      return `<tr><td style="text-align:left;font-weight:600;color:${buy ? 'var(--green)' : 'var(--red)'};">${t.side}</td>`
+      return `<tr><td>${tradeBtn(tlTradeHref(t))}</td>`
+        + `<td style="text-align:left;font-weight:600;color:${buy ? 'var(--green)' : 'var(--red)'};">${t.side}</td>`
         + `<td style="text-align:left;font-weight:700;">${t.ticker}</td>`
         + `<td style="text-align:left;">${t.qty}</td>`
-        + `<td style="text-align:left;font-size:11px;color:var(--text-muted);">${esc(t.why)}</td>`
-        + `<td><button class="copy-trade-btn" title="Copy a ready /trade command" onclick="copyTradeListCmd(event, ${i})">⧉</button></td></tr>`;
+        + `<td style="text-align:left;font-size:11px;color:var(--text-muted);">${esc(t.why)}</td></tr>`;
     }).join('') : '<tr class="empty-row"><td colspan="5">No trades proposed</td></tr>';
   }
 
@@ -3263,7 +3264,7 @@ function renderRebalance() {
       </div>
       <div class="table-wrapper"><table>
         <thead><tr>
-          <th title="Copy a ready /trade command"></th>
+          <th title="Open in Claude Code with this trade pre-filled"></th>
           <th style="text-align:left;">#</th><th style="text-align:left;">Ticker</th>
           <th style="text-align:left;">Your rec</th><th>Held</th>
           <th>Comp</th><th style="text-align:left;">Analyst</th><th>Mom 50/200</th><th>Bias</th><th>Trad</th>
@@ -3271,7 +3272,7 @@ function renderRebalance() {
         </tr></thead>
         <tbody>${rows.map(r => { const ex = rebalanceExpanded === r.ticker; return `
           <tr onclick="toggleRebalanceDetail('${r.ticker}')" style="cursor:pointer;">
-            <td><button class="copy-trade-btn" title="Copy a ready /trade command" onclick="copyRebalCmd(event, ${r.n})">⧉</button></td>
+            <td>${tradeBtn(rebalTradeHref(r))}</td>
             <td style="color:var(--text-muted);">${r.n}</td>
             <td style="text-align:left;font-weight:700;"><span style="color:var(--text-dim);font-weight:400;font-size:11px;">${ex ? '▾' : '▸'}</span> ${esc(r.ticker)}</td>
             <td style="text-align:left;">${r.dollar != null ? sideBadge(r.side) + ' · $' + r.dollar + ' · ' + r.target : '<span style="color:var(--text-muted);">— not in table</span>'}</td>
@@ -3873,36 +3874,32 @@ function chartOpts(yLabel, unit = null) {   // unit: '$' | '%' | null (bare numb
 // ═══════════════════════════════════════════ ORDERS ══
 // Order-instruction audit trail (data/orders.jsonl, written by
 // scripts/order_log.py from the /trade workflow — see CLAUDE.md "Trading").
-// The ⧉ buttons on Rebalance/recommendation rows copy a ready-to-paste /trade
-// command carrying the trigger row + its rationale as the reason seed — the
-// static site can't place orders, so the handoff to a Claude session is a copy.
-function copyTradeCommand(ev, text) {
-  ev.stopPropagation();               // rebalance rows toggle detail on click
-  const btn = ev.currentTarget;
-  const done = ok => { const t = btn.textContent; btn.textContent = ok ? '✓' : '✗'; setTimeout(() => { btn.textContent = t; }, 1200); };
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(() => done(true), () => done(false));
-  } else {                            // http://localhost etc. — no async clipboard
-    const ta = document.createElement('textarea');
-    ta.value = text; document.body.appendChild(ta); ta.select();
-    let ok = false; try { ok = document.execCommand('copy'); } catch (e) { /* stays false */ }
-    document.body.removeChild(ta); done(ok);
-  }
+// The ▶ buttons on Rebalance/recommendation rows deep-link into Claude Code
+// (documented: claude.ai/code?prompt=…&repositories=…): a new session opens on
+// this repo with the /trade command pre-filled — the owner reviews and presses
+// Enter, then the guarded /trade workflow takes over. The static site itself
+// never places an order. The command carries the trigger row + its rationale
+// as the reason seed.
+function tradeHref(cmd) {
+  return esc('https://claude.ai/code?prompt=' + encodeURIComponent(cmd)
+    + '&repositories=Theylon/metallica-dashboard');
 }
-function copyRebalCmd(ev, n) {
-  const r = (rebalance.rows || []).find(x => x.n === n) || {};
+function tradeBtn(href) {
+  return `<a class="trade-btn" href="${href}" target="_blank" rel="noopener" `
+    + `title="Open a Claude Code session with this trade pre-filled" `
+    + `onclick="event.stopPropagation()">▶</a>`;
+}
+function rebalTradeHref(r) {
   const side = r.side === 'L' ? 'LONG' : 'SHORT';
-  copyTradeCommand(ev, `/trade ${r.ticker} — מהריבאלנס שורה ${n}: ${side}`
+  return tradeHref(`/trade ${r.ticker} — מהריבאלנס שורה ${r.n}: ${side}`
     + (r.dollar != null ? ` ~$${r.dollar}` : '') + ` · ${r.callTag || ''} (${r.trade || '—'}). סיבה: ${r.callText || ''}`);
 }
-function copyRecoCmd(ev, i) {
-  const r = (micro.recommendations || [])[i] || {};
-  copyTradeCommand(ev, `/trade ${r.ticker} — בצע את ההמלצה: ${r.action}`
+function recoTradeHref(r) {
+  return tradeHref(`/trade ${r.ticker} — בצע את ההמלצה: ${r.action}`
     + (r.urgency ? ` (דחיפות ${r.urgency})` : '') + `. סיבה: ${r.rationale || ''}`);
 }
-function copyTradeListCmd(ev, i) {
-  const t = (micro.tradeList || [])[i] || {};
-  copyTradeCommand(ev, `/trade ${t.ticker} — ${t.side} ${t.qty} מרשימת הטריידים של ההמלצות. סיבה: ${t.why || ''}`);
+function tlTradeHref(t) {
+  return tradeHref(`/trade ${t.ticker} — ${t.side} ${t.qty} מרשימת הטריידים של ההמלצות. סיבה: ${t.why || ''}`);
 }
 function setOrdSearch(v) { ordSearch = v.trim().toUpperCase(); renderOrdersTable(); }
 function setOrdStatus(v) { ordStatus = v; renderOrdersTable(); }
