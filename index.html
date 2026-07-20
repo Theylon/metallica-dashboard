@@ -407,6 +407,26 @@ td:first-child { text-align: left; }
 .subscore { display: flex; align-items: center; gap: 5px; font-size: 10.5px; color: var(--text-muted); }
 .subscore .score-bar { width: 40px; }
 
+/* ── Clickable ticker → unified stock detail modal ──────────────────── */
+/* Any ticker cell in any table becomes a link into the "everything we know
+   about this name" modal. The cell gets the pointer; the symbol text gets the
+   dotted-underline hint so the affordance reads without recolouring the cell. */
+.stk-cell { cursor: pointer; }
+.stk-link { text-decoration: underline dotted var(--border-light); text-underline-offset: 3px; }
+.stk-cell:hover .stk-link, .stk-link:hover { text-decoration-style: solid; text-decoration-color: var(--accent); color: var(--accent-light); }
+.stk-modal { position: fixed; inset: 0; z-index: 1000; display: none; align-items: flex-start; justify-content: center; background: rgba(0,0,0,0.55); backdrop-filter: blur(4px); padding: 40px 16px; overflow: auto; }
+.stk-modal.open { display: flex; }
+.stk-modal-box { width: min(780px, 100%); background: var(--card); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 24px 80px rgba(0,0,0,0.55); max-height: calc(100vh - 80px); display: flex; flex-direction: column; }
+.stk-modal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--card); border-radius: 16px 16px 0 0; }
+.stk-modal-title { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; }
+.stk-modal-close { background: none; border: 1px solid var(--border); color: var(--text-muted); width: 30px; height: 30px; border-radius: 8px; cursor: pointer; font-size: 15px; flex-shrink: 0; }
+.stk-modal-close:hover { color: var(--text); border-color: var(--text-muted); }
+.stk-modal-body { padding: 14px 20px 22px; overflow: auto; }
+.stk-subtable { overflow-x: auto; margin-top: 6px; }
+.stk-subtable table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.stk-subtable th { text-align: center; color: var(--text-muted); font-weight: 600; padding: 4px 8px; border-bottom: 1px solid var(--border); font-size: 10.5px; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+.stk-subtable td { text-align: center; padding: 4px 8px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+
 /* ── Benchmark Table ────────────────────────────────────────────────── */
 .bm-table-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border); }
 .bm-name { display: flex; align-items: center; gap: 6px; }
@@ -1689,7 +1709,10 @@ async function loadData() {
     journal = jrnRes || {};
     signalScorecard = sigRes || {};
 
+    buildStockIndex();
     renderAll();
+    initStockDetail();
+    requestAnimationFrame(markTickerCells);
     updateMetaBadges(accRes.updatedAt);
     const errBadge = document.getElementById('load-error-badge');
     if (errBadge) errBadge.style.display = 'none';
@@ -1933,6 +1956,274 @@ function buildPickDetail(r) {
   const ev = (r.evidence || []).map(e => `• <b>${esc(e.source)}</b> (${esc(e.date)}): ${esc(e.note)}`).join('<br>');
   out += section('Evidence', ev);
   return out;
+}
+
+// ═══════════════════════════ UNIFIED STOCK DETAIL ═════════════════════
+// "No matter which table I look at or click, I want to see the data I have on
+// the stock." — every ticker cell in every table is wired to open one shared
+// modal that unions everything we hold for that name across all data files.
+let STOCK_INDEX = new Set();   // every ticker we have any data for (upper-case)
+let stkMarkTimer = null;
+
+// Build the set of known tickers from every per-ticker data source. Rebuilt on
+// each loadData() so freshly-fetched names become clickable.
+function buildStockIndex() {
+  const idx = new Set();
+  const add = t => { if (t) idx.add(String(t).toUpperCase()); };
+  (positions || []).forEach(p => add(p.ticker));
+  ((micro && micro.tickers) || []).forEach(r => add(r.ticker));
+  ((micro && micro.recommendations) || []).forEach(r => add(r.ticker));
+  ((micro && micro.tradeList) || []).forEach(r => add(r.ticker));
+  ((rebalance && rebalance.rows) || []).forEach(r => add(r.ticker));
+  ((risk && risk.contributions) || []).forEach(r => add(r.ticker));
+  const j = journal || {};
+  (j.byName || []).forEach(r => add(r.ticker));
+  (j.best || []).forEach(r => add(r.ticker));
+  (j.worst || []).forEach(r => add(r.ticker));
+  ((intel && intel.technicals) || []).forEach(r => add(r.ticker));
+  ((intel && intel.analysts) || []).forEach(r => add(r.ticker));
+  ((intel && intel.research) || []).forEach(r => add(r.ticker));
+  ((altdata && altdata.items) || []).forEach(r => add(r.ticker));
+  STOCK_INDEX = idx;
+}
+
+// Gather every record we hold for one ticker.
+function stockData(tk) {
+  const T = String(tk).toUpperCase();
+  const eq = s => s != null && String(s).toUpperCase() === T;
+  const j = journal || {};
+  return {
+    ticker: T,
+    micro:   ((micro && micro.tickers) || []).find(r => eq(r.ticker)),
+    position: (positions || []).find(p => eq(p.ticker)),
+    rebal:   ((rebalance && rebalance.rows) || []).find(r => eq(r.ticker)),
+    risk:    ((risk && risk.contributions) || []).find(r => eq(r.ticker)),
+    jname:   (j.byName || []).find(r => eq(r.ticker)),
+    best:    (j.best || []).filter(r => eq(r.ticker)),
+    worst:   (j.worst || []).filter(r => eq(r.ticker)),
+    shadow:  ((j.shadow && j.shadow.items) || []).find(r => eq(r.ticker)),
+    tech:    ((intel && intel.technicals) || []).find(r => eq(r.ticker)),
+    research:((intel && intel.research) || []).filter(r => eq(r.ticker)),
+    alt:     ((altdata && altdata.items) || []).filter(r => eq(r.ticker)),
+    trades:  ((micro && micro.tradeList) || []).filter(r => eq(r.ticker)),
+  };
+}
+
+function mkSection(title, body) { return body ? `<div class="detail-section"><div class="ds-title">${title}</div>${body}</div>` : ''; }
+function mkChip(label, val) { return `<span class="detail-chip">${label}: <b>${val}</b></span>`; }
+
+function stkPosLine(p) {
+  const held = p.side === 'short' ? 'short' : 'long';
+  const uCol = (p.unrealizedPnl || 0) >= 0 ? 'var(--green)' : 'var(--red)';
+  return `<span class="pick-badge ${held}">${held.toUpperCase()}</span> ${fmt(Math.abs(p.shares), 0)} sh · avg cost ${fmtPrice(p.avgCost)} · last ${fmtPrice(p.lastPrice)} · MV ${fmtDollar(p.mktValue)}`
+    + ` · day ${fmtDollarSigned(p.dailyPnl || 0)} · unrealized <b style="color:${uCol};">${(p.unrealizedPnl >= 0 ? '+$' : '-$') + fmt(Math.abs(p.unrealizedPnl || 0), 2)}</b>`
+    + (p.realizedPnl ? ` · realized ${fmtDollarSigned(p.realizedPnl)}` : '')
+    + (p.category ? ` <span class="detail-chip">${esc(p.category)}</span>` : '');
+}
+
+function stkRiskSection(d) {
+  if (!d.risk) return '';
+  const r = d.risk;
+  return mkSection('Risk contribution (portfolio)', `<div class="detail-chips">`
+    + mkChip('Side', String(r.side || '').toUpperCase()) + mkChip('Weight', r.weightPct + '%')
+    + mkChip('Risk contribution', r.riskContribPct + '%') + mkChip('Marginal VaR', r.mVaR) + `</div>`);
+}
+
+function stkTradeHistSection(d) {
+  const rows = [...(d.best || []), ...(d.worst || [])];
+  if (!d.jname && !rows.length && !d.shadow) return '';
+  let body = '';
+  if (d.jname) {
+    const col = d.jname.realized >= 0 ? 'var(--green)' : 'var(--red)';
+    body += `<div class="detail-chips">`
+      + mkChip('Realized', `<span style="color:${col};">${fmtDollarSigned(d.jname.realized)}</span>`)
+      + mkChip('Round trips', d.jname.trades)
+      + mkChip('Win rate', Math.round((d.jname.winRate || 0) * 100) + '%')
+      + (d.jname.commodity ? mkChip('Commodity', esc(d.jname.commodity)) : '') + `</div>`;
+  }
+  if (rows.length) {
+    body += `<div class="stk-subtable"><table><thead><tr><th>Side</th><th>Qty</th><th>Entry</th><th>Exit</th><th>Realized</th><th>Return</th><th>Held</th><th>Closed</th></tr></thead><tbody>`
+      + rows.map(t => `<tr>`
+        + `<td style="color:${t.side === 'short' ? 'var(--red)' : 'var(--green)'};">${esc(String(t.side || '').toUpperCase())}</td>`
+        + `<td>${fmt(t.qty, 0)}</td><td>${fmtPrice(t.entry)}</td><td>${fmtPrice(t.exit)}</td>`
+        + `<td style="color:${t.realized >= 0 ? 'var(--green)' : 'var(--red)'};">${fmtDollarSigned(t.realized)}</td>`
+        + `<td>${t.pctReturn != null ? (t.pctReturn > 0 ? '+' : '') + Number(t.pctReturn).toFixed(1) + '%' : '—'}</td>`
+        + `<td>${t.holdDays != null ? t.holdDays + 'd' : '—'}</td><td>${esc(t.closeDate || '')}</td></tr>`).join('')
+      + `</tbody></table></div>`;
+  }
+  if (d.shadow) {
+    const sc = (d.shadow.shadowDelta || 0) >= 0 ? 'var(--green)' : 'var(--red)';
+    body += `<div style="margin-top:6px;color:var(--text-muted);font-size:11px;">Shadow (if held to now): current ${fmtPrice(d.shadow.currentPrice)} · delta <b style="color:${sc};">${fmtDollarSigned(d.shadow.shadowDelta)}</b></div>`;
+  }
+  return mkSection('Trade history — realized (Journal)', body);
+}
+
+function stkAltSection(d) {
+  return (d.alt || []).map(a => {
+    const sig = String(a.signal || 'neutral');
+    const cls = /bull|long|buy/i.test(sig) ? 'long' : /bear|short|sell/i.test(sig) ? 'short' : 'neutral';
+    let b = `<div class="detail-chips"><span class="pick-badge ${cls}">${esc(sig.toUpperCase())}</span>`
+      + (a.conviction ? mkChip('Conviction', esc(a.conviction)) : '')
+      + (a.trend ? mkChip('Trend', esc(a.trend)) : '')
+      + (a.kpi ? mkChip('KPI', esc(a.kpi)) : '')
+      + (a.asOf ? mkChip('As of', esc(a.asOf)) : '') + `</div>`;
+    if (a.narrative) b += `<div style="color:var(--text-muted);font-size:12px;line-height:1.5;">${esc(a.narrative)}</div>`;
+    const drv = (a.drivers || []).map(x => esc(typeof x === 'string' ? x : (x && (x.label || x.name)) || ''));
+    if (drv.filter(Boolean).length) b += `<div style="margin-top:4px;font-size:11px;color:var(--text-dim);">Drivers: ${drv.filter(Boolean).join(' · ')}</div>`;
+    return mkSection('Alt-data nowcast' + (a.group ? ` · ${esc(a.group)}` : ''), b);
+  }).join('');
+}
+
+function stkResearchSection(d) {
+  if (!(d.research || []).length) return '';
+  const body = d.research.map(r => `<div style="margin:6px 0;font-size:12px;line-height:1.5;">`
+    + `<b>${esc(r.headline || '')}</b> <span style="color:var(--text-dim);">— ${esc(r.source || '')}${r.date ? ' · ' + esc(r.date) : ''}</span>`
+    + (r.snippet ? `<br><span style="color:var(--text-muted);">${esc(r.snippet)}</span>` : '')
+    + (r.url ? ` <a href="${esc(r.url)}" target="_blank" rel="noopener" style="color:var(--accent-light);">↗</a>` : '')
+    + `</div>`).join('');
+  return mkSection('Research headlines', body);
+}
+
+function stkRebalSection(d) {
+  if (!d.rebal) return '';
+  const r = d.rebal;
+  const tone = { pos: 'var(--green)', warn: '#eab308', neg: 'var(--red)' };
+  let b = `<div style="font-size:12.5px;line-height:1.55;"><b style="color:${tone[r.tone] || 'var(--text)'};">${esc(r.callTag || '')}</b> ${esc(r.callText || '')}</div>`;
+  if (r.trade) b += `<div style="margin-top:4px;font-size:12px;color:${r.blocked ? 'var(--red)' : 'var(--text)'};">Trade → target: ${esc(r.trade)}${r.blocked ? ' ⚠ blocked' : ''}</div>`;
+  return mkSection('Rebalance desk call', b);
+}
+
+function stkProposedSection(d) {
+  if (!(d.trades || []).length) return '';
+  const body = d.trades.map(t => {
+    const buy = t.side && t.side.startsWith('BUY');
+    return `<span class="detail-chip"><b style="color:${buy ? 'var(--green)' : 'var(--red)'};">${esc(t.side || '')}</b> ${esc(String(t.qty))}${t.why ? ` — ${esc(t.why)}` : ''}</span>`;
+  }).join(' ');
+  return mkSection('Proposed trade tickets', `<div class="detail-chips">${body}</div>`);
+}
+
+function stkTechSection(t) {
+  if (!t) return '';
+  const chCol = (t.changePct || 0) >= 0 ? 'var(--green)' : 'var(--red)';
+  return mkSection('Technicals', `<div class="detail-chips">`
+    + mkChip('Price', t.price != null ? '$' + t.price : '—')
+    + mkChip('Day', `<span style="color:${chCol};">${t.changePct != null ? (t.changePct > 0 ? '+' : '') + t.changePct + '%' : '—'}</span>`)
+    + mkChip('50DMA', t.ma50 != null ? '$' + t.ma50 : '—')
+    + mkChip('200DMA', t.ma200 != null ? '$' + t.ma200 : '—') + `</div>`);
+}
+
+// The unified card body — reuse buildPickDetail() (the richest per-name view)
+// when the name is in the research universe, then append everything else.
+function buildStockModalBody(tk) {
+  const d = stockData(tk);
+  const hasMicroPos = d.micro && d.micro.position;
+  let out = '';
+
+  if (d.micro) {
+    out += buildPickDetail(d.micro);
+  } else {
+    const nm = (d.alt[0] && d.alt[0].name) || (d.position && d.position.description) || d.ticker;
+    const metaBits = [(d.position && d.position.category), (d.alt[0] && d.alt[0].sector), (d.jname && d.jname.commodity)].filter(Boolean);
+    out += `<b style="font-size:13px;">${esc(nm)}</b>`
+      + (metaBits.length ? ` <span style="color:var(--text-muted);">· ${esc(metaBits.join(' · '))}</span>` : '')
+      + `<div style="color:var(--text-muted);font-size:11px;margin-top:4px;">Not in the Stock-Picks research universe — showing the portfolio, risk and trading data on file.</div>`;
+  }
+
+  // live position — only if buildPickDetail didn't already render it
+  if (d.position && !hasMicroPos) out += mkSection('Live position (IBKR)', stkPosLine(d.position));
+
+  out += stkRiskSection(d) + stkTradeHistSection(d) + stkAltSection(d) + stkResearchSection(d) + stkRebalSection(d) + stkProposedSection(d);
+  if (!d.micro) out += stkTechSection(d.tech);   // micro card already carries price / vs-DMA
+
+  return out.trim() ? out : `<div style="color:var(--text-muted);">No data on file for ${esc(d.ticker)}.</div>`;
+}
+
+function ensureStockModal() {
+  if (document.getElementById('stock-modal')) return;
+  const el = document.createElement('div');
+  el.id = 'stock-modal';
+  el.className = 'stk-modal';
+  el.innerHTML = `<div class="stk-modal-box">
+      <div class="stk-modal-head">
+        <div class="stk-modal-title" id="stk-modal-title"></div>
+        <button class="stk-modal-close" onclick="closeStockModal()" aria-label="Close">✕</button>
+      </div>
+      <div class="stk-modal-body" id="stk-modal-body"></div>
+    </div>`;
+  // backdrop click closes; clicks inside the box do not
+  el.addEventListener('click', e => { if (e.target === el) closeStockModal(); });
+  document.body.appendChild(el);
+}
+
+function openStockModal(tk) {
+  if (!tk) return;
+  ensureStockModal();
+  const T = String(tk).toUpperCase();
+  const d = stockData(T);
+  const company = (d.micro && d.micro.company) || (d.alt[0] && d.alt[0].name) || (d.position && d.position.description) || '';
+  document.getElementById('stk-modal-title').innerHTML = `${esc(T)}`
+    + (company && company !== T ? ` <span style="color:var(--text-muted);font-weight:400;font-size:13px;">${esc(company)}</span>` : '');
+  document.getElementById('stk-modal-body').innerHTML = buildStockModalBody(T);
+  const m = document.getElementById('stock-modal');
+  m.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeStockModal() {
+  const m = document.getElementById('stock-modal');
+  if (m) m.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Flag every ticker cell across every table as a link. Reads a dedicated
+// `.ticker-sym` element when present (composite cells like Positions), else the
+// whole-cell text. Only processes cells not yet seen, so it's cheap to re-run.
+function normTicker(s) {
+  const t = String(s || '').replace(/[▸▾▴▿▲▼►◄⚠★☆]/g, '').trim().toUpperCase();
+  return /^[A-Z][A-Z0-9.\-]{0,6}$/.test(t) ? t : '';
+}
+// Resolve which ticker (if any) a cell represents. Tries, in order: a dedicated
+// symbol element (.ticker-sym / leading <strong>/<b>), the whole-cell text, then
+// the first token — each gated on membership in STOCK_INDEX so stray words never
+// match. Returns {t, el} where `el` is the bit to underline as the link.
+function cellTicker(td) {
+  const sym = td.querySelector('.ticker-sym, strong, b');
+  if (sym) { const t = normTicker(sym.textContent); if (STOCK_INDEX.has(t)) return { t, el: sym }; }
+  let t = normTicker(td.textContent);
+  if (STOCK_INDEX.has(t)) return { t, el: td };
+  t = normTicker((td.textContent || '').trim().split(/\s+/)[0]);
+  if (STOCK_INDEX.has(t)) return { t, el: td };
+  return null;
+}
+function markTickerCells() {
+  if (!STOCK_INDEX.size) return;
+  document.querySelectorAll('.table-wrapper tbody td:not([data-stk-done])').forEach(td => {
+    td.setAttribute('data-stk-done', '1');
+    const hit = cellTicker(td);
+    if (hit) {
+      td.dataset.stk = hit.t;
+      td.classList.add('stk-cell');
+      hit.el.classList.add('stk-link');
+    }
+  });
+}
+
+// One-time wiring: capture-phase click so a ticker cell opens the modal instead
+// of triggering its row's existing expand handler; Esc closes; a debounced
+// observer re-marks cells after any table re-renders (sort / filter / tab).
+function initStockDetail() {
+  if (window.__stkInit) return;
+  window.__stkInit = true;
+  document.addEventListener('click', e => {
+    const cell = e.target.closest && e.target.closest('[data-stk]');
+    if (!cell) return;
+    e.stopPropagation();
+    e.preventDefault();
+    openStockModal(cell.dataset.stk);
+  }, true);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeStockModal(); });
+  new MutationObserver(() => { clearTimeout(stkMarkTimer); stkMarkTimer = setTimeout(markTickerCells, 120); })
+    .observe(document.body, { childList: true, subtree: true });
 }
 
 function renderPicksTable() {
