@@ -3273,10 +3273,15 @@ function renderRebalance() {
   if (!rows.length) { el.innerHTML = uploader + '<div class="table-panel" style="padding:24px;color:var(--text-muted);">Awaiting rebalance data</div>'; return; }
   const tone = { pos: '#22c55e', warn: '#eab308', neg: '#ef4444' };
   const verd = { bull: '#22c55e', bear: '#ef4444', neut: '#eab308', new: '#38bdf8' };
-  const sideBadge = s => s === 'L'
-    ? '<span style="color:#22c55e;font-weight:600;">LONG</span>'
-    : '<span style="color:#ef4444;font-weight:600;">SHORT</span>';
   const biasColor = b => { const n = parseFloat(String(b).replace('−', '-')); return (isNaN(n) || n === 0) ? 'var(--text-muted)' : n > 0 ? '#22c55e' : '#ef4444'; };
+  const sideChip = s => s === 'L' ? '<span class="pick-badge long">LONG</span>' : s === 'S' ? '<span class="pick-badge short">SHORT</span>' : '<span class="pick-badge new">NEW</span>';
+  // "S/6" → {side:'S', shares:-6}; "L/116" → {side:'L', shares:116}; null → none.
+  const parseHeld = h => { const m = h ? String(h).match(/^\s*([LS])\s*\/\s*(-?\d+(?:\.\d+)?)/i) : null; if (!m) return { side: null, shares: 0 }; const sh = Math.abs(parseFloat(m[2])); return { side: m[1].toUpperCase(), shares: m[1].toUpperCase() === 'S' ? -sh : sh }; };
+  // Holdings + the reconciled %NAV column read the live book; they degrade to — for names
+  // not held (foreign shorts, or BEP-in-proposal vs BEPC-in-book), never a wrong match.
+  const posByTicker = new Map((positions || []).map(p => [String(p.ticker).toUpperCase(), p]));
+  const navBase = (account && account.nav) || (positions || []).reduce((s, p) => s + Math.abs(p.mktValue), 0);
+  const rebNav = d.nav || navBase;
 
   const head = `
     <div class="table-panel" style="margin-bottom:16px;">
@@ -3290,37 +3295,116 @@ function renderRebalance() {
       </ol>
     </div>`;
 
-  const tbl = `
-    <div class="table-panel" style="margin-bottom:16px;">
+  // ── Table 1 · Holdings (the live book) ────────────────────────────
+  const book = (positions || []).filter(p => Math.abs(p.shares) > 0)
+    .slice().sort((a, b) => Math.abs(b.mktValue) - Math.abs(a.mktValue));
+  const nLong = book.filter(p => p.side === 'long').length;
+  const nShort = book.filter(p => p.side === 'short').length;
+  const holdingsBody = book.length ? book.map(p => {
+    const w = navBase ? Math.abs(p.mktValue) / navBase * 100 : 0;
+    const dp = p.dailyPnl || 0;
+    return `<tr>
+      <td style="text-align:left;font-weight:700;">${esc(p.ticker)}</td>
+      <td style="text-align:left;"><span class="pick-badge ${p.side}">${p.side === 'short' ? 'SHORT' : 'LONG'}</span></td>
+      <td>${signedShares(p)}</td>
+      <td>${fmtDollar(Math.abs(p.mktValue))}</td>
+      <td>${w.toFixed(1)}%</td>
+      <td style="color:${dp > 0 ? '#22c55e' : dp < 0 ? '#ef4444' : 'var(--text-muted)'};">${fmtDollarSigned(dp)}</td>
+      <td style="text-align:left;color:var(--text-dim);font-size:12px;">${esc(p.category || '—')}</td>
+    </tr>`;
+  }).join('') : '<tr><td colspan="7" style="color:var(--text-muted);padding:18px;">Awaiting live positions</td></tr>';
+  const holdingsPanel = `
+    <div class="table-panel" style="margin-bottom:0;">
       <div class="table-header">
-        <div class="table-title">Per-name review &amp; trades (${rows.length})</div>
-        <div style="font-size:11px;color:var(--text-muted);max-width:54%;text-align:right;line-height:1.45;">${esc(d.keyNote || '')}</div>
+        <div class="table-title">Holdings — live book (${book.length})</div>
+        <div style="font-size:11px;color:var(--text-muted);">${nLong} long · ${nShort} short · NAV ${fmtDollar(navBase)}</div>
       </div>
       <div class="table-wrapper"><table>
-        <thead><tr>
-          <th title="Open in Claude Code with this trade pre-filled"></th>
-          <th style="text-align:left;">#</th><th style="text-align:left;">Ticker</th>
-          <th style="text-align:left;">Your rec</th><th>Held</th>
-          <th>Comp</th><th style="text-align:left;">Analyst</th><th>Mom 50/200</th><th>Bias</th><th>Trad</th>
-          <th style="text-align:left;">My call (sharpened)</th><th style="text-align:left;">Trade &rarr; your target</th>
-        </tr></thead>
-        <tbody>${rows.map(r => { const ex = rebalanceExpanded === r.ticker; return `
-          <tr onclick="toggleRebalanceDetail('${r.ticker}')" style="cursor:pointer;">
-            <td>${tradeBtn(rebalTradeHref(r))}</td>
-            <td style="color:var(--text-muted);">${r.n}</td>
-            <td style="text-align:left;font-weight:700;"><span style="color:var(--text-dim);font-weight:400;font-size:11px;">${ex ? '▾' : '▸'}</span> ${esc(r.ticker)}</td>
-            <td style="text-align:left;">${r.dollar != null ? sideBadge(r.side) + ' · $' + r.dollar + ' · ' + r.target : '<span style="color:var(--text-muted);">— not in table</span>'}</td>
-            <td>${r.held ? esc(r.held) : '<span style="color:var(--text-muted);">—</span>'}</td>
-            <td style="font-weight:600;color:${r.comp != null ? scoreColor(r.comp) : 'var(--text-muted)'};">${r.comp != null ? r.comp : '—'}<span style="font-weight:400;font-size:11px;color:${verd[r.verdict] || 'var(--text-muted)'};"> ${esc(r.verdict || '')}</span></td>
-            <td style="text-align:left;font-size:12px;">${esc(r.analyst || '—')}</td>
-            <td style="font-size:12px;">${esc(r.mom || '—')}</td>
-            <td style="color:${biasColor(r.bias)};white-space:nowrap;">${esc(r.metal || '')} ${esc(r.bias || '')}</td>
-            <td style="font-weight:700;color:${r.tradable ? '#22c55e' : '#ef4444'};">${r.tradable ? 'Y' : 'N'}</td>
-            <td style="text-align:left;"><span style="font-weight:700;color:${tone[r.tone] || 'var(--text)'};">${esc(r.callTag)}</span> <span style="color:var(--text-dim);font-size:12px;">— ${esc(r.callText)}</span></td>
-            <td style="text-align:left;font-size:12px;white-space:nowrap;color:${r.blocked ? '#ef4444' : (r.tradeType === 'cover' ? '#38bdf8' : 'var(--text)')};">${esc(r.trade)}${r.blocked ? ' ⚠' : ''}</td>
-          </tr>${ex ? `<tr><td colspan="12" style="padding:0;background:rgba(0,0,0,0.15);border-top:2px solid var(--accent);">${buildRebalanceDetail(r)}</td></tr>` : ''}`; }).join('')}</tbody>
+        <thead><tr><th style="text-align:left;">Ticker</th><th style="text-align:left;">Side</th><th>Shares</th><th>Mkt $</th><th>%NAV</th><th>Day P&amp;L</th><th style="text-align:left;">Category</th></tr></thead>
+        <tbody>${holdingsBody}</tbody>
       </table></div>
     </div>`;
+
+  // ── Table 2 · Changes (proposed target vs current, with deltas) ───
+  const changesBody = rows.map(r => {
+    const cur = parseHeld(r.held);
+    const tgtSh = r.side === 'L' ? Math.abs(r.target || 0) : -Math.abs(r.target || 0);
+    const dSh = tgtSh - cur.shares;                       // + = net buy, − = net sell
+    const tgtPct = (r.dollar != null && rebNav) ? (r.dollar / rebNav * 100) : null;
+    const live = posByTicker.get(String(r.ticker).toUpperCase());
+    const curPct = (live && navBase) ? Math.abs(live.mktValue) / navBase * 100 : null;
+    const dColor = dSh > 0 ? '#22c55e' : dSh < 0 ? '#ef4444' : 'var(--text-muted)';
+    return `<tr>
+      <td style="text-align:left;font-weight:700;">${esc(r.ticker)}</td>
+      <td style="text-align:left;">${r.held ? sideChip(cur.side) + ' ' + Math.abs(cur.shares) : '<span style="color:var(--text-muted);">— none</span>'}</td>
+      <td style="text-align:left;">${r.dollar != null ? sideChip(r.side) + ' ' + r.target : '<span style="color:var(--text-muted);">—</span>'}</td>
+      <td>${r.dollar != null ? fmtDollar(r.dollar) : '—'}</td>
+      <td style="color:${dColor};font-weight:${dSh !== 0 ? 600 : 400};">${dSh > 0 ? '+' : ''}${fmt(dSh, 0)}</td>
+      <td>${tgtPct != null ? tgtPct.toFixed(1) + '%' : '—'}</td>
+      <td style="color:var(--text-dim);">${curPct != null ? curPct.toFixed(1) + '%' : '—'}</td>
+    </tr>`;
+  }).join('');
+  const changesPanel = `
+    <div class="table-panel" style="margin-bottom:0;">
+      <div class="table-header">
+        <div class="table-title">Changes — target vs current (${rows.length})</div>
+        <div style="font-size:11px;color:var(--text-muted);">as of ${esc(d.asOf || '')} · Δ = shares to trade</div>
+      </div>
+      <div class="table-wrapper"><table>
+        <thead><tr><th style="text-align:left;">Ticker</th><th style="text-align:left;">Current</th><th style="text-align:left;">Target</th><th>Target $</th><th>Δ Shares</th><th>Target %NAV</th><th>Cur %NAV</th></tr></thead>
+        <tbody>${changesBody}</tbody>
+      </table></div>
+    </div>`;
+
+  // ── Table 3 · Orders (executable trades that realize the changes) ─
+  const orderRows = rows.filter(r => r.tradeType && r.tradeType !== 'none');
+  const nBlocked = orderRows.filter(r => r.blocked).length;
+  const ordersBody = orderRows.length ? orderRows.map(r => `<tr>
+      <td>${tradeBtn(rebalTradeHref(r))}</td>
+      <td style="text-align:left;font-weight:700;">${esc(r.ticker)}</td>
+      <td style="text-align:left;color:${r.blocked ? '#ef4444' : (r.tradeType === 'cover' ? '#38bdf8' : 'var(--text)')};">${esc(r.trade || '—')}</td>
+      <td style="text-align:left;"><span class="pick-badge neutral">${esc((r.tradeType || '').toUpperCase())}</span></td>
+      <td style="font-weight:700;color:${r.tradable ? '#22c55e' : '#ef4444'};">${r.tradable ? 'Y' : 'N'}</td>
+      <td style="text-align:left;color:${r.blocked ? '#ef4444' : 'var(--text-muted)'};">${r.blocked ? 'BLOCKED ⚠' : '—'}</td>
+    </tr>`).join('') : '<tr><td colspan="6" style="color:var(--text-muted);padding:18px;">No orders in this proposal</td></tr>';
+  const ordersPanel = `
+    <div class="table-panel" style="margin-bottom:0;">
+      <div class="table-header">
+        <div class="table-title">Orders — trades to place (${orderRows.length})</div>
+        <div style="font-size:11px;color:var(--text-muted);">${nBlocked} blocked · ▶ opens a pre-filled /trade</div>
+      </div>
+      <div class="table-wrapper"><table>
+        <thead><tr><th title="Open a pre-filled /trade"></th><th style="text-align:left;">Ticker</th><th style="text-align:left;">Order</th><th style="text-align:left;">Type</th><th>Tradable</th><th style="text-align:left;">Blocked</th></tr></thead>
+        <tbody>${ordersBody}</tbody>
+      </table></div>
+    </div>`;
+
+  // ── Table 4 · Recommendations (the data read on each order) ───────
+  const recsBody = orderRows.length ? orderRows.map(r => { const ex = rebalanceExpanded === r.ticker; return `
+      <tr onclick="toggleRebalanceDetail('${r.ticker}')" style="cursor:pointer;">
+        <td style="text-align:left;font-weight:700;"><span style="color:var(--text-dim);font-weight:400;font-size:11px;">${ex ? '▾' : '▸'}</span> ${esc(r.ticker)}</td>
+        <td style="font-weight:600;color:${r.comp != null ? scoreColor(r.comp) : 'var(--text-muted)'};">${r.comp != null ? r.comp : '—'}<span style="font-weight:400;font-size:11px;color:${verd[r.verdict] || 'var(--text-muted)'};"> ${esc(r.verdict || '')}</span></td>
+        <td style="text-align:left;font-size:12px;">${esc(r.analyst || '—')}</td>
+        <td style="font-size:12px;">${esc(r.mom || '—')}</td>
+        <td style="color:${biasColor(r.bias)};white-space:nowrap;">${esc(r.metal || '')} ${esc(r.bias || '')}</td>
+        <td style="text-align:left;"><span style="font-weight:700;color:${tone[r.tone] || 'var(--text)'};">${esc(r.callTag)}</span> <span style="color:var(--text-dim);font-size:12px;">— ${esc(r.callText)}</span></td>
+      </tr>${ex ? `<tr><td colspan="6" style="padding:0;background:rgba(0,0,0,0.15);border-top:2px solid var(--accent);">${buildRebalanceDetail(r)}</td></tr>` : ''}`; }).join('') : '<tr><td colspan="6" style="color:var(--text-muted);padding:18px;">No orders to review</td></tr>';
+  const recsPanel = `
+    <div class="table-panel" style="margin-bottom:0;">
+      <div class="table-header">
+        <div class="table-title">Recommendations — data read on the orders (${orderRows.length})</div>
+        <div style="font-size:11px;color:var(--text-muted);max-width:58%;text-align:right;line-height:1.4;">${esc(d.keyNote || '')}</div>
+      </div>
+      <div class="table-wrapper"><table>
+        <thead><tr><th style="text-align:left;">Ticker</th><th>Comp</th><th style="text-align:left;">Analyst</th><th>Mom 50/200</th><th>Bias</th><th style="text-align:left;">My call (sharpened)</th></tr></thead>
+        <tbody>${recsBody}</tbody>
+      </table></div>
+    </div>`;
+
+  // ── 2×2 grid: Holdings | Changes  /  Orders | Recommendations ─────
+  const grid = `
+    <div class="two-col" style="align-items:start;margin-bottom:16px;">${holdingsPanel}${changesPanel}</div>
+    <div class="two-col" style="align-items:start;margin-bottom:16px;">${ordersPanel}${recsPanel}</div>`;
 
   const sum = d.summary || {};
   const sumHtml = `
@@ -3332,7 +3416,7 @@ function renderRebalance() {
       <div style="padding:6px;color:var(--text-muted);font-size:11px;">Analysis, not investment advice. Verify live borrow/quotes in IBKR before any order.</div>
     </div>`;
 
-  el.innerHTML = uploader + head + tbl + sumHtml;
+  el.innerHTML = uploader + head + grid + sumHtml;
 }
 
 // ── Rebalance → upload a book and analyse it here ───────────────────
