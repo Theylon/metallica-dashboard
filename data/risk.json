@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-20T07:58:04+00:00",
+ "updatedAt": "2026-07-20T08:26:33+00:00",
  "asOf": "2026-07-20",
  "window": 90,
  "obs": 21,
@@ -7,8 +7,8 @@
   "annVol": 18.5,
   "betaSpy": 0.66,
   "betaXme": 0.19,
-  "var1d95": -235,
-  "var1d99": -456,
+  "var1d95": -234,
+  "var1d99": -455,
   "hhi": 577.0,
   "effectiveN": 17.3
  },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$235",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$456)",
+   "v": "-$234",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$455)",
    "tone": "neg"
   },
   {
@@ -802,14 +802,14 @@
    "ticker": "SBSW",
    "side": "short",
    "weightPct": -2.3,
-   "riskContribPct": 8.5,
+   "riskContribPct": 8.6,
    "mVaR": 14.0
   },
   {
    "ticker": "BATT",
    "side": "short",
    "weightPct": -3.4,
-   "riskContribPct": 6.8,
+   "riskContribPct": 6.7,
    "mVaR": 11.0
   },
   {
@@ -824,14 +824,14 @@
    "side": "short",
    "weightPct": -1.6,
    "riskContribPct": 6.4,
-   "mVaR": 10.4
+   "mVaR": 10.5
   },
   {
    "ticker": "AG",
    "side": "short",
    "weightPct": -1.5,
    "riskContribPct": 5.6,
-   "mVaR": 9.1
+   "mVaR": 9.2
   },
   {
    "ticker": "HL",
@@ -858,7 +858,7 @@
    "ticker": "LIT",
    "side": "short",
    "weightPct": -3.1,
-   "riskContribPct": 4.9,
+   "riskContribPct": 4.8,
    "mVaR": 7.9
   },
   {
@@ -866,7 +866,7 @@
    "side": "short",
    "weightPct": -1.8,
    "riskContribPct": 4.7,
-   "mVaR": 7.8
+   "mVaR": 7.7
   },
   {
    "ticker": "PAAS",
@@ -927,7 +927,7 @@
   {
    "ticker": "CENX",
    "side": "short",
-   "weightPct": -1.1,
+   "weightPct": -1.2,
    "riskContribPct": 2.4,
    "mVaR": 3.9
   },
@@ -948,7 +948,7 @@
   {
    "ticker": "SGML",
    "side": "long",
-   "weightPct": 2.2,
+   "weightPct": 2.3,
    "riskContribPct": -2.7,
    "mVaR": -4.4
   },
