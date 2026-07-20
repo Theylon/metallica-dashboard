@@ -3560,15 +3560,12 @@ function buildRebalanceDetail(r) {
   out += '</div>';
   return out;
 }
-function renderRebalance() {
-  const el = document.getElementById('rebalance-content');
-  if (!el) return;
-  const d = rebalance || {};
-  const rows = d.rows || [];
-  const uploader = buildPositionsUploader();
-  // An uploaded book replaces the default proposed table with an analysis of those names.
-  if (rebalUpload) { el.innerHTML = uploader + buildRebalanceAnalysisShell(); renderRebalAnalysisRows(); return; }
-  if (!rows.length) { el.innerHTML = uploader + '<div class="table-panel" style="padding:24px;color:var(--text-muted);">Awaiting rebalance data</div>'; return; }
+// Builds the 2×2 grid (Holdings live book + Changes/Orders/Recommendations from `rows`).
+// `rows` are in rebalance.json row shape; used for both the default proposal and an
+// uploaded target book (via rebalRowsFromUpload). opts: {nav, asOf, keyNote, tradeHref}.
+function buildRebalGrid(rows, o) {
+  o = o || {};
+  rows = rows || [];
   const tone = { pos: '#22c55e', warn: '#eab308', neg: '#ef4444' };
   const verd = { bull: '#22c55e', bear: '#ef4444', neut: '#eab308', new: '#38bdf8' };
   const biasColor = b => { const n = parseFloat(String(b).replace('−', '-')); return (isNaN(n) || n === 0) ? 'var(--text-muted)' : n > 0 ? '#22c55e' : '#ef4444'; };
@@ -3579,19 +3576,8 @@ function renderRebalance() {
   // not held (foreign shorts, or BEP-in-proposal vs BEPC-in-book), never a wrong match.
   const posByTicker = new Map((positions || []).map(p => [String(p.ticker).toUpperCase(), p]));
   const navBase = (account && account.nav) || (positions || []).reduce((s, p) => s + Math.abs(p.mktValue), 0);
-  const rebNav = d.nav || navBase;
-
-  const head = `
-    <div class="table-panel" style="margin-bottom:16px;">
-      <div class="table-header">
-        <div class="table-title">${esc(d.title || 'Rebalance')}</div>
-        <div style="font-size:12px;color:var(--text-muted);">as of ${esc(d.asOf || '')} · NAV ${d.nav != null ? fmtDollar(d.nav) : '—'}</div>
-      </div>
-      <div style="padding:2px 4px 10px;color:var(--text-dim);font-size:13px;line-height:1.5;">${esc(d.subtitle || '')}</div>
-      <ol style="margin:0 0 4px;padding-left:20px;color:var(--text-dim);font-size:12.5px;line-height:1.65;">
-        ${(d.headlines || []).map(h => `<li>${esc(h)}</li>`).join('')}
-      </ol>
-    </div>`;
+  const rebNav = (o.nav != null ? o.nav : navBase);
+  const tradeHrefFn = o.tradeHref || rebalTradeHref;
 
   // ── Table 1 · Holdings (the live book) ────────────────────────────
   const book = (positions || []).filter(p => Math.abs(p.shares) > 0)
@@ -3646,7 +3632,7 @@ function renderRebalance() {
     <div class="table-panel" style="margin-bottom:0;">
       <div class="table-header">
         <div class="table-title">Changes — target vs current (${rows.length})</div>
-        <div style="font-size:11px;color:var(--text-muted);">as of ${esc(d.asOf || '')} · Δ = shares to trade</div>
+        <div style="font-size:11px;color:var(--text-muted);">as of ${esc(o.asOf || '')} · Δ = shares to trade</div>
       </div>
       <div class="table-wrapper"><table>
         <thead><tr><th style="text-align:left;">Ticker</th><th style="text-align:left;">Current</th><th style="text-align:left;">Target</th><th>Target $</th><th>Δ Shares</th><th>Target %NAV</th><th>Cur %NAV</th></tr></thead>
@@ -3658,7 +3644,7 @@ function renderRebalance() {
   const orderRows = rows.filter(r => r.tradeType && r.tradeType !== 'none');
   const nBlocked = orderRows.filter(r => r.blocked).length;
   const ordersBody = orderRows.length ? orderRows.map(r => `<tr>
-      <td>${tradeBtn(rebalTradeHref(r))}</td>
+      <td>${tradeBtn(tradeHrefFn(r))}</td>
       <td style="text-align:left;font-weight:700;">${esc(r.ticker)}</td>
       <td style="text-align:left;color:${r.blocked ? '#ef4444' : (r.tradeType === 'cover' ? '#38bdf8' : 'var(--text)')};">${esc(r.trade || '—')}</td>
       <td style="text-align:left;"><span class="pick-badge neutral">${esc((r.tradeType || '').toUpperCase())}</span></td>
@@ -3691,7 +3677,7 @@ function renderRebalance() {
     <div class="table-panel" style="margin-bottom:0;">
       <div class="table-header">
         <div class="table-title">Recommendations — data read on the orders (${orderRows.length})</div>
-        <div style="font-size:11px;color:var(--text-muted);max-width:58%;text-align:right;line-height:1.4;">${esc(d.keyNote || '')}</div>
+        <div style="font-size:11px;color:var(--text-muted);max-width:58%;text-align:right;line-height:1.4;">${esc(o.keyNote || '')}</div>
       </div>
       <div class="table-wrapper"><table>
         <thead><tr><th style="text-align:left;">Ticker</th><th>Comp</th><th style="text-align:left;">Analyst</th><th>Mom 50/200</th><th>Bias</th><th style="text-align:left;">My call (sharpened)</th></tr></thead>
@@ -3703,7 +3689,43 @@ function renderRebalance() {
   const grid = `
     <div class="two-col" style="align-items:start;margin-bottom:16px;">${holdingsPanel}${changesPanel}</div>
     <div class="two-col" style="align-items:start;margin-bottom:16px;">${ordersPanel}${recsPanel}</div>`;
+  return grid;
+}
 
+function renderRebalance() {
+  const el = document.getElementById('rebalance-content');
+  if (!el) return;
+  const d = rebalance || {};
+  const rows = d.rows || [];
+  const uploader = buildPositionsUploader();
+  // An uploaded book is treated as the TARGET and reconciled against the live book,
+  // then rendered through the SAME 2×2 grid as the default proposed rebalance.
+  if (rebalUpload) {
+    const up = (rebalUpload.positions) || [];
+    const asOf = (micro && (micro.researchAsOf || micro.updatedAt)) || '';
+    const uHead = `
+      <div class="table-panel" style="margin-bottom:16px;">
+        <div class="table-header">
+          <div class="table-title">Uploaded target — rebalance vs live book</div>
+          <div style="font-size:12px;color:var(--text-muted);">${esc(rebalUpload.name || 'uploaded book')} · ${up.length} names · micro as of ${esc(asOf)}</div>
+        </div>
+        <div style="padding:2px 4px 10px;color:var(--text-dim);font-size:13px;line-height:1.5;">Your uploaded book is the <b>target</b>; Changes and Orders reconcile it against your live holdings, and names you hold but did not include show as closes. This never changes your portfolio or places a trade.</div>
+      </div>`;
+    el.innerHTML = uploader + uHead + buildRebalGrid(rebalRowsFromUpload(), { nav: (account && account.nav), asOf, keyNote: (rebalance && rebalance.keyNote) || '', tradeHref: uploadTradeHref });
+    return;
+  }
+  if (!rows.length) { el.innerHTML = uploader + '<div class="table-panel" style="padding:24px;color:var(--text-muted);">Awaiting rebalance data</div>'; return; }
+  const head = `
+    <div class="table-panel" style="margin-bottom:16px;">
+      <div class="table-header">
+        <div class="table-title">${esc(d.title || 'Rebalance')}</div>
+        <div style="font-size:12px;color:var(--text-muted);">as of ${esc(d.asOf || '')} · NAV ${d.nav != null ? fmtDollar(d.nav) : '—'}</div>
+      </div>
+      <div style="padding:2px 4px 10px;color:var(--text-dim);font-size:13px;line-height:1.5;">${esc(d.subtitle || '')}</div>
+      <ol style="margin:0 0 4px;padding-left:20px;color:var(--text-dim);font-size:12.5px;line-height:1.65;">
+        ${(d.headlines || []).map(h => `<li>${esc(h)}</li>`).join('')}
+      </ol>
+    </div>`;
   const sum = d.summary || {};
   const sumHtml = `
     <div class="table-panel">
@@ -3713,8 +3735,88 @@ function renderRebalance() {
       </div>
       <div style="padding:6px;color:var(--text-muted);font-size:11px;">Analysis, not investment advice. Verify live borrow/quotes in IBKR before any order.</div>
     </div>`;
+  el.innerHTML = uploader + head + buildRebalGrid(rows, { nav: d.nav, asOf: d.asOf, keyNote: d.keyNote }) + sumHtml;
+}
 
-  el.innerHTML = uploader + head + grid + sumHtml;
+// Deep-link a ▶ /trade for an uploaded-target order (reason seeded from the micro read).
+function uploadTradeHref(r) {
+  const side = r.side === 'L' ? 'LONG' : 'SHORT';
+  return tradeHref(`/trade ${r.ticker} — מהתיק שהעלית (יעד): ${side}`
+    + (r.dollar != null ? ` ~$${r.dollar}` : '') + ` · ${r.callTag || ''} (${r.trade || '—'}). סיבה: ${r.callText || ''}`);
+}
+
+// Build rebalance-shape rows from the uploaded TARGET book, reconciled against the live
+// book (positions) and enriched from micro.json. Covers the union of uploaded names and
+// live-held names (positions held but not in the target become CLOSE orders).
+function rebalRowsFromUpload() {
+  const up = (rebalUpload && rebalUpload.positions) || [];
+  const microMap = new Map(((micro && micro.tickers) || []).map(m => [String(m.ticker).toUpperCase(), m]));
+  const liveMap = new Map((positions || []).map(p => [String(p.ticker).toUpperCase(), p]));
+  const biasMap = new Map(((micro && micro.commodityBias) || []).map(b => [String(b.material || '').toLowerCase(), b.score]));
+  const matShort = { 'Lithium': 'Li', 'Nickel & Stainless': 'Ni', 'Nickel': 'Ni', 'Precious': 'PM', 'Precious Metals': 'PM', 'Silver': 'Ag', 'Gold': 'Au', 'Copper': 'Cu', 'Steel': 'Steel', 'Carbon/Raw Steel': 'Steel', 'Aluminum': 'Al', 'Aluminium': 'Al', 'Renewables': 'Renew', 'PGM': 'PGM', 'Platinum': 'PGM', 'Uranium': 'U', 'Tin': 'Sn', 'Zinc': 'Zn', 'Cobalt': 'Co', 'Rare Earth': 'REE', 'EV': 'EV' };
+  const sgn = m => m.replace(/-/g, '−');                    // ASCII minus → unicode, for parity
+  const upTickers = new Set(up.map(p => String(p.ticker).toUpperCase()));
+  const rows = [];
+  let n = 0;
+  const build = (rawTicker, target) => {                    // target = uploaded pos | null (=close)
+    n++;
+    const key = String(rawTicker).toUpperCase();
+    const m = microMap.get(key) || null;
+    const live = liveMap.get(key) || null;
+    const curSigned = live ? (live.side === 'short' ? -Math.abs(live.shares) : Math.abs(live.shares)) : 0;
+    const tgtSigned = target ? (target.side === 'short' ? -Math.abs(target.shares) : Math.abs(target.shares)) : 0;
+    const price = (live && live.lastPrice) || (m && m.price)
+      || (target && target.shares ? Math.abs(target.mktValue || 0) / Math.abs(target.shares) : 0) || 0;
+    const dollar = (target && price) ? Math.round(Math.abs(tgtSigned) * price) : null;
+    const held = live ? ((curSigned < 0 ? 'S' : 'L') + '/' + Math.abs(live.shares)) : null;
+    // Order = the trade from current(live) → target(uploaded).
+    const dSh = tgtSigned - curSigned;
+    let trade = 'no change', tradeType = 'none';
+    if (dSh !== 0) {
+      if (curSigned === 0) { tradeType = 'open'; trade = (tgtSigned < 0 ? 'SELL SHORT ' : 'BUY ') + Math.abs(tgtSigned); }
+      else if (tgtSigned === 0) { tradeType = 'close'; trade = (curSigned < 0 ? 'BUY TO COVER ' : 'SELL ') + Math.abs(curSigned); }
+      else if ((curSigned < 0) === (tgtSigned < 0)) {
+        const dmag = Math.abs(tgtSigned) - Math.abs(curSigned);
+        if (dmag > 0) { tradeType = 'add'; trade = (tgtSigned < 0 ? 'SELL SHORT ' : 'BUY ') + dmag; }
+        else { tradeType = 'cover'; trade = (curSigned < 0 ? 'BUY TO COVER ' : 'SELL ') + Math.abs(dmag); }
+      } else {
+        tradeType = 'flip';
+        trade = curSigned < 0 ? `BUY TO COVER ${Math.abs(curSigned)} → BUY ${Math.abs(tgtSigned)}` : `SELL ${Math.abs(curSigned)} → SELL SHORT ${Math.abs(tgtSigned)}`;
+      }
+    }
+    const tradable = m ? !!m.tradable : true;
+    let analyst = '—';
+    if (m && m.analyst && m.analyst.consensus) {
+      const pt = m.analyst.priceTarget != null ? ' $' + Math.round(m.analyst.priceTarget) : '';
+      const upP = m.analyst.upsidePct != null ? ' (' + (m.analyst.upsidePct >= 0 ? '+' : '') + Math.round(m.analyst.upsidePct) + '%)' : '';
+      analyst = m.analyst.consensus + pt + upP;
+    }
+    const mom = (m && m.vs50 != null && m.vs200 != null) ? sgn(String(Math.round(m.vs50)) + '/' + String(Math.round(m.vs200))) : '—';
+    const verdict = m ? ({ bullish: 'bull', bearish: 'bear', neutral: 'neut' }[m.microVerdict] || 'neut') : 'new';
+    const biasScore = m ? biasMap.get(String(m.material || '').toLowerCase()) : null;
+    const bias = (biasScore != null) ? sgn(biasScore > 0 ? '+' + biasScore : String(biasScore)) : '';
+    const metal = m ? (matShort[m.material] || (m.material ? String(m.material).slice(0, 5) : '')) : '';
+    let callTag = 'NEW', callText = 'outside micro universe', toneKey = 'warn';
+    if (m && m.recommendation && m.recommendation.action) {
+      callTag = m.recommendation.action; callText = m.recommendation.rationale || '';
+      const a = callTag.toUpperCase();
+      toneKey = /KEEP|ADD|OK|OPEN|BUY|HOLD/.test(a) ? 'pos' : /SKIP|CLOSE|COVER|AVOID|EXIT|DON'?T/.test(a) ? 'neg' : 'warn';
+    } else if (m) {
+      callTag = verdict === 'bull' ? 'BULLISH' : verdict === 'bear' ? 'BEARISH' : 'NEUTRAL';
+      callText = 'micro read'; toneKey = verdict === 'bull' ? 'pos' : verdict === 'bear' ? 'neg' : 'warn';
+    }
+    rows.push({
+      n, ticker: key, side: tgtSigned < 0 ? 'S' : 'L', dollar, target: target ? Math.abs(tgtSigned) : null,
+      held, comp: m ? m.composite : null, verdict, metal, bias, analyst, mom, tradable,
+      callTag, callText, tone: toneKey, trade, tradeType,
+      blocked: !tradable && tradeType !== 'none' && tradeType !== 'close',
+      subs: m ? m.subs : null, coverage: m ? m.coverage : null,
+      thesis: m ? m.thesis : '', catalysts: m ? m.catalysts : [], risks: m ? m.risks : [],
+    });
+  };
+  up.forEach(p => build(p.ticker, p));
+  (positions || []).forEach(p => { if (Math.abs(p.shares) > 0 && !upTickers.has(String(p.ticker).toUpperCase())) build(p.ticker, null); });
+  return rows;
 }
 
 // ── Rebalance → upload a book and analyse it here ───────────────────
@@ -3921,183 +4023,14 @@ function buildPositionsUploader() {
   </div>`;
 }
 
-// ── Uploaded-book analysis: table shell + filter/sort + tbody-only rows ──
-// The shell (header, controls, sortable thead, empty tbody) is built once by
-// renderRebalance; renderRebalAnalysisRows() refills only the tbody, so the
-// search box keeps focus while typing and filtering/sorting is instant.
+// Legacy per-upload view state — the uploaded book now renders through the shared
+// 2×2 grid (buildRebalGrid + rebalRowsFromUpload); rebalResetControls() is still
+// invoked by apply/clearRebalanceBook, so keep it as a harmless reset.
 let rebalSearch = '', rebalMaterial = '', rebalSideFilter = 'all';
-let rebalSort = { key: null, dir: 1 };   // null key = original upload order
+let rebalSort = { key: null, dir: 1 };
 
 function rebalResetControls() { rebalSearch = ''; rebalMaterial = ''; rebalSideFilter = 'all'; rebalSort = { key: null, dir: 1 }; }
 
-// Join uploaded positions to their micro record and flatten the sortable fields.
-function rebalJoinedRows() {
-  if (!rebalUpload) return [];
-  const microMap = {}; (micro.tickers || []).forEach(t => { if (t && t.ticker) microMap[String(t.ticker).toUpperCase()] = t; });
-  return rebalUpload.positions.map((p, i) => {
-    const m = microMap[p.ticker] || null;
-    return {
-      n: i + 1, p, m,
-      ticker: p.ticker, side: p.side, shares: p.shares,
-      company: (m && m.company) || p.description || p.ticker,
-      material: m ? (m.material || '') : '',
-      composite: (m && m.composite != null) ? m.composite : null,
-      mom: (m && m.subs) ? m.subs.momentum : null,
-      cmdty: (m && m.subs) ? m.subs.commodity : null,
-      analyst: (m && m.subs) ? m.subs.analyst : null,
-      vs50: (m && m.vs50 != null) ? m.vs50 : null,
-      range52w: (m && m.range52w != null) ? m.range52w : null,
-      verdict: m ? m.microVerdict : null,
-      tradable: m ? m.tradable : null,
-      held: m ? m.held : null,
-    };
-  });
-}
-
-function rebalFilteredSorted() {
-  let rows = rebalJoinedRows();
-  if (rebalSideFilter !== 'all') rows = rows.filter(r => r.side === rebalSideFilter);
-  if (rebalMaterial) rows = rows.filter(r => r.material === rebalMaterial);
-  if (rebalSearch) {
-    const q = rebalSearch.toUpperCase();
-    rows = rows.filter(r => r.ticker.toUpperCase().includes(q) || String(r.company).toUpperCase().includes(q));
-  }
-  if (rebalSort.key) {
-    const k = rebalSort.key, dir = rebalSort.dir;
-    rows = rows.slice().sort((a, b) => {
-      let av = a[k], bv = b[k];
-      if (av === null || av === undefined) return 1;
-      if (bv === null || bv === undefined) return -1;
-      if (typeof av === 'string') return av.localeCompare(bv) * dir;
-      return (av - bv) * dir;
-    });
-  }
-  return rows;
-}
-
-function setRebalSearch(v) { rebalSearch = v; renderRebalAnalysisRows(); }
-function setRebalMaterial(v) { rebalMaterial = v; renderRebalAnalysisRows(); }
-function setRebalSide(v) {
-  rebalSideFilter = v;
-  ['all', 'long', 'short'].forEach(x => { const el = document.getElementById('rebal-side-' + x); if (el) el.classList.toggle('active', x === v); });
-  renderRebalAnalysisRows();
-}
-function sortRebal(key) {
-  if (rebalSort.key === key) rebalSort.dir *= -1;
-  else rebalSort = { key, dir: ['ticker', 'company', 'material', 'side', 'verdict'].includes(key) ? 1 : -1 };
-  renderRebalAnalysisRows();
-}
-function toggleRebalAnalysis(t) { rebalanceExpanded = rebalanceExpanded === t ? null : t; renderRebalAnalysisRows(); }
-
-// Header + filter/sort controls + empty table; rows are filled by renderRebalAnalysisRows().
-function buildRebalanceAnalysisShell() {
-  const book = rebalUpload;
-  const all = rebalJoinedRows();
-  const matched = all.filter(r => r.m).length;
-  const materials = [...new Set(all.filter(r => r.material).map(r => r.material))].sort();
-  const sideBtn = (v, label) => `<div class="sub-tab${rebalSideFilter === v ? ' active' : ''}" id="rebal-side-${v}" onclick="setRebalSide('${v}')">${label}</div>`;
-  const sh = (key, label, left) => `<th ${left ? 'style="text-align:left;" ' : ''}class="sortable" onclick="sortRebal('${key}')">${label}<span class="sort-arrow" id="rbarrow-${key}"></span></th>`;
-
-  const header = `
-    <div class="table-panel" style="margin-bottom:16px;">
-      <div class="table-header">
-        <div class="table-title">Uploaded book — rebalance analysis</div>
-        <div style="font-size:12px;color:var(--text-muted);">${all.length} names · ${matched} in analysis universe · micro as of ${esc(String(micro.researchAsOf || micro.updatedAt || '').slice(0, 10))}</div>
-      </div>
-      <div style="padding:2px 4px 8px;color:var(--text-dim);font-size:12.5px;line-height:1.5;">
-        Micro analysis for <b>${esc(book.name)}</b>, shown in place of the default proposed table.
-        <b>Click any row for the full pick card</b> — live position, recommendation, composite score breakdown,
-        Yahoo data cross-check, analysts &amp; sentiment, fundamentals, commodity linkage, thesis, catalysts and risks —
-        exactly the detail from the Stock Picks tab. Filter and sort like the Stock Picks table. Analysis, not investment advice.
-      </div>
-    </div>`;
-
-  const tbl = `
-    <div class="table-panel" style="margin-bottom:16px;">
-      <div class="table-header">
-        <div class="table-header-left">
-          <div class="sub-tabs">${sideBtn('all', 'All')}${sideBtn('long', 'Long')}${sideBtn('short', 'Short')}</div>
-          <div class="filter-bar">
-            <input type="text" class="filter-input" id="rebal-search" placeholder="Search ticker or name…" value="${esc(rebalSearch)}" oninput="setRebalSearch(this.value)">
-            <select class="filter-select" id="rebal-material" onchange="setRebalMaterial(this.value)">
-              <option value="">All Materials</option>
-              ${materials.map(mm => `<option value="${esc(mm)}"${mm === rebalMaterial ? ' selected' : ''}>${esc(mm)}</option>`).join('')}
-            </select>
-          </div>
-        </div>
-        <div style="font-size:12px;color:var(--text-muted);" id="rebal-analysis-count">—</div>
-      </div>
-      <div class="table-wrapper"><table>
-        <thead><tr>
-          <th style="text-align:left;">#</th>
-          ${sh('ticker', 'Ticker / Name', true)}
-          ${sh('side', 'Side', true)}
-          ${sh('shares', 'Shares')}
-          ${sh('material', 'Material', true)}
-          <th style="text-align:left;">Held</th>
-          ${sh('composite', 'Composite')}
-          ${sh('mom', 'Mom')}${sh('cmdty', 'Cmdty')}${sh('analyst', 'Analyst')}
-          ${sh('vs50', 'vs50')}${sh('range52w', '52w')}
-          <th>Grp</th>
-          ${sh('verdict', 'Verdict', true)}
-          ${sh('tradable', 'Trad')}
-        </tr></thead>
-        <tbody id="rebal-analysis-tbody"></tbody>
-      </table></div>
-      <div style="padding:8px 6px 2px;color:var(--text-muted);font-size:11px;">Names outside the micro-analysis universe show “—”. Same per-name detail as the Stock Picks tab. Analysis, not investment advice.</div>
-    </div>`;
-
-  return header + tbl;
-}
-
-function renderRebalAnalysisRows() {
-  const tb = document.getElementById('rebal-analysis-tbody');
-  if (!tb) return;
-  const fmtN = (v, d = 1) => (v === null || v === undefined) ? '—' : Number(v).toFixed(d);
-  const sideBadge = s => s === 'long' ? '<span class="pick-badge long">LONG</span>' : '<span class="pick-badge short">SHORT</span>';
-  const verdictBadge = v => v ? `<span class="pick-badge ${v === 'bullish' ? 'long' : v === 'bearish' ? 'short' : 'neutral'}">${v}</span>` : '<span class="pick-badge new">NEW</span>';
-
-  const rows = rebalFilteredSorted();
-  const cnt = document.getElementById('rebal-analysis-count');
-  if (cnt) cnt.textContent = rows.length + ' names';
-  document.querySelectorAll('[id^="rbarrow-"]').forEach(el => el.textContent = '');
-  if (rebalSort.key) { const a = document.getElementById('rbarrow-' + rebalSort.key); if (a) a.textContent = rebalSort.dir === -1 ? ' ▼' : ' ▲'; }
-
-  tb.innerHTML = rows.length ? rows.map(r => {
-    const p = r.p, m = r.m, ex = rebalanceExpanded === p.ticker;
-    const tkEsc = String(p.ticker).replace(/'/g, "\\'");
-    const sus = (m && m.quoteSuspect) ? ' <span title="quote data suspect">⚠</span>' : '';
-    const compCell = (m && m.composite != null)
-      ? `<div class="score-cell"><div class="score-bar"><div style="width:${Math.min(100, m.composite)}%;background:${scoreColor(m.composite)};"></div></div><b style="color:${scoreColor(m.composite)};">${fmtN(m.composite)}</b></div>`
-      : '<span style="color:var(--text-muted);">—</span>';
-    const vs50 = (m && m.vs50 != null)
-      ? `<span style="color:${m.vs50 >= 0 ? 'var(--green)' : 'var(--red)'};">${(m.vs50 > 0 ? '+' : '') + m.vs50.toFixed(1)}%</span>` : '—';
-    const heldCell = m ? (m.held ? `<span class="pick-badge ${m.held}">${m.held.toUpperCase()}</span>` : (m.discovered ? '<span class="pick-badge new">NEW</span>' : '<span style="color:var(--text-muted);">—</span>')) : '—';
-    const r52 = (m && m.range52w != null) ? Math.round(m.range52w) + '%' : '—';
-    const grp = (m && m.groupRank) ? m.groupRank : '—';
-    return `
-      <tr class="picks-row" onclick="toggleRebalAnalysis('${tkEsc}')">
-        <td style="color:var(--text-muted);">${r.n}</td>
-        <td style="text-align:left;">
-          <div style="font-weight:700;"><span style="color:var(--text-dim);font-weight:400;font-size:11px;">${ex ? '▾' : '▸'}</span> ${esc(p.ticker)}${sus}</div>
-          <div style="color:var(--text-muted);font-size:11px;">${esc(r.company)}</div>
-        </td>
-        <td style="text-align:left;">${sideBadge(p.side)}</td>
-        <td>${fmt(signedShares(p), 0)}</td>
-        <td style="text-align:left;color:var(--text-muted);font-size:11px;">${m ? esc(m.material || '—') : '—'}</td>
-        <td style="text-align:left;">${heldCell}</td>
-        <td style="text-align:left;">${compCell}</td>
-        <td>${m ? fmtN(m.subs && m.subs.momentum) : '—'}</td>
-        <td>${m ? fmtN(m.subs && m.subs.commodity) : '—'}</td>
-        <td>${m ? fmtN(m.subs && m.subs.analyst) : '—'}</td>
-        <td>${vs50}</td>
-        <td>${r52}</td>
-        <td style="color:var(--text-muted);">${esc(String(grp))}</td>
-        <td style="text-align:left;">${m ? verdictBadge(m.microVerdict) : '<span class="pick-badge new">NEW</span>'}</td>
-        <td style="font-weight:700;color:${m == null ? 'var(--text-muted)' : (m.tradable ? '#22c55e' : '#ef4444')};">${m == null ? '—' : (m.tradable ? 'Y' : 'N')}</td>
-      </tr>${ex ? `<tr class="picks-detail"><td colspan="15" style="text-align:left;">${m ? buildPickDetail(m) : '<div style="padding:12px 16px;color:var(--text-muted);">Outside the micro-analysis universe — no detailed card for this name.</div>'}</td></tr>` : ''}`;
-  }).join('') : '<tr class="empty-row"><td colspan="15">No names match the filter</td></tr>';
-}
 
 // ── Alt-Data: M Science-style nowcast + research feed ───────────────
 function setAltGroup(g) {
