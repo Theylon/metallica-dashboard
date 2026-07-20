@@ -1,16 +1,16 @@
 {
- "updatedAt": "2026-07-20T18:13:00+00:00",
+ "updatedAt": "2026-07-20T19:09:41+00:00",
  "asOf": "2026-07-20",
  "window": 90,
  "obs": 21,
  "headline": {
   "annVol": 18.6,
-  "betaSpy": 0.67,
-  "betaXme": 0.19,
+  "betaSpy": 0.66,
+  "betaXme": 0.18,
   "var1d95": -235,
   "var1d99": -457,
-  "hhi": 699.0,
-  "effectiveN": 14.3
+  "hhi": 704.0,
+  "effectiveN": 14.2
  },
  "metrics": [
   {
@@ -21,13 +21,13 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.67",
+   "v": "0.66",
    "note": "20 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.19",
+   "v": "0.18",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -57,8 +57,8 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "699 / 14.3",
-   "note": "22 names, ~14.3 effective",
+   "v": "704 / 14.2",
+   "note": "22 names, ~14.2 effective",
    "tone": "pos"
   }
  ],
@@ -637,23 +637,23 @@
   {
    "ticker": "BEPC",
    "side": "short",
-   "weightPct": -9.7,
-   "riskContribPct": 19.2,
-   "mVaR": 27.0
+   "weightPct": -9.8,
+   "riskContribPct": 19.4,
+   "mVaR": 27.3
   },
   {
    "ticker": "PLG",
    "side": "short",
    "weightPct": -2.3,
-   "riskContribPct": 10.0,
-   "mVaR": 14.1
+   "riskContribPct": 10.1,
+   "mVaR": 14.2
   },
   {
    "ticker": "SBSW",
    "side": "short",
    "weightPct": -2.3,
-   "riskContribPct": 10.0,
-   "mVaR": 14.1
+   "riskContribPct": 9.9,
+   "mVaR": 14.0
   },
   {
    "ticker": "BATT",
@@ -712,13 +712,6 @@
    "mVaR": 7.4
   },
   {
-   "ticker": "RS",
-   "side": "short",
-   "weightPct": -3.5,
-   "riskContribPct": 3.7,
-   "mVaR": 5.1
-  },
-  {
    "ticker": "KALU",
    "side": "short",
    "weightPct": -1.4,
@@ -726,11 +719,11 @@
    "mVaR": 5.0
   },
   {
-   "ticker": "CLF",
+   "ticker": "RS",
    "side": "short",
-   "weightPct": -1.2,
-   "riskContribPct": 3.4,
-   "mVaR": 4.7
+   "weightPct": -3.5,
+   "riskContribPct": 3.6,
+   "mVaR": 5.1
   },
   {
    "ticker": "CMC",
@@ -738,6 +731,13 @@
    "weightPct": -1.8,
    "riskContribPct": 3.4,
    "mVaR": 4.8
+  },
+  {
+   "ticker": "CLF",
+   "side": "short",
+   "weightPct": -1.2,
+   "riskContribPct": 3.3,
+   "mVaR": 4.7
   },
   {
    "ticker": "CSTM",
@@ -750,7 +750,7 @@
    "ticker": "AA",
    "side": "short",
    "weightPct": -1.2,
-   "riskContribPct": 2.9,
+   "riskContribPct": 2.8,
    "mVaR": 4.0
   },
   {
@@ -771,7 +771,7 @@
    "ticker": "SQM",
    "side": "long",
    "weightPct": 2.5,
-   "riskContribPct": -2.1,
+   "riskContribPct": -2.2,
    "mVaR": -3.0
   },
   {
@@ -786,7 +786,7 @@
    "side": "long",
    "weightPct": 2.3,
    "riskContribPct": -6.3,
-   "mVaR": -8.9
+   "mVaR": -8.8
   }
  ],
  "coverageNote": "22 of 22 holdings"
