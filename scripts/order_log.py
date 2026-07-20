@@ -37,6 +37,8 @@ import sys
 
 LOG = pathlib.Path(__file__).resolve().parent.parent / "data" / "orders.jsonl"
 STATUSES = ["created", "submitted", "filled", "cancelled", "expired"]
+# an order past one of these is done — its instructionId may be safely recycled
+TERMINAL = {"filled", "cancelled", "expired"}
 
 
 def _now():
@@ -64,6 +66,22 @@ def append(a) -> int:
         "gates": a.gates or None,      # e.g. "size_order:WARN,earnings_window:FAIL-overridden"
         "note": a.note or None,        # operational context / follow-ups
     }
+    # Warn if this instructionId is being reused while a prior order with the
+    # same id is still OPEN — set_status can no longer target that prior order
+    # unambiguously (see the NUE/CLF "101" collision). Terminal ids recycle fine.
+    if a.instruction_id and LOG.exists():
+        for line in LOG.read_text().splitlines():
+            try:
+                e = json.loads(line)
+            except Exception:
+                continue
+            if (str(e.get("instructionId")) == str(a.instruction_id)
+                    and e.get("status") not in TERMINAL):
+                print(f"WARN: instructionId {a.instruction_id} is already used by an OPEN "
+                      f"{e.get('ticker')} order ({e.get('status')}, {e.get('ts')}). Reusing it "
+                      f"means --set-status can't target that order by id alone — close it first "
+                      f"or use --ts to disambiguate.")
+                break
     LOG.parent.mkdir(parents=True, exist_ok=True)
     with LOG.open("a") as f:
         f.write(json.dumps(entry) + "\n")
@@ -86,14 +104,27 @@ def set_status(a) -> int:
             lines.append(line)
             continue
         lines.append(e)
-    # newest matching instruction id wins (ids can recycle across days in theory)
-    for e in reversed([x for x in lines if isinstance(x, dict)]):
-        if str(e.get("instructionId")) == str(a.instruction_id):
-            hit = e
-            break
-    if hit is None:
-        print(f"orders.jsonl: no entry with instructionId {a.instruction_id}")
+    # Resolve which entry to transition. instructionIds can collide (recycled
+    # across days, or reused while a prior order is still open), so prefer the
+    # newest OPEN match — an already-terminal order shouldn't be re-transitioned
+    # ahead of a live one. --ts picks a specific entry when even that is ambiguous.
+    matches = [x for x in lines if isinstance(x, dict)
+               and str(x.get("instructionId")) == str(a.instruction_id)]
+    if a.ts:
+        matches = [x for x in matches if str(x.get("ts", "")).startswith(a.ts)]
+    if not matches:
+        print(f"orders.jsonl: no entry with instructionId {a.instruction_id}"
+              + (f" and ts starting {a.ts}" if a.ts else ""))
         return 1
+    open_matches = [x for x in matches if x.get("status") not in TERMINAL]
+    pool = open_matches or matches
+    hit = pool[-1]   # newest (append order preserved)
+    if len(pool) > 1:
+        others = [f"{x.get('ticker')}/{x.get('status')}/{x.get('ts')}" for x in pool[:-1]]
+        print(f"WARN: instructionId {a.instruction_id} matches {len(pool)} orders "
+              f"({'open' if open_matches else 'all-terminal'}); updating the newest "
+              f"({hit.get('ticker')}/{hit.get('ts')}). Others: {', '.join(others)}. "
+              f"Use --ts to target a specific one.")
     hit["status"] = a.status
     hit["statusUpdatedAt"] = _now()
     if a.note:
@@ -142,6 +173,8 @@ def main() -> int:
     ap.add_argument("--tif", default="DAY")
     ap.add_argument("--conid", type=int, default=None)
     ap.add_argument("--instruction-id", default=None)
+    ap.add_argument("--ts", default=None,
+                    help="with --set-status: ts prefix to disambiguate a reused instructionId")
     ap.add_argument("--url", default=None)
     ap.add_argument("--status", choices=STATUSES, default=None)
     ap.add_argument("--trigger-source", default="owner",

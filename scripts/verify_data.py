@@ -238,8 +238,11 @@ def check_process_files():
     log = DATA / "orders.jsonl"
     if log.exists():
         statuses = {"created", "submitted", "filled", "cancelled", "expired"}
+        terminal = {"filled", "cancelled", "expired"}
         sources = {"owner", "recommendation", "rebalance", "alert"}
         prev_ts, bad_lines, bad_rows, n = "", 0, 0, 0
+        open_ids = {}   # instructionId -> ticker of an order still open (non-terminal)
+        dup_open = []
         for line in log.read_text().splitlines():
             if not line.strip():
                 continue
@@ -260,12 +263,26 @@ def check_process_files():
                     or e.get("side") not in ("BUY", "SELL") or not e.get("qty")
                     or not trig_ok):
                 bad_rows += 1
+            # track instructionIds that are still open — a second open order on the
+            # same id can't be targeted by --set-status unambiguously (order_log
+            # picks the newest, orphaning the earlier one)
+            iid = e.get("instructionId")
+            if iid is not None:
+                if e.get("status") in terminal:
+                    open_ids.pop(str(iid), None)
+                else:
+                    if str(iid) in open_ids:
+                        dup_open.append(f"{iid} ({open_ids[str(iid)]} + {e.get('ticker')})")
+                    open_ids[str(iid)] = e.get("ticker")
         if bad_lines:
             warn(f"orders.jsonl has {bad_lines} unparseable lines")
         if bad_rows:
             warn(f"orders.jsonl has {bad_rows} rows with bad status or missing ticker/side/qty")
-        if not bad_lines and not bad_rows:
-            ok(f"orders.jsonl: {n} instructions parse, statuses valid, ts monotonic")
+        if dup_open:
+            warn(f"orders.jsonl reuses instructionId across OPEN orders: {', '.join(dup_open)} "
+                 f"— --set-status can't target them by id alone (use --ts)")
+        if not bad_lines and not bad_rows and not dup_open:
+            ok(f"orders.jsonl: {n} instructions parse, statuses valid, ts monotonic, ids unique-while-open")
 
 
 def check_freshness(account, risk, pnl):

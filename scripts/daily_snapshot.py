@@ -64,6 +64,23 @@ def _load(name):
         return None
 
 
+# Keep a bounded window of daily snapshots. gzipped blobs don't delta-compress
+# in git, so each rewrite stores a near-full new object; without a cap the repo
+# grows ~170 MB/yr. A rolling quarter is plenty for the review helpers below.
+RETAIN_DAYS = 90
+
+
+def _prune(keep=RETAIN_DAYS):
+    """Delete the oldest daily snapshots beyond the retention window."""
+    snaps = sorted(DEST.glob("*.json.gz"))
+    for p in snaps[:-keep] if keep and len(snaps) > keep else []:
+        try:
+            p.unlink()
+            print(f"history/daily: pruned {p.name} (beyond {keep}-day window)")
+        except OSError:
+            pass
+
+
 def record(date=None):
     """Write (or rewrite) today's snapshot. Returns the path."""
     now = datetime.datetime.now(datetime.timezone.utc)
@@ -80,6 +97,7 @@ def record(date=None):
         json.dump(snap, f, separators=(",", ":"))
     print(f"history/daily/{path.name}: {len(files)}/{len(CAPTURE)} files, "
           f"{path.stat().st_size // 1024} KB gz")
+    _prune()
     return path
 
 
