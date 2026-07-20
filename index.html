@@ -4247,6 +4247,19 @@ function tenhDataRows(table) {
   // Skip placeholder/empty rows and detail/expand rows — they are a single td[colspan].
   return Array.from(tb.children).filter(tr => tr.tagName === 'TR' && !tr.querySelector(':scope > td[colspan]'));
 }
+function tenhDetailRows(tr) {
+  // Expand/detail rows (a lone td[colspan], e.g. the Rebalance name breakdown) render
+  // immediately after their parent data row. tenhDataRows excludes them, so unless we
+  // move them alongside their parent a sort/filter/expand would strand them at the top
+  // of the tbody, detached from the row they describe. Collect the run that follows tr.
+  const out = [];
+  let sib = tr.nextElementSibling;
+  while (sib && sib.tagName === 'TR' && sib.querySelector(':scope > td[colspan]')) {
+    out.push(sib);
+    sib = sib.nextElementSibling;
+  }
+  return out;
+}
 function tenhSignature(table) {
   const page = table.closest('.page');
   const labels = tenhHeaderCells(table).map(th => th.textContent.replace(/[▲▼]/g, '').trim()).join('|');
@@ -4294,6 +4307,12 @@ function tenhApply(table, state) {
     const rows = tenhDataRows(table);
     rows.forEach((tr, i) => { if (tr.dataset.tenhIdx == null) tr.dataset.tenhIdx = i; });
 
+    // Pair every data row with the detail/expand rows that trail it, so filtering and
+    // sorting move a row and its open detail panel together (adjacency is still intact
+    // here — a fresh render, or the previous tenhApply, left each detail after its parent).
+    const detailMap = new Map();
+    rows.forEach(tr => { const d = tenhDetailRows(tr); if (d.length) detailMap.set(tr, d); });
+
     headers.forEach((th, i) => th.classList.toggle('tenh-hidden', state.hidden.has(i)));
     rows.forEach(tr => {
       const tds = tenhRowCells(tr);
@@ -4305,6 +4324,7 @@ function tenhApply(table, state) {
         if (!txt.includes(q.toLowerCase())) show = false;
       });
       tr.style.display = show ? '' : 'none';
+      (detailMap.get(tr) || []).forEach(d => d.style.display = tr.style.display);
     });
 
     if (!state.nativeSort) {
@@ -4313,7 +4333,7 @@ function tenhApply(table, state) {
         const order = state.sort
           ? rows.slice().sort((a, b) => tenhCompare(a, b, state.sort.idx, state.sort.dir))
           : rows.slice().sort((a, b) => (+a.dataset.tenhIdx || 0) - (+b.dataset.tenhIdx || 0));
-        order.forEach(tr => tb.appendChild(tr));
+        order.forEach(tr => { tb.appendChild(tr); (detailMap.get(tr) || []).forEach(d => tb.appendChild(d)); });
       }
       headers.forEach((th, i) => {
         const ar = th.querySelector(':scope > .tenh-arrow');
