@@ -3775,8 +3775,8 @@ function renderRebalance() {
 // Deep-link a ▶ /trade for an uploaded-target order (reason seeded from the micro read).
 function uploadTradeHref(r) {
   const side = r.side === 'L' ? 'LONG' : 'SHORT';
-  return tradeHref(`/trade ${r.ticker} — מהתיק שהעלית (יעד): ${side}`
-    + (r.dollar != null ? ` ~$${r.dollar}` : '') + ` · ${r.callTag || ''} (${r.trade || '—'}). סיבה: ${r.callText || ''}`);
+  return tradeHref(`/trade ${r.ticker} — from your uploaded target book: ${side}`
+    + (r.dollar != null ? ` ~$${r.dollar}` : '') + ` · ${r.callTag || ''} (${r.trade || '—'}). Reason: ${r.callText || ''}`);
 }
 
 // Build rebalance-shape rows from the uploaded TARGET book, reconciled against the live
