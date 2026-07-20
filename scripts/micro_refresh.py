@@ -23,7 +23,7 @@ import yfinance as yf
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from micro_score import momentum_score, composite_from_subs, rank_within_groups
-from micro_build import cross_validation, load_held
+from micro_build import cross_validation, load_held, live_macro_banner, live_sizing_note, _stamp_held_now
 
 DATA = pathlib.Path(__file__).resolve().parent.parent / "data"
 CHUNK = 50
@@ -130,6 +130,17 @@ def main():
         r["held"] = h["side"] if h else None
         r["heldMv"] = h["mktValue"] if h else None
         r["position"] = h
+    # re-stamp the live-derived narrative fields so they never re-stale between
+    # full research rebuilds: macro banner from macro.json, sizing note + the
+    # recommendation/trade-list heldNow ground truth from the live book
+    macro = live_macro_banner()
+    if macro:
+        micro["macro"] = macro
+    sizing = live_sizing_note()
+    if sizing:
+        micro["sizingNote"] = sizing
+    micro["recommendations"] = _stamp_held_now(micro.get("recommendations", []), held_book)
+    micro["tradeList"] = _stamp_held_now(micro.get("tradeList", []), held_book)
     # skip names flagged as untradable / suspect quotes and obviously non-yfinance symbols
     tickers = [r["ticker"] for r in records
                if not r.get("quoteSuspect") and "(" not in r["ticker"]]
