@@ -3597,23 +3597,9 @@ function buildRebalanceDetail(r) {
 // Builds the 2×2 grid (Holdings live book + Changes/Orders/Recommendations from `rows`).
 // `rows` are in rebalance.json row shape; used for both the default proposal and an
 // uploaded target book (via rebalRowsFromUpload). opts: {nav, asOf, keyNote, tradeHref}.
-function buildRebalGrid(rows, o) {
-  o = o || {};
-  rows = rows || [];
-  const tone = { pos: '#22c55e', warn: '#eab308', neg: '#ef4444' };
-  const verd = { bull: '#22c55e', bear: '#ef4444', neut: '#eab308', new: '#38bdf8' };
-  const biasColor = b => { const n = parseFloat(String(b).replace('−', '-')); return (isNaN(n) || n === 0) ? 'var(--text-muted)' : n > 0 ? '#22c55e' : '#ef4444'; };
-  const sideChip = s => s === 'L' ? '<span class="pick-badge long">LONG</span>' : s === 'S' ? '<span class="pick-badge short">SHORT</span>' : '<span class="pick-badge new">NEW</span>';
-  // "S/6" → {side:'S', shares:-6}; "L/116" → {side:'L', shares:116}; null → none.
-  const parseHeld = h => { const m = h ? String(h).match(/^\s*([LS])\s*\/\s*(-?\d+(?:\.\d+)?)/i) : null; if (!m) return { side: null, shares: 0 }; const sh = Math.abs(parseFloat(m[2])); return { side: m[1].toUpperCase(), shares: m[1].toUpperCase() === 'S' ? -sh : sh }; };
-  // Holdings + the reconciled %NAV column read the live book; they degrade to — for names
-  // not held (foreign shorts, or BEP-in-proposal vs BEPC-in-book), never a wrong match.
-  const posByTicker = new Map((positions || []).map(p => [String(p.ticker).toUpperCase(), p]));
+// The live book panel (Holdings) — reused by the 2×2 grid and the empty (no-upload) state.
+function buildHoldingsPanel() {
   const navBase = (account && account.nav) || (positions || []).reduce((s, p) => s + Math.abs(p.mktValue), 0);
-  const rebNav = (o.nav != null ? o.nav : navBase);
-  const tradeHrefFn = o.tradeHref || rebalTradeHref;
-
-  // ── Table 1 · Holdings (the live book) ────────────────────────────
   const book = (positions || []).filter(p => Math.abs(p.shares) > 0)
     .slice().sort((a, b) => Math.abs(b.mktValue) - Math.abs(a.mktValue));
   const nLong = book.filter(p => p.side === 'long').length;
@@ -3631,7 +3617,7 @@ function buildRebalGrid(rows, o) {
       <td style="text-align:left;color:var(--text-dim);font-size:12px;">${esc(p.category || '—')}</td>
     </tr>`;
   }).join('') : '<tr><td colspan="7" style="color:var(--text-muted);padding:18px;">Awaiting live positions</td></tr>';
-  const holdingsPanel = `
+  return `
     <div class="table-panel" style="margin-bottom:0;">
       <div class="table-header">
         <div class="table-title">Holdings — live book (${book.length})</div>
@@ -3642,6 +3628,26 @@ function buildRebalGrid(rows, o) {
         <tbody>${holdingsBody}</tbody>
       </table></div>
     </div>`;
+}
+
+function buildRebalGrid(rows, o) {
+  o = o || {};
+  rows = rows || [];
+  const tone = { pos: '#22c55e', warn: '#eab308', neg: '#ef4444' };
+  const verd = { bull: '#22c55e', bear: '#ef4444', neut: '#eab308', new: '#38bdf8' };
+  const biasColor = b => { const n = parseFloat(String(b).replace('−', '-')); return (isNaN(n) || n === 0) ? 'var(--text-muted)' : n > 0 ? '#22c55e' : '#ef4444'; };
+  const sideChip = s => s === 'L' ? '<span class="pick-badge long">LONG</span>' : s === 'S' ? '<span class="pick-badge short">SHORT</span>' : '<span class="pick-badge new">NEW</span>';
+  // "S/6" → {side:'S', shares:-6}; "L/116" → {side:'L', shares:116}; null → none.
+  const parseHeld = h => { const m = h ? String(h).match(/^\s*([LS])\s*\/\s*(-?\d+(?:\.\d+)?)/i) : null; if (!m) return { side: null, shares: 0 }; const sh = Math.abs(parseFloat(m[2])); return { side: m[1].toUpperCase(), shares: m[1].toUpperCase() === 'S' ? -sh : sh }; };
+  // Holdings + the reconciled %NAV column read the live book; they degrade to — for names
+  // not held (foreign shorts, or BEP-in-proposal vs BEPC-in-book), never a wrong match.
+  const posByTicker = new Map((positions || []).map(p => [String(p.ticker).toUpperCase(), p]));
+  const navBase = (account && account.nav) || (positions || []).reduce((s, p) => s + Math.abs(p.mktValue), 0);
+  const rebNav = (o.nav != null ? o.nav : navBase);
+  const tradeHrefFn = o.tradeHref || rebalTradeHref;
+
+  // ── Table 1 · Holdings (the live book) ────────────────────────────
+  const holdingsPanel = buildHoldingsPanel();
 
   // ── Table 2 · Changes (proposed target vs current, with deltas) ───
   const changesBody = rows.map(r => {
@@ -3729,11 +3735,9 @@ function buildRebalGrid(rows, o) {
 function renderRebalance() {
   const el = document.getElementById('rebalance-content');
   if (!el) return;
-  const d = rebalance || {};
-  const rows = d.rows || [];
   const uploader = buildPositionsUploader();
   // An uploaded book is treated as the TARGET and reconciled against the live book,
-  // then rendered through the SAME 2×2 grid as the default proposed rebalance.
+  // then rendered through the 2×2 grid (Holdings / Changes / Orders / Recommendations).
   if (rebalUpload) {
     const up = (rebalUpload.positions) || [];
     const asOf = (micro && (micro.researchAsOf || micro.updatedAt)) || '';
@@ -3748,28 +3752,14 @@ function renderRebalance() {
     el.innerHTML = uploader + uHead + buildRebalGrid(rebalRowsFromUpload(), { nav: (account && account.nav), asOf, keyNote: (rebalance && rebalance.keyNote) || '', tradeHref: uploadTradeHref });
     return;
   }
-  if (!rows.length) { el.innerHTML = uploader + '<div class="table-panel" style="padding:24px;color:var(--text-muted);">Awaiting rebalance data</div>'; return; }
-  const head = `
+  // No default proposed table — the tab is upload-driven. With no uploaded target,
+  // show the live book and prompt to upload a target to run the full analysis.
+  const hint = `
     <div class="table-panel" style="margin-bottom:16px;">
-      <div class="table-header">
-        <div class="table-title">${esc(d.title || 'Rebalance')}</div>
-        <div style="font-size:12px;color:var(--text-muted);">as of ${esc(d.asOf || '')} · NAV ${d.nav != null ? fmtDollar(d.nav) : '—'}</div>
-      </div>
-      <div style="padding:2px 4px 10px;color:var(--text-dim);font-size:13px;line-height:1.5;">${esc(d.subtitle || '')}</div>
-      <ol style="margin:0 0 4px;padding-left:20px;color:var(--text-dim);font-size:12.5px;line-height:1.65;">
-        ${(d.headlines || []).map(h => `<li>${esc(h)}</li>`).join('')}
-      </ol>
+      <div class="table-header"><div class="table-title">Rebalance analysis</div></div>
+      <div style="padding:10px 4px 12px;color:var(--text-dim);font-size:13px;line-height:1.6;">Upload a <b>target</b> book above to run the full rebalance — <b>Changes</b>, <b>Orders</b> and the data-driven <b>Recommendations</b> — reconciled against your live holdings shown below.</div>
     </div>`;
-  const sum = d.summary || {};
-  const sumHtml = `
-    <div class="table-panel">
-      <div class="table-header"><div class="table-title">Trade summary — executable vs blocked</div></div>
-      <div style="padding:8px 6px 4px;">
-        ${Object.keys(sum).map(k => `<div style="margin:9px 0;font-size:13px;line-height:1.55;"><span style="color:var(--text-muted);font-weight:600;">${esc(k)}:</span> ${esc(sum[k])}</div>`).join('')}
-      </div>
-      <div style="padding:6px;color:var(--text-muted);font-size:11px;">Analysis, not investment advice. Verify live borrow/quotes in IBKR before any order.</div>
-    </div>`;
-  el.innerHTML = uploader + head + buildRebalGrid(rows, { nav: d.nav, asOf: d.asOf, keyNote: d.keyNote }) + sumHtml;
+  el.innerHTML = uploader + hint + buildHoldingsPanel();
 }
 
 // Deep-link a ▶ /trade for an uploaded-target order (reason seeded from the micro read).
@@ -4007,8 +3997,8 @@ function buildPositionsUploader() {
   if (rebalUpload) {
     banner = `<div class="pos-override-banner">
       <span style="flex:1 1 260px;">📊 <b>Analysing uploaded book</b> — <b>${esc(rebalUpload.name)}</b>
-      (${esc(bookSummary(rebalUpload.positions))}), loaded ${esc(fmtTime(new Date(rebalUpload.when)))}, shown instead of the default proposed table.</span>
-      <button class="pos-up-btn danger" onclick="clearRebalanceBook()">Back to default rebalance</button>
+      (${esc(bookSummary(rebalUpload.positions))}), loaded ${esc(fmtTime(new Date(rebalUpload.when)))} — shown as the rebalance analysis vs your live book.</span>
+      <button class="pos-up-btn danger" onclick="clearRebalanceBook()">Clear uploaded book</button>
     </div>`;
   }
 
@@ -4042,10 +4032,9 @@ function buildPositionsUploader() {
       <div style="font-size:12.5px;color:var(--text-dim);line-height:1.6;margin-bottom:10px;">
         Upload a set of positions — a <b>.json</b> (an array of <code>{ticker, side, shares}</code>, or the
         <code>positions.json</code> shape) or a <b>.csv</b> with a <code>Symbol</code> column (plus optional
-        <code>Position</code>/<code>Side</code>). The Rebalance tab then runs its per-name analysis on them —
-        composite score, verdict, analysts, momentum, metal bias, tradability and thesis — <b>in place of the default
-        proposed table</b>. Saved in your browser so it survives reloads.
-        <b>This does not change your portfolio (Positions tab) and never places a trade.</b>
+        <code>Position</code>/<code>Side</code>). The Rebalance tab treats it as your <b>target</b> and reconciles it
+        against your live book — Holdings, Changes, Orders and the data-driven Recommendations. Saved in your browser so
+        it survives reloads. <b>This does not change your portfolio (Positions tab) and never places a trade.</b>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
         <label class="pos-up-btn primary" style="cursor:pointer;">📄 Choose file (.json / .csv)
