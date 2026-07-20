@@ -1,6 +1,6 @@
 {
- "updatedAt": "2026-07-20T07:27:59+00:00",
- "asOf": "2026-07-19",
+ "updatedAt": "2026-07-20T07:58:04+00:00",
+ "asOf": "2026-07-20",
  "window": 90,
  "obs": 21,
  "headline": {
@@ -9,7 +9,7 @@
   "betaXme": 0.19,
   "var1d95": -235,
   "var1d99": -456,
-  "hhi": 578.0,
+  "hhi": 577.0,
   "effectiveN": 17.3
  },
  "metrics": [
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "578 / 17.3",
+   "v": "577 / 17.3",
    "note": "25 names, ~17.3 effective",
    "tone": "pos"
   }
@@ -788,22 +788,22 @@
    "ticker": "BEPC",
    "side": "short",
    "weightPct": -9.7,
-   "riskContribPct": 15.7,
-   "mVaR": 25.6
+   "riskContribPct": 15.6,
+   "mVaR": 25.5
   },
   {
    "ticker": "PLG",
    "side": "short",
    "weightPct": -2.3,
-   "riskContribPct": 8.7,
-   "mVaR": 14.2
+   "riskContribPct": 8.8,
+   "mVaR": 14.4
   },
   {
    "ticker": "SBSW",
    "side": "short",
    "weightPct": -2.3,
-   "riskContribPct": 8.4,
-   "mVaR": 13.7
+   "riskContribPct": 8.5,
+   "mVaR": 14.0
   },
   {
    "ticker": "BATT",
@@ -824,7 +824,7 @@
    "side": "short",
    "weightPct": -1.6,
    "riskContribPct": 6.4,
-   "mVaR": 10.3
+   "mVaR": 10.4
   },
   {
    "ticker": "AG",
@@ -857,23 +857,23 @@
   {
    "ticker": "LIT",
    "side": "short",
-   "weightPct": -3.2,
+   "weightPct": -3.1,
    "riskContribPct": 4.9,
-   "mVaR": 8.0
+   "mVaR": 7.9
   },
   {
    "ticker": "CLF",
    "side": "short",
    "weightPct": -1.8,
    "riskContribPct": 4.7,
-   "mVaR": 7.7
+   "mVaR": 7.8
   },
   {
    "ticker": "PAAS",
    "side": "short",
-   "weightPct": -1.5,
+   "weightPct": -1.6,
    "riskContribPct": 4.7,
-   "mVaR": 7.6
+   "mVaR": 7.7
   },
   {
    "ticker": "RS",
@@ -897,13 +897,6 @@
    "mVaR": 5.2
   },
   {
-   "ticker": "STLD",
-   "side": "short",
-   "weightPct": -2.2,
-   "riskContribPct": 3.2,
-   "mVaR": 5.1
-  },
-  {
    "ticker": "CSTM",
    "side": "short",
    "weightPct": -1.3,
@@ -911,11 +904,18 @@
    "mVaR": 5.0
   },
   {
+   "ticker": "STLD",
+   "side": "short",
+   "weightPct": -2.2,
+   "riskContribPct": 3.1,
+   "mVaR": 5.1
+  },
+  {
    "ticker": "AA",
    "side": "short",
    "weightPct": -1.2,
-   "riskContribPct": 2.6,
-   "mVaR": 4.3
+   "riskContribPct": 2.7,
+   "mVaR": 4.4
   },
   {
    "ticker": "NUE",
@@ -948,16 +948,16 @@
   {
    "ticker": "SGML",
    "side": "long",
-   "weightPct": 2.3,
+   "weightPct": 2.2,
    "riskContribPct": -2.7,
-   "mVaR": -4.3
+   "mVaR": -4.4
   },
   {
    "ticker": "LAC",
    "side": "long",
    "weightPct": 2.3,
-   "riskContribPct": -5.8,
-   "mVaR": -9.4
+   "riskContribPct": -5.9,
+   "mVaR": -9.6
   }
  ],
  "coverageNote": "25 of 25 holdings"
