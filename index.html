@@ -557,6 +557,13 @@ body.fts-dragging { user-select: none; cursor: ns-resize; }
 .table-panel.fts-fullscreen .fts-resizer, .table-panel.fts-fullscreen .fts-chevron, .table-panel.fts-fullscreen .fts-mode { display: none; }
 .table-panel.fts-fullscreen .fts-full { color: var(--accent); border-color: var(--accent); }
 body.fts-noscroll { overflow: hidden; }
+/* fts reorder: drag a table card to a new slot within its group (a same-tab
+   contiguous run of ≥2 tables). Only members of such a run get a grip. */
+.fts-grip { cursor: grab; padding-left: 7px; padding-right: 7px; letter-spacing: 1px; touch-action: none; }
+.fts-grip:active { cursor: grabbing; }
+.fts-grip:disabled { display: none; }
+.table-panel.fts-reordering { opacity: .5; outline: 2px dashed var(--accent); outline-offset: -2px; pointer-events: none; }
+body.fts-reorder-active { user-select: none; cursor: grabbing; }
 </style>
 </head>
 <body>
@@ -4619,6 +4626,7 @@ let ftsLayout = ftsLoadLayout();
 let ftsFullscreenSig = null;   // not persisted — tracked so a Rebalance rebuild can't strand the overlay
 let ftsKeysBound = false;
 let ftsIdSeq = 0;
+let ftsGroupOf = new WeakMap();   // panel -> its current reorder group, rebuilt every enhance pass
 
 function ftsLoadLayout() {
   // Tolerate garbage/foreign blobs: bad JSON → defaults; per-entry whitelist + clamp.
@@ -4635,13 +4643,22 @@ function ftsLoadLayout() {
       if (h >= FTS_MIN_H && h <= FTS_MAX_H) { st.h = h; delete st.m; }   // custom height wins over preset
       if (Object.keys(st).length) panels[sig] = st;
     }
-    return { v: 1, panels };
-  } catch (e) { return { v: 1, panels: {} }; }
+    // orders: per-group custom card order — { groupKey: [sig, sig, ...] }
+    const orders = {};
+    const osrc = raw && typeof raw === 'object' && raw.orders && typeof raw.orders === 'object' ? raw.orders : {};
+    for (const [k, v] of Object.entries(osrc)) {
+      if (Array.isArray(v) && v.length >= 2 && v.every(s => typeof s === 'string')) orders[k] = v.slice();
+    }
+    return { v: 1, panels, orders };
+  } catch (e) { return { v: 1, panels: {}, orders: {} }; }
 }
 function ftsSaveLayout() {
   try {
     for (const [sig, st] of Object.entries(ftsLayout.panels)) {
       if (!st || !Object.keys(st).length) delete ftsLayout.panels[sig];   // all-defaults → drop, keep the blob tiny
+    }
+    for (const [k, v] of Object.entries(ftsLayout.orders || {})) {
+      if (!Array.isArray(v) || v.length < 2) delete ftsLayout.orders[k];
     }
     localStorage.setItem(FTS_KEY, JSON.stringify(ftsLayout));
   } catch (e) { /* storage blocked/full — feature degrades to in-session state */ }
@@ -4791,6 +4808,147 @@ function ftsDecoratePanel(panel, wrapper) {
   });
 }
 
+// ── reorder: drag a table card to a new slot within its group ──────────
+// A movable "unit" is a qualifying .table-panel plus its immediately-preceding
+// .chart-header (headerless panels keep their title in that sibling, so it must
+// travel with the card). A "group" is a maximal contiguous run of ≥2 units under
+// the same parent — anything else (a chart, a KPI row, a table-less panel) breaks
+// the run, so reordering never disturbs the rest of the tab.
+function ftsQualifies(panel) {
+  const wrap = panel.querySelector('.table-wrapper');
+  return !!(wrap && wrap.querySelector('table'));
+}
+function ftsUnitNodes(panel) {
+  // a card travels with its leading .chart-header title (headerless panels) and a
+  // trailing .report-note-block that belongs to it (e.g. Markets #drivers-note).
+  const nodes = [panel];
+  const prev = panel.previousElementSibling;
+  if (prev && prev.classList.contains('chart-header')) nodes.unshift(prev);
+  const next = panel.nextElementSibling;
+  if (next && next.classList.contains('report-note-block')) nodes.push(next);
+  return nodes;
+}
+function ftsDocOrder(a, b) {
+  return (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1;
+}
+function ftsCurrentOrder(units) {
+  return units.slice().sort((a, b) => ftsDocOrder(a.nodes[0], b.nodes[0]));
+}
+function ftsBuildGroups() {
+  const groups = [];
+  document.querySelectorAll('.page').forEach(page => {
+    const panels = [...page.querySelectorAll('.table-panel')].filter(ftsQualifies);
+    if (panels.length < 2) return;
+    const units = panels.map(p => ({ panel: p, nodes: ftsUnitNodes(p), sig: p.dataset.ftsSig }));
+    const byParent = new Map();
+    units.forEach(u => {
+      const par = u.panel.parentElement;
+      if (!byParent.has(par)) byParent.set(par, []);
+      byParent.get(par).push(u);
+    });
+    const runs = [];
+    byParent.forEach(us => {
+      let run = [us[0]];
+      for (let i = 1; i < us.length; i++) {
+        const prevLast = us[i - 1].nodes[us[i - 1].nodes.length - 1];   // may be a trailing note
+        if (prevLast.nextElementSibling === us[i].nodes[0]) run.push(us[i]);
+        else { if (run.length >= 2) runs.push(run); run = [us[i]]; }
+      }
+      if (run.length >= 2) runs.push(run);
+    });
+    runs.sort((a, b) => ftsDocOrder(a[0].nodes[0], b[0].nodes[0]));
+    runs.forEach((run, idx) => groups.push({ key: page.id + '::g' + idx, units: run }));
+  });
+  return groups;
+}
+function ftsGroupOrient(group) {
+  const a = group.units[0].panel.getBoundingClientRect();
+  const b = group.units[1].panel.getBoundingClientRect();
+  return (Math.abs(a.top - b.top) < Math.min(a.height, b.height) / 2) ? 'row' : 'col';
+}
+function ftsMoveUnit(panel, targetUnit, after) {
+  const moving = (ftsGroupOf.get(panel) || {}).units;
+  const unit = moving ? moving.find(u => u.panel === panel) : { nodes: ftsUnitNodes(panel) };
+  if (!unit || unit === targetUnit) return;
+  const parent = panel.parentElement;
+  const ref = after ? targetUnit.nodes[targetUnit.nodes.length - 1].nextSibling : targetUnit.nodes[0];
+  unit.nodes.forEach(n => parent.insertBefore(n, ref));
+}
+function ftsSaveGroupOrder(group) {
+  ftsLayout.orders[group.key] = ftsCurrentOrder(group.units).map(u => u.sig);
+  ftsSaveLayout();
+}
+function ftsRestoreOrder(group) {
+  const saved = ftsLayout.orders[group.key];
+  if (!saved || saved.length < 2) return;
+  const bySig = new Map(group.units.map(u => [u.sig, u]));
+  const ordered = [];
+  saved.forEach(s => { const u = bySig.get(s); if (u && !ordered.includes(u)) ordered.push(u); });
+  group.units.forEach(u => { if (!ordered.includes(u)) ordered.push(u); });
+  const cur = ftsCurrentOrder(group.units);
+  if (!ordered.some((u, i) => u !== cur[i])) return;         // already in saved order
+  const parent = cur[0].panel.parentElement;
+  const after = cur[cur.length - 1].panel.nextSibling;       // boundary just past the run
+  ordered.forEach(u => u.nodes.forEach(n => parent.insertBefore(n, after)));
+}
+function ftsAddGrip(panel) {
+  const header = panel.querySelector(':scope > .table-header, :scope > .bm-table-header');
+  const controls = header && header.querySelector(':scope > .fts-controls');
+  if (!controls || controls.querySelector('.fts-grip')) return;
+  const grip = document.createElement('button');
+  grip.type = 'button';
+  grip.className = 'fts-btn fts-grip';
+  grip.title = 'Drag to reorder · arrow keys move';
+  grip.setAttribute('aria-label', 'Reorder table (drag, or arrow keys)');
+  grip.textContent = '≡';
+  controls.insertBefore(grip, controls.firstChild);
+
+  // drag via document-level listeners (robust across browsers — no pointer capture)
+  grip.addEventListener('pointerdown', e => {
+    const group = ftsGroupOf.get(panel);
+    if (!group || group.units.length < 2) return;
+    e.preventDefault(); e.stopPropagation();
+    const orient = ftsGroupOrient(group);
+    panel.classList.add('fts-reordering');
+    document.body.classList.add('fts-reorder-active');
+    const move = ev => {
+      const over = document.elementFromPoint(ev.clientX, ev.clientY);
+      const overPanel = over && over.closest('.table-panel');
+      if (!overPanel || overPanel === panel) return;
+      const overUnit = group.units.find(u => u.panel === overPanel);
+      if (!overUnit) return;
+      const r = overPanel.getBoundingClientRect();
+      const after = orient === 'row' ? (ev.clientX > r.left + r.width / 2) : (ev.clientY > r.top + r.height / 2);
+      ftsMoveUnit(panel, overUnit, after);
+    };
+    const up = () => {
+      document.removeEventListener('pointermove', move);
+      document.removeEventListener('pointerup', up);
+      document.removeEventListener('pointercancel', up);
+      panel.classList.remove('fts-reordering');
+      document.body.classList.remove('fts-reorder-active');
+      ftsSaveGroupOrder(group);
+    };
+    document.addEventListener('pointermove', move);
+    document.addEventListener('pointerup', up);
+    document.addEventListener('pointercancel', up);
+  });
+  grip.addEventListener('keydown', e => {
+    const group = ftsGroupOf.get(panel);
+    if (!group) return;
+    const dir = (e.key === 'ArrowUp' || e.key === 'ArrowLeft') ? -1
+      : (e.key === 'ArrowDown' || e.key === 'ArrowRight') ? 1 : 0;
+    if (!dir) return;
+    e.preventDefault();
+    const cur = ftsCurrentOrder(group.units);
+    const i = cur.findIndex(u => u.panel === panel);
+    if (i < 0 || i + dir < 0 || i + dir >= cur.length) return;
+    ftsMoveUnit(panel, cur[i + dir], dir > 0);
+    ftsSaveGroupOrder(group);
+    grip.focus();
+  });
+}
+
 function ftsEnhanceAll() {
   if (!ftsKeysBound) {
     ftsKeysBound = true;
@@ -4810,6 +4968,14 @@ function ftsEnhanceAll() {
       it.panel.dataset.ftsWired = '1';
     }
     ftsApplyState(it.panel);
+  }
+  // reorder groups: map each panel to its current group, add a grip to members of
+  // any ≥2-table run, and re-apply any saved custom order (survives refresh/rebuild).
+  ftsGroupOf = new WeakMap();
+  for (const g of ftsBuildGroups()) {
+    g.units.forEach(u => ftsGroupOf.set(u.panel, g));
+    g.units.forEach(u => ftsAddGrip(u.panel));
+    ftsRestoreOrder(g);
   }
   // A Rebalance rebuild destroys a fullscreen panel's node mid-overlay; restore the
   // overlay on its freshly built replacement (or exit cleanly if the table is gone).
