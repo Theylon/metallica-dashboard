@@ -1,21 +1,21 @@
 {
- "updatedAt": "2026-07-20T15:52:31+00:00",
+ "updatedAt": "2026-07-20T16:10:01+00:00",
  "asOf": "2026-07-20",
  "window": 90,
  "obs": 21,
  "headline": {
-  "annVol": 18.6,
+  "annVol": 18.5,
   "betaSpy": 0.68,
   "betaXme": 0.19,
   "var1d95": -235,
-  "var1d99": -457,
-  "hhi": 703.0,
+  "var1d99": -456,
+  "hhi": 702.0,
   "effectiveN": 14.2
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "18.6%",
+   "v": "18.5%",
    "note": "from the account's daily TWR, 21 daily obs since inception",
    "tone": "neutral"
   },
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$235",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$457)",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$456)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "703 / 14.2",
+   "v": "702 / 14.2",
    "note": "22 names, ~14.2 effective",
    "tone": "pos"
   }
@@ -642,23 +642,23 @@
    "mVaR": 27.2
   },
   {
-   "ticker": "PLG",
-   "side": "short",
-   "weightPct": -2.3,
-   "riskContribPct": 10.0,
-   "mVaR": 14.0
-  },
-  {
    "ticker": "SBSW",
    "side": "short",
    "weightPct": -2.3,
    "riskContribPct": 10.0,
+   "mVaR": 14.1
+  },
+  {
+   "ticker": "PLG",
+   "side": "short",
+   "weightPct": -2.2,
+   "riskContribPct": 9.9,
    "mVaR": 14.0
   },
   {
    "ticker": "BATT",
    "side": "short",
-   "weightPct": -3.3,
+   "weightPct": -3.4,
    "riskContribPct": 7.5,
    "mVaR": 10.5
   },
@@ -670,16 +670,16 @@
    "mVaR": 10.4
   },
   {
-   "ticker": "AG",
-   "side": "short",
-   "weightPct": -1.5,
-   "riskContribPct": 6.5,
-   "mVaR": 9.1
-  },
-  {
    "ticker": "HL",
    "side": "short",
    "weightPct": -1.6,
+   "riskContribPct": 6.6,
+   "mVaR": 9.3
+  },
+  {
+   "ticker": "AG",
+   "side": "short",
+   "weightPct": -1.5,
    "riskContribPct": 6.5,
    "mVaR": 9.2
   },
@@ -687,20 +687,20 @@
    "ticker": "BVN",
    "side": "short",
    "weightPct": -1.6,
-   "riskContribPct": 6.0,
-   "mVaR": 8.4
+   "riskContribPct": 5.9,
+   "mVaR": 8.3
   },
   {
    "ticker": "KARS",
    "side": "short",
    "weightPct": -3.5,
    "riskContribPct": 5.9,
-   "mVaR": 8.3
+   "mVaR": 8.4
   },
   {
    "ticker": "PAAS",
    "side": "short",
-   "weightPct": -1.5,
+   "weightPct": -1.6,
    "riskContribPct": 5.5,
    "mVaR": 7.8
   },
@@ -716,7 +716,7 @@
    "side": "short",
    "weightPct": -3.5,
    "riskContribPct": 3.7,
-   "mVaR": 5.2
+   "mVaR": 5.1
   },
   {
    "ticker": "KALU",
@@ -758,7 +758,7 @@
    "side": "short",
    "weightPct": -1.1,
    "riskContribPct": 2.6,
-   "mVaR": 3.6
+   "mVaR": 3.7
   },
   {
    "ticker": "ALB",
