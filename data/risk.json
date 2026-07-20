@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-20T18:01:19+00:00",
+ "updatedAt": "2026-07-20T18:10:36+00:00",
  "asOf": "2026-07-20",
  "window": 90,
  "obs": 21,
@@ -9,7 +9,7 @@
   "betaXme": 0.19,
   "var1d95": -235,
   "var1d99": -457,
-  "hhi": 699.0,
+  "hhi": 701.0,
   "effectiveN": 14.3
  },
  "metrics": [
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "699 / 14.3",
+   "v": "701 / 14.3",
    "note": "22 names, ~14.3 effective",
    "tone": "pos"
   }
@@ -637,23 +637,23 @@
   {
    "ticker": "BEPC",
    "side": "short",
-   "weightPct": -9.7,
-   "riskContribPct": 19.2,
-   "mVaR": 27.0
+   "weightPct": -9.8,
+   "riskContribPct": 19.3,
+   "mVaR": 27.2
   },
   {
    "ticker": "PLG",
    "side": "short",
    "weightPct": -2.3,
-   "riskContribPct": 10.0,
-   "mVaR": 14.1
+   "riskContribPct": 10.1,
+   "mVaR": 14.2
   },
   {
    "ticker": "SBSW",
    "side": "short",
    "weightPct": -2.3,
    "riskContribPct": 10.0,
-   "mVaR": 14.1
+   "mVaR": 14.0
   },
   {
    "ticker": "BATT",
@@ -670,6 +670,13 @@
    "mVaR": 10.4
   },
   {
+   "ticker": "AG",
+   "side": "short",
+   "weightPct": -1.5,
+   "riskContribPct": 6.6,
+   "mVaR": 9.2
+  },
+  {
    "ticker": "HL",
    "side": "short",
    "weightPct": -1.6,
@@ -677,18 +684,11 @@
    "mVaR": 9.3
   },
   {
-   "ticker": "AG",
-   "side": "short",
-   "weightPct": -1.5,
-   "riskContribPct": 6.5,
-   "mVaR": 9.2
-  },
-  {
    "ticker": "BVN",
    "side": "short",
    "weightPct": -1.7,
    "riskContribPct": 6.0,
-   "mVaR": 8.4
+   "mVaR": 8.5
   },
   {
    "ticker": "KARS",
@@ -701,7 +701,7 @@
    "ticker": "PAAS",
    "side": "short",
    "weightPct": -1.6,
-   "riskContribPct": 5.5,
+   "riskContribPct": 5.6,
    "mVaR": 7.8
   },
   {
@@ -712,13 +712,6 @@
    "mVaR": 7.4
   },
   {
-   "ticker": "RS",
-   "side": "short",
-   "weightPct": -3.5,
-   "riskContribPct": 3.7,
-   "mVaR": 5.2
-  },
-  {
    "ticker": "KALU",
    "side": "short",
    "weightPct": -1.4,
@@ -726,18 +719,25 @@
    "mVaR": 5.0
   },
   {
-   "ticker": "CLF",
+   "ticker": "RS",
    "side": "short",
-   "weightPct": -1.2,
-   "riskContribPct": 3.4,
-   "mVaR": 4.7
+   "weightPct": -3.5,
+   "riskContribPct": 3.6,
+   "mVaR": 5.1
   },
   {
    "ticker": "CMC",
    "side": "short",
    "weightPct": -1.8,
    "riskContribPct": 3.4,
-   "mVaR": 4.8
+   "mVaR": 4.7
+  },
+  {
+   "ticker": "CLF",
+   "side": "short",
+   "weightPct": -1.2,
+   "riskContribPct": 3.3,
+   "mVaR": 4.7
   },
   {
    "ticker": "CSTM",
@@ -750,7 +750,7 @@
    "ticker": "AA",
    "side": "short",
    "weightPct": -1.2,
-   "riskContribPct": 2.9,
+   "riskContribPct": 2.8,
    "mVaR": 4.0
   },
   {
@@ -758,7 +758,7 @@
    "side": "short",
    "weightPct": -1.1,
    "riskContribPct": 2.6,
-   "mVaR": 3.7
+   "mVaR": 3.6
   },
   {
    "ticker": "ALB",
