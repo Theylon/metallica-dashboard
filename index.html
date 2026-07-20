@@ -502,6 +502,7 @@ td:first-child { text-align: left; }
   .report-note-block { padding: 14px; }
   .section-title { margin-bottom: 10px; }
   .tenh-bar, .tenh-filter-row { padding-left: 14px; padding-right: 14px; }
+  .fts-controls { margin-left: auto; }
 }
 
 /* ── Universal table controls: column show/hide · per-column filter · sort ── */
@@ -523,6 +524,39 @@ td:first-child { text-align: left; }
 th.tenh-sortable { cursor: pointer; user-select: none; }
 th.tenh-sortable:hover { color: var(--text); }
 .tenh-arrow { font-size: 9px; opacity: 0.75; }
+
+/* ── fts: flexible table sizing — collapse · height presets · drag resize · fullscreen ── */
+.fts-controls { display: flex; align-items: center; gap: 6px; margin-left: 12px; flex-shrink: 0; }
+.fts-btn { padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 600; line-height: 1.4; cursor: pointer; background: transparent; border: 1px solid var(--border); color: var(--text-muted); }
+.fts-btn:hover { color: var(--text); border-color: var(--accent); }
+.fts-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.fts-chevron span { display: inline-block; transition: transform .15s; }
+.fts-collapsed .fts-chevron span { transform: rotate(-90deg); }
+/* synthetic slim header for panels that have no .table-header of their own
+   (their title lives in a sibling .chart-header above the panel) */
+.table-header.fts-synth { padding: 8px 20px; justify-content: flex-end; }
+/* collapse: keep only the header strip visible */
+.table-panel.fts-collapsed > :not(.table-header):not(.bm-table-header) { display: none; }
+/* a user-sized card in a two-col grid hugs its content instead of stretching to its neighbour */
+.two-col > .table-panel.fts-collapsed, .two-col > .table-panel.fts-capped { align-self: start; }
+.table-panel.fts-collapsed > .table-header, .table-panel.fts-collapsed > .bm-table-header { border-bottom: none; }
+.table-panel.fts-collapsed .fts-mode, .table-panel.fts-collapsed .fts-full { display: none; }
+/* height cap (preset or custom drag height); thead sticks only while scrollable */
+.table-panel.fts-capped .table-wrapper { max-height: var(--fts-h, 420px); overflow-y: auto; }
+.table-panel.fts-capped .table-wrapper thead th,
+.table-panel.fts-fullscreen .table-wrapper thead th { position: sticky; top: 0; z-index: 3; box-shadow: inset 0 -1px 0 var(--border); }
+.fts-resizer { height: 12px; cursor: ns-resize; touch-action: none; user-select: none; display: flex; align-items: center; justify-content: center; }
+.fts-resizer::after { content: ''; width: 36px; height: 4px; border-radius: 2px; background: var(--border); }
+.fts-resizer:hover::after, .fts-resizer:focus-visible::after { background: var(--accent); }
+.fts-resizer:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+body.fts-dragging { user-select: none; cursor: ns-resize; }
+/* fullscreen: class-based overlay in place — no re-parenting, so table observers
+   and wired listeners keep working; z 200 clears topbar(100)/tabs(99), under login(999) */
+.table-panel.fts-fullscreen { position: fixed; inset: 0; z-index: 200; margin: 0; border-radius: 0; display: flex; flex-direction: column; }
+.table-panel.fts-fullscreen .table-wrapper { flex: 1 1 auto; max-height: none !important; overflow: auto; }
+.table-panel.fts-fullscreen .fts-resizer, .table-panel.fts-fullscreen .fts-chevron, .table-panel.fts-fullscreen .fts-mode { display: none; }
+.table-panel.fts-fullscreen .fts-full { color: var(--accent); border-color: var(--accent); }
+body.fts-noscroll { overflow: hidden; }
 </style>
 </head>
 <body>
@@ -3801,6 +3835,7 @@ function renderAltData() {
 }
 
 function showTab(name) {
+  ftsExitFullscreen();   // a fullscreen table overlay must not survive a tab switch
   document.querySelectorAll('.tab').forEach(t => {
     const active = t.dataset.tab === name;
     t.classList.toggle('active', active);
@@ -4483,6 +4518,227 @@ function enhanceAllTables() {
   if (!tenhMenusBound) { tenhMenusBound = true; document.addEventListener('click', tenhCloseMenus); }
   document.querySelectorAll('table').forEach(t => { try { tenhEnhance(t); } catch (e) { /* never break the dashboard */ } });
   tenhInstallRebalObserver();
+  try { ftsEnhanceAll(); } catch (e) { /* never break the dashboard */ }
+}
+
+// ═══════════════════════ FTS: FLEXIBLE TABLE SIZING ══
+// Per-table collapse, preset/custom height caps, drag-resize and fullscreen for
+// every .table-panel that holds a .table-wrapper > table. State persists in
+// localStorage under metallica_table_layout, keyed by page id + thead labels
+// (+ ordinal for same-page duplicates like Journal Best/Worst) so it survives
+// tbody re-renders and the Rebalance subtree rebuild. Runs from enhanceAllTables().
+
+const FTS_KEY = 'metallica_table_layout';
+const FTS_PRESETS = { compact: 220, regular: 420 };
+const FTS_MIN_H = 90, FTS_MAX_H = 1600;
+let ftsLayout = ftsLoadLayout();
+let ftsFullscreenSig = null;   // not persisted — tracked so a Rebalance rebuild can't strand the overlay
+let ftsKeysBound = false;
+let ftsIdSeq = 0;
+
+function ftsLoadLayout() {
+  // Tolerate garbage/foreign blobs: bad JSON → defaults; per-entry whitelist + clamp.
+  try {
+    const raw = JSON.parse(localStorage.getItem(FTS_KEY) || '{}');
+    const src = raw && typeof raw === 'object' && raw.panels && typeof raw.panels === 'object' ? raw.panels : {};
+    const panels = {};
+    for (const [sig, e] of Object.entries(src)) {
+      if (!e || typeof e !== 'object') continue;
+      const st = {};
+      if (e.c === 1) st.c = 1;
+      if (e.m === 'compact' || e.m === 'regular') st.m = e.m;
+      const h = parseInt(e.h, 10);
+      if (h >= FTS_MIN_H && h <= FTS_MAX_H) { st.h = h; delete st.m; }   // custom height wins over preset
+      if (Object.keys(st).length) panels[sig] = st;
+    }
+    return { v: 1, panels };
+  } catch (e) { return { v: 1, panels: {} }; }
+}
+function ftsSaveLayout() {
+  try {
+    for (const [sig, st] of Object.entries(ftsLayout.panels)) {
+      if (!st || !Object.keys(st).length) delete ftsLayout.panels[sig];   // all-defaults → drop, keep the blob tiny
+    }
+    localStorage.setItem(FTS_KEY, JSON.stringify(ftsLayout));
+  } catch (e) { /* storage blocked/full — feature degrades to in-session state */ }
+}
+function ftsState(sig) { return ftsLayout.panels[sig] || (ftsLayout.panels[sig] = {}); }
+
+function ftsPanels() {
+  const out = [];
+  document.querySelectorAll('.table-panel').forEach(panel => {
+    const wrapper = panel.querySelector('.table-wrapper');
+    const table = wrapper && wrapper.querySelector('table');
+    if (table) out.push({ panel, wrapper, table });
+  });
+  return out;
+}
+
+function ftsApplyState(panel) {
+  const st = ftsLayout.panels[panel.dataset.ftsSig] || {};
+  panel.classList.toggle('fts-collapsed', st.c === 1);
+  const h = st.h || FTS_PRESETS[st.m] || 0;
+  if (h) { panel.classList.add('fts-capped'); panel.style.setProperty('--fts-h', h + 'px'); }
+  else { panel.classList.remove('fts-capped'); panel.style.removeProperty('--fts-h'); }
+  const mode = panel.querySelector('.fts-mode');
+  if (mode) mode.textContent = st.h ? 'Custom' : st.m === 'compact' ? 'Compact' : st.m === 'regular' ? 'Regular' : 'Full';
+  const chev = panel.querySelector('.fts-chevron');
+  if (chev) {
+    chev.setAttribute('aria-expanded', st.c === 1 ? 'false' : 'true');
+    chev.setAttribute('aria-label', st.c === 1 ? 'Expand table' : 'Collapse table');
+  }
+}
+
+function ftsToggleCollapse(panel) {
+  const st = ftsState(panel.dataset.ftsSig);
+  if (st.c === 1) delete st.c; else st.c = 1;
+  ftsSaveLayout(); ftsApplyState(panel);
+}
+function ftsCycleMode(panel) {
+  // Full → Compact → Regular → Full; from a dragged Custom height the cycle restarts at Compact.
+  const st = ftsState(panel.dataset.ftsSig);
+  if (st.h) { delete st.h; st.m = 'compact'; }
+  else if (!st.m) st.m = 'compact';
+  else if (st.m === 'compact') st.m = 'regular';
+  else delete st.m;
+  ftsSaveLayout(); ftsApplyState(panel);
+}
+function ftsSetCustomHeight(panel, h) {
+  h = Math.round(Math.min(FTS_MAX_H, Math.max(FTS_MIN_H, h)));
+  const st = ftsState(panel.dataset.ftsSig);
+  st.h = h; delete st.m;
+  ftsSaveLayout(); ftsApplyState(panel);
+}
+function ftsResetHeight(panel) {
+  const st = ftsState(panel.dataset.ftsSig);
+  delete st.h; delete st.m;
+  ftsSaveLayout(); ftsApplyState(panel);
+}
+
+function ftsEnterFullscreen(panel) {
+  ftsExitFullscreen();   // at most one overlay at a time
+  panel.classList.add('fts-fullscreen');
+  document.body.classList.add('fts-noscroll');
+  ftsFullscreenSig = panel.dataset.ftsSig;
+  const b = panel.querySelector('.fts-full');
+  if (b) b.setAttribute('aria-pressed', 'true');
+}
+function ftsExitFullscreen() {
+  ftsFullscreenSig = null;
+  document.body.classList.remove('fts-noscroll');
+  document.querySelectorAll('.table-panel.fts-fullscreen').forEach(p => {
+    p.classList.remove('fts-fullscreen');
+    const b = p.querySelector('.fts-full');
+    if (b) b.setAttribute('aria-pressed', 'false');
+  });
+}
+
+function ftsDecoratePanel(panel, wrapper) {
+  let header = panel.querySelector(':scope > .table-header, :scope > .bm-table-header');
+  if (!header) {
+    header = document.createElement('div');
+    header.className = 'table-header fts-synth';
+    panel.insertBefore(header, panel.firstChild);
+  }
+  if (!wrapper.id) wrapper.id = 'fts-r-' + (++ftsIdSeq);
+
+  const controls = document.createElement('div');
+  controls.className = 'fts-controls';
+  controls.innerHTML =
+    '<button type="button" class="fts-btn fts-mode" title="Cycle height preset: Full → Compact → Regular">Full</button>' +
+    '<button type="button" class="fts-btn fts-full" title="Fullscreen (Esc exits)" aria-label="Toggle fullscreen table view" aria-pressed="false">⛶</button>' +
+    '<button type="button" class="fts-btn fts-chevron" title="Collapse / expand" aria-expanded="true" aria-label="Collapse table" aria-controls="' + wrapper.id + '"><span>▾</span></button>';
+  // keep the existing right-side header content (row counts, notes) hugging the right
+  // edge: with 3+ flex children space-between would float it to the middle otherwise
+  if (header.children.length > 1) header.lastElementChild.style.marginLeft = 'auto';
+  header.appendChild(controls);
+
+  header.addEventListener('click', e => {
+    // header background/title toggles collapse; never hijack the interactive bits
+    if (e.target.closest('button,input,select,label,a,.sub-tab,.filter-bar,.fts-controls,.tenh-menu-wrap')) return;
+    ftsToggleCollapse(panel);
+  });
+  controls.querySelector('.fts-chevron').addEventListener('click', e => { e.stopPropagation(); ftsToggleCollapse(panel); });
+  controls.querySelector('.fts-mode').addEventListener('click', e => { e.stopPropagation(); ftsCycleMode(panel); });
+  controls.querySelector('.fts-full').addEventListener('click', e => {
+    e.stopPropagation();
+    if (panel.classList.contains('fts-fullscreen')) ftsExitFullscreen(); else ftsEnterFullscreen(panel);
+  });
+
+  const resizer = document.createElement('div');
+  resizer.className = 'fts-resizer';
+  resizer.setAttribute('role', 'separator');
+  resizer.setAttribute('aria-orientation', 'horizontal');
+  resizer.setAttribute('tabindex', '0');
+  resizer.setAttribute('aria-label', 'Resize table height: drag or use arrow keys; Home or double-click resets');
+  resizer.title = 'Drag to resize · double-click to reset';
+  wrapper.insertAdjacentElement('afterend', resizer);
+
+  let drag = null;
+  resizer.addEventListener('pointerdown', e => {
+    drag = { y: e.clientY, h: wrapper.getBoundingClientRect().height, cur: null };
+    resizer.setPointerCapture(e.pointerId);
+    document.body.classList.add('fts-dragging');
+    e.preventDefault();
+  });
+  resizer.addEventListener('pointermove', e => {
+    if (!drag) return;
+    drag.cur = Math.round(Math.min(FTS_MAX_H, Math.max(FTS_MIN_H, drag.h + (e.clientY - drag.y))));
+    panel.classList.add('fts-capped');
+    panel.style.setProperty('--fts-h', drag.cur + 'px');
+  });
+  const endDrag = () => {
+    if (!drag) return;
+    const moved = drag.cur;
+    drag = null;
+    document.body.classList.remove('fts-dragging');
+    if (moved != null) ftsSetCustomHeight(panel, moved);
+    else ftsApplyState(panel);   // plain click, no move — reassert saved state
+  };
+  resizer.addEventListener('pointerup', endDrag);
+  resizer.addEventListener('pointercancel', endDrag);
+  resizer.addEventListener('dblclick', () => ftsResetHeight(panel));
+  resizer.addEventListener('keydown', e => {
+    if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown' && e.key !== 'Home') return;
+    e.preventDefault();
+    if (e.key === 'Home') { ftsResetHeight(panel); return; }
+    const base = wrapper.getBoundingClientRect().height;
+    ftsSetCustomHeight(panel, base + (e.key === 'ArrowDown' ? 24 : -24));
+  });
+}
+
+function ftsEnhanceAll() {
+  if (!ftsKeysBound) {
+    ftsKeysBound = true;
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && ftsFullscreenSig) ftsExitFullscreen(); });
+  }
+  const items = ftsPanels();
+  const seen = new Map();
+  for (const it of items) {
+    const page = it.panel.closest('.page');
+    const labels = tenhHeaderCells(it.table).map(th => th.textContent.replace(/[▲▼]/g, '').trim()).join('|');
+    const base = (page ? page.id : 'nopage') + '::' + labels;
+    const n = seen.get(base) || 0;
+    seen.set(base, n + 1);
+    it.panel.dataset.ftsSig = base + '::' + n;
+    if (it.panel.dataset.ftsWired !== '1') {
+      ftsDecoratePanel(it.panel, it.wrapper);
+      it.panel.dataset.ftsWired = '1';
+    }
+    ftsApplyState(it.panel);
+  }
+  // A Rebalance rebuild destroys a fullscreen panel's node mid-overlay; restore the
+  // overlay on its freshly built replacement (or exit cleanly if the table is gone).
+  if (ftsFullscreenSig) {
+    const p = items.map(i => i.panel).find(p => p.dataset.ftsSig === ftsFullscreenSig);
+    if (!p) { ftsExitFullscreen(); }
+    else if (!p.classList.contains('fts-fullscreen')) {
+      p.classList.add('fts-fullscreen');
+      document.body.classList.add('fts-noscroll');
+      const b = p.querySelector('.fts-full');
+      if (b) b.setAttribute('aria-pressed', 'true');
+    }
+  }
 }
 
 // ═══════════════════════════════════════════ INIT ══
