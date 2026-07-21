@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-20T21:11:11+00:00",
+ "updatedAt": "2026-07-21T07:26:43+00:00",
  "gate": {
   "trustedMinPct": 80
  },
@@ -131,7 +131,7 @@
    "accuracyPct": null,
    "status": "accumulating",
    "gated": true,
-   "note": "needs \u226525 snapshot days with biasDir recorded (5 days so far, 114 directional rows)",
+   "note": "needs \u226525 snapshot days with biasDir recorded (6 days so far, 228 directional rows)",
    "detail": []
   },
   {
@@ -199,7 +199,7 @@
    "accuracyPct": null,
    "status": "accumulating",
    "gated": true,
-   "note": "needs 25 daily snapshots (5 so far)",
+   "note": "needs 25 daily snapshots (6 so far)",
    "detail": []
   },
   {
@@ -208,18 +208,18 @@
    "kind": "crossval",
    "source": "micro.json crossVal (independent yfinance pull)",
    "ticker": null,
-   "n": 185,
+   "n": 188,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
    "hitRatePct": null,
-   "accuracyPct": 77.8,
+   "accuracyPct": 78.2,
    "status": "info",
    "gated": false,
    "note": null,
    "detail": [
     {
-     "agree": 144,
+     "agree": 147,
      "mixed": 31,
      "conflict": 10
     }
