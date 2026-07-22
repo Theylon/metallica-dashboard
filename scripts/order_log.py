@@ -20,7 +20,7 @@ Usage:
         --gates "size_order:WARN" --note "owner confirmed in session"
   update (after submission/cancel/fill):
     python3 scripts/order_log.py --set-status --instruction-id 1234 --status submitted \
-        [--fill-price 46.16]
+        [--fill-price 46.16] [--fill-ts 2026-07-21T15:03:38Z]
   backfill trade outcomes (forward price returns on filled orders):
     python3 scripts/order_log.py --update-outcomes
   show recent:
@@ -31,7 +31,10 @@ Statuses: created → submitted → filled | cancelled | expired.
 Outcomes (the look-back loop, mirroring decision_log.py's d30/d90): every
 `filled` order gets `outcome.d1/.d5/.d30` — the raw forward price return (%)
 from its fill price (fallback: limit price), anchored on daily prices in
-data/micro_history.jsonl. The Orders tab colors them by whether the move
+data/micro_history.jsonl. The window starts on the fill date (`fillTs`, from
+get_account_trades) when recorded, else the instruction date (`ts`) — an
+instruction can fill a day after it was created, and measuring from creation
+would mislabel the fill-day close as "d1". The Orders tab colors them by whether the move
 confirmed the trade's side (a BUY wants the price up — true both for opening a
 long and for covering a short before a catalyst; a SELL wants it down). Short
 horizons on purpose: these are catalyst trades (earnings, tariff decisions), so
@@ -144,6 +147,8 @@ def set_status(a) -> int:
     hit["statusUpdatedAt"] = _now()
     if a.fill_price is not None:
         hit["fillPrice"] = a.fill_price
+    if a.fill_ts:
+        hit["fillTs"] = a.fill_ts
     if a.note:
         hit["note"] = (str(hit.get("note")) + " | " if hit.get("note") else "") + a.note
     tmp = LOG.with_suffix(".jsonl.tmp")
@@ -201,7 +206,10 @@ def update_outcomes() -> int:
             continue
         anchor = e.get("fillPrice") or e.get("limit")
         try:
-            start = datetime.date.fromisoformat((e.get("ts") or "")[:10])
+            # start the forward window at the fill, not the instruction — they
+            # can be a day apart (NUE: created 7/19, filled 7/20)
+            start = datetime.date.fromisoformat(
+                (e.get("fillTs") or e.get("ts") or "")[:10])
         except Exception:
             start = None
         changed = False
@@ -261,6 +269,9 @@ def main() -> int:
     ap.add_argument("--limit", type=float, default=None)
     ap.add_argument("--fill-price", type=float, default=None,
                     help="with --set-status: actual execution price (outcome anchor)")
+    ap.add_argument("--fill-ts", default=None,
+                    help="with --set-status: execution time from get_account_trades, "
+                         "ISO-8601 (outcome window start)")
     ap.add_argument("--tif", default="DAY")
     ap.add_argument("--conid", type=int, default=None)
     ap.add_argument("--instruction-id", default=None)

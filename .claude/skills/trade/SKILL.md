@@ -79,7 +79,9 @@ an order was placed; say an *instruction* was created and link the URL.
 8. **Follow through** — `get_order_instructions` shows it pending; after the
    owner submits: `get_account_orders` (live/filled) →
    `order_log.py --set-status --instruction-id <id> --status submitted|filled
-   --fill-price <actual execution price from get_account_trades>`.
+   --fill-price <price> --fill-ts <trade_time>` (both from `get_account_trades`
+   — the fill time anchors the outcome window; fills can land a day after the
+   instruction was created).
    Fills: `get_account_trades` (TODAY) — record the real fill price (and note a
    deviating order type/qty): it anchors the Orders tab's look-back Outcome
    column (`order_log.py --update-outcomes`, run by the fetch Action). After a
