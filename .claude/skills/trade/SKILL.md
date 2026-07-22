@@ -78,10 +78,16 @@ an order was placed; say an *instruction* was created and link the URL.
    (instruction <id>)`.
 8. **Follow through** — `get_order_instructions` shows it pending; after the
    owner submits: `get_account_orders` (live/filled) →
-   `order_log.py --set-status --instruction-id <id> --status submitted|filled`.
-   Fills: `get_account_trades` (TODAY). After a fill, run the standard
-   IBKR refresh (`scripts/mcp_refresh.py` flow) and commit so NAV/positions
-   update; the daily Journal routine picks up the round-trip analytics.
+   `order_log.py --set-status --instruction-id <id> --status submitted|filled
+   --fill-price <price> --fill-ts <trade_time>` (both from `get_account_trades`
+   — the fill time anchors the outcome window; fills can land a day after the
+   instruction was created).
+   Fills: `get_account_trades` (TODAY) — record the real fill price (and note a
+   deviating order type/qty): it anchors the Orders tab's look-back Outcome
+   column (`order_log.py --update-outcomes`, run by the fetch Action). After a
+   fill, run the standard IBKR refresh (`scripts/mcp_refresh.py` flow) and
+   commit so NAV/positions update; the daily Journal routine picks up the
+   round-trip analytics.
 
 ## Trading from a recommendation or the Rebalance plan
 

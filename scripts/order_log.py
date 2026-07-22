@@ -19,11 +19,26 @@ Usage:
         --reason "thesis conflict with bullish steel" \
         --gates "size_order:WARN" --note "owner confirmed in session"
   update (after submission/cancel/fill):
-    python3 scripts/order_log.py --set-status --instruction-id 1234 --status submitted
+    python3 scripts/order_log.py --set-status --instruction-id 1234 --status submitted \
+        [--fill-price 46.16] [--fill-ts 2026-07-21T15:03:38Z]
+  backfill trade outcomes (forward price returns on filled orders):
+    python3 scripts/order_log.py --update-outcomes
   show recent:
     python3 scripts/order_log.py --list [-n 10]
 
 Statuses: created → submitted → filled | cancelled | expired.
+
+Outcomes (the look-back loop, mirroring decision_log.py's d30/d90): every
+`filled` order gets `outcome.d1/.d5/.d30` — the raw forward price return (%)
+from its fill price (fallback: limit price), anchored on daily prices in
+data/micro_history.jsonl. The window starts on the fill date (`fillTs`, from
+get_account_trades) when recorded, else the instruction date (`ts`) — an
+instruction can fill a day after it was created, and measuring from creation
+would mislabel the fill-day close as "d1". The Orders tab colors them by whether the move
+confirmed the trade's side (a BUY wants the price up — true both for opening a
+long and for covering a short before a catalyst; a SELL wants it down). Short
+horizons on purpose: these are catalyst trades (earnings, tariff decisions), so
+"was the trigger right?" is usually answerable within days.
 Stdlib only.
 """
 from __future__ import annotations
@@ -36,9 +51,12 @@ import pathlib
 import sys
 
 LOG = pathlib.Path(__file__).resolve().parent.parent / "data" / "orders.jsonl"
+HISTORY = LOG.parent / "micro_history.jsonl"
 STATUSES = ["created", "submitted", "filled", "cancelled", "expired"]
 # an order past one of these is done — its instructionId may be safely recycled
 TERMINAL = {"filled", "cancelled", "expired"}
+# forward-return horizons for filled orders; short because these are catalyst trades
+OUTCOME_DAYS = (1, 5, 30)
 
 
 def _now():
@@ -127,6 +145,10 @@ def set_status(a) -> int:
               f"Use --ts to target a specific one.")
     hit["status"] = a.status
     hit["statusUpdatedAt"] = _now()
+    if a.fill_price is not None:
+        hit["fillPrice"] = a.fill_price
+    if a.fill_ts:
+        hit["fillTs"] = a.fill_ts
     if a.note:
         hit["note"] = (str(hit.get("note")) + " | " if hit.get("note") else "") + a.note
     tmp = LOG.with_suffix(".jsonl.tmp")
@@ -134,6 +156,80 @@ def set_status(a) -> int:
         json.dumps(x) if isinstance(x, dict) else x for x in lines) + "\n")
     os.replace(tmp, LOG)
     print(f"orders.jsonl: instruction {a.instruction_id} → {a.status}")
+    return 0
+
+
+def _history_by_date():
+    """{date: {ticker: priceAnchor}} from micro_history.jsonl (same as decision_log)."""
+    if not HISTORY.exists():
+        return {}
+    by_date = {}
+    for line in HISTORY.read_text().splitlines():
+        if not line.strip():
+            continue
+        try:
+            r = json.loads(line)
+        except Exception:
+            continue
+        by_date.setdefault(r["date"], {})[r["ticker"]] = r.get("priceAnchor")
+    return by_date
+
+
+def _forward_price(by_date, dates, ticker, start, days):
+    """First anchor for ticker on/after start+days (within a 10-day grace window)."""
+    target = start + datetime.timedelta(days=days)
+    for d in dates:
+        dd = datetime.date.fromisoformat(d)
+        if dd >= target:
+            if dd > target + datetime.timedelta(days=10):
+                return None   # history has a hole — don't fake an outcome
+            return by_date[d].get(ticker)
+    return None
+
+
+def update_outcomes() -> int:
+    """Fill outcome.d1/.d5/.d30 (raw forward price return, %) on filled orders."""
+    if not LOG.exists():
+        print("orders.jsonl: no log yet")
+        return 0
+    by_date = _history_by_date()
+    dates = sorted(by_date)
+    today = datetime.datetime.now(datetime.timezone.utc).date()
+    lines, updated = [], 0
+    for line in LOG.read_text().splitlines():
+        if not line.strip():
+            continue
+        try:
+            e = json.loads(line)
+        except Exception:
+            lines.append(line)
+            continue
+        anchor = e.get("fillPrice") or e.get("limit")
+        try:
+            # start the forward window at the fill, not the instruction — they
+            # can be a day apart (NUE: created 7/19, filled 7/20)
+            start = datetime.date.fromisoformat(
+                (e.get("fillTs") or e.get("ts") or "")[:10])
+        except Exception:
+            start = None
+        changed = False
+        if e.get("status") == "filled" and start and anchor:
+            for days in OUTCOME_DAYS:
+                key = f"d{days}"
+                if e.get("outcome", {}).get(key) is None and (today - start).days >= days:
+                    fwd = _forward_price(by_date, dates, e.get("ticker"), start, days)
+                    if fwd:
+                        e.setdefault("outcome", {})[key] = round((fwd / anchor - 1) * 100, 2)
+                        changed = True
+        if changed:
+            e["outcome"]["checkedAt"] = today.isoformat()
+            updated += 1
+        lines.append(json.dumps(e))
+    if updated:
+        tmp = LOG.with_suffix(".jsonl.tmp")
+        tmp.write_text("\n".join(lines) + "\n")
+        os.replace(tmp, LOG)
+    print(f"orders.jsonl: outcomes updated on {updated} entries")
     return 0
 
 
@@ -164,12 +260,18 @@ def main() -> int:
     mode = ap.add_mutually_exclusive_group(required=True)
     mode.add_argument("--append", action="store_true")
     mode.add_argument("--set-status", action="store_true")
+    mode.add_argument("--update-outcomes", action="store_true")
     mode.add_argument("--list", action="store_true")
     ap.add_argument("--ticker")
     ap.add_argument("--side", choices=["BUY", "SELL"])
     ap.add_argument("--qty", type=float)
     ap.add_argument("--order-type", choices=["LIMIT", "MARKET"])
     ap.add_argument("--limit", type=float, default=None)
+    ap.add_argument("--fill-price", type=float, default=None,
+                    help="with --set-status: actual execution price (outcome anchor)")
+    ap.add_argument("--fill-ts", default=None,
+                    help="with --set-status: execution time from get_account_trades, "
+                         "ISO-8601 (outcome window start)")
     ap.add_argument("--tif", default="DAY")
     ap.add_argument("--conid", type=int, default=None)
     ap.add_argument("--instruction-id", default=None)
@@ -199,6 +301,8 @@ def main() -> int:
             print("ERR: --set-status needs --instruction-id and --status")
             return 2
         return set_status(a)
+    if a.update_outcomes:
+        return update_outcomes()
     return list_tail(a)
 
 

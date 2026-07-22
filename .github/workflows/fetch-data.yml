@@ -110,6 +110,7 @@ jobs:
       - name: Decision-log outcomes + process alerts
         run: |
           python scripts/decision_log.py --update-outcomes || echo "outcomes skipped (non-fatal)"
+          python scripts/order_log.py --update-outcomes || echo "order outcomes skipped (non-fatal)"
           python scripts/alerts_build.py || echo "alerts skipped (non-fatal)"
 
       # Freeze every live data point (analysts, sentiment, fundamentals, scores,

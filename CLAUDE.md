@@ -113,7 +113,12 @@ prepares, the owner executes. The full workflow lives in
 - **Every instruction is recorded** in `data/orders.jsonl` via
   `scripts/order_log.py` (created → submitted → filled/cancelled), including
   its **trigger** (owner ask / recommendation / rebalance row / alert) and the
-  owner's **reason**. The dashboard's **Orders tab** renders it read-only;
+  owner's **reason** — and, once filled, the actual **fill price** plus
+  look-back **outcomes** (+1d/+5d/+30d forward returns,
+  `order_log.py --update-outcomes`, backfilled by the fetch Action). Statuses
+  must reflect live IBKR state — reconcile against `get_account_orders` /
+  `get_account_trades`, don't leave stale `created` rows. The dashboard's
+  **Orders tab** renders it read-only;
   every line must parse (`validate_data.py`'s JSONL step) — semantic checks
   stay warn-only in `verify_data.py`.
 - **After fills, refresh** (`mcp_refresh.py` flow) so the dashboard shows the
