@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-22T13:19:49+00:00",
+ "updatedAt": "2026-07-22T13:25:52+00:00",
  "asOf": "2026-07-22",
  "window": 90,
  "obs": 23,
@@ -9,7 +9,7 @@
   "betaXme": 0.11,
   "var1d95": -232,
   "var1d99": -451,
-  "hhi": 671.0,
+  "hhi": 670.0,
   "effectiveN": 14.9
  },
  "metrics": [
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "671 / 14.9",
+   "v": "670 / 14.9",
    "note": "23 names, ~14.9 effective",
    "tone": "pos"
   }
@@ -685,9 +685,16 @@
   {
    "ticker": "BEPC",
    "side": "short",
-   "weightPct": -9.7,
+   "weightPct": -9.8,
    "riskContribPct": 16.8,
-   "mVaR": 22.6
+   "mVaR": 22.7
+  },
+  {
+   "ticker": "SBSW",
+   "side": "short",
+   "weightPct": -2.5,
+   "riskContribPct": 9.9,
+   "mVaR": 13.4
   },
   {
    "ticker": "PLG",
@@ -697,18 +704,11 @@
    "mVaR": 13.2
   },
   {
-   "ticker": "SBSW",
-   "side": "short",
-   "weightPct": -2.5,
-   "riskContribPct": 9.8,
-   "mVaR": 13.3
-  },
-  {
    "ticker": "CDE",
    "side": "short",
-   "weightPct": -1.7,
+   "weightPct": -1.8,
    "riskContribPct": 7.9,
-   "mVaR": 10.6
+   "mVaR": 10.7
   },
   {
    "ticker": "HL",
@@ -750,7 +750,7 @@
    "side": "short",
    "weightPct": -3.6,
    "riskContribPct": 4.7,
-   "mVaR": 6.3
+   "mVaR": 6.4
   },
   {
    "ticker": "LIT",
@@ -785,7 +785,7 @@
    "side": "short",
    "weightPct": -1.2,
    "riskContribPct": 2.9,
-   "mVaR": 3.9
+   "mVaR": 4.0
   },
   {
    "ticker": "CSTM",
@@ -826,15 +826,15 @@
    "ticker": "SQM",
    "side": "long",
    "weightPct": 2.6,
-   "riskContribPct": -0.7,
+   "riskContribPct": -0.8,
    "mVaR": -1.0
   },
   {
    "ticker": "MP",
    "side": "long",
    "weightPct": 7.7,
-   "riskContribPct": -1.2,
-   "mVaR": -1.6
+   "riskContribPct": -1.3,
+   "mVaR": -1.8
   },
   {
    "ticker": "LAC",
