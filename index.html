@@ -1581,12 +1581,13 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
             <th style="text-align:left;">Status</th>
             <th style="text-align:left;">Trigger</th>
             <th style="text-align:left;">Why &amp; gates</th>
+            <th style="text-align:left;" title="Forward price return from the fill price after 1/5/30 days — green when the move confirmed the trade's side">Outcome</th>
             <th style="text-align:left;">IBKR</th>
           </tr></thead>
-          <tbody id="ord-tbody"><tr class="empty-row"><td colspan="9">No orders yet — tickets appear here when a /trade session logs an instruction</td></tr></tbody>
+          <tbody id="ord-tbody"><tr class="empty-row"><td colspan="10">No orders yet — tickets appear here when a /trade session logs an instruction</td></tr></tbody>
         </table>
       </div>
-      <div class="report-note" style="margin-top:10px;">Append-only audit trail (data/orders.jsonl, written by scripts/order_log.py from the /trade workflow). <b>CREATED</b> = instruction awaiting the owner's submission — open the IBKR link on a phone with the IBKR app to review &amp; submit; the link errors in a plain desktop browser without an IBKR session. Statuses are updated by sessions as instructions are submitted, filled or cancelled. <b>Trigger</b> = what prompted the ticket (owner ask, a Stock-Picks recommendation, a Rebalance row, or an alert) and <b>Why</b> = the owner's rationale — the execution-side mirror of the decision log, so the review can ask "was the trigger right?". Claude prepares, the owner executes.</div>
+      <div class="report-note" style="margin-top:10px;">Append-only audit trail (data/orders.jsonl, written by scripts/order_log.py from the /trade workflow). <b>CREATED</b> = instruction awaiting the owner's submission — open the IBKR link on a phone with the IBKR app to review &amp; submit; the link errors in a plain desktop browser without an IBKR session. Statuses are updated by sessions as instructions are submitted, filled or cancelled. <b>Trigger</b> = what prompted the ticket (owner ask, a Stock-Picks recommendation, a Rebalance row, or an alert) and <b>Why</b> = the owner's rationale — the execution-side mirror of the decision log, so the review can ask "was the trigger right?". Claude prepares, the owner executes. <b>Outcome</b> = the look-back check on filled orders (scripts/order_log.py --update-outcomes): forward price return from the fill price after +1d/+5d/+30d, colored by whether the move confirmed the trade's side — a BUY wants the price up (opening a long, or covering a short ahead of a catalyst), a SELL wants it down.</div>
     </div>
   </div><!-- /orders -->
 
@@ -4285,6 +4286,23 @@ function ordStatusBadge(st) {
   return `<span class="pick-badge neutral">${esc(String(st || '—').toUpperCase())}</span>`;
 }
 
+// look-back cell: fill price + d1/d5/d30 forward returns (order_log.py
+// --update-outcomes), colored by whether the move confirmed the trade's side
+// (BUY wants up — opening a long or covering a short; SELL wants down)
+function ordOutcomeCell(e) {
+  const o = e.outcome || {};
+  const spans = ['d1', 'd5', 'd30'].map(k => {
+    const v = o[k];
+    if (v === null || v === undefined) return `<span style="color:var(--text-dim);">${k} —</span>`;
+    const good = e.side === 'BUY' ? v >= 0 : v < 0;
+    return `<span style="color:${good ? 'var(--green)' : 'var(--red)'};">${k} ${v > 0 ? '+' : ''}${Number(v).toFixed(1)}%</span>`;
+  });
+  const fill = e.fillPrice != null
+    ? `<div style="font-size:10px;color:var(--text-dim);">fill ${fmt(e.fillPrice, 2)}</div>` : '';
+  if (e.status !== 'filled') return '<td style="color:var(--text-dim);">—</td>';
+  return `<td style="text-align:left;font-size:11px;white-space:nowrap;">${spans.join(' · ')}${fill}</td>`;
+}
+
 // what prompted the ticket; older entries without `trigger` default to OWNER
 function ordTriggerBadge(trig) {
   const src = (trig || {}).source || 'owner';
@@ -4307,7 +4325,7 @@ function renderOrdersTable() {
   const cnt = document.getElementById('ord-count');
   if (cnt) cnt.textContent = ordersLog.length ? `${rows.length} of ${all.length} instructions` : '—';
   if (!rows.length) {
-    tb.innerHTML = `<tr class="empty-row"><td colspan="9">${ordersLog.length ? 'No orders match the filters' : 'No orders yet — tickets appear here when a /trade session logs an instruction'}</td></tr>`;
+    tb.innerHTML = `<tr class="empty-row"><td colspan="10">${ordersLog.length ? 'No orders match the filters' : 'No orders yet — tickets appear here when a /trade session logs an instruction'}</td></tr>`;
     return;
   }
   tb.innerHTML = rows.map(e => {
@@ -4329,6 +4347,7 @@ function renderOrdersTable() {
       + `<td style="text-align:left;">${ordStatusBadge(e.status)}<div style="font-size:10px;color:var(--text-dim);white-space:nowrap;">${esc((e.statusUpdatedAt || '').slice(0, 16).replace('T', ' '))}</div></td>`
       + `<td style="text-align:left;">${ordTriggerBadge(e.trigger)}</td>`
       + `<td style="text-align:left;font-size:11px;max-width:280px;">${why || '<span style="color:var(--text-dim);">—</span>'}</td>`
+      + ordOutcomeCell(e)
       + `<td style="text-align:left;">${link}</td>`
       + `</tr>`;
   }).join('');
