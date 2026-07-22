@@ -3753,8 +3753,24 @@ function renderRebalance() {
     el.innerHTML = uploader + uHead + buildRebalGrid(rebalRowsFromUpload(), { nav: (account && account.nav), asOf, keyNote: (rebalance && rebalance.keyNote) || '', tradeHref: uploadTradeHref });
     return;
   }
-  // No default proposed table — the tab is upload-driven. With no uploaded target,
-  // show the live book and prompt to upload a target to run the full analysis.
+  // No uploaded target: default to the research team's own trade list, so Orders and
+  // "My call" can never disagree — they're the same authored action. Uploading a book
+  // above replaces this view with a reconciliation against that book instead.
+  const tradeList = (micro && micro.tradeList) || [];
+  if (tradeList.length) {
+    const asOf = (micro && (micro.researchAsOf || micro.updatedAt)) || '';
+    const rHead = `
+      <div class="table-panel" style="margin-bottom:16px;">
+        <div class="table-header">
+          <div class="table-title">Research-proposed rebalance — trade list</div>
+          <div style="font-size:12px;color:var(--text-muted);">${tradeList.length} trades · micro as of ${esc(asOf)}</div>
+        </div>
+        <div style="padding:2px 4px 10px;color:var(--text-dim);font-size:13px;line-height:1.5;">Orders below are read straight from the research team's own trade list (same one as Stock Picks → Recommendations), so Orders and <b>My call always agree</b>. Upload your own target book above to analyse a different book instead — that replaces this view.</div>
+      </div>`;
+    el.innerHTML = uploader + rHead + buildRebalGrid(rebalRowsFromRecommendations(), { nav: (account && account.nav), asOf, keyNote: (rebalance && rebalance.keyNote) || '', tradeHref: rebalTradeHref });
+    return;
+  }
+  // No trade list and no uploaded target either — just show the live book with a hint.
   const hint = `
     <div class="table-panel" style="margin-bottom:16px;">
       <div class="table-header"><div class="table-title">Rebalance analysis</div></div>
@@ -3842,6 +3858,83 @@ function rebalRowsFromUpload() {
   up.forEach(p => build(p.ticker, p));
   (positions || []).forEach(p => { if (Math.abs(p.shares) > 0 && !upTickers.has(String(p.ticker).toUpperCase())) build(p.ticker, null); });
   return rows;
+}
+
+// Parse a tradeList qty string like "23 sh of 73 (~$216)" or "180 sh (~C$250)" into
+// {delta, of, dollar}. `of` is the pre-trade total shares when the prose states one
+// (e.g. a trim), used to derive the post-trade target size.
+function parseTradeQty(q) {
+  const m = q ? String(q).match(/(\d+(?:\.\d+)?)\s*sh(?:\s+of\s+(\d+(?:\.\d+)?))?[^(]*\(~?[A-Z]*\$?([\d,]+(?:\.\d+)?)\)/i) : null;
+  if (!m) return { delta: null, of: null, dollar: null };
+  return { delta: parseFloat(m[1]), of: m[2] != null ? parseFloat(m[2]) : null, dollar: parseFloat(m[3].replace(/,/g, '')) };
+}
+
+// Build rebalance-shape rows straight from the research team's own trade list
+// (micro.tradeList, sized off micro.recommendations) — no uploaded book required.
+// Unlike rebalRowsFromUpload, Orders and "My call" can never disagree here: both
+// columns are read off the same authored action.
+function rebalRowsFromRecommendations() {
+  const list = (micro && micro.tradeList) || [];
+  const microMap = new Map(((micro && micro.tickers) || []).map(m => [String(m.ticker).toUpperCase(), m]));
+  const liveMap = new Map((positions || []).map(p => [String(p.ticker).toUpperCase(), p]));
+  const biasMap = new Map(((micro && micro.commodityBias) || []).map(b => [String(b.material || '').toLowerCase(), b.score]));
+  const matShort = { 'Lithium': 'Li', 'Nickel & Stainless': 'Ni', 'Nickel': 'Ni', 'Precious': 'PM', 'Precious Metals': 'PM', 'Silver': 'Ag', 'Gold': 'Au', 'Copper': 'Cu', 'Steel': 'Steel', 'Carbon/Raw Steel': 'Steel', 'Aluminum': 'Al', 'Aluminium': 'Al', 'Renewables': 'Renew', 'PGM': 'PGM', 'Platinum': 'PGM', 'Uranium': 'U', 'Tin': 'Sn', 'Zinc': 'Zn', 'Cobalt': 'Co', 'Rare Earth': 'REE', 'EV': 'EV' };
+  const sgn = m => m.replace(/-/g, '−');
+  return list.map((t, i) => {
+    const key = String(t.ticker).toUpperCase();
+    const m = microMap.get(key) || null;
+    const live = liveMap.get(key) || null;
+    const sUp = String(t.side || '').toUpperCase();
+    const heldNow = t.heldNow || null;
+    const curShares = heldNow ? Math.abs(heldNow.shares) : 0;
+    const parsed = parseTradeQty(t.qty);
+    // "SELL" only reduces an existing long; against a flat/short book it's a new short
+    // (mirrors the "SELL SHORT" wording some rows already use for the same case).
+    const reducing = sUp.includes('COVER') || (sUp.includes('SELL') && !sUp.includes('SHORT') && heldNow != null);
+    let target = null;
+    if (parsed.delta != null) {
+      const base = parsed.of != null ? parsed.of : curShares;
+      target = reducing ? Math.max(0, base - parsed.delta) : base + parsed.delta;
+    }
+    const side = sUp.includes('SHORT') || sUp.includes('COVER') ? 'S' : sUp.includes('BUY') ? 'L' : 'S';
+    const price = (live && live.lastPrice) || (m && m.price) || 0;
+    const dollar = (target != null && price) ? Math.round(target * price) : (parsed.dollar || null);
+    const held = live ? ((live.side === 'short' ? 'S' : 'L') + '/' + Math.abs(live.shares))
+      : (heldNow ? (heldNow.side === 'short' ? 'S' : 'L') + '/' + Math.abs(heldNow.shares) : null);
+    const tradable = m ? !!m.tradable : true;
+    const tradeType = reducing ? (target === 0 ? 'close' : 'cover') : (heldNow ? 'add' : 'open');
+
+    let analyst = '—';
+    if (m && m.analyst && m.analyst.consensus) {
+      const pt = m.analyst.priceTarget != null ? ' $' + Math.round(m.analyst.priceTarget) : '';
+      const upP = m.analyst.upsidePct != null ? ' (' + (m.analyst.upsidePct >= 0 ? '+' : '') + Math.round(m.analyst.upsidePct) + '%)' : '';
+      analyst = m.analyst.consensus + pt + upP;
+    }
+    const mom = (m && m.vs50 != null && m.vs200 != null) ? sgn(String(Math.round(m.vs50)) + '/' + String(Math.round(m.vs200))) : '—';
+    const verdict = m ? ({ bullish: 'bull', bearish: 'bear', neutral: 'neut' }[m.microVerdict] || 'neut') : 'new';
+    const biasScore = m ? biasMap.get(String(m.material || '').toLowerCase()) : null;
+    const bias = (biasScore != null) ? sgn(biasScore > 0 ? '+' + biasScore : String(biasScore)) : '';
+    const metal = m ? (matShort[m.material] || (m.material ? String(m.material).slice(0, 5) : '')) : '';
+
+    // callTag/callText mirror the per-ticker recommendation (same source the trade
+    // list itself was sized from) so the Recommendations column reads identically to
+    // "My call" elsewhere in the dashboard; fall back to the trade-list's own "why".
+    let callTag = t.side, callText = t.why || '', toneKey = sUp.includes('COVER') ? 'neg' : sUp.includes('BUY') ? 'pos' : 'warn';
+    if (m && m.recommendation && m.recommendation.action) {
+      callTag = m.recommendation.action; callText = m.recommendation.rationale || t.why || '';
+      const a = callTag.toUpperCase();
+      toneKey = /KEEP|ADD|OK|OPEN|BUY|HOLD/.test(a) ? 'pos' : /SKIP|CLOSE|COVER|AVOID|EXIT|DON'?T/.test(a) ? 'neg' : 'warn';
+    }
+
+    return {
+      n: i + 1, ticker: key, side, dollar, target,
+      held, comp: m ? m.composite : null, verdict, metal, bias, analyst, mom, tradable,
+      callTag, callText, tone: toneKey, trade: `${t.side} ${t.qty}`, tradeType,
+      blocked: !tradable && tradeType !== 'close',
+      subs: m ? m.subs : null, coverage: m ? m.coverage : null,
+      thesis: m ? m.thesis : '', catalysts: m ? m.catalysts : [], risks: m ? m.risks : [],
+    };
+  });
 }
 
 // ── Rebalance → upload a book and analyse it here ───────────────────
