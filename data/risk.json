@@ -1,21 +1,21 @@
 {
- "updatedAt": "2026-07-22T15:05:56+00:00",
+ "updatedAt": "2026-07-22T15:09:52+00:00",
  "asOf": "2026-07-22",
  "window": 90,
  "obs": 23,
  "headline": {
-  "annVol": 17.8,
+  "annVol": 17.9,
   "betaSpy": 0.57,
-  "betaXme": 0.11,
-  "var1d95": -231,
-  "var1d99": -449,
-  "hhi": 663.0,
-  "effectiveN": 15.1
+  "betaXme": 0.12,
+  "var1d95": -232,
+  "var1d99": -451,
+  "hhi": 657.0,
+  "effectiveN": 15.2
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "17.8%",
+   "v": "17.9%",
    "note": "from the account's daily TWR, 23 daily obs since inception",
    "tone": "neutral"
   },
@@ -27,7 +27,7 @@
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.11",
+   "v": "0.12",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$231",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$449)",
+   "v": "-$232",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$451)",
    "tone": "neg"
   },
   {
@@ -51,14 +51,14 @@
   },
   {
    "k": "Max drawdown (inception curve)",
-   "v": "-12.6%",
+   "v": "-12.3%",
    "note": "peak-to-trough on the cumulative TWR",
    "tone": "neg"
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "663 / 15.1",
-   "note": "23 names, ~15.1 effective",
+   "v": "657 / 15.2",
+   "note": "23 names, ~15.2 effective",
    "tone": "pos"
   }
  ],
@@ -685,16 +685,16 @@
   {
    "ticker": "BEPC",
    "side": "short",
-   "weightPct": -9.8,
-   "riskContribPct": 16.3,
-   "mVaR": 22.3
+   "weightPct": -9.5,
+   "riskContribPct": 15.8,
+   "mVaR": 21.5
   },
   {
    "ticker": "SBSW",
    "side": "short",
    "weightPct": -2.6,
    "riskContribPct": 10.1,
-   "mVaR": 13.8
+   "mVaR": 13.7
   },
   {
    "ticker": "PLG",
@@ -707,20 +707,20 @@
    "ticker": "CDE",
    "side": "short",
    "weightPct": -1.8,
-   "riskContribPct": 8.0,
-   "mVaR": 11.0
+   "riskContribPct": 8.1,
+   "mVaR": 11.1
   },
   {
    "ticker": "HL",
    "side": "short",
    "weightPct": -1.8,
-   "riskContribPct": 6.8,
+   "riskContribPct": 6.9,
    "mVaR": 9.4
   },
   {
    "ticker": "AG",
    "side": "short",
-   "weightPct": -1.7,
+   "weightPct": -1.6,
    "riskContribPct": 6.6,
    "mVaR": 9.0
   },
@@ -734,8 +734,8 @@
   {
    "ticker": "BATT",
    "side": "short",
-   "weightPct": -3.6,
-   "riskContribPct": 6.0,
+   "weightPct": -3.5,
+   "riskContribPct": 6.1,
    "mVaR": 8.3
   },
   {
@@ -743,19 +743,19 @@
    "side": "short",
    "weightPct": -1.7,
    "riskContribPct": 5.7,
-   "mVaR": 7.8
+   "mVaR": 7.7
   },
   {
    "ticker": "KARS",
    "side": "short",
    "weightPct": -3.6,
    "riskContribPct": 4.6,
-   "mVaR": 6.3
+   "mVaR": 6.2
   },
   {
    "ticker": "LIT",
    "side": "short",
-   "weightPct": -3.3,
+   "weightPct": -3.2,
    "riskContribPct": 4.0,
    "mVaR": 5.5
   },
@@ -764,21 +764,21 @@
    "side": "short",
    "weightPct": -1.6,
    "riskContribPct": 3.3,
-   "mVaR": 4.5
+   "mVaR": 4.4
   },
   {
    "ticker": "CMC",
    "side": "short",
    "weightPct": -1.9,
-   "riskContribPct": 3.2,
+   "riskContribPct": 3.1,
    "mVaR": 4.3
   },
   {
    "ticker": "CLF",
    "side": "short",
-   "weightPct": -1.3,
-   "riskContribPct": 3.0,
-   "mVaR": 4.1
+   "weightPct": -1.2,
+   "riskContribPct": 2.9,
+   "mVaR": 4.0
   },
   {
    "ticker": "CSTM",
@@ -792,28 +792,28 @@
    "side": "short",
    "weightPct": -3.6,
    "riskContribPct": 2.8,
-   "mVaR": 3.9
+   "mVaR": 3.8
   },
   {
    "ticker": "AA",
    "side": "short",
    "weightPct": -1.3,
    "riskContribPct": 2.6,
-   "mVaR": 3.5
+   "mVaR": 3.6
   },
   {
    "ticker": "CENX",
    "side": "short",
    "weightPct": -1.3,
-   "riskContribPct": 2.4,
+   "riskContribPct": 2.5,
    "mVaR": 3.3
   },
   {
    "ticker": "SGML",
    "side": "long",
-   "weightPct": 2.5,
+   "weightPct": 2.4,
    "riskContribPct": 0.8,
-   "mVaR": 1.2
+   "mVaR": 1.1
   },
   {
    "ticker": "ALB",
@@ -832,16 +832,16 @@
   {
    "ticker": "MP",
    "side": "long",
-   "weightPct": 7.8,
-   "riskContribPct": -1.0,
-   "mVaR": -1.4
+   "weightPct": 7.9,
+   "riskContribPct": -0.8,
+   "mVaR": -1.2
   },
   {
    "ticker": "LAC",
    "side": "long",
    "weightPct": 2.5,
    "riskContribPct": -3.0,
-   "mVaR": -4.1
+   "mVaR": -4.0
   }
  ],
  "coverageNote": "23 of 23 holdings"
