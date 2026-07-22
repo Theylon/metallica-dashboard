@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-22T17:40:03+00:00",
+ "updatedAt": "2026-07-22T18:10:07+00:00",
  "asOf": "2026-07-22",
  "window": 90,
  "obs": 23,
@@ -9,8 +9,8 @@
   "betaXme": 0.11,
   "var1d95": -231,
   "var1d99": -449,
-  "hhi": 616.0,
-  "effectiveN": 16.2
+  "hhi": 582.0,
+  "effectiveN": 17.2
  },
  "metrics": [
   {
@@ -33,7 +33,7 @@
   },
   {
    "k": "Avg pairwise correlation",
-   "v": "0.49",
+   "v": "0.50",
    "note": "trailing 90d daily returns, 23 of 23 holdings (0 OTC ex.)",
    "tone": "pos"
   },
@@ -51,25 +51,25 @@
   },
   {
    "k": "Max drawdown (inception curve)",
-   "v": "-12.6%",
+   "v": "-12.5%",
    "note": "peak-to-trough on the cumulative TWR",
    "tone": "neg"
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "616 / 16.2",
-   "note": "23 names, ~16.2 effective",
+   "v": "582 / 17.2",
+   "note": "23 names, ~17.2 effective",
    "tone": "pos"
   }
  ],
- "avgCorr": 0.49,
+ "avgCorr": 0.5,
  "correlations": [
   {
-   "pair": "BATT \u2013 KARS",
-   "v": 0.93
+   "pair": "AG \u2013 PAAS",
+   "v": 0.94
   },
   {
-   "pair": "AG \u2013 HL",
+   "pair": "BATT \u2013 KARS",
    "v": 0.93
   },
   {
@@ -87,7 +87,6 @@
    "BVN",
    "CDE",
    "CENX",
-   "CLF",
    "CMC",
    "CSTM",
    "FCX",
@@ -97,6 +96,7 @@
    "LAC",
    "LIT",
    "MP",
+   "PAAS",
    "PLG",
    "RS",
    "SBSW",
@@ -113,7 +113,6 @@
     0.48,
     0.41,
     0.81,
-    0.44,
     0.34,
     0.55,
     0.55,
@@ -123,6 +122,7 @@
     0.4,
     0.42,
     0.33,
+    0.44,
     0.39,
     0.32,
     0.38,
@@ -138,7 +138,6 @@
     0.8,
     0.9,
     0.39,
-    0.45,
     0.31,
     0.47,
     0.77,
@@ -148,6 +147,7 @@
     0.6,
     0.67,
     0.44,
+    0.94,
     0.85,
     0.22,
     0.85,
@@ -163,7 +163,6 @@
     0.48,
     0.31,
     0.26,
-    0.41,
     0.23,
     0.38,
     0.36,
@@ -173,6 +172,7 @@
     0.56,
     0.63,
     0.43,
+    0.34,
     0.33,
     0.23,
     0.32,
@@ -188,7 +188,6 @@
     0.71,
     0.76,
     0.4,
-    0.57,
     0.49,
     0.69,
     0.83,
@@ -198,6 +197,7 @@
     0.71,
     0.9,
     0.62,
+    0.74,
     0.77,
     0.41,
     0.74,
@@ -213,7 +213,6 @@
     0.39,
     0.35,
     0.17,
-    0.29,
     0.32,
     0.24,
     0.36,
@@ -223,6 +222,7 @@
     0.34,
     0.24,
     0.32,
+    0.33,
     0.38,
     0.24,
     0.4,
@@ -238,7 +238,6 @@
     1.0,
     0.77,
     0.39,
-    0.51,
     0.49,
     0.52,
     0.68,
@@ -248,6 +247,7 @@
     0.54,
     0.66,
     0.32,
+    0.82,
     0.72,
     0.39,
     0.78,
@@ -263,7 +263,6 @@
     0.77,
     1.0,
     0.36,
-    0.45,
     0.38,
     0.47,
     0.74,
@@ -273,6 +272,7 @@
     0.54,
     0.66,
     0.39,
+    0.88,
     0.83,
     0.25,
     0.86,
@@ -288,7 +288,6 @@
     0.39,
     0.36,
     1.0,
-    0.33,
     0.28,
     0.47,
     0.49,
@@ -298,36 +297,12 @@
     0.36,
     0.33,
     0.33,
+    0.36,
     0.41,
     0.28,
     0.33,
     0.34,
     0.18
-   ],
-   [
-    0.44,
-    0.45,
-    0.41,
-    0.57,
-    0.29,
-    0.51,
-    0.45,
-    0.33,
-    1.0,
-    0.58,
-    0.53,
-    0.55,
-    0.47,
-    0.49,
-    0.54,
-    0.52,
-    0.55,
-    0.39,
-    0.5,
-    0.62,
-    0.55,
-    0.27,
-    0.4
    ],
    [
     0.34,
@@ -338,7 +313,6 @@
     0.49,
     0.38,
     0.28,
-    0.58,
     1.0,
     0.54,
     0.51,
@@ -348,6 +322,7 @@
     0.31,
     0.48,
     0.27,
+    0.34,
     0.37,
     0.76,
     0.45,
@@ -363,7 +338,6 @@
     0.52,
     0.47,
     0.47,
-    0.53,
     0.54,
     1.0,
     0.64,
@@ -373,6 +347,7 @@
     0.42,
     0.61,
     0.45,
+    0.47,
     0.48,
     0.58,
     0.46,
@@ -388,7 +363,6 @@
     0.68,
     0.74,
     0.49,
-    0.55,
     0.51,
     0.64,
     1.0,
@@ -398,6 +372,7 @@
     0.6,
     0.71,
     0.61,
+    0.77,
     0.75,
     0.42,
     0.73,
@@ -413,7 +388,6 @@
     0.8,
     0.9,
     0.36,
-    0.47,
     0.32,
     0.5,
     0.76,
@@ -423,6 +397,7 @@
     0.58,
     0.67,
     0.43,
+    0.9,
     0.81,
     0.23,
     0.85,
@@ -438,7 +413,6 @@
     0.51,
     0.47,
     0.49,
-    0.49,
     0.51,
     0.79,
     0.57,
@@ -448,6 +422,7 @@
     0.43,
     0.6,
     0.4,
+    0.46,
     0.5,
     0.52,
     0.46,
@@ -463,7 +438,6 @@
     0.62,
     0.69,
     0.34,
-    0.54,
     0.41,
     0.6,
     0.74,
@@ -473,6 +447,7 @@
     0.7,
     0.9,
     0.59,
+    0.66,
     0.74,
     0.36,
     0.68,
@@ -488,7 +463,6 @@
     0.54,
     0.54,
     0.36,
-    0.52,
     0.31,
     0.42,
     0.6,
@@ -498,6 +472,7 @@
     1.0,
     0.7,
     0.77,
+    0.56,
     0.66,
     0.34,
     0.58,
@@ -513,7 +488,6 @@
     0.66,
     0.66,
     0.33,
-    0.55,
     0.48,
     0.61,
     0.71,
@@ -523,6 +497,7 @@
     0.7,
     1.0,
     0.57,
+    0.65,
     0.69,
     0.44,
     0.65,
@@ -538,7 +513,6 @@
     0.32,
     0.39,
     0.33,
-    0.39,
     0.27,
     0.45,
     0.61,
@@ -548,11 +522,37 @@
     0.77,
     0.57,
     1.0,
+    0.41,
     0.52,
     0.31,
     0.46,
     0.42,
     0.4
+   ],
+   [
+    0.44,
+    0.94,
+    0.34,
+    0.74,
+    0.33,
+    0.82,
+    0.88,
+    0.36,
+    0.34,
+    0.47,
+    0.77,
+    0.9,
+    0.46,
+    0.66,
+    0.56,
+    0.65,
+    0.41,
+    1.0,
+    0.8,
+    0.23,
+    0.88,
+    0.39,
+    0.36
    ],
    [
     0.39,
@@ -563,7 +563,6 @@
     0.72,
     0.83,
     0.41,
-    0.5,
     0.37,
     0.48,
     0.75,
@@ -573,6 +572,7 @@
     0.66,
     0.69,
     0.52,
+    0.8,
     1.0,
     0.32,
     0.82,
@@ -588,7 +588,6 @@
     0.39,
     0.25,
     0.28,
-    0.62,
     0.76,
     0.58,
     0.42,
@@ -598,6 +597,7 @@
     0.34,
     0.44,
     0.31,
+    0.23,
     0.32,
     1.0,
     0.32,
@@ -613,7 +613,6 @@
     0.78,
     0.86,
     0.33,
-    0.55,
     0.45,
     0.46,
     0.73,
@@ -623,6 +622,7 @@
     0.58,
     0.65,
     0.46,
+    0.88,
     0.82,
     0.32,
     1.0,
@@ -638,7 +638,6 @@
     0.33,
     0.32,
     0.34,
-    0.27,
     0.19,
     0.29,
     0.39,
@@ -648,6 +647,7 @@
     0.54,
     0.56,
     0.42,
+    0.39,
     0.34,
     0.17,
     0.29,
@@ -663,7 +663,6 @@
     0.51,
     0.32,
     0.18,
-    0.4,
     0.25,
     0.41,
     0.37,
@@ -673,6 +672,7 @@
     0.51,
     0.64,
     0.4,
+    0.36,
     0.34,
     0.27,
     0.34,
@@ -686,162 +686,162 @@
    "ticker": "SBSW",
    "side": "short",
    "weightPct": -4.8,
-   "riskContribPct": 17.2,
-   "mVaR": 29.7
+   "riskContribPct": 14.4,
+   "mVaR": 30.2
+  },
+  {
+   "ticker": "PLG",
+   "side": "short",
+   "weightPct": -4.5,
+   "riskContribPct": 14.0,
+   "mVaR": 29.4
   },
   {
    "ticker": "BEPC",
    "side": "short",
-   "weightPct": -9.7,
-   "riskContribPct": 13.8,
-   "mVaR": 23.9
+   "weightPct": -9.5,
+   "riskContribPct": 10.6,
+   "mVaR": 22.2
+  },
+  {
+   "ticker": "BATT",
+   "side": "short",
+   "weightPct": -6.3,
+   "riskContribPct": 10.2,
+   "mVaR": 21.5
   },
   {
    "ticker": "LIT",
    "side": "short",
    "weightPct": -6.5,
-   "riskContribPct": 9.7,
-   "mVaR": 16.8
-  },
-  {
-   "ticker": "PLG",
-   "side": "short",
-   "weightPct": -2.5,
-   "riskContribPct": 9.0,
-   "mVaR": 15.6
+   "riskContribPct": 8.4,
+   "mVaR": 17.6
   },
   {
    "ticker": "KARS",
    "side": "short",
    "weightPct": -6.1,
-   "riskContribPct": 8.9,
-   "mVaR": 15.3
-  },
-  {
-   "ticker": "CMC",
-   "side": "short",
-   "weightPct": -4.4,
-   "riskContribPct": 7.1,
-   "mVaR": 12.2
+   "riskContribPct": 7.7,
+   "mVaR": 16.1
   },
   {
    "ticker": "CDE",
    "side": "short",
    "weightPct": -1.8,
-   "riskContribPct": 7.0,
-   "mVaR": 12.1
-  },
-  {
-   "ticker": "BATT",
-   "side": "short",
-   "weightPct": -3.5,
-   "riskContribPct": 6.7,
-   "mVaR": 11.5
-  },
-  {
-   "ticker": "KALU",
-   "side": "short",
-   "weightPct": -3.1,
-   "riskContribPct": 6.7,
-   "mVaR": 11.5
+   "riskContribPct": 6.0,
+   "mVaR": 12.5
   },
   {
    "ticker": "AG",
    "side": "short",
    "weightPct": -1.8,
-   "riskContribPct": 6.4,
+   "riskContribPct": 5.6,
+   "mVaR": 11.7
+  },
+  {
+   "ticker": "CMC",
+   "side": "short",
+   "weightPct": -4.4,
+   "riskContribPct": 5.6,
+   "mVaR": 11.6
+  },
+  {
+   "ticker": "KALU",
+   "side": "short",
+   "weightPct": -3.1,
+   "riskContribPct": 5.5,
+   "mVaR": 11.6
+  },
+  {
+   "ticker": "PAAS",
+   "side": "short",
+   "weightPct": -2.1,
+   "riskContribPct": 5.3,
    "mVaR": 11.1
   },
   {
    "ticker": "HL",
    "side": "short",
    "weightPct": -1.8,
-   "riskContribPct": 6.0,
-   "mVaR": 10.4
+   "riskContribPct": 5.1,
+   "mVaR": 10.8
   },
   {
    "ticker": "AA",
    "side": "short",
    "weightPct": -2.6,
-   "riskContribPct": 5.4,
-   "mVaR": 9.3
+   "riskContribPct": 4.6,
+   "mVaR": 9.6
+  },
+  {
+   "ticker": "CSTM",
+   "side": "short",
+   "weightPct": -2.5,
+   "riskContribPct": 4.6,
+   "mVaR": 9.6
   },
   {
    "ticker": "BVN",
    "side": "short",
    "weightPct": -1.8,
-   "riskContribPct": 5.4,
+   "riskContribPct": 4.5,
+   "mVaR": 9.5
+  },
+  {
+   "ticker": "CENX",
+   "side": "short",
+   "weightPct": -2.5,
+   "riskContribPct": 4.5,
    "mVaR": 9.3
-  },
-  {
-   "ticker": "CLF",
-   "side": "short",
-   "weightPct": -1.2,
-   "riskContribPct": 3.0,
-   "mVaR": 5.2
-  },
-  {
-   "ticker": "CSTM",
-   "side": "short",
-   "weightPct": -1.4,
-   "riskContribPct": 3.0,
-   "mVaR": 5.2
   },
   {
    "ticker": "RS",
    "side": "short",
    "weightPct": -3.6,
-   "riskContribPct": 3.0,
-   "mVaR": 5.2
-  },
-  {
-   "ticker": "CENX",
-   "side": "short",
-   "weightPct": -1.3,
-   "riskContribPct": 2.5,
-   "mVaR": 4.4
+   "riskContribPct": 2.4,
+   "mVaR": 5.0
   },
   {
    "ticker": "ALB",
    "side": "long",
    "weightPct": 2.2,
-   "riskContribPct": -2.0,
-   "mVaR": -3.5
+   "riskContribPct": -1.9,
+   "mVaR": -4.1
   },
   {
    "ticker": "SQM",
    "side": "long",
    "weightPct": 2.6,
-   "riskContribPct": -2.2,
-   "mVaR": -3.9
-  },
-  {
-   "ticker": "SGML",
-   "side": "long",
-   "weightPct": 2.4,
-   "riskContribPct": -2.7,
-   "mVaR": -4.7
+   "riskContribPct": -2.1,
+   "mVaR": -4.4
   },
   {
    "ticker": "MP",
    "side": "long",
    "weightPct": 1.7,
-   "riskContribPct": -3.1,
-   "mVaR": -5.4
+   "riskContribPct": -2.8,
+   "mVaR": -5.9
+  },
+  {
+   "ticker": "SGML",
+   "side": "long",
+   "weightPct": 2.3,
+   "riskContribPct": -3.0,
+   "mVaR": -6.3
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 1.8,
-   "riskContribPct": -5.0,
-   "mVaR": -8.7
+   "riskContribPct": -4.3,
+   "mVaR": -9.1
   },
   {
    "ticker": "LAC",
    "side": "long",
-   "weightPct": 2.4,
-   "riskContribPct": -5.6,
-   "mVaR": -9.7
+   "weightPct": 2.3,
+   "riskContribPct": -4.8,
+   "mVaR": -10.2
   }
  ],
  "coverageNote": "23 of 23 holdings"
