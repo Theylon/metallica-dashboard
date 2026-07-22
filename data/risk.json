@@ -1,15 +1,15 @@
 {
- "updatedAt": "2026-07-22T18:52:47+00:00",
+ "updatedAt": "2026-07-22T20:11:19+00:00",
  "asOf": "2026-07-22",
  "window": 90,
  "obs": 23,
  "headline": {
   "annVol": 17.8,
-  "betaSpy": 0.57,
+  "betaSpy": 0.56,
   "betaXme": 0.11,
   "var1d95": -231,
   "var1d99": -449,
-  "hhi": 582.0,
+  "hhi": 581.0,
   "effectiveN": 17.2
  },
  "metrics": [
@@ -21,7 +21,7 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.57",
+   "v": "0.56",
    "note": "22 overlapping daily obs",
    "tone": "neutral"
   },
@@ -51,13 +51,13 @@
   },
   {
    "k": "Max drawdown (inception curve)",
-   "v": "-12.5%",
+   "v": "-12.6%",
    "note": "peak-to-trough on the cumulative TWR",
    "tone": "neg"
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "582 / 17.2",
+   "v": "581 / 17.2",
    "note": "23 names, ~17.2 effective",
    "tone": "pos"
   }
@@ -693,22 +693,22 @@
    "ticker": "PLG",
    "side": "short",
    "weightPct": -4.5,
-   "riskContribPct": 14.0,
-   "mVaR": 29.4
+   "riskContribPct": 14.1,
+   "mVaR": 29.5
   },
   {
    "ticker": "BEPC",
    "side": "short",
    "weightPct": -9.5,
    "riskContribPct": 10.6,
-   "mVaR": 22.3
+   "mVaR": 22.2
   },
   {
    "ticker": "BATT",
    "side": "short",
-   "weightPct": -6.3,
+   "weightPct": -6.2,
    "riskContribPct": 10.2,
-   "mVaR": 21.5
+   "mVaR": 21.4
   },
   {
    "ticker": "LIT",
@@ -729,7 +729,7 @@
    "side": "short",
    "weightPct": -1.8,
    "riskContribPct": 5.9,
-   "mVaR": 12.5
+   "mVaR": 12.4
   },
   {
    "ticker": "AG",
@@ -741,9 +741,9 @@
   {
    "ticker": "CMC",
    "side": "short",
-   "weightPct": -4.4,
+   "weightPct": -4.5,
    "riskContribPct": 5.6,
-   "mVaR": 11.6
+   "mVaR": 11.7
   },
   {
    "ticker": "KALU",
@@ -764,7 +764,7 @@
    "side": "short",
    "weightPct": -1.8,
    "riskContribPct": 5.1,
-   "mVaR": 10.8
+   "mVaR": 10.7
   },
   {
    "ticker": "AA",
@@ -792,7 +792,7 @@
    "side": "short",
    "weightPct": -2.5,
    "riskContribPct": 4.5,
-   "mVaR": 9.3
+   "mVaR": 9.5
   },
   {
    "ticker": "RS",
@@ -826,7 +826,7 @@
    "ticker": "SGML",
    "side": "long",
    "weightPct": 2.3,
-   "riskContribPct": -3.0,
+   "riskContribPct": -2.9,
    "mVaR": -6.2
   },
   {
@@ -834,14 +834,14 @@
    "side": "long",
    "weightPct": 1.8,
    "riskContribPct": -4.3,
-   "mVaR": -9.0
+   "mVaR": -9.1
   },
   {
    "ticker": "LAC",
    "side": "long",
-   "weightPct": 2.3,
-   "riskContribPct": -4.8,
-   "mVaR": -10.1
+   "weightPct": 2.4,
+   "riskContribPct": -4.9,
+   "mVaR": -10.3
   }
  ],
  "coverageNote": "23 of 23 holdings"
