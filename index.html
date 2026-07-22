@@ -154,6 +154,37 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
 }
 .theme-toggle:hover { color: var(--text); border-color: var(--border-light); }
 
+/* ── Shared refresh (topbar button + token modal) ───────────────────── */
+.refresh-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 30px; padding: 0 12px; border-radius: 8px; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text-muted); font-size: 12px; font-weight: 600;
+  transition: all .2s; line-height: 1; white-space: nowrap;
+}
+.refresh-btn:hover { color: var(--text); border-color: var(--border-light); }
+.refresh-btn:disabled { opacity: .6; cursor: default; }
+/* z 300: above fullscreen tables (200), below login (999) */
+.refresh-overlay {
+  position: fixed; inset: 0; z-index: 300; display: flex;
+  align-items: center; justify-content: center;
+  background: rgba(5,7,12,0.6); backdrop-filter: blur(4px);
+}
+.refresh-box {
+  width: min(440px, calc(100vw - 32px)); padding: 24px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+}
+.refresh-box-title { font-size: 15px; font-weight: 700; color: var(--silver-light); margin-bottom: 10px; }
+.refresh-box p { font-size: 12.5px; color: var(--text-muted); line-height: 1.55; margin: 0 0 10px; }
+.refresh-box input {
+  width: 100%; padding: 10px 12px; border-radius: 8px;
+  background: var(--bg); border: 1px solid var(--border); color: var(--text);
+  font-size: 13px; outline: none; font-family: inherit;
+}
+.refresh-box input:focus { border-color: var(--accent); }
+.refresh-box-actions { display: flex; gap: 8px; margin-top: 14px; align-items: center; flex-wrap: wrap; }
+.refresh-box-err { color: var(--red); font-size: 12px; min-height: 16px; margin-top: 10px; }
+
 /* ── Rebalance → upload positions to analyse ────────────────────────── */
 .pos-up-btn {
   display: inline-flex; align-items: center; gap: 6px;
@@ -481,6 +512,7 @@ td:first-child { text-align: left; }
   .updated-at { display: none; }
   .market-badge { padding: 4px 8px; font-size: 10px; }
   .stale-badge { padding: 3px 6px; font-size: 10px; }
+  .refresh-btn { padding: 0 8px; font-size: 11px; }
   .logout-btn { padding: 4px 2px; }
 
   /* tabs become a horizontal scroll strip */
@@ -618,8 +650,33 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
       <div id="stale-badge" class="stale-badge" style="display:none">⚠ Stale</div>
       <div id="market-badge" class="market-badge closed">Market Closed</div>
       <div id="updated-at" class="updated-at">—</div>
+      <button class="refresh-btn" id="refresh-btn" onclick="startRefresh(event)"
+              title="Run the data pipeline &amp; redeploy (~3–4 min). Shift-click to change the token.">⟳ Refresh</button>
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark">🌙</button>
       <button class="logout-btn" onclick="logout()">Log out</button>
+    </div>
+  </div>
+
+  <!-- Shared-refresh token modal. The fine-grained PAT pasted here lives only
+       in this browser's localStorage — never in the repo (see CLAUDE.md). -->
+  <div id="refresh-modal" class="refresh-overlay" style="display:none"
+       onclick="if (event.target === this) closeRefreshModal()">
+    <div class="refresh-box">
+      <div class="refresh-box-title">⟳ Shared refresh</div>
+      <p>Runs the data pipeline on GitHub Actions (prices, scores, risk) and redeploys
+         the dashboard — live in ~3–4 minutes. IBKR book data (positions / NAV)
+         refreshes on its own schedule.</p>
+      <p>Paste the <strong>refresh token</strong> the dashboard owner shared with you —
+         a GitHub fine-grained PAT for this repo only, with <em>Actions: Read &amp;
+         write</em> permission. It is stored only in this browser.</p>
+      <input type="password" id="gh-token-input" placeholder="github_pat_…"
+             autocomplete="off" spellcheck="false">
+      <div class="refresh-box-actions">
+        <button class="pos-up-btn primary" onclick="saveRefreshToken()">Save &amp; refresh</button>
+        <button class="pos-up-btn" onclick="closeRefreshModal()">Cancel</button>
+        <button class="pos-up-btn danger" onclick="forgetRefreshToken()" style="margin-left:auto;">Forget token</button>
+      </div>
+      <div class="refresh-box-err" id="refresh-modal-err"></div>
     </div>
   </div>
 
@@ -1640,6 +1697,136 @@ function logout() {
   location.reload();
 }
 
+// ═══════════════════════════════════════════ SHARED REFRESH ══
+// Any viewer can trigger the fetch-data.yml workflow (workflow_dispatch on
+// master) so the site redeploys with fresh derived data. Auth is a GitHub
+// fine-grained PAT — this repo only, Actions: Read & write — that the owner
+// shares out-of-band. It lives in the viewer's localStorage only; committing
+// a token to the repo is forbidden (CLAUDE.md security rules).
+const GH_REPO = 'Theylon/metallica-dashboard';
+const GH_WORKFLOW = 'fetch-data.yml';
+const GH_TOKEN_KEY = 'metallica_gh_token';
+const GH_API = 'https://api.github.com/repos/' + GH_REPO;
+let refreshBusy = false;
+
+function ghHeaders(token) {
+  return {
+    'Authorization': 'Bearer ' + token,
+    'Accept': 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28',
+  };
+}
+
+function setRefreshBtn(label, busy) {
+  const btn = document.getElementById('refresh-btn');
+  if (!btn) return;
+  btn.textContent = label;
+  btn.disabled = !!busy;
+}
+
+function startRefresh(ev) {
+  if (refreshBusy) return;
+  const token = localStorage.getItem(GH_TOKEN_KEY);
+  // shift-click reopens the modal to replace/forget a stored token
+  if (!token || (ev && ev.shiftKey)) { openRefreshModal(); return; }
+  runRefresh(token);
+}
+
+async function runRefresh(token) {
+  refreshBusy = true;
+  setRefreshBtn('⏳ Starting…', true);
+  const dispatchedAt = Date.now();
+  try {
+    const res = await fetch(GH_API + '/actions/workflows/' + GH_WORKFLOW + '/dispatches', {
+      method: 'POST',
+      headers: ghHeaders(token),
+      body: JSON.stringify({ ref: 'master', inputs: { scope: 'full' } }),
+    });
+    if (res.status === 401) {          // bad or expired token → re-prompt
+      localStorage.removeItem(GH_TOKEN_KEY);
+      setRefreshBtn('⟳ Refresh', false);
+      openRefreshModal('Token rejected (401) — it may have expired. Paste a fresh one.');
+      return;
+    }
+    if (res.status !== 204) throw new Error('dispatch HTTP ' + res.status);
+    const outcome = await watchRefreshRun(token, dispatchedAt);
+    if (outcome === 'success') {
+      await loadData();                // pull the freshly deployed JSON
+      setRefreshBtn('✓ Updated', false);
+    } else if (outcome === 'timeout') {
+      setRefreshBtn('⏳ Still running…', false);
+    } else {
+      setRefreshBtn('⚠ Run failed', false);
+    }
+  } catch (e) {
+    console.error('Shared refresh failed', e);
+    setRefreshBtn('⚠ Refresh failed', false);
+  } finally {
+    refreshBusy = false;
+    setTimeout(() => { if (!refreshBusy) setRefreshBtn('⟳ Refresh', false); }, 8000);
+  }
+}
+
+// Poll the Actions API until the dispatched run completes. The run takes a few
+// seconds to appear, then ~3–4 min to build + deploy Pages (the deploy is the
+// last step of the same run, so "completed" means the new data is live).
+async function watchRefreshRun(token, dispatchedAt) {
+  const headers = ghHeaders(token);
+  let runId = null;
+  for (let i = 0; i < 10 && !runId; i++) {
+    await new Promise(r => setTimeout(r, 3000));
+    const res = await fetch(GH_API + '/actions/workflows/' + GH_WORKFLOW +
+                            '/runs?event=workflow_dispatch&per_page=5', { headers });
+    if (!res.ok) throw new Error('runs list HTTP ' + res.status);
+    const runs = (await res.json()).workflow_runs || [];
+    // 90s of clock-skew slack: any dispatch-triggered run this recent is ours
+    const mine = runs.find(r => new Date(r.created_at).getTime() >= dispatchedAt - 90 * 1000);
+    if (mine) runId = mine.id;
+  }
+  if (!runId) throw new Error('dispatched run never appeared');
+  setRefreshBtn('⏳ Refreshing…', true);
+  const deadline = Date.now() + 20 * 60 * 1000;
+  while (Date.now() < deadline) {
+    await new Promise(r => setTimeout(r, 15000));
+    const res = await fetch(GH_API + '/actions/runs/' + runId, { headers });
+    if (!res.ok) throw new Error('run status HTTP ' + res.status);
+    const run = await res.json();
+    if (run.status === 'completed') return run.conclusion === 'success' ? 'success' : 'failure';
+  }
+  return 'timeout';
+}
+
+function openRefreshModal(msg) {
+  document.getElementById('refresh-modal').style.display = 'flex';
+  document.getElementById('refresh-modal-err').textContent = msg || '';
+  const inp = document.getElementById('gh-token-input');
+  inp.value = '';
+  inp.focus();
+}
+
+function closeRefreshModal() {
+  document.getElementById('refresh-modal').style.display = 'none';
+}
+
+function saveRefreshToken() {
+  const v = document.getElementById('gh-token-input').value.trim();
+  if (!v) { document.getElementById('refresh-modal-err').textContent = 'Paste a token first.'; return; }
+  try { localStorage.setItem(GH_TOKEN_KEY, v); } catch (e) {}
+  closeRefreshModal();
+  runRefresh(v);
+}
+
+function forgetRefreshToken() {
+  try { localStorage.removeItem(GH_TOKEN_KEY); } catch (e) {}
+  document.getElementById('gh-token-input').value = '';
+  document.getElementById('refresh-modal-err').textContent = 'Token removed from this browser.';
+}
+
+document.getElementById('gh-token-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') saveRefreshToken();
+  if (e.key === 'Escape') closeRefreshModal();
+});
+
 // ═══════════════════════════════════════════ DATA ══
 let account = {}, positions = [], pnl = [], benchmarks = {}, report = {}, exposureHistory = {};
 let risk = {}, journal = {}, signalScorecard = {};
@@ -1662,6 +1849,7 @@ let positionSort = { key: null, dir: 1 };
 let showClosedPositions = false;   // 0-share (closed-today) rows hidden by default
 let rebalUpload = null;          // {name, when, positions[]} uploaded book analysed in the Rebalance tab
 let pendingUpload = null;        // {name, positions[], warnings[], error} staged file, pre-apply
+let loadDataTimer = null;        // guarded auto-refresh timer (see loadData)
 
 async function loadData() {
   try {
@@ -1729,8 +1917,10 @@ async function loadData() {
     const errBadge = document.getElementById('load-error-badge');
     if (errBadge) errBadge.style.display = '';
   }
-  // Auto-refresh every 5 minutes
-  setTimeout(loadData, 5 * 60 * 1000);
+  // Auto-refresh every 5 minutes. Single guarded timer: the shared-refresh
+  // button also calls loadData(), which must not spawn a second timer chain.
+  clearTimeout(loadDataTimer);
+  loadDataTimer = setTimeout(loadData, 5 * 60 * 1000);
 }
 
 // ═══════════════════════════════════════════ RENDER ══

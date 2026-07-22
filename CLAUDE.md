@@ -27,7 +27,6 @@ IBKR Web API / Yahoo / research  ──▶  scripts/*.py  ──▶  data/*.json
 | Path | Role |
 |------|------|
 | `index.html` | The entire dashboard — all HTML/CSS/JS inline. Fetches `data/*.json`. |
-| `scripts/fetch.py` | Primary fetcher (IBKR + Yahoo). Runs in the deploy Action. |
 | `scripts/mcp_refresh.py` | Rebuilds `positions/account/pnl/benchmarks.json` from raw IBKR MCP dumps in `/tmp`. Used by the SessionStart auto-refresh. |
 | `scripts/enrich.py` | Builds `commodities/analysts/macro/news.json`. |
 | `scripts/micro_*.py`, `gen_*.py`, `build_universe.py` | Stock Picks pipeline → `data/micro.json` from `data/micro_src/`. |
@@ -83,6 +82,11 @@ Rules of thumb:
 
 - **Scheduled:** `fetch-data.yml` runs 4×/day on market days, commits fresh
   `data/`, and deploys Pages. Any push to `master` redeploys.
+- **On-demand (shared):** the topbar's **⟳ Refresh** button lets any viewer
+  trigger that same workflow via `workflow_dispatch`. Auth is a GitHub
+  fine-grained PAT (this repo only, **Actions: Read & write**) the owner shares
+  out-of-band; the dashboard keeps it in the viewer's `localStorage`. Never
+  commit such a token — the secrets rule above applies.
 - **Session auto-refresh:** on web sessions the SessionStart hook asks the agent
   to pull the IBKR MCP, run `mcp_refresh.py`, and land a data-only commit on
   `master`. This is the one sanctioned direct-to-`master` path.
