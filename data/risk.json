@@ -1,15 +1,15 @@
 {
- "updatedAt": "2026-07-23T18:55:18+00:00",
+ "updatedAt": "2026-07-23T19:09:45+00:00",
  "asOf": "2026-07-23",
  "window": 90,
  "obs": 24,
  "headline": {
   "annVol": 17.5,
-  "betaSpy": 0.42,
+  "betaSpy": 0.41,
   "betaXme": 0.11,
   "var1d95": -231,
   "var1d99": -449,
-  "hhi": 607.0,
+  "hhi": 608.0,
   "effectiveN": 16.5
  },
  "metrics": [
@@ -21,7 +21,7 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.42",
+   "v": "0.41",
    "note": "23 overlapping daily obs",
    "tone": "neutral"
   },
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "607 / 16.5",
+   "v": "608 / 16.5",
    "note": "22 names, ~16.5 effective",
    "tone": "pos"
   }
@@ -638,7 +638,7 @@
    "ticker": "SBSW",
    "side": "short",
    "weightPct": -4.6,
-   "riskContribPct": 14.2,
+   "riskContribPct": 14.3,
    "mVaR": 27.7
   },
   {
@@ -665,7 +665,7 @@
   {
    "ticker": "LIT",
    "side": "short",
-   "weightPct": -6.5,
+   "weightPct": -6.4,
    "riskContribPct": 9.0,
    "mVaR": 17.5
   },
@@ -673,15 +673,15 @@
    "ticker": "KARS",
    "side": "short",
    "weightPct": -6.0,
-   "riskContribPct": 8.1,
-   "mVaR": 15.7
+   "riskContribPct": 8.0,
+   "mVaR": 15.6
   },
   {
    "ticker": "KALU",
    "side": "short",
    "weightPct": -3.5,
    "riskContribPct": 6.8,
-   "mVaR": 13.3
+   "mVaR": 13.2
   },
   {
    "ticker": "CMC",
@@ -719,16 +719,16 @@
    "mVaR": 10.0
   },
   {
-   "ticker": "AA",
-   "side": "short",
-   "weightPct": -2.5,
-   "riskContribPct": 4.8,
-   "mVaR": 9.4
-  },
-  {
    "ticker": "CENX",
    "side": "short",
    "weightPct": -2.6,
+   "riskContribPct": 4.9,
+   "mVaR": 9.4
+  },
+  {
+   "ticker": "AA",
+   "side": "short",
+   "weightPct": -2.5,
    "riskContribPct": 4.8,
    "mVaR": 9.4
   },
@@ -737,14 +737,14 @@
    "side": "short",
    "weightPct": -1.8,
    "riskContribPct": 4.6,
-   "mVaR": 8.9
+   "mVaR": 9.0
   },
   {
    "ticker": "RS",
    "side": "short",
-   "weightPct": -3.8,
-   "riskContribPct": 2.8,
-   "mVaR": 5.4
+   "weightPct": -3.7,
+   "riskContribPct": 2.7,
+   "mVaR": 5.3
   },
   {
    "ticker": "ALB",
@@ -772,7 +772,7 @@
    "side": "long",
    "weightPct": 1.7,
    "riskContribPct": -2.9,
-   "mVaR": -5.6
+   "mVaR": -5.5
   },
   {
    "ticker": "FCX",
@@ -786,7 +786,7 @@
    "side": "long",
    "weightPct": 2.2,
    "riskContribPct": -4.9,
-   "mVaR": -9.5
+   "mVaR": -9.4
   }
  ],
  "coverageNote": "22 of 22 holdings"
