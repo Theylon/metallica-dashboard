@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-23T20:47:27+00:00",
+ "updatedAt": "2026-07-23T21:11:04+00:00",
  "asOf": "2026-07-23",
  "window": 90,
  "obs": 24,
@@ -8,9 +8,9 @@
   "betaSpy": 0.45,
   "betaXme": 0.11,
   "var1d95": -231,
-  "var1d99": -448,
+  "var1d99": -449,
   "hhi": 608.0,
-  "effectiveN": 16.4
+  "effectiveN": 16.5
  },
  "metrics": [
   {
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$231",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$448)",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$449)",
    "tone": "neg"
   },
   {
@@ -57,8 +57,8 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "608 / 16.4",
-   "note": "22 names, ~16.4 effective",
+   "v": "608 / 16.5",
+   "note": "22 names, ~16.5 effective",
    "tone": "pos"
   }
  ],
@@ -638,15 +638,15 @@
    "ticker": "SBSW",
    "side": "short",
    "weightPct": -4.6,
-   "riskContribPct": 14.3,
-   "mVaR": 27.8
+   "riskContribPct": 14.4,
+   "mVaR": 27.9
   },
   {
    "ticker": "PLG",
    "side": "short",
    "weightPct": -4.4,
-   "riskContribPct": 13.9,
-   "mVaR": 27.0
+   "riskContribPct": 13.8,
+   "mVaR": 26.8
   },
   {
    "ticker": "BEPC",
@@ -660,14 +660,14 @@
    "side": "short",
    "weightPct": -6.2,
    "riskContribPct": 10.7,
-   "mVaR": 20.9
+   "mVaR": 20.8
   },
   {
    "ticker": "LIT",
    "side": "short",
-   "weightPct": -6.5,
+   "weightPct": -6.4,
    "riskContribPct": 9.0,
-   "mVaR": 17.5
+   "mVaR": 17.4
   },
   {
    "ticker": "KARS",
@@ -719,18 +719,18 @@
    "mVaR": 10.1
   },
   {
+   "ticker": "AA",
+   "side": "short",
+   "weightPct": -2.6,
+   "riskContribPct": 4.9,
+   "mVaR": 9.5
+  },
+  {
    "ticker": "CENX",
    "side": "short",
    "weightPct": -2.6,
    "riskContribPct": 4.9,
-   "mVaR": 9.6
-  },
-  {
-   "ticker": "AA",
-   "side": "short",
-   "weightPct": -2.5,
-   "riskContribPct": 4.8,
-   "mVaR": 9.4
+   "mVaR": 9.5
   },
   {
    "ticker": "BVN",
@@ -784,7 +784,7 @@
   {
    "ticker": "LAC",
    "side": "long",
-   "weightPct": 2.2,
+   "weightPct": 2.3,
    "riskContribPct": -4.9,
    "mVaR": -9.5
   }
