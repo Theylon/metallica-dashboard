@@ -1,16 +1,16 @@
 {
- "updatedAt": "2026-07-23T19:15:01+00:00",
+ "updatedAt": "2026-07-23T20:09:26+00:00",
  "asOf": "2026-07-23",
  "window": 90,
  "obs": 24,
  "headline": {
   "annVol": 17.5,
-  "betaSpy": 0.41,
+  "betaSpy": 0.45,
   "betaXme": 0.11,
   "var1d95": -231,
-  "var1d99": -449,
+  "var1d99": -448,
   "hhi": 608.0,
-  "effectiveN": 16.5
+  "effectiveN": 16.4
  },
  "metrics": [
   {
@@ -21,7 +21,7 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.41",
+   "v": "0.45",
    "note": "23 overlapping daily obs",
    "tone": "neutral"
   },
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$231",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$449)",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$448)",
    "tone": "neg"
   },
   {
@@ -51,14 +51,14 @@
   },
   {
    "k": "Max drawdown (inception curve)",
-   "v": "-12.6%",
+   "v": "-12.7%",
    "note": "peak-to-trough on the cumulative TWR",
    "tone": "neg"
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "608 / 16.5",
-   "note": "22 names, ~16.5 effective",
+   "v": "608 / 16.4",
+   "note": "22 names, ~16.4 effective",
    "tone": "pos"
   }
  ],
@@ -645,27 +645,27 @@
    "ticker": "PLG",
    "side": "short",
    "weightPct": -4.4,
-   "riskContribPct": 13.8,
-   "mVaR": 26.9
+   "riskContribPct": 13.9,
+   "mVaR": 27.0
   },
   {
    "ticker": "BEPC",
    "side": "short",
-   "weightPct": -9.7,
-   "riskContribPct": 11.5,
-   "mVaR": 22.4
+   "weightPct": -9.8,
+   "riskContribPct": 11.6,
+   "mVaR": 22.6
   },
   {
    "ticker": "BATT",
    "side": "short",
    "weightPct": -6.2,
-   "riskContribPct": 10.8,
-   "mVaR": 21.0
+   "riskContribPct": 10.7,
+   "mVaR": 20.9
   },
   {
    "ticker": "LIT",
    "side": "short",
-   "weightPct": -6.4,
+   "weightPct": -6.5,
    "riskContribPct": 9.0,
    "mVaR": 17.5
   },
@@ -673,20 +673,20 @@
    "ticker": "KARS",
    "side": "short",
    "weightPct": -6.0,
-   "riskContribPct": 8.1,
+   "riskContribPct": 8.0,
    "mVaR": 15.6
   },
   {
    "ticker": "KALU",
    "side": "short",
-   "weightPct": -3.5,
-   "riskContribPct": 6.8,
-   "mVaR": 13.1
+   "weightPct": -3.4,
+   "riskContribPct": 6.6,
+   "mVaR": 12.8
   },
   {
    "ticker": "CMC",
    "side": "short",
-   "weightPct": -4.4,
+   "weightPct": -4.5,
    "riskContribPct": 6.2,
    "mVaR": 12.0
   },
@@ -702,28 +702,28 @@
    "side": "short",
    "weightPct": -2.1,
    "riskContribPct": 5.3,
-   "mVaR": 10.2
+   "mVaR": 10.3
   },
   {
    "ticker": "CSTM",
    "side": "short",
    "weightPct": -2.5,
    "riskContribPct": 5.2,
-   "mVaR": 10.2
+   "mVaR": 10.1
   },
   {
    "ticker": "HL",
    "side": "short",
    "weightPct": -1.7,
-   "riskContribPct": 5.1,
-   "mVaR": 10.0
+   "riskContribPct": 5.2,
+   "mVaR": 10.1
   },
   {
    "ticker": "CENX",
    "side": "short",
    "weightPct": -2.6,
    "riskContribPct": 4.9,
-   "mVaR": 9.4
+   "mVaR": 9.5
   },
   {
    "ticker": "AA",
@@ -786,7 +786,7 @@
    "side": "long",
    "weightPct": 2.2,
    "riskContribPct": -4.9,
-   "mVaR": -9.4
+   "mVaR": -9.5
   }
  ],
  "coverageNote": "22 of 22 holdings"
