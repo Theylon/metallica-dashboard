@@ -428,6 +428,11 @@ td:first-child { text-align: left; }
 .score-bar > div { height: 100%; border-radius: 3px; }
 .picks-detail td { background: rgba(99,102,241,0.05); font-size: 11.5px; line-height: 1.55; padding: 12px 16px; }
 .picks-row { cursor: pointer; }
+/* Orders tab: same click-to-expand pattern as Stock Picks */
+.ord-row { cursor: pointer; }
+.ord-detail td { background: rgba(99,102,241,0.05); font-size: 11.5px; line-height: 1.55; padding: 12px 16px; }
+/* wrap + cap long text at 2 lines (full text lives in the expanded row) */
+.clamp2 { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .detail-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 8px; }
 .detail-chip { background: rgba(123,130,160,0.10); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 10.5px; }
 .detail-chip b { font-size: 11.5px; }
@@ -1644,7 +1649,7 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
           <tbody id="ord-tbody"><tr class="empty-row"><td colspan="10">No orders yet — tickets appear here when a /trade session logs an instruction</td></tr></tbody>
         </table>
       </div>
-      <div class="report-note" style="margin-top:10px;">Append-only audit trail (data/orders.jsonl, written by scripts/order_log.py from the /trade workflow). <b>CREATED</b> = instruction awaiting the owner's submission — open the IBKR link on a phone with the IBKR app to review &amp; submit; the link errors in a plain desktop browser without an IBKR session. Statuses are updated by sessions as instructions are submitted, filled or cancelled. <b>Trigger</b> = what prompted the ticket (owner ask, a Stock-Picks recommendation, a Rebalance row, or an alert) and <b>Why</b> = the owner's rationale — the execution-side mirror of the decision log, so the review can ask "was the trigger right?". Claude prepares, the owner executes. <b>Outcome</b> = the look-back check on filled orders (scripts/order_log.py --update-outcomes): forward price return from the fill price after +1d/+5d/+30d, colored by whether the move confirmed the trade's side — a BUY wants the price up (opening a long, or covering a short ahead of a catalyst), a SELL wants it down.</div>
+      <div class="report-note" style="margin-top:10px;">Append-only audit trail (data/orders.jsonl, written by scripts/order_log.py from the /trade workflow). <b>Click a row</b> to expand the full reason, per-gate verdicts, notes, fill details and IBKR link. <b>CREATED</b> = instruction awaiting the owner's submission — open the IBKR link on a phone with the IBKR app to review &amp; submit; the link errors in a plain desktop browser without an IBKR session. Statuses are updated by sessions as instructions are submitted, filled or cancelled. <b>Trigger</b> = what prompted the ticket (owner ask, a Stock-Picks recommendation, a Rebalance row, or an alert) and <b>Why</b> = the owner's rationale — the execution-side mirror of the decision log, so the review can ask "was the trigger right?". Claude prepares, the owner executes. <b>Outcome</b> = the look-back check on filled orders (scripts/order_log.py --update-outcomes): forward price return from the fill price after +1d/+5d/+30d, colored by whether the move confirmed the trade's side — a BUY wants the price up (opening a long, or covering a short ahead of a catalyst), a SELL wants it down.</div>
     </div>
   </div><!-- /orders -->
 
@@ -1835,7 +1840,7 @@ let rebalance = { rows: [] };
 let altdata = { items: [] }, altGroup = 'book';
 let channelAcc = { channels: [] }, decisionLog = [], alertsData = { items: [] };
 let dlogSearch = '', dlogClass = '', dlogOverrideOnly = false;
-let ordersLog = [], ordSearch = '', ordStatus = '';
+let ordersLog = [], ordSearch = '', ordStatus = '', ordExpanded = null;
 let activePeriod = 'YTD', activeBmPeriod = '1M';
 let customFrom = null, customTo = null;   // 'YYYY-MM-DD' bounds for the Overview CUSTOM period
 let bmCustomFrom = null, bmCustomTo = null;   // 'YYYY-MM-DD' bounds for the Benchmarks CUSTOM period
@@ -4501,7 +4506,52 @@ function ordTriggerBadge(trig) {
     : src === 'alert' ? '<span class="pick-badge" style="background:rgba(234,179,8,0.14);color:#eab308;">ALERT</span>'
     : '<span class="pick-badge neutral">OWNER</span>';
   const ref = (trig || {}).ref;
-  return badge + (ref ? `<div style="font-size:10px;color:var(--text-dim);max-width:200px;">${esc(ref)}</div>` : '');
+  return badge + (ref ? `<div class="clamp2" style="font-size:10px;color:var(--text-dim);max-width:200px;">${esc(ref)}</div>` : '');
+}
+
+// "gate:VERDICT,gate:VERDICT" → [[gate, verdict], ...]; "all:PASS" → [["all", "PASS"]]
+function ordParseGates(gates) {
+  return String(gates || '').split(',').map(s => s.trim()).filter(Boolean)
+    .map(s => { const i = s.indexOf(':'); return i < 0 ? [s, ''] : [s.slice(0, i), s.slice(i + 1)]; });
+}
+
+// compact row chip: all-PASS collapses to one green tick; anything else
+// (WARN/NOTE/FAIL-overridden) is named in amber — the detail row has the rest
+function ordGatesChip(gates) {
+  const parsed = ordParseGates(gates);
+  if (!parsed.length) return '';
+  const flagged = parsed.filter(([, v]) => v.toUpperCase() !== 'PASS');
+  if (!flagged.length)
+    return '<div style="margin-top:3px;"><span class="pick-badge long" style="font-size:9px;">✓ GATES</span></div>';
+  return `<div style="margin-top:3px;"><span class="pick-badge" style="font-size:9px;background:rgba(234,179,8,0.14);color:#eab308;">⚠ ${esc(flagged.map(([g]) => g).join(' · '))}</span></div>`;
+}
+
+function toggleOrdDetail(k) {
+  ordExpanded = ordExpanded === k ? null : k;
+  renderOrdersTable();
+}
+
+// full-width expansion under a clicked row: everything the compact row elides
+function buildOrdDetail(e) {
+  const sec = (title, body) => body
+    ? `<div class="detail-section"><div class="ds-title">${title}</div><div class="tl">${body}</div></div>` : '';
+  const gates = ordParseGates(e.gates).map(([g, v]) => {
+    const up = v.toUpperCase();
+    const col = up === 'PASS' ? 'color:var(--text-muted);'
+      : up.startsWith('FAIL') ? 'color:var(--red);border-color:rgba(239,68,68,0.4);'
+      : 'color:#eab308;border-color:rgba(234,179,8,0.4);';
+    return `<span class="detail-chip" style="${col}">${esc(g)}: ${esc(v || '—')}</span>`;
+  }).join('');
+  const fill = e.fillPrice != null
+    ? `fill ${fmt(e.fillPrice, 2)}${e.fillTs ? ` · ${esc(e.fillTs.slice(0, 16).replace('T', ' '))}` : ''}` : '';
+  const url = safeUrl(e.url);
+  return sec('Reason', e.reason ? esc(e.reason) : '')
+    + sec('Trigger', (e.trigger || {}).ref ? esc(e.trigger.ref) : '')
+    + (gates ? `<div class="detail-section"><div class="ds-title">Gates</div><div class="detail-chips">${gates}</div></div>` : '')
+    + sec('Fill', fill)
+    + sec('Note', e.note ? esc(e.note) : '')
+    + (e.status === 'created' && url
+      ? `<div class="detail-section"><a href="${url}" target="_blank" rel="noopener">submit in IBKR ↗</a> <span style="color:var(--text-dim);">(open on a phone with the IBKR app)</span></div>` : '');
 }
 
 function renderOrdersTable() {
@@ -4519,27 +4569,30 @@ function renderOrdersTable() {
     return;
   }
   tb.innerHTML = rows.map(e => {
+    const key = `${e.ts || ''}|${e.instructionId || ''}`;
     const order = e.orderType === 'MARKET' ? 'MKT' : `LMT ${fmt(e.limit, 2)}`;
     const qty = Number.isInteger(e.qty) ? fmt(e.qty, 0) : fmt(e.qty, 2);
-    const gn = [e.gates ? `gates: ${e.gates}` : '', e.note || ''].filter(Boolean).join(' · ');
-    const why = (e.reason ? `${esc(e.reason)}` : '')
-      + (gn ? `<div style="font-size:10px;color:var(--text-dim);">${esc(gn)}</div>` : '');
+    const why = (e.reason
+      ? `<div class="clamp2" title="Click row for full details">${esc(e.reason)}</div>`
+      : '<span style="color:var(--text-dim);">—</span>') + ordGatesChip(e.gates);
     const url = safeUrl(e.url);
     const link = e.status === 'created' && url
-      ? `<a href="${url}" target="_blank" rel="noopener" title="Open on a phone with the IBKR app to review &amp; submit">submit ↗</a>`
+      ? `<a href="${url}" target="_blank" rel="noopener" title="Open on a phone with the IBKR app to review &amp; submit" onclick="event.stopPropagation()">submit ↗</a>`
       : '<span style="color:var(--text-dim);">—</span>';
-    return `<tr>`
-      + `<td style="text-align:left;white-space:nowrap;color:var(--text-muted);">${esc((e.ts || '').slice(0, 16).replace('T', ' '))}</td>`
+    const open = ordExpanded === key;
+    return `<tr class="ord-row" onclick="toggleOrdDetail('${esc(key)}')">`
+      + `<td style="text-align:left;white-space:nowrap;color:var(--text-muted);">${open ? '▾' : '▸'} ${esc((e.ts || '').slice(0, 16).replace('T', ' '))}</td>`
       + `<td style="text-align:left;font-weight:700;">${esc(e.ticker || '')}<div style="font-size:10px;color:var(--text-dim);">#${esc(e.instructionId || '—')}</div></td>`
       + `<td style="text-align:left;"><span class="pick-badge ${e.side === 'BUY' ? 'long' : 'short'}">${esc(e.side || '')}</span></td>`
       + `<td>${qty}</td>`
       + `<td style="text-align:left;white-space:nowrap;">${esc(order)}<span style="color:var(--text-muted);"> · ${esc(e.tif || 'DAY')}</span></td>`
       + `<td style="text-align:left;">${ordStatusBadge(e.status)}<div style="font-size:10px;color:var(--text-dim);white-space:nowrap;">${esc((e.statusUpdatedAt || '').slice(0, 16).replace('T', ' '))}</div></td>`
       + `<td style="text-align:left;">${ordTriggerBadge(e.trigger)}</td>`
-      + `<td style="text-align:left;font-size:11px;max-width:280px;">${why || '<span style="color:var(--text-dim);">—</span>'}</td>`
+      + `<td style="text-align:left;font-size:11px;max-width:280px;">${why}</td>`
       + ordOutcomeCell(e)
       + `<td style="text-align:left;">${link}</td>`
-      + `</tr>`;
+      + `</tr>`
+      + (open ? `<tr class="ord-detail"><td colspan="10" style="text-align:left;">${buildOrdDetail(e)}</td></tr>` : '');
   }).join('');
 }
 
@@ -4634,7 +4687,7 @@ function renderDlogTable() {
       + `<td style="text-align:left;color:var(--text-muted);">${e.event === 'position_change' ? 'position' : 'recommendation'}<div style="font-size:10px;color:var(--text-dim);">${esc(e.source || '')}</div></td>`
       + `<td style="text-align:left;"><span style="color:var(--text-muted);">${esc(e.prevAction || '—')}</span> → <b>${esc(e.action || '—')}</b></td>`
       + `<td style="text-align:left;color:${dlogUrgCol[e.urgency] || 'var(--text-muted)'};">${esc(e.urgency || '—')}</td>`
-      + `<td style="text-align:left;font-size:11px;color:var(--text-muted);max-width:260px;">${trig}</td>`
+      + `<td style="text-align:left;font-size:11px;color:var(--text-muted);max-width:260px;white-space:normal;">${trig}</td>`
       + `<td style="text-align:left;font-size:11px;">${bias}</td>`
       + dlogOutcomeCell((e.outcome || {}).d30, held)
       + dlogOutcomeCell((e.outcome || {}).d90, held)
@@ -4693,7 +4746,7 @@ function renderProcess() {
       : '<span class="pick-badge neutral">NEUTRAL</span>';
     it.innerHTML = ins.length ? ins.map(x =>
       `<tr><td style="text-align:left;font-weight:700;">${esc(x.ticker)}`
-      + `<div style="font-size:10px;color:var(--text-dim);max-width:220px;">${esc(x.note || '')}</div></td>`
+      + `<div class="clamp2" style="font-size:10px;color:var(--text-dim);max-width:220px;">${esc(x.note || '')}</div></td>`
       + `<td style="text-align:left;">${sigBadge(x.signal)}</td>`
       + `<td>${x.buys != null ? x.buys : '—'}</td>`
       + `<td>${x.discretionarySells != null ? x.discretionarySells : '—'}</td>`
