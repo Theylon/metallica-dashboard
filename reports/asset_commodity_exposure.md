@@ -110,7 +110,6 @@ Tracks each held ticker's exposure to its linked commodities (T1/T2 links from m
 
 | Commodity | Exposure (% NAV, tier-weighted) |
 |---|---|
-| lco | 5.39% |
 | manganese dioxide | 2.39% |
 | steel | -0.60% |
 | aluminum n | -0.62% |
@@ -118,6 +117,7 @@ Tracks each held ticker's exposure to its linked commodities (T1/T2 links from m
 | rhodium | -1.25% |
 | aluminum | -1.25% |
 | ferro-chrome | -1.79% |
+| lco | -2.38% |
 | manganese sulfate | -5.10% |
 
 ## 2026-07-23
@@ -130,8 +130,8 @@ Tracks each held ticker's exposure to its linked commodities (T1/T2 links from m
 | ferro-chrome | -1.80% |
 | rhodium | -2.26% |
 | aluminum | -2.60% |
-| lco | -3.29% |
 | cobalt sulfate | -3.72% |
+| lco | -4.97% |
 | manganese sulfate | -9.44% |
 
 ## 2026-07-24
@@ -139,12 +139,11 @@ Tracks each held ticker's exposure to its linked commodities (T1/T2 links from m
 | Commodity | Exposure (% NAV, tier-weighted) |
 |---|---|
 | manganese dioxide | 2.39% |
-| molybdenum bar | 0.86% |
-| aluminum n | -1.25% |
-| ferro-chrome | -1.86% |
-| rhodium | -2.28% |
-| aluminum | -2.50% |
-| lco | -3.32% |
-| cobalt sulfate | -3.65% |
-| manganese sulfate | -9.30% |
+| molybdenum bar | 0.88% |
+| aluminum n | -1.26% |
+| rhodium | -2.30% |
+| aluminum | -2.52% |
+| cobalt sulfate | -3.63% |
+| lco | -4.90% |
+| manganese sulfate | -9.27% |
 
