@@ -268,10 +268,13 @@ def build():
     closed_all = [c for c in pair_round_trips(trades)[0] if c["qty"] >= MIN_ROUND_TRIP_QTY]
     if not closed_all:
         return None
-    # Primary journal = the current long/short era; retired long-only trades are
-    # excluded from the headline stats but preserved under `allTime`.
-    closed = [c for c in closed_all if (c["closeDate"] or "9999-99-99") >= INCEPTION]
-    if not closed:                     # nothing closed in the current era yet
+    # Primary journal = the current long/short era, keyed on when the position was
+    # OPENED (a trade opened in the retired long-only book but closed after the
+    # pivot still belongs to the old era). Excluded trades are preserved under
+    # `allTime`. (On the current dump every trade opened post-inception, so nothing
+    # is excluded — the filter is a forward-looking guard, honestly noted below.)
+    closed = [c for c in closed_all if (c["openDate"] or "9999-99-99") >= INCEPTION]
+    if not closed:                     # nothing opened in the current era yet
         closed = closed_all
     cats = _category_map()
     prices = _current_prices()
@@ -290,7 +293,7 @@ def build():
         "worst": [dict(c) for c in ranked[:5]],
         "shadow": shadow_counterfactual(closed, prices),
         # full history (both eras) for reference — not shown in the headline stats
-        "allTime": {"since": (min(c["closeDate"] for c in closed_all if c["closeDate"]) or None),
+        "allTime": {"since": min((c["openDate"] for c in closed_all if c["openDate"]), default=None),
                     "aggregate": aggregate(closed_all)},
         "note": f"{len(closed)} closed round-trips in the current long/short era "
                 f"(since {INCEPTION}); {retired} earlier long-only-era trades excluded from "
