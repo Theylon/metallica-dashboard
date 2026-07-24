@@ -89,6 +89,13 @@ jobs:
       - name: Compute risk metrics
         run: python scripts/risk.py || echo "risk skipped (non-fatal)"
 
+      # Asset→commodity exposure tracking. Rewrites today's position_history snapshot
+      # (converges to EOD, so intraday closes drop out) and recomputes the
+      # family-filtered exposure_history. Previously only ran inside mcp_refresh (the
+      # MCP book path), so the derived exposure lagged the book between MCP refreshes.
+      - name: Compute exposure tracking
+        run: python scripts/exposure.py || echo "exposure skipped (non-fatal)"
+
       # Signal-efficacy scorecard (rank-IC/IR of each micro sub-score vs forward returns)
       # + portfolio factor tilt. No-ops cheaply until micro_history.jsonl has enough days.
       - name: Compute signal scorecard
