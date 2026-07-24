@@ -60,8 +60,17 @@ FAMILY = {
 }
 
 
+# Some tickers are miscategorized in the signal-mined linkage map (it clusters by
+# price correlation, not fundamentals). Correct the equity_group for the family
+# check so their cross-family links are dropped — e.g. MP (MP Materials, a
+# rare-earth miner) is grouped "Lithium Miner" and would otherwise contribute a
+# spurious lithium-carbonate (lco) exposure.
+TICKER_GROUP_OVERRIDE = {"MP": "Rare Earth"}
+
+
 def _family_ok(link):
-    fam = FAMILY.get(link.get("equity_group"))
+    group = TICKER_GROUP_OVERRIDE.get(link.get("ticker"), link.get("equity_group"))
+    fam = FAMILY.get(group)
     if fam is None:
         return True
     commodity = str(link.get("commodity", "")).lower()
@@ -96,31 +105,30 @@ def load_linkage_map():
 
 
 def record_snapshot(date=None):
-    """Append today's held tickers + NAV weight to position_history.jsonl."""
+    """Record today's held tickers + NAV weight into position_history.jsonl.
+
+    REWRITES today's rows on every run (the refresh runs several times a day) so
+    the day's snapshot converges to the end-of-day book: a name closed intraday
+    drops out and a new buy appears, instead of freezing at the first-of-day book
+    (which left closed names like CLF in the day's exposure and omitted new buys).
+    """
     positions = json.loads((DATA / "positions.json").read_text())
     account = json.loads((DATA / "account.json").read_text())
     date = date or positions["updatedAt"][:10]
     nav = account["nav"] or 1.0
 
     history_path = DATA / "position_history.jsonl"
-    existing_dates = set()
+    kept = []  # every OTHER day's rows, verbatim
     if history_path.exists():
         for line in history_path.read_text().splitlines():
-            if line.strip():
-                existing_dates.add(json.loads(line)["date"])
-    if date in existing_dates:
-        return  # already recorded today; refresh runs multiple times/day
-
-    with history_path.open("a") as f:
-        for p in positions["positions"]:
-            row = {
-                "date": date,
-                "ticker": p["ticker"],
-                "shares": p["shares"],
-                "mktValue": p["mktValue"],
-                "navWeight": round(p["mktValue"] / nav, 6) if nav else 0.0,
-            }
-            f.write(json.dumps(row) + "\n")
+            if line.strip() and json.loads(line)["date"] != date:
+                kept.append(line)
+    today = [json.dumps({
+        "date": date, "ticker": p["ticker"], "shares": p["shares"],
+        "mktValue": p["mktValue"],
+        "navWeight": round(p["mktValue"] / nav, 6) if nav else 0.0,
+    }) for p in positions["positions"]]
+    history_path.write_text("\n".join(kept + today) + "\n")
 
 
 def compute_exposure_history():
