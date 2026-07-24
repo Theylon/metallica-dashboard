@@ -1,21 +1,21 @@
 {
- "updatedAt": "2026-07-24T16:09:34+00:00",
+ "updatedAt": "2026-07-24T17:11:00+00:00",
  "asOf": "2026-07-24",
  "window": 90,
  "obs": 25,
  "headline": {
-  "annVol": 17.2,
+  "annVol": 17.3,
   "betaSpy": 0.47,
   "betaXme": 0.11,
-  "var1d95": -231,
-  "var1d99": -449,
-  "hhi": 767.0,
+  "var1d95": -232,
+  "var1d99": -450,
+  "hhi": 768.0,
   "effectiveN": 13.0
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "17.2%",
+   "v": "17.3%",
    "note": "from the account's daily TWR, 25 daily obs since inception",
    "tone": "neutral"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$231",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$449)",
+   "v": "-$232",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$450)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "767 / 13.0",
+   "v": "768 / 13.0",
    "note": "18 names, ~13.0 effective",
    "tone": "pos"
   }
@@ -466,21 +466,21 @@
    "ticker": "SBSW",
    "side": "short",
    "weightPct": -4.6,
-   "riskContribPct": 17.9,
-   "mVaR": 28.0
+   "riskContribPct": 17.8,
+   "mVaR": 27.8
   },
   {
    "ticker": "PLG",
    "side": "short",
    "weightPct": -4.4,
-   "riskContribPct": 17.5,
-   "mVaR": 27.5
+   "riskContribPct": 17.4,
+   "mVaR": 27.1
   },
   {
    "ticker": "BEPC",
    "side": "short",
-   "weightPct": -9.8,
-   "riskContribPct": 14.8,
+   "weightPct": -9.7,
+   "riskContribPct": 14.9,
    "mVaR": 23.3
   },
   {
@@ -488,28 +488,28 @@
    "side": "short",
    "weightPct": -6.1,
    "riskContribPct": 13.0,
-   "mVaR": 20.4
+   "mVaR": 20.3
   },
   {
    "ticker": "LIT",
    "side": "short",
    "weightPct": -6.4,
    "riskContribPct": 10.8,
-   "mVaR": 16.9
+   "mVaR": 16.8
   },
   {
    "ticker": "KARS",
    "side": "short",
    "weightPct": -5.9,
-   "riskContribPct": 9.7,
+   "riskContribPct": 9.8,
    "mVaR": 15.3
   },
   {
    "ticker": "KALU",
    "side": "short",
-   "weightPct": -3.2,
+   "weightPct": -3.1,
    "riskContribPct": 7.4,
-   "mVaR": 11.6
+   "mVaR": 11.5
   },
   {
    "ticker": "PAAS",
@@ -523,13 +523,13 @@
    "side": "short",
    "weightPct": -1.7,
    "riskContribPct": 6.6,
-   "mVaR": 10.4
+   "mVaR": 10.3
   },
   {
    "ticker": "CSTM",
    "side": "short",
    "weightPct": -2.5,
-   "riskContribPct": 5.9,
+   "riskContribPct": 6.0,
    "mVaR": 9.3
   },
   {
@@ -537,13 +537,13 @@
    "side": "short",
    "weightPct": -1.8,
    "riskContribPct": 5.7,
-   "mVaR": 8.9
+   "mVaR": 8.8
   },
   {
    "ticker": "AA",
    "side": "short",
    "weightPct": -2.5,
-   "riskContribPct": 5.1,
+   "riskContribPct": 5.2,
    "mVaR": 8.1
   },
   {
@@ -572,21 +572,21 @@
    "side": "long",
    "weightPct": 1.6,
    "riskContribPct": -3.2,
-   "mVaR": -5.0
+   "mVaR": -4.9
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 1.8,
    "riskContribPct": -5.3,
-   "mVaR": -8.3
+   "mVaR": -8.2
   },
   {
    "ticker": "LAC",
    "side": "long",
    "weightPct": 2.2,
    "riskContribPct": -5.8,
-   "mVaR": -9.1
+   "mVaR": -9.0
   }
  ],
  "coverageNote": "18 of 18 holdings"
