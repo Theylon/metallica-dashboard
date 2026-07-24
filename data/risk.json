@@ -1,22 +1,22 @@
 {
- "updatedAt": "2026-07-23T20:47:27+00:00",
- "asOf": "2026-07-23",
+ "updatedAt": "2026-07-24T13:11:05+00:00",
+ "asOf": "2026-07-24",
  "window": 90,
- "obs": 24,
+ "obs": 25,
  "headline": {
-  "annVol": 17.5,
+  "annVol": 17.2,
   "betaSpy": 0.45,
   "betaXme": 0.11,
   "var1d95": -231,
   "var1d99": -448,
   "hhi": 608.0,
-  "effectiveN": 16.4
+  "effectiveN": 16.5
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "17.5%",
-   "note": "from the account's daily TWR, 24 daily obs since inception",
+   "v": "17.2%",
+   "note": "from the account's daily TWR, 25 daily obs since inception",
    "tone": "neutral"
   },
   {
@@ -57,8 +57,8 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "608 / 16.4",
-   "note": "22 names, ~16.4 effective",
+   "v": "608 / 16.5",
+   "note": "22 names, ~16.5 effective",
    "tone": "pos"
   }
  ],
@@ -645,7 +645,7 @@
    "ticker": "PLG",
    "side": "short",
    "weightPct": -4.4,
-   "riskContribPct": 13.9,
+   "riskContribPct": 13.8,
    "mVaR": 27.0
   },
   {
@@ -681,7 +681,7 @@
    "side": "short",
    "weightPct": -3.4,
    "riskContribPct": 6.6,
-   "mVaR": 12.9
+   "mVaR": 12.8
   },
   {
    "ticker": "CMC",
@@ -695,14 +695,14 @@
    "side": "short",
    "weightPct": -1.7,
    "riskContribPct": 5.9,
-   "mVaR": 11.4
+   "mVaR": 11.6
   },
   {
    "ticker": "PAAS",
    "side": "short",
    "weightPct": -2.1,
    "riskContribPct": 5.3,
-   "mVaR": 10.3
+   "mVaR": 10.4
   },
   {
    "ticker": "CSTM",
@@ -716,7 +716,14 @@
    "side": "short",
    "weightPct": -1.7,
    "riskContribPct": 5.2,
-   "mVaR": 10.1
+   "mVaR": 10.2
+  },
+  {
+   "ticker": "AA",
+   "side": "short",
+   "weightPct": -2.6,
+   "riskContribPct": 4.9,
+   "mVaR": 9.5
   },
   {
    "ticker": "CENX",
@@ -726,18 +733,11 @@
    "mVaR": 9.6
   },
   {
-   "ticker": "AA",
-   "side": "short",
-   "weightPct": -2.5,
-   "riskContribPct": 4.8,
-   "mVaR": 9.4
-  },
-  {
    "ticker": "BVN",
    "side": "short",
    "weightPct": -1.8,
    "riskContribPct": 4.6,
-   "mVaR": 9.0
+   "mVaR": 9.1
   },
   {
    "ticker": "RS",
@@ -750,7 +750,7 @@
    "ticker": "ALB",
    "side": "long",
    "weightPct": 2.2,
-   "riskContribPct": -2.0,
+   "riskContribPct": -1.9,
    "mVaR": -3.8
   },
   {
@@ -763,7 +763,7 @@
   {
    "ticker": "SGML",
    "side": "long",
-   "weightPct": 2.3,
+   "weightPct": 2.2,
    "riskContribPct": -2.7,
    "mVaR": -5.3
   },
@@ -778,15 +778,15 @@
    "ticker": "FCX",
    "side": "long",
    "weightPct": 1.8,
-   "riskContribPct": -4.5,
+   "riskContribPct": -4.4,
    "mVaR": -8.7
   },
   {
    "ticker": "LAC",
    "side": "long",
-   "weightPct": 2.2,
+   "weightPct": 2.3,
    "riskContribPct": -4.9,
-   "mVaR": -9.5
+   "mVaR": -9.6
   }
  ],
  "coverageNote": "22 of 22 holdings"
