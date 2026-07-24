@@ -1996,14 +1996,24 @@ function renderPicks() {
   if (rt) {
     const recs = micro.recommendations || [];
     const urgCol = { high: 'var(--red)', medium: '#eab308', low: 'var(--text-muted)', none: 'var(--text-dim)' };
-    rt.innerHTML = recs.length ? recs.map(r =>
-      `<tr><td>${tradeBtn(recoTradeHref(r))}</td>`
-      + `<td style="text-align:left;font-weight:700;">${r.ticker}</td>`
-      + `<td style="text-align:left;">${r.held ? `<span class="pick-badge ${r.held}">${r.held.toUpperCase()}</span>` : '<span class="pick-badge new">NEW</span>'}</td>`
-      + `<td style="text-align:left;font-weight:600;">${esc(r.action)}</td>`
-      + `<td style="text-align:left;color:${urgCol[r.urgency] || 'var(--text-muted)'};">${esc(r.urgency)}</td>`
-      + `<td style="text-align:left;font-size:11px;color:var(--text-muted);line-height:1.45;max-width:640px;">${esc(r.rationale)}</td></tr>`
-    ).join('') : '<tr class="empty-row"><td colspan="6">No recommendations</td></tr>';
+    rt.innerHTML = recs.length ? recs.map(r => {
+      // badge from the live-derived heldNow (the frozen r.held went stale: it
+      // showed FCX/MP as "NEW" once held and closed names as still short)
+      const hn = r.heldNow;
+      const badge = hn
+        ? `<span class="pick-badge ${esc(hn.side)}">${esc(hn.side.toUpperCase())}</span>`
+        : '<span class="pick-badge" style="opacity:.55;">not held</span>';
+      // flag a recommendation whose action can no longer apply to the live book
+      const act = String(r.action || '').toUpperCase();
+      const contradiction = ((/COVER|CLOSE/.test(act)) && !hn) || ((/\bNEW\b/.test(act)) && hn);
+      const staleTag = contradiction ? ` <span style="color:#d9a441;font-weight:600;">⚠ stale (book changed)</span>` : '';
+      return `<tr><td>${tradeBtn(recoTradeHref(r))}</td>`
+        + `<td style="text-align:left;font-weight:700;">${esc(r.ticker)}</td>`
+        + `<td style="text-align:left;">${badge}</td>`
+        + `<td style="text-align:left;font-weight:600;">${esc(r.action)}</td>`
+        + `<td style="text-align:left;color:${urgCol[r.urgency] || 'var(--text-muted)'};">${esc(r.urgency)}</td>`
+        + `<td style="text-align:left;font-size:11px;color:var(--text-muted);line-height:1.45;max-width:640px;">${esc(r.rationale)}${staleTag}</td></tr>`;
+    }).join('') : '<tr class="empty-row"><td colspan="6">No recommendations</td></tr>';
   }
 
   const tt = document.getElementById('trades-tbody');
@@ -3402,41 +3412,73 @@ function renderReport() {
   renderMarkets();
 }
 
+// ── Live-book helpers ────────────────────────────────────────────────────────
+// The report tab's book-dependent numbers are derived from the live
+// positions/account/risk here — NOT from the hand-authored report.json, which
+// goes stale the instant the book moves (names close, sizes change).
+const LI_MINERS = ['ALB', 'SQM', 'LAC', 'SGML'];
+const BATTERY_ETFS = ['BATT', 'LIT', 'KARS'];
+const INCEPTION_DATE = '2026-06-22';
+function heldSet() { return new Set((positions || []).map(p => p.ticker)); }
+function navNow() { return (account && account.nav) || (positions || []).reduce((s, p) => s + Math.abs(p.mktValue), 0) || 1; }
+function sumMv(pred) { return (positions || []).filter(pred).reduce((s, p) => s + p.mktValue, 0); }  // signed
+function pctNav(v) { return v / navNow() * 100; }
+function benchSinceInception(t) {
+  const b = benchmarks[t]; if (!b || !b.dates) return null;
+  const i = b.dates.indexOf(INCEPTION_DATE);
+  if (i < 0 || !b.closes[i]) return null;
+  return (b.closes[b.closes.length - 1] / b.closes[i] - 1) * 100;
+}
+
 function renderTradeTape() {
-  const tt = report.tradeTape; if (!tt) return;
-  setText('trade-note', tt.note);
-  document.getElementById('trade-tbody').innerHTML = tt.fills.map(f => `
+  const el = document.getElementById('trade-tbody');
+  if (!positions || !positions.length) { if (el) el.innerHTML = ''; return; }
+  setText('trade-note', `Largest current holdings from the live book (${(account.updatedAt || '').slice(0, 10)}) — `
+    + `share count at average cost. Full execution history is on the Orders tab.`);
+  const rows = positions.slice().sort((a, b) => Math.abs(b.mktValue) - Math.abs(a.mktValue)).slice(0, 12);
+  el.innerHTML = rows.map(p => `
     <tr>
-      <td>${esc(f.time)}</td>
-      <td><span class="ticker-sym">${esc(f.ticker)}</span></td>
-      <td>${fmt(f.shares, 2)}</td>
-      <td>$${f.fill.toFixed(2)}</td>
-      <td>${esc(f.order)}</td>
+      <td>—</td>
+      <td><span class="ticker-sym">${esc(p.ticker)}</span></td>
+      <td>${fmt(p.shares, 2)}</td>
+      <td>${fmtPrice(p.avgCost)}</td>
+      <td>${p.side === 'short' ? 'SELL SHORT' : 'BUY'}</td>
     </tr>`).join('');
 }
 
-// Hand-authored report.json sections (scenarios, look-through) have no live
-// fallback — label them with their as-of date and flag amber when > 3 days old
-// so a reviewer never mistakes them for auto-computed numbers.
+// Honest staleness badge for the genuinely hand-authored/editorial sections
+// (drivers, catalysts, smart-money). Compares report.asOf to the LIVE book date,
+// so a bumped asOf can't hide that the narrative predates the current book.
 function reportAsOfHtml() {
-  const asOf = report.asOf;
-  if (!asOf) return '';
-  const stale = (Date.now() - new Date(asOf).getTime()) / 86400e3 > 3;
+  const asOf = report.asOf; if (!asOf) return '';
+  const bookDate = ((account && account.updatedAt) || '').slice(0, 10);
+  const stale = bookDate && asOf < bookDate;
   return `<span style="float:right;font-weight:400;font-size:10px;color:${stale ? '#d9a441' : 'var(--text-muted)'};">`
-    + `hand-authored · as of ${esc(asOf)}${stale ? ' ⚠' : ''}</span>`;
+    + `editorial · as of ${esc(asOf)}${stale ? ` ⚠ book moved to ${esc(bookDate)}` : ''}</span>`;
 }
 
+// Look-through exposures computed live from the book (was hand-authored & stale).
 function renderEtfLookthrough() {
-  const e = report.etfLookThrough; if (!e) return;
+  if (!positions || !positions.length) return;
   ['etf-asof', 'etf-asof2'].forEach(id => {
-    const el = document.getElementById(id); if (el) el.innerHTML = reportAsOfHtml();
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = '<span style="float:right;font-weight:400;font-size:10px;color:var(--text-muted);">live · from the book</span>';
   });
-  setText('etf-china', e.chinaExposure + '% of NAV');
-  setText('etf-alb', e.albTrue + '% of NAV');
-  setText('etf-sqm', e.sqmTrue + '% of NAV');
-  setText('etf-conc', e.concentrationNote);
-  document.getElementById('etf-hidden').innerHTML = e.hidden.map(h => `
-    <div class="stat-row"><span class="stat-key">${esc(h.name)}</span><span class="stat-val">${h.wt}%</span></div>`).join('');
+  const evEtf = sumMv(p => BATTERY_ETFS.includes(p.ticker));
+  const liLong = sumMv(p => p.side === 'long' && LI_MINERS.includes(p.ticker));
+  const net = (account.netExposure != null) ? account.netExposure : pctNav(sumMv(() => true));
+  setText('etf-china', pctNav(evEtf).toFixed(1) + '% of NAV');
+  setText('etf-alb', pctNav(liLong).toFixed(1) + '% of NAV');
+  setText('etf-sqm', net.toFixed(1) + '% of NAV');
+  const hh = (risk && risk.headline) || {};
+  const sorted = positions.slice().sort((a, b) => Math.abs(b.mktValue) - Math.abs(a.mktValue));
+  const top = sorted[0], second = sorted[1];
+  const ratio = (top && second && second.mktValue) ? Math.abs(top.mktValue) / Math.abs(second.mktValue) : null;
+  setText('etf-conc', `Net ${net.toFixed(0)}% of NAV across ${positions.length} names`
+    + (hh.hhi ? `; HHI ${Math.round(hh.hhi)} (~${hh.effectiveN.toFixed(1)} effective names)` : '')
+    + (top && ratio ? `. Largest: ${top.ticker} at ${Math.abs(pctNav(top.mktValue)).toFixed(1)}% of NAV (${ratio.toFixed(1)}× the next name).` : '.'));
+  document.getElementById('etf-hidden').innerHTML = sorted.slice(0, 6).map(p => `
+    <div class="stat-row"><span class="stat-key">${esc(p.ticker)} · ${esc((p.category || '').toLowerCase())} ${esc(p.side)}</span><span class="stat-val">${Math.abs(pctNav(p.mktValue)).toFixed(1)}%</span></div>`).join('');
 }
 
 function renderRiskTab() {
@@ -3465,11 +3507,26 @@ function renderRiskTab() {
       <div class="stat-row"><span class="stat-key">${esc(c.pair)}</span>
       <span class="stat-val ${c.v >= 0.8 ? 'negative' : c.v <= 0.4 ? 'positive' : 'neutral'}">${c.v.toFixed(2)}</span></div>`).join('');
   }
-  if (report.scenarios) {
+  // Stress scenarios computed from the LIVE book buckets (first-order, miner β≈1.3,
+  // ETFs/broad β≈1.0) — replaces the frozen report.scenarios that referenced closed
+  // names and stale sizes.
+  if (positions && positions.length) {
+    const B = 1.3;
+    const cat = c => sumMv(p => p.category === c);
+    const steel = cat('Steel'), alu = cat('Aluminum'), cu = cat('Copper'), prec = cat('Precious');
+    const liMiners = sumMv(p => p.side === 'long' && LI_MINERS.includes(p.ticker));
+    const battEtf = sumMv(p => BATTERY_ETFS.includes(p.ticker));
+    const nav = navNow();
+    const scen = [
+      { name: 'Steel complex −15%', raw: steel * -0.15 * B, note: 'net short steel → gain · first-order est' },
+      { name: 'Broad base metals −10%', raw: (steel + alu + cu) * -0.10 * B, note: 'steel + aluminum + copper · est' },
+      { name: 'Lithium/battery +20%', raw: liMiners * 0.20 * B + battEtf * 0.20 * 1.0, note: 'long miners vs short ETFs · est' },
+      { name: 'Precious/PGM +20% squeeze', raw: prec * 0.20 * B, note: 'short silver/PGM pain · est' },
+    ].map(s => ({ name: s.name, note: s.note, pnl: Math.round(s.raw), pct: +(s.raw / nav * 100).toFixed(1) }));
     const scenBadge = document.getElementById('scenario-asof');
-    if (scenBadge) scenBadge.innerHTML = reportAsOfHtml();
-    const maxAbs = Math.max(...report.scenarios.map(s => Math.abs(s.pnl)));
-    document.getElementById('scenario-list').innerHTML = report.scenarios.map(s => `
+    if (scenBadge) scenBadge.innerHTML = '<span style="float:right;font-weight:400;font-size:10px;color:var(--text-muted);">live · first-order estimate</span>';
+    const maxAbs = Math.max(...scen.map(s => Math.abs(s.pnl)), 1);
+    document.getElementById('scenario-list').innerHTML = scen.map(s => `
       <div style="padding:8px 0;border-bottom:1px solid var(--border);">
         <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;">
           <span class="stat-key">${esc(s.name)}${s.note ? ` <em style="color:var(--text-dim);font-style:normal;">· ${esc(s.note)}</em>` : ''}</span>
@@ -3511,11 +3568,39 @@ function renderRiskTab() {
       (x.wowChange != null ? `, Δ ${x.wowChange >= 0 ? '+' : ''}${Number(x.wowChange).toLocaleString()} WoW` : '')));
     smartEl.innerHTML = html;
   } else if (smartEl && report.smartMoney) {
-    smartEl.innerHTML = report.smartMoney.map(s => smartItem(s.stock, s.read, s.tone, s.detail)).join('');
+    // editorial fallback — only show rows for names still in the book
+    const held = heldSet();
+    const items = report.smartMoney.filter(s => held.has(s.stock));
+    smartEl.innerHTML = items.length
+      ? items.map(s => smartItem(s.stock, s.read, s.tone, s.detail)).join('')
+      : '<div class="report-note" style="padding:8px;">No positioning data for current holdings.</div>';
   }
   if (report.options) setText('opt-note', report.options.note);
-  if (report.performance) setText('perf-note', report.performance.note);
-  setText('risk-bottom', report.bottomLine || '');
+
+  // Performance + bottom line derived live (the report.json prose had inverted:
+  // it claimed the book beat XME while the book now lags it).
+  const bookTwr = (pnl && pnl.length) ? pnl[pnl.length - 1].twr : null;
+  const spy = benchSinceInception('SPY'), xme = benchSinceInception('XME');
+  if (bookTwr != null) {
+    const cmp = (xme != null) ? (bookTwr < xme ? `lagging XME` : `ahead of XME`) : '';
+    setText('perf-note', `Since inception (${INCEPTION_DATE}) the book's time-weighted return is ${bookTwr.toFixed(1)}%`
+      + (spy != null ? `; SPY ${spy >= 0 ? '+' : ''}${spy.toFixed(1)}%` : '')
+      + (xme != null ? `, XME ${xme >= 0 ? '+' : ''}${xme.toFixed(1)}%` : '')
+      + (cmp ? ` — currently ${cmp}.` : '.') + ' Short since-inception sample spanning the rebuild — indicative.');
+  }
+  if (positions && positions.length) {
+    const topC = (risk && risk.contributions && risk.contributions.length)
+      ? risk.contributions.slice().sort((a, b) => b.riskContribPct - a.riskContribPct)[0] : null;
+    const big = positions.slice().sort((a, b) => Math.abs(b.mktValue) - Math.abs(a.mktValue))[0];
+    const hh = (risk && risk.headline) || {};
+    setText('risk-bottom', `Live book: ${positions.length} long/short metals names, `
+      + `net ${account.netExposure != null ? account.netExposure.toFixed(0) : '—'}% / `
+      + `gross ${account.grossExposurePct != null ? account.grossExposurePct.toFixed(0) : '—'}% of NAV`
+      + (hh.annVol != null ? `, ann. vol ${hh.annVol}% (β SPY ${hh.betaSpy}, XME ${hh.betaXme})` : '')
+      + `. Largest position ${big ? big.ticker : '—'} (${big ? Math.abs(pctNav(big.mktValue)).toFixed(1) : '—'}% of NAV)`
+      + (topC ? `; top risk contributor ${topC.ticker} (${topC.riskContribPct}% of portfolio risk)` : '')
+      + `. ${bookTwr != null ? `Since inception ${bookTwr.toFixed(1)}% TWR${xme != null ? ` vs XME ${xme.toFixed(1)}%` : ''}.` : ''}`);
+  }
 }
 
 // Live NxN correlation heatmap + per-name risk contribution (from risk.json).
@@ -3614,13 +3699,6 @@ function renderJournal() {
       'journal populates once trades are dumped to /tmp and scripts/journal.py runs.');
     return;
   }
-  // headline stats cover the current long/short era; note the excluded retired era
-  if (j.era) {
-    const at = j.allTime && j.allTime.aggregate;
-    const extra = at ? Math.max(0, at.closedTrades - a.closedTrades) : 0;
-    setText('jr-note', `Current ${esc(j.era.label || 'strategy')} era (since ${esc(j.era.since)})`
-      + (extra ? ` · ${extra} earlier long-only-era trades excluded from these stats` : ''));
-  }
   setText('jr-winrate', (a.winRate * 100).toFixed(0) + '%');
   setText('jr-closed', a.closedTrades + ' closed round-trips');
   setText('jr-pf', a.profitFactor == null ? '—' : a.profitFactor.toFixed(2));
@@ -3663,10 +3741,29 @@ function renderJournal() {
       <div class="stat-row"><span class="stat-key">${esc(it.ticker)}</span>
       <span class="stat-val ${it.shadowDelta >= 0 ? 'positive' : 'negative'}">${fmtDollarSigned(it.shadowDelta)}</span></div>`).join('');
   }
-  setText('jr-note', j.note || '');
+  // headline stats cover the current long/short era (journal.py filters to it);
+  // show the era label + how many retired-era trades are excluded, else j.note.
+  if (j.era) {
+    const at = j.allTime && j.allTime.aggregate;
+    const extra = at ? Math.max(0, at.closedTrades - a.closedTrades) : 0;
+    const label = j.era.label || 'current long/short era';
+    setText('jr-note', label.charAt(0).toUpperCase() + label.slice(1) + ` (since ${j.era.since})`
+      + (extra ? ` · ${extra} earlier long-only-era trades excluded from these stats` : ''));
+  } else {
+    setText('jr-note', j.note || '');
+  }
 }
 
 function renderMarkets() {
+  // drivers/catalysts are editorial commentary from report.json. Reference to a
+  // ticker that is a known name but NOT in the live book = stale (position closed),
+  // so drop those rows; macro rows (no known ticker) stay. An honest as-of badge
+  // marks the section since the prose itself can predate the current book.
+  const held = heldSet();
+  const refsClosedName = s => {
+    const toks = (String(s || '').match(/\b[A-Z]{2,5}\b/g)) || [];
+    return toks.some(t => STOCK_INDEX && STOCK_INDEX.has(t) && !held.has(t));
+  };
   if (report.drivers) {
     document.getElementById('drivers-tbody').innerHTML = report.drivers.map(d => `
       <tr>
@@ -3676,9 +3773,11 @@ function renderMarkets() {
         <td class="tl report-note">${esc(d.read)}</td>
       </tr>`).join('');
   }
-  setText('drivers-note', report.driversNote || '');
+  const dn = document.getElementById('drivers-note');
+  if (dn) dn.innerHTML = reportAsOfHtml() + esc(report.driversNote || '');
   if (report.catalysts) {
-    document.getElementById('catalysts-tbody').innerHTML = report.catalysts.map(c => {
+    const cats = report.catalysts.filter(c => !refsClosedName(c.affects) && !refsClosedName(c.event));
+    document.getElementById('catalysts-tbody').innerHTML = cats.length ? cats.map(c => {
       const cls = c.status === 'confirmed' ? 'status-confirmed' : c.status === 'scheduled' ? 'status-scheduled' : 'status-est';
       return `
       <tr>
@@ -3687,7 +3786,7 @@ function renderMarkets() {
         <td class="tl">${esc(c.event)}</td>
         <td class="tl report-note">${esc(c.affects)}</td>
       </tr>`;
-    }).join('');
+    }).join('') : '<tr class="empty-row"><td colspan="4">No upcoming catalysts for current holdings</td></tr>';
   }
 }
 
