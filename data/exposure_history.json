@@ -933,7 +933,6 @@
   },
   "2026-07-22": {
     "commodityExposure": {
-      "lco": 0.053948,
       "manganese dioxide": 0.023893,
       "steel": -0.006032,
       "aluminum n": -0.006241,
@@ -941,6 +940,7 @@
       "rhodium": -0.012476,
       "aluminum": -0.012481,
       "ferro-chrome": -0.01786,
+      "lco": -0.023841,
       "manganese sulfate": -0.05104
     },
     "byTicker": {
@@ -1006,13 +1006,6 @@
           "weight": -0.016088
         }
       ],
-      "MP": [
-        {
-          "commodity": "lco",
-          "tier": "T1",
-          "weight": 0.077789
-        }
-      ],
       "RS": [
         {
           "commodity": "ferro-chrome",
@@ -1056,8 +1049,8 @@
       "ferro-chrome": -0.018029,
       "rhodium": -0.022608,
       "aluminum": -0.026048,
-      "lco": -0.032869,
       "cobalt sulfate": -0.03721,
+      "lco": -0.049674,
       "manganese sulfate": -0.094441
     },
     "byTicker": {
@@ -1123,13 +1116,6 @@
           "weight": -0.032211
         }
       ],
-      "MP": [
-        {
-          "commodity": "lco",
-          "tier": "T1",
-          "weight": 0.016805
-        }
-      ],
       "RS": [
         {
           "commodity": "ferro-chrome",
@@ -1167,117 +1153,102 @@
   },
   "2026-07-24": {
     "commodityExposure": {
-      "manganese dioxide": 0.023878,
-      "molybdenum bar": 0.008625,
-      "aluminum n": -0.012523,
-      "ferro-chrome": -0.018599,
-      "rhodium": -0.022849,
-      "aluminum": -0.025047,
-      "lco": -0.033194,
-      "cobalt sulfate": -0.036535,
-      "manganese sulfate": -0.092976
+      "manganese dioxide": 0.024033,
+      "molybdenum bar": 0.008766,
+      "aluminum n": -0.012614,
+      "rhodium": -0.023044,
+      "aluminum": -0.025228,
+      "cobalt sulfate": -0.036351,
+      "lco": -0.049184,
+      "manganese sulfate": -0.09306
     },
     "byTicker": {
       "AA": [
         {
           "commodity": "aluminum",
           "tier": "T1",
-          "weight": -0.025047
+          "weight": -0.025228
         },
         {
           "commodity": "aluminum n",
           "tier": "T2",
-          "weight": -0.012523
+          "weight": -0.012614
         }
       ],
       "ALB": [
         {
           "commodity": "manganese dioxide",
           "tier": "T2",
-          "weight": 0.010918
+          "weight": 0.010955
         }
       ],
       "BATT": [
         {
           "commodity": "manganese sulfate",
           "tier": "T1",
-          "weight": -0.061038
+          "weight": -0.061102
         },
         {
           "commodity": "cobalt sulfate",
           "tier": "T2",
-          "weight": -0.030519
+          "weight": -0.030551
         },
         {
           "commodity": "lco",
           "tier": "T2",
-          "weight": -0.030519
+          "weight": -0.030551
         }
       ],
       "FCX": [
         {
           "commodity": "molybdenum bar",
           "tier": "T2",
-          "weight": 0.008625
+          "weight": 0.008766
         }
       ],
       "KARS": [
         {
           "commodity": "lco",
           "tier": "T2",
-          "weight": -0.029542
+          "weight": -0.029577
         }
       ],
       "LIT": [
         {
           "commodity": "cobalt sulfate",
           "tier": "T2",
-          "weight": -0.031938
+          "weight": -0.031959
         },
         {
           "commodity": "manganese sulfate",
           "tier": "T2",
-          "weight": -0.031938
-        }
-      ],
-      "MP": [
-        {
-          "commodity": "lco",
-          "tier": "T1",
-          "weight": 0.015998
-        }
-      ],
-      "RS": [
-        {
-          "commodity": "ferro-chrome",
-          "tier": "T2",
-          "weight": -0.018599
+          "weight": -0.031959
         }
       ],
       "SBSW": [
         {
           "commodity": "rhodium",
           "tier": "T2",
-          "weight": -0.022849
+          "weight": -0.023044
         }
       ],
       "SGML": [
         {
           "commodity": "lco",
           "tier": "T2",
-          "weight": 0.01087
+          "weight": 0.010944
         }
       ],
       "SQM": [
         {
           "commodity": "cobalt sulfate",
           "tier": "T1",
-          "weight": 0.025921
+          "weight": 0.026158
         },
         {
           "commodity": "manganese dioxide",
           "tier": "T2",
-          "weight": 0.01296
+          "weight": 0.013079
         }
       ]
     }
