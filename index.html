@@ -394,6 +394,13 @@ tbody tr:last-child { border-bottom: none; }
 tbody tr:hover { background: var(--card-hover); }
 td { padding: 11px 16px; font-size: 13px; text-align: right; white-space: nowrap; }
 td:first-child { text-align: left; }
+/* Prose cells opt out of the global nowrap above. Without this a long reason or
+   the comma-joined gates string renders as one ~2,900px line that overprints the
+   neighbouring columns (the Orders tab's "why" running across "outcome").
+   `anywhere` is needed because "a:PASS,b:PASS,…" has no spaces to break on. */
+td.wrap-cell { white-space: normal; overflow-wrap: anywhere; vertical-align: top; }
+/* once a cell wraps to several lines, mid-aligned siblings look detached */
+#ord-tbody td { vertical-align: top; }
 .ticker-cell { display: flex; align-items: center; gap: 8px; }
 .ticker-sym { font-weight: 700; font-size: 13px; color: var(--text); }
 .category-badge {
@@ -4723,8 +4730,8 @@ function renderOrdersTable() {
       + `<td>${qty}</td>`
       + `<td style="text-align:left;white-space:nowrap;">${esc(order)}<span style="color:var(--text-muted);"> · ${esc(e.tif || 'DAY')}</span></td>`
       + `<td style="text-align:left;">${ordStatusBadge(e.status)}<div style="font-size:10px;color:var(--text-dim);white-space:nowrap;">${esc((e.statusUpdatedAt || '').slice(0, 16).replace('T', ' '))}</div></td>`
-      + `<td style="text-align:left;">${ordTriggerBadge(e.trigger)}</td>`
-      + `<td style="text-align:left;font-size:11px;max-width:280px;">${why || '<span style="color:var(--text-dim);">—</span>'}</td>`
+      + `<td class="wrap-cell" style="text-align:left;max-width:240px;">${ordTriggerBadge(e.trigger)}</td>`
+      + `<td class="wrap-cell" style="text-align:left;font-size:11px;max-width:340px;">${why || '<span style="color:var(--text-dim);">—</span>'}</td>`
       + ordOutcomeCell(e)
       + `<td style="text-align:left;">${link}</td>`
       + `</tr>`;
