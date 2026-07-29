@@ -18,12 +18,23 @@ import json, datetime, pathlib
 SRC = pathlib.Path("/tmp")
 DATA = pathlib.Path(__file__).resolve().parent.parent / "data"
 
-# ticker -> dashboard category badge
+# ticker -> dashboard category badge.
+#
+# This map is load-bearing, not cosmetic: the dashboard's Risk tab buckets the
+# book by category to size its stress scenarios, so a held name that falls
+# through to "Other" is silently dropped from those numbers. Any name that can
+# enter the book must have an entry here — `validate_data.py` fails the build
+# when a live position lands on "Other" so this can never rot again.
 CATEGORY = {
     "SQM": "Lithium", "ALB": "Lithium", "SGML": "Lithium", "TSLA": "Lithium",
     "LIT": "Lithium", "BATT": "Lithium", "LAC": "Lithium", "KARS": "Lithium",
     "FCX": "Copper", "SCCO": "Copper", "HBM": "Copper", "COPX": "Copper",
+    # Steel complex — producers, processors and the sector ETF. GGB/MT/PKX/TX
+    # are integrated mills, MTUS/WOR/ROCK sit downstream in steel processing and
+    # steel-intensive building products; all move with the steel cycle.
     "NUE": "Steel", "CLF": "Steel", "RS": "Steel", "STLD": "Steel", "CMC": "Steel",
+    "GGB": "Steel", "MT": "Steel", "MTUS": "Steel", "PKX": "Steel",
+    "TX": "Steel", "WOR": "Steel", "ROCK": "Steel", "SLX": "Steel",
     "AA": "Aluminum", "CENX": "Aluminum", "KALU": "Aluminum", "CSTM": "Aluminum",
     "MP": "Rare Earth", "REMX": "Rare Earth", "UUUU": "Uranium",
     "GLD": "Precious", "SLV": "Precious", "PALL": "Precious", "SBSW": "Precious",

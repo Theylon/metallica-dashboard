@@ -807,6 +807,10 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
       <div class="stat-block">
         <div class="stat-block-title">Live Performance</div>
         <div class="stat-row"><span class="stat-key">Portfolio NAV</span><span class="stat-val" id="stat-nav">—</span></div>
+        <!-- TWR sits directly under NAV: NAV alone counts deposits as gains, so a
+             funded account can show a rising NAV through a losing run. -->
+        <div class="stat-row"><span class="stat-key">Return since inception (TWR)</span><span class="stat-val" id="stat-twr">—</span></div>
+        <div class="stat-row"><span class="stat-key">Net deposits</span><span class="stat-val" id="stat-flows">—</span></div>
         <div class="stat-row"><span class="stat-key">Unrealized P&L</span><span class="stat-val" id="stat-upnl">—</span></div>
         <div class="stat-row"><span class="stat-key">Realized P&L (incep.)</span><span class="stat-val" id="stat-rpnl">—</span></div>
         <div class="stat-row"><span class="stat-key">Daily P&L</span><span class="stat-val" id="stat-dpnl">—</span></div>
@@ -816,7 +820,7 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
         <div class="stat-block-title" id="stat-metrics-title">Rolling Metrics</div>
         <div class="stat-row"><span class="stat-key">Sharpe Ratio</span><span class="stat-val" id="stat-sharpe">—</span></div>
         <div class="stat-row"><span class="stat-key">Ann. Return</span><span class="stat-val" id="stat-cagr">—</span></div>
-        <div class="stat-row"><span class="stat-key">Daily Volatility</span><span class="stat-val" id="stat-vol">—</span></div>
+        <div class="stat-row"><span class="stat-key">Volatility (ann.)</span><span class="stat-val" id="stat-vol">—</span></div>
         <div class="stat-row"><span class="stat-key">Max Drawdown</span><span class="stat-val" id="stat-mdd">—</span></div>
         <div class="stat-row"><span class="stat-key">Win Rate (days)</span><span class="stat-val" id="stat-winrate">—</span></div>
         <div style="font-size:10px;color:var(--text-muted);padding-top:6px;line-height:1.4;">
@@ -1114,13 +1118,14 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
     </div>
 
     <!-- ETF look-through (Report v2) -->
-    <div class="section-title" style="margin-top:8px;">Book Look-Through — Long Miners vs Short ETFs</div>
+    <div class="section-title" style="margin-top:8px;">Book Look-Through — Exposure by Metal</div>
     <div class="two-col">
       <div class="stat-block">
         <div class="stat-block-title">Exposure (decomposed) <span id="etf-asof"></span></div>
-        <div class="stat-row"><span class="stat-key">Short EV/battery ETFs (BATT+LIT+KARS)</span><span class="stat-val" id="etf-china">—</span></div>
-        <div class="stat-row"><span class="stat-key">Long lithium miners (ALB/SQM/LAC/SGML)</span><span class="stat-val" id="etf-alb">—</span></div>
-        <div class="stat-row"><span class="stat-key">Net book exposure</span><span class="stat-val" id="etf-sqm">—</span></div>
+        <!-- one row per metal actually in the book, rendered from positions.json -->
+        <div id="etf-buckets"></div>
+        <div class="stat-row"><span class="stat-key">Net book exposure</span><span class="stat-val" id="etf-net">—</span></div>
+        <div class="stat-row"><span class="stat-key">Gross exposure</span><span class="stat-val" id="etf-gross">—</span></div>
         <div class="stat-row" style="border:none;padding-top:12px;"><span class="report-note" id="etf-conc"></span></div>
       </div>
       <div class="stat-block">
@@ -2706,6 +2711,22 @@ function renderStats() {
   pnlColor('stat-rpnl', rlz);
   pnlColor('stat-dpnl', account.dailyPnl);
 
+  // Since-inception TWR + the deposits that separate it from the NAV line.
+  // Implied flows = the NAV move the TWR chain does NOT explain; summing them
+  // shows why NAV can be up while the strategy is down.
+  const lastTwr = pnl.length ? pnl[pnl.length - 1].twr : null;
+  if (typeof lastTwr === 'number') {
+    setText('stat-twr', (lastTwr >= 0 ? '+' : '') + lastTwr.toFixed(2) + '%');
+    pnlColor('stat-twr', lastTwr);
+  }
+  let flows = 0;
+  for (let i = 1; i < pnl.length; i++) {
+    const a = pnl[i - 1], b = pnl[i];
+    if (typeof a.twr !== 'number' || typeof b.twr !== 'number' || !a.nav) continue;
+    flows += b.nav - a.nav * ((1 + b.twr / 100) / (1 + a.twr / 100));
+  }
+  setText('stat-flows', Math.abs(flows) < 1 ? '$0' : fmtDollarSigned(Math.round(flows)));
+
   // Rolling metrics from pnl history, clamped to the trailing 90 days (the
   // title reports how many daily observations that window actually contains)
   const cutoff90 = Date.now() - 90 * 86400e3;
@@ -3401,10 +3422,26 @@ window.addEventListener('resize', () => {
   }, 150);
 });
 
+// Patch the two live-drifting facts inside the hand-authored sources sentence:
+// the IBKR refresh date and the "(<inception>, N daily obs)" count. Everything
+// else in that line (vendor list, disclaimers) is durable and left verbatim.
+function rewriteSourceFacts(src) {
+  const bookDate = ((account && account.updatedAt) || '').slice(0, 10);
+  const obs = new Set((pnl || []).map(s => String(s.timestamp).slice(0, 10))).size;
+  let out = src;
+  if (bookDate) out = out.replace(/refreshed \d{4}-\d{2}-\d{2}/, `refreshed ${bookDate}`);
+  if (obs) out = out.replace(/(\d{4}-\d{2}-\d{2},\s*)\d+\s*daily obs/, `$1${obs} daily obs`);
+  return out;
+}
+
 // ═══════════════════════════════════════════ REPORT v2 ══
 function renderReport() {
   if (!report.headline && !(risk && risk.headline)) return;
-  setText('report-sources', 'Sources: ' + (report.sources || ''));
+  // The sources line quotes the refresh date and the observation count behind
+  // the risk metrics; both were frozen in report.json and drifted (it claimed
+  // "refreshed 2026-07-20, 21 daily obs" while the panel above computed 28).
+  // Rewrite those two facts from the live data so the provenance line can't lie.
+  setText('report-sources', 'Sources: ' + rewriteSourceFacts(report.sources || ''));
   setText('risk-asof', 'as of ' + (report.asOf || '—'));
   renderTradeTape();
   renderEtfLookthrough();
@@ -3416,13 +3453,26 @@ function renderReport() {
 // The report tab's book-dependent numbers are derived from the live
 // positions/account/risk here — NOT from the hand-authored report.json, which
 // goes stale the instant the book moves (names close, sizes change).
-const LI_MINERS = ['ALB', 'SQM', 'LAC', 'SGML'];
-const BATTERY_ETFS = ['BATT', 'LIT', 'KARS'];
 const INCEPTION_DATE = '2026-06-22';
 function heldSet() { return new Set((positions || []).map(p => p.ticker)); }
 function navNow() { return (account && account.nav) || (positions || []).reduce((s, p) => s + Math.abs(p.mktValue), 0) || 1; }
 function sumMv(pred) { return (positions || []).filter(pred).reduce((s, p) => s + p.mktValue, 0); }  // signed
 function pctNav(v) { return v / navNow() * 100; }
+
+// Net signed exposure per category, derived from whatever is actually held —
+// never a hardcoded ticker list. Those go stale silently when the book rotates
+// (the previous lithium/EV lists priced $0 against an all-steel book).
+// `category` is guaranteed non-"Other" by validate_data.py.
+function bookBuckets() {
+  const m = new Map();
+  (positions || []).forEach(p => {
+    const k = p.category || 'Other';
+    m.set(k, (m.get(k) || 0) + p.mktValue);
+  });
+  return [...m.entries()]
+    .map(([name, net]) => ({ name, net, pct: pctNav(net) }))
+    .sort((a, b) => Math.abs(b.net) - Math.abs(a.net));
+}
 function benchSinceInception(t) {
   const b = benchmarks[t]; if (!b || !b.dates) return null;
   const i = b.dates.indexOf(INCEPTION_DATE);
@@ -3464,12 +3514,19 @@ function renderEtfLookthrough() {
     const el = document.getElementById(id);
     if (el) el.innerHTML = '<span style="float:right;font-weight:400;font-size:10px;color:var(--text-muted);">live · from the book</span>';
   });
-  const evEtf = sumMv(p => BATTERY_ETFS.includes(p.ticker));
-  const liLong = sumMv(p => p.side === 'long' && LI_MINERS.includes(p.ticker));
   const net = (account.netExposure != null) ? account.netExposure : pctNav(sumMv(() => true));
-  setText('etf-china', pctNav(evEtf).toFixed(1) + '% of NAV');
-  setText('etf-alb', pctNav(liLong).toFixed(1) + '% of NAV');
-  setText('etf-sqm', net.toFixed(1) + '% of NAV');
+  const gross = (account.grossExposurePct != null)
+    ? account.grossExposurePct
+    : pctNav(positions.reduce((s, p) => s + Math.abs(p.mktValue), 0));
+  // One row per metal actually held, long/short direction spelled out.
+  document.getElementById('etf-buckets').innerHTML = bookBuckets().map(b => {
+    const n = positions.filter(p => (p.category || 'Other') === b.name).length;
+    const dir = b.net >= 0 ? 'net long' : 'net short';
+    return `<div class="stat-row"><span class="stat-key">${esc(b.name)} — ${dir} (${n} name${n === 1 ? '' : 's'})</span>`
+      + `<span class="stat-val ${b.net >= 0 ? 'positive' : 'negative'}">${b.pct >= 0 ? '+' : ''}${b.pct.toFixed(1)}% of NAV</span></div>`;
+  }).join('');
+  setText('etf-net', (net >= 0 ? '+' : '') + net.toFixed(1) + '% of NAV');
+  setText('etf-gross', gross.toFixed(1) + '% of NAV');
   const hh = (risk && risk.headline) || {};
   const sorted = positions.slice().sort((a, b) => Math.abs(b.mktValue) - Math.abs(a.mktValue));
   const top = sorted[0], second = sorted[1];
@@ -3507,21 +3564,33 @@ function renderRiskTab() {
       <div class="stat-row"><span class="stat-key">${esc(c.pair)}</span>
       <span class="stat-val ${c.v >= 0.8 ? 'negative' : c.v <= 0.4 ? 'positive' : 'neutral'}">${c.v.toFixed(2)}</span></div>`).join('');
   }
-  // Stress scenarios computed from the LIVE book buckets (first-order, miner β≈1.3,
-  // ETFs/broad β≈1.0) — replaces the frozen report.scenarios that referenced closed
-  // names and stale sizes.
+  // Stress scenarios generated from the metals ACTUALLY held (first-order,
+  // equity β≈1.3 to the underlying metal). The previous version hardcoded a
+  // steel/lithium/precious list: after the book rotated to steel+aluminum the
+  // lithium and precious rows priced a flat $0 and the "broad" row silently
+  // omitted every name sitting in the "Other" bucket, so a 10% base-metals
+  // selloff read as −$34 on a book with ~105% gross. Deriving the rows from
+  // bookBuckets() means a rotation can never leave a dead scenario behind.
   if (positions && positions.length) {
-    const B = 1.3;
-    const cat = c => sumMv(p => p.category === c);
-    const steel = cat('Steel'), alu = cat('Aluminum'), cu = cat('Copper'), prec = cat('Precious');
-    const liMiners = sumMv(p => p.side === 'long' && LI_MINERS.includes(p.ticker));
-    const battEtf = sumMv(p => BATTERY_ETFS.includes(p.ticker));
+    const B = 1.3;                  // equity beta to a move in the underlying metal
+    const SHOCK = -0.15;            // headline per-metal shock
     const nav = navNow();
+    const buckets = bookBuckets().filter(b => Math.abs(b.pct) >= 1);
+    const netAll = sumMv(() => true);
     const scen = [
-      { name: 'Steel complex −15%', raw: steel * -0.15 * B, note: 'net short steel → gain · first-order est' },
-      { name: 'Broad base metals −10%', raw: (steel + alu + cu) * -0.10 * B, note: 'steel + aluminum + copper · est' },
-      { name: 'Lithium/battery +20%', raw: liMiners * 0.20 * B + battEtf * 0.20 * 1.0, note: 'long miners vs short ETFs · est' },
-      { name: 'Precious/PGM +20% squeeze', raw: prec * 0.20 * B, note: 'short silver/PGM pain · est' },
+      ...buckets.map(b => ({
+        name: `${b.name} ${SHOCK < 0 ? '−' : '+'}${Math.abs(SHOCK * 100).toFixed(0)}%`,
+        raw: b.net * SHOCK * B,
+        // direction stated from the sign of the actual position, not assumed
+        note: `${b.net >= 0 ? 'net long' : 'net short'} ${b.name.toLowerCase()}`
+          + ` ${b.pct >= 0 ? '+' : ''}${b.pct.toFixed(0)}% NAV → ${b.net >= 0 ? 'loss' : 'gain'} · est`,
+      })),
+      { name: 'Broad metals equities −10%',
+        raw: netAll * -0.10 * B,
+        note: `whole book, net ${pctNav(netAll).toFixed(0)}% NAV · est` },
+      { name: 'Long/short spread compresses 5%',
+        raw: -(positions.reduce((s, p) => s + Math.abs(p.mktValue), 0)) * 0.05 * 0.5,
+        note: 'longs underperform shorts by 5% · est' },
     ].map(s => ({ name: s.name, note: s.note, pnl: Math.round(s.raw), pct: +(s.raw / nav * 100).toFixed(1) }));
     const scenBadge = document.getElementById('scenario-asof');
     if (scenBadge) scenBadge.innerHTML = '<span style="float:right;font-weight:400;font-size:10px;color:var(--text-muted);">live · first-order estimate</span>';
@@ -3568,14 +3637,34 @@ function renderRiskTab() {
       (x.wowChange != null ? `, Δ ${x.wowChange >= 0 ? '+' : ''}${Number(x.wowChange).toLocaleString()} WoW` : '')));
     smartEl.innerHTML = html;
   } else if (smartEl && report.smartMoney) {
-    // editorial fallback — only show rows for names still in the book
-    const held = heldSet();
-    const items = report.smartMoney.filter(s => held.has(s.stock));
+    // Editorial fallback. Two filters, because "still held" is not enough: the
+    // note also has to still be ABOUT the position we hold. report.json called
+    // NUE "the steel short" while NUE is held long — same ticker, inverted
+    // thesis. Drop rows whose prose argues the opposite side of the live book.
+    const bySide = new Map((positions || []).map(p => [p.ticker, p.side]));
+    const items = (report.smartMoney || []).filter(s => {
+      const side = bySide.get(s.stock);
+      if (!side) return false;                       // no longer held
+      const txt = `${s.read || ''} ${s.detail || ''}`.toLowerCase();
+      const saysShort = /\bshort\b/.test(txt), saysLong = /\blong\b/.test(txt);
+      if (side === 'long' && saysShort && !saysLong) return false;
+      if (side === 'short' && saysLong && !saysShort) return false;
+      return true;
+    });
     smartEl.innerHTML = items.length
-      ? items.map(s => smartItem(s.stock, s.read, s.tone, s.detail)).join('')
-      : '<div class="report-note" style="padding:8px;">No positioning data for current holdings.</div>';
+      ? items.map(s => smartItem(`${s.stock} (${bySide.get(s.stock)})`, s.read, s.tone, s.detail)).join('')
+      : '<div class="report-note" style="padding:8px;">No current positioning commentary matches the live book.</div>';
   }
-  if (report.options) setText('opt-note', report.options.note);
+  // The "no options" fact is durable; the exposure figure in that prose was not
+  // (report.json still said "net short -43% of NAV" against a net-long book), so
+  // state the direction from the live account instead of the frozen sentence.
+  if (report.options) {
+    const netPct = (account.netExposure != null) ? account.netExposure : pctNav(sumMv(() => true));
+    setText('opt-note', 'The book holds no options — it is cash equities/ETFs, net '
+      + `${netPct >= 0 ? 'long' : 'short'} ${Math.abs(netPct).toFixed(0)}% of NAV. `
+      + 'There is no embedded vega or convexity; the risk is linear and directional, '
+      + 'captured by the scenarios above.');
+  }
 
   // Performance + bottom line derived live (the report.json prose had inverted:
   // it claimed the book beat XME while the book now lags it).

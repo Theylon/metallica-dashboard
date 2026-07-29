@@ -196,6 +196,26 @@ def main() -> int:
         except json.JSONDecodeError as e:
             errors.append(f"data/{path.name}: invalid JSON — {e}")
 
+    # 2b) Every held position must carry a real category. The Risk tab buckets
+    #     the book by `category` to size its stress scenarios, so a name that
+    #     falls through to "Other" is silently dropped from those numbers — the
+    #     book looks less exposed than it is. This caught the whole steel complex
+    #     (GGB/MT/MTUS/PKX/TX/WOR/ROCK/SLX) sitting in "Other" while the scenario
+    #     rows still priced a retired lithium book. Fix by adding the ticker to
+    #     CATEGORY in scripts/mcp_refresh.py.
+    try:
+        pos = json.loads((data_dir / "positions.json").read_text()).get("positions", [])
+        uncategorized = sorted({p.get("ticker") for p in pos
+                                if p.get("category") in (None, "", "Other")})
+        if uncategorized:
+            errors.append(
+                "data/positions.json: held position(s) with no category — "
+                f"{', '.join(uncategorized)}. Add them to CATEGORY in "
+                "scripts/mcp_refresh.py; 'Other' is dropped from the Risk tab's "
+                "exposure buckets.")
+    except (OSError, json.JSONDecodeError):
+        pass  # shape/parse problems are already reported by the SPECS pass above
+
     # 3) Line-delimited data/*.jsonl (orders log, history files): every
     #    non-blank line must parse — the dashboard's Orders tab collapses the
     #    whole log to empty on a single bad line. An absent or empty file is
