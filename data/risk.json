@@ -1,15 +1,15 @@
 {
- "updatedAt": "2026-07-29T18:46:32+00:00",
+ "updatedAt": "2026-07-29T19:09:40+00:00",
  "asOf": "2026-07-29",
  "window": 90,
  "obs": 28,
  "headline": {
   "annVol": 16.5,
   "betaSpy": 0.47,
-  "betaXme": 0.1,
-  "var1d95": -230,
-  "var1d99": -446,
-  "hhi": 634.0,
+  "betaXme": 0.09,
+  "var1d95": -231,
+  "var1d99": -448,
+  "hhi": 635.0,
   "effectiveN": 15.8
  },
  "metrics": [
@@ -27,7 +27,7 @@
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.10",
+   "v": "0.09",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$230",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$446)",
+   "v": "-$231",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$448)",
    "tone": "neg"
   },
   {
@@ -51,13 +51,13 @@
   },
   {
    "k": "Max drawdown (inception curve)",
-   "v": "-13.2%",
+   "v": "-12.9%",
    "note": "peak-to-trough on the cumulative TWR",
    "tone": "neg"
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "634 / 15.8",
+   "v": "635 / 15.8",
    "note": "16 names, ~15.8 effective",
    "tone": "pos"
   }
@@ -393,7 +393,7 @@
    "side": "long",
    "weightPct": 6.4,
    "riskContribPct": 17.5,
-   "mVaR": 29.5
+   "mVaR": 29.7
   },
   {
    "ticker": "MT",
@@ -407,13 +407,13 @@
    "side": "long",
    "weightPct": 7.2,
    "riskContribPct": 12.3,
-   "mVaR": 20.8
+   "mVaR": 20.9
   },
   {
    "ticker": "CMC",
    "side": "long",
    "weightPct": 6.5,
-   "riskContribPct": 11.9,
+   "riskContribPct": 11.8,
    "mVaR": 20.0
   },
   {
@@ -421,28 +421,28 @@
    "side": "long",
    "weightPct": 6.8,
    "riskContribPct": 11.8,
-   "mVaR": 20.0
+   "mVaR": 20.1
   },
   {
    "ticker": "PKX",
    "side": "long",
    "weightPct": 6.1,
-   "riskContribPct": 11.7,
-   "mVaR": 19.7
+   "riskContribPct": 11.6,
+   "mVaR": 19.8
   },
   {
    "ticker": "NUE",
    "side": "long",
    "weightPct": 7.3,
-   "riskContribPct": 11.6,
-   "mVaR": 19.5
+   "riskContribPct": 11.5,
+   "mVaR": 19.6
   },
   {
    "ticker": "GGB",
    "side": "long",
    "weightPct": 6.8,
    "riskContribPct": 10.6,
-   "mVaR": 18.0
+   "mVaR": 18.1
   },
   {
    "ticker": "MTUS",
@@ -456,20 +456,20 @@
    "side": "long",
    "weightPct": 6.9,
    "riskContribPct": 9.4,
-   "mVaR": 15.8
+   "mVaR": 15.9
   },
   {
    "ticker": "CENX",
    "side": "short",
    "weightPct": -6.5,
    "riskContribPct": 0.5,
-   "mVaR": 0.8
+   "mVaR": 0.9
   },
   {
    "ticker": "AA",
    "side": "short",
    "weightPct": -6.5,
-   "riskContribPct": -1.6,
+   "riskContribPct": -1.5,
    "mVaR": -2.6
   },
   {
@@ -482,7 +482,7 @@
   {
    "ticker": "WOR",
    "side": "short",
-   "weightPct": -5.9,
+   "weightPct": -5.8,
    "riskContribPct": -4.4,
    "mVaR": -7.4
   },
@@ -491,14 +491,14 @@
    "side": "short",
    "weightPct": -5.0,
    "riskContribPct": -5.7,
-   "mVaR": -9.7
+   "mVaR": -9.6
   },
   {
    "ticker": "RS",
    "side": "short",
    "weightPct": -7.7,
    "riskContribPct": -8.1,
-   "mVaR": -13.7
+   "mVaR": -13.8
   }
  ],
  "coverageNote": "16 of 16 holdings"
