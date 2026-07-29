@@ -1,21 +1,21 @@
 {
- "updatedAt": "2026-07-29T07:52:11+00:00",
+ "updatedAt": "2026-07-29T13:09:20+00:00",
  "asOf": "2026-07-29",
  "window": 90,
  "obs": 28,
  "headline": {
-  "annVol": 16.6,
+  "annVol": 16.5,
   "betaSpy": 0.47,
   "betaXme": 0.1,
   "var1d95": -231,
-  "var1d99": -449,
+  "var1d99": -448,
   "hhi": 634.0,
   "effectiveN": 15.8
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "16.6%",
+   "v": "16.5%",
    "note": "from the account's daily TWR, 28 daily obs since inception",
    "tone": "neutral"
   },
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$231",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$449)",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$448)",
    "tone": "neg"
   },
   {
@@ -399,29 +399,22 @@
    "ticker": "MT",
    "side": "long",
    "weightPct": 6.9,
-   "riskContribPct": 16.5,
-   "mVaR": 28.5
+   "riskContribPct": 16.3,
+   "mVaR": 28.3
   },
   {
    "ticker": "STLD",
    "side": "long",
-   "weightPct": 7.3,
-   "riskContribPct": 12.0,
-   "mVaR": 20.8
+   "weightPct": 7.4,
+   "riskContribPct": 12.1,
+   "mVaR": 20.9
   },
   {
    "ticker": "CMC",
    "side": "long",
    "weightPct": 6.6,
-   "riskContribPct": 11.7,
-   "mVaR": 20.2
-  },
-  {
-   "ticker": "TX",
-   "side": "long",
-   "weightPct": 6.9,
    "riskContribPct": 11.6,
-   "mVaR": 20.0
+   "mVaR": 20.1
   },
   {
    "ticker": "NUE",
@@ -431,74 +424,81 @@
    "mVaR": 19.9
   },
   {
+   "ticker": "TX",
+   "side": "long",
+   "weightPct": 6.9,
+   "riskContribPct": 11.5,
+   "mVaR": 20.0
+  },
+  {
    "ticker": "PKX",
    "side": "long",
    "weightPct": 6.1,
    "riskContribPct": 11.2,
-   "mVaR": 19.4
+   "mVaR": 19.5
   },
   {
    "ticker": "GGB",
    "side": "long",
    "weightPct": 6.8,
-   "riskContribPct": 10.4,
-   "mVaR": 18.0
+   "riskContribPct": 10.3,
+   "mVaR": 17.9
   },
   {
    "ticker": "MTUS",
    "side": "long",
    "weightPct": 6.7,
    "riskContribPct": 9.7,
-   "mVaR": 16.8
+   "mVaR": 16.7
   },
   {
    "ticker": "SLX",
    "side": "long",
-   "weightPct": 6.8,
+   "weightPct": 6.9,
    "riskContribPct": 9.0,
-   "mVaR": 15.6
+   "mVaR": 15.5
   },
   {
    "ticker": "CENX",
    "side": "short",
-   "weightPct": -6.6,
-   "riskContribPct": 1.3,
-   "mVaR": 2.2
+   "weightPct": -6.7,
+   "riskContribPct": 1.5,
+   "mVaR": 2.5
   },
   {
    "ticker": "AA",
    "side": "short",
-   "weightPct": -6.6,
-   "riskContribPct": -0.8,
-   "mVaR": -1.5
+   "weightPct": -6.7,
+   "riskContribPct": -0.7,
+   "mVaR": -1.2
   },
   {
    "ticker": "KALU",
    "side": "short",
    "weightPct": -4.6,
-   "riskContribPct": -3.9,
-   "mVaR": -6.7
+   "riskContribPct": -3.8,
+   "mVaR": -6.6
   },
   {
    "ticker": "WOR",
    "side": "short",
    "weightPct": -5.9,
-   "riskContribPct": -4.3,
+   "riskContribPct": -4.2,
    "mVaR": -7.4
   },
   {
    "ticker": "ROCK",
    "side": "short",
-   "weightPct": -5.2,
+   "weightPct": -5.3,
    "riskContribPct": -5.6,
    "mVaR": -9.6
   },
   {
    "ticker": "RS",
    "side": "short",
-   "weightPct": -7.8,
-   "riskContribPct": -7.9,
-   "mVaR": -13.7
+   "weightPct": -7.7,
+   "riskContribPct": -7.8,
+   "mVaR": -13.6
   }
  ],
  "coverageNote": "16 of 16 holdings"
