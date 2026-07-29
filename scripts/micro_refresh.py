@@ -115,6 +115,46 @@ def write_price_history(series):
     print(f"price_history.json: {len(series)} held series refreshed, {len(existing)} total")
 
 
+def mint_held_only_rows(records, held_book):
+    """Give every live position a micro.json row, minting minimal ones as needed.
+
+    micro_build.py already creates a "heldOnly" row for a held name that is
+    outside the research universe (an ETF, an off-theme short) — but it only
+    runs in the daily research routine. Between rebuilds a freshly opened
+    position had no row at all, so the Stock Picks "Held" view silently dropped
+    it and verify_data.py hard-failed ("held book missing live positions") —
+    which skips the Pages deploy for the rest of the day. This runs 4x/day in
+    the fetch Action, ahead of the verify step, so the gap closes itself.
+
+    Rows are minted in micro_build's heldOnly shape; the next research rebuild
+    replaces them with fully scored ones. Returns the tickers minted.
+    """
+    known = {r["ticker"] for r in records}
+    minted = []
+    for t, h in sorted(held_book.items()):
+        if t in known:
+            continue
+        records.append({
+            "ticker": t, "company": t, "material": None, "role": None, "capTier": None,
+            "held": h["side"], "heldMv": h["mktValue"], "position": h,
+            "country": None, "exchange": None, "analyst": None, "tipranksExtra": None,
+            "recommendation": None, "omEvidence": None,
+            "price": h.get("lastPrice"), "vs50": None, "vs200": None,
+            "range52w": None, "marketCap": None,
+            "tradable": False, "quoteSuspect": False,
+            "composite": None, "subs": {}, "coverage": 0,
+            "microVerdict": None, "thesis": None,
+            "catalysts": [], "risks": [], "evidence": [],
+            "omLinkage": None, "exposure": None,
+            "fundamentals": None, "crossVal": None,
+            "discovered": False, "heldOnly": True,
+        })
+        minted.append(t)
+    if minted:
+        print(f"micro.json: minted heldOnly rows for new positions: {', '.join(minted)}")
+    return minted
+
+
 def main():
     micro = json.loads((DATA / "micro.json").read_text())
     prev_micro = copy.deepcopy(micro)   # pre-refresh state for the decision log diff
@@ -122,14 +162,15 @@ def main():
 
     # Re-sync the held overlay from the live book on every refresh, so the
     # "Held" view can never drift from data/positions.json between full research
-    # rebuilds (micro_build owns ADDING rows for brand-new held names; this
-    # keeps the existing rows' held/heldMv/position truthful 4x/day).
+    # rebuilds (micro_build owns the RESEARCHED rows; this keeps the existing
+    # rows' held/heldMv/position truthful 4x/day).
     held_book = load_held()
     for r in records:
         h = held_book.get(r["ticker"])
         r["held"] = h["side"] if h else None
         r["heldMv"] = h["mktValue"] if h else None
         r["position"] = h
+    mint_held_only_rows(records, held_book)
     # re-stamp the live-derived narrative fields so they never re-stale between
     # full research rebuilds: macro banner from macro.json, sizing note + the
     # recommendation/trade-list heldNow ground truth from the live book
