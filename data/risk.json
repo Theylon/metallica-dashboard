@@ -1,33 +1,33 @@
 {
- "updatedAt": "2026-07-30T15:30:11+00:00",
+ "updatedAt": "2026-07-30T17:09:45+00:00",
  "asOf": "2026-07-30",
  "window": 90,
  "obs": 29,
  "headline": {
-  "annVol": 16.6,
-  "betaSpy": 0.47,
-  "betaXme": 0.12,
-  "var1d95": -231,
-  "var1d99": -449,
-  "hhi": 635.0,
+  "annVol": 16.8,
+  "betaSpy": 0.49,
+  "betaXme": 0.13,
+  "var1d95": -232,
+  "var1d99": -451,
+  "hhi": 634.0,
   "effectiveN": 15.8
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "16.6%",
+   "v": "16.8%",
    "note": "from the account's daily TWR, 29 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.47",
+   "v": "0.49",
    "note": "28 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.12",
+   "v": "0.13",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$231",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$449)",
+   "v": "-$232",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$451)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "635 / 15.8",
+   "v": "634 / 15.8",
    "note": "16 names, ~15.8 effective",
    "tone": "pos"
   }
@@ -392,106 +392,106 @@
    "ticker": "MT",
    "side": "long",
    "weightPct": 7.1,
-   "riskContribPct": 17.4,
-   "mVaR": 29.9
+   "riskContribPct": 17.3,
+   "mVaR": 30.0
   },
   {
    "ticker": "CLF",
    "side": "long",
-   "weightPct": 6.4,
-   "riskContribPct": 17.0,
-   "mVaR": 29.2
+   "weightPct": 6.5,
+   "riskContribPct": 17.2,
+   "mVaR": 29.9
   },
   {
    "ticker": "PKX",
    "side": "long",
-   "weightPct": 6.5,
-   "riskContribPct": 12.7,
-   "mVaR": 21.8
+   "weightPct": 6.6,
+   "riskContribPct": 12.9,
+   "mVaR": 22.4
   },
   {
    "ticker": "STLD",
    "side": "long",
    "weightPct": 7.1,
    "riskContribPct": 11.8,
-   "mVaR": 20.3
+   "mVaR": 20.4
   },
   {
    "ticker": "TX",
    "side": "long",
-   "weightPct": 6.8,
+   "weightPct": 6.9,
    "riskContribPct": 11.7,
-   "mVaR": 20.0
+   "mVaR": 20.2
   },
   {
    "ticker": "CMC",
    "side": "long",
-   "weightPct": 6.4,
+   "weightPct": 6.5,
    "riskContribPct": 11.6,
-   "mVaR": 19.8
+   "mVaR": 20.1
   },
   {
    "ticker": "NUE",
    "side": "long",
    "weightPct": 7.2,
    "riskContribPct": 11.2,
-   "mVaR": 19.2
+   "mVaR": 19.3
   },
   {
    "ticker": "GGB",
    "side": "long",
    "weightPct": 6.8,
    "riskContribPct": 10.5,
-   "mVaR": 18.0
+   "mVaR": 18.1
   },
   {
    "ticker": "MTUS",
    "side": "long",
    "weightPct": 6.3,
-   "riskContribPct": 9.5,
-   "mVaR": 16.3
+   "riskContribPct": 9.4,
+   "mVaR": 16.2
   },
   {
    "ticker": "SLX",
    "side": "long",
    "weightPct": 6.9,
    "riskContribPct": 9.3,
-   "mVaR": 15.9
+   "mVaR": 16.0
   },
   {
    "ticker": "CENX",
    "side": "short",
    "weightPct": -6.7,
-   "riskContribPct": 0.6,
-   "mVaR": 1.0
+   "riskContribPct": 0.5,
+   "mVaR": 0.9
   },
   {
    "ticker": "AA",
    "side": "short",
    "weightPct": -6.6,
    "riskContribPct": -1.4,
-   "mVaR": -2.3
+   "mVaR": -2.4
   },
   {
    "ticker": "KALU",
    "side": "short",
    "weightPct": -4.5,
    "riskContribPct": -4.2,
-   "mVaR": -7.2
+   "mVaR": -7.3
   },
   {
    "ticker": "WOR",
    "side": "short",
-   "weightPct": -5.7,
+   "weightPct": -5.8,
    "riskContribPct": -4.4,
-   "mVaR": -7.5
+   "mVaR": -7.6
   },
   {
    "ticker": "ROCK",
    "side": "short",
-   "weightPct": -4.8,
+   "weightPct": -4.9,
    "riskContribPct": -5.6,
-   "mVaR": -9.6
+   "mVaR": -9.7
   },
   {
    "ticker": "RS",
