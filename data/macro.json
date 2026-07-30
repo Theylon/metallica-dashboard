@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-30T18:10:25+00:00",
+  "updatedAt": "2026-07-30T19:10:35+00:00",
   "items": [
     {
       "label": "Fed Funds Rate",
@@ -8,9 +8,21 @@
       "tone": "neutral"
     },
     {
+      "label": "CPI (YoY)",
+      "value": "3.46%",
+      "sub": "above 2% target",
+      "tone": "warn"
+    },
+    {
       "label": "10Y\u20132Y Spread",
       "value": "+0.45",
       "sub": "normal curve",
+      "tone": "good"
+    },
+    {
+      "label": "VIX",
+      "value": "18.2",
+      "sub": "calm",
       "tone": "good"
     }
   ]
