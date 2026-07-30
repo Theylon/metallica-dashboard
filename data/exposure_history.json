@@ -1302,5 +1302,55 @@
         }
       ]
     }
+  },
+  "2026-07-30": {
+    "commodityExposure": {
+      "steel": 0.175824,
+      "aluminum n": -0.032518,
+      "ferro-chrome": -0.037785,
+      "aluminum": -0.065036
+    },
+    "byTicker": {
+      "AA": [
+        {
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.065036
+        },
+        {
+          "commodity": "aluminum n",
+          "tier": "T2",
+          "weight": -0.032518
+        }
+      ],
+      "CLF": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": 0.03187
+        }
+      ],
+      "NUE": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.072338
+        }
+      ],
+      "RS": [
+        {
+          "commodity": "ferro-chrome",
+          "tier": "T2",
+          "weight": -0.037785
+        }
+      ],
+      "STLD": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.071616
+        }
+      ]
+    }
   }
 }
