@@ -1,33 +1,33 @@
 {
- "updatedAt": "2026-07-30T13:16:51+00:00",
+ "updatedAt": "2026-07-30T14:10:00+00:00",
  "asOf": "2026-07-30",
  "window": 90,
  "obs": 29,
  "headline": {
-  "annVol": 16.6,
-  "betaSpy": 0.42,
-  "betaXme": 0.09,
+  "annVol": 16.5,
+  "betaSpy": 0.46,
+  "betaXme": 0.11,
   "var1d95": -231,
-  "var1d99": -449,
-  "hhi": 635.0,
-  "effectiveN": 15.7
+  "var1d99": -448,
+  "hhi": 634.0,
+  "effectiveN": 15.8
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "16.6%",
+   "v": "16.5%",
    "note": "from the account's daily TWR, 29 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.42",
-   "note": "27 overlapping daily obs",
+   "v": "0.46",
+   "note": "28 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.09",
+   "v": "0.11",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$231",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$449)",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$448)",
    "tone": "neg"
   },
   {
@@ -57,8 +57,8 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "635 / 15.7",
-   "note": "16 names, ~15.7 effective",
+   "v": "634 / 15.8",
+   "note": "16 names, ~15.8 effective",
    "tone": "pos"
   }
  ],
@@ -389,115 +389,115 @@
  },
  "contributions": [
   {
+   "ticker": "MT",
+   "side": "long",
+   "weightPct": 7.1,
+   "riskContribPct": 17.5,
+   "mVaR": 30.0
+  },
+  {
    "ticker": "CLF",
    "side": "long",
    "weightPct": 6.4,
-   "riskContribPct": 17.6,
-   "mVaR": 29.9
-  },
-  {
-   "ticker": "MT",
-   "side": "long",
-   "weightPct": 6.9,
-   "riskContribPct": 17.4,
-   "mVaR": 29.6
-  },
-  {
-   "ticker": "STLD",
-   "side": "long",
-   "weightPct": 7.2,
-   "riskContribPct": 12.4,
-   "mVaR": 21.0
+   "riskContribPct": 17.2,
+   "mVaR": 29.5
   },
   {
    "ticker": "PKX",
    "side": "long",
-   "weightPct": 6.2,
-   "riskContribPct": 12.1,
-   "mVaR": 20.6
+   "weightPct": 6.5,
+   "riskContribPct": 12.5,
+   "mVaR": 21.5
+  },
+  {
+   "ticker": "STLD",
+   "side": "long",
+   "weightPct": 7.1,
+   "riskContribPct": 11.9,
+   "mVaR": 20.5
+  },
+  {
+   "ticker": "TX",
+   "side": "long",
+   "weightPct": 6.9,
+   "riskContribPct": 11.8,
+   "mVaR": 20.3
   },
   {
    "ticker": "CMC",
    "side": "long",
    "weightPct": 6.4,
-   "riskContribPct": 11.8,
-   "mVaR": 20.0
-  },
-  {
-   "ticker": "TX",
-   "side": "long",
-   "weightPct": 6.7,
-   "riskContribPct": 11.7,
-   "mVaR": 20.0
+   "riskContribPct": 11.6,
+   "mVaR": 19.9
   },
   {
    "ticker": "NUE",
    "side": "long",
    "weightPct": 7.2,
-   "riskContribPct": 11.6,
-   "mVaR": 19.8
+   "riskContribPct": 11.3,
+   "mVaR": 19.4
   },
   {
    "ticker": "GGB",
    "side": "long",
-   "weightPct": 6.7,
+   "weightPct": 6.8,
    "riskContribPct": 10.6,
    "mVaR": 18.1
   },
   {
    "ticker": "MTUS",
    "side": "long",
-   "weightPct": 6.4,
-   "riskContribPct": 9.8,
-   "mVaR": 16.7
+   "weightPct": 6.3,
+   "riskContribPct": 9.5,
+   "mVaR": 16.3
   },
   {
    "ticker": "SLX",
    "side": "long",
-   "weightPct": 6.8,
-   "riskContribPct": 9.3,
-   "mVaR": 15.9
+   "weightPct": 6.9,
+   "riskContribPct": 9.4,
+   "mVaR": 16.1
   },
   {
    "ticker": "CENX",
    "side": "short",
-   "weightPct": -6.4,
-   "riskContribPct": 0.2,
-   "mVaR": 0.4
+   "weightPct": -6.7,
+   "riskContribPct": 0.7,
+   "mVaR": 1.1
   },
   {
    "ticker": "AA",
    "side": "short",
-   "weightPct": -6.5,
-   "riskContribPct": -1.8,
-   "mVaR": -3.0
+   "weightPct": -6.7,
+   "riskContribPct": -1.5,
+   "mVaR": -2.5
   },
   {
    "ticker": "KALU",
    "side": "short",
-   "weightPct": -4.3,
+   "weightPct": -4.5,
    "riskContribPct": -4.3,
-   "mVaR": -7.4
+   "mVaR": -7.3
   },
   {
    "ticker": "WOR",
    "side": "short",
    "weightPct": -5.8,
-   "riskContribPct": -4.5,
-   "mVaR": -7.6
+   "riskContribPct": -4.4,
+   "mVaR": -7.5
   },
   {
    "ticker": "ROCK",
    "side": "short",
-   "weightPct": -4.8,
+   "weightPct": -5.0,
    "riskContribPct": -5.8,
-   "mVaR": -9.9
+   "mVaR": -10.0
   },
   {
    "ticker": "RS",
    "side": "short",
    "weightPct": -7.6,
-   "riskContribPct": -8.1,
+   "riskContribPct": -8.0,
    "mVaR": -13.8
   }
  ],
