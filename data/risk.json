@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-07-31T20:48:50+00:00",
+ "updatedAt": "2026-07-31T22:19:02+00:00",
  "asOf": "2026-07-31",
  "window": 90,
  "obs": 30,
@@ -7,8 +7,8 @@
   "annVol": 16.5,
   "betaSpy": 0.48,
   "betaXme": 0.13,
-  "var1d95": -232,
-  "var1d99": -450,
+  "var1d95": -231,
+  "var1d99": -449,
   "hhi": 635.0,
   "effectiveN": 15.7
  },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$232",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$450)",
+   "v": "-$231",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$449)",
    "tone": "neg"
   },
   {
@@ -391,30 +391,30 @@
   {
    "ticker": "CLF",
    "side": "long",
-   "weightPct": 6.3,
-   "riskContribPct": 17.2,
-   "mVaR": 29.0
+   "weightPct": 6.4,
+   "riskContribPct": 17.3,
+   "mVaR": 29.3
   },
   {
    "ticker": "MT",
    "side": "long",
    "weightPct": 7.2,
    "riskContribPct": 17.2,
-   "mVaR": 29.1
+   "mVaR": 29.0
   },
   {
    "ticker": "PKX",
    "side": "long",
    "weightPct": 6.5,
-   "riskContribPct": 13.1,
+   "riskContribPct": 13.0,
    "mVaR": 22.0
   },
   {
    "ticker": "STLD",
    "side": "long",
    "weightPct": 7.1,
-   "riskContribPct": 12.1,
-   "mVaR": 20.4
+   "riskContribPct": 12.0,
+   "mVaR": 20.2
   },
   {
    "ticker": "TX",
@@ -427,8 +427,8 @@
    "ticker": "CMC",
    "side": "long",
    "weightPct": 6.4,
-   "riskContribPct": 11.7,
-   "mVaR": 19.7
+   "riskContribPct": 11.6,
+   "mVaR": 19.6
   },
   {
    "ticker": "NUE",
@@ -440,15 +440,15 @@
   {
    "ticker": "GGB",
    "side": "long",
-   "weightPct": 6.9,
-   "riskContribPct": 10.4,
-   "mVaR": 17.6
+   "weightPct": 6.8,
+   "riskContribPct": 10.3,
+   "mVaR": 17.5
   },
   {
    "ticker": "SLX",
    "side": "long",
    "weightPct": 6.9,
-   "riskContribPct": 9.3,
+   "riskContribPct": 9.2,
    "mVaR": 15.6
   },
   {
@@ -470,7 +470,7 @@
    "side": "short",
    "weightPct": -6.8,
    "riskContribPct": -1.6,
-   "mVaR": -2.7
+   "mVaR": -2.6
   },
   {
    "ticker": "KALU",
@@ -484,7 +484,7 @@
    "side": "short",
    "weightPct": -5.8,
    "riskContribPct": -4.1,
-   "mVaR": -6.9
+   "mVaR": -7.0
   },
   {
    "ticker": "ROCK",
@@ -496,9 +496,9 @@
   {
    "ticker": "RS",
    "side": "short",
-   "weightPct": -7.7,
+   "weightPct": -7.6,
    "riskContribPct": -8.1,
-   "mVaR": -13.8
+   "mVaR": -13.7
   }
  ],
  "coverageNote": "16 of 16 holdings"
