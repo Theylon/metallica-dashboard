@@ -780,8 +780,9 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
           <button class="period-btn" data-period="MTD" onclick="setPeriod('MTD')">MTD</button>
           <button class="period-btn" data-period="1M" onclick="setPeriod('1M')">1M</button>
           <button class="period-btn" data-period="3M" onclick="setPeriod('3M')">3M</button>
-          <button class="period-btn active" data-period="YTD" onclick="setPeriod('YTD')">YTD</button>
+          <button class="period-btn" data-period="YTD" onclick="setPeriod('YTD')">YTD</button>
           <button class="period-btn" data-period="1Y" onclick="setPeriod('1Y')">1Y</button>
+          <button class="period-btn active" data-period="ITD" title="Since inception — 22 Jun 2026" onclick="setPeriod('ITD')">ITD</button>
           <button class="period-btn" data-period="ALL" onclick="setPeriod('ALL')">All</button>
           <button class="period-btn" data-period="CUSTOM" onclick="openCustomPeriod()">Custom</button>
         </div>
@@ -1842,7 +1843,7 @@ let altdata = { items: [] }, altGroup = 'book';
 let channelAcc = { channels: [] }, decisionLog = [], alertsData = { items: [] };
 let dlogSearch = '', dlogClass = '', dlogOverrideOnly = false;
 let ordersLog = [], ordSearch = '', ordStatus = '';
-let activePeriod = 'YTD', activeBmPeriod = 'ITD';   // Benchmarks opens on inception-to-date
+let activePeriod = 'ITD', activeBmPeriod = 'ITD';   // both charts open on inception-to-date
 let customFrom = null, customTo = null;   // 'YYYY-MM-DD' bounds for the Overview CUSTOM period
 let bmCustomFrom = null, bmCustomTo = null;   // 'YYYY-MM-DD' bounds for the Benchmarks CUSTOM period
 let chartMode = 'value';   // 'value' | 'performance'
@@ -2782,7 +2783,10 @@ function openCustomPeriod() {
   if (pnl.length && !fromEl.value) {
     const first = pnl[0].timestamp.slice(0, 10);
     const today = new Date().toISOString().slice(0, 10);
-    fromEl.min = first; fromEl.max = today; fromEl.value = first;
+    // Seed at inception rather than pnl[0] — the series leads with a flat
+    // placeholder day that predates the book. Earlier days stay pickable.
+    const seedFrom = (first <= INCEPTION_DATE && INCEPTION_DATE <= today) ? INCEPTION_DATE : first;
+    fromEl.min = first; fromEl.max = today; fromEl.value = seedFrom;
     toEl.min   = first; toEl.max   = today; toEl.value   = today;
   }
   customFrom = fromEl.value || null;
