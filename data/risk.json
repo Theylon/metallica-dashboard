@@ -1,10 +1,10 @@
 {
- "updatedAt": "2026-07-31T09:28:41+00:00",
- "asOf": "2026-07-30",
+ "updatedAt": "2026-07-31T13:10:16+00:00",
+ "asOf": "2026-07-31",
  "window": 90,
- "obs": 29,
+ "obs": 30,
  "headline": {
-  "annVol": 16.7,
+  "annVol": 16.5,
   "betaSpy": 0.48,
   "betaXme": 0.13,
   "var1d95": -232,
@@ -15,8 +15,8 @@
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "16.7%",
-   "note": "from the account's daily TWR, 29 daily obs since inception",
+   "v": "16.5%",
+   "note": "from the account's daily TWR, 30 daily obs since inception",
    "tone": "neutral"
   },
   {
@@ -392,22 +392,29 @@
    "ticker": "MT",
    "side": "long",
    "weightPct": 7.1,
-   "riskContribPct": 17.5,
-   "mVaR": 30.3
+   "riskContribPct": 17.3,
+   "mVaR": 30.0
   },
   {
    "ticker": "CLF",
    "side": "long",
    "weightPct": 6.4,
    "riskContribPct": 17.0,
-   "mVaR": 29.5
+   "mVaR": 29.4
   },
   {
    "ticker": "PKX",
    "side": "long",
    "weightPct": 6.6,
-   "riskContribPct": 13.4,
-   "mVaR": 23.1
+   "riskContribPct": 13.3,
+   "mVaR": 23.0
+  },
+  {
+   "ticker": "TX",
+   "side": "long",
+   "weightPct": 7.0,
+   "riskContribPct": 11.9,
+   "mVaR": 20.5
   },
   {
    "ticker": "STLD",
@@ -415,13 +422,6 @@
    "weightPct": 7.1,
    "riskContribPct": 11.7,
    "mVaR": 20.2
-  },
-  {
-   "ticker": "TX",
-   "side": "long",
-   "weightPct": 6.8,
-   "riskContribPct": 11.6,
-   "mVaR": 20.1
   },
   {
    "ticker": "CMC",
@@ -442,7 +442,7 @@
    "side": "long",
    "weightPct": 6.8,
    "riskContribPct": 10.5,
-   "mVaR": 18.1
+   "mVaR": 18.2
   },
   {
    "ticker": "SLX",
