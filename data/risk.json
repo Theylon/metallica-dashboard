@@ -1,12 +1,12 @@
 {
- "updatedAt": "2026-07-31T13:12:26+00:00",
+ "updatedAt": "2026-07-31T14:10:41+00:00",
  "asOf": "2026-07-31",
  "window": 90,
  "obs": 30,
  "headline": {
   "annVol": 16.5,
   "betaSpy": 0.48,
-  "betaXme": 0.13,
+  "betaXme": 0.12,
   "var1d95": -232,
   "var1d99": -450,
   "hhi": 635.0,
@@ -22,12 +22,12 @@
   {
    "k": "Beta vs S&P 500 (SPY)",
    "v": "0.48",
-   "note": "28 overlapping daily obs",
+   "note": "29 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.13",
+   "v": "0.12",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -392,29 +392,29 @@
    "ticker": "MT",
    "side": "long",
    "weightPct": 7.1,
-   "riskContribPct": 17.3,
-   "mVaR": 30.0
+   "riskContribPct": 17.5,
+   "mVaR": 30.3
   },
   {
    "ticker": "CLF",
    "side": "long",
-   "weightPct": 6.4,
-   "riskContribPct": 17.0,
-   "mVaR": 29.4
+   "weightPct": 6.5,
+   "riskContribPct": 17.3,
+   "mVaR": 29.8
   },
   {
    "ticker": "PKX",
    "side": "long",
-   "weightPct": 6.6,
-   "riskContribPct": 13.3,
-   "mVaR": 23.0
+   "weightPct": 6.5,
+   "riskContribPct": 13.0,
+   "mVaR": 22.5
   },
   {
    "ticker": "TX",
    "side": "long",
-   "weightPct": 7.0,
-   "riskContribPct": 11.9,
-   "mVaR": 20.5
+   "weightPct": 6.9,
+   "riskContribPct": 11.8,
+   "mVaR": 20.3
   },
   {
    "ticker": "STLD",
@@ -427,7 +427,7 @@
    "ticker": "CMC",
    "side": "long",
    "weightPct": 6.4,
-   "riskContribPct": 11.4,
+   "riskContribPct": 11.5,
    "mVaR": 19.8
   },
   {
@@ -435,7 +435,7 @@
    "side": "long",
    "weightPct": 7.2,
    "riskContribPct": 11.1,
-   "mVaR": 19.1
+   "mVaR": 19.3
   },
   {
    "ticker": "GGB",
@@ -445,13 +445,6 @@
    "mVaR": 18.2
   },
   {
-   "ticker": "SLX",
-   "side": "long",
-   "weightPct": 7.0,
-   "riskContribPct": 9.4,
-   "mVaR": 16.2
-  },
-  {
    "ticker": "MTUS",
    "side": "long",
    "weightPct": 6.3,
@@ -459,23 +452,30 @@
    "mVaR": 16.1
   },
   {
+   "ticker": "SLX",
+   "side": "long",
+   "weightPct": 6.8,
+   "riskContribPct": 9.2,
+   "mVaR": 15.9
+  },
+  {
    "ticker": "CENX",
    "side": "short",
-   "weightPct": -6.7,
-   "riskContribPct": 0.5,
-   "mVaR": 0.8
+   "weightPct": -6.6,
+   "riskContribPct": 0.4,
+   "mVaR": 0.7
   },
   {
    "ticker": "AA",
    "side": "short",
    "weightPct": -6.7,
-   "riskContribPct": -1.5,
-   "mVaR": -2.6
+   "riskContribPct": -1.6,
+   "mVaR": -2.7
   },
   {
    "ticker": "KALU",
    "side": "short",
-   "weightPct": -4.5,
+   "weightPct": -4.4,
    "riskContribPct": -4.3,
    "mVaR": -7.4
   },
@@ -498,7 +498,7 @@
    "side": "short",
    "weightPct": -7.5,
    "riskContribPct": -7.7,
-   "mVaR": -13.3
+   "mVaR": -13.4
   }
  ],
  "coverageNote": "16 of 16 holdings"
