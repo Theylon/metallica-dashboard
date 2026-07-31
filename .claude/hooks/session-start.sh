@@ -35,7 +35,7 @@ directive = (
     "   get_account_balances           -> /tmp/ibkr_balances.json\n"
     "   get_pa_performance_all_periods -> /tmp/ibkr_perf.json\n"
     "   Then pull benchmark price history so benchmarks.json stays current. For each ETF call\n"
-    "   get_price_history (security_type=STK, step=ONE_DAY, period=THREE_MONTHS, outside_rth=false)\n"
+    "   get_price_history (security_type=STK, step=ONE_DAY, period=ONE_YEAR, outside_rth=false)\n"
     "   and save the raw JSON verbatim to /tmp/ibkr_bench_<TICKER>.json (conids from BENCH_CONIDS in mcp_refresh.py):\n"
     "   SPY  contract_id 756733    -> /tmp/ibkr_bench_SPY.json\n"
     "   XME  contract_id 45540699  -> /tmp/ibkr_bench_XME.json\n"

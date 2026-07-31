@@ -987,10 +987,11 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
         <div class="chart-controls">
           <div style="display:flex;gap:4px;flex-wrap:wrap;" id="bm-period-btns">
             <button class="period-btn" data-period="5D" onclick="setBmPeriod('5D')">5D</button>
-            <button class="period-btn active" data-period="1M" onclick="setBmPeriod('1M')">1M</button>
+            <button class="period-btn" data-period="1M" onclick="setBmPeriod('1M')">1M</button>
             <button class="period-btn" data-period="3M" onclick="setBmPeriod('3M')">3M</button>
             <button class="period-btn" data-period="YTD" onclick="setBmPeriod('YTD')">YTD</button>
             <button class="period-btn" data-period="1Y" onclick="setBmPeriod('1Y')">1Y</button>
+            <button class="period-btn active" data-period="ITD" title="Since inception — 22 Jun 2026" onclick="setBmPeriod('ITD')">ITD</button>
             <button class="period-btn" data-period="ALL" onclick="setBmPeriod('ALL')">All</button>
             <button class="period-btn" data-period="CUSTOM" onclick="openBmCustomPeriod()">Custom</button>
           </div>
@@ -1013,7 +1014,7 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
     <div class="table-panel">
       <div class="bm-table-header">
         <div class="table-title">Risk-Adjusted Comparison</div>
-        <div id="bm-period-label" style="font-size:12px;color:var(--text-muted)">1M window</div>
+        <div id="bm-period-label" style="font-size:12px;color:var(--text-muted)">Since Jun 22 window</div>
       </div>
       <div class="table-wrapper">
         <table>
@@ -1841,7 +1842,7 @@ let altdata = { items: [] }, altGroup = 'book';
 let channelAcc = { channels: [] }, decisionLog = [], alertsData = { items: [] };
 let dlogSearch = '', dlogClass = '', dlogOverrideOnly = false;
 let ordersLog = [], ordSearch = '', ordStatus = '';
-let activePeriod = 'YTD', activeBmPeriod = '1M';
+let activePeriod = 'YTD', activeBmPeriod = 'ITD';   // Benchmarks opens on inception-to-date
 let customFrom = null, customTo = null;   // 'YYYY-MM-DD' bounds for the Overview CUSTOM period
 let bmCustomFrom = null, bmCustomTo = null;   // 'YYYY-MM-DD' bounds for the Benchmarks CUSTOM period
 let chartMode = 'value';   // 'value' | 'performance'
@@ -1933,7 +1934,7 @@ function renderAll() {
   // Each renderer is isolated so one failure (e.g. Chart.js CDN blocked, or a
   // malformed data field) can't blank every panel that renders after it.
   [renderKPIs, buildBmToggles, renderPnlChart, renderStats, buildCategoryFilter,
-   renderPositions, renderBmChart, renderBmTable, renderExposure,
+   renderPositions, updateBmPeriodLabel, renderBmChart, renderBmTable, renderExposure,
    renderCommodityExposure, renderReport, renderIntel, renderPicks,
    renderSignals, renderJournal, renderRebalance, renderAltData,
    renderProcess, renderOrders, renderOverviewAlerts,
@@ -3104,7 +3105,12 @@ function openBmCustomPeriod() {
   const toEl   = document.getElementById('bm-custom-to');
   const bounds = bmDataBounds();
   if (bounds && !fromEl.value) {
-    fromEl.min = bounds.min; fromEl.max = bounds.max; fromEl.value = bounds.min;
+    // Seed at inception, not at the earliest bar — benchmark history reaches
+    // back weeks before the book existed, so bounds.min is never the window
+    // anyone wants. The picker still allows earlier dates via `min`.
+    const seedFrom = (bounds.min <= INCEPTION_DATE && INCEPTION_DATE <= bounds.max)
+      ? INCEPTION_DATE : bounds.min;
+    fromEl.min = bounds.min; fromEl.max = bounds.max; fromEl.value = seedFrom;
     toEl.min   = bounds.min; toEl.max   = bounds.max; toEl.value   = bounds.max;
   }
   bmCustomFrom = fromEl.value || null;
@@ -3130,10 +3136,12 @@ function applyBmCustomRange() {
 
 function updateBmPeriodLabel() {
   const el = document.getElementById('bm-period-label');
+  const short = s => new Date(s + 'T00:00:00Z')
+    .toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
   if (activeBmPeriod === 'CUSTOM' && bmCustomFrom && bmCustomTo) {
-    const short = s => new Date(s + 'T00:00:00Z')
-      .toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
     el.textContent = `${short(bmCustomFrom)} → ${short(bmCustomTo)} window`;
+  } else if (activeBmPeriod === 'ITD') {
+    el.textContent = `Since ${short(INCEPTION_DATE)} window`;
   } else {
     el.textContent = activeBmPeriod + ' window';
   }
@@ -4934,6 +4942,12 @@ const PERIOD_DEFS = {
   '3M':  { apply: d => d.setUTCMonth(d.getUTCMonth() - 3),       phrase: 'past 3 months' },
   YTD:   { apply: d => { d.setUTCMonth(0); d.setUTCDate(0); },   phrase: 'this year' },    // Dec 31 prev year
   '1Y':  { apply: d => d.setUTCFullYear(d.getUTCFullYear() - 1), phrase: 'past year' },
+  // Inception-to-date: a fixed calendar day rather than an offset from today, so
+  // the base lands on the close of INCEPTION_DATE itself — the same reference
+  // benchSinceInception() uses. Benchmarks-tab only; the Overview never emits it.
+  ITD:   { apply: d => { const i = new Date(INCEPTION_DATE + 'T00:00:00Z');
+                         d.setUTCFullYear(i.getUTCFullYear(), i.getUTCMonth(), i.getUTCDate()); },
+           phrase: 'since inception' },
   ALL:   { apply: d => d.setUTCFullYear(2000),                   phrase: 'all time' },
 };
 
