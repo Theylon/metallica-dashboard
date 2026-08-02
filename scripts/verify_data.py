@@ -28,6 +28,20 @@ CENTS = 0.02            # tolerance for sums of independently-rounded cents
 NAV_RESIDUAL_MAX = 10.0        # $ floor for tiny NAVs
 NAV_RESIDUAL_PCT = 0.0025      # fraction of |nav|
 
+# micro.json's research layer is rebuilt by a daily pre-market Claude Routine
+# (scripts/micro_refresh_research.md) while the Action refreshes only prices. When the
+# Routine silently stops, the tab keeps showing live prices over weeks-old research and
+# nothing says so — that is how RS came to carry a "+0.5% upside" thesis three weeks
+# after the stock passed its target. 96h rather than the 72h used for account.json: the
+# Routine runs trading days only, so a Friday build is legitimately 3 days old on Monday
+# and a 72h rule would warn every week until it was tuned out.
+RESEARCH_MAX_AGE_H = 96
+RESEARCH_STALE_AGE_H = 240     # 10d — the Routine is not running at all, not just late
+# The TrueNorth pull is ANNUAL (micro_build.fundamentals_score, runbook step 4), so the
+# modal report_period is last December and perfectly current. 450d = a 12-month period
+# plus reporting lag; a quarterly threshold would warn on ~100 healthy names.
+FUNDAMENTALS_MAX_AGE_D = 450
+
 FAILS, WARNS = [], []
 
 
@@ -305,6 +319,42 @@ def check_freshness(account, risk, pnl):
             ok(f"risk.json obs {risk.get('obs')} ≤ {twr_days} pnl twr days")
 
 
+def check_micro_freshness(micro):
+    """Warn when micro.json's research layer has gone stale. Warn-only, never fail:
+    the Action runs this before the Pages deploy, so a hard failure would blackhole
+    the dashboard over data that is merely old rather than wrong."""
+    now = datetime.datetime.now(datetime.timezone.utc)
+    try:
+        age_h = (now - datetime.datetime.fromisoformat(micro["researchAsOf"])).total_seconds() / 3600
+    except Exception:
+        warn("micro.researchAsOf missing/unparseable")
+    else:
+        if age_h > RESEARCH_STALE_AGE_H:
+            warn(f"micro.json research layer is {age_h / 24:.0f}d old — the daily research "
+                 f"Routine (scripts/micro_refresh_research.md) has stopped running")
+        elif age_h > RESEARCH_MAX_AGE_H:
+            warn(f"micro.json researchAsOf is {age_h / 24:.1f}d old "
+                 f"(>{RESEARCH_MAX_AGE_H / 24:.0f}d)")
+        else:
+            ok(f"micro.json research layer {age_h / 24:.1f}d old")
+
+    today = datetime.date.today()
+    stale = []
+    for r in micro.get("tickers", []):
+        rp = ((r.get("fundamentals") or {}).get("report_period"))
+        try:
+            age_d = (today - datetime.date.fromisoformat(rp)).days
+        except Exception:
+            continue                      # no fundamentals block, or an unparseable period
+        if age_d > FUNDAMENTALS_MAX_AGE_D:
+            stale.append(f"{r['ticker']} ({rp})")
+    if stale:
+        warn(f"{len(stale)} name(s) have fundamentals older than {FUNDAMENTALS_MAX_AGE_D}d — "
+             f"rerun step 4 of micro_refresh_research.md: {', '.join(sorted(stale)[:8])}")
+    else:
+        ok("micro.json fundamentals report_periods within the annual window")
+
+
 def main():
     account = _load("account.json")
     positions = _load("positions.json")["positions"]
@@ -326,6 +376,7 @@ def main():
     check_benchmarks(bench)
     if micro:
         check_micro(micro, positions)
+        check_micro_freshness(micro)
     check_categories(positions)
     check_process_files()
     check_freshness(account, risk, pnl)

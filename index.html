@@ -1345,7 +1345,8 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
   <!-- ─── Stock Picks page (micro-analysis) ─────────────────────── -->
   <div id="page-picks" class="page">
 
-    <div class="chart-header"><div class="chart-title">📇 Micro Scores — full universe</div></div>
+    <div class="chart-header"><div class="chart-title">📇 Micro Scores — full universe</div>
+      <div id="picks-research-badge" class="stale-badge" style="display:none"></div></div>
     <div class="table-panel">
       <div class="table-header">
         <div class="table-header-left">
@@ -2050,6 +2051,18 @@ function renderPicks() {
     const research = micro.researchAsOf || micro.updatedAt;
     mm.textContent = 'Methodology: ' + micro.methodology + (micro.macro ? ' · Macro: ' + micro.macro : '')
       + ' · Prices refreshed ' + fmtTs(prices) + ' (4×/day) · Research as of ' + fmtTs(research) + ' (daily pre-market)';
+
+    // Flag a research layer the daily Routine has stopped refreshing. Threshold matches
+    // RESEARCH_MAX_AGE_H in verify_data.py so the badge and the CI warning never disagree.
+    // "prices are current" matters: without it the badge reads as "this whole tab is
+    // stale" and the composite — the freshest thing on the page — gets distrusted.
+    const rb = document.getElementById('picks-research-badge');
+    if (rb) {
+      const ageD = research ? (Date.now() - Date.parse(research)) / 864e5 : null;
+      const show = ageD !== null && !isNaN(ageD) && ageD > 4;
+      rb.textContent = show ? `⚠ Research layer ${Math.floor(ageD)}d old — prices are current` : '';
+      rb.style.display = show ? 'flex' : 'none';
+    }
   }
 }
 
