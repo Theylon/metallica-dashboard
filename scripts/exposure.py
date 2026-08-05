@@ -13,7 +13,11 @@ The mapping layers (the part that must stay economically accurate):
      CATEGORY roster in mcp_refresh.py) gets an explicit link to the metal it
      actually produces/tracks (CATEGORY_PRIMARY / TICKER_PRIMARY below). These
      never depend on the mined map, so a pure-play copper miner can't end up
-     with zero copper exposure.
+     with zero copper exposure. The link's tier comes from the name's curated
+     price sensitivity (micro.json OM linkage): producers (priceSens 3) at T1,
+     partial pass-through (2) at T2, and metal-price-neutral fabricators
+     (priceSens 1, e.g. KALU/CSTM) carry NO metal-price link at all — their
+     real exposure is conversion margin, not the primary metal.
   2. Mined statistical links — data/linkage_map.json (signal-mined from
      rolling price correlations) supplies supplementary links, T1/T2 only,
      family-filtered (see FAMILY) so artifacts like smelter->cobalt are
@@ -161,11 +165,40 @@ TICKER_SECONDARY = {
     "UUUU": ("rare earths",),
 }
 
-# Downstream fabricators / demand-side proxies: the metal link is real but
-# diluted by conversion margin, so their primary enters at T2 (0.5) not T1 —
-# MLI buys its copper, KALU buys its aluminum, WOR/ROCK process steel, and
-# TSLA/KARS sit on the demand side of lithium.
+# Fallback for names with no curated priceSens (see _price_sensitivity):
+# downstream fabricators / demand-side proxies whose metal link is real but
+# diluted by conversion margin — their primary enters at T2 (0.5) not T1.
 DOWNSTREAM = {"MLI", "KALU", "WOR", "ROCK", "TSLA", "KARS"}
+
+# priceSens (1-3, from the OM linkage research in micro.json) -> primary-link
+# tier. The Aug-2026 aluminum divergence made the stakes concrete: LME primary
+# rallied ~5%/month while US semi-fab sheet fell ~4% — smelters (AA/CENX,
+# priceSens 3) and the fabricator (KALU, priceSens 1, "passes LME to
+# customers") moved on OPPOSITE legs of that spread. A pass-through
+# fabricator's real exposure is its conversion margin, which the primary
+# metal price does not proxy — so priceSens 1 gets NO primary-metal link.
+PRICE_SENS_TIER = {3: "T1", 2: "T2", 1: None}
+
+
+def _price_sensitivity():
+    """ticker -> curated priceSens (1-3) from micro.json's OM-linkage research.
+
+    micro.json carries per-name role/priceSens with evidence (e.g. CENX
+    "LME/Midwest/EDPP explicit revenue components" = 3, KALU
+    "metal-price-neutral policy passes LME to customers" = 1). Missing file or
+    missing per-name data degrades to {} / no entry — callers fall back to the
+    static DOWNSTREAM heuristic, so the refresh never breaks on a stale micro.
+    """
+    try:
+        rows = json.loads((DATA / "micro.json").read_text()).get("tickers", [])
+    except Exception:
+        return {}
+    sens = {}
+    for r in rows:
+        ps = (r.get("exposure") or {}).get("priceSens")
+        if isinstance(ps, (int, float)) and r.get("ticker"):
+            sens[str(r["ticker"]).split(" @")[0].upper()] = int(ps)
+    return sens
 
 
 def _canon(name):
@@ -188,12 +221,17 @@ def curated_links():
                        if cat not in CATEGORY_PRIMARY})
     if unmapped:   # a new category must declare its metal (or explicitly ())
         raise ValueError(f"CATEGORY_PRIMARY missing entries for: {unmapped}")
+    sens = _price_sensitivity()
     links = []
     for ticker, category in TICKER_CATEGORY.items():
-        primary_tier = "T2" if ticker in DOWNSTREAM else "T1"
-        for commodity in TICKER_PRIMARY.get(ticker, CATEGORY_PRIMARY[category]):
-            links.append({"ticker": ticker, "commodity": commodity,
-                          "tier": primary_tier, "source": "curated"})
+        if ticker in sens:
+            primary_tier = PRICE_SENS_TIER.get(sens[ticker], "T1")
+        else:
+            primary_tier = "T2" if ticker in DOWNSTREAM else "T1"
+        if primary_tier is not None:
+            for commodity in TICKER_PRIMARY.get(ticker, CATEGORY_PRIMARY[category]):
+                links.append({"ticker": ticker, "commodity": commodity,
+                              "tier": primary_tier, "source": "curated"})
         for commodity in TICKER_SECONDARY.get(ticker, ()):
             links.append({"ticker": ticker, "commodity": commodity,
                           "tier": "T2", "source": "curated"})
@@ -213,9 +251,14 @@ def load_linkage_map():
     as statistical artifacts.
     """
     mined = json.loads((DATA / "linkage_map.json").read_text())["links"]
+    passthrough = {t for t, s in _price_sensitivity().items() if s == 1}
     best = {}
     for link in mined:
         if link["tier"] not in TIER_WEIGHT:
+            continue
+        # Metal-price-neutral names (priceSens 1) take no metal links at all —
+        # a mined correlation must not re-add what the curated layer excludes.
+        if link.get("ticker") in passthrough:
             continue
         if not _family_ok(link):
             continue

@@ -6,130 +6,130 @@ Tracks each held ticker's exposure to its linked commodities — a curated prima
 
 | Commodity | Exposure (% NAV, tier-weighted) |
 |---|---|
-| lithium | 3.12% |
+| lithium | 1.42% |
 | cobalt | 0.02% |
 | rhodium | -0.51% |
-| gold | -1.25% |
-| aluminum | -1.41% |
+| gold | -0.83% |
+| aluminum | -0.88% |
 | platinum | -1.99% |
 | palladium | -1.99% |
 | manganese | -2.25% |
-| silver | -3.12% |
+| silver | -2.83% |
 | ferro-chrome | -3.57% |
-| steel | -26.60% |
+| steel | -23.03% |
 
 ## 2026-07-16
 
 | Commodity | Exposure (% NAV, tier-weighted) |
 |---|---|
-| lithium | 2.75% |
+| lithium | 1.08% |
 | cobalt | -0.04% |
 | rhodium | -0.51% |
-| gold | -1.25% |
-| aluminum | -1.39% |
+| gold | -0.83% |
+| aluminum | -0.85% |
 | platinum | -2.01% |
 | palladium | -2.01% |
 | manganese | -2.33% |
-| silver | -3.13% |
+| silver | -2.84% |
 | ferro-chrome | -3.62% |
-| steel | -26.97% |
+| steel | -23.35% |
 
 ## 2026-07-17
 
 | Commodity | Exposure (% NAV, tier-weighted) |
 |---|---|
-| lithium | 2.13% |
+| lithium | 0.55% |
 | cobalt | -0.17% |
 | rhodium | -0.48% |
-| gold | -1.23% |
-| aluminum | -1.34% |
+| gold | -0.81% |
+| aluminum | -0.82% |
 | platinum | -1.90% |
 | palladium | -1.90% |
 | manganese | -2.33% |
-| silver | -2.99% |
+| silver | -2.72% |
 | ferro-chrome | -3.66% |
-| steel | -26.74% |
+| steel | -23.08% |
 
 ## 2026-07-18
 
 | Commodity | Exposure (% NAV, tier-weighted) |
 |---|---|
-| lithium | -0.61% |
 | cobalt | -0.68% |
 | rhodium | -1.14% |
+| gold | -1.61% |
+| lithium | -1.76% |
 | ferro-chrome | -1.83% |
-| gold | -2.44% |
+| aluminum | -2.35% |
 | manganese | -2.54% |
-| aluminum | -4.38% |
 | platinum | -4.58% |
 | palladium | -4.58% |
-| silver | -7.01% |
-| steel | -11.64% |
+| silver | -6.22% |
+| steel | -9.82% |
 
 ## 2026-07-19
 
 | Commodity | Exposure (% NAV, tier-weighted) |
 |---|---|
-| lithium | -0.61% |
 | cobalt | -0.68% |
 | rhodium | -1.14% |
+| gold | -1.61% |
+| lithium | -1.76% |
 | ferro-chrome | -1.83% |
-| gold | -2.44% |
+| aluminum | -2.35% |
 | manganese | -2.54% |
-| aluminum | -4.38% |
 | platinum | -4.58% |
 | palladium | -4.58% |
-| silver | -7.01% |
-| steel | -11.64% |
+| silver | -6.22% |
+| steel | -9.82% |
 
 ## 2026-07-20
 
 | Commodity | Exposure (% NAV, tier-weighted) |
 |---|---|
-| lithium | -0.67% |
 | cobalt | -0.68% |
 | rhodium | -1.17% |
+| gold | -1.61% |
 | ferro-chrome | -1.83% |
-| gold | -2.45% |
+| lithium | -1.85% |
+| aluminum | -2.39% |
 | manganese | -2.54% |
-| aluminum | -4.42% |
 | platinum | -4.64% |
 | palladium | -4.64% |
-| silver | -7.04% |
-| steel | -11.65% |
+| silver | -6.24% |
+| steel | -9.82% |
 
 ## 2026-07-21
 
 | Commodity | Exposure (% NAV, tier-weighted) |
 |---|---|
-| lithium | 1.03% |
+| lithium | -0.13% |
 | cobalt | -0.75% |
 | rhodium | -1.21% |
+| gold | -1.65% |
 | ferro-chrome | -1.78% |
-| gold | -2.48% |
+| aluminum | -2.47% |
 | manganese | -2.58% |
-| aluminum | -4.51% |
 | platinum | -4.72% |
 | palladium | -4.72% |
-| steel | -6.56% |
-| silver | -7.29% |
+| steel | -4.78% |
+| silver | -6.47% |
 
 ## 2026-07-22
 
 | Commodity | Exposure (% NAV, tier-weighted) |
 |---|---|
 | rare earths | 7.78% |
-| lithium | 1.03% |
+| lithium | -0.18% |
 | cobalt | -0.79% |
 | rhodium | -1.25% |
+| gold | -1.71% |
 | ferro-chrome | -1.79% |
-| gold | -2.59% |
+| aluminum | -2.50% |
 | manganese | -2.71% |
-| aluminum | -4.59% |
+| steel | -4.88% |
 | platinum | -4.95% |
 | palladium | -4.95% |
-| steel | -6.67% |
-| silver | -7.63% |
+| silver | -6.76% |
 
 ## 2026-07-23
 
@@ -138,17 +138,17 @@ Tracks each held ticker's exposure to its linked commodities — a curated prima
 | copper | 1.83% |
 | rare earths | 1.68% |
 | molybdenum | 0.92% |
+| gold | -1.00% |
 | ferro-chrome | -1.80% |
-| gold | -1.88% |
 | rhodium | -2.26% |
 | cobalt | -3.72% |
-| lithium | -6.24% |
+| aluminum | -5.14% |
+| steel | -6.25% |
 | manganese | -7.03% |
-| silver | -8.03% |
-| steel | -8.05% |
+| silver | -7.18% |
+| lithium | -7.37% |
 | platinum | -8.95% |
 | palladium | -8.95% |
-| aluminum | -9.25% |
 
 ## 2026-07-24
 
@@ -157,13 +157,13 @@ Tracks each held ticker's exposure to its linked commodities — a curated prima
 | copper | 1.74% |
 | rare earths | 1.55% |
 | molybdenum | 0.87% |
-| gold | -1.87% |
+| gold | -1.01% |
 | rhodium | -2.26% |
+| aluminum | -2.48% |
 | cobalt | -3.63% |
 | silver | -4.59% |
-| lithium | -6.27% |
-| aluminum | -6.44% |
 | manganese | -6.84% |
+| lithium | -7.35% |
 | platinum | -8.82% |
 | palladium | -8.82% |
 
@@ -171,37 +171,37 @@ Tracks each held ticker's exposure to its linked commodities — a curated prima
 
 | Commodity | Exposure (% NAV, tier-weighted) |
 |---|---|
-| steel | 53.77% |
+| steel | 51.38% |
 | ferro-chrome | -3.81% |
-| aluminum | -15.04% |
+| aluminum | -12.90% |
 
 ## 2026-07-30
 
 | Commodity | Exposure (% NAV, tier-weighted) |
 |---|---|
-| steel | 54.97% |
+| steel | 52.25% |
 | ferro-chrome | -3.75% |
-| aluminum | -15.66% |
+| aluminum | -13.42% |
 
 ## 2026-07-31
 
 | Commodity | Exposure (% NAV, tier-weighted) |
 |---|---|
-| steel | 54.98% |
+| steel | 52.34% |
 | ferro-chrome | -3.80% |
-| aluminum | -15.77% |
+| aluminum | -13.54% |
 
 ## 2026-08-05
 
 | Commodity | Exposure (% NAV, tier-weighted) |
 |---|---|
 | copper | 9.95% |
-| steel | 6.45% |
+| steel | 5.43% |
 | zinc | 1.45% |
 | gold | 1.44% |
 | molybdenum | 1.43% |
 | cobalt | -0.99% |
 | manganese | -1.23% |
 | aluminum | -1.77% |
-| lithium | -3.65% |
+| lithium | -3.35% |
 

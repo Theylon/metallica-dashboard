@@ -193,14 +193,23 @@ def check_exposure(positions):
     except Exception:
         warn("exposure_history.json missing/unreadable — exposure coverage check skipped")
         return
+    # Metal-price-neutral names (curated priceSens 1 in micro.json — pass-
+    # through fabricators like KALU/CSTM) legitimately carry no metal link;
+    # same rule as scripts/exposure.py, not a hardcoded allowlist.
+    try:
+        passthrough = {base_ticker(r["ticker"]) for r in _load("micro.json").get("tickers", [])
+                       if (r.get("exposure") or {}).get("priceSens") == 1}
+    except Exception:
+        passthrough = set()
     linked = set(latest.get("byTicker", {}))
     held = {base_ticker(p["ticker"]) for p in positions}
-    unmapped = sorted(held - linked - NO_EXPOSURE_OK)
+    unmapped = sorted(held - linked - NO_EXPOSURE_OK - passthrough)
     if unmapped:
         warn(f"held tickers with no commodity exposure link (extend the curated "
              f"tables in scripts/exposure.py): {unmapped}")
     else:
-        ok(f"exposure mapping covers all {len(held)} held tickers")
+        ok(f"exposure mapping covers all {len(held)} held tickers "
+           f"({len(held & passthrough)} metal-price-neutral by design)")
 
 
 def check_process_files():
