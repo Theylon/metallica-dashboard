@@ -28,7 +28,10 @@ DATA = pathlib.Path(__file__).resolve().parent.parent / "data"
 CATEGORY = {
     "SQM": "Lithium", "ALB": "Lithium", "SGML": "Lithium", "TSLA": "Lithium",
     "LIT": "Lithium", "BATT": "Lithium", "LAC": "Lithium", "KARS": "Lithium",
+    # Copper complex — miners (ERO/TECK/TGB are pure-play or copper-led
+    # producers), MLI fabricates copper tube/fittings downstream.
     "FCX": "Copper", "SCCO": "Copper", "HBM": "Copper", "COPX": "Copper",
+    "ERO": "Copper", "TECK": "Copper", "TGB": "Copper", "MLI": "Copper",
     # Steel complex — producers, processors and the sector ETF. GGB/MT/PKX/TX
     # are integrated mills, MTUS/WOR/ROCK sit downstream in steel processing and
     # steel-intensive building products; all move with the steel cycle.
