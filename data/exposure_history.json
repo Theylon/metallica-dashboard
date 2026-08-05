@@ -1402,5 +1402,91 @@
         }
       ]
     }
+  },
+  "2026-08-05": {
+    "commodityExposure": {
+      "copper": 0.014175,
+      "molybdenum bar": 0.007116,
+      "steel": 0.004612,
+      "lco": -0.003083,
+      "manganese sulfate": -0.003372,
+      "aluminum n": -0.004451,
+      "manganese dioxide": -0.008882,
+      "aluminum": -0.008902,
+      "cobalt sulfate": -0.009796
+    },
+    "byTicker": {
+      "AA": [
+        {
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.008902
+        },
+        {
+          "commodity": "aluminum n",
+          "tier": "T2",
+          "weight": -0.004451
+        }
+      ],
+      "ALB": [
+        {
+          "commodity": "manganese dioxide",
+          "tier": "T2",
+          "weight": -0.00567
+        }
+      ],
+      "CLF": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": 0.004612
+        }
+      ],
+      "COPX": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.014175
+        }
+      ],
+      "FCX": [
+        {
+          "commodity": "molybdenum bar",
+          "tier": "T2",
+          "weight": 0.007116
+        }
+      ],
+      "LIT": [
+        {
+          "commodity": "cobalt sulfate",
+          "tier": "T2",
+          "weight": -0.003372
+        },
+        {
+          "commodity": "manganese sulfate",
+          "tier": "T2",
+          "weight": -0.003372
+        }
+      ],
+      "SGML": [
+        {
+          "commodity": "lco",
+          "tier": "T2",
+          "weight": -0.003083
+        }
+      ],
+      "SQM": [
+        {
+          "commodity": "cobalt sulfate",
+          "tier": "T1",
+          "weight": -0.006424
+        },
+        {
+          "commodity": "manganese dioxide",
+          "tier": "T2",
+          "weight": -0.003212
+        }
+      ]
+    }
   }
 }

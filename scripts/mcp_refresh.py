@@ -29,6 +29,7 @@ CATEGORY = {
     "SQM": "Lithium", "ALB": "Lithium", "SGML": "Lithium", "TSLA": "Lithium",
     "LIT": "Lithium", "BATT": "Lithium", "LAC": "Lithium", "KARS": "Lithium",
     "FCX": "Copper", "SCCO": "Copper", "HBM": "Copper", "COPX": "Copper",
+    "ERO": "Copper", "MLI": "Copper", "TECK": "Copper", "TGB": "Copper",
     # Steel complex — producers, processors and the sector ETF. GGB/MT/PKX/TX
     # are integrated mills, MTUS/WOR/ROCK sit downstream in steel processing and
     # steel-intensive building products; all move with the steel cycle.
