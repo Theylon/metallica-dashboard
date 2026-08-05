@@ -10,12 +10,12 @@ and records *why*, and the record is reviewed against outcomes.
 information channels          validation                 decision layer
 ────────────────────          ──────────────────         ─────────────────────────
 alt-data KPIs (CarbonArc,     channel_accuracy.py        micro scores 0-100
- FMP consensus, MetalMiner)    · MedAE vs actuals         (micro_build / micro_refresh)
+ Bigdata consensus, MetalMiner) · MedAE vs actuals        (micro_build / micro_refresh)
 analyst consensus + accuracy   · ≥80% trust gate                │
-insiders / politicians        signal_ic.py                recommendations
+insiders / institutions       signal_ic.py                recommendations
  (positioning_build.py)        · rank-IC vs fwd returns    (action + urgency)
 sentiment / SmartScore        cross-validation                 │
-momentum (90d price action)    (Yahoo vs FMP/TipRanks)    decision_log.jsonl
+momentum (90d price action)    (Yahoo vs TipRanks)        decision_log.jsonl
 commodity bias (MetalMiner)                                (trigger + outcome review)
                                                                │
                                                           hard risk rules
@@ -36,10 +36,10 @@ Every channel is backtested against the thing it claims to predict
 - **Score channels** (the eight micro sub-scores + composite) are measured by the
   rank-IC engine (`signal_ic.py`): Spearman correlation of each score with the
   20-day-forward return; accuracy = the hit rate of positive-IC windows.
-- **Direction channels** (commodity bias, insiders, politicians) are measured as
+- **Direction channels** (commodity bias, insiders, institutions) are measured as
   the hit rate of each directional call vs the 20-snapshot-forward return of the
   named ticker.
-- **Cross-validation** (Yahoo vs FMP/TipRanks) is a consistency measure between
+- **Cross-validation** (Yahoo vs TipRanks/TrueNorth) is a consistency measure between
   similar sources to catch bias in either — informational, never gated.
 
 **The 80% gate.** A channel is **trusted** only when its accuracy clears **80%**
@@ -111,7 +111,7 @@ rules?"* — not merely whether the trade made money.
 | `kpi.ourEst.*` (our nowcasts) | after altdata Phase 2 calibration (≥2 paired quarters) |
 | Score channels (rank-IC) | ≥25 daily snapshots (`signal_scorecard.json` shows progress) |
 | Commodity-bias direction channel | ≥25 snapshot days of `biasDir` (recorded from 2026-07-20) |
-| Insider / politician channels | ≥10 calls aged ≥20 snapshots after the first positioning Routine run |
+| Insider / institutional channels | ≥10 calls aged ≥20 snapshots after the first positioning Routine run |
 | Decision-log outcomes | 30/90 days after each entry |
 
 ## 7. Execution — orders leave through the same discipline

@@ -47,7 +47,7 @@ keeps yesterday's evidence.
 
 - **Yahoo cross-validation pull:** run `python3 scripts/micro_yahoo.py` →
   `data/micro_src/yahoo.json`. This is an independent second source (analyst target,
-  rating, margins, price) that the compiler cross-checks against FMP/TipRanks/TrueNorth.
+  rating, margins, price) that the compiler cross-checks against TipRanks/TrueNorth.
   **Yahoo egress is often blocked in headless Claude sessions** — if this fails, the last
   committed `yahoo.json` is reused (the GitHub Action also refreshes it once/day from CI,
   where Yahoo is reachable). Google Finance has no free API, so Yahoo is the second source.
@@ -79,13 +79,12 @@ section is independent — a missing dump just leaves that file untouched). Reso
 
 Per holding `<TKR>`:
 - `mcp__…__bigdata_sentiment_tearsheet` → `/tmp/bigdata_sent_<TKR>.json` (overall sentiment)
-- FMP `calendar` (earnings) → `/tmp/fmp_cal_<TKR>.json`  (or `bigdata_events_calendar`)
-- FMP `news` (per symbol) → `/tmp/fmp_news_<TKR>.json`
-- FMP `insiderTrades` → `/tmp/fmp_insider_<TKR>.json` (single-name equities; ETFs have none)
-- FMP `form13F`/institutional ownership → `/tmp/fmp_13f_<TKR>.json` (best-effort)
+- `mcp__…__bigdata_events_calendar` (earnings) → `/tmp/bigdata_cal_<TKR>.json`
+- `mcp__…__bigdata_search` (per symbol news) → `/tmp/bigdata_news_<TKR>.json`
 
-Metals COT (once, not per holding): FMP `commitmentOfTraders` for gold/silver/copper/
-platinum/aluminum → `/tmp/fmp_cot_<metal>.json`.
+Insider and 13F dumps are **not** collected here — they belong to
+`scripts/positioning_refresh.md`, which owns `data/positioning.json`. Metals COT has no
+connected source and stays unfed.
 
 Macro regime: the `macro_*.json` dumps section 5 (or `enrich`) already saves
 (`macro_yield`, `macro_inflation`, `macro_fed`, `macro_stress`), plus
@@ -93,11 +92,11 @@ Macro regime: the `macro_*.json` dumps section 5 (or `enrich`) already saves
 
 Then:
 ```
-python3 scripts/enrich.py     # builds commodities/analysts/macro/news/... AND events/positioning/macro_history
+python3 scripts/enrich.py     # builds commodities/analysts/macro/news/... AND events/macro_history
 ```
-First-run check: the FMP news/calendar/insider/COT parsers assume FMP's documented shapes and
-the Bigdata sentiment parser probes a few likely keys — eyeball `data/events.json` /
-`positioning.json` once and adjust the field paths in `enrich.py` if a tool's real output
+First-run check: the Bigdata news/calendar parsers assume Bigdata's documented shapes and
+the sentiment parser probes a few likely keys — eyeball `data/events.json`
+once and adjust the field paths in `enrich.py` if a tool's real output
 differs. `macro_history.json` appends one point per day (idempotent within a day).
 
 ## 6. Commit to master (data + inputs)

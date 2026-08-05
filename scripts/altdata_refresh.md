@@ -27,7 +27,7 @@ For each held metal group (from positions.json categories: Aluminum, Lithium, St
   China PMI/property, EV/battery demand).
 Set each book name's `signal` (bullish/bearish/neutral vs. the held side), `narrative`, and
 `drivers[]` ({dim, label, note}). Book names usually have no consensus KPI — leave `kpi` null
-unless a name (e.g. TSLA) has a clean FMP consensus.
+unless a name (e.g. TSLA) has a clean street consensus.
 
 ## 2. Watchlist (consumer / TMT) — the real nowcast
 For each watchlist name (NKE, AFRM, CMG, LYFT, UBER, DASH, ABNB, ONON, DECK, CROX, BIRK, SBUX…):
@@ -37,11 +37,11 @@ For each watchlist name (NKE, AFRM, CMG, LYFT, UBER, DASH, ABNB, ONON, DECK, CRO
   Populate `trend` ({label, unit, points:[{date,v}]}) and summarize momentum in `narrative`.
   NB: raw panel spend is **not** panel-size-normalized — read Y/Y with care (prefer the
   Constant-Shopper panel, or short-window momentum) and don't publish a distorted Y/Y.
-- **Consensus + reported (FMP):** `mcp__FMP__calendar` endpoint `earnings-company` gives
-  `revenueEstimated` (consensus) + `revenueActual` per quarter and the next earnings date —
-  this drives `kpi.consensus`, `kpi.earningsDate`, and the `trackRecord[]` (est/cons vs
-  reported, `deltaToReported`). NB: the FMP **Free** plan gates `analyst`/most `calendar`
-  endpoints and even `earnings-company` for some symbols — fall back to `mcp__TipRanks__ask`
+- **Consensus + reported:** `mcp__…__bigdata_company_tearsheet` with
+  `sections=["analyst_estimates","latest_earnings","earnings_calendar"]` gives consensus and
+  reported revenue per quarter plus the next earnings date — this drives `kpi.consensus`,
+  `kpi.earningsDate`, and the `trackRecord[]` (est/cons vs reported, `deltaToReported`).
+  Resolve `rp_entity_id` via `find_securities` first. Fall back to `mcp__TipRanks__ask`
   or a `WebSearch` for consensus, and leave `kpi.consensus` null where unavailable (the card
   degrades to feed-only, which is fine).
 - **Our estimate (Phase 2):** once a name has ≥2 quarters of paired card-spend↔reported data,
@@ -60,7 +60,7 @@ python3 scripts/altdata_build.py     # writes data/altdata.json
 ```
 Sanity: `counts.book` == held-name count, `counts.watchlist` == watchlist length,
 `counts.researched` ≥ your refreshed slice. Eyeball a couple of cards and the nowcast rows.
-First run: confirm the FMP/CarbonArc field paths match real output and adjust the seed shard
+First run: confirm the Bigdata/CarbonArc field paths match real output and adjust the seed shard
 shape if a tool's response differs.
 
 ## 4. Commit to master

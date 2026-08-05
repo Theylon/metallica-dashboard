@@ -2,7 +2,7 @@
 """Daily full-data snapshot — record EVERY live data point for later analysis.
 
 The live data/*.json files are overwritten in place on every refresh, so analyst
-recommendations, sentiment, fundamentals, insider/politician cards, KPI nowcasts,
+recommendations, sentiment, fundamentals, insider/institutional cards, KPI nowcasts,
 scores etc. lose their history the moment they change. This script freezes the
 entire content of every live/derived file, verbatim, into one gzipped JSON per
 UTC day:
