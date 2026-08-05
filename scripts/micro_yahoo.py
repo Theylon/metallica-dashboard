@@ -12,9 +12,14 @@ Output: data/micro_src/yahoo.json — a pure raw pull. All comparison logic live
 `micro_build.py` so the cross-check is deterministic and testable. Missing / ADR-only
 tickers Yahoo can't map are simply absent → the compiler degrades gracefully.
 
-Run in the daily research Routine immediately before `micro_build.py`. It is NOT
-needed in the 4x/day Action (that runs `micro_refresh.py`, which does not recompute
-the cross-check).
+Run in the daily research Routine immediately before `micro_build.py`. The Action also
+runs it once a day (the 19:55 cron), because yahoo.json is no longer display-only: it is
+the sole fresh source of `marketCap` — `micro_src/quotes.json` is a frozen FMP snapshot
+with no refresh path — and `micro_refresh.py` now overlays it into each row's cap, which
+feeds the quality sub-score and the composite. So a failed Yahoo pull costs more than a
+stale cross-check chip; it degrades correctly (last-good file, then last-known cap), but
+don't optimize the pull away. The once/day cadence is deliberate — Yahoo rate-limits, and
+market cap only changes a score at a bucket boundary.
 """
 import datetime
 import json
