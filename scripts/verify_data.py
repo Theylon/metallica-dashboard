@@ -17,6 +17,10 @@ import sys
 
 DATA = pathlib.Path(__file__).resolve().parent.parent / "data"
 BENCH_TICKERS = {"SPY", "XME", "SLV", "CPER"}
+# A ONE_YEAR daily pull is ~251 US trading days; anything far under that means
+# the refresh asked for a shorter period and truncated the chart's history.
+BENCH_FULL_BARS = 250
+BENCH_MIN_BARS = 200
 CENTS = 0.02            # tolerance for sums of independently-rounded cents
 # nav comes from a different IBKR endpoint than the position marks, snapshotted
 # moments apart — when marks are moving (pre-market, volatile opens) the two
@@ -136,7 +140,17 @@ def check_benchmarks(bench):
     for t, e in bench.get("tickers", {}).items():
         if len(e.get("dates", [])) != len(e.get("closes", [])):
             fail(f"benchmarks {t}: dates/closes length mismatch")
-        elif e["dates"] and upd:
+            continue
+        # The chart is a 1-year comparison, so each series should carry ~250
+        # trading days. validate_data.py only checks that dates and closes line
+        # up, which a *shorter* pull satisfies just as well — so a refresh that
+        # fetched THREE_MONTHS instead of ONE_YEAR silently drops ~9 months of
+        # history and still passes the gate. That happened on master (251 -> 61
+        # bars) and went unnoticed. Warn so the loss is visible in review.
+        if len(e["dates"]) < BENCH_MIN_BARS:
+            warn(f"benchmarks {t}: only {len(e['dates'])} bars "
+                 f"(expect ~{BENCH_FULL_BARS} for a 1Y pull) — truncated refresh?")
+        if e["dates"] and upd:
             gap = (datetime.date.fromisoformat(upd)
                    - datetime.date.fromisoformat(e["dates"][-1])).days
             if gap > 5:
