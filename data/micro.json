@@ -1,8 +1,8 @@
 {
- "updatedAt": "2026-08-05T16:18:49+00:00",
+ "updatedAt": "2026-08-05T20:12:47+00:00",
  "researchAsOf": "2026-07-18T19:50:53+00:00",
  "methodology": "Composite 0-100 = momentum 18% + commodity-alignment 18% + deep-dive 14% + analyst 13% + fundamentals 12% + news sentiment 9% + SmartScore 8% + quality 8% (missing sub-scores redistribute). High = long candidate, low = short candidate. Each card also carries an independent Yahoo Finance (yfinance) cross-validation of price targets, ratings and margins. The cross-check is display-only and does not change the composite. Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner, TrueNorth, Yahoo Finance.",
- "macro": "Fed Funds Rate 3.63% (dovish hold); CPI (YoY) 3.46% (above 2% target); 10Y\u20132Y Spread +0.43 (normal curve); VIX 16.5 (calm). [macro feed 2026-08-05]",
+ "macro": "Fed Funds Rate 3.63% (dovish hold); CPI (YoY) 3.46% (above 2% target); 10Y\u20132Y Spread +0.43 (normal curve). [macro feed 2026-08-05]",
  "commodityBias": [
   {
    "material": "Carbon/Raw Steel",
@@ -174,10 +174,10 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 39.825,
-   "vs50": 11.1,
-   "vs200": 60.5,
-   "range52w": 85.0,
+   "price": 40.17,
+   "vs50": 12.0,
+   "vs200": 61.9,
+   "range52w": 86.2,
    "marketCap": 1755601900,
    "tradable": false,
    "quoteSuspect": false,
@@ -236,8 +236,8 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 39.81,
-     "targetMean": 50.649323,
+     "price": 40.17,
+     "targetMean": 50.62512,
      "recommendationKey": "none",
      "ebitdaMargins": 0.121309996,
      "returnOnEquity": -0.025999999,
@@ -253,14 +253,14 @@
    "role": "Producer",
    "capTier": "Large",
    "held": "long",
-   "heldMv": 154.19,
+   "heldMv": 987.76,
    "position": {
     "side": "long",
-    "shares": 2.2308,
-    "mktValue": 154.19,
-    "unrealizedPnl": 14.19,
-    "avgCost": 62.7569,
-    "lastPrice": 69.12
+    "shares": 14.2308,
+    "mktValue": 987.76,
+    "unrealizedPnl": 15.16,
+    "avgCost": 68.3446,
+    "lastPrice": 69.41
    },
    "country": "US",
    "exchange": "NYSE / Nasdaq",
@@ -283,10 +283,10 @@
     "urgency": "high",
     "rationale": "The book has ZERO copper exposure against a long-bias, tight-fundamentals copper market with the US tariff decision as a live catalyst. 12/15 buys, +17% PT. This is the single biggest gap in the book."
    },
-   "price": 69.345,
-   "vs50": 8.7,
-   "vs200": 21.1,
-   "range52w": 94.0,
+   "price": 69.38,
+   "vs50": 8.8,
+   "vs200": 21.2,
+   "range52w": 94.1,
    "marketCap": 88438682895,
    "tradable": true,
    "quoteSuspect": false,
@@ -382,7 +382,7 @@
      }
     ],
     "yahoo": {
-     "price": 69.31,
+     "price": 69.38,
      "targetMean": 71.72727,
      "recommendationKey": "buy",
      "recommendationMean": 1.69565,
@@ -418,16 +418,16 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 1034.33,
-   "vs50": 1.0,
-   "vs200": 22.9,
-   "range52w": 77.6,
+   "price": 1018.285,
+   "vs50": -0.5,
+   "vs200": 21.0,
+   "range52w": 75.1,
    "marketCap": 293326690400,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 77.0,
+   "composite": 76.1,
    "subs": {
-    "momentum": 8.2,
+    "momentum": 7.7,
     "commodity": 5.9,
     "deep": 6.0,
     "analyst": 10.0,
@@ -519,7 +519,7 @@
      }
     ],
     "yahoo": {
-     "price": 1034.935,
+     "price": 1018.285,
      "targetMean": 1231.4803,
      "recommendationKey": "buy",
      "recommendationMean": 1.57895,
@@ -548,16 +548,16 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 42.85,
-   "vs50": 6.7,
-   "vs200": 18.3,
-   "range52w": 86.2,
+   "price": 42.63,
+   "vs50": 6.2,
+   "vs200": 17.7,
+   "range52w": 85.2,
    "marketCap": 32514582360,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 86.2,
+   "composite": 85.6,
    "subs": {
-    "momentum": 9.1,
+    "momentum": 8.9,
     "commodity": 8.6,
     "deep": 8.0,
     "analyst": null,
@@ -615,8 +615,8 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 42.84,
-     "targetMean": 48.391323,
+     "price": 42.63,
+     "targetMean": 48.3682,
      "recommendationKey": "buy",
      "recommendationMean": 1.77273,
      "ebitdaMargins": 0.28345,
@@ -632,9 +632,16 @@
    "material": "Carbon/Raw Steel",
    "role": "Producer",
    "capTier": "Large",
-   "held": null,
-   "heldMv": null,
-   "position": null,
+   "held": "long",
+   "heldMv": 549.48,
+   "position": {
+    "side": "long",
+    "shares": 2.0,
+    "mktValue": 549.48,
+    "unrealizedPnl": 0.62,
+    "avgCost": 274.43,
+    "lastPrice": 274.74
+   },
    "country": "US",
    "exchange": "NYSE / Nasdaq",
    "analyst": {
@@ -657,9 +664,9 @@
     "urgency": "high",
     "rationale": "Thesis conflict: short the strongest US mill while HRC >$1,100 is tariff-tight and consensus is Buy +19%. -$21.8 uPnL says the tape agrees. Free the $684 of short gross for shorts that work."
    },
-   "price": 274.38,
-   "vs50": 12.0,
-   "vs200": 42.5,
+   "price": 274.65,
+   "vs50": 12.1,
+   "vs200": 42.7,
    "range52w": 100.0,
    "marketCap": 51781471170,
    "tradable": true,
@@ -757,7 +764,7 @@
      }
     ],
     "yahoo": {
-     "price": 274.29,
+     "price": 274.65,
      "targetMean": 283.5625,
      "recommendationKey": "buy",
      "recommendationMean": 1.52941,
@@ -855,7 +862,7 @@
     "checks": [],
     "yahoo": {
      "price": 4050.0,
-     "targetMean": 3828.5732,
+     "targetMean": 3828.367,
      "recommendationKey": "hold",
      "recommendationMean": 2.90476,
      "ebitdaMargins": 0.57188,
@@ -871,16 +878,9 @@
    "material": "Carbon/Raw Steel",
    "role": "Producer",
    "capTier": "Large",
-   "held": "long",
-   "heldMv": 74.63,
-   "position": {
-    "side": "long",
-    "shares": 1.0,
-    "mktValue": 74.63,
-    "unrealizedPnl": 7.51,
-    "avgCost": 67.1209,
-    "lastPrice": 74.63
-   },
+   "held": null,
+   "heldMv": null,
+   "position": null,
    "country": "LU",
    "exchange": "NYSE / Nasdaq (ADR)",
    "analyst": {
@@ -895,10 +895,10 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 74.82,
-   "vs50": 12.3,
-   "vs200": 35.2,
-   "range52w": 99.1,
+   "price": 75.355,
+   "vs50": 13.1,
+   "vs200": 36.2,
+   "range52w": 100.0,
    "marketCap": 50293488000,
    "tradable": true,
    "quoteSuspect": false,
@@ -982,7 +982,7 @@
      }
     ],
     "yahoo": {
-     "price": 74.81,
+     "price": 75.355,
      "targetMean": 74.03333,
      "recommendationKey": "buy",
      "recommendationMean": 2.0,
@@ -1106,7 +1106,7 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 291.4,
+   "price": 291.37,
    "vs50": 7.5,
    "vs200": 22.6,
    "range52w": 100.0,
@@ -1207,7 +1207,7 @@
      }
     ],
     "yahoo": {
-     "price": 291.325,
+     "price": 291.37,
      "targetMean": 312.928,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.45455,
@@ -1244,16 +1244,16 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 89.09,
-   "vs50": 4.9,
-   "vs200": 23.8,
-   "range52w": 90.6,
+   "price": 89.42,
+   "vs50": 5.3,
+   "vs200": 24.3,
+   "range52w": 91.2,
    "marketCap": 207495387115,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 80.8,
+   "composite": 81.2,
    "subs": {
-    "momentum": 9.4,
+    "momentum": 9.6,
     "commodity": 8.6,
     "deep": 7.5,
     "analyst": 7.0,
@@ -1345,7 +1345,7 @@
      }
     ],
     "yahoo": {
-     "price": 89.11,
+     "price": 89.42,
      "targetMean": 73.64286,
      "recommendationKey": "hold",
      "recommendationMean": 3.125,
@@ -1461,14 +1461,14 @@
    "role": "Producer",
    "capTier": "Mid",
    "held": "long",
-   "heldMv": 154.8,
+   "heldMv": 1037.6,
    "position": {
     "side": "long",
-    "shares": 6.0,
-    "mktValue": 154.8,
-    "unrealizedPnl": 20.74,
-    "avgCost": 22.3437,
-    "lastPrice": 25.8
+    "shares": 40.0,
+    "mktValue": 1037.6,
+    "unrealizedPnl": 22.96,
+    "avgCost": 25.3661,
+    "lastPrice": 25.94
    },
    "country": "CA",
    "exchange": "NYSE / Nasdaq (ADR)",
@@ -1485,16 +1485,16 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 25.86,
-   "vs50": 4.9,
-   "vs200": 16.6,
-   "range52w": 73.5,
+   "price": 25.905,
+   "vs50": 5.1,
+   "vs200": 16.8,
+   "range52w": 73.7,
    "marketCap": 9610756800,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 85.0,
+   "composite": 85.2,
    "subs": {
-    "momentum": 8.1,
+    "momentum": 8.2,
     "commodity": 8.6,
     "deep": 8.0,
     "analyst": 10.0,
@@ -1588,7 +1588,7 @@
      }
     ],
     "yahoo": {
-     "price": 25.84,
+     "price": 25.905,
      "targetMean": 32.60167,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.43478,
@@ -1621,16 +1621,16 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 14.13,
-   "vs50": 5.8,
-   "vs200": 26.9,
-   "range52w": 79.6,
+   "price": 14.03,
+   "vs50": 5.0,
+   "vs200": 26.0,
+   "range52w": 78.7,
    "marketCap": 1961415829,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 74.8,
+   "composite": 74.2,
    "subs": {
-    "momentum": 9.4,
+    "momentum": 9.1,
     "commodity": 7.0,
     "deep": 7.5,
     "analyst": 4.0,
@@ -1724,7 +1724,7 @@
      }
     ],
     "yahoo": {
-     "price": 14.13,
+     "price": 14.03,
      "targetMean": 14.8545,
      "recommendationKey": "hold",
      "recommendationMean": 3.125,
@@ -1743,14 +1743,14 @@
    "role": "Producer",
    "capTier": "Small",
    "held": "long",
-   "heldMv": 157.27,
+   "heldMv": 889.79,
    "position": {
     "side": "long",
-    "shares": 5.2405,
-    "mktValue": 157.27,
-    "unrealizedPnl": 17.27,
-    "avgCost": 26.7145,
-    "lastPrice": 30.01
+    "shares": 29.2405,
+    "mktValue": 889.79,
+    "unrealizedPnl": 24.52,
+    "avgCost": 29.5915,
+    "lastPrice": 30.43
    },
    "country": "CA",
    "exchange": "NYSE / Nasdaq (ADR)",
@@ -1767,16 +1767,16 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 30.17,
-   "vs50": 10.4,
-   "vs200": 10.4,
-   "range52w": 67.9,
+   "price": 30.45,
+   "vs50": 11.4,
+   "vs200": 11.4,
+   "range52w": 69.0,
    "marketCap": 2667430421,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 84.4,
+   "composite": 84.9,
    "subs": {
-    "momentum": 8.3,
+    "momentum": 8.6,
     "commodity": 9.0,
     "deep": 8.0,
     "analyst": 7.0,
@@ -1870,7 +1870,7 @@
      }
     ],
     "yahoo": {
-     "price": 30.085,
+     "price": 30.45,
      "targetMean": 35.86667,
      "recommendationKey": "buy",
      "recommendationMean": 1.94444,
@@ -1888,16 +1888,9 @@
    "material": "Carbon/Raw Steel",
    "role": "Producer",
    "capTier": "Mid",
-   "held": "long",
-   "heldMv": 96.52,
-   "position": {
-    "side": "long",
-    "shares": 19.0,
-    "mktValue": 96.52,
-    "unrealizedPnl": 5.67,
-    "avgCost": 4.7818,
-    "lastPrice": 5.08
-   },
+   "held": null,
+   "heldMv": null,
+   "position": null,
    "country": "BR",
    "exchange": "NYSE / Nasdaq (ADR)",
    "analyst": {
@@ -1913,9 +1906,9 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 5.115,
-   "vs50": 11.8,
-   "vs200": 26.2,
+   "price": 5.145,
+   "vs50": 12.5,
+   "vs200": 26.9,
    "range52w": 100.0,
    "marketCap": 8950185468,
    "tradable": true,
@@ -1981,8 +1974,8 @@
      {
       "field": "priceTarget",
       "primary": 5.63,
-      "yahoo": 5.57,
-      "deltaPct": -1.1,
+      "yahoo": 5.56,
+      "deltaPct": -1.2,
       "status": "agree"
      },
      {
@@ -2000,8 +1993,8 @@
      }
     ],
     "yahoo": {
-     "price": 5.1101,
-     "targetMean": 5.5653195,
+     "price": 5.145,
+     "targetMean": 5.562061,
      "recommendationKey": "buy",
      "recommendationMean": 1.6,
      "ebitdaMargins": 0.13281,
@@ -2026,16 +2019,16 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 220.7,
-   "vs50": 7.0,
-   "vs200": 17.1,
+   "price": 222.51,
+   "vs50": 7.9,
+   "vs200": 18.1,
    "range52w": 100.0,
    "marketCap": 1551005550000,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 85.4,
+   "composite": 86.0,
    "subs": {
-    "momentum": 9.6,
+    "momentum": 9.8,
     "commodity": 8.6,
     "deep": 7.0,
     "analyst": null,
@@ -2093,8 +2086,8 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 220.57,
-     "targetMean": 208.06625,
+     "price": 222.3,
+     "targetMean": 208.01433,
      "recommendationKey": "buy",
      "recommendationMean": 2.35714,
      "ebitdaMargins": 0.57039,
@@ -2128,9 +2121,9 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 449.96,
-   "vs50": 10.5,
-   "vs200": 20.3,
+   "price": 447.284,
+   "vs50": 9.9,
+   "vs200": 19.6,
    "range52w": 100.0,
    "marketCap": 158146824000,
    "tradable": true,
@@ -2229,7 +2222,7 @@
      }
     ],
     "yahoo": {
-     "price": 449.77,
+     "price": 447.284,
      "targetMean": 464.5916,
      "recommendationKey": "buy",
      "recommendationMean": 1.55556,
@@ -2360,9 +2353,9 @@
     "urgency": "none",
     "rationale": "6/6 buys but +2% PT \u2014 the street says fully priced. Ride the aero cycle, take profit if it stalls under $205 (PT high)."
    },
-   "price": 204.62,
-   "vs50": 8.1,
-   "vs200": 41.1,
+   "price": 205.24,
+   "vs50": 8.4,
+   "vs200": 41.5,
    "range52w": 100.0,
    "marketCap": 25525428666,
    "tradable": true,
@@ -2449,7 +2442,7 @@
      }
     ],
     "yahoo": {
-     "price": 204.71,
+     "price": 205.24,
      "targetMean": 200.33333,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.11111,
@@ -2554,16 +2547,9 @@
    "material": "Carbon/Raw Steel",
    "role": "Producer",
    "capTier": "Mid",
-   "held": "long",
-   "heldMv": 104.46,
-   "position": {
-    "side": "long",
-    "shares": 2.0,
-    "mktValue": 104.46,
-    "unrealizedPnl": 7.49,
-    "avgCost": 48.4832,
-    "lastPrice": 52.23
-   },
+   "held": null,
+   "heldMv": null,
+   "position": null,
    "country": "MX",
    "exchange": "NYSE / Nasdaq (ADR)",
    "analyst": {
@@ -2578,9 +2564,9 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 52.375,
-   "vs50": 11.9,
-   "vs200": 27.3,
+   "price": 53.725,
+   "vs50": 14.7,
+   "vs200": 30.6,
    "range52w": 100.0,
    "marketCap": 8696430135,
    "tradable": true,
@@ -2665,7 +2651,7 @@
      }
     ],
     "yahoo": {
-     "price": 52.4,
+     "price": 53.725,
      "targetMean": 53.42308,
      "recommendationKey": "buy",
      "recommendationMean": 2.0,
@@ -2683,9 +2669,16 @@
    "material": "Carbon/Raw Steel",
    "role": "Producer",
    "capTier": "Large",
-   "held": null,
-   "heldMv": null,
-   "position": null,
+   "held": "long",
+   "heldMv": 530.98,
+   "position": {
+    "side": "long",
+    "shares": 2.0,
+    "mktValue": 530.98,
+    "unrealizedPnl": -1.12,
+    "avgCost": 266.05,
+    "lastPrice": 265.49
+   },
    "country": "US",
    "exchange": "NYSE / Nasdaq",
    "analyst": {
@@ -2708,10 +2701,10 @@
     "urgency": "high",
     "rationale": "Same conflict as NUE (Buy +16% PT). Between the two 'quality mill' shorts and RS/CLF, keep only the weak ones."
    },
-   "price": 265.64,
-   "vs50": 6.3,
-   "vs200": 33.2,
-   "range52w": 89.8,
+   "price": 265.96,
+   "vs50": 6.4,
+   "vs200": 33.3,
+   "range52w": 90.0,
    "marketCap": 32941133460,
    "tradable": true,
    "quoteSuspect": false,
@@ -2803,7 +2796,7 @@
      }
     ],
     "yahoo": {
-     "price": 265.71,
+     "price": 265.96,
      "targetMean": 272.3846,
      "recommendationKey": "buy",
      "recommendationMean": 1.92308,
@@ -2925,16 +2918,16 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 3880.0,
-   "vs50": 14.0,
-   "vs200": 16.2,
-   "range52w": 82.6,
+   "price": 3820.0,
+   "vs50": 12.5,
+   "vs200": 14.6,
+   "range52w": 80.9,
    "marketCap": 25843704481910,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 81.7,
+   "composite": 80.2,
    "subs": {
-    "momentum": 10.0,
+    "momentum": 9.5,
     "commodity": 7.0,
     "deep": 8.0,
     "analyst": null,
@@ -3012,16 +3005,16 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 192.99,
-   "vs50": 0.2,
-   "vs200": 2.2,
-   "range52w": 64.2,
+   "price": 190.95,
+   "vs50": -1.1,
+   "vs200": 1.2,
+   "range52w": 61.1,
    "marketCap": 2386845200000,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 74.8,
+   "composite": 73.6,
    "subs": {
-    "momentum": 5.8,
+    "momentum": 5.4,
     "commodity": 9.0,
     "deep": 7.0,
     "analyst": null,
@@ -3204,10 +3197,10 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 284.25,
-   "vs50": 15.7,
-   "vs200": 65.7,
-   "range52w": 93.1,
+   "price": 297.28,
+   "vs50": 20.8,
+   "vs200": 73.3,
+   "range52w": 99.9,
    "marketCap": 5359710625,
    "tradable": true,
    "quoteSuspect": false,
@@ -3299,7 +3292,7 @@
      }
     ],
     "yahoo": {
-     "price": 284.25,
+     "price": 297.28,
      "targetMean": 252.66667,
      "recommendationKey": "none",
      "ebitdaMargins": 0.09823,
@@ -3332,10 +3325,10 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 15.43,
-   "vs50": 5.9,
-   "vs200": 18.7,
-   "range52w": 87.1,
+   "price": 15.41,
+   "vs50": 5.8,
+   "vs200": 18.5,
+   "range52w": 86.9,
    "marketCap": 80092703144,
    "tradable": true,
    "quoteSuspect": false,
@@ -3419,8 +3412,8 @@
      {
       "field": "priceTarget",
       "primary": 16.9,
-      "yahoo": 17.68,
-      "deltaPct": 4.6,
+      "yahoo": 17.57,
+      "deltaPct": 4.0,
       "status": "agree"
      },
      {
@@ -3438,8 +3431,8 @@
      }
     ],
     "yahoo": {
-     "price": 15.43,
-     "targetMean": 17.675,
+     "price": 15.41,
+     "targetMean": 17.575,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.4,
      "ebitdaMargins": 0.038340002,
@@ -3537,14 +3530,14 @@
    "role": "Producer",
    "capTier": "Large",
    "held": "long",
-   "heldMv": 154.65,
+   "heldMv": 1013.51,
    "position": {
     "side": "long",
-    "shares": 2.3446,
-    "mktValue": 154.65,
-    "unrealizedPnl": 14.65,
-    "avgCost": 59.7096,
-    "lastPrice": 65.96
+    "shares": 15.3446,
+    "mktValue": 1013.51,
+    "unrealizedPnl": 14.06,
+    "avgCost": 65.1337,
+    "lastPrice": 66.05
    },
    "country": "CA",
    "exchange": "NYSE / Nasdaq (ADR)",
@@ -3561,10 +3554,10 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 66.025,
-   "vs50": 7.6,
+   "price": 66.04,
+   "vs50": 7.7,
    "vs200": 22.8,
-   "range52w": 88.7,
+   "range52w": 88.8,
    "marketCap": 28832335701,
    "tradable": true,
    "quoteSuspect": false,
@@ -3631,7 +3624,7 @@
      {
       "field": "priceTarget",
       "primary": 60.93,
-      "yahoo": 53.61,
+      "yahoo": 53.64,
       "deltaPct": -12.0,
       "status": "agree"
      },
@@ -3650,8 +3643,8 @@
      }
     ],
     "yahoo": {
-     "price": 65.98,
-     "targetMean": 53.6113,
+     "price": 66.04,
+     "targetMean": 53.636932,
      "recommendationKey": "hold",
      "recommendationMean": 2.52941,
      "ebitdaMargins": 0.46859002,
@@ -3687,16 +3680,16 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 101.31,
-   "vs50": 3.9,
-   "vs200": 14.1,
-   "range52w": 80.6,
+   "price": 101.51,
+   "vs50": 4.1,
+   "vs200": 14.3,
+   "range52w": 80.8,
    "marketCap": 147038527791,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 74.7,
+   "composite": 74.9,
    "subs": {
-    "momentum": 8.0,
+    "momentum": 8.1,
     "commodity": 7.7,
     "deep": 6.0,
     "analyst": 7.0,
@@ -3786,7 +3779,7 @@
      }
     ],
     "yahoo": {
-     "price": 101.34,
+     "price": 101.51,
      "targetMean": 105.85375,
      "recommendationKey": "buy",
      "recommendationMean": 2.0,
@@ -3816,16 +3809,16 @@
     "urgency": "low",
     "rationale": "Tin is the tightest metal on the board (Myanmar broken, AI solder demand, $53K). Alphamin = ~7% of world supply, +10% over 200DMA. DRC risk = keep small."
    },
-   "price": 1.485,
-   "vs50": 4.1,
-   "vs200": 15.7,
-   "range52w": 86.9,
+   "price": 1.5,
+   "vs50": 5.1,
+   "vs200": 16.9,
+   "range52w": 89.2,
    "marketCap": 1771672813,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 74.1,
+   "composite": 75.0,
    "subs": {
-    "momentum": 8.5,
+    "momentum": 8.8,
     "commodity": 7.0,
     "deep": 7.5,
     "analyst": null,
@@ -3876,8 +3869,9 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 1.485,
-     "recommendationKey": "none",
+     "price": 1.5,
+     "recommendationKey": "strong_buy",
+     "recommendationMean": 0.0,
      "ebitdaMargins": 0.60594004,
      "returnOnEquity": 0.58467
     }
@@ -3908,16 +3902,16 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 228.47,
-   "vs50": 6.3,
-   "vs200": 1.3,
-   "range52w": 53.1,
+   "price": 226.57,
+   "vs50": 5.5,
+   "vs200": 0.5,
+   "range52w": 51.4,
    "marketCap": 39635668526,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 73.0,
+   "composite": 72.4,
    "subs": {
-    "momentum": 6.3,
+    "momentum": 6.0,
     "commodity": 3.0,
     "deep": 6.0,
     "analyst": 10.0,
@@ -4009,7 +4003,7 @@
      }
     ],
     "yahoo": {
-     "price": 228.33,
+     "price": 226.57,
      "targetMean": 277.16556,
      "recommendationKey": "buy",
      "recommendationMean": 1.66667,
@@ -4131,16 +4125,16 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 105.0,
-   "vs50": 6.8,
-   "vs200": 1.0,
-   "range52w": 59.3,
+   "price": 104.27,
+   "vs50": 6.1,
+   "vs200": 0.3,
+   "range52w": 58.1,
    "marketCap": 101727102882,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 72.4,
+   "composite": 72.0,
    "subs": {
-    "momentum": 6.6,
+    "momentum": 6.4,
     "commodity": 3.0,
     "deep": 6.0,
     "analyst": 9.0,
@@ -4219,7 +4213,7 @@
      }
     ],
     "yahoo": {
-     "price": 104.995,
+     "price": 104.27,
      "targetMean": 129.26666,
      "recommendationKey": "buy",
      "recommendationMean": 1.52174,
@@ -4348,16 +4342,16 @@
     "urgency": "high",
     "rationale": "11/11 buys, +49% PT, NdPr +74% YoY with widening supply gap, and RE equities lag the commodity. Best unheld long in the entire universe scan."
    },
-   "price": 47.69,
-   "vs50": -11.3,
-   "vs200": -18.5,
-   "range52w": 15.8,
+   "price": 47.97,
+   "vs50": -10.8,
+   "vs200": -18.1,
+   "range52w": 16.3,
    "marketCap": 9294528620,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 64.8,
+   "composite": 65.0,
    "subs": {
-    "momentum": 0.2,
+    "momentum": 0.3,
     "commodity": 9.0,
     "deep": 8.5,
     "analyst": 9.0,
@@ -4443,7 +4437,7 @@
      }
     ],
     "yahoo": {
-     "price": 47.71,
+     "price": 47.97,
      "targetMean": 77.78125,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.27778,
@@ -4462,14 +4456,14 @@
    "role": "Producer",
    "capTier": "Large",
    "held": "long",
-   "heldMv": 152.54,
+   "heldMv": 801.89,
    "position": {
     "side": "long",
-    "shares": 0.7705,
-    "mktValue": 152.54,
-    "unrealizedPnl": 12.54,
-    "avgCost": 181.6979,
-    "lastPrice": 197.97
+    "shares": 4.0705,
+    "mktValue": 801.89,
+    "unrealizedPnl": 5.82,
+    "avgCost": 195.5704,
+    "lastPrice": 197.0
    },
    "country": "US",
    "exchange": "NYSE / Nasdaq",
@@ -4493,16 +4487,16 @@
     "urgency": "low",
     "rationale": "Street's only metals Sell consensus (PT -14%). Pairs the FCX long into a market-neutral copper spread if you want to keep net short unchanged."
    },
-   "price": 198.78,
-   "vs50": 9.2,
-   "vs200": 18.0,
-   "range52w": 86.7,
+   "price": 196.92,
+   "vs50": 8.2,
+   "vs200": 16.9,
+   "range52w": 85.2,
    "marketCap": 146700068070,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 70.9,
+   "composite": 70.4,
    "subs": {
-    "momentum": 9.5,
+    "momentum": 9.2,
     "commodity": 9.0,
     "deep": 3.5,
     "analyst": 1.6,
@@ -4581,7 +4575,7 @@
      }
     ],
     "yahoo": {
-     "price": 198.54,
+     "price": 196.92,
      "targetMean": 168.25294,
      "recommendationKey": "underperform",
      "recommendationMean": 3.77778,
@@ -4770,8 +4764,8 @@
      "targetMean": 687.7778,
      "recommendationKey": "buy",
      "recommendationMean": 2.22222,
-     "ebitdaMargins": 0.09842,
-     "returnOnEquity": 0.0075,
+     "ebitdaMargins": 0.10221,
+     "returnOnEquity": 0.05505,
      "numberOfAnalysts": 9
     }
    },
@@ -4884,16 +4878,16 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 30.4099,
-   "vs50": 2.8,
-   "vs200": 2.1,
-   "range52w": 57.9,
+   "price": 30.0301,
+   "vs50": 1.5,
+   "vs200": 0.9,
+   "range52w": 53.8,
    "marketCap": 4802891850,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 67.9,
+   "composite": 66.6,
    "subs": {
-    "momentum": 6.0,
+    "momentum": 5.5,
     "commodity": 8.1,
     "deep": 5.0,
     "analyst": null,
@@ -4968,14 +4962,14 @@
      }
     ],
     "yahoo": {
-     "price": 30.7758,
+     "price": 30.0301,
      "recommendationKey": "none",
      "ebitdaMargins": 0.20465,
      "returnOnEquity": 0.05807
     }
    },
    "discovered": false,
-   "groupRank": "8/14"
+   "groupRank": "9/14"
   },
   {
    "ticker": "RS",
@@ -5008,9 +5002,9 @@
     "urgency": "none",
     "rationale": "The one steel short the street endorses: Neutral, PT +0.5% \u2014 fully valued distributor. Serves as the group's valuation short."
    },
-   "price": 418.25,
-   "vs50": 6.3,
-   "vs200": 26.3,
+   "price": 420.78,
+   "vs50": 6.9,
+   "vs200": 27.1,
    "range52w": 100.0,
    "marketCap": 19358620513,
    "tradable": true,
@@ -5096,7 +5090,7 @@
      }
     ],
     "yahoo": {
-     "price": 418.095,
+     "price": 420.68,
      "targetMean": 409.5,
      "recommendationKey": "hold",
      "recommendationMean": 2.625,
@@ -5106,7 +5100,7 @@
     }
    },
    "discovered": false,
-   "groupRank": "9/14"
+   "groupRank": "8/14"
   },
   {
    "ticker": "MTUS",
@@ -5114,16 +5108,9 @@
    "material": "Carbon/Raw Steel",
    "role": "Producer",
    "capTier": "Small",
-   "held": "long",
-   "heldMv": 108.73,
-   "position": {
-    "side": "long",
-    "shares": 5.0,
-    "mktValue": 108.73,
-    "unrealizedPnl": 2.88,
-    "avgCost": 21.1694,
-    "lastPrice": 21.745
-   },
+   "held": null,
+   "heldMv": null,
+   "position": null,
    "country": "US",
    "exchange": "NYSE / Nasdaq",
    "analyst": {
@@ -5136,9 +5123,9 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 21.86,
-   "vs50": 10.8,
-   "vs200": 19.0,
+   "price": 21.625,
+   "vs50": 9.6,
+   "vs200": 17.7,
    "range52w": 100.0,
    "marketCap": 793425982,
    "tradable": true,
@@ -5227,7 +5214,7 @@
      }
     ],
     "yahoo": {
-     "price": 21.86,
+     "price": 21.625,
      "targetMean": 22.5,
      "recommendationKey": "buy",
      "recommendationMean": 2.0,
@@ -5266,16 +5253,16 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 14.881,
-   "vs50": -1.7,
-   "vs200": 0.9,
-   "range52w": 66.5,
+   "price": 14.93,
+   "vs50": -1.4,
+   "vs200": 1.3,
+   "range52w": 67.1,
    "marketCap": 61665161654,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 64.6,
+   "composite": 64.8,
    "subs": {
-    "momentum": 5.5,
+    "momentum": 5.6,
     "commodity": 5.0,
     "deep": 4.5,
     "analyst": 7.0,
@@ -5369,7 +5356,7 @@
      }
     ],
     "yahoo": {
-     "price": 14.885,
+     "price": 14.93,
      "targetMean": 16.788,
      "recommendationKey": "buy",
      "recommendationMean": 2.24,
@@ -5478,16 +5465,9 @@
    "material": "Lithium",
    "role": "Producer",
    "capTier": "Large",
-   "held": "short",
-   "heldMv": -120.54,
-   "position": {
-    "side": "short",
-    "shares": 1.0,
-    "mktValue": -120.54,
-    "unrealizedPnl": -3.0,
-    "avgCost": 117.54,
-    "lastPrice": 120.535
-   },
+   "held": null,
+   "heldMv": null,
+   "position": null,
    "country": "US",
    "exchange": "NYSE / Nasdaq",
    "analyst": {
@@ -5509,16 +5489,16 @@
     "urgency": "none",
     "rationale": "Zacks #1, Buy +71% PT, Q1 EBITDA +148% \u2014 but PT cuts continue; do not add until lithium futures stabilize (CATL restart pressure)."
    },
-   "price": 120.75,
-   "vs50": -14.1,
-   "vs200": -20.7,
-   "range52w": 36.6,
+   "price": 118.745,
+   "vs50": -15.5,
+   "vs200": -22.0,
+   "range52w": 35.2,
    "marketCap": 14865662759,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 60.4,
+   "composite": 59.9,
    "subs": {
-    "momentum": 0.4,
+    "momentum": 0.1,
     "commodity": 5.0,
     "deep": 7.5,
     "analyst": 9.0,
@@ -5611,7 +5591,7 @@
      }
     ],
     "yahoo": {
-     "price": 120.69,
+     "price": 118.745,
      "targetMean": 187.164,
      "recommendationKey": "buy",
      "recommendationMean": 1.95455,
@@ -5645,10 +5625,10 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 19.53,
-   "vs50": 18.8,
-   "vs200": 20.8,
-   "range52w": 90.1,
+   "price": 19.48,
+   "vs50": 18.5,
+   "vs200": 20.5,
+   "range52w": 89.8,
    "marketCap": 3221211792,
    "tradable": true,
    "quoteSuspect": false,
@@ -5743,7 +5723,7 @@
      }
     ],
     "yahoo": {
-     "price": 19.51,
+     "price": 19.48,
      "targetMean": 23.25,
      "recommendationKey": "buy",
      "recommendationMean": 2.25,
@@ -5954,16 +5934,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 29.08,
-   "vs50": 3.1,
-   "vs200": 9.1,
-   "range52w": 70.7,
+   "price": 29.0,
+   "vs50": 2.9,
+   "vs200": 8.8,
+   "range52w": 67.8,
    "marketCap": 5930092780,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 70.5,
+   "composite": 69.5,
    "subs": {
-    "momentum": 7.1,
+    "momentum": 6.9,
     "deep": 7.0,
     "fundamentals": 9.1
    },
@@ -6022,7 +6002,7 @@
      }
     ],
     "yahoo": {
-     "price": 29.085,
+     "price": 29.0,
      "targetMean": 41.4,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.4,
@@ -6062,16 +6042,16 @@
     "urgency": "none",
     "rationale": "Higher-cost Ag/Au beta short."
    },
-   "price": 17.4898,
-   "vs50": 6.0,
-   "vs200": -5.9,
-   "range52w": 44.6,
+   "price": 17.45,
+   "vs50": 5.8,
+   "vs200": -6.1,
+   "range52w": 43.9,
    "marketCap": 10405676961,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 66.2,
+   "composite": 66.0,
    "subs": {
-    "momentum": 5.3,
+    "momentum": 5.2,
     "commodity": 3.7,
     "deep": 4.0,
     "analyst": 9.0,
@@ -6151,7 +6131,7 @@
      }
     ],
     "yahoo": {
-     "price": 17.485,
+     "price": 17.45,
      "targetMean": 24.84091,
      "recommendationKey": "buy",
      "recommendationMean": 1.72727,
@@ -6421,12 +6401,12 @@
     "checks": [],
     "yahoo": {
      "price": 4021.0,
-     "targetMean": 3926.9429,
+     "targetMean": 3912.2317,
      "recommendationKey": "buy",
-     "recommendationMean": 2.29412,
+     "recommendationMean": 2.35294,
      "ebitdaMargins": 0.34886003,
      "returnOnEquity": -0.03075,
-     "numberOfAnalysts": 17
+     "numberOfAnalysts": 16
     }
    },
    "discovered": false
@@ -6548,16 +6528,16 @@
     "urgency": "medium",
     "rationale": "Wrong instrument: a fabricator that PASSES THROUGH metal costs \u2014 falling LME helps its margins. Buy consensus +25%. The short contradicts the very thesis that justifies AA/CENX."
    },
-   "price": 29.95,
-   "vs50": -5.1,
-   "vs200": 18.4,
-   "range52w": 73.1,
+   "price": 29.65,
+   "vs50": -6.1,
+   "vs200": 17.2,
+   "range52w": 71.8,
    "marketCap": 3986485176,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 61.2,
+   "composite": 60.6,
    "subs": {
-    "momentum": 6.6,
+    "momentum": 6.3,
     "commodity": 3.9,
     "deep": 5.5,
     "analyst": 8.1,
@@ -6616,8 +6596,8 @@
      {
       "field": "priceTarget",
       "primary": 36.6,
-      "yahoo": 37.85,
-      "deltaPct": 3.4,
+      "yahoo": 37.87,
+      "deltaPct": 3.5,
       "status": "agree"
      },
      {
@@ -6635,8 +6615,8 @@
      }
     ],
     "yahoo": {
-     "price": 29.975,
-     "targetMean": 37.848698,
+     "price": 29.65,
+     "targetMean": 37.866188,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.4,
      "ebitdaMargins": 0.13012,
@@ -6853,16 +6833,16 @@
     "urgency": "none",
     "rationale": "Completes the silver-beta short trio."
    },
-   "price": 16.6819,
-   "vs50": 6.9,
-   "vs200": -8.9,
-   "range52w": 41.2,
+   "price": 16.53,
+   "vs50": 5.9,
+   "vs200": -9.8,
+   "range52w": 40.6,
    "marketCap": 10610663840,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 63.8,
+   "composite": 63.3,
    "subs": {
-    "momentum": 5.1,
+    "momentum": 4.8,
     "commodity": 3.0,
     "deep": 4.5,
     "analyst": 9.0,
@@ -6942,7 +6922,7 @@
      }
     ],
     "yahoo": {
-     "price": 16.6803,
+     "price": 16.53,
      "targetMean": 23.52778,
      "recommendationKey": "buy",
      "recommendationMean": 2.22222,
@@ -6978,10 +6958,10 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 10.855,
-   "vs50": 3.5,
-   "vs200": 6.5,
-   "range52w": 57.5,
+   "price": 10.84,
+   "vs50": 3.3,
+   "vs200": 6.4,
+   "range52w": 57.4,
    "marketCap": 2105848133,
    "tradable": true,
    "quoteSuspect": false,
@@ -7115,16 +7095,16 @@
     "blogger": "Neutral"
    },
    "recommendation": null,
-   "price": 10.08,
-   "vs50": -16.4,
-   "vs200": -6.7,
-   "range52w": 21.7,
+   "price": 9.7,
+   "vs50": -19.5,
+   "vs200": -10.2,
+   "range52w": 19.8,
    "marketCap": 751701780,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 48.6,
+   "composite": 47.8,
    "subs": {
-    "momentum": 0.8,
+    "momentum": 0.4,
     "commodity": 7.2,
     "deep": 6.0,
     "analyst": 7.0,
@@ -7219,7 +7199,7 @@
      }
     ],
     "yahoo": {
-     "price": 10.045,
+     "price": 9.7,
      "targetMean": 17.0,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.5,
@@ -7315,7 +7295,7 @@
     "checks": [],
     "yahoo": {
      "price": 35.2,
-     "targetMean": 51.3695,
+     "targetMean": 51.378345,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.2,
      "ebitdaMargins": 0.29301,
@@ -7332,14 +7312,14 @@
    "role": "Producer",
    "capTier": "Mid",
    "held": "long",
-   "heldMv": 74.41,
+   "heldMv": 681.03,
    "position": {
     "side": "long",
-    "shares": 1.0,
-    "mktValue": 74.41,
-    "unrealizedPnl": 4.33,
-    "avgCost": 70.08,
-    "lastPrice": 74.41
+    "shares": 9.0,
+    "mktValue": 681.03,
+    "unrealizedPnl": 8.43,
+    "avgCost": 74.7333,
+    "lastPrice": 75.67
    },
    "country": "US",
    "exchange": "NYSE / Nasdaq",
@@ -7358,10 +7338,10 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 75.49,
-   "vs50": 7.8,
-   "vs200": 10.6,
-   "range52w": 77.1,
+   "price": 75.655,
+   "vs50": 8.0,
+   "vs200": 10.8,
+   "range52w": 77.6,
    "marketCap": 6929508344,
    "tradable": true,
    "quoteSuspect": false,
@@ -7443,7 +7423,7 @@
      }
     ],
     "yahoo": {
-     "price": 75.543,
+     "price": 75.655,
      "targetMean": 80.09091,
      "recommendationKey": "none",
      "ebitdaMargins": 0.1361,
@@ -7585,16 +7565,16 @@
     "urgency": "none",
     "rationale": "Buy +39% PT; TiO2 hikes sticking in China (+8% QTD)."
    },
-   "price": 14.88,
-   "vs50": -24.1,
-   "vs200": -16.2,
-   "range52w": 25.7,
+   "price": 14.58,
+   "vs50": -25.6,
+   "vs200": -17.9,
+   "range52w": 24.0,
    "marketCap": 2678226997,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 53.8,
+   "composite": 53.5,
    "subs": {
-    "momentum": 0.2,
+    "momentum": 0.0,
     "commodity": 5.0,
     "deep": 6.0,
     "analyst": 8.9,
@@ -7674,7 +7654,7 @@
      }
     ],
     "yahoo": {
-     "price": 14.885,
+     "price": 14.58,
      "targetMean": 24.66667,
      "recommendationKey": "buy",
      "recommendationMean": 2.0,
@@ -7713,9 +7693,9 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 17.1399,
-   "vs50": -15.6,
-   "vs200": -11.6,
+   "price": 17.16,
+   "vs50": -15.5,
+   "vs200": -11.5,
    "range52w": 19.6,
    "marketCap": 1786037632,
    "tradable": true,
@@ -7803,7 +7783,7 @@
      }
     ],
     "yahoo": {
-     "price": 17.145,
+     "price": 17.16,
      "targetMean": 37.5,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.125,
@@ -7839,16 +7819,16 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 124.105,
-   "vs50": 7.3,
-   "vs200": 0.0,
-   "range52w": 44.8,
+   "price": 122.97,
+   "vs50": 6.4,
+   "vs200": -0.9,
+   "range52w": 43.3,
    "marketCap": 49976456250,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 66.2,
+   "composite": 65.6,
    "subs": {
-    "momentum": 6.0,
+    "momentum": 5.7,
     "commodity": 3.0,
     "deep": 6.5,
     "analyst": 9.0,
@@ -7926,7 +7906,7 @@
      }
     ],
     "yahoo": {
-     "price": 124.13,
+     "price": 122.97,
      "targetMean": 172.252,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.3125,
@@ -7959,16 +7939,16 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 163.87,
-   "vs50": 4.6,
-   "vs200": -10.1,
-   "range52w": 28.4,
+   "price": 165.5,
+   "vs50": 5.6,
+   "vs200": -9.2,
+   "range52w": 29.8,
    "marketCap": 73440322128,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 64.2,
+   "composite": 64.8,
    "subs": {
-    "momentum": 4.1,
+    "momentum": 4.4,
     "commodity": 3.0,
     "deep": 5.0,
     "analyst": 7.0,
@@ -8057,7 +8037,7 @@
      }
     ],
     "yahoo": {
-     "price": 163.88,
+     "price": 165.5,
      "targetMean": 214.97571,
      "recommendationKey": "buy",
      "recommendationMean": 1.72727,
@@ -8093,10 +8073,10 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 12.775,
-   "vs50": -10.5,
-   "vs200": -28.3,
-   "range52w": 22.4,
+   "price": 12.4356,
+   "vs50": -12.8,
+   "vs200": -30.2,
+   "range52w": 20.6,
    "marketCap": 3393193860,
    "tradable": true,
    "quoteSuspect": false,
@@ -8183,7 +8163,7 @@
      }
     ],
     "yahoo": {
-     "price": 12.775,
+     "price": 12.4356,
      "targetMean": 26.125,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.42857,
@@ -8225,10 +8205,10 @@
     "urgency": "high",
     "rationale": "Record deliveries (+25% YoY), Carbon Arc US registrations accelerating 5 straight months, UBS sees margin beat. The EV-short is better expressed via the KARS ETF you already hold short \u2014 no single-stock earnings bomb."
    },
-   "price": 322.64,
-   "vs50": -16.2,
-   "vs200": -21.3,
-   "range52w": 12.7,
+   "price": 321.55,
+   "vs50": -16.5,
+   "vs200": -21.6,
+   "range52w": 12.1,
    "marketCap": 1531432387200,
    "tradable": true,
    "quoteSuspect": false,
@@ -8327,7 +8307,7 @@
      }
     ],
     "yahoo": {
-     "price": 322.7237,
+     "price": 321.55,
      "targetMean": 397.87274,
      "recommendationKey": "buy",
      "recommendationMean": 2.3617,
@@ -8362,16 +8342,16 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 25.525,
-   "vs50": 1.6,
-   "vs200": -11.4,
-   "range52w": 37.4,
+   "price": 25.6989,
+   "vs50": 2.3,
+   "vs200": -10.8,
+   "range52w": 36.6,
    "marketCap": 28825802437,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 61.4,
+   "composite": 61.6,
    "subs": {
-    "momentum": 3.8,
+    "momentum": 3.9,
     "commodity": 3.0,
     "deep": 5.0,
     "analyst": 10.0,
@@ -8460,7 +8440,7 @@
      }
     ],
     "yahoo": {
-     "price": 25.52,
+     "price": 25.6989,
      "targetMean": 35.93,
      "recommendationKey": "buy",
      "recommendationMean": 1.66667,
@@ -8560,16 +8540,16 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 11.03,
-   "vs50": -0.7,
-   "vs200": -16.3,
-   "range52w": 13.6,
+   "price": 11.43,
+   "vs50": 2.8,
+   "vs200": -13.3,
+   "range52w": 18.0,
    "marketCap": 15346736765,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 60.0,
+   "composite": 63.1,
    "subs": {
-    "momentum": 2.1,
+    "momentum": 3.1,
     "commodity": 9.0,
     "deep": 6.0,
     "analyst": null,
@@ -8622,8 +8602,8 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 11.015,
-     "targetMean": 14.405644,
+     "price": 11.43,
+     "targetMean": 14.398862,
      "recommendationKey": "buy",
      "recommendationMean": 1.8,
      "ebitdaMargins": 0.15691,
@@ -8804,16 +8784,9 @@
    "material": "Lithium",
    "role": "Producer",
    "capTier": "Small",
-   "held": "short",
-   "heldMv": -62.82,
-   "position": {
-    "side": "short",
-    "shares": 6.0,
-    "mktValue": -62.82,
-    "unrealizedPnl": -3.75,
-    "avgCost": 9.8453,
-    "lastPrice": 10.47
-   },
+   "held": null,
+   "heldMv": null,
+   "position": null,
    "country": "CA",
    "exchange": "NYSE / Nasdaq (ADR)",
    "analyst": {
@@ -8835,16 +8808,16 @@
     "urgency": "medium",
     "rationale": "Strongest lithium micro: Q2 production beat +6%, AISC falling to $620/t, CF-positive at $1,500/t. Catalyst 8/14 financials."
    },
-   "price": 10.51,
-   "vs50": -16.1,
-   "vs200": -17.9,
-   "range52w": 30.7,
+   "price": 10.55,
+   "vs50": -15.8,
+   "vs200": -17.6,
+   "range52w": 30.9,
    "marketCap": 1326809730,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 51.4,
+   "composite": 51.6,
    "subs": {
-    "momentum": 0.2,
+    "momentum": 0.3,
     "commodity": 5.0,
     "deep": 8.0,
     "analyst": 9.0,
@@ -8935,7 +8908,7 @@
      }
     ],
     "yahoo": {
-     "price": 10.51,
+     "price": 10.55,
      "targetMean": 20.625,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.33333,
@@ -8961,16 +8934,16 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 596.95,
-   "vs50": 8.2,
-   "vs200": 6.3,
-   "range52w": 61.5,
+   "price": 562.9,
+   "vs50": 1.8,
+   "vs200": 0.3,
+   "range52w": 50.3,
    "marketCap": 2268785037050,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 68.8,
+   "composite": 62.2,
    "subs": {
-    "momentum": 7.4,
+    "momentum": 5.3,
     "commodity": 7.0,
     "deep": 5.0,
     "analyst": null,
@@ -9039,16 +9012,9 @@
    "material": "Lithium",
    "role": "Producer",
    "capTier": "Large",
-   "held": "short",
-   "heldMv": -69.44,
-   "position": {
-    "side": "short",
-    "shares": 1.0,
-    "mktValue": -69.44,
-    "unrealizedPnl": -3.86,
-    "avgCost": 65.58,
-    "lastPrice": 69.445
-   },
+   "held": null,
+   "heldMv": null,
+   "position": null,
    "country": "CL",
    "exchange": "NYSE / Nasdaq (ADR)",
    "analyst": {
@@ -9070,16 +9036,16 @@
     "urgency": "none",
     "rationale": "Neutral consensus but cost-curve winner; iodine cushions."
    },
-   "price": 69.5,
-   "vs50": -6.6,
-   "vs200": -4.0,
-   "range52w": 57.3,
+   "price": 70.13,
+   "vs50": -5.8,
+   "vs200": -3.1,
+   "range52w": 58.3,
    "marketCap": 20905743852,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 53.6,
+   "composite": 54.0,
    "subs": {
-    "momentum": 3.9,
+    "momentum": 4.1,
     "commodity": 5.0,
     "deep": 6.0,
     "analyst": 5.5,
@@ -9162,7 +9128,7 @@
      }
     ],
     "yahoo": {
-     "price": 69.48,
+     "price": 70.13,
      "targetMean": 84.78056,
      "recommendationKey": "buy",
      "recommendationMean": 2.33333,
@@ -9260,14 +9226,14 @@
    "role": "Producer",
    "capTier": "Mid",
    "held": "short",
-   "heldMv": -94.98,
+   "heldMv": -571.08,
    "position": {
     "side": "short",
-    "shares": 2.0,
-    "mktValue": -94.98,
-    "unrealizedPnl": -8.0,
-    "avgCost": 43.49,
-    "lastPrice": 47.49
+    "shares": 12.0,
+    "mktValue": -571.08,
+    "unrealizedPnl": -7.8,
+    "avgCost": 46.94,
+    "lastPrice": 47.59
    },
    "country": "US",
    "exchange": "NYSE / Nasdaq",
@@ -9381,7 +9347,7 @@
      }
     ],
     "yahoo": {
-     "price": 47.65,
+     "price": 47.675,
      "targetMean": 62.975,
      "recommendationKey": "buy",
      "recommendationMean": 2.0,
@@ -9424,16 +9390,16 @@
     "urgency": "medium",
     "rationale": "Quality large-cap with Buy 5/2 and +56% PT \u2014 the wrong silver short. Keep the high-beta/high-cost trio AG/CDE/HL instead."
    },
-   "price": 48.0777,
-   "vs50": 2.9,
-   "vs200": -4.8,
-   "range52w": 48.6,
+   "price": 48.26,
+   "vs50": 3.3,
+   "vs200": -4.4,
+   "range52w": 48.8,
    "marketCap": 18400354500,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 61.6,
+   "composite": 61.8,
    "subs": {
-    "momentum": 5.0,
+    "momentum": 5.1,
     "commodity": 3.0,
     "deep": 5.5,
     "analyst": 9.0,
@@ -9511,7 +9477,7 @@
      }
     ],
     "yahoo": {
-     "price": 48.1,
+     "price": 48.26,
      "targetMean": 65.25,
      "recommendationKey": "buy",
      "recommendationMean": 1.77778,
@@ -10009,7 +9975,7 @@
     "checks": [],
     "yahoo": {
      "price": 4.88,
-     "targetMean": 4.690621,
+     "targetMean": 4.693207,
      "recommendationKey": "buy",
      "recommendationMean": 2.07692,
      "ebitdaMargins": 0.202,
@@ -10045,16 +10011,16 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 37.52,
-   "vs50": 7.1,
-   "vs200": -11.9,
-   "range52w": 28.9,
+   "price": 37.31,
+   "vs50": 6.5,
+   "vs200": -12.4,
+   "range52w": 28.2,
    "marketCap": 30556119360,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 61.0,
+   "composite": 60.8,
    "subs": {
-    "momentum": 4.3,
+    "momentum": 4.2,
     "commodity": 3.0,
     "deep": 3.5,
     "analyst": 10.0,
@@ -10143,7 +10109,7 @@
      }
     ],
     "yahoo": {
-     "price": 37.53,
+     "price": 37.31,
      "targetMean": 48.3375,
      "recommendationKey": "buy",
      "recommendationMean": 1.75,
@@ -10240,7 +10206,7 @@
      "targetMean": 51.20273,
      "recommendationKey": "buy",
      "recommendationMean": 2.5,
-     "ebitdaMargins": 0.04741,
+     "ebitdaMargins": 0.04244,
      "returnOnEquity": 0.03946,
      "numberOfAnalysts": 11
     }
@@ -10420,14 +10386,14 @@
    "role": "Producer",
    "capTier": "Large",
    "held": "long",
-   "heldMv": 109.23,
+   "heldMv": 657.48,
    "position": {
     "side": "long",
-    "shares": 2.0,
-    "mktValue": 109.23,
-    "unrealizedPnl": 2.34,
-    "avgCost": 53.4469,
-    "lastPrice": 54.615
+    "shares": 12.0,
+    "mktValue": 657.48,
+    "unrealizedPnl": 2.89,
+    "avgCost": 54.5495,
+    "lastPrice": 54.79
    },
    "country": "KR",
    "exchange": "NYSE / Nasdaq (ADR)",
@@ -10440,16 +10406,16 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 54.64,
-   "vs50": -4.3,
-   "vs200": -9.2,
-   "range52w": 20.4,
+   "price": 54.775,
+   "vs50": -4.0,
+   "vs200": -9.0,
+   "range52w": 20.7,
    "marketCap": 15813817304,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 57.3,
+   "composite": 57.5,
    "subs": {
-    "momentum": 2.3,
+    "momentum": 2.4,
     "commodity": 8.1,
     "deep": 7.0,
     "analyst": null,
@@ -10528,7 +10494,7 @@
      }
     ],
     "yahoo": {
-     "price": 54.64,
+     "price": 54.775,
      "targetMean": 68.0386,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.0,
@@ -10567,10 +10533,10 @@
     "urgency": "none",
     "rationale": "2-3x unhedged silver beta \u2014 the sharpest silver short while silver bias is down. Respect squeeze history (Jan $115)."
    },
-   "price": 17.645,
-   "vs50": 1.7,
-   "vs200": -6.4,
-   "range52w": 39.4,
+   "price": 17.6,
+   "vs50": 1.5,
+   "vs200": -6.6,
+   "range52w": 39.1,
    "marketCap": 8369394178,
    "tradable": true,
    "quoteSuspect": false,
@@ -10656,7 +10622,7 @@
      }
     ],
     "yahoo": {
-     "price": 17.6299,
+     "price": 17.6,
      "targetMean": 24.75,
      "recommendationKey": "buy",
      "recommendationMean": 1.66667,
@@ -10761,16 +10727,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 31.5799,
-   "vs50": 7.9,
-   "vs200": -3.5,
-   "range52w": 42.7,
+   "price": 31.28,
+   "vs50": 6.9,
+   "vs200": -4.4,
+   "range52w": 39.9,
    "marketCap": 5805569927,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 68.5,
+   "composite": 67.0,
    "subs": {
-    "momentum": 5.7,
+    "momentum": 5.4,
     "deep": 8.0,
     "fundamentals": 9.2
    },
@@ -10831,7 +10797,7 @@
      }
     ],
     "yahoo": {
-     "price": 31.5799,
+     "price": 31.28,
      "targetMean": 39.0,
      "recommendationKey": "buy",
      "recommendationMean": 1.81818,
@@ -10867,10 +10833,10 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 38.12,
-   "vs50": 1.0,
-   "vs200": 4.4,
-   "range52w": 49.9,
+   "price": 38.08,
+   "vs50": 0.9,
+   "vs200": 4.3,
+   "range52w": 49.7,
    "marketCap": 1679149537,
    "tradable": true,
    "quoteSuspect": false,
@@ -10957,7 +10923,7 @@
      }
     ],
     "yahoo": {
-     "price": 38.12,
+     "price": 38.08,
      "targetMean": 46.0,
      "recommendationKey": "none",
      "ebitdaMargins": 0.06667,
@@ -11190,7 +11156,7 @@
     "checks": [],
     "yahoo": {
      "price": 9.06,
-     "targetMean": 11.805523,
+     "targetMean": 11.805101,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.5,
      "ebitdaMargins": 0.53993,
@@ -11293,9 +11259,16 @@
    "material": "Aluminum",
    "role": "Fabricator",
    "capTier": "Small",
-   "held": null,
-   "heldMv": null,
-   "position": null,
+   "held": "short",
+   "heldMv": -534.15,
+   "position": {
+    "side": "short",
+    "shares": 3.0,
+    "mktValue": -534.15,
+    "unrealizedPnl": -0.67,
+    "avgCost": 177.8267,
+    "lastPrice": 178.05
+   },
    "country": "US",
    "exchange": "NYSE / Nasdaq",
    "analyst": {
@@ -11311,16 +11284,16 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 178.3999,
-   "vs50": 2.5,
-   "vs200": 30.6,
-   "range52w": 86.8,
+   "price": 178.05,
+   "vs50": 2.3,
+   "vs200": 30.3,
+   "range52w": 86.5,
    "marketCap": 2612698374,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 56.2,
+   "composite": 56.0,
    "subs": {
-    "momentum": 9.4,
+    "momentum": 9.3,
     "commodity": 3.9,
     "deep": 5.0,
     "analyst": 4.0,
@@ -11412,7 +11385,7 @@
      }
     ],
     "yahoo": {
-     "price": 177.93,
+     "price": 178.05,
      "targetMean": 169.25,
      "recommendationKey": "hold",
      "recommendationMean": 3.25,
@@ -11422,7 +11395,7 @@
     }
    },
    "discovered": false,
-   "groupRank": "3/7"
+   "groupRank": "4/7"
   },
   {
    "ticker": "AU",
@@ -11438,10 +11411,10 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 88.5,
-   "vs50": 5.4,
-   "vs200": -1.2,
-   "range52w": 52.0,
+   "price": 88.61,
+   "vs50": 5.5,
+   "vs200": -1.1,
+   "range52w": 52.1,
    "marketCap": 41511739759,
    "tradable": true,
    "quoteSuspect": false,
@@ -11521,8 +11494,8 @@
      }
     ],
     "yahoo": {
-     "price": 88.5475,
-     "targetMean": 114.125,
+     "price": 88.61,
+     "targetMean": 113.125,
      "recommendationKey": "buy",
      "recommendationMean": 1.625,
      "ebitdaMargins": 0.60617,
@@ -11639,7 +11612,7 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 17.3613,
+   "price": 17.36,
    "vs50": -8.6,
    "vs200": -12.3,
    "range52w": 29.5,
@@ -11701,7 +11674,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 17.39
+     "price": 17.36
     }
    },
    "discovered": false
@@ -11913,16 +11886,16 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 215.6,
-   "vs50": 5.3,
-   "vs200": -5.6,
-   "range52w": 39.4,
+   "price": 215.09,
+   "vs50": 5.1,
+   "vs200": -5.8,
+   "range52w": 38.5,
    "marketCap": 13664914680,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 54.9,
+   "composite": 54.7,
    "subs": {
-    "momentum": 5.0,
+    "momentum": 4.9,
     "commodity": 3.0,
     "deep": 6.0,
     "analyst": 7.0,
@@ -12016,7 +11989,7 @@
      }
     ],
     "yahoo": {
-     "price": 215.53,
+     "price": 215.09,
      "targetMean": 301.16666,
      "recommendationKey": "buy",
      "recommendationMean": 1.83333,
@@ -12203,14 +12176,14 @@
    "role": "Producer",
    "capTier": "Small",
    "held": "short",
-   "heldMv": -93.76,
+   "heldMv": -562.8,
    "position": {
     "side": "short",
-    "shares": 2.0,
-    "mktValue": -93.76,
-    "unrealizedPnl": -7.74,
-    "avgCost": 43.01,
-    "lastPrice": 46.88
+    "shares": 12.0,
+    "mktValue": -562.8,
+    "unrealizedPnl": -8.78,
+    "avgCost": 46.1683,
+    "lastPrice": 46.9
    },
    "country": "US",
    "exchange": "NYSE / Nasdaq",
@@ -12230,16 +12203,16 @@
     "urgency": "none",
     "rationale": "Higher-cost smelter, same falling-LME thesis."
    },
-   "price": 47.035,
-   "vs50": -8.0,
-   "vs200": -1.4,
-   "range52w": 54.4,
+   "price": 46.9,
+   "vs50": -8.3,
+   "vs200": -1.7,
+   "range52w": 53.7,
    "marketCap": 4421168580,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 50.9,
+   "composite": 50.7,
    "subs": {
-    "momentum": 3.7,
+    "momentum": 3.6,
     "commodity": 3.0,
     "deep": 4.0,
     "analyst": 9.0,
@@ -12318,7 +12291,7 @@
      }
     ],
     "yahoo": {
-     "price": 47.035,
+     "price": 46.9,
      "targetMean": 74.0,
      "recommendationKey": "none",
      "ebitdaMargins": 0.114779994,
@@ -12421,7 +12394,7 @@
      "price": 429000.0,
      "targetMean": 707161.3,
      "recommendationKey": "buy",
-     "recommendationMean": 1.87097,
+     "recommendationMean": 1.74194,
      "ebitdaMargins": 0.0,
      "numberOfAnalysts": 31
     }
@@ -12525,16 +12498,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 94.655,
-   "vs50": -4.2,
-   "vs200": -9.5,
-   "range52w": 38.1,
+   "price": 94.265,
+   "vs50": -4.6,
+   "vs200": -9.8,
+   "range52w": 37.5,
    "marketCap": 41806810558,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 50.0,
+   "composite": 49.5,
    "subs": {
-    "momentum": 3.0,
+    "momentum": 2.9,
     "deep": 7.0,
     "fundamentals": 6.9
    },
@@ -12597,8 +12570,8 @@
      }
     ],
     "yahoo": {
-     "price": 94.7,
-     "targetMean": 129.61183,
+     "price": 94.265,
+     "targetMean": 129.67381,
      "recommendationKey": "buy",
      "recommendationMean": 1.70833,
      "ebitdaMargins": 0.2298,
@@ -12711,16 +12684,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 9.91,
-   "vs50": 0.1,
-   "vs200": -6.6,
-   "range52w": 46.2,
+   "price": 10.045,
+   "vs50": 1.4,
+   "vs200": -5.4,
+   "range52w": 48.1,
    "marketCap": 6400660030,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 56.5,
+   "composite": 58.5,
    "subs": {
-    "momentum": 4.3,
+    "momentum": 4.7,
     "deep": 7.0,
     "fundamentals": 2.5
    },
@@ -12765,8 +12738,8 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 9.8951,
-     "targetMean": 19.302952,
+     "price": 10.045,
+     "targetMean": 19.31232,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.5,
      "ebitdaMargins": 0.0,
@@ -12793,10 +12766,10 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 0.9638,
-   "vs50": -11.1,
-   "vs200": -32.9,
-   "range52w": 5.2,
+   "price": 0.9817,
+   "vs50": -9.4,
+   "vs200": -31.7,
+   "range52w": 6.7,
    "marketCap": 1339354886,
    "tradable": true,
    "quoteSuspect": false,
@@ -12881,7 +12854,7 @@
      }
     ],
     "yahoo": {
-     "price": 0.9638,
+     "price": 0.9817,
      "targetMean": 1.20567,
      "recommendationKey": "underperform",
      "recommendationMean": 3.75,
@@ -12911,16 +12884,16 @@
     "urgency": "none",
     "rationale": "Chronic underperformer; note its copper JV (Cerro Verde) partially fights the short if copper rips."
    },
-   "price": 33.13,
-   "vs50": 4.7,
-   "vs200": 6.0,
-   "range52w": 62.8,
+   "price": 32.98,
+   "vs50": 4.3,
+   "vs200": 5.5,
+   "range52w": 61.8,
    "marketCap": 7619606010,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 56.5,
+   "composite": 56.0,
    "subs": {
-    "momentum": 6.8,
+    "momentum": 6.6,
     "commodity": 3.7,
     "deep": 3.0,
     "analyst": null,
@@ -13002,7 +12975,7 @@
      }
     ],
     "yahoo": {
-     "price": 33.13,
+     "price": 32.98,
      "targetMean": 37.78333,
      "recommendationKey": "hold",
      "recommendationMean": 3.0,
@@ -13194,14 +13167,14 @@
    "role": "Producer",
    "capTier": "Mid",
    "held": "long",
-   "heldMv": 98.52,
+   "heldMv": 682.02,
    "position": {
     "side": "long",
-    "shares": 8.0,
-    "mktValue": 98.52,
-    "unrealizedPnl": -0.22,
-    "avgCost": 12.342,
-    "lastPrice": 12.315
+    "shares": 54.0,
+    "mktValue": 682.02,
+    "unrealizedPnl": 9.81,
+    "avgCost": 12.4483,
+    "lastPrice": 12.63
    },
    "country": "US",
    "exchange": "NYSE / Nasdaq",
@@ -13225,16 +13198,16 @@
     "urgency": "high",
     "rationale": "Best steel short on micro (0 buys, negative EPS revisions, -23%/month) BUT July 23 earnings on a crowded short is binary. Trim 73\u219250 shares before 7/23, re-add on any squeeze."
    },
-   "price": 12.46,
-   "vs50": 8.8,
-   "vs200": 8.9,
-   "range52w": 55.5,
+   "price": 12.645,
+   "vs50": 10.3,
+   "vs200": 10.5,
+   "range52w": 57.7,
    "marketCap": 5361897776,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 61.3,
+   "composite": 62.3,
    "subs": {
-    "momentum": 7.4,
+    "momentum": 7.9,
     "commodity": 9.0,
     "deep": 3.0,
     "analyst": 5.7,
@@ -13325,7 +13298,7 @@
      }
     ],
     "yahoo": {
-     "price": 12.475,
+     "price": 12.645,
      "targetMean": 11.8,
      "recommendationKey": "hold",
      "recommendationMean": 2.92308,
@@ -13352,16 +13325,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 3.065,
-   "vs50": -1.7,
-   "vs200": -7.0,
-   "range52w": 46.7,
+   "price": 3.095,
+   "vs50": -0.7,
+   "vs200": -6.1,
+   "range52w": 48.0,
    "marketCap": 2923204787,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 45.0,
+   "composite": 46.5,
    "subs": {
-    "momentum": 4.0,
+    "momentum": 4.3,
     "deep": 5.0,
     "fundamentals": 2.2
    },
@@ -13426,8 +13399,8 @@
      }
     ],
     "yahoo": {
-     "price": 3.06,
-     "targetMean": 4.9586625,
+     "price": 3.095,
+     "targetMean": 4.9609985,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.42857,
      "ebitdaMargins": 0.0,
@@ -13527,7 +13500,7 @@
     "checks": [],
     "yahoo": {
      "price": 93.8,
-     "targetMean": 124.864174,
+     "targetMean": 124.88568,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.5,
      "ebitdaMargins": 0.14206,
@@ -13902,10 +13875,10 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 5.535,
-   "vs50": -20.2,
-   "vs200": -39.0,
-   "range52w": 4.8,
+   "price": 5.52,
+   "vs50": -20.4,
+   "vs200": -39.2,
+   "range52w": 4.7,
    "marketCap": 4047654541,
    "tradable": true,
    "quoteSuspect": false,
@@ -13978,7 +13951,7 @@
      }
     ],
     "yahoo": {
-     "price": 5.5343,
+     "price": 5.52,
      "targetMean": 6.6625,
      "recommendationKey": "hold",
      "recommendationMean": 3.44444,
@@ -13996,16 +13969,9 @@
    "material": "Lithium",
    "role": "ETF",
    "capTier": "ETF",
-   "held": "short",
-   "heldMv": -72.69,
-   "position": {
-    "side": "short",
-    "shares": 1.0,
-    "mktValue": -72.69,
-    "unrealizedPnl": -4.82,
-    "avgCost": 67.87,
-    "lastPrice": 72.69
-   },
+   "held": null,
+   "heldMv": null,
+   "position": null,
    "country": "US",
    "exchange": "NYSE / Nasdaq",
    "analyst": null,
@@ -14015,10 +13981,10 @@
     "urgency": "none",
     "rationale": "The single remaining lithium-complex hedge against ALB/SQM/SGML/LAC longs. Watch: it still holds your longs \u2014 it is a beta hedge, not alpha."
    },
-   "price": 72.795,
-   "vs50": -4.3,
+   "price": 72.73,
+   "vs50": -4.4,
    "vs200": 0.7,
-   "range52w": 62.6,
+   "range52w": 62.5,
    "marketCap": 1402493805,
    "tradable": true,
    "quoteSuspect": false,
@@ -14066,7 +14032,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 72.795
+     "price": 72.73
     }
    },
    "discovered": false,
@@ -14178,16 +14144,16 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 0.145,
-   "vs50": 16.3,
-   "vs200": -19.2,
-   "range52w": 16.7,
+   "price": 0.14,
+   "vs50": 12.4,
+   "vs200": -22.0,
+   "range52w": 14.3,
    "marketCap": 76134943,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 43.0,
+   "composite": 40.5,
    "subs": {
-    "momentum": 4.6,
+    "momentum": 3.8,
     "commodity": 5.0,
     "deep": 3.0,
     "analyst": null,
@@ -14244,7 +14210,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 0.145,
+     "price": 0.14,
      "recommendationKey": "none",
      "ebitdaMargins": 0.030650001,
      "returnOnEquity": -0.063779995
@@ -14428,7 +14394,7 @@
     "checks": [],
     "yahoo": {
      "price": 18.47,
-     "targetMean": 25.990227,
+     "targetMean": 25.994703,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.2,
      "ebitdaMargins": 0.24022,
@@ -14453,9 +14419,9 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 187.45,
+   "price": 187.355,
    "vs50": 9.6,
-   "vs200": -17.3,
+   "vs200": -17.4,
    "range52w": 14.1,
    "marketCap": 3242012254,
    "tradable": true,
@@ -14522,7 +14488,7 @@
      }
     ],
     "yahoo": {
-     "price": 187.26,
+     "price": 187.355,
      "targetMean": 259.26666,
      "recommendationKey": "buy",
      "recommendationMean": 1.70588,
@@ -14548,10 +14514,10 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 0.13,
-   "vs50": -15.1,
-   "vs200": -41.4,
-   "range52w": 3.6,
+   "price": 0.125,
+   "vs50": -18.3,
+   "vs200": -43.7,
+   "range52w": 1.8,
    "marketCap": 58916183,
    "tradable": false,
    "quoteSuspect": false,
@@ -14610,7 +14576,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 0.13,
+     "price": 0.125,
      "targetMean": 0.7,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
@@ -14636,8 +14602,8 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 2.6,
-   "vs50": -56.4,
+   "price": 2.73,
+   "vs50": -54.2,
    "vs200": -31.5,
    "range52w": 0.0,
    "marketCap": 4490348404,
@@ -14711,7 +14677,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 2.6,
+     "price": 2.73,
      "targetMean": 12.0,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.0,
@@ -14728,16 +14694,9 @@
    "material": "Aluminum",
    "role": "Consumer",
    "capTier": "Mid",
-   "held": "short",
-   "heldMv": -68.38,
-   "position": {
-    "side": "short",
-    "shares": 1.0,
-    "mktValue": -68.38,
-    "unrealizedPnl": -3.01,
-    "avgCost": 65.37,
-    "lastPrice": 68.38
-   },
+   "held": null,
+   "heldMv": null,
+   "position": null,
    "country": "US",
    "exchange": "NYSE / Nasdaq",
    "analyst": {
@@ -14754,16 +14713,16 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 68.34,
-   "vs50": 7.0,
-   "vs200": 13.4,
-   "range52w": 93.0,
+   "price": 69.282,
+   "vs50": 8.4,
+   "vs200": 15.0,
+   "range52w": 96.5,
    "marketCap": 12600489000,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 55.3,
+   "composite": 56.3,
    "subs": {
-    "momentum": 9.0,
+    "momentum": 9.5,
     "commodity": 3.7,
     "deep": 3.0,
     "analyst": 4.0,
@@ -14850,7 +14809,7 @@
      }
     ],
     "yahoo": {
-     "price": 68.34,
+     "price": 69.282,
      "targetMean": 77.5,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.0,
@@ -14860,7 +14819,7 @@
     }
    },
    "discovered": false,
-   "groupRank": "4/7"
+   "groupRank": "3/7"
   },
   {
    "ticker": "TMC",
@@ -14885,9 +14844,9 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 4.025,
-   "vs50": -12.3,
-   "vs200": -30.5,
+   "price": 4.02,
+   "vs50": -12.4,
+   "vs200": -30.6,
    "range52w": 7.9,
    "marketCap": 1823860991,
    "tradable": true,
@@ -14974,7 +14933,7 @@
      }
     ],
     "yahoo": {
-     "price": 4.025,
+     "price": 4.02,
      "targetMean": 11.0,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.33333,
@@ -15445,7 +15404,7 @@
     "checks": [],
     "yahoo": {
      "price": 41.32,
-     "targetMean": 80.937904,
+     "targetMean": 80.95184,
      "recommendationKey": "buy",
      "recommendationMean": 1.94737,
      "ebitdaMargins": 0.17464,
@@ -15556,16 +15515,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 22.27,
-   "vs50": 3.9,
-   "vs200": -15.6,
-   "range52w": 28.4,
+   "price": 22.93,
+   "vs50": 6.9,
+   "vs200": -13.1,
+   "range52w": 31.5,
    "marketCap": 2431837138,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 57.5,
+   "composite": 61.5,
    "subs": {
-    "momentum": 3.5,
+    "momentum": 4.3,
     "deep": 8.0,
     "fundamentals": 1.5
    },
@@ -15611,7 +15570,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 22.27,
+     "price": 22.93,
      "targetMean": 36.9,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.28571,
@@ -15639,16 +15598,16 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 85.98,
-   "vs50": 8.4,
-   "vs200": -8.5,
-   "range52w": 43.2,
+   "price": 86.5,
+   "vs50": 9.0,
+   "vs200": -8.0,
+   "range52w": 44.1,
    "marketCap": 18918574468,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 51.8,
+   "composite": 52.4,
    "subs": {
-    "momentum": 5.4,
+    "momentum": 5.6,
     "commodity": 3.0,
     "deep": 6.5,
     "analyst": null,
@@ -15706,7 +15665,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 85.98,
+     "price": 86.5,
      "targetMean": 95.44015,
      "recommendationKey": "hold",
      "recommendationMean": 2.53333,
@@ -15723,16 +15682,9 @@
    "material": "Lithium",
    "role": "Producer",
    "capTier": "Small",
-   "held": "short",
-   "heldMv": -64.68,
-   "position": {
-    "side": "short",
-    "shares": 21.0,
-    "mktValue": -64.68,
-    "unrealizedPnl": -4.26,
-    "avgCost": 2.8774,
-    "lastPrice": 3.0801
-   },
+   "held": null,
+   "heldMv": null,
+   "position": null,
    "country": "US",
    "exchange": "NYSE / Nasdaq",
    "analyst": {
@@ -15755,10 +15707,10 @@
     "urgency": "none",
     "rationale": "Funded Thacker Pass option (DOE $2.23B, GM JV) but pre-revenue until 2028 and GS Neutral $4.50. Position is already 3.5% NAV \u2014 right size for an option."
    },
-   "price": 3.095,
-   "vs50": -19.7,
-   "vs200": -34.5,
-   "range52w": 7.1,
+   "price": 3.1,
+   "vs50": -19.6,
+   "vs200": -34.4,
+   "range52w": 7.2,
    "marketCap": 741285052,
    "tradable": true,
    "quoteSuspect": false,
@@ -15838,7 +15790,7 @@
      }
     ],
     "yahoo": {
-     "price": 3.095,
+     "price": 3.1,
      "targetMean": 5.71111,
      "recommendationKey": "hold",
      "recommendationMean": 2.75,
@@ -15868,16 +15820,16 @@
     "urgency": "medium",
     "rationale": "Redundant: overlaps LIT (both hold ALB/SQM \u2014 you are shorting your own longs twice). Keep one ETF hedge only; +$18 uPnL banked."
    },
-   "price": 15.24,
-   "vs50": -1.3,
-   "vs200": 1.5,
+   "price": 15.255,
+   "vs50": -1.2,
+   "vs200": 1.6,
    "range52w": 66.0,
    "marketCap": 119614255,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 46.4,
+   "composite": 46.7,
    "subs": {
-    "momentum": 5.5,
+    "momentum": 5.6,
     "commodity": 5.0,
     "deep": 4.0,
     "analyst": null,
@@ -15919,7 +15871,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 15.24
+     "price": 15.255
     }
    },
    "discovered": false
@@ -15955,10 +15907,10 @@
     "urgency": "none",
     "rationale": "-42% YTD and still: loss-making palladium ops, high debt, restructuring \u2014 in a structurally-surplus palladium market."
    },
-   "price": 9.905,
-   "vs50": 5.1,
-   "vs200": -20.2,
-   "range52w": 21.1,
+   "price": 9.915,
+   "vs50": 5.2,
+   "vs200": -20.1,
+   "range52w": 21.2,
    "marketCap": 6050337527,
    "tradable": true,
    "quoteSuspect": false,
@@ -16035,15 +15987,9 @@
      {
       "field": "priceTarget",
       "primary": 17.25,
-      "yahoo": 12.86,
-      "deltaPct": -25.5,
+      "yahoo": 12.87,
+      "deltaPct": -25.4,
       "status": "flag"
-     },
-     {
-      "field": "recommendation",
-      "primary": "bull",
-      "yahoo": "bull",
-      "status": "agree"
      },
      {
       "field": "ebitdaMargin",
@@ -16054,10 +16000,9 @@
      }
     ],
     "yahoo": {
-     "price": 9.9001,
-     "targetMean": 12.857134,
-     "recommendationKey": "buy",
-     "recommendationMean": 2.25,
+     "price": 9.915,
+     "targetMean": 12.866793,
+     "recommendationKey": "none",
      "ebitdaMargins": 0.26377,
      "returnOnEquity": -0.102510005,
      "numberOfAnalysts": 4
@@ -16609,7 +16554,7 @@
     "checks": [],
     "yahoo": {
      "price": 36.34,
-     "targetMean": 63.455826,
+     "targetMean": 63.466755,
      "recommendationKey": "buy",
      "recommendationMean": 2.26667,
      "ebitdaMargins": 0.49932998,
@@ -16740,7 +16685,7 @@
    "price": 9.59,
    "vs50": -4.7,
    "vs200": 5.4,
-   "range52w": 51.3,
+   "range52w": 51.1,
    "marketCap": 17281400828,
    "tradable": true,
    "quoteSuspect": false,
@@ -17031,10 +16976,10 @@
     "blogger": "Bullish"
    },
    "recommendation": null,
-   "price": 2.125,
-   "vs50": -18.8,
-   "vs200": -45.5,
-   "range52w": 1.9,
+   "price": 2.14,
+   "vs50": -18.2,
+   "vs200": -45.1,
+   "range52w": 2.2,
    "marketCap": 428434639,
    "tradable": true,
    "quoteSuspect": false,
@@ -17117,7 +17062,7 @@
      }
     ],
     "yahoo": {
-     "price": 2.1289,
+     "price": 2.14,
      "targetMean": 6.875,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
@@ -17239,16 +17184,16 @@
     "urgency": "medium",
     "rationale": "Name-for-name TiO2 swap: TROX Neutral 1/5/1 + leverage vs KRO Zacks Buy, volumes +4%, +33%/yr vs industry -10%. Same commodity exposure, stronger balance sheet and momentum."
    },
-   "price": 5.64,
-   "vs50": -16.8,
-   "vs200": -12.6,
-   "range52w": 36.9,
+   "price": 5.87,
+   "vs50": -13.5,
+   "vs200": -9.0,
+   "range52w": 39.9,
    "marketCap": 979477360,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 34.3,
+   "composite": 35.6,
    "subs": {
-    "momentum": 0.9,
+    "momentum": 1.6,
     "commodity": 5.0,
     "deep": 4.5,
     "analyst": 7.0,
@@ -17330,7 +17275,7 @@
      }
     ],
     "yahoo": {
-     "price": 5.64,
+     "price": 5.87,
      "targetMean": 7.03125,
      "recommendationKey": "hold",
      "recommendationMean": 3.25,
@@ -17357,16 +17302,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 35.83,
-   "vs50": 14.1,
-   "vs200": 4.9,
-   "range52w": 50.3,
+   "price": 36.005,
+   "vs50": 14.7,
+   "vs200": 5.4,
+   "range52w": 51.0,
    "marketCap": 6085926645,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 59.0,
+   "composite": 59.5,
    "subs": {
-    "momentum": 7.8,
+    "momentum": 7.9,
     "deep": 4.0,
     "fundamentals": 8.5
    },
@@ -17431,7 +17376,7 @@
      }
     ],
     "yahoo": {
-     "price": 35.81,
+     "price": 36.005,
      "targetMean": 40.6,
      "recommendationKey": "hold",
      "recommendationMean": 2.6,
@@ -17721,7 +17666,7 @@
     }
    },
    "discovered": false,
-   "groupRank": "4/6"
+   "groupRank": "5/6"
   },
   {
    "ticker": "486.HK",
@@ -17895,7 +17840,7 @@
     }
    },
    "discovered": true,
-   "groupRank": "15/17"
+   "groupRank": "16/17"
   },
   {
    "ticker": "086520.KQ",
@@ -17998,16 +17943,16 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 72.08,
-   "vs50": -0.3,
-   "vs200": -3.0,
-   "range52w": 53.4,
+   "price": 73.63,
+   "vs50": 1.8,
+   "vs200": -0.9,
+   "range52w": 56.3,
    "marketCap": 16789425120,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 41.5,
+   "composite": 43.7,
    "subs": {
-    "momentum": 4.8,
+    "momentum": 5.5,
     "commodity": 3.0,
     "deep": 3.0,
     "analyst": null,
@@ -18064,8 +18009,8 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 72.08,
-     "targetMean": 91.4,
+     "price": 73.63,
+     "targetMean": 91.47692,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.38462,
      "ebitdaMargins": 0.60275,
@@ -18090,16 +18035,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 8.945,
-   "vs50": 7.2,
-   "vs200": -6.3,
-   "range52w": 41.7,
+   "price": 8.96,
+   "vs50": 7.4,
+   "vs200": -6.2,
+   "range52w": 41.8,
    "marketCap": 2392235920,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 51.5,
+   "composite": 52.0,
    "subs": {
-    "momentum": 5.3,
+    "momentum": 5.4,
     "deep": 5.0,
     "fundamentals": 3.2
    },
@@ -18159,7 +18104,7 @@
      }
     ],
     "yahoo": {
-     "price": 8.955,
+     "price": 8.96,
      "targetMean": 15.5,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.25,
@@ -18187,16 +18132,16 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 388.485,
-   "vs50": 1.4,
-   "vs200": -5.6,
-   "range52w": 43.7,
+   "price": 389.622,
+   "vs50": 1.7,
+   "vs200": -5.4,
+   "range52w": 44.2,
    "marketCap": 132217624535,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 40.2,
+   "composite": 40.5,
    "subs": {
-    "momentum": 4.5,
+    "momentum": 4.6,
     "commodity": 3.0,
     "deep": 3.0,
     "analyst": null,
@@ -18254,7 +18199,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 388.535
+     "price": 389.622
     }
    },
    "discovered": false,
@@ -18372,16 +18317,16 @@
     "blogger": "Bearish"
    },
    "recommendation": null,
-   "price": 5.93,
-   "vs50": -9.3,
-   "vs200": 2.1,
-   "range52w": 47.6,
+   "price": 6.19,
+   "vs50": -5.4,
+   "vs200": 6.5,
+   "range52w": 54.8,
    "marketCap": 677662853,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 35.5,
+   "composite": 37.8,
    "subs": {
-    "momentum": 3.5,
+    "momentum": 4.8,
     "commodity": 5.0,
     "deep": 6.0,
     "analyst": 2.0,
@@ -18462,7 +18407,7 @@
      }
     ],
     "yahoo": {
-     "price": 5.93,
+     "price": 6.19,
      "targetMean": 6.5,
      "recommendationKey": "hold",
      "recommendationMean": 3.0,
@@ -18472,7 +18417,7 @@
     }
    },
    "discovered": false,
-   "groupRank": "5/6"
+   "groupRank": "4/6"
   },
   {
    "ticker": "AQMS",
@@ -18490,10 +18435,10 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 2.72,
-   "vs50": -11.3,
-   "vs200": -45.4,
-   "range52w": 0.9,
+   "price": 2.67,
+   "vs50": -12.9,
+   "vs200": -46.4,
+   "range52w": 0.7,
    "marketCap": 9420538,
    "tradable": false,
    "quoteSuspect": false,
@@ -18570,7 +18515,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 2.72,
+     "price": 2.67,
      "targetMean": 5.0,
      "recommendationKey": "buy",
      "recommendationMean": 2.0,
@@ -18595,9 +18540,9 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 0.6285,
-   "vs50": -62.7,
-   "vs200": -78.6,
+   "price": 0.6307,
+   "vs50": -62.6,
+   "vs200": -78.5,
    "range52w": 1.4,
    "marketCap": 14562000,
    "tradable": false,
@@ -18663,7 +18608,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 0.6285,
+     "price": 0.6307,
      "targetMean": 20.0,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
@@ -18687,16 +18632,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 5.08,
-   "vs50": 3.8,
-   "vs200": -10.3,
-   "range52w": 17.1,
+   "price": 5.02,
+   "vs50": 2.6,
+   "vs200": -11.4,
+   "range52w": 16.4,
    "marketCap": 672612162,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 47.5,
+   "composite": 45.5,
    "subs": {
-    "momentum": 3.5,
+    "momentum": 3.1,
     "deep": 6.0,
     "fundamentals": 2.5
    },
@@ -18747,7 +18692,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 5.08,
+     "price": 5.02,
      "targetMean": 11.72,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.2,
@@ -18856,16 +18801,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 9.595,
-   "vs50": 9.0,
-   "vs200": -1.2,
-   "range52w": 45.4,
+   "price": 9.62,
+   "vs50": 9.3,
+   "vs200": -0.9,
+   "range52w": 45.7,
    "marketCap": 2581196937,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 51.0,
+   "composite": 51.5,
    "subs": {
-    "momentum": 6.2,
+    "momentum": 6.3,
     "deep": 4.0,
     "fundamentals": 8.6
    },
@@ -18928,7 +18873,7 @@
      }
     ],
     "yahoo": {
-     "price": 9.595,
+     "price": 9.62,
      "targetMean": 14.5,
      "recommendationKey": "buy",
      "recommendationMean": 2.0,
@@ -18955,16 +18900,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 6.4499,
-   "vs50": -7.0,
-   "vs200": -20.0,
-   "range52w": 21.7,
+   "price": 6.375,
+   "vs50": -8.1,
+   "vs200": -20.9,
+   "range52w": 21.1,
    "marketCap": 957279118,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 35.0,
+   "composite": 34.0,
    "subs": {
-    "momentum": 1.0,
+    "momentum": 0.8,
     "deep": 6.0,
     "fundamentals": 3.2
    },
@@ -19024,7 +18969,7 @@
      }
     ],
     "yahoo": {
-     "price": 6.4499,
+     "price": 6.375,
      "targetMean": 12.5625,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.0,
@@ -19051,16 +18996,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 10.705,
-   "vs50": -2.8,
-   "vs200": -20.4,
-   "range52w": 15.0,
+   "price": 10.72,
+   "vs50": -2.6,
+   "vs200": -20.3,
+   "range52w": 15.1,
    "marketCap": 5211006014,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 37.0,
+   "composite": 37.5,
    "subs": {
-    "momentum": 1.4,
+    "momentum": 1.5,
     "deep": 6.0,
     "fundamentals": 3.6
    },
@@ -19121,7 +19066,7 @@
      }
     ],
     "yahoo": {
-     "price": 10.7086,
+     "price": 10.72,
      "targetMean": 18.02778,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
@@ -19224,10 +19169,10 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 6.305,
-   "vs50": -43.7,
-   "vs200": -24.0,
-   "range52w": 9.9,
+   "price": 6.42,
+   "vs50": -42.7,
+   "vs200": -22.6,
+   "range52w": 10.2,
    "marketCap": 69919471,
    "tradable": false,
    "quoteSuspect": false,
@@ -19303,7 +19248,7 @@
      }
     ],
     "yahoo": {
-     "price": 6.305,
+     "price": 6.42,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0
     }
@@ -19409,10 +19354,10 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 6.8,
-   "vs50": -22.2,
-   "vs200": -34.0,
-   "range52w": 11.0,
+   "price": 6.68,
+   "vs50": -23.5,
+   "vs200": -35.1,
+   "range52w": 10.6,
    "marketCap": 742825470,
    "tradable": true,
    "quoteSuspect": false,
@@ -19483,7 +19428,7 @@
      }
     ],
     "yahoo": {
-     "price": 6.795,
+     "price": 6.68,
      "targetMean": 17.5,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.5,
@@ -19656,11 +19601,11 @@
     "checks": [],
     "yahoo": {
      "price": 2747.0,
-     "targetMean": 3367.828,
+     "targetMean": 3367.5557,
      "recommendationKey": "hold",
      "recommendationMean": 2.85714,
-     "ebitdaMargins": 0.67050004,
-     "returnOnEquity": 0.52975,
+     "ebitdaMargins": 0.56599,
+     "returnOnEquity": 0.33900002,
      "numberOfAnalysts": 14
     }
    },
@@ -19681,10 +19626,10 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 9.3599,
-   "vs50": -28.1,
-   "vs200": -45.3,
-   "range52w": 1.0,
+   "price": 9.24,
+   "vs50": -29.0,
+   "vs200": -46.0,
+   "range52w": 0.7,
    "marketCap": 663414417,
    "tradable": true,
    "quoteSuspect": false,
@@ -19744,7 +19689,7 @@
      }
     ],
     "yahoo": {
-     "price": 9.3599,
+     "price": 9.24,
      "targetMean": 24.625,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.5,
@@ -19774,16 +19719,16 @@
     "urgency": "none",
     "rationale": "Becomes the book's downstream-EV short after TSLA is covered; China-heavy, no earnings-date risk."
    },
-   "price": 30.2699,
-   "vs50": -4.9,
-   "vs200": -6.2,
-   "range52w": 43.6,
+   "price": 30.1401,
+   "vs50": -5.3,
+   "vs200": -6.6,
+   "range52w": 42.0,
    "marketCap": 62317629,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 33.1,
+   "composite": 32.1,
    "subs": {
-    "momentum": 3.4,
+    "momentum": 3.2,
     "commodity": null,
     "deep": 4.5,
     "analyst": null,
@@ -19816,7 +19761,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 30.2699
+     "price": 30.1401
     }
    },
    "discovered": false
@@ -19836,16 +19781,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 10.685,
-   "vs50": 3.5,
-   "vs200": -21.2,
-   "range52w": 22.0,
+   "price": 10.655,
+   "vs50": 3.2,
+   "vs200": -21.4,
+   "range52w": 21.7,
    "marketCap": 1445202244,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 43.5,
+   "composite": 43.0,
    "subs": {
-    "momentum": 2.7,
+    "momentum": 2.6,
     "deep": 6.0,
     "fundamentals": 3.4
    },
@@ -19905,7 +19850,7 @@
      }
     ],
     "yahoo": {
-     "price": 10.685,
+     "price": 10.655,
      "targetMean": 21.41667,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
@@ -19930,10 +19875,10 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 1.375,
-   "vs50": -9.9,
-   "vs200": -38.5,
-   "range52w": 3.0,
+   "price": 1.365,
+   "vs50": -10.5,
+   "vs200": -39.0,
+   "range52w": 2.8,
    "marketCap": 257568539,
    "tradable": true,
    "quoteSuspect": false,
@@ -20000,8 +19945,8 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 1.375,
-     "targetMean": 4.6530833,
+     "price": 1.365,
+     "targetMean": 4.655208,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
      "returnOnEquity": -0.87418,
@@ -20093,7 +20038,7 @@
     "checks": [],
     "yahoo": {
      "price": 479.6,
-     "targetMean": 698.8032,
+     "targetMean": 698.74677,
      "recommendationKey": "buy",
      "recommendationMean": 1.54545,
      "ebitdaMargins": 0.48031,
@@ -20196,16 +20141,16 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 0.5545,
-   "vs50": -3.5,
-   "vs200": -29.7,
-   "range52w": 1.0,
+   "price": 0.595,
+   "vs50": 3.4,
+   "vs200": -24.6,
+   "range52w": 1.6,
    "marketCap": 59937832,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 28.3,
+   "composite": 32.4,
    "subs": {
-    "momentum": 0.0,
+    "momentum": 1.6,
     "commodity": 5.0,
     "deep": 2.5,
     "analyst": null,
@@ -20266,8 +20211,8 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 0.5545,
-     "targetMean": 1.6948186,
+     "price": 0.595,
+     "targetMean": 1.6955925,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
      "returnOnEquity": -1.35241,
@@ -20299,16 +20244,16 @@
     "urgency": "none",
     "rationale": "Second PGM short; bias short with high confidence."
    },
-   "price": 12.31,
-   "vs50": 5.7,
-   "vs200": -13.0,
-   "range52w": 26.1,
+   "price": 12.37,
+   "vs50": 6.2,
+   "vs200": -12.6,
+   "range52w": 26.6,
    "marketCap": 9987522453,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 36.9,
+   "composite": 37.2,
    "subs": {
-    "momentum": 3.9,
+    "momentum": 4.0,
     "commodity": 1.0,
     "deep": 3.0,
     "analyst": null,
@@ -20377,10 +20322,9 @@
      }
     ],
     "yahoo": {
-     "price": 12.31,
+     "price": 12.37,
      "targetMean": 13.65797,
-     "recommendationKey": "strong_buy",
-     "recommendationMean": 1.0,
+     "recommendationKey": "none",
      "ebitdaMargins": 0.21115999,
      "returnOnEquity": 0.0828,
      "numberOfAnalysts": 2
@@ -20403,16 +20347,16 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 0.77,
-   "vs50": -0.4,
-   "vs200": -25.8,
-   "range52w": 7.6,
+   "price": 0.8,
+   "vs50": 3.4,
+   "vs200": -22.9,
+   "range52w": 9.8,
    "marketCap": 86242320,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 31.2,
+   "composite": 34.3,
    "subs": {
-    "momentum": 1.1,
+    "momentum": 2.1,
     "commodity": 5.0,
     "deep": 2.5,
     "analyst": null,
@@ -20458,7 +20402,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 0.77,
+     "price": 0.8,
      "targetMean": 2.0,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
@@ -20483,16 +20427,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 4.08,
-   "vs50": 0.6,
-   "vs200": -10.9,
-   "range52w": 20.4,
+   "price": 4.11,
+   "vs50": 1.4,
+   "vs200": -10.3,
+   "range52w": 21.5,
    "marketCap": 5129817000,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 35.0,
+   "composite": 36.0,
    "subs": {
-    "momentum": 3.0,
+    "momentum": 3.2,
     "deep": 4.0,
     "fundamentals": 9.1
    },
@@ -20557,7 +20501,7 @@
      }
     ],
     "yahoo": {
-     "price": 4.08,
+     "price": 4.11,
      "targetMean": 5.95,
      "recommendationKey": "buy",
      "recommendationMean": 2.23077,
@@ -20567,7 +20511,7 @@
     }
    },
    "discovered": true,
-   "groupRank": "16/17"
+   "groupRank": "15/17"
   },
   {
    "ticker": "RCK.V",
@@ -20583,10 +20527,10 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 0.63,
-   "vs50": -20.8,
-   "vs200": -28.5,
-   "range52w": 0.0,
+   "price": 0.65,
+   "vs50": -18.3,
+   "vs200": -26.3,
+   "range52w": 1.8,
    "marketCap": 91199989,
    "tradable": false,
    "quoteSuspect": false,
@@ -20639,7 +20583,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 0.63,
+     "price": 0.65,
      "targetMean": 2.95,
      "recommendationKey": "buy",
      "recommendationMean": 2.0,
@@ -20669,16 +20613,16 @@
     "rationale": "The book shorts silver/PGM but has no gold short while gold bias is down: HMY = high-cost SA gold, the classic gold-downside name (discovered, not in Excel)."
    },
    "omEvidence": null,
-   "price": 18.1986,
-   "vs50": 13.8,
-   "vs200": 2.7,
-   "range52w": 44.2,
+   "price": 18.08,
+   "vs50": 13.1,
+   "vs200": 2.0,
+   "range52w": 43.3,
    "marketCap": 9540229647,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 51.5,
+   "composite": 50.5,
    "subs": {
-    "momentum": 7.3,
+    "momentum": 7.1,
     "deep": 3.0,
     "fundamentals": 9.0
    },
@@ -20727,7 +20671,7 @@
      }
     ],
     "yahoo": {
-     "price": 18.1986,
+     "price": 18.08,
      "targetMean": 20.72537,
      "recommendationKey": "buy",
      "recommendationMean": 2.33333,
@@ -20810,7 +20754,7 @@
     "checks": [],
     "yahoo": {
      "price": 2.25,
-     "targetMean": 5.2157784,
+     "targetMean": 5.218012,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
      "returnOnEquity": -0.16599001
@@ -20837,16 +20781,16 @@
     "urgency": "none",
     "rationale": "Pre-revenue developer in weak palladium \u2014 right thesis, but $169M micro-cap: any financing/partner headline squeezes. Do not add."
    },
-   "price": 1.455,
-   "vs50": 3.3,
-   "vs200": -28.1,
-   "range52w": 9.6,
+   "price": 1.485,
+   "vs50": 5.4,
+   "vs200": -26.6,
+   "range52w": 10.9,
    "marketCap": 168678419,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 27.2,
+   "composite": 28.5,
    "subs": {
-    "momentum": 1.6,
+    "momentum": 2.1,
     "commodity": 1.4,
     "deep": 2.5,
     "analyst": null,
@@ -20904,7 +20848,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 1.455,
+     "price": 1.485,
      "recommendationKey": "hold",
      "recommendationMean": 3.0,
      "ebitdaMargins": 0.0,
@@ -20929,16 +20873,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 3.89,
-   "vs50": -1.9,
-   "vs200": -11.5,
-   "range52w": 28.5,
+   "price": 3.95,
+   "vs50": -0.4,
+   "vs200": -10.1,
+   "range52w": 30.4,
    "marketCap": 316460778,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 29.5,
+   "composite": 31.5,
    "subs": {
-    "momentum": 2.9,
+    "momentum": 3.3,
     "deep": 3.0,
     "fundamentals": 4.4
    },
@@ -20993,7 +20937,7 @@
      }
     ],
     "yahoo": {
-     "price": 3.89,
+     "price": 3.95,
      "targetMean": 8.62667,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.0,
@@ -21020,16 +20964,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 31.105,
-   "vs50": -4.3,
-   "vs200": -19.6,
-   "range52w": 19.3,
+   "price": 31.26,
+   "vs50": -3.8,
+   "vs200": -19.2,
+   "range52w": 19.8,
    "marketCap": 12372181008,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 22.0,
+   "composite": 23.0,
    "subs": {
-    "momentum": 1.4,
+    "momentum": 1.6,
     "deep": 3.0,
     "fundamentals": 9.4
    },
@@ -21092,7 +21036,7 @@
      }
     ],
     "yahoo": {
-     "price": 31.085,
+     "price": 31.26,
      "targetMean": 46.25,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.38462,
@@ -21123,16 +21067,16 @@
     "rationale": "Replaces part of the covered NUE/STLD short gross on the RIGHT side of the tariff: Canadian mill selling into a 50%-tariff US market, -23% below 50DMA. Keeps steel-group net roughly balanced (discovered name)."
    },
    "omEvidence": null,
-   "price": 4.24,
-   "vs50": -3.1,
-   "vs200": -2.7,
-   "range52w": 40.2,
+   "price": 4.46,
+   "vs50": 1.8,
+   "vs200": 2.4,
+   "range52w": 48.7,
    "marketCap": 381506801,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 29.5,
+   "composite": 37.0,
    "subs": {
-    "momentum": 3.9,
+    "momentum": 5.4,
     "deep": 2.0,
     "fundamentals": 7.2
    },
@@ -21187,7 +21131,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 4.24,
+     "price": 4.46,
      "recommendationKey": "hold",
      "recommendationMean": 2.75,
      "ebitdaMargins": -0.32845002,
@@ -21212,16 +21156,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 33.11,
-   "vs50": -8.3,
-   "vs200": -14.6,
-   "range52w": 11.7,
+   "price": 33.285,
+   "vs50": -7.9,
+   "vs200": -14.2,
+   "range52w": 13.2,
    "marketCap": null,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 9.0,
+   "composite": 10.0,
    "subs": {
-    "momentum": 0.9
+    "momentum": 1.0
    },
    "coverage": 18,
    "microVerdict": null,
@@ -21237,7 +21181,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 33.11,
+     "price": 33.285,
      "targetMean": 40.4,
      "recommendationKey": "hold",
      "recommendationMean": 3.2,
@@ -21256,14 +21200,14 @@
    "role": null,
    "capTier": null,
    "held": "short",
-   "heldMv": -112.38,
+   "heldMv": -109.76,
    "position": {
     "side": "short",
     "shares": 2.0,
-    "mktValue": -112.38,
-    "unrealizedPnl": -26.89,
+    "mktValue": -109.76,
+    "unrealizedPnl": -24.27,
     "avgCost": 42.745,
-    "lastPrice": 56.19
+    "lastPrice": 54.879
    },
    "country": null,
    "exchange": null,
@@ -21271,16 +21215,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 55.97,
-   "vs50": 32.6,
-   "vs200": 19.5,
-   "range52w": 54.3,
+   "price": 54.86,
+   "vs50": 30.0,
+   "vs200": 17.1,
+   "range52w": 51.6,
    "marketCap": null,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 93.0,
+   "composite": 90.0,
    "subs": {
-    "momentum": 9.3
+    "momentum": 9.0
    },
    "coverage": 18,
    "microVerdict": null,
@@ -21296,7 +21240,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 56.0,
+     "price": 54.86,
      "targetMean": 72.5,
      "recommendationKey": "none",
      "ebitdaMargins": 0.13651,
@@ -21314,14 +21258,14 @@
    "role": null,
    "capTier": null,
    "held": "long",
-   "heldMv": 109.48,
+   "heldMv": 660.0,
    "position": {
     "side": "long",
-    "shares": 1.0,
-    "mktValue": 109.48,
-    "unrealizedPnl": 5.22,
-    "avgCost": 104.2579,
-    "lastPrice": 109.48
+    "shares": 6.0,
+    "mktValue": 660.0,
+    "unrealizedPnl": 6.39,
+    "avgCost": 108.9347,
+    "lastPrice": 110.0
    },
    "country": null,
    "exchange": null,
@@ -21329,16 +21273,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 109.48,
-   "vs50": 4.9,
-   "vs200": 16.2,
-   "range52w": 91.4,
+   "price": 110.17,
+   "vs50": 5.6,
+   "vs200": 16.9,
+   "range52w": 92.9,
    "marketCap": null,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 88.0,
+   "composite": 91.0,
    "subs": {
-    "momentum": 8.8
+    "momentum": 9.1
    },
    "coverage": 18,
    "microVerdict": null,
@@ -21354,7 +21298,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 109.48
+     "price": 110.17
     }
    },
    "discovered": false,
@@ -21366,32 +21310,25 @@
    "material": null,
    "role": null,
    "capTier": null,
-   "held": "short",
-   "heldMv": -59.43,
-   "position": {
-    "side": "short",
-    "shares": 1.0,
-    "mktValue": -59.43,
-    "unrealizedPnl": -3.69,
-    "avgCost": 55.745,
-    "lastPrice": 59.43
-   },
+   "held": null,
+   "heldMv": null,
+   "position": null,
    "country": null,
    "exchange": null,
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 59.415,
-   "vs50": 5.2,
-   "vs200": 9.0,
-   "range52w": 64.3,
+   "price": 58.64,
+   "vs50": 3.8,
+   "vs200": 7.5,
+   "range52w": 60.4,
    "marketCap": null,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 72.0,
+   "composite": 67.0,
    "subs": {
-    "momentum": 7.2
+    "momentum": 6.7
    },
    "coverage": 18,
    "microVerdict": null,
@@ -21407,7 +21344,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 59.415,
+     "price": 58.64,
      "targetMean": 65.6,
      "recommendationKey": "none",
      "ebitdaMargins": 0.101780005,
@@ -21425,14 +21362,14 @@
    "role": null,
    "capTier": null,
    "held": "long",
-   "heldMv": 154.3,
+   "heldMv": 1021.71,
    "position": {
     "side": "long",
-    "shares": 1.7804,
-    "mktValue": 154.3,
-    "unrealizedPnl": 14.31,
-    "avgCost": 78.6305,
-    "lastPrice": 86.6679
+    "shares": 11.7804,
+    "mktValue": 1021.71,
+    "unrealizedPnl": 10.02,
+    "avgCost": 85.8794,
+    "lastPrice": 86.73
    },
    "country": null,
    "exchange": null,
@@ -21440,16 +21377,16 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 86.92,
-   "vs50": 7.9,
-   "vs200": 13.0,
-   "range52w": 83.9,
+   "price": 86.73,
+   "vs50": 7.6,
+   "vs200": 12.8,
+   "range52w": 83.5,
    "marketCap": null,
    "tradable": false,
    "quoteSuspect": false,
-   "composite": 88.0,
+   "composite": 87.0,
    "subs": {
-    "momentum": 8.8
+    "momentum": 8.7
    },
    "coverage": 18,
    "microVerdict": null,
@@ -21465,7 +21402,7 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 86.905
+     "price": 86.73
     }
    },
    "discovered": false,
@@ -21478,14 +21415,14 @@
    "role": null,
    "capTier": null,
    "held": "long",
-   "heldMv": 170.31,
+   "heldMv": 877.86,
    "position": {
     "side": "long",
-    "shares": 20.8457,
-    "mktValue": 170.31,
-    "unrealizedPnl": 30.31,
-    "avgCost": 6.716,
-    "lastPrice": 8.17
+    "shares": 107.8457,
+    "mktValue": 877.86,
+    "unrealizedPnl": 24.77,
+    "avgCost": 7.9103,
+    "lastPrice": 8.14
    },
    "country": null,
    "exchange": null,
@@ -21493,10 +21430,10 @@
    "tipranksExtra": null,
    "recommendation": null,
    "omEvidence": null,
-   "price": 8.195,
-   "vs50": 15.1,
-   "vs200": 24.7,
-   "range52w": 88.3,
+   "price": 8.18,
+   "vs50": 14.9,
+   "vs200": 24.5,
+   "range52w": 88.0,
    "marketCap": null,
    "tradable": false,
    "quoteSuspect": false,
@@ -21518,8 +21455,8 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 8.195,
-     "targetMean": 10.55504,
+     "price": 8.18,
+     "targetMean": 10.558128,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.28571,
      "ebitdaMargins": 0.20759001,
@@ -21538,7 +21475,10 @@
    "action": "COVER",
    "urgency": "high",
    "rationale": "Thesis conflict: short the strongest US mill while HRC >$1,100 is tariff-tight and consensus is Buy +19%. -$21.8 uPnL says the tape agrees. Free the $684 of short gross for shorts that work.",
-   "heldNow": null
+   "heldNow": {
+    "shares": 2.0,
+    "side": "long"
+   }
   },
   {
    "ticker": "STLD",
@@ -21546,7 +21486,10 @@
    "action": "COVER",
    "urgency": "high",
    "rationale": "Same conflict as NUE (Buy +16% PT). Between the two 'quality mill' shorts and RS/CLF, keep only the weak ones.",
-   "heldNow": null
+   "heldNow": {
+    "shares": 2.0,
+    "side": "long"
+   }
   },
   {
    "ticker": "RS",
@@ -21563,7 +21506,7 @@
    "urgency": "high",
    "rationale": "Best steel short on micro (0 buys, negative EPS revisions, -23%/month) BUT July 23 earnings on a crowded short is binary. Trim 73\u219250 shares before 7/23, re-add on any squeeze.",
    "heldNow": {
-    "shares": 8.0,
+    "shares": 54.0,
     "side": "long"
    }
   },
@@ -21605,10 +21548,7 @@
    "action": "KEEP",
    "urgency": "none",
    "rationale": "The single remaining lithium-complex hedge against ALB/SQM/SGML/LAC longs. Watch: it still holds your longs \u2014 it is a beta hedge, not alpha.",
-   "heldNow": {
-    "shares": 1.0,
-    "side": "short"
-   }
+   "heldNow": null
   },
   {
    "ticker": "ALB",
@@ -21616,10 +21556,7 @@
    "action": "KEEP",
    "urgency": "none",
    "rationale": "Zacks #1, Buy +71% PT, Q1 EBITDA +148% \u2014 but PT cuts continue; do not add until lithium futures stabilize (CATL restart pressure).",
-   "heldNow": {
-    "shares": 1.0,
-    "side": "short"
-   }
+   "heldNow": null
   },
   {
    "ticker": "SQM",
@@ -21627,10 +21564,7 @@
    "action": "KEEP",
    "urgency": "none",
    "rationale": "Neutral consensus but cost-curve winner; iodine cushions.",
-   "heldNow": {
-    "shares": 1.0,
-    "side": "short"
-   }
+   "heldNow": null
   },
   {
    "ticker": "SGML",
@@ -21638,10 +21572,7 @@
    "action": "ADD ~$200 (to ~5.8% NAV)",
    "urgency": "medium",
    "rationale": "Strongest lithium micro: Q2 production beat +6%, AISC falling to $620/t, CF-positive at $1,500/t. Catalyst 8/14 financials.",
-   "heldNow": {
-    "shares": 6.0,
-    "side": "short"
-   }
+   "heldNow": null
   },
   {
    "ticker": "LAC",
@@ -21649,10 +21580,7 @@
    "action": "KEEP (no add)",
    "urgency": "none",
    "rationale": "Funded Thacker Pass option (DOE $2.23B, GM JV) but pre-revenue until 2028 and GS Neutral $4.50. Position is already 3.5% NAV \u2014 right size for an option.",
-   "heldNow": {
-    "shares": 21.0,
-    "side": "short"
-   }
+   "heldNow": null
   },
   {
    "ticker": "AA",
@@ -21661,7 +21589,7 @@
    "urgency": "low",
    "rationale": "Correct instrument for the aluminum-short bias (pure smelter leverage, LME war-premium unwound). Tiny at 0.4% NAV.",
    "heldNow": {
-    "shares": 2.0,
+    "shares": 12.0,
     "side": "short"
    }
   },
@@ -21672,7 +21600,7 @@
    "urgency": "none",
    "rationale": "Higher-cost smelter, same falling-LME thesis.",
    "heldNow": {
-    "shares": 2.0,
+    "shares": 12.0,
     "side": "short"
    }
   },
@@ -21699,7 +21627,7 @@
    "urgency": "high",
    "rationale": "The book has ZERO copper exposure against a long-bias, tight-fundamentals copper market with the US tariff decision as a live catalyst. 12/15 buys, +17% PT. This is the single biggest gap in the book.",
    "heldNow": {
-    "shares": 2.2308,
+    "shares": 14.2308,
     "side": "long"
    }
   },
@@ -21710,7 +21638,7 @@
    "urgency": "low",
    "rationale": "Street's only metals Sell consensus (PT -14%). Pairs the FCX long into a market-neutral copper spread if you want to keep net short unchanged.",
    "heldNow": {
-    "shares": 0.7705,
+    "shares": 4.0705,
     "side": "long"
    }
   },
@@ -21833,14 +21761,20 @@
    "ticker": "NUE",
    "qty": "3 sh (~$682)",
    "why": "thesis conflict with bullish steel",
-   "heldNow": null
+   "heldNow": {
+    "shares": 2.0,
+    "side": "long"
+   }
   },
   {
    "side": "BUY TO COVER",
    "ticker": "STLD",
    "qty": "3 sh (~$685)",
    "why": "thesis conflict with bullish steel",
-   "heldNow": null
+   "heldNow": {
+    "shares": 2.0,
+    "side": "long"
+   }
   },
   {
    "side": "BUY TO COVER",
@@ -21848,7 +21782,7 @@
    "qty": "23 sh of 73 (~$216)",
    "why": "de-risk crowded short into 7/23 earnings",
    "heldNow": {
-    "shares": 8.0,
+    "shares": 54.0,
     "side": "long"
    }
   },
@@ -21886,7 +21820,7 @@
    "qty": "11 sh (~$677)",
    "why": "copper gap: long-bias commodity, tariff catalyst, 12/15 buys",
    "heldNow": {
-    "shares": 2.2308,
+    "shares": 14.2308,
     "side": "long"
    }
   },
@@ -21902,10 +21836,7 @@
    "ticker": "SGML",
    "qty": "17 sh (~$202)",
    "why": "add to strongest lithium micro",
-   "heldNow": {
-    "shares": 6.0,
-    "side": "short"
-   }
+   "heldNow": null
   },
   {
    "side": "SELL",
@@ -21934,7 +21865,7 @@
    "qty": "2 sh (~$352)",
    "why": "Sell-consensus pair vs FCX long",
    "heldNow": {
-    "shares": 0.7705,
+    "shares": 4.0705,
     "side": "long"
    }
   },
@@ -21953,6 +21884,6 @@
    "heldNow": null
   }
  ],
- "sizingNote": "NAV ~$10,692. Rules: single name \u2264 8% NAV (~$855), commodity group \u2264 20% NAV, keep gross \u2264 75%. Current book: gross ~25%, net ~10%. [book 2026-08-05]",
- "pricesRefreshedAt": "2026-08-05T16:18:49+00:00"
+ "sizingNote": "NAV ~$10,688. Rules: single name \u2264 8% NAV (~$855), commodity group \u2264 20% NAV, keep gross \u2264 75%. Current book: gross ~114%, net ~81%. [book 2026-08-05]",
+ "pricesRefreshedAt": "2026-08-05T20:12:47+00:00"
 }
