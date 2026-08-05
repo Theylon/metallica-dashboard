@@ -1,47 +1,47 @@
 {
- "updatedAt": "2026-08-05T11:58:35+00:00",
+ "updatedAt": "2026-08-05T12:08:05+00:00",
  "status": "accumulating",
  "daysCollected": 18,
  "minDaysNeeded": 25,
  "fwdWindow": 20,
  "signals": [],
  "factorTilt": {
-  "asOf": "2026-07-31",
+  "asOf": "2026-08-05",
   "factors": [
    {
     "factor": "momentum",
-    "portZ": 0.64,
-    "longZ": 1.17,
-    "shortZ": 0.49,
-    "coverage": 16
+    "portZ": 0.19,
+    "longZ": 1.07,
+    "shortZ": -0.12,
+    "coverage": 26
    },
    {
     "factor": "value",
-    "portZ": 0.43,
-    "longZ": 0.78,
-    "shortZ": 0.11,
-    "coverage": 13
+    "portZ": 0.07,
+    "longZ": 0.61,
+    "shortZ": 0.08,
+    "coverage": 20
    },
    {
     "factor": "quality",
-    "portZ": -0.04,
-    "longZ": -0.08,
-    "shortZ": -0.01,
-    "coverage": 13
+    "portZ": 0.0,
+    "longZ": -0.02,
+    "shortZ": -0.02,
+    "coverage": 20
    },
    {
     "factor": "size",
-    "portZ": 0.06,
-    "longZ": 0.07,
-    "shortZ": -0.07,
-    "coverage": 13
+    "portZ": 0.03,
+    "longZ": 0.1,
+    "shortZ": -0.22,
+    "coverage": 21
    },
    {
     "factor": "lowVol",
-    "portZ": 0.3,
-    "longZ": 0.62,
-    "shortZ": 0.32,
-    "coverage": 16
+    "portZ": 0.06,
+    "longZ": 0.29,
+    "shortZ": -0.36,
+    "coverage": 26
    }
   ]
  }
