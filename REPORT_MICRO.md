@@ -1,8 +1,8 @@
 # Metallica — Micro-Analysis & Stock-Picking Report
 
 **As of:** 2026-07-12 · **NAV:** ~$10,953 · **Book:** 27 positions, gross ~69%, net ~-31%
-**Sources:** IBKR (live positions), FMP (quotes/momentum), TipRanks (analyst refresh), Bigdata.com (news/filings/transcripts), Carbon Arc (US vehicle registrations), **MetalMiner MCP (live: spot prices, support/resistance, MMO buying strategies)**, MetalMiner Excel universe (204 names, OM linkage + enrichment).
-**Limitations:** FMP is on the Free plan (per-symbol commodity quotes and analyst endpoints blocked; batch quotes worked). MetalMiner answers one entity per query; gold has no MetalMiner series (FMP used).
+**Sources:** IBKR (live positions), a frozen quotes snapshot + daily Yahoo pull (quotes/momentum), TipRanks (analyst refresh), TrueNorth (fundamentals, insiders, 13F), Bigdata.com (news/filings/transcripts), Carbon Arc (US vehicle registrations), **MetalMiner MCP (live: spot prices, support/resistance, MMO buying strategies)**, MetalMiner Excel universe (204 names, OM linkage + enrichment).
+**Limitations:** MetalMiner answers one entity per query. See "Retired sources" below for what the FMP connector used to cover and what replaced it.
 
 ### MetalMiner live layer (added 2026-07-12)
 
@@ -120,4 +120,37 @@ The 6 names without a fundamentals block are genuinely unfetchable, not skipped:
 
 ### Yahoo Finance cross-validation
 
-Each card shows an independent **Yahoo Finance cross-validation** (`yfinance`): it compares the primary FMP/TipRanks/TrueNorth numbers — analyst price target, rating direction, EBITDA margin, price — against Yahoo's, and flags divergences (agree / mixed / **conflict**). This is a data-integrity check, surfacing when two independent sources disagree on a name. (Google Finance has no free API, so Yahoo is the second source.) It is **display-only** — it does not feed the composite score. Rebuild adds `scripts/micro_yahoo.py` → `scripts/micro_build.py`.
+Each card shows an independent **Yahoo Finance cross-validation** (`yfinance`): it compares the primary TipRanks/TrueNorth numbers — analyst price target, rating direction, EBITDA margin, price — against Yahoo's, and flags divergences (agree / mixed / **conflict**). This is a data-integrity check, surfacing when two independent sources disagree on a name. (Google Finance has no free API, so Yahoo is the second source.) It is **display-only** — it does not feed the composite score. Rebuild adds `scripts/micro_yahoo.py` → `scripts/micro_build.py`.
+
+
+---
+
+## Retired sources (2026-08)
+
+The **FMP** connector was removed. Three of its four tools returned `ACCESS DENIED` on the
+Free plan (`quote` and `insiderTrades` need paid tiers; `commitmentOfTraders` is Premium),
+and the only channel it fed — `data/positioning.json` — had been empty since 2026-07-18.
+Two consequences are worth stating once so they are not re-derived later:
+
+- **`data/micro_src/quotes.json` is a frozen 2026-07-12 FMP snapshot with no generator.**
+  It still supplies `price` / `vs50` / `vs200` / `range52w` at research-build time
+  (`micro_build.py`), and its `marketCap` is overridden from `yahoo.json`. Retiring the
+  connector does not change this — it only means the snapshot can never be regenerated,
+  which was already true, since the endpoint that produced it was already gated.
+- **Congressional-trade tracking is gone.** No connected provider serves the structured
+  disclosures; TipRanks exposes a politician roster but no per-ticker trade feed, and
+  Bigdata carries news *about* such trades rather than the filings. Re-adding it means a
+  paid feed or scraping `efdsearch.senate.gov`. The panel had never held a row.
+
+**TrueNorth stays**, and now covers more than before: `financial_metrics` feeds the
+fundamentals sub-score (12% of the composite, 104/208 names), and `financial_insider_trades`
+/ `financial_institutional_ownership` feed the Smart Money panels.
+
+**The TrueNorth exit path**, recorded so it stays a decision rather than an oversight:
+`bigdata_company_tearsheet(sections=["key_metrics","financial_ratios","financial_statements"])`
+returns every field `fundamentals_score()` reads plus six fiscal years from which the two
+`*_growth_yoy` inputs compute directly — RavenPack resells the same underlying fundamentals
+without the paywall. It is also global where TrueNorth is US-only, so coverage would likely
+rise above 104. The blockers are convention drift (ALB FY2025 ROIC is −2.2% via TrueNorth
+and +0.6% via Bigdata, so sub-scores would shift on 104 names) and doing it while
+`signal_ic.py` is inside its `MIN_DAYS = 25` burn-in. Revisit once the history clears it.

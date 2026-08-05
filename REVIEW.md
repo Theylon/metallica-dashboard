@@ -38,9 +38,11 @@ Only 3 commodities are covered while the theses lean on silver/gold/aluminum/ste
 ## 5. Positioning ("Smart Money") panel is empty until fed
 
 `positioning_build.py` is wired and its output schema matches the frontend, but
-`data/positioning_src/` has only `config.json` — no FMP insider/senate/house dumps — so the
+`data/positioning_src/` has only `config.json` — no TrueNorth insider/13F dumps — so the
 Risk/Process "Smart Money & Positioning" panels render the empty state. **Action:** run the
-positioning Routine (or commit the FMP dumps) to light it up. Not a bug; just unfed.
+positioning Routine (`scripts/positioning_refresh.md`) to light it up. Not a bug; just unfed.
+The FMP dumps this once called for are gone: the endpoints sit behind a paid plan and the
+connector was retired.
 
 ## 6. orders.jsonl — instructionId "101" is reused across two open orders
 

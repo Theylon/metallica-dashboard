@@ -1458,7 +1458,7 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
     <div style="font-size:12px;color:var(--text-muted);line-height:1.5;margin:2px 2px 12px;">
       Ports the alternative-data research <em>method</em> — a pre-earnings KPI nowcast vs. consensus,
       a track record, driver drill-down and an analyst read — fed by our own live feeds
-      (CarbonArc card-spend, MetalMiner, Bigdata.com, FMP/TipRanks). No third-party report content is redistributed.
+      (CarbonArc card-spend, MetalMiner, Bigdata.com, TipRanks, TrueNorth). No third-party report content is redistributed.
       <span id="ad-updated"></span>
     </div>
 
@@ -1566,8 +1566,8 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
       <div class="report-note" style="margin-top:10px;">Auto-written by micro_build/micro_refresh (scripts/decision_log.py). ⚠ rows are <b>micro overrides</b> — the micro call contradicts the commodity bias. +30d/+90d = raw forward price return after the decision (interpret vs the held side: a short wants a negative number); backfilled by the Action once entries age.</div>
     </div>
 
-    <!-- Insiders & politicians -->
-    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">🕴️ Smart Money — insiders &amp; politicians</div></div>
+    <!-- Insiders & institutional holders -->
+    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">🕴️ Smart Money — insiders &amp; institutions</div></div>
     <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
       <div class="table-panel" style="flex:1;min-width:340px;">
         <div class="table-header"><div class="table-title">Insider activity (discretionary vs technical)</div></div>
@@ -1587,21 +1587,21 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
         <div class="report-note" style="margin-top:8px;">Many reasons to sell, only one reason to buy: open-market buys always count; sells count only when discretionary (RSU / 10b5-1 / option-exercise / small trims are technical).</div>
       </div>
       <div class="table-panel" style="flex:1;min-width:340px;">
-        <div class="table-header"><div class="table-title">Politician / congressional trades</div></div>
+        <div class="table-header"><div class="table-title">Institutional (13F) — top holders</div></div>
         <div class="table-wrapper">
           <table>
             <thead><tr>
-              <th style="text-align:left;">Who</th>
               <th style="text-align:left;">Ticker</th>
-              <th style="text-align:left;">Tx</th>
-              <th style="text-align:left;">Amount</th>
-              <th style="text-align:left;">Traded</th>
-              <th>Lag (d)</th>
+              <th style="text-align:left;">Largest holder</th>
+              <th>Top-N own</th>
+              <th>QoQ (pp)</th>
+              <th>Holders</th>
+              <th style="text-align:left;">Quarter</th>
             </tr></thead>
-            <tbody id="proc-politicians-tbody"><tr class="empty-row"><td colspan="6">Awaiting positioning refresh (scripts/positioning_refresh.md)</td></tr></tbody>
+            <tbody id="proc-inst-tbody"><tr class="empty-row"><td colspan="6">Awaiting positioning refresh (scripts/positioning_refresh.md)</td></tr></tbody>
           </table>
         </div>
-        <div class="report-note" style="margin-top:8px;">Tracked portfolios (config in data/positioning_src/config.json) + any congressional trade touching the universe/watchlist. Lag = disclosure delay in days.</div>
+        <div class="report-note" style="margin-top:8px;">Top-N own = the largest reported 13F holders' combined share of shares outstanding — a cohort, not total institutional ownership. QoQ is that cohort's move in percentage points since the prior filing.</div>
       </div>
     </div>
 
@@ -2105,7 +2105,7 @@ function buildPickDetail(r) {
       + `<span class="pick-badge ${cvCls}">${cv.agreement.toUpperCase()}</span>`
       + (cv.flags || []).map(fl => `<span class="detail-chip">${fl}</span>`).join('') + `</div>`;
     out += section('Data cross-check (Yahoo Finance)'
-      + ' <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--text-dim);">· independent second source vs FMP/TipRanks/TrueNorth</span>',
+      + ' <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--text-dim);">· independent second source vs TipRanks/TrueNorth</span>',
       body);
   }
 
@@ -3626,23 +3626,19 @@ function renderRiskTab() {
     </div>`;
   const pos = (intel && intel.positioning) || {};
   const hasPos = (pos.institutional && pos.institutional.length) ||
-                 (pos.insider && pos.insider.length) || (pos.cot && pos.cot.length) ||
-                 (pos.politicians && pos.politicians.length);
+                 (pos.insider && pos.insider.length) || (pos.cot && pos.cot.length);
   const smartEl = document.getElementById('smart-list');
   if (smartEl && hasPos) {
     let html = '';
     (pos.institutional || []).forEach(x => html += smartItem(x.ticker,
       (x.qoqChange >= 0 ? 'Institutions adding' : 'Institutions trimming'), x.qoqChange >= 0 ? 'pos' : 'neg',
-      `Inst. own ${x.instOwnPct != null ? x.instOwnPct.toFixed(1) + '%' : '—'}` +
-      (x.qoqChange != null ? `, ${x.qoqChange >= 0 ? '+' : ''}${x.qoqChange.toFixed(1)}pp QoQ` : '')));
+      `Top-${x.holdersCounted != null ? x.holdersCounted : 'N'} holders own ` +
+      `${x.topOwnPct != null ? x.topOwnPct.toFixed(1) + '%' : '—'}` +
+      (x.qoqChange != null ? `, ${x.qoqChange >= 0 ? '+' : ''}${x.qoqChange.toFixed(2)}pp QoQ` : '') +
+      (x.reportPeriod ? ` (${x.reportPeriod})` : '')));
     (pos.insider || []).forEach(x => html += smartItem(x.ticker, 'Insiders ' + x.direction,
       x.direction === 'buying' ? 'pos' : x.direction === 'selling' ? 'neg' : 'neu',
       `Net ${x.netInsiderShares >= 0 ? '+' : ''}${Number(x.netInsiderShares).toLocaleString()} shares (${x.window})`));
-    (pos.politicians || []).slice(0, 5).forEach(x => html += smartItem(x.ticker,
-      (x.name || 'Congress') + ' ' + (x.transaction === 'buy' ? 'bought' : x.transaction === 'sell' ? 'sold' : x.transaction),
-      x.transaction === 'buy' ? 'pos' : x.transaction === 'sell' ? 'neg' : 'neu',
-      `${x.chamber || ''} · ${x.amountRange || '—'} · traded ${x.txDate || '—'}` +
-      (x.disclosureLagDays != null ? `, disclosed +${x.disclosureLagDays}d` : '')));
     (pos.cot || []).forEach(x => html += smartItem(x.commodity, 'Spec net ' + (x.netSpecPosition >= 0 ? 'long' : 'short'),
       x.netSpecPosition >= 0 ? 'pos' : 'neg',
       `Net spec ${Number(x.netSpecPosition).toLocaleString()}` +
@@ -4883,7 +4879,7 @@ function renderProcess() {
   }
   renderDlogTable();
 
-  // smart money panels (positioning.json — insider classification + politicians)
+  // smart money panels (positioning.json — insider classification + 13F holders)
   const pos = (intel && intel.positioning) || {};
   const it = document.getElementById('proc-insider-tbody');
   if (it) {
@@ -4901,18 +4897,20 @@ function renderProcess() {
       + `<td style="color:${(x.netInsiderShares || 0) >= 0 ? 'var(--green)' : 'var(--red)'};">${x.netInsiderShares != null ? (x.netInsiderShares >= 0 ? '+' : '') + Number(x.netInsiderShares).toLocaleString() : '—'}</td></tr>`
     ).join('') : '<tr class="empty-row"><td colspan="6">Awaiting positioning refresh (scripts/positioning_refresh.md)</td></tr>';
   }
-  const pt = document.getElementById('proc-politicians-tbody');
+  const pt = document.getElementById('proc-inst-tbody');
   if (pt) {
-    const pol = pos.politicians || [];
-    pt.innerHTML = pol.length ? pol.slice(0, 40).map(x =>
-      `<tr><td style="text-align:left;">${esc(x.name || '—')}`
-      + `<div style="font-size:10px;color:var(--text-dim);">${esc([x.chamber, x.party].filter(Boolean).join(' · '))}</div></td>`
-      + `<td style="text-align:left;font-weight:700;">${esc(x.ticker || '')}</td>`
-      + `<td style="text-align:left;"><span class="pick-badge ${x.transaction === 'buy' ? 'long' : x.transaction === 'sell' ? 'short' : 'neutral'}">${esc((x.transaction || '?').toUpperCase())}</span></td>`
-      + `<td style="text-align:left;color:var(--text-muted);white-space:nowrap;">${esc(x.amountRange || '—')}</td>`
-      + `<td style="text-align:left;color:var(--text-muted);white-space:nowrap;">${esc(x.txDate || '—')}</td>`
-      + `<td>${x.disclosureLagDays != null ? x.disclosureLagDays : '—'}</td></tr>`
-    ).join('') : '<tr class="empty-row"><td colspan="6">Awaiting positioning refresh (scripts/positioning_refresh.md)</td></tr>';
+    const inst = pos.institutional || [];
+    pt.innerHTML = inst.length ? inst.slice(0, 40).map(x => {
+      const top = (x.topHolders || [])[0] || {};
+      return `<tr><td style="text-align:left;font-weight:700;">${esc(x.ticker || '')}</td>`
+      + `<td style="text-align:left;">${esc(top.holder || '—')}`
+      + (top.ownPct != null ? `<div style="font-size:10px;color:var(--text-dim);">${top.ownPct.toFixed(2)}%${top.isNew ? ' · new' : ''}</div>` : '')
+      + `</td>`
+      + `<td>${x.topOwnPct != null ? x.topOwnPct.toFixed(1) + '%' : '—'}</td>`
+      + `<td style="color:${(x.qoqChange || 0) >= 0 ? 'var(--green)' : 'var(--red)'};">${x.qoqChange != null ? (x.qoqChange >= 0 ? '+' : '') + x.qoqChange.toFixed(2) : '—'}</td>`
+      + `<td style="color:var(--text-muted);">${x.holdersCounted != null ? x.holdersCounted : '—'}</td>`
+      + `<td style="text-align:left;color:var(--text-muted);white-space:nowrap;">${esc(x.reportPeriod || '—')}</td></tr>`;
+    }).join('') : '<tr class="empty-row"><td colspan="6">Awaiting positioning refresh (scripts/positioning_refresh.md)</td></tr>';
   }
 }
 

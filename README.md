@@ -147,7 +147,7 @@ Action (`scripts/micro_refresh.py`).
 
 Each card also carries an independent **Yahoo Finance** data cross-check
 (`scripts/micro_yahoo.py`, `yfinance`): it pulls analyst targets, ratings and margins
-from a second source and flags where they diverge from the primary FMP/TipRanks/TrueNorth
+from a second source and flags where they diverge from the primary TipRanks/TrueNorth
 numbers. It is **display-only** (does not change the composite).
 
 ```
@@ -171,7 +171,7 @@ Four research layers (inspired by [HKUDS/Vibe-Trading](https://github.com/HKUDS/
 | **Orders** | Read-only audit trail of every IBKR **order instruction** placed via `/trade` — status chain created → submitted → filled/cancelled, the **trigger** (owner / recommendation / rebalance / alert), the owner's **reason**, gate results, and a **submit deep-link** for pending tickets (opens IBKR Mobile) | `data/orders.jsonl` | `scripts/order_log.py` (written by the `/trade` workflow) | on demand, per `/trade` session |
 | **Signals** | **IC/IR scorecard** — which of the 8 micro sub-scores actually predict forward returns — plus the book's **factor tilt** (momentum/value/quality/size/low-vol) | `data/signal_scorecard.json` (+ `data/micro_history.jsonl` history) | `scripts/signal_ic.py`; snapshots via `scripts/micro_snapshot.py` | Action 4×/day (scorecard turns on after ~25 days) |
 | **Intel** (extended) | Per-holding **sentiment + next earnings + news** for the whole book, auto **positioning** (13F/insider/COT, feeds the Risk tab's Smart-Money panel), and a **macro-regime** series | `events.json`, `positioning.json`, `macro_history.json` | `scripts/enrich.py` builders | daily research routine (`scripts/micro_refresh_research.md` §5b) |
-| **Process** | **Channel accuracy** (MedAE / hit-rate per data channel, ≥80% trust gate), the auto-written **decision & trigger log** with +30/+90-day outcome review, **insider (discretionary vs technical) + politician** trades, hard-rule cards and **pre-earnings alerts** (also shown as an Overview banner) | `channel_accuracy.json`, `decision_log.jsonl`, `alerts.json`, `positioning.json` | `scripts/channel_accuracy.py`, `scripts/decision_log.py` (hooked into the micro pipeline), `scripts/alerts_build.py`, `scripts/positioning_build.py` | Action 4×/day; insider/politician dumps via `scripts/positioning_refresh.md` Routine. Methodology: **PROCESS.md** |
+| **Process** | **Channel accuracy** (MedAE / hit-rate per data channel, ≥80% trust gate), the auto-written **decision & trigger log** with +30/+90-day outcome review, **insider (discretionary vs technical) + institutional 13F** holdings, hard-rule cards and **pre-earnings alerts** (also shown as an Overview banner) | `channel_accuracy.json`, `decision_log.jsonl`, `alerts.json`, `positioning.json` | `scripts/channel_accuracy.py`, `scripts/decision_log.py` (hooked into the micro pipeline), `scripts/alerts_build.py`, `scripts/positioning_build.py` | Action 4×/day; insider/13F dumps via `scripts/positioning_refresh.md` Routine. Methodology: **PROCESS.md** |
 
 Pure-Python pieces (`risk.py`, `signal_ic.py`, `micro_snapshot.py`, price-history capture in `micro_refresh.py`) run in the GitHub Action from data that already exists — no new secrets. The MCP-fed pieces (Journal, Intel research layer) run in scheduled Claude routines and degrade gracefully until first populated. `data/price_history.json` (held-name close series, reused from the existing `micro_refresh.py` download) gates the correlation matrix and the low-vol factor.
 
@@ -208,7 +208,7 @@ Two sub-tab groups:
 | Config | `data/altdata_src/watchlist.json` | watchlist + KPI mapping + metal→driver map |
 | Research shards | `data/altdata_src/alt_r*.json` | narratives, trends, nowcast, track record (higher shard wins) |
 | Builder | `scripts/altdata_build.py` (pure Python) | book group derived from `positions.json`; auto-defaults keep the tab populated |
-| Refresh routine | `scripts/altdata_refresh.md` | scheduled Claude Routine → CarbonArc / MetalMiner / Bigdata.com / FMP·TipRanks / web, commits data-only to `master` |
+| Refresh routine | `scripts/altdata_refresh.md` | scheduled Claude Routine → CarbonArc / MetalMiner / Bigdata.com / TipRanks / web, commits data-only to `master` |
 
 Sourcing is **live MCP + web only** — no automated inbox/Drive ingestion, and no third-party
 report text is committed (those feeds are licensed to the user personally). Like the other

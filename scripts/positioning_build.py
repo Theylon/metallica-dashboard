@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
-"""Build data/positioning.json — insider + politician (smart money) channels.
+"""Build data/positioning.json — insider + institutional (smart money) channels.
 
-Reads raw FMP MCP dumps committed under data/positioning_src/ (saved verbatim by
-the Routine in scripts/positioning_refresh.md):
+Reads raw TrueNorth MCP dumps committed under data/positioning_src/ (saved
+verbatim by the Routine in scripts/positioning_refresh.md):
 
-  fmp_insider_<TKR>.json  — mcp__FMP__insiderTrades output per name
-  fmp_senate.json         — mcp__FMP__senate senate-trades feed
-  fmp_house.json          — mcp__FMP__senate house-disclosure feed
-  config.json             — {"trackedPoliticians": [...], "windowDays": 90}
+  truenorth_insider_<TKR>.json  — mcp__TrueNorth__financial_insider_trades per name
+  truenorth_13f_<TKR>.json      — mcp__TrueNorth__financial_institutional_ownership per name
+  config.json                   — {"windowDays": 90}
 
 and normalizes them into positioning.json, preserving the existing insider[]
 contract the Risk tab renders ({ticker, direction, netInsiderShares, window})
@@ -20,9 +19,13 @@ while adding the classification layer the process requires:
   an award/gift/conversion (A/G/C/X/D-to-issuer), or a small trim (<10% of
   post-transaction holdings). Everything else is a DISCRETIONARY sell.
 
+TrueNorth serves raw SEC Form 4 rows — single-letter transaction codes and
+post-transaction holdings, the same semantics this classifier was written
+against — so the dumps normalize by key rename alone (_norm_insider below).
+
 Every build also appends one row per (ticker, channel) per UTC day to
 data/positioning_history.jsonl — the accumulation feed channel_accuracy.py
-scores the insider/politician channels from.
+scores the insider channel from.
 
 Resilient by design: missing/empty positioning_src leaves the existing
 positioning.json untouched; a malformed dump is skipped, not fatal. Stdlib only.
@@ -39,7 +42,7 @@ SRC = pathlib.Path(os.environ.get("POSITIONING_SRC", str(DATA / "positioning_src
 TECHNICAL_CODES = {"F", "M", "A", "G", "C", "X", "D"}   # non-open-market Form 4 codes
 SMALL_TRIM_PCT = 10.0                                    # sells below this % of holdings = technical
 MAX_LATEST = 5                                           # transactions kept per insider card
-MAX_POLITICIANS = 120                                    # rows kept in politicians[]
+MAX_HOLDERS = 20                                         # 13F holders summarized per name
 
 
 def _load(path, default):
@@ -51,11 +54,11 @@ def _load(path, default):
 
 
 def _rows(doc):
-    """FMP dumps arrive as a bare list or wrapped ({data|results|items: [...]})."""
+    """Dumps arrive as a bare list or wrapped ({insider_trades|holders|data: [...]})."""
     if isinstance(doc, list):
         return doc
     if isinstance(doc, dict):
-        for k in ("data", "results", "items", "trades"):
+        for k in ("insider_trades", "holders", "data", "results", "items", "trades"):
             if isinstance(doc.get(k), list):
                 return doc[k]
     return []
@@ -77,9 +80,54 @@ def _num(v):
 
 
 def _code(row):
-    """Form 4 transaction code from FMP's 'S-Sale' / 'P-Purchase' style field."""
+    """Form 4 transaction code — 'S', or an 'S-Sale' / 'P-Purchase' style field."""
     t = _first(row, "transactionType", "transactionCode", "type")
     return str(t).strip().upper()[:1] if t else None
+
+
+def _role(row):
+    """Insider role string from TrueNorth's boolean flags (falls back to a label)."""
+    label = _first(row, "typeOfOwner", "position", "officerTitle")
+    if label:
+        return label
+    bits = []
+    if row.get("is_officer"):
+        bits.append(row.get("officer_title") or "Officer")
+    if row.get("is_director"):
+        bits.append("Director")
+    if row.get("is_ten_percent_owner"):
+        bits.append("10% owner")
+    return ", ".join(bits) or None
+
+
+def _norm_insider(row):
+    """TrueNorth Form 4 row → the canonical shape classify()/build_insiders() read.
+
+    A pure key rename: TrueNorth already serves single-letter transaction codes
+    and *post*-transaction holdings, which is exactly what the small-trim rule
+    in classify() assumes (pct = transacted / (owned + transacted)).
+    """
+    if not isinstance(row, dict):
+        return None
+    if "transaction_code" not in row:
+        return row          # already canonical (or a shape we don't recognise)
+    return {
+        "transactionDate": row.get("transaction_date"),
+        "reportingName": row.get("reporting_owner_name"),
+        "transactionCode": row.get("transaction_code"),
+        "securitiesTransacted": row.get("transaction_shares"),
+        "price": row.get("transaction_price_per_share"),
+        "securitiesOwned": row.get("shares_owned_following_transaction"),
+        "acquistionOrDisposition": row.get("transaction_acquired_disposed_code"),
+        "typeOfOwner": _role(row),
+        "securityType": row.get("security_type"),
+    }
+
+
+def _is_form4(row):
+    """Guard against a dump that is not what its filename claims."""
+    return isinstance(row, dict) and _code(row) and _first(
+        row, "transactionDate", "date") is not None
 
 
 # ── insider classification ────────────────────────────────────────────────────
@@ -110,9 +158,10 @@ def classify(row, same_day_m):
 def build_insiders(window_days):
     cards = []
     cutoff = (datetime.date.today() - datetime.timedelta(days=window_days)).isoformat()
-    for path in sorted(glob.glob(str(SRC / "fmp_insider_*.json"))):
-        ticker = pathlib.Path(path).stem.replace("fmp_insider_", "").upper()
-        rows = [r for r in _rows(_load(path, [])) if isinstance(r, dict)]
+    for path in sorted(glob.glob(str(SRC / "truenorth_insider_*.json"))):
+        ticker = pathlib.Path(path).stem.replace("truenorth_insider_", "").upper()
+        rows = [_norm_insider(r) for r in _rows(_load(path, []))]
+        rows = [r for r in rows if _is_form4(r)]
         rows = [r for r in rows
                 if (_first(r, "transactionDate", "date") or "9999") >= cutoff]
         if not rows:
@@ -178,74 +227,59 @@ def build_insiders(window_days):
     return cards
 
 
-# ── politicians ───────────────────────────────────────────────────────────────
-def _universe_tickers():
-    tickers = set()
-    uni = _load(DATA / "universe.json", {})
-    for r in uni.get("tickers", []):
-        if r.get("ticker"):
-            tickers.add(r["ticker"].split(" @")[0].upper())
-    pos = _load(DATA / "positions.json", {"positions": []})
-    for p in pos.get("positions", []):
-        if p.get("ticker"):
-            tickers.add(p["ticker"].split(" @")[0].upper())
-    watch = _load(DATA / "altdata_src" / "watchlist.json", {})
-    for w in watch.get("watchlist", []):
-        if w.get("ticker"):
-            tickers.add(w["ticker"].upper())
-    return tickers
+# ── institutional (13F) ───────────────────────────────────────────────────────
+def build_institutional():
+    """Summarize the top-N 13F holders per name into one card.
 
-
-def _lag_days(tx, filed):
-    try:
-        return (datetime.date.fromisoformat(str(filed)[:10])
-                - datetime.date.fromisoformat(str(tx)[:10])).days
-    except Exception:
-        return None
-
-
-def build_politicians(tracked, window_days):
-    universe = _universe_tickers()
-    cutoff = (datetime.date.today() - datetime.timedelta(days=window_days)).isoformat()
-    tracked_lc = [t.lower() for t in tracked]
+    `topOwnPct` is the **top-N cohort's** share of outstanding, not total
+    institutional ownership — TrueNorth serves ranked holders, not a market-wide
+    total, and reporting the cohort as if it were the total would overstate a
+    trim and understate a build. `qoqChange` is that same cohort's move in
+    percentage points, derived from each holder's change_in_shares against a
+    share count implied by its own ownership_percentage.
+    """
     out = []
-    for fname, chamber in (("fmp_senate.json", "Senate"), ("fmp_house.json", "House")):
-        for r in _rows(_load(SRC / fname, [])):
-            if not isinstance(r, dict):
+    for path in sorted(glob.glob(str(SRC / "truenorth_13f_*.json"))):
+        ticker = pathlib.Path(path).stem.replace("truenorth_13f_", "").upper()
+        doc = _load(path, {})
+        holders = [h for h in _rows(doc)[:MAX_HOLDERS] if isinstance(h, dict)]
+        if not holders:
+            continue
+        now_pct = prev_pct = 0.0
+        top = []
+        for h in holders:
+            pct = _num(h.get("ownership_percentage"))
+            shares = _num(h.get("shares_held"))
+            delta = _num(h.get("change_in_shares")) or 0.0
+            if pct is None or not shares:
                 continue
-            ticker = (_first(r, "symbol", "ticker") or "").split(" @")[0].upper()
-            name = (_first(r, "representative", "senator", "name")
-                    or " ".join(x for x in (r.get("firstName"), r.get("lastName")) if x))
-            if not ticker or not name:
-                continue
-            tx_date = _first(r, "transactionDate", "txDate")
-            if (tx_date or "9999") < cutoff:
-                continue
-            watched = ticker in universe or any(t in name.lower() for t in tracked_lc)
-            if not watched:
-                continue
-            ttype = str(_first(r, "type", "transaction") or "").lower()
-            transaction = ("buy" if "purchase" in ttype or ttype == "buy"
-                           else "sell" if "sale" in ttype or "sell" in ttype else ttype or "?")
-            filed = _first(r, "disclosureDate", "dateRecieved", "dateReceived", "filedDate")
-            out.append({
-                "name": name,
-                "party": _first(r, "party"),
-                "chamber": chamber,
-                "ticker": ticker,
-                "transaction": transaction,
-                "amountRange": _first(r, "amount", "amountRange"),
-                "txDate": str(tx_date)[:10] if tx_date else None,
-                "filedDate": str(filed)[:10] if filed else None,
-                "disclosureLagDays": _lag_days(tx_date, filed),
-                "note": _first(r, "assetDescription", "comment", "owner"),
-            })
-    out.sort(key=lambda p: p["txDate"] or "", reverse=True)
-    return out[:MAX_POLITICIANS]
+            now_pct += pct
+            # shares outstanding implied by this holder's own stake
+            outstanding = shares / (pct / 100.0) if pct else None
+            prev_pct += ((shares - delta) / outstanding * 100.0) if outstanding else pct
+            if len(top) < 5:
+                top.append({
+                    "holder": h.get("holder_name"),
+                    "ownPct": round(pct, 2),
+                    "changeShares": round(delta),
+                    "isNew": bool(h.get("is_new")),
+                })
+        if not now_pct:
+            continue
+        out.append({
+            "ticker": ticker,
+            "topOwnPct": round(now_pct, 2),
+            "qoqChange": round(now_pct - prev_pct, 2),
+            "holdersCounted": len(holders),
+            "reportPeriod": doc.get("report_period") if isinstance(doc, dict) else None,
+            "topHolders": top,
+        })
+    out.sort(key=lambda r: r["ticker"])
+    return out
 
 
 # ── history feed for channel_accuracy ─────────────────────────────────────────
-def append_history(insiders, politicians):
+def append_history(insiders, institutional):
     path = DATA / "positioning_history.jsonl"
     today = datetime.date.today().isoformat()
     if path.exists():
@@ -256,15 +290,11 @@ def append_history(insiders, politicians):
     for c in insiders:
         rows.append({"date": today, "ticker": c["ticker"], "channel": "insider",
                      "signal": c["signal"], "net": c["netInsiderShares"]})
-    by_ticker = {}
-    for p in politicians:
-        d = by_ticker.setdefault(p["ticker"], 0)
-        by_ticker[p["ticker"]] = d + (1 if p["transaction"] == "buy"
-                                      else -1 if p["transaction"] == "sell" else 0)
-    for t, netn in by_ticker.items():
-        rows.append({"date": today, "ticker": t, "channel": "politician",
-                     "signal": "bullish" if netn > 0 else "bearish" if netn < 0 else "neutral",
-                     "net": netn})
+    for c in institutional:
+        chg = c["qoqChange"]
+        rows.append({"date": today, "ticker": c["ticker"], "channel": "institutional",
+                     "signal": "bullish" if chg > 0 else "bearish" if chg < 0 else "neutral",
+                     "net": chg})
     if rows:
         with path.open("a") as f:
             for r in rows:
@@ -276,28 +306,27 @@ def append_history(insiders, politicians):
 def build():
     cfg = _load(SRC / "config.json", {})
     window_days = cfg.get("windowDays", 90)
-    tracked = cfg.get("trackedPoliticians", [])
 
-    has_src = (glob.glob(str(SRC / "fmp_insider_*.json"))
-               or (SRC / "fmp_senate.json").exists() or (SRC / "fmp_house.json").exists())
+    has_src = (glob.glob(str(SRC / "truenorth_insider_*.json"))
+               or glob.glob(str(SRC / "truenorth_13f_*.json")))
     existing = _load(DATA / "positioning.json", {})
     if not has_src:
-        print("positioning_src/ has no FMP dumps — existing positioning.json left untouched")
+        print("positioning_src/ has no TrueNorth dumps — existing positioning.json left untouched")
         return None
 
     insiders = build_insiders(window_days)
-    politicians = build_politicians(tracked, window_days)
+    institutional = build_institutional()
     out = {
         "updatedAt": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
-        # 13F / COT stay whatever the last enrich run wrote until src dumps exist for them
-        "institutional": existing.get("institutional", []),
+        "institutional": institutional,
         "insider": insiders,
-        "politicians": politicians,
+        # COT needs a futures feed no connected provider serves; kept so the key
+        # never disappears from under the dashboard.
         "cot": existing.get("cot", []),
     }
     (DATA / "positioning.json").write_text(json.dumps(out, indent=1) + "\n")
-    n_hist = append_history(insiders, politicians)
-    print(f"positioning.json: {len(insiders)} insider cards, {len(politicians)} politician rows "
+    n_hist = append_history(insiders, institutional)
+    print(f"positioning.json: {len(insiders)} insider cards, {len(institutional)} 13F cards "
           f"(+{n_hist} history rows)")
     return out
 

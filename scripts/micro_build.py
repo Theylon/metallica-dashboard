@@ -2,7 +2,7 @@
 """Build data/micro.json — per-ticker micro-analysis scores for the Stock Picks tab.
 
 Inputs (produced in a Claude session; paths can be overridden with env MICRO_SRC):
-  <src>/quotes.json          — FMP batch quotes {ticker: {price, vs50, vs200, range52w, marketCap, suspect...}}
+  <src>/quotes.json          — frozen quotes snapshot {ticker: {price, vs50, vs200, range52w, marketCap, suspect...}}
   <src>/commodity_bias.json  — per-material bias layer (long/short/neutral, score -2..+2, evidence)
   <src>/deep_*.json          — per-group deep-dive verdicts (microScore 0-10, thesis, catalysts, risks)
   <src>/discoveries.json     — new tickers not in the Excel universe
@@ -249,7 +249,7 @@ def tradable(rec, q):
 
 
 # ── Yahoo Finance cross-validation layer ─────────────────────────────────────────────
-# crossVal = a deterministic cross-check of the primary FMP/TipRanks/TrueNorth numbers
+# crossVal = a deterministic cross-check of the primary TipRanks/TrueNorth numbers
 # against an independent Yahoo Finance pull (data/micro_src/yahoo.json).
 CONS_DIR = {"StrongBuy": "bull", "Strong Buy": "bull", "Buy": "bull",
             "ModerateBuy": "bull", "Moderate Buy": "bull", "Hold": "neutral",
@@ -282,7 +282,7 @@ def _yahoo_dir(yq):
 
 
 def cross_validation(analyst, fundamentals, price, yq):
-    """Compare primary (FMP/TipRanks/TrueNorth) numbers to an independent Yahoo pull.
+    """Compare primary (TipRanks/TrueNorth) numbers to an independent Yahoo pull.
 
     Returns {agreement, flags[], checks[], yahoo{}} or None when Yahoo has no entry.
     Thresholds: price-target |Δ|>15%, recommendation-direction mismatch, EBITDA-margin
@@ -549,7 +549,7 @@ def main():
                         "Each card also carries an independent Yahoo Finance (yfinance) cross-validation "
                         "of price targets, ratings and margins. The cross-check is display-only and does "
                         "not change the composite. "
-                        "Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner, TrueNorth, Yahoo Finance."),
+                        "Sources: IBKR, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner, TrueNorth, Yahoo Finance."),
         # macro banner + sizing note come from the live feeds (not the frozen
         # research strings) so they can't contradict the current book/regime
         "macro": live_macro_banner() or bias_doc.get("macro", ""),
