@@ -2773,11 +2773,12 @@
   },
   "2026-08-06": {
     "commodityExposure": {
-      "steel": 0.133249,
-      "copper": 0.095559,
-      "molybdenum bar": 0.046198,
-      "aluminum n": -0.026676,
-      "aluminum": -0.053353
+      "copper": 0.619375,
+      "steel": 0.316252,
+      "zinc": 0.095444,
+      "gold": 0.094973,
+      "molybdenum": 0.083909,
+      "aluminum": -0.107256
     },
     "byTicker": {
       "AA": [
@@ -2785,18 +2786,27 @@
           "commodity": "aluminum",
           "tier": "T1",
           "weight": -0.053353
-        },
+        }
+      ],
+      "CENX": [
         {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.026676
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.053903
         }
       ],
       "CLF": [
         {
           "commodity": "steel",
-          "tier": "T2",
-          "weight": 0.031862
+          "tier": "T1",
+          "weight": 0.063724
+        }
+      ],
+      "CMC": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.063505
         }
       ],
       "COPX": [
@@ -2806,11 +2816,45 @@
           "weight": 0.095559
         }
       ],
+      "ERO": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.081544
+        }
+      ],
       "FCX": [
         {
-          "commodity": "molybdenum bar",
+          "commodity": "molybdenum",
           "tier": "T2",
           "weight": 0.046198
+        },
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.092396
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": 0.046198
+        }
+      ],
+      "HBM": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.09755
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": 0.048775
+        },
+        {
+          "commodity": "zinc",
+          "tier": "T2",
+          "weight": 0.048775
         }
       ],
       "NUE": [
@@ -2820,11 +2864,63 @@
           "weight": 0.051815
         }
       ],
+      "PKX": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": 0.031005
+        }
+      ],
+      "ROCK": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": -0.005134
+        }
+      ],
+      "SCCO": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.075423
+        },
+        {
+          "commodity": "molybdenum",
+          "tier": "T2",
+          "weight": 0.037712
+        }
+      ],
+      "SLX": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.061764
+        }
+      ],
       "STLD": [
         {
           "commodity": "steel",
           "tier": "T1",
           "weight": 0.049572
+        }
+      ],
+      "TECK": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.093338
+        },
+        {
+          "commodity": "zinc",
+          "tier": "T2",
+          "weight": 0.046669
+        }
+      ],
+      "TGB": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.083565
         }
       ]
     }
