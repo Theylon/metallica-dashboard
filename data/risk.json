@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-08-07T17:47:39+00:00",
+ "updatedAt": "2026-08-07T18:13:50+00:00",
  "asOf": "2026-08-07",
  "window": 90,
  "obs": 35,
@@ -7,8 +7,8 @@
   "annVol": 15.9,
   "betaSpy": 0.44,
   "betaXme": 0.14,
-  "var1d95": -234,
-  "var1d99": -454,
+  "var1d95": -233,
+  "var1d99": -453,
   "hhi": 664.0,
   "effectiveN": 15.1
  },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$234",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$454)",
+   "v": "-$233",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$453)",
    "tone": "neg"
   },
   {
@@ -393,63 +393,63 @@
    "side": "long",
    "weightPct": 10.1,
    "riskContribPct": 16.9,
-   "mVaR": 74.2
+   "mVaR": 74.5
   },
   {
    "ticker": "TGB",
    "side": "long",
    "weightPct": 8.4,
    "riskContribPct": 14.7,
-   "mVaR": 64.8
+   "mVaR": 64.7
   },
   {
    "ticker": "ERO",
    "side": "long",
    "weightPct": 9.1,
    "riskContribPct": 12.9,
-   "mVaR": 56.9
+   "mVaR": 56.6
   },
   {
    "ticker": "COPX",
    "side": "long",
    "weightPct": 9.6,
    "riskContribPct": 12.4,
-   "mVaR": 54.5
+   "mVaR": 54.6
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 9.2,
    "riskContribPct": 11.4,
-   "mVaR": 50.0
+   "mVaR": 50.1
   },
   {
    "ticker": "TECK",
    "side": "long",
    "weightPct": 9.5,
    "riskContribPct": 11.2,
-   "mVaR": 49.4
+   "mVaR": 49.3
   },
   {
    "ticker": "SCCO",
    "side": "long",
    "weightPct": 7.5,
    "riskContribPct": 9.5,
-   "mVaR": 41.8
+   "mVaR": 41.7
   },
   {
    "ticker": "CLF",
    "side": "long",
-   "weightPct": 6.2,
+   "weightPct": 6.1,
    "riskContribPct": 6.3,
-   "mVaR": 27.6
+   "mVaR": 27.5
   },
   {
    "ticker": "PKX",
    "side": "long",
    "weightPct": 6.4,
-   "riskContribPct": 4.6,
-   "mVaR": 20.4
+   "riskContribPct": 4.7,
+   "mVaR": 20.5
   },
   {
    "ticker": "CMC",
@@ -477,14 +477,14 @@
    "side": "long",
    "weightPct": 5.1,
    "riskContribPct": 2.1,
-   "mVaR": 9.2
+   "mVaR": 9.1
   },
   {
    "ticker": "KALU",
    "side": "short",
    "weightPct": -5.1,
    "riskContribPct": -3.6,
-   "mVaR": -15.9
+   "mVaR": -16.0
   },
   {
    "ticker": "AA",
@@ -498,7 +498,7 @@
    "side": "short",
    "weightPct": -5.8,
    "riskContribPct": -4.1,
-   "mVaR": -18.3
+   "mVaR": -18.2
   }
  ],
  "coverageNote": "16 of 16 holdings"
