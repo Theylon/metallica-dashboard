@@ -1,33 +1,33 @@
 {
- "updatedAt": "2026-08-07T16:15:02+00:00",
+ "updatedAt": "2026-08-07T17:12:45+00:00",
  "asOf": "2026-08-07",
  "window": 90,
  "obs": 35,
  "headline": {
-  "annVol": 16.1,
-  "betaSpy": 0.46,
-  "betaXme": 0.15,
+  "annVol": 15.9,
+  "betaSpy": 0.44,
+  "betaXme": 0.14,
   "var1d95": -234,
   "var1d99": -454,
-  "hhi": 665.0,
-  "effectiveN": 15.0
+  "hhi": 664.0,
+  "effectiveN": 15.1
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "16.1%",
+   "v": "15.9%",
    "note": "from the account's daily TWR, 35 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.46",
+   "v": "0.44",
    "note": "34 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.15",
+   "v": "0.14",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -57,8 +57,8 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "665 / 15.0",
-   "note": "16 names, ~15.0 effective",
+   "v": "664 / 15.1",
+   "note": "16 names, ~15.1 effective",
    "tone": "pos"
   }
  ],
@@ -102,10 +102,10 @@
     0.81,
     0.39,
     0.36,
-    0.58,
+    0.57,
     0.61,
     0.6,
-    0.58,
+    0.57,
     0.53,
     0.39,
     0.24,
@@ -118,16 +118,16 @@
    [
     0.81,
     1.0,
-    0.33,
-    0.27,
+    0.34,
+    0.28,
     0.51,
     0.6,
     0.53,
-    0.52,
+    0.51,
     0.53,
-    0.31,
+    0.32,
     0.23,
-    0.52,
+    0.51,
     0.45,
     0.39,
     0.46,
@@ -135,7 +135,7 @@
    ],
    [
     0.39,
-    0.33,
+    0.34,
     1.0,
     0.53,
     0.49,
@@ -153,7 +153,7 @@
    ],
    [
     0.36,
-    0.27,
+    0.28,
     0.53,
     1.0,
     0.49,
@@ -165,12 +165,12 @@
     0.33,
     0.54,
     0.73,
-    0.72,
+    0.71,
     0.44,
     0.4
    ],
    [
-    0.58,
+    0.57,
     0.51,
     0.49,
     0.49,
@@ -178,7 +178,7 @@
     0.86,
     0.88,
     0.95,
-    0.52,
+    0.51,
     0.36,
     0.46,
     0.91,
@@ -194,12 +194,12 @@
     0.34,
     0.86,
     1.0,
-    0.78,
+    0.77,
     0.86,
     0.47,
     0.24,
     0.36,
-    0.82,
+    0.81,
     0.63,
     0.25,
     0.73,
@@ -211,7 +211,7 @@
     0.46,
     0.51,
     0.88,
-    0.78,
+    0.77,
     1.0,
     0.84,
     0.5,
@@ -224,8 +224,8 @@
     0.77
    ],
    [
-    0.58,
-    0.52,
+    0.57,
+    0.51,
     0.42,
     0.45,
     0.95,
@@ -233,7 +233,7 @@
     0.84,
     1.0,
     0.49,
-    0.29,
+    0.3,
     0.38,
     0.87,
     0.77,
@@ -246,14 +246,14 @@
     0.53,
     0.45,
     0.47,
-    0.52,
+    0.51,
     0.47,
     0.5,
     0.49,
     1.0,
     0.45,
     0.37,
-    0.51,
+    0.5,
     0.54,
     0.46,
     0.55,
@@ -261,13 +261,13 @@
    ],
    [
     0.39,
-    0.31,
+    0.32,
     0.53,
     0.76,
     0.36,
     0.24,
     0.38,
-    0.29,
+    0.3,
     0.45,
     1.0,
     0.34,
@@ -292,19 +292,19 @@
     0.43,
     0.64,
     0.32,
-    0.49,
+    0.48,
     0.35
    ],
    [
     0.57,
-    0.52,
+    0.51,
     0.41,
     0.54,
     0.91,
-    0.82,
+    0.81,
     0.88,
     0.87,
-    0.51,
+    0.5,
     0.38,
     0.43,
     1.0,
@@ -335,7 +335,7 @@
     0.45,
     0.39,
     0.48,
-    0.72,
+    0.71,
     0.38,
     0.25,
     0.42,
@@ -360,7 +360,7 @@
     0.83,
     0.55,
     0.37,
-    0.49,
+    0.48,
     0.8,
     0.8,
     0.38,
@@ -391,72 +391,72 @@
   {
    "ticker": "HBM",
    "side": "long",
-   "weightPct": 10.2,
-   "riskContribPct": 17.0,
-   "mVaR": 75.0
+   "weightPct": 10.1,
+   "riskContribPct": 16.8,
+   "mVaR": 74.1
   },
   {
    "ticker": "TGB",
    "side": "long",
    "weightPct": 8.4,
-   "riskContribPct": 14.8,
-   "mVaR": 65.6
+   "riskContribPct": 14.7,
+   "mVaR": 64.8
   },
   {
    "ticker": "ERO",
    "side": "long",
    "weightPct": 9.1,
-   "riskContribPct": 12.8,
-   "mVaR": 56.7
+   "riskContribPct": 12.9,
+   "mVaR": 56.8
   },
   {
    "ticker": "COPX",
    "side": "long",
    "weightPct": 9.6,
    "riskContribPct": 12.4,
-   "mVaR": 54.7
+   "mVaR": 54.5
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 9.2,
    "riskContribPct": 11.4,
-   "mVaR": 50.2
+   "mVaR": 50.0
   },
   {
    "ticker": "TECK",
    "side": "long",
    "weightPct": 9.5,
    "riskContribPct": 11.2,
-   "mVaR": 49.4
+   "mVaR": 49.3
   },
   {
    "ticker": "SCCO",
    "side": "long",
-   "weightPct": 7.6,
+   "weightPct": 7.5,
    "riskContribPct": 9.5,
-   "mVaR": 42.2
+   "mVaR": 41.8
   },
   {
    "ticker": "CLF",
    "side": "long",
-   "weightPct": 6.1,
-   "riskContribPct": 6.2,
-   "mVaR": 27.5
+   "weightPct": 6.2,
+   "riskContribPct": 6.3,
+   "mVaR": 27.6
   },
   {
    "ticker": "PKX",
    "side": "long",
    "weightPct": 6.4,
    "riskContribPct": 4.6,
-   "mVaR": 20.5
+   "mVaR": 20.4
   },
   {
    "ticker": "CMC",
    "side": "long",
-   "weightPct": 6.2,
-   "riskContribPct": 3.7,
-   "mVaR": 16.5
+   "weightPct": 6.3,
+   "riskContribPct": 3.8,
+   "mVaR": 16.6
   },
   {
    "ticker": "SLX",
@@ -475,9 +475,9 @@
   {
    "ticker": "NUE",
    "side": "long",
-   "weightPct": 5.0,
+   "weightPct": 5.1,
    "riskContribPct": 2.1,
-   "mVaR": 9.1
+   "mVaR": 9.2
   },
   {
    "ticker": "KALU",
@@ -489,7 +489,7 @@
   {
    "ticker": "AA",
    "side": "short",
-   "weightPct": -5.5,
+   "weightPct": -5.6,
    "riskContribPct": -3.9,
    "mVaR": -17.4
   },
@@ -497,8 +497,8 @@
    "ticker": "CENX",
    "side": "short",
    "weightPct": -5.8,
-   "riskContribPct": -4.2,
-   "mVaR": -18.4
+   "riskContribPct": -4.1,
+   "mVaR": -18.2
   }
  ],
  "coverageNote": "16 of 16 holdings"
