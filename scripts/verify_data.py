@@ -175,6 +175,43 @@ def check_categories(positions):
         ok("no held position falls back to category 'Other'")
 
 
+# Held names whose empty commodity exposure is by design, not a mapping gap.
+NO_EXPOSURE_OK = {"BEPC"}   # renewables operator — no direct metal book
+
+
+def check_exposure(positions):
+    """Every held name should map to at least one commodity (WARN-only).
+
+    The exposure mapping (scripts/exposure.py) guarantees a curated primary
+    link for every CATEGORY name; a held ticker with no links means the roster
+    or the curated tables have a gap — exactly the silent failure mode that
+    once left 17 of 25 held names out of the Commodity Exposure panel.
+    """
+    try:
+        history = _load("exposure_history.json")
+        latest = history[max(history)]
+    except Exception:
+        warn("exposure_history.json missing/unreadable — exposure coverage check skipped")
+        return
+    # Metal-price-neutral names (curated priceSens 1 in micro.json — pass-
+    # through fabricators like KALU/CSTM) legitimately carry no metal link;
+    # same rule as scripts/exposure.py, not a hardcoded allowlist.
+    try:
+        passthrough = {base_ticker(r["ticker"]) for r in _load("micro.json").get("tickers", [])
+                       if (r.get("exposure") or {}).get("priceSens") == 1}
+    except Exception:
+        passthrough = set()
+    linked = set(latest.get("byTicker", {}))
+    held = {base_ticker(p["ticker"]) for p in positions}
+    unmapped = sorted(held - linked - NO_EXPOSURE_OK - passthrough)
+    if unmapped:
+        warn(f"held tickers with no commodity exposure link (extend the curated "
+             f"tables in scripts/exposure.py): {unmapped}")
+    else:
+        ok(f"exposure mapping covers all {len(held)} held tickers "
+           f"({len(held & passthrough)} metal-price-neutral by design)")
+
+
 def check_process_files():
     """Process-layer files (channel_accuracy/alerts/decision_log/orders) — WARN-only.
 
@@ -327,6 +364,7 @@ def main():
     if micro:
         check_micro(micro, positions)
     check_categories(positions)
+    check_exposure(positions)
     check_process_files()
     check_freshness(account, risk, pnl)
 

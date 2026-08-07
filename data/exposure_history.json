@@ -1,16 +1,17 @@
 {
   "2026-07-15": {
     "commodityExposure": {
-      "manganese dioxide": 0.037778,
-      "cobalt sulfate": 0.000198,
-      "aluminum n": -0.002275,
-      "aluminum": -0.00455,
+      "lithium": 0.014189,
+      "cobalt": 0.000198,
       "rhodium": -0.005089,
-      "lithium hydroxide monohydrate": -0.018215,
+      "gold": -0.008252,
+      "aluminum": -0.008772,
+      "platinum": -0.019854,
+      "palladium": -0.019854,
+      "manganese": -0.022536,
+      "silver": -0.028298,
       "ferro-chrome": -0.03569,
-      "lco": -0.038272,
-      "manganese sulfate": -0.060313,
-      "steel": -0.16171
+      "steel": -0.23027
     },
     "byTicker": {
       "AA": [
@@ -18,61 +19,113 @@
           "commodity": "aluminum",
           "tier": "T1",
           "weight": -0.00455
-        },
+        }
+      ],
+      "AG": [
         {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.002275
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.006142
         }
       ],
       "ALB": [
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.017667
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.035334
         }
       ],
       "BATT": [
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T1",
           "weight": -0.04058
         },
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.02029
         },
         {
-          "commodity": "lco",
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.04058
+        }
+      ],
+      "BVN": [
+        {
+          "commodity": "gold",
           "tier": "T2",
-          "weight": -0.02029
+          "weight": -0.004287
+        },
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.004287
+        }
+      ],
+      "CDE": [
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.00291
+        }
+      ],
+      "CENX": [
+        {
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.004222
         }
       ],
       "CLF": [
         {
           "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.03287
+          "tier": "T1",
+          "weight": -0.06574
+        }
+      ],
+      "HL": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.00703
         }
       ],
       "KARS": [
         {
-          "commodity": "lco",
+          "commodity": "lithium",
           "tier": "T2",
           "weight": -0.019426
         }
       ],
+      "LAC": [
+        {
+          "commodity": "lithium",
+          "tier": "T2",
+          "weight": 0.017002
+        }
+      ],
       "LIT": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.019734
         },
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": -0.019734
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.039467
         }
       ],
       "NUE": [
@@ -82,9 +135,38 @@
           "weight": -0.06451
         }
       ],
+      "PAAS": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.007929
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": -0.003965
+        }
+      ],
+      "PLG": [
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.009676
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.009676
+        }
+      ],
       "RS": [
         {
           "commodity": "ferro-chrome",
+          "tier": "T2",
+          "weight": -0.03569
+        },
+        {
+          "commodity": "steel",
           "tier": "T2",
           "weight": -0.03569
         }
@@ -94,25 +176,40 @@
           "commodity": "rhodium",
           "tier": "T2",
           "weight": -0.005089
+        },
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.010178
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.010178
         }
       ],
       "SGML": [
         {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": 0.01966
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.03932
         }
       ],
       "SQM": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T1",
           "weight": 0.040222
         },
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.020111
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.040222
         }
       ],
       "STLD": [
@@ -124,12 +221,7 @@
       ],
       "TSLA": [
         {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.018215
-        },
-        {
-          "commodity": "lithium hydroxide monohydrate",
+          "commodity": "lithium",
           "tier": "T2",
           "weight": -0.018215
         }
@@ -138,16 +230,17 @@
   },
   "2026-07-16": {
     "commodityExposure": {
-      "manganese dioxide": 0.037072,
-      "cobalt sulfate": -0.00041,
-      "aluminum n": -0.002237,
-      "aluminum": -0.004473,
+      "lithium": 0.010803,
+      "cobalt": -0.00041,
       "rhodium": -0.005099,
-      "lithium hydroxide monohydrate": -0.018192,
+      "gold": -0.008252,
+      "aluminum": -0.008528,
+      "platinum": -0.020141,
+      "palladium": -0.020141,
+      "manganese": -0.023294,
+      "silver": -0.02839,
       "ferro-chrome": -0.036171,
-      "lco": -0.039228,
-      "manganese sulfate": -0.060365,
-      "steel": -0.164089
+      "steel": -0.233542
     },
     "byTicker": {
       "AA": [
@@ -155,61 +248,113 @@
           "commodity": "aluminum",
           "tier": "T1",
           "weight": -0.004473
-        },
+        }
+      ],
+      "AG": [
         {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.002237
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.006128
         }
       ],
       "ALB": [
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.017269
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.034538
         }
       ],
       "BATT": [
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T1",
           "weight": -0.040701
         },
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.020351
         },
         {
-          "commodity": "lco",
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.040701
+        }
+      ],
+      "BVN": [
+        {
+          "commodity": "gold",
           "tier": "T2",
-          "weight": -0.020351
+          "weight": -0.004252
+        },
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.004252
+        }
+      ],
+      "CDE": [
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.002907
+        }
+      ],
+      "CENX": [
+        {
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.004055
         }
       ],
       "CLF": [
         {
           "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.033283
+          "tier": "T1",
+          "weight": -0.066566
+        }
+      ],
+      "HL": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.007102
         }
       ],
       "KARS": [
         {
-          "commodity": "lco",
+          "commodity": "lithium",
           "tier": "T2",
           "weight": -0.01955
         }
       ],
+      "LAC": [
+        {
+          "commodity": "lithium",
+          "tier": "T2",
+          "weight": 0.016702
+        }
+      ],
       "LIT": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.019664
         },
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": -0.019664
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.039328
         }
       ],
       "NUE": [
@@ -219,9 +364,38 @@
           "weight": -0.065584
         }
       ],
+      "PAAS": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.008002
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": -0.004001
+        }
+      ],
+      "PLG": [
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.009943
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.009943
+        }
+      ],
       "RS": [
         {
           "commodity": "ferro-chrome",
+          "tier": "T2",
+          "weight": -0.036171
+        },
+        {
+          "commodity": "steel",
           "tier": "T2",
           "weight": -0.036171
         }
@@ -231,25 +405,40 @@
           "commodity": "rhodium",
           "tier": "T2",
           "weight": -0.005099
+        },
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.010198
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.010198
         }
       ],
       "SGML": [
         {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": 0.018864
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.037729
         }
       ],
       "SQM": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T1",
           "weight": 0.039605
         },
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.019803
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.039605
         }
       ],
       "STLD": [
@@ -261,12 +450,7 @@
       ],
       "TSLA": [
         {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.018192
-        },
-        {
-          "commodity": "lithium hydroxide monohydrate",
+          "commodity": "lithium",
           "tier": "T2",
           "weight": -0.018192
         }
@@ -275,16 +459,17 @@
   },
   "2026-07-17": {
     "commodityExposure": {
-      "manganese dioxide": 0.034689,
-      "cobalt sulfate": -0.001688,
-      "aluminum n": -0.002136,
-      "aluminum": -0.004272,
+      "lithium": 0.005542,
+      "cobalt": -0.001688,
       "rhodium": -0.004811,
-      "lithium hydroxide monohydrate": -0.017799,
+      "gold": -0.008073,
+      "aluminum": -0.008214,
+      "platinum": -0.018992,
+      "palladium": -0.018992,
+      "manganese": -0.023327,
+      "silver": -0.027223,
       "ferro-chrome": -0.036645,
-      "lco": -0.039235,
-      "manganese sulfate": -0.058016,
-      "steel": -0.162401
+      "steel": -0.230795
     },
     "byTicker": {
       "AA": [
@@ -292,61 +477,113 @@
           "commodity": "aluminum",
           "tier": "T1",
           "weight": -0.004272
-        },
+        }
+      ],
+      "AG": [
         {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.002136
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.005826
         }
       ],
       "ALB": [
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.016275
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.032551
         }
       ],
       "BATT": [
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T1",
           "weight": -0.039003
         },
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.019502
         },
         {
-          "commodity": "lco",
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.039003
+        }
+      ],
+      "BVN": [
+        {
+          "commodity": "gold",
           "tier": "T2",
-          "weight": -0.019502
+          "weight": -0.004188
+        },
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.004188
+        }
+      ],
+      "CDE": [
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.00272
+        }
+      ],
+      "CENX": [
+        {
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.003942
         }
       ],
       "CLF": [
         {
           "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.031748
+          "tier": "T1",
+          "weight": -0.063497
+        }
+      ],
+      "HL": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.006718
         }
       ],
       "KARS": [
         {
-          "commodity": "lco",
+          "commodity": "lithium",
           "tier": "T2",
           "weight": -0.019082
         }
       ],
+      "LAC": [
+        {
+          "commodity": "lithium",
+          "tier": "T2",
+          "weight": 0.015779
+        }
+      ],
       "LIT": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.019013
         },
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": -0.019013
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.038026
         }
       ],
       "NUE": [
@@ -356,9 +593,38 @@
           "weight": -0.065422
         }
       ],
+      "PAAS": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.007771
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": -0.003886
+        }
+      ],
+      "PLG": [
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.009369
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.009369
+        }
+      ],
       "RS": [
         {
           "commodity": "ferro-chrome",
+          "tier": "T2",
+          "weight": -0.036645
+        },
+        {
+          "commodity": "steel",
           "tier": "T2",
           "weight": -0.036645
         }
@@ -368,25 +634,40 @@
           "commodity": "rhodium",
           "tier": "T2",
           "weight": -0.004811
+        },
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.009623
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.009623
         }
       ],
       "SGML": [
         {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": 0.017148
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.034296
         }
       ],
       "SQM": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T1",
           "weight": 0.036827
         },
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.018413
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.036827
         }
       ],
       "STLD": [
@@ -398,12 +679,7 @@
       ],
       "TSLA": [
         {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.017799
-        },
-        {
-          "commodity": "lithium hydroxide monohydrate",
+          "commodity": "lithium",
           "tier": "T2",
           "weight": -0.017799
         }
@@ -412,16 +688,17 @@
   },
   "2026-07-18": {
     "commodityExposure": {
-      "manganese dioxide": 0.024024,
-      "aluminum n": -0.006086,
-      "cobalt sulfate": -0.006818,
+      "cobalt": -0.006818,
       "rhodium": -0.01144,
-      "aluminum": -0.012172,
-      "lithium hydroxide monohydrate": -0.017531,
+      "gold": -0.016077,
+      "lithium": -0.017625,
       "ferro-chrome": -0.018264,
-      "lco": -0.040468,
-      "manganese sulfate": -0.04939,
-      "steel": -0.052545
+      "aluminum": -0.02352,
+      "manganese": -0.025366,
+      "platinum": -0.04576,
+      "palladium": -0.04576,
+      "silver": -0.062178,
+      "steel": -0.09818
     },
     "byTicker": {
       "AA": [
@@ -429,61 +706,120 @@
           "commodity": "aluminum",
           "tier": "T1",
           "weight": -0.012172
-        },
+        }
+      ],
+      "AG": [
         {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.006086
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.014586
         }
       ],
       "ALB": [
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.011143
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.022286
         }
       ],
       "BATT": [
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T1",
           "weight": -0.033618
         },
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.016809
         },
         {
-          "commodity": "lco",
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.033618
+        }
+      ],
+      "BVN": [
+        {
+          "commodity": "gold",
           "tier": "T2",
-          "weight": -0.016809
+          "weight": -0.00837
+        },
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.00837
+        }
+      ],
+      "CDE": [
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.007943
+        }
+      ],
+      "CENX": [
+        {
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.011348
         }
       ],
       "CLF": [
         {
           "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.008989
+          "tier": "T1",
+          "weight": -0.017979
+        }
+      ],
+      "CMC": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": -0.018381
+        }
+      ],
+      "HL": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.015865
         }
       ],
       "KARS": [
         {
-          "commodity": "lco",
+          "commodity": "lithium",
           "tier": "T2",
           "weight": -0.017708
         }
       ],
+      "LAC": [
+        {
+          "commodity": "lithium",
+          "tier": "T2",
+          "weight": 0.011567
+        }
+      ],
       "LIT": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.015772
         },
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": -0.015772
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.031543
         }
       ],
       "NUE": [
@@ -493,9 +829,38 @@
           "weight": -0.021829
         }
       ],
+      "PAAS": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.015414
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": -0.007707
+        }
+      ],
+      "PLG": [
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.02288
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.02288
+        }
+      ],
       "RS": [
         {
           "commodity": "ferro-chrome",
+          "tier": "T2",
+          "weight": -0.018264
+        },
+        {
+          "commodity": "steel",
           "tier": "T2",
           "weight": -0.018264
         }
@@ -505,25 +870,40 @@
           "commodity": "rhodium",
           "tier": "T2",
           "weight": -0.01144
+        },
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.02288
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.02288
         }
       ],
       "SGML": [
         {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": 0.01158
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.02316
         }
       ],
       "SQM": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T1",
           "weight": 0.025762
         },
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.012881
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.025762
         }
       ],
       "STLD": [
@@ -535,12 +915,7 @@
       ],
       "TSLA": [
         {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.017531
-        },
-        {
-          "commodity": "lithium hydroxide monohydrate",
+          "commodity": "lithium",
           "tier": "T2",
           "weight": -0.017531
         }
@@ -549,16 +924,17 @@
   },
   "2026-07-19": {
     "commodityExposure": {
-      "manganese dioxide": 0.024024,
-      "aluminum n": -0.006086,
-      "cobalt sulfate": -0.006818,
+      "cobalt": -0.006818,
       "rhodium": -0.01144,
-      "aluminum": -0.012172,
-      "lithium hydroxide monohydrate": -0.017531,
+      "gold": -0.016077,
+      "lithium": -0.017625,
       "ferro-chrome": -0.018264,
-      "lco": -0.040468,
-      "manganese sulfate": -0.04939,
-      "steel": -0.052545
+      "aluminum": -0.02352,
+      "manganese": -0.025366,
+      "platinum": -0.04576,
+      "palladium": -0.04576,
+      "silver": -0.062178,
+      "steel": -0.09818
     },
     "byTicker": {
       "AA": [
@@ -566,61 +942,120 @@
           "commodity": "aluminum",
           "tier": "T1",
           "weight": -0.012172
-        },
+        }
+      ],
+      "AG": [
         {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.006086
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.014586
         }
       ],
       "ALB": [
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.011143
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.022286
         }
       ],
       "BATT": [
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T1",
           "weight": -0.033618
         },
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.016809
         },
         {
-          "commodity": "lco",
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.033618
+        }
+      ],
+      "BVN": [
+        {
+          "commodity": "gold",
           "tier": "T2",
-          "weight": -0.016809
+          "weight": -0.00837
+        },
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.00837
+        }
+      ],
+      "CDE": [
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.007943
+        }
+      ],
+      "CENX": [
+        {
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.011348
         }
       ],
       "CLF": [
         {
           "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.008989
+          "tier": "T1",
+          "weight": -0.017979
+        }
+      ],
+      "CMC": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": -0.018381
+        }
+      ],
+      "HL": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.015865
         }
       ],
       "KARS": [
         {
-          "commodity": "lco",
+          "commodity": "lithium",
           "tier": "T2",
           "weight": -0.017708
         }
       ],
+      "LAC": [
+        {
+          "commodity": "lithium",
+          "tier": "T2",
+          "weight": 0.011567
+        }
+      ],
       "LIT": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.015772
         },
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": -0.015772
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.031543
         }
       ],
       "NUE": [
@@ -630,9 +1065,38 @@
           "weight": -0.021829
         }
       ],
+      "PAAS": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.015414
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": -0.007707
+        }
+      ],
+      "PLG": [
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.02288
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.02288
+        }
+      ],
       "RS": [
         {
           "commodity": "ferro-chrome",
+          "tier": "T2",
+          "weight": -0.018264
+        },
+        {
+          "commodity": "steel",
           "tier": "T2",
           "weight": -0.018264
         }
@@ -642,25 +1106,40 @@
           "commodity": "rhodium",
           "tier": "T2",
           "weight": -0.01144
+        },
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.02288
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.02288
         }
       ],
       "SGML": [
         {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": 0.01158
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.02316
         }
       ],
       "SQM": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T1",
           "weight": 0.025762
         },
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.012881
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.025762
         }
       ],
       "STLD": [
@@ -672,12 +1151,7 @@
       ],
       "TSLA": [
         {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.017531
-        },
-        {
-          "commodity": "lithium hydroxide monohydrate",
+          "commodity": "lithium",
           "tier": "T2",
           "weight": -0.017531
         }
@@ -686,16 +1160,17 @@
   },
   "2026-07-20": {
     "commodityExposure": {
-      "manganese dioxide": 0.023854,
-      "aluminum n": -0.006223,
-      "cobalt sulfate": -0.006798,
+      "cobalt": -0.006798,
       "rhodium": -0.011669,
-      "aluminum": -0.012446,
-      "lithium hydroxide monohydrate": -0.017616,
+      "gold": -0.016124,
       "ferro-chrome": -0.018263,
-      "lco": -0.040963,
-      "manganese sulfate": -0.049258,
-      "steel": -0.052556
+      "lithium": -0.01845,
+      "aluminum": -0.023932,
+      "manganese": -0.025404,
+      "platinum": -0.046401,
+      "palladium": -0.046401,
+      "silver": -0.062402,
+      "steel": -0.098201
     },
     "byTicker": {
       "AA": [
@@ -703,61 +1178,120 @@
           "commodity": "aluminum",
           "tier": "T1",
           "weight": -0.012446
-        },
+        }
+      ],
+      "AG": [
         {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.006223
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.014604
         }
       ],
       "ALB": [
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.011029
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.022057
         }
       ],
       "BATT": [
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T1",
           "weight": -0.033618
         },
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.016809
         },
         {
-          "commodity": "lco",
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.033618
+        }
+      ],
+      "BVN": [
+        {
+          "commodity": "gold",
           "tier": "T2",
-          "weight": -0.016809
+          "weight": -0.00837
+        },
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.00837
+        }
+      ],
+      "CDE": [
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.007976
+        }
+      ],
+      "CENX": [
+        {
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.011486
         }
       ],
       "CLF": [
         {
           "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.008999
+          "tier": "T1",
+          "weight": -0.017998
+        }
+      ],
+      "CMC": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": -0.018383
+        }
+      ],
+      "HL": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.015942
         }
       ],
       "KARS": [
         {
-          "commodity": "lco",
+          "commodity": "lithium",
           "tier": "T2",
           "weight": -0.017708
         }
       ],
+      "LAC": [
+        {
+          "commodity": "lithium",
+          "tier": "T2",
+          "weight": 0.011723
+        }
+      ],
       "LIT": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.01564
         },
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": -0.01564
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.03128
         }
       ],
       "NUE": [
@@ -767,9 +1301,38 @@
           "weight": -0.021829
         }
       ],
+      "PAAS": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.01551
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": -0.007755
+        }
+      ],
+      "PLG": [
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.023064
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.023064
+        }
+      ],
       "RS": [
         {
           "commodity": "ferro-chrome",
+          "tier": "T2",
+          "weight": -0.018263
+        },
+        {
+          "commodity": "steel",
           "tier": "T2",
           "weight": -0.018263
         }
@@ -779,25 +1342,40 @@
           "commodity": "rhodium",
           "tier": "T2",
           "weight": -0.011669
+        },
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.023337
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.023337
         }
       ],
       "SGML": [
         {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": 0.01117
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.022341
         }
       ],
       "SQM": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T1",
           "weight": 0.025651
         },
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.012826
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.025651
         }
       ],
       "STLD": [
@@ -809,12 +1387,7 @@
       ],
       "TSLA": [
         {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.017616
-        },
-        {
-          "commodity": "lithium hydroxide monohydrate",
+          "commodity": "lithium",
           "tier": "T2",
           "weight": -0.017616
         }
@@ -823,15 +1396,17 @@
   },
   "2026-07-21": {
     "commodityExposure": {
-      "manganese dioxide": 0.023529,
-      "steel": -0.005885,
-      "aluminum n": -0.006262,
-      "cobalt sulfate": -0.007458,
+      "lithium": -0.001319,
+      "cobalt": -0.007458,
       "rhodium": -0.012096,
-      "aluminum": -0.012524,
+      "gold": -0.01646,
       "ferro-chrome": -0.017778,
-      "lco": -0.022957,
-      "manganese sulfate": -0.049327
+      "aluminum": -0.0247,
+      "manganese": -0.025798,
+      "platinum": -0.047205,
+      "palladium": -0.047205,
+      "steel": -0.047787,
+      "silver": -0.06466
     },
     "byTicker": {
       "AA": [
@@ -839,66 +1414,154 @@
           "commodity": "aluminum",
           "tier": "T1",
           "weight": -0.012524
-        },
+        }
+      ],
+      "AG": [
         {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.006262
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.015367
         }
       ],
       "ALB": [
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.010967
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.021933
         }
       ],
       "BATT": [
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T1",
           "weight": -0.033487
         },
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.016744
         },
         {
-          "commodity": "lco",
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.033487
+        }
+      ],
+      "BVN": [
+        {
+          "commodity": "gold",
           "tier": "T2",
-          "weight": -0.016744
+          "weight": -0.008368
+        },
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.008368
+        }
+      ],
+      "CDE": [
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.008195
+        }
+      ],
+      "CENX": [
+        {
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.012176
         }
       ],
       "CLF": [
         {
           "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.005885
+          "tier": "T1",
+          "weight": -0.01177
+        }
+      ],
+      "CMC": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": -0.018239
+        }
+      ],
+      "HL": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.016547
         }
       ],
       "KARS": [
         {
-          "commodity": "lco",
+          "commodity": "lithium",
           "tier": "T2",
           "weight": -0.017582
         }
       ],
+      "LAC": [
+        {
+          "commodity": "lithium",
+          "tier": "T2",
+          "weight": 0.011634
+        }
+      ],
       "LIT": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.01584
         },
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": -0.01584
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.03168
+        }
+      ],
+      "PAAS": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.016183
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": -0.008091
+        }
+      ],
+      "PLG": [
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.023013
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.023013
         }
       ],
       "RS": [
         {
           "commodity": "ferro-chrome",
+          "tier": "T2",
+          "weight": -0.017778
+        },
+        {
+          "commodity": "steel",
           "tier": "T2",
           "weight": -0.017778
         }
@@ -908,40 +1571,58 @@
           "commodity": "rhodium",
           "tier": "T2",
           "weight": -0.012096
+        },
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.024192
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.024192
         }
       ],
       "SGML": [
         {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": 0.011369
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.022738
         }
       ],
       "SQM": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T1",
           "weight": 0.025125
         },
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.012563
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.025125
         }
       ]
     }
   },
   "2026-07-22": {
     "commodityExposure": {
-      "manganese dioxide": 0.023893,
-      "steel": -0.006032,
-      "aluminum n": -0.006241,
-      "cobalt sulfate": -0.007912,
+      "rare earths": 0.077789,
+      "lithium": -0.001837,
+      "cobalt": -0.007912,
       "rhodium": -0.012476,
-      "aluminum": -0.012481,
+      "gold": -0.017123,
       "ferro-chrome": -0.01786,
-      "lco": -0.023841,
-      "manganese sulfate": -0.05104
+      "aluminum": -0.025002,
+      "manganese": -0.027147,
+      "steel": -0.048843,
+      "platinum": -0.049546,
+      "palladium": -0.049546,
+      "silver": -0.067632
     },
     "byTicker": {
       "AA": [
@@ -949,66 +1630,161 @@
           "commodity": "aluminum",
           "tier": "T1",
           "weight": -0.012481
-        },
+        }
+      ],
+      "AG": [
         {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.006241
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.015977
         }
       ],
       "ALB": [
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.011067
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.022134
         }
       ],
       "BATT": [
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T1",
           "weight": -0.034951
         },
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.017476
         },
         {
-          "commodity": "lco",
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.034951
+        }
+      ],
+      "BVN": [
+        {
+          "commodity": "gold",
           "tier": "T2",
-          "weight": -0.017476
+          "weight": -0.008733
+        },
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.008733
+        }
+      ],
+      "CDE": [
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.008658
+        }
+      ],
+      "CENX": [
+        {
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.012521
         }
       ],
       "CLF": [
         {
           "commodity": "steel",
-          "tier": "T2",
-          "weight": -0.006032
+          "tier": "T1",
+          "weight": -0.012064
+        }
+      ],
+      "CMC": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": -0.01892
+        }
+      ],
+      "HL": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.017484
         }
       ],
       "KARS": [
         {
-          "commodity": "lco",
+          "commodity": "lithium",
           "tier": "T2",
           "weight": -0.018081
         }
       ],
+      "LAC": [
+        {
+          "commodity": "lithium",
+          "tier": "T2",
+          "weight": 0.012155
+        }
+      ],
       "LIT": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.016088
         },
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": -0.016088
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.032177
+        }
+      ],
+      "MP": [
+        {
+          "commodity": "rare earths",
+          "tier": "T1",
+          "weight": 0.077789
+        }
+      ],
+      "PAAS": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.01678
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": -0.00839
+        }
+      ],
+      "PLG": [
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.024594
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.024594
         }
       ],
       "RS": [
         {
           "commodity": "ferro-chrome",
+          "tier": "T2",
+          "weight": -0.01786
+        },
+        {
+          "commodity": "steel",
           "tier": "T2",
           "weight": -0.01786
         }
@@ -1018,40 +1794,60 @@
           "commodity": "rhodium",
           "tier": "T2",
           "weight": -0.012476
+        },
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.024952
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.024952
         }
       ],
       "SGML": [
         {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": 0.011716
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.023431
         }
       ],
       "SQM": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T1",
           "weight": 0.025652
         },
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.012826
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.025652
         }
       ]
     }
   },
   "2026-07-23": {
     "commodityExposure": {
-      "manganese dioxide": 0.024122,
-      "molybdenum bar": 0.009159,
-      "aluminum n": -0.013024,
+      "copper": 0.018318,
+      "rare earths": 0.016805,
+      "molybdenum": 0.009159,
+      "gold": -0.009958,
       "ferro-chrome": -0.018029,
       "rhodium": -0.022608,
-      "aluminum": -0.026048,
-      "cobalt sulfate": -0.03721,
-      "lco": -0.049674,
-      "manganese sulfate": -0.094441
+      "cobalt": -0.03721,
+      "aluminum": -0.051424,
+      "steel": -0.062516,
+      "manganese": -0.070319,
+      "silver": -0.071829,
+      "lithium": -0.073722,
+      "platinum": -0.089491,
+      "palladium": -0.089491
     },
     "byTicker": {
       "AA": [
@@ -1059,66 +1855,171 @@
           "commodity": "aluminum",
           "tier": "T1",
           "weight": -0.026048
-        },
+        }
+      ],
+      "AG": [
         {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.013024
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.016981
         }
       ],
       "ALB": [
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.011064
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.022127
         }
       ],
       "BATT": [
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T1",
           "weight": -0.06223
         },
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.031115
         },
         {
-          "commodity": "lco",
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.06223
+        }
+      ],
+      "BVN": [
+        {
+          "commodity": "gold",
           "tier": "T2",
-          "weight": -0.031115
+          "weight": -0.008879
+        },
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.008879
+        }
+      ],
+      "CDE": [
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.008514
+        }
+      ],
+      "CENX": [
+        {
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.025376
+        }
+      ],
+      "CMC": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": -0.044487
         }
       ],
       "FCX": [
         {
-          "commodity": "molybdenum bar",
+          "commodity": "molybdenum",
+          "tier": "T2",
+          "weight": 0.009159
+        },
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.018318
+        },
+        {
+          "commodity": "gold",
           "tier": "T2",
           "weight": 0.009159
         }
       ],
+      "HL": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.016977
+        }
+      ],
       "KARS": [
         {
-          "commodity": "lco",
+          "commodity": "lithium",
           "tier": "T2",
           "weight": -0.030435
         }
       ],
+      "LAC": [
+        {
+          "commodity": "lithium",
+          "tier": "T2",
+          "weight": 0.011369
+        }
+      ],
       "LIT": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.032211
         },
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": -0.032211
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.064421
+        }
+      ],
+      "MP": [
+        {
+          "commodity": "rare earths",
+          "tier": "T1",
+          "weight": 0.016805
+        }
+      ],
+      "PAAS": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.020477
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": -0.010238
+        }
+      ],
+      "PLG": [
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.044275
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.044275
         }
       ],
       "RS": [
         {
           "commodity": "ferro-chrome",
+          "tier": "T2",
+          "weight": -0.018029
+        },
+        {
+          "commodity": "steel",
           "tier": "T2",
           "weight": -0.018029
         }
@@ -1128,39 +2029,58 @@
           "commodity": "rhodium",
           "tier": "T2",
           "weight": -0.022608
+        },
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.045216
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.045216
         }
       ],
       "SGML": [
         {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": 0.011876
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.023752
         }
       ],
       "SQM": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T1",
           "weight": 0.026116
         },
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.013058
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.026116
         }
       ]
     }
   },
   "2026-07-24": {
     "commodityExposure": {
-      "manganese dioxide": 0.023532,
-      "molybdenum bar": 0.008715,
-      "aluminum n": -0.01238,
+      "copper": 0.017431,
+      "rare earths": 0.015452,
+      "molybdenum": 0.008715,
+      "gold": -0.010092,
       "rhodium": -0.02261,
       "aluminum": -0.024761,
-      "cobalt sulfate": -0.036266,
-      "lco": -0.048399,
-      "manganese sulfate": -0.091958
+      "cobalt": -0.036266,
+      "silver": -0.045874,
+      "manganese": -0.068426,
+      "lithium": -0.073497,
+      "platinum": -0.088219,
+      "palladium": -0.088219
     },
     "byTicker": {
       "AA": [
@@ -1168,61 +2088,133 @@
           "commodity": "aluminum",
           "tier": "T1",
           "weight": -0.024761
-        },
-        {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.01238
         }
       ],
       "ALB": [
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.010712
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.021424
         }
       ],
       "BATT": [
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T1",
           "weight": -0.060104
         },
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.030052
         },
         {
-          "commodity": "lco",
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.060104
+        }
+      ],
+      "BVN": [
+        {
+          "commodity": "gold",
           "tier": "T2",
-          "weight": -0.030052
+          "weight": -0.008642
+        },
+        {
+          "commodity": "silver",
+          "tier": "T2",
+          "weight": -0.008642
         }
       ],
       "FCX": [
         {
-          "commodity": "molybdenum bar",
+          "commodity": "molybdenum",
+          "tier": "T2",
+          "weight": 0.008715
+        },
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.017431
+        },
+        {
+          "commodity": "gold",
           "tier": "T2",
           "weight": 0.008715
         }
       ],
+      "HL": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.016901
+        }
+      ],
       "KARS": [
         {
-          "commodity": "lco",
+          "commodity": "lithium",
           "tier": "T2",
           "weight": -0.029125
         }
       ],
+      "LAC": [
+        {
+          "commodity": "lithium",
+          "tier": "T2",
+          "weight": 0.010821
+        }
+      ],
       "LIT": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T2",
           "weight": -0.031854
         },
         {
-          "commodity": "manganese sulfate",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": -0.031854
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": -0.063708
+        }
+      ],
+      "MP": [
+        {
+          "commodity": "rare earths",
+          "tier": "T1",
+          "weight": 0.015452
+        }
+      ],
+      "PAAS": [
+        {
+          "commodity": "silver",
+          "tier": "T1",
+          "weight": -0.020331
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": -0.010165
+        }
+      ],
+      "PLG": [
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.042998
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.042998
         }
       ],
       "SBSW": [
@@ -1230,35 +2222,49 @@
           "commodity": "rhodium",
           "tier": "T2",
           "weight": -0.02261
+        },
+        {
+          "commodity": "platinum",
+          "tier": "T1",
+          "weight": -0.045221
+        },
+        {
+          "commodity": "palladium",
+          "tier": "T1",
+          "weight": -0.045221
         }
       ],
       "SGML": [
         {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": 0.010778
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.021555
         }
       ],
       "SQM": [
         {
-          "commodity": "cobalt sulfate",
+          "commodity": "cobalt",
           "tier": "T1",
           "weight": 0.02564
         },
         {
-          "commodity": "manganese dioxide",
+          "commodity": "manganese",
           "tier": "T2",
           "weight": 0.01282
+        },
+        {
+          "commodity": "lithium",
+          "tier": "T1",
+          "weight": 0.02564
         }
       ]
     }
   },
   "2026-07-29": {
     "commodityExposure": {
-      "steel": 0.175406,
-      "aluminum n": -0.032295,
+      "steel": 0.51381,
       "ferro-chrome": -0.03807,
-      "aluminum": -0.064591
+      "aluminum": -0.128971
     },
     "byTicker": {
       "AA": [
@@ -1266,18 +2272,48 @@
           "commodity": "aluminum",
           "tier": "T1",
           "weight": -0.064591
-        },
+        }
+      ],
+      "CENX": [
         {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.032295
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.06438
         }
       ],
       "CLF": [
         {
           "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.063329
+        }
+      ],
+      "CMC": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.064223
+        }
+      ],
+      "GGB": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.067385
+        }
+      ],
+      "MT": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.068166
+        }
+      ],
+      "MTUS": [
+        {
+          "commodity": "steel",
           "tier": "T2",
-          "weight": 0.031664
+          "weight": 0.032085
         }
       ],
       "NUE": [
@@ -1287,11 +2323,37 @@
           "weight": 0.072444
         }
       ],
+      "PKX": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": 0.029845
+        }
+      ],
+      "ROCK": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": -0.024391
+        }
+      ],
       "RS": [
         {
           "commodity": "ferro-chrome",
           "tier": "T2",
           "weight": -0.03807
+        },
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": -0.03807
+        }
+      ],
+      "SLX": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.068421
         }
       ],
       "STLD": [
@@ -1300,15 +2362,28 @@
           "tier": "T1",
           "weight": 0.071298
         }
+      ],
+      "TX": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.067996
+        }
+      ],
+      "WOR": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": -0.028921
+        }
       ]
     }
   },
   "2026-07-30": {
     "commodityExposure": {
-      "steel": 0.174904,
-      "aluminum n": -0.033568,
+      "steel": 0.522512,
       "ferro-chrome": -0.037476,
-      "aluminum": -0.067136
+      "aluminum": -0.134242
     },
     "byTicker": {
       "AA": [
@@ -1316,18 +2391,48 @@
           "commodity": "aluminum",
           "tier": "T1",
           "weight": -0.067136
-        },
+        }
+      ],
+      "CENX": [
         {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.033568
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.067106
         }
       ],
       "CLF": [
         {
           "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.064124
+        }
+      ],
+      "CMC": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.063931
+        }
+      ],
+      "GGB": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.068
+        }
+      ],
+      "MT": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.07128
+        }
+      ],
+      "MTUS": [
+        {
+          "commodity": "steel",
           "tier": "T2",
-          "weight": 0.032062
+          "weight": 0.031519
         }
       ],
       "NUE": [
@@ -1337,11 +2442,37 @@
           "weight": 0.072052
         }
       ],
+      "PKX": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": 0.033099
+        }
+      ],
+      "ROCK": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": -0.024038
+        }
+      ],
       "RS": [
         {
           "commodity": "ferro-chrome",
           "tier": "T2",
           "weight": -0.037476
+        },
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": -0.037476
+        }
+      ],
+      "SLX": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.069623
         }
       ],
       "STLD": [
@@ -1350,15 +2481,28 @@
           "tier": "T1",
           "weight": 0.07079
         }
+      ],
+      "TX": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.068211
+        }
+      ],
+      "WOR": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": -0.028604
+        }
       ]
     }
   },
   "2026-07-31": {
     "commodityExposure": {
-      "steel": 0.174696,
-      "aluminum n": -0.034148,
+      "steel": 0.523386,
       "ferro-chrome": -0.03803,
-      "aluminum": -0.068296
+      "aluminum": -0.135377
     },
     "byTicker": {
       "AA": [
@@ -1366,18 +2510,48 @@
           "commodity": "aluminum",
           "tier": "T1",
           "weight": -0.068296
-        },
+        }
+      ],
+      "CENX": [
         {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.034148
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.067081
         }
       ],
       "CLF": [
         {
           "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.063649
+        }
+      ],
+      "CMC": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.064354
+        }
+      ],
+      "GGB": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.068279
+        }
+      ],
+      "MT": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.072252
+        }
+      ],
+      "MTUS": [
+        {
+          "commodity": "steel",
           "tier": "T2",
-          "weight": 0.031824
+          "weight": 0.032031
         }
       ],
       "NUE": [
@@ -1387,11 +2561,37 @@
           "weight": 0.072283
         }
       ],
+      "PKX": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": 0.032364
+        }
+      ],
+      "ROCK": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": -0.023745
+        }
+      ],
       "RS": [
         {
           "commodity": "ferro-chrome",
           "tier": "T2",
           "weight": -0.03803
+        },
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": -0.03803
+        }
+      ],
+      "SLX": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.069144
         }
       ],
       "STLD": [
@@ -1400,16 +2600,31 @@
           "tier": "T1",
           "weight": 0.070588
         }
+      ],
+      "TX": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.069167
+        }
+      ],
+      "WOR": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": -0.028951
+        }
       ]
     }
   },
   "2026-08-05": {
     "commodityExposure": {
-      "steel": 0.132997,
-      "copper": 0.095595,
-      "molybdenum bar": 0.046209,
-      "aluminum n": -0.026716,
-      "aluminum": -0.053432
+      "copper": 0.620338,
+      "steel": 0.315998,
+      "zinc": 0.095954,
+      "gold": 0.09475,
+      "molybdenum": 0.083723,
+      "aluminum": -0.10609
     },
     "byTicker": {
       "AA": [
@@ -1417,18 +2632,27 @@
           "commodity": "aluminum",
           "tier": "T1",
           "weight": -0.053432
-        },
+        }
+      ],
+      "CENX": [
         {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.026716
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.052658
         }
       ],
       "CLF": [
         {
           "commodity": "steel",
-          "tier": "T2",
-          "weight": 0.031906
+          "tier": "T1",
+          "weight": 0.063812
+        }
+      ],
+      "CMC": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.06372
         }
       ],
       "COPX": [
@@ -1438,11 +2662,45 @@
           "weight": 0.095595
         }
       ],
+      "ERO": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.083252
+        }
+      ],
       "FCX": [
         {
-          "commodity": "molybdenum bar",
+          "commodity": "molybdenum",
           "tier": "T2",
           "weight": 0.046209
+        },
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.092418
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": 0.046209
+        }
+      ],
+      "HBM": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.097081
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": 0.048541
+        },
+        {
+          "commodity": "zinc",
+          "tier": "T2",
+          "weight": 0.048541
         }
       ],
       "NUE": [
@@ -1452,22 +2710,75 @@
           "weight": 0.051411
         }
       ],
+      "PKX": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": 0.030758
+        }
+      ],
+      "ROCK": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": -0.005135
+        }
+      ],
+      "SCCO": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.075028
+        },
+        {
+          "commodity": "molybdenum",
+          "tier": "T2",
+          "weight": 0.037514
+        }
+      ],
+      "SLX": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.061752
+        }
+      ],
       "STLD": [
         {
           "commodity": "steel",
           "tier": "T1",
           "weight": 0.04968
         }
+      ],
+      "TECK": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.094828
+        },
+        {
+          "commodity": "zinc",
+          "tier": "T2",
+          "weight": 0.047414
+        }
+      ],
+      "TGB": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.082136
+        }
       ]
     }
   },
   "2026-08-06": {
     "commodityExposure": {
-      "steel": 0.130985,
-      "copper": 0.094722,
-      "molybdenum bar": 0.04537,
-      "aluminum n": -0.026821,
-      "aluminum": -0.053642
+      "copper": 0.619121,
+      "steel": 0.316669,
+      "zinc": 0.097046,
+      "gold": 0.094711,
+      "molybdenum": 0.082208,
+      "aluminum": -0.106268
     },
     "byTicker": {
       "AA": [
@@ -1475,18 +2786,27 @@
           "commodity": "aluminum",
           "tier": "T1",
           "weight": -0.053642
-        },
+        }
+      ],
+      "CENX": [
         {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.026821
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.052626
         }
       ],
       "CLF": [
         {
           "commodity": "steel",
-          "tier": "T2",
-          "weight": 0.030938
+          "tier": "T1",
+          "weight": 0.061876
+        }
+      ],
+      "CMC": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.062028
         }
       ],
       "COPX": [
@@ -1496,11 +2816,45 @@
           "weight": 0.094722
         }
       ],
+      "ERO": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.084174
+        }
+      ],
       "FCX": [
         {
-          "commodity": "molybdenum bar",
+          "commodity": "molybdenum",
           "tier": "T2",
           "weight": 0.04537
+        },
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.09074
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": 0.04537
+        }
+      ],
+      "HBM": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.098682
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": 0.049341
+        },
+        {
+          "commodity": "zinc",
+          "tier": "T2",
+          "weight": 0.049341
         }
       ],
       "NUE": [
@@ -1510,22 +2864,68 @@
           "weight": 0.05101
         }
       ],
+      "PKX": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": 0.031506
+        }
+      ],
+      "SCCO": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.073676
+        },
+        {
+          "commodity": "molybdenum",
+          "tier": "T2",
+          "weight": 0.036838
+        }
+      ],
+      "SLX": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.061212
+        }
+      ],
       "STLD": [
         {
           "commodity": "steel",
           "tier": "T1",
           "weight": 0.049037
         }
+      ],
+      "TECK": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.095409
+        },
+        {
+          "commodity": "zinc",
+          "tier": "T2",
+          "weight": 0.047704
+        }
+      ],
+      "TGB": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.081718
+        }
       ]
     }
   },
   "2026-08-07": {
     "commodityExposure": {
-      "steel": 0.129788,
-      "copper": 0.096087,
-      "molybdenum bar": 0.045815,
-      "aluminum n": -0.027797,
-      "aluminum": -0.055594
+      "copper": 0.633491,
+      "steel": 0.3164,
+      "zinc": 0.097776,
+      "gold": 0.096182,
+      "molybdenum": 0.083422,
+      "aluminum": -0.113714
     },
     "byTicker": {
       "AA": [
@@ -1533,18 +2933,27 @@
           "commodity": "aluminum",
           "tier": "T1",
           "weight": -0.055594
-        },
+        }
+      ],
+      "CENX": [
         {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.027797
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.05812
         }
       ],
       "CLF": [
         {
           "commodity": "steel",
-          "tier": "T2",
-          "weight": 0.030836
+          "tier": "T1",
+          "weight": 0.061673
+        }
+      ],
+      "CMC": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.062778
         }
       ],
       "COPX": [
@@ -1554,11 +2963,45 @@
           "weight": 0.096087
         }
       ],
+      "ERO": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.091346
+        }
+      ],
       "FCX": [
         {
-          "commodity": "molybdenum bar",
+          "commodity": "molybdenum",
           "tier": "T2",
           "weight": 0.045815
+        },
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.09163
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": 0.045815
+        }
+      ],
+      "HBM": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.100734
+        },
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": 0.050367
+        },
+        {
+          "commodity": "zinc",
+          "tier": "T2",
+          "weight": 0.050367
         }
       ],
       "NUE": [
@@ -1568,11 +3011,56 @@
           "weight": 0.050546
         }
       ],
+      "PKX": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": 0.031884
+        }
+      ],
+      "SCCO": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.075213
+        },
+        {
+          "commodity": "molybdenum",
+          "tier": "T2",
+          "weight": 0.037607
+        }
+      ],
+      "SLX": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.061114
+        }
+      ],
       "STLD": [
         {
           "commodity": "steel",
           "tier": "T1",
           "weight": 0.048405
+        }
+      ],
+      "TECK": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.094818
+        },
+        {
+          "commodity": "zinc",
+          "tier": "T2",
+          "weight": 0.047409
+        }
+      ],
+      "TGB": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.083663
         }
       ]
     }
