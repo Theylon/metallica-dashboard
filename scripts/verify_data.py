@@ -17,6 +17,14 @@ import sys
 
 DATA = pathlib.Path(__file__).resolve().parent.parent / "data"
 BENCH_TICKERS = {"SPY", "XME", "SLV", "CPER"}
+# A ONE_YEAR daily pull is ~251 US trading days. build_benchmarks() replaces a
+# series wholesale rather than merging, so one refresh that asks for a shorter
+# period silently drops the rest of the history — and since a later refresh only
+# rewrites when it has a dump, the loss persists. validate_data.py can't see it:
+# its rule is that dates and closes are the same length, which a short pull
+# satisfies. Hence this warning.
+BENCH_FULL_BARS = 250
+BENCH_MIN_BARS = 200
 CENTS = 0.02            # tolerance for sums of independently-rounded cents
 # nav comes from a different IBKR endpoint than the position marks, snapshotted
 # moments apart — when marks are moving (pre-market, volatile opens) the two
@@ -136,7 +144,11 @@ def check_benchmarks(bench):
     for t, e in bench.get("tickers", {}).items():
         if len(e.get("dates", [])) != len(e.get("closes", [])):
             fail(f"benchmarks {t}: dates/closes length mismatch")
-        elif e["dates"] and upd:
+            continue
+        if len(e["dates"]) < BENCH_MIN_BARS:
+            warn(f"benchmarks {t}: only {len(e['dates'])} bars "
+                 f"(expect ~{BENCH_FULL_BARS} for a 1Y pull) — truncated refresh?")
+        if e["dates"] and upd:
             gap = (datetime.date.fromisoformat(upd)
                    - datetime.date.fromisoformat(e["dates"][-1])).days
             if gap > 5:
