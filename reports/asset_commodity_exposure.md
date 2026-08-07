@@ -213,3 +213,13 @@ Tracks each held ticker's exposure to its linked commodities — a curated prima
 | molybdenum | 8.22% |
 | aluminum | -10.63% |
 
+## 2026-08-07
+
+| Commodity | Exposure (% NAV, tier-weighted) |
+|---|---|
+| steel | 12.94% |
+| copper | 9.57% |
+| molybdenum bar | 4.59% |
+| aluminum n | -2.70% |
+| aluminum | -5.40% |
+
