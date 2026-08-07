@@ -1,0 +1,133 @@
+name: PR Janitor
+
+# Sweeps up abandoned data-only refresh PRs.
+#
+# Data refreshes are supposed to go straight to master (CLAUDE.md, the refresh
+# runbooks, and the SessionStart hook all say so). When one opens a PR anyway it
+# can never be merged — the next scheduled refresh supersedes it within hours, so
+# merging it would regress live data. Left alone they accumulate: 13 of them piled
+# up between 2026-07-20 and 08-06 before anyone noticed.
+#
+# The rule here is deliberately narrow, because closing someone's PR by robot is
+# only acceptable when the PR provably cannot be merged. A PR is closed only if
+# ALL of these hold:
+#   - it is a draft
+#   - every changed file is under data/
+#   - it has not been updated for STALE_DAYS
+#   - master has moved on since it was opened (so its data really is superseded)
+# Anything touching index.html, scripts/, .github/ or docs is never touched, and
+# the branch is left in place so the commits stay reachable.
+#
+# Run it manually with dry_run first to see what it would pick.
+
+on:
+  schedule:
+    - cron: '17 6 * * 1'        # Mondays 06:17 UTC
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'List what would be closed without closing anything'
+        type: boolean
+        default: true
+      stale_days:
+        description: 'Only close PRs untouched for this many days'
+        type: string
+        default: '14'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: pr-janitor
+  cancel-in-progress: false
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close abandoned data-only refresh PRs
+        uses: actions/github-script@v7
+        env:
+          DRY_RUN: ${{ inputs.dry_run == null && 'false' || inputs.dry_run }}
+          STALE_DAYS: ${{ inputs.stale_days || '14' }}
+        with:
+          script: |
+            const dryRun = process.env.DRY_RUN === 'true';
+            const staleDays = parseInt(process.env.STALE_DAYS, 10) || 14;
+            const cutoff = Date.now() - staleDays * 86400_000;
+            const { owner, repo } = context.repo;
+
+            const base = await github.rest.repos.get({ owner, repo });
+            const defaultBranch = base.data.default_branch;
+
+            const prs = await github.paginate(github.rest.pulls.list, {
+              owner, repo, state: 'open', per_page: 100,
+            });
+
+            let closed = 0, skipped = 0;
+            for (const pr of prs) {
+              const why = [];
+              if (!pr.draft) why.push('not a draft');
+              if (pr.base.ref !== defaultBranch) why.push(`base is ${pr.base.ref}`);
+              if (Date.parse(pr.updated_at) > cutoff) why.push(`updated ${pr.updated_at.slice(0,10)}`);
+
+              // Every changed file must live under data/. Cap the page count: a PR
+              // with hundreds of files is not a routine refresh, so skip it anyway.
+              let files = [];
+              if (!why.length) {
+                files = await github.paginate(github.rest.pulls.listFiles, {
+                  owner, repo, pull_number: pr.number, per_page: 100,
+                });
+                if (files.length > 300) why.push(`${files.length} files`);
+                const outside = files.filter(f => !f.filename.startsWith('data/'));
+                if (outside.length) why.push(`touches ${outside[0].filename}`);
+              }
+
+              // The PR's data is only provably superseded if master has moved on.
+              if (!why.length) {
+                const cmp = await github.rest.repos.compareCommitsWithBasehead({
+                  owner, repo, basehead: `${pr.head.sha}...${defaultBranch}`,
+                });
+                if (cmp.data.ahead_by === 0) why.push('master has not moved past it');
+              }
+
+              if (why.length) {
+                skipped++;
+                core.info(`skip  #${pr.number} — ${why[0]}`);
+                continue;
+              }
+
+              core.notice(`close #${pr.number} (${pr.title})`);
+              closed++;
+              if (dryRun) continue;
+
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: pr.number,
+                body: [
+                  'Closing automatically: this is a **data-only refresh PR** that has been idle for '
+                    + `${staleDays}+ days, and \`${defaultBranch}\` has moved past it.`,
+                  '',
+                  'Data refreshes are meant to go straight to `' + defaultBranch + '` — see CLAUDE.md.'
+                    + ' A refresh PR is superseded within hours, so merging this would **regress fresher'
+                    + ' data**, which the working agreement forbids.',
+                  '',
+                  'Nothing is lost: the branch is left in place and the commits stay reachable. If this'
+                    + ' was closed in error, reopen it — and it is worth finding out why a refresh opened'
+                    + ' a PR at all, since that is the bug.',
+                  '',
+                  '---',
+                  '_Generated by [Claude Code](https://claude.ai/code)_',
+                ].join('\n'),
+              });
+              await github.rest.pulls.update({
+                owner, repo, pull_number: pr.number, state: 'closed',
+              });
+            }
+
+            const verb = dryRun ? 'would close' : 'closed';
+            core.summary
+              .addHeading('PR Janitor', 2)
+              .addRaw(`${verb} **${closed}**, skipped **${skipped}**, of ${prs.length} open PRs.`)
+              .addRaw(dryRun ? '\n\nDry run — nothing was changed.' : '')
+              .write();
