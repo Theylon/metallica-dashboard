@@ -217,10 +217,10 @@ Tracks each held ticker's exposure to its linked commodities — a curated prima
 
 | Commodity | Exposure (% NAV, tier-weighted) |
 |---|---|
-| copper | 63.14% |
-| steel | 31.50% |
-| zinc | 9.81% |
-| gold | 9.65% |
-| molybdenum | 8.36% |
-| aluminum | -11.17% |
+| copper | 63.54% |
+| steel | 31.53% |
+| zinc | 9.82% |
+| gold | 9.67% |
+| molybdenum | 8.38% |
+| aluminum | -11.37% |
 
