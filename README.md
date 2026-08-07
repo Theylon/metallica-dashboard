@@ -79,6 +79,30 @@ python3 -m http.server 8000   # then open http://localhost:8000
 
 To sanity-check the data before serving: `python3 scripts/verify_data.py`.
 
+## Navigating the dashboard
+
+Thirteen views sit under four groups. The upper strip picks the group, the
+lower strip picks the view inside it:
+
+| Group | Views |
+|---|---|
+| 📊 **Portfolio** | Overview · Positions · Exposure · Risk · Benchmarks |
+| 🔎 **Research** | Stock Picks · Markets · Intel · Alt-Data |
+| ⚙️ **Execution** | Rebalance · Orders |
+| 📚 **Review** | Journal · Process |
+
+- **`Ctrl-K` / `⌘K`** opens a search palette — jump to any view, or type a
+  ticker to open its detail modal directly.
+- Every view is **linkable**: `…/index.html#tab=orders` lands on Orders, and a
+  reload keeps you where you were. An unknown name falls back to Overview.
+- The grouping lives in **one constant**, `TAB_GROUPS` near the top of the
+  `<script>` block in `index.html` — both nav strips, the palette and the hash
+  router read it. To move, rename or add a view, edit it there. A view's id must
+  match its panel id (`page-<id>`); those ids also key the saved table layouts,
+  so renaming one resets a user's column/height preferences for that page.
+- Views that fold into another are kept working by `TAB_ALIASES` (today:
+  `signals` → `process`), so old links and bookmarks don't break.
+
 ## Data refresh — two layers
 
 **IBKR book data** (`positions/account/pnl/benchmarks.json`) is refreshed by the **MCP
@@ -169,7 +193,7 @@ Four research layers (inspired by [HKUDS/Vibe-Trading](https://github.com/HKUDS/
 | **Risk** (extended) | Auto-computed vol / β(SPY,XME) / VaR / HHI, plus a live **correlation heatmap** and per-name **risk contribution** (component VaR) | `data/risk.json` | `scripts/risk.py` (pure Python) | Action 4×/day + MCP refresh |
 | **Journal** | Behavioral trade analytics — win rate, profit factor, holding period, **disposition effect**, realized-P&L attribution, and a **Shadow Account** (P&L left on the table by exiting) | `data/journal.json` | `scripts/journal.py` ← `get_account_trades` | daily Journal routine (`scripts/journal_routine.md`) |
 | **Orders** | Read-only audit trail of every IBKR **order instruction** placed via `/trade` — status chain created → submitted → filled/cancelled, the **trigger** (owner / recommendation / rebalance / alert), the owner's **reason**, gate results, and a **submit deep-link** for pending tickets (opens IBKR Mobile) | `data/orders.jsonl` | `scripts/order_log.py` (written by the `/trade` workflow) | on demand, per `/trade` session |
-| **Signals** | **IC/IR scorecard** — which of the 8 micro sub-scores actually predict forward returns — plus the book's **factor tilt** (momentum/value/quality/size/low-vol) | `data/signal_scorecard.json` (+ `data/micro_history.jsonl` history) | `scripts/signal_ic.py`; snapshots via `scripts/micro_snapshot.py` | Action 4×/day (scorecard turns on after ~25 days) |
+| **Signal efficacy** (inside **Process**) | **IC/IR scorecard** — which of the 8 micro sub-scores actually predict forward returns — plus the book's **factor tilt** (momentum/value/quality/size/low-vol) | `data/signal_scorecard.json` (+ `data/micro_history.jsonl` history) | `scripts/signal_ic.py`; snapshots via `scripts/micro_snapshot.py` | Action 4×/day (scorecard turns on after ~25 days) |
 | **Intel** (extended) | Per-holding **sentiment + next earnings + news** for the whole book, auto **positioning** (13F/insider/COT, feeds the Risk tab's Smart-Money panel), and a **macro-regime** series | `events.json`, `positioning.json`, `macro_history.json` | `scripts/enrich.py` builders | daily research routine (`scripts/micro_refresh_research.md` §5b) |
 | **Process** | **Channel accuracy** (MedAE / hit-rate per data channel, ≥80% trust gate), the auto-written **decision & trigger log** with +30/+90-day outcome review, **insider (discretionary vs technical) + politician** trades, hard-rule cards and **pre-earnings alerts** (also shown as an Overview banner) | `channel_accuracy.json`, `decision_log.jsonl`, `alerts.json`, `positioning.json` | `scripts/channel_accuracy.py`, `scripts/decision_log.py` (hooked into the micro pipeline), `scripts/alerts_build.py`, `scripts/positioning_build.py` | Action 4×/day; insider/politician dumps via `scripts/positioning_refresh.md` Routine. Methodology: **PROCESS.md** |
 
