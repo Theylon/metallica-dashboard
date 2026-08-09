@@ -466,14 +466,51 @@ td.wrap-cell { white-space: normal; overflow-wrap: anywhere; vertical-align: top
 .picks-detail td { background: rgba(99,102,241,0.05); font-size: 11.5px; line-height: 1.55; padding: 12px 16px; }
 .picks-row { cursor: pointer; }
 .detail-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 8px; }
-.detail-chip { background: rgba(123,130,160,0.10); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 10.5px; }
-.detail-chip b { font-size: 11.5px; }
+.detail-chip { background: rgba(123,130,160,0.10); border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px; font-size: 11.5px; }
+.detail-chip b { font-size: 12.5px; }
 .detail-section { margin-top: 8px; }
-.detail-section > .ds-title { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3px; }
+.detail-section > .ds-title { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3px; }
 .detail-reco { border-left: 3px solid var(--accent); background: rgba(99,102,241,0.10); border-radius: 4px; padding: 6px 10px; margin-top: 8px; }
 .subscore-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-.subscore { display: flex; align-items: center; gap: 5px; font-size: 10.5px; color: var(--text-muted); }
+.subscore { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: var(--text-muted); }
 .subscore .score-bar { width: 40px; }
+.subscore-w { font-size: 10px; color: var(--text-dim); }
+
+/* A term whose meaning isn't obvious from its label carries a title= gloss.
+   The dotted underline is the only cue that hovering will explain it. */
+.gloss { text-decoration: underline dotted var(--text-dim); text-underline-offset: 2px; cursor: help; }
+
+/* ── Stock detail: decision summary + collapsed detail ──────────────── */
+/* The summary answers "what is this and what do I do" without scrolling;
+   everything else folds into <details> below it. Native disclosure, so it is
+   keyboard-accessible and needs no JS. */
+.stk-summary { background: rgba(99,102,241,0.06); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; }
+.stk-sum-top { display: flex; align-items: flex-start; gap: 14px; flex-wrap: wrap; }
+.stk-sum-score { display: flex; align-items: baseline; gap: 4px; }
+.stk-sum-score b { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; line-height: 1; }
+.stk-sum-score span { font-size: 11px; color: var(--text-muted); }
+.stk-sum-ident { flex: 1 1 220px; min-width: 0; font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+.stk-sum-ident b { color: var(--text); font-size: 13.5px; }
+.stk-sum-badges { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.stk-sum-pos { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 12.5px; line-height: 1.6; }
+.stk-sum-thesis { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 12.5px; line-height: 1.6; color: var(--text); }
+
+/* collapsed detail groups */
+.dsc { border-top: 1px solid var(--border); }
+.dsc > summary {
+  cursor: pointer; list-style: none; padding: 9px 2px; font-size: 12px; font-weight: 600;
+  color: var(--text-muted); display: flex; align-items: center; gap: 8px; user-select: none;
+}
+.dsc > summary::-webkit-details-marker { display: none; }
+.dsc > summary::before { content: '▸'; font-size: 10px; color: var(--text-dim); transition: transform .15s; }
+.dsc[open] > summary::before { transform: rotate(90deg); }
+.dsc > summary:hover { color: var(--text); }
+.dsc-count { margin-left: auto; font-size: 10.5px; color: var(--text-dim); font-weight: 400; }
+.dsc-body { padding: 2px 2px 12px; }
+/* the first .detail-section inside a group shouldn't double the top gap */
+.dsc-body > .detail-section:first-child { margin-top: 0; }
+.stk-list { margin: 2px 0 0; padding-left: 18px; line-height: 1.6; }
+.stk-list li { margin: 2px 0; }
 
 /* ── Clickable ticker → unified stock detail modal ──────────────────── */
 /* Any ticker cell in any table becomes a link into the "everything we know
@@ -484,8 +521,10 @@ td.wrap-cell { white-space: normal; overflow-wrap: anywhere; vertical-align: top
 .stk-cell:hover .stk-link, .stk-link:hover { text-decoration-style: solid; text-decoration-color: var(--accent); color: var(--accent-light); }
 .stk-modal { position: fixed; inset: 0; z-index: 1000; display: none; align-items: flex-start; justify-content: center; background: rgba(0,0,0,0.55); backdrop-filter: blur(4px); padding: 40px 16px; overflow: auto; }
 .stk-modal.open { display: flex; }
-.stk-modal-box { width: min(780px, 100%); background: var(--card); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 24px 80px rgba(0,0,0,0.55); max-height: calc(100vh - 80px); display: flex; flex-direction: column; }
-.stk-modal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--card); border-radius: 16px 16px 0 0; }
+.stk-modal-box { width: min(880px, 100%); background: var(--card); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 24px 80px rgba(0,0,0,0.55); max-height: calc(100vh - 80px); display: flex; flex-direction: column; }
+/* not sticky: the head is a flex child of a column box whose sibling is the
+   only scroller, so it is already pinned — position:sticky here was a no-op. */
+.stk-modal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--border); background: var(--card); border-radius: 16px 16px 0 0; flex-shrink: 0; }
 .stk-modal-title { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; }
 .stk-modal-close { background: none; border: 1px solid var(--border); color: var(--text-muted); width: 30px; height: 30px; border-radius: 8px; cursor: pointer; font-size: 15px; flex-shrink: 0; }
 .stk-modal-close:hover { color: var(--text); border-color: var(--text-muted); }
@@ -1797,6 +1836,23 @@ const TAB_ALIASES = { signals: 'process' };
 const DEFAULT_TAB = 'overview';
 const TAB_STORE_KEY = 'metallica_tab';
 
+// The eight composite sub-scores: label, weight and what each one measures.
+// Single source of truth — the weights were previously stated in three places
+// (micro.json's methodology string, the Stock Picks card, and the Rebalance
+// detail card's title), free to drift apart. Weights match micro.methodology;
+// a missing sub-score redistributes its weight across the rest.
+// Every sub-score is 0-10; the composite they roll up to is 0-100.
+const SUB_META = {
+  momentum:     { label: 'Momentum',     weight: 18, what: 'Price trend — position vs the 50- and 200-day moving averages and within the 52-week range.' },
+  commodity:    { label: 'Commodity',    weight: 18, what: 'Alignment between the name and our directional bias on the metal it is exposed to.' },
+  deep:         { label: 'Deep-dive',    weight: 14, what: 'Researched thesis quality: linkage evidence, catalysts and risks on file.' },
+  analyst:      { label: 'Analyst',      weight: 13, what: 'Sell-side consensus, price-target upside and the buy/hold/sell split.' },
+  fundamentals: { label: 'Fundamentals', weight: 12, what: 'Margins, returns on capital, leverage and growth from the latest annual report.' },
+  sentiment:    { label: 'Sentiment',    weight:  9, what: 'News sentiment on the name.' },
+  smart:        { label: 'SmartScore',   weight:  8, what: "TipRanks' own 1-10 composite score." },
+  quality:      { label: 'Quality',      weight:  8, what: 'Balance-sheet strength and size — larger, better-capitalised names score higher.' },
+};
+
 // ═══════════════════════════════════════════ AUTH ══
 async function sha256(str) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
@@ -2175,7 +2231,27 @@ function renderPicks() {
 }
 
 // full per-ticker card: everything we know about the name in one expandable panel
-function buildPickDetail(r) {
+// A term that isn't self-explanatory gets a hover gloss. Attribute value goes
+// through escAttr, not esc — esc leaves quotes intact.
+function gloss(label, explain) { return `<span class="gloss" title="${escAttr(explain)}">${esc(label)}</span>`; }
+
+// Wrap a group of sections in a collapsed disclosure. `n` is an optional count
+// shown on the right so you can tell an empty-ish group from a rich one without
+// opening it.
+function dsc(title, body, n) {
+  if (!body || !body.trim()) return '';
+  return `<details class="dsc"><summary>${esc(title)}`
+    + (n ? `<span class="dsc-count">${esc(String(n))}</span>` : '')
+    + `</summary><div class="dsc-body">${body}</div></details>`;
+}
+
+const VERDICT_CLS = v => /bull|long|buy/i.test(v || '') ? 'long' : /bear|short|sell/i.test(v || '') ? 'short' : 'neutral';
+
+// mode 'full'    → decision summary + every detail group (the modal)
+// mode 'summary' → just the decision summary (the Picks table's expansion row,
+//                  which used to duplicate the entire modal body verbatim)
+function buildPickDetail(r, mode) {
+  const summaryOnly = mode === 'summary';
   const fmtM = v => v === null || v === undefined ? '—'
     : v >= 1e12 ? '$' + (v / 1e12).toFixed(2) + 'T' : v >= 1e9 ? '$' + (v / 1e9).toFixed(2) + 'B'
     : v >= 1e6 ? '$' + (v / 1e6).toFixed(1) + 'M' : '$' + Math.round(v).toLocaleString();
@@ -2183,68 +2259,98 @@ function buildPickDetail(r) {
   const chip = (label, val) => `<span class="detail-chip">${label}: <b>${val}</b></span>`;
   const section = (title, body) => body ? `<div class="detail-section"><div class="ds-title">${title}</div>${body}</div>` : '';
 
-  let out = `<b style="font-size:13px;">${r.company || r.ticker}</b>`
-    + ` <span style="color:var(--text-muted);">· ${r.material || '—'} · ${r.role || '—'}${r.capTier ? ' · ' + r.capTier + ' cap' : ''}${r.country ? ' · ' + r.country : ''}${r.exchange ? ' · ' + r.exchange : ''}</span>`;
+  // ── decision summary: verdict, score, position, thesis — above the fold ──
+  const ident = [r.material, r.role, r.capTier && r.capTier + ' cap', r.country, r.exchange]
+    .filter(Boolean).map(esc).join(' · ');
+  const badges = [];
+  if (r.microVerdict) badges.push(`<span class="pick-badge ${VERDICT_CLS(r.microVerdict)}">${esc(r.microVerdict)}</span>`);
+  if (r.held) badges.push(`<span class="pick-badge ${esc(r.held)}">${esc(String(r.held).toUpperCase())} — held</span>`);
+  if (r.discovered) badges.push(`<span class="pick-badge new">NEW</span>`);
+  if (r.quoteSuspect) badges.push(`<span class="pick-badge neutral" title="${escAttr('The live quote for this name looks unreliable — treat price-derived figures with care.')}">⚠ quote suspect</span>`);
 
-  // market snapshot chips
-  out += `<div class="detail-chips">`
-    + chip('Price', r.price !== null && r.price !== undefined ? '$' + r.price : '—')
-    + chip('Mkt Cap', fmtM(r.marketCap))
-    + chip('vs 50DMA', pct(r.vs50)) + chip('vs 200DMA', pct(r.vs200))
-    + chip('52w position', r.range52w !== null && r.range52w !== undefined ? Math.round(r.range52w) + '%' : '—')
-    + chip('Group rank', r.groupRank || '—') + chip('Model coverage', r.coverage + '%')
-    + (r.omLinkage !== null && r.omLinkage !== undefined ? chip('OM linkage', r.omLinkage + '/9') : '')
+  let sum = `<div class="stk-sum-top">`
+    + `<div class="stk-sum-score"><b style="color:${scoreColor(r.composite)};">${esc(String(r.composite ?? '—'))}</b>`
+    + `<span>/100 ${gloss('composite', 'Weighted blend of the eight sub-scores below. Higher = long candidate, lower = short candidate.')}</span></div>`
+    + `<div class="stk-sum-ident"><b>${esc(r.company || r.ticker)}</b>${ident ? `<br>${ident}` : ''}</div>`
+    + (badges.length ? `<div class="stk-sum-badges">${badges.join('')}</div>` : '')
     + `</div>`;
 
-  // live position
   if (r.position) {
     const p = r.position;
     const pnlCol = (p.unrealizedPnl || 0) >= 0 ? 'var(--green)' : 'var(--red)';
-    out += section('Live position (IBKR)',
-      `<span class="pick-badge ${r.held}">${r.held.toUpperCase()}</span> ${Math.abs(p.shares)} sh · avg cost $${p.avgCost} · last $${p.lastPrice} · MV $${p.mktValue} · `
-      + `unrealized <b style="color:${pnlCol};">${(p.unrealizedPnl >= 0 ? '+$' : '-$') + Math.abs(p.unrealizedPnl).toFixed(2)}</b>`);
+    // shares can be fractional; 4dp of a share count is noise in the one line
+    // that matters most, so show whole shares unless the fraction is real
+    const sh = Math.abs(p.shares);
+    sum += `<div class="stk-sum-pos"><b>Your position (IBKR):</b> `
+      + `${fmt(sh, Number.isInteger(sh) ? 0 : 2)} sh · avg cost ${fmtPrice(p.avgCost)} · last ${fmtPrice(p.lastPrice)} · MV ${fmtDollar(p.mktValue)}`
+      + ` · unrealized <b style="color:${pnlCol};">${(p.unrealizedPnl >= 0 ? '+$' : '-$') + Math.abs(p.unrealizedPnl).toFixed(2)}</b></div>`;
   }
 
-  // recommendation + justification
   if (r.recommendation) {
-    out += `<div class="detail-reco"><b>Recommendation: ${esc(r.recommendation.action)}</b>`
+    sum += `<div class="detail-reco"><b>Recommendation: ${esc(r.recommendation.action)}</b>`
       + (r.recommendation.urgency && r.recommendation.urgency !== 'none' ? ` <span style="color:var(--text-muted);">(urgency: ${esc(r.recommendation.urgency)})</span>` : '')
       + `<br><span style="color:var(--text-muted);">${esc(r.recommendation.rationale)}</span></div>`;
   }
 
-  // score breakdown
-  const subNames = { momentum: 'Momentum', commodity: 'Commodity', deep: 'Deep-dive', analyst: 'Analyst', fundamentals: 'Fundamentals', smart: 'SmartScore', sentiment: 'Sentiment', quality: 'Quality' };
-  const subsHtml = Object.entries(r.subs || {}).filter(([, v]) => v !== null && v !== undefined).map(([k, v]) =>
-    `<span class="subscore">${subNames[k] || k} <span class="score-bar"><span style="display:block;height:100%;border-radius:3px;width:${v * 10}%;background:${scoreColor(v * 10)};"></span></span> <b>${v}</b></span>`).join('');
-  out += section(`Composite score ${r.composite} — sub-scores (0-10)`, `<div class="subscore-grid">${subsHtml}</div>`);
+  if (r.thesis) {
+    sum += `<div class="stk-sum-thesis"><b>Thesis.</b> ${esc(r.thesis)}`
+      + (r.deepModelDerived ? ` <span style="color:var(--text-dim);">(model-derived from bias + linkage + analyst, not individually researched)</span>` : '')
+      + `</div>`;
+  }
 
-  // Independent Yahoo Finance cross-check of the primary numbers (data reliability, display-only)
+  // sub-scores, each carrying its weight and definition
+  const subsHtml = Object.entries(r.subs || {}).filter(([, v]) => v !== null && v !== undefined).map(([k, v]) => {
+    const m = SUB_META[k] || { label: k, weight: null, what: '' };
+    return `<span class="subscore">${m.what ? gloss(m.label, `${m.what} Weight ${m.weight}% of the composite.`) : esc(m.label)}`
+      + `<span class="score-bar"><span style="display:block;height:100%;border-radius:3px;width:${Math.max(0, Math.min(100, v * 10))}%;background:${scoreColor(v * 10)};"></span></span>`
+      + ` <b>${esc(String(v))}</b>${m.weight ? `<span class="subscore-w">·${m.weight}%</span>` : ''}</span>`;
+  }).join('');
+  if (subsHtml) {
+    sum += `<div class="detail-section" style="margin-top:10px;"><div class="ds-title">Sub-scores (0–10, weighted into the composite)</div>`
+      + `<div class="subscore-grid">${subsHtml}</div></div>`;
+  }
+
+  let out = `<div class="stk-summary">${sum}</div>`;
+  if (summaryOnly) return out;
+
+  // ── everything below folds away ──
+  // Market data
+  let market = `<div class="detail-chips">`
+    + chip('Price', r.price !== null && r.price !== undefined ? '$' + esc(String(r.price)) : '—')
+    + chip('Mkt cap', fmtM(r.marketCap))
+    + chip('vs 50DMA', pct(r.vs50)) + chip('vs 200DMA', pct(r.vs200))
+    + chip(gloss('52-week range', '0% = at the 52-week low, 100% = at the 52-week high.'),
+           r.range52w !== null && r.range52w !== undefined ? Math.round(r.range52w) + '%' : '—')
+    + chip(gloss('Peer rank', 'Rank of this name against others producing the same material.'), esc(String(r.groupRank || '—')))
+    + chip(gloss('Model coverage', 'Share of the eight sub-scores that have data for this name.'), esc(String(r.coverage)) + '%')
+    + `</div>`;
+
+  // Independent Yahoo Finance cross-check of the primary numbers (display-only)
   const cv = r.crossVal;
   if (cv && cv.agreement) {
     const cvCls = cv.agreement === 'agree' ? 'long' : cv.agreement === 'conflict' ? 'short' : 'neutral';
-    const body = `<div class="detail-chips">`
-      + `<span class="pick-badge ${cvCls}">${cv.agreement.toUpperCase()}</span>`
-      + (cv.flags || []).map(fl => `<span class="detail-chip">${fl}</span>`).join('') + `</div>`;
-    out += section('Data cross-check (Yahoo Finance)'
-      + ' <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--text-dim);">· independent second source vs FMP/TipRanks/TrueNorth</span>',
-      body);
+    market += section(gloss('Data cross-check (Yahoo Finance)', 'An independent second source for targets, ratings and margins. Display-only — it never changes the composite.'),
+      `<div class="detail-chips"><span class="pick-badge ${cvCls}">${esc(cv.agreement.toUpperCase())}</span>`
+      + (cv.flags || []).map(fl => `<span class="detail-chip">${esc(fl)}</span>`).join('') + `</div>`);
   }
+  out += dsc('Market data', market);
 
-  // analyst snapshot
+  // Analyst & sentiment
   if (r.analyst && Object.keys(r.analyst).length) {
     const a = r.analyst;
     const bits = [];
-    if (a.consensus) bits.push(`Consensus <b>${a.consensus}</b>`);
-    if (a.priceTarget) bits.push(`PT <b>$${a.priceTarget}</b>` + (a.upsidePct !== null && a.upsidePct !== undefined ? ` (<b>${pct(a.upsidePct)}</b>)` : ''));
-    if (a.buys !== undefined && a.buys !== null) bits.push(`B/H/S <b>${a.buys}/${a.holds ?? 0}/${a.sells ?? 0}</b>`);
-    if (a.smartScore) bits.push(`SmartScore <b>${a.smartScore}/10</b>`);
+    if (a.consensus) bits.push(chip('Consensus', esc(String(a.consensus))));
+    if (a.priceTarget) bits.push(chip(gloss('Price target', 'Mean sell-side target, with upside measured against the live price.'),
+      '$' + esc(String(a.priceTarget)) + (a.upsidePct !== null && a.upsidePct !== undefined ? ` (${pct(a.upsidePct)})` : '')));
+    if (a.buys !== undefined && a.buys !== null) bits.push(chip(gloss('Buy / hold / sell', 'Count of analysts at each rating.'),
+      `${esc(String(a.buys))}/${esc(String(a.holds ?? 0))}/${esc(String(a.sells ?? 0))}`));
+    if (a.smartScore) bits.push(chip(gloss('SmartScore', "TipRanks' own 1-10 composite."), esc(String(a.smartScore)) + '/10'));
     const x = r.tipranksExtra || {};
-    if (x.newsSentiment) bits.push(`News sentiment <b>${x.newsSentiment}</b>`);
-    if (x.newsBuzz) bits.push(`Buzz <b>${x.newsBuzz}</b>`);
-    if (x.hedgeFundTrend) bits.push(`Hedge funds <b>${x.hedgeFundTrend}</b>`);
-    if (x.insiderTrend) bits.push(`Insiders <b>${x.insiderTrend}</b>`);
-    if (x.blogger) bits.push(`Bloggers <b>${x.blogger}</b>`);
-    out += section('Analyst & sentiment (TipRanks)', bits.join(' · '));
+    if (x.newsSentiment) bits.push(chip('News sentiment', esc(String(x.newsSentiment))));
+    if (x.hedgeFundTrend) bits.push(chip('Hedge funds', esc(String(x.hedgeFundTrend))));
+    if (x.insiderTrend) bits.push(chip('Insiders', esc(String(x.insiderTrend))));
+    if (x.blogger) bits.push(chip('Bloggers', esc(String(x.blogger))));
+    out += dsc('Analyst & sentiment (TipRanks)', bits.length ? `<div class="detail-chips">${bits.join('')}</div>` : '', bits.length);
   }
 
   // fundamentals (TrueNorth annual metrics)
@@ -2261,41 +2367,48 @@ function buildPickDetail(r) {
       ['EPS', f.earnings_per_share !== null && f.earnings_per_share !== undefined ? '$' + f.earnings_per_share : null],
     ].filter(([, v]) => v !== null);
     if (items.length) {
-      out += section(`Fundamentals (TrueNorth, FY ${f.report_period ? f.report_period.slice(0, 4) : ''})`,
-        `<div class="detail-chips" style="margin:2px 0 0;">${items.map(([k, v]) => chip(k, v)).join('')}</div>`);
+      out += dsc(`Fundamentals (TrueNorth, FY ${f.report_period ? String(f.report_period).slice(0, 4) : '—'})`,
+        `<div class="detail-chips" style="margin:2px 0 0;">${items.map(([k, v]) => chip(k, v)).join('')}</div>`, items.length);
     }
   }
 
-  // underlying-asset exposure (OM linkage quantification)
+  // commodity linkage + the backdrop for that metal — one group, since the
+  // question they answer is the same: does this name track its metal, and
+  // which way is that metal going.
+  let link = '';
   if (r.exposure) {
     const e = r.exposure;
-    const bar3 = v => v === null || v === undefined ? '—'
-      : `<span class="score-bar" style="width:30px;display:inline-block;vertical-align:middle;"><span style="display:block;height:100%;border-radius:3px;width:${(v / 3) * 100}%;background:${v >= 3 ? '#22c55e' : v >= 2 ? '#eab308' : '#ef4444'};"></span></span> <b>${v}/3</b>`;
-    out += section(`Underlying-asset exposure — ${esc(e.commodity || r.material)}`,
+    const bar3 = (v, label, explain) => v === null || v === undefined ? '' :
+      `<span class="detail-chip">${gloss(label, explain)}: <span class="score-bar" style="width:30px;display:inline-block;vertical-align:middle;"><span style="display:block;height:100%;border-radius:3px;width:${(v / 3) * 100}%;background:${v >= 3 ? '#22c55e' : v >= 2 ? '#eab308' : '#ef4444'};"></span></span> <b>${esc(String(v))}/3</b></span>`;
+    link += section(`Commodity linkage — ${esc(e.commodity || r.material || '—')}`,
       `<div class="detail-chips" style="margin:2px 0 4px;">`
-      + chip('Linkage', `${esc(e.score)}/9 (${esc(e.tier || '—')})`)
-      + `<span class="detail-chip">Revenue exposure: ${bar3(e.exposure)}</span>`
-      + `<span class="detail-chip">Price sensitivity: ${bar3(e.priceSens)}</span>`
-      + `<span class="detail-chip">Coupling: ${bar3(e.coupling)}</span>`
+      + chip(gloss('Linkage score', 'Revenue exposure + price sensitivity + coupling, each scored 0-3, summed to 0-9.'),
+             `${esc(String(e.score))}/9 (${esc(e.tier || '—')})`)
+      + bar3(e.exposure, 'Revenue exposure', 'How much of the company’s revenue comes from this metal.')
+      + bar3(e.priceSens, 'Price sensitivity', 'How strongly earnings move with the metal price. Smelters score high; pass-through fabricators score low.')
+      + bar3(e.coupling, 'Coupling', 'How tightly the share price has tracked the metal price.')
       + chip('Confidence', esc(e.confidence || '—')) + `</div>`
       + (e.evidence ? `<span style="color:var(--text-muted);">“${esc(e.evidence)}”</span>` : ''));
   } else if (r.omEvidence) {
-    out += section('Commodity linkage evidence (Bigdata.com)', `<span style="color:var(--text-muted);">${esc(r.omEvidence)}</span>`);
+    link += section('Commodity linkage evidence (Bigdata.com)', `<span style="color:var(--text-muted);">${esc(r.omEvidence)}</span>`);
   }
-
-  // commodity backdrop for this material
   const bias = (micro.commodityBias || []).find(b => b.material === r.material);
   if (bias) {
-    out += section(`Commodity backdrop — ${esc(r.material)}`,
-      `<span class="pick-badge ${bias.bias === 'long' ? 'long' : bias.bias === 'short' ? 'short' : 'neutral'}">${esc(bias.bias.toUpperCase())}</span> `
+    link += section(`Our bias on ${esc(r.material)}`,
+      `<span class="pick-badge ${bias.bias === 'long' ? 'long' : bias.bias === 'short' ? 'short' : 'neutral'}">${esc(String(bias.bias).toUpperCase())}</span> `
       + `<span style="color:var(--text-muted);">(${esc(bias.confidence)}) ${esc(bias.evidence)}</span>`);
   }
+  out += dsc('Commodity linkage & backdrop', link);
 
-  out += section('Thesis' + (r.deepModelDerived ? ' <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--text-dim);">· model-derived (bias + linkage + analyst, not individually researched)</span>' : ''), r.thesis ? esc(r.thesis) : '');
-  out += section('Catalysts', (r.catalysts || []).length ? esc(r.catalysts.join(' · ')) : '');
-  out += section('Risks', (r.risks || []).length ? esc(r.risks.join(' · ')) : '');
-  const ev = (r.evidence || []).map(e => `• <b>${esc(e.source)}</b> (${esc(e.date)}): ${esc(e.note)}`).join('<br>');
-  out += section('Evidence', ev);
+  // Catalysts / risks / evidence — real lists, not a '·'-joined paragraph
+  const list = arr => (arr || []).length ? `<ul class="stk-list">${arr.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '';
+  const nCat = (r.catalysts || []).length, nRisk = (r.risks || []).length, nEv = (r.evidence || []).length;
+  let research = section('Catalysts', list(r.catalysts)) + section('Risks', list(r.risks));
+  if (nEv) {
+    research += section('Evidence', `<ul class="stk-list">`
+      + r.evidence.map(e => `<li><b>${esc(e.source)}</b> (${esc(e.date)}): ${esc(e.note)}</li>`).join('') + `</ul>`);
+  }
+  out += dsc('Catalysts, risks & evidence', research, nCat + nRisk + nEv);
   return out;
 }
 
@@ -2366,8 +2479,14 @@ function stkRiskSection(d) {
   if (!d.risk) return '';
   const r = d.risk;
   return mkSection('Risk contribution (portfolio)', `<div class="detail-chips">`
-    + mkChip('Side', String(r.side || '').toUpperCase()) + mkChip('Weight', r.weightPct + '%')
-    + mkChip('Risk contribution', r.riskContribPct + '%') + mkChip('Marginal VaR', r.mVaR) + `</div>`);
+    + mkChip('Side', esc(String(r.side || '').toUpperCase()))
+    + mkChip(gloss('Weight', 'This position’s market value as a share of NAV.'), esc(String(r.weightPct)) + '%')
+    + mkChip(gloss('Risk contribution', 'This name’s share of total portfolio risk — can be far larger than its weight.'), esc(String(r.riskContribPct)) + '%')
+    // risk.py: "component of the 1-day 95% VaR ($)" — the unit was missing here
+    // 1dp, not fmtDollar's whole dollars: on a ~$10k book these run $9-$50, so
+    // rounding to the dollar throws away a meaningful part of the number
+    + mkChip(gloss('Marginal VaR', 'This name’s component of the portfolio’s 1-day 95% value-at-risk, in dollars.'),
+             r.mVaR != null ? '$' + fmt(r.mVaR, 1) : '—') + `</div>`);
 }
 
 function stkTradeHistSection(d) {
@@ -2461,20 +2580,30 @@ function buildStockModalBody(tk) {
   let out = '';
 
   if (d.micro) {
-    out += buildPickDetail(d.micro);
+    out += buildPickDetail(d.micro, 'full');
   } else {
+    // Not a research-universe name: no composite to lead with, so the summary
+    // card is just identity + whatever position we hold.
     const nm = (d.alt[0] && d.alt[0].name) || (d.position && d.position.description) || d.ticker;
     const metaBits = [(d.position && d.position.category), (d.alt[0] && d.alt[0].sector), (d.jname && d.jname.commodity)].filter(Boolean);
-    out += `<b style="font-size:13px;">${esc(nm)}</b>`
-      + (metaBits.length ? ` <span style="color:var(--text-muted);">· ${esc(metaBits.join(' · '))}</span>` : '')
-      + `<div style="color:var(--text-muted);font-size:11px;margin-top:4px;">Not in the Stock-Picks research universe — showing the portfolio, risk and trading data on file.</div>`;
+    out += `<div class="stk-summary"><div class="stk-sum-ident"><b>${esc(nm)}</b>`
+      + (metaBits.length ? `<br>${esc(metaBits.join(' · '))}` : '') + `</div>`
+      + (d.position ? `<div class="stk-sum-pos"><b>Your position:</b> ${stkPosLine(d.position)}</div>` : '')
+      + `<div style="color:var(--text-muted);font-size:11.5px;margin-top:8px;">Not in the Stock-Picks research universe — showing the portfolio, risk and trading data on file.</div></div>`;
   }
 
-  // live position — only if buildPickDetail didn't already render it
-  if (d.position && !hasMicroPos) out += mkSection('Live position (IBKR)', stkPosLine(d.position));
+  // live position for a research name whose micro record has no position block
+  if (d.position && d.micro && !hasMicroPos) {
+    out += `<div class="stk-summary" style="margin-top:-4px;"><div class="stk-sum-pos" style="margin:0;padding:0;border:none;"><b>Your position:</b> ${stkPosLine(d.position)}</div></div>`;
+  }
 
-  out += stkRiskSection(d) + stkTradeHistSection(d) + stkAltSection(d) + stkResearchSection(d) + stkRebalSection(d) + stkProposedSection(d);
-  if (!d.micro) out += stkTechSection(d.tech);   // micro card already carries price / vs-DMA
+  const portfolio = stkRiskSection(d) + stkTradeHistSection(d);
+  out += dsc('Portfolio & trade history', portfolio);
+
+  const signals = stkAltSection(d) + stkResearchSection(d) + stkRebalSection(d) + stkProposedSection(d)
+    + (d.micro ? '' : stkTechSection(d.tech));   // the research card already carries price / vs-DMA
+  out += dsc('Other signals', signals,
+    (d.alt || []).length + (d.research || []).length + (d.trades || []).length + (d.rebal ? 1 : 0));
 
   return out.trim() ? out : `<div style="color:var(--text-muted);">No data on file for ${esc(d.ticker)}.</div>`;
 }
@@ -2629,7 +2758,12 @@ function renderPicksTable() {
       + `<td style="color:var(--text-muted);">${r.groupRank || '—'}</td>`
       + `<td style="text-align:left;">${verdict}</td></tr>`;
     if (picksExpanded === r.ticker) {
-      html += `<tr class="picks-detail"><td colspan="11" style="text-align:left;">${buildPickDetail(r)}</td></tr>`;
+      // Summary only. This row used to inject the entire modal body verbatim,
+      // so expanding a row and clicking its ticker produced identical content
+      // in two places; the full card now lives in the modal alone.
+      html += `<tr class="picks-detail"><td colspan="11" style="text-align:left;">${buildPickDetail(r, 'summary')}`
+        + `<button type="button" class="trade-btn" style="margin-top:8px;" onclick="event.stopPropagation();openStockModal('${escAttr(r.ticker)}')">`
+        + `Full details ↗</button></td></tr>`;
     }
     return html;
   }).join('') : '<tr class="empty-row"><td colspan="11">No names match the filter</td></tr>';
@@ -4090,19 +4224,23 @@ function calcMetricsForSeries(prices) {
 let rebalanceExpanded = null;
 function toggleRebalanceDetail(t) { rebalanceExpanded = rebalanceExpanded === t ? null : t; renderRebalance(); }
 function buildRebalanceDetail(r) {
-  const subNames = { momentum: 'Momentum', commodity: 'Commodity', deep: 'Deep-dive', analyst: 'Analyst', fundamentals: 'Fundamentals', sentiment: 'Sentiment', smart: 'SmartScore', quality: 'Quality' };
   const section = (title, body) => body ? `<div style="margin:10px 0;"><div style="font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:6px;">${title}</div><div style="font-size:12.5px;line-height:1.6;color:var(--text-dim);">${body}</div></div>` : '';
   let out = '<div style="padding:14px 20px;">';
   if (r.subs) {
-    const bars = Object.entries(subNames).filter(([k]) => r.subs[k] != null).map(([k, label]) =>
-      `<span class="subscore">${label} <span class="score-bar"><span style="display:block;height:100%;border-radius:3px;width:${r.subs[k] * 10}%;background:${scoreColor(r.subs[k] * 10)};"></span></span> <b>${r.subs[k]}</b></span>`).join('');
-    out += section(`Composite ${r.comp} — sub-scores (0–10, weighted: mom 18% · cmdty 18% · deep 14% · analyst 13% · fund 12% · sentiment 9% · smart 8% · quality 8%)${r.coverage != null ? ` · ${r.coverage}% coverage` : ''}`, `<div class="subscore-grid">${bars}</div>`);
+    // labels, weights and glosses all come from SUB_META — this used to keep its
+    // own copy of the label map and restate the weights in the title string
+    const bars = Object.entries(SUB_META).filter(([k]) => r.subs[k] != null).map(([k, m]) =>
+      `<span class="subscore">${gloss(m.label, `${m.what} Weight ${m.weight}% of the composite.`)}`
+      + `<span class="score-bar"><span style="display:block;height:100%;border-radius:3px;width:${Math.max(0, Math.min(100, r.subs[k] * 10))}%;background:${scoreColor(r.subs[k] * 10)};"></span></span>`
+      + ` <b>${esc(String(r.subs[k]))}</b><span class="subscore-w">·${m.weight}%</span></span>`).join('');
+    out += section(`Composite ${esc(String(r.comp))} — sub-scores (0–10)${r.coverage != null ? ` · ${esc(String(r.coverage))}% coverage` : ''}`, `<div class="subscore-grid">${bars}</div>`);
   } else {
     out += section('Composite', 'Outside the micro-analysis universe — no sub-score breakdown for this name.');
   }
   out += section('Thesis', r.thesis ? esc(r.thesis) : '');
-  out += section('Catalysts', (r.catalysts && r.catalysts.length) ? r.catalysts.map(esc).join(' · ') : '');
-  out += section('Risks', (r.risks && r.risks.length) ? r.risks.map(esc).join(' · ') : '');
+  const rlist = arr => (arr && arr.length) ? `<ul class="stk-list">${arr.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '';
+  out += section('Catalysts', rlist(r.catalysts));
+  out += section('Risks', rlist(r.risks));
   out += '</div>';
   return out;
 }
@@ -5353,6 +5491,10 @@ function fmtTime(d)             { return d.toLocaleString('en-US', { month: 'sho
 function signedShares(p)        { const s = p ? p.shares : null; return s == null ? s : (p.side === 'short' ? -Math.abs(s) : Math.abs(s)); }
 function setText(id, text)      { const el = document.getElementById(id); if (el) el.textContent = text; }
 function esc(s)                 { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+// esc() deliberately leaves quotes intact, so it is NOT safe inside an attribute
+// value — a data-supplied " would break straight out of title="…". Use this for
+// any attribute fed by data (the stock modal's glossary tooltips do).
+function escAttr(s)             { return esc(s).replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 // data-supplied URLs go into href attributes — escape AND require http(s)
 // Only http(s) URLs, and neutralize quotes too (esc leaves " intact, which would
 // otherwise break out of href="${safeUrl(...)}") — rejects javascript:/data: schemes.
