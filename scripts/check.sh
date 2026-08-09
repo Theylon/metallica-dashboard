@@ -43,7 +43,34 @@ else
   echo "  ok: no private keys, key files, or .env files tracked"
 fi
 
-# 4) Optional lint — advisory only, never blocks. Runs if ruff is installed.
+# 4) index.html — the dashboard is one file with ~4,000 lines of inline JS and
+#    no build step, so a syntax slip ships silently to Pages. Parse the inline
+#    <script> with node. Blocking when node is available (CI runners have it),
+#    skipped cleanly when it isn't, so the gate stays dependency-free.
+step "Parsing inline JS in index.html"
+if command -v node >/dev/null 2>&1; then
+  # a .js name in a temp dir: node --check refuses an unknown extension
+  tmpd=$(mktemp -d) || exit 2
+  js="$tmpd/inline.js"
+  python3 - "$js" <<'PY'
+import re, sys, pathlib
+html = pathlib.Path('index.html').read_text(encoding='utf-8')
+# The dashboard's own code is the one <script> without a src= (the others are CDN tags).
+blocks = re.findall(r'<script(?![^>]*\bsrc=)[^>]*>(.*?)</script>', html, re.S | re.I)
+pathlib.Path(sys.argv[1]).write_text('\n;\n'.join(blocks), encoding='utf-8')
+print(f"  found {len(blocks)} inline script block(s)")
+PY
+  if node --check "$js" 2>&1 | sed 's/^/    /'; then
+    echo "  ok: inline JS parses"
+  else
+    echo "  ERR: index.html inline JS has a syntax error"; fail=1
+  fi
+  rm -rf "$tmpd"
+else
+  echo "  skip: node not installed"
+fi
+
+# 5) Optional lint — advisory only, never blocks. Runs if ruff is installed.
 step "Lint (advisory)"
 if command -v ruff >/dev/null 2>&1; then
   ruff check scripts/ || echo "  (ruff findings above are advisory, not blocking)"

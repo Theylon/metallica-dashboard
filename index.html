@@ -55,7 +55,7 @@
 }
 [data-theme="light"] body { background: var(--bg); }
 [data-theme="light"] .topbar { background: rgba(244,246,251,0.92); }
-[data-theme="light"] .tabs { background: var(--surface); }
+[data-theme="light"] .tabs, [data-theme="light"] .tabgroups { background: var(--surface); }
 [data-theme="light"] .card, [data-theme="light"] .kpi-card,
 [data-theme="light"] .chart-panel, [data-theme="light"] .stat-block,
 [data-theme="light"] .table-panel, [data-theme="light"] .gauge-panel {
@@ -205,9 +205,35 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
   color: var(--text-dim); font-size: 12.5px; line-height: 1.5;
 }
 
+/* ── Tab groups (upper nav strip) ───────────────────────────────────── */
+/* Two-level nav: this strip picks one of four groups, the .tabs strip below
+   shows only that group's views. Pills here, underlines there, so the two
+   levels never read as one flat row. Both are built from TAB_GROUPS in JS. */
+.tabgroups {
+  position: sticky; top: 56px; z-index: 100;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  display: flex; gap: 6px; padding: 7px 24px; overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabgroups::-webkit-scrollbar { display: none; }
+.tabgroup {
+  display: flex; align-items: center; gap: 7px; flex-shrink: 0;
+  padding: 7px 14px; border-radius: 8px; cursor: pointer;
+  font-size: 13px; font-weight: 600; white-space: nowrap;
+  color: var(--text-muted); background: none; font-family: inherit;
+  border: 1px solid transparent; transition: all .2s; user-select: none;
+}
+.tabgroup:hover { color: var(--text); background: var(--card); }
+.tabgroup.active {
+  color: var(--accent-light); background: rgba(99,102,241,0.12);
+  border-color: var(--accent-dim);
+}
+.tabgroup-icon { font-size: 14px; }
+
 /* ── Tabs ───────────────────────────────────────────────────────────── */
 .tabs {
-  position: sticky; top: 56px; z-index: 99;
+  /* 56px topbar + 47px group strip — keep in step with .tabgroups' height */
+  position: sticky; top: 103px; z-index: 99;
   background: var(--surface); border-bottom: 1px solid var(--border);
   display: flex; padding: 0 24px; overflow-x: auto;
 }
@@ -216,9 +242,13 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
   color: var(--text-muted); border-bottom: 2px solid transparent;
   transition: all .2s; display: flex; align-items: center; gap: 6px;
   user-select: none; white-space: nowrap;
+  background: none; border-top: none; border-left: none; border-right: none;
+  font-family: inherit;
 }
 .tab:hover { color: var(--text); }
 .tab.active { color: var(--accent-light); border-bottom-color: var(--accent-light); }
+/* .tab sets display:flex, which would otherwise beat the hidden attribute */
+.tab[hidden] { display: none; }
 .tab-icon { font-size: 14px; }
 
 /* ── Pages ──────────────────────────────────────────────────────────── */
@@ -458,6 +488,64 @@ td:first-child { text-align: left; }
 .stk-subtable th { text-align: center; color: var(--text-muted); font-weight: 600; padding: 4px 8px; border-bottom: 1px solid var(--border); font-size: 10.5px; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
 .stk-subtable td { text-align: center; padding: 4px 8px; border-bottom: 1px solid var(--border); white-space: nowrap; }
 
+/* ── Command palette (Ctrl/Cmd-K) ───────────────────────────────────── */
+/* Jump to any view or open any known ticker without hunting the nav.
+   z 400: above the refresh overlay (300), below the login gate (999) and the
+   stock modal (1000) — the palette closes itself before opening that modal. */
+.cmdk-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 30px; padding: 0 10px; border-radius: 8px; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text-dim); font-size: 11px; font-weight: 600;
+  transition: all .2s; line-height: 1; white-space: nowrap; font-family: inherit;
+}
+.cmdk-btn:hover { color: var(--text); border-color: var(--border-light); }
+.cmdk-overlay {
+  position: fixed; inset: 0; z-index: 400; display: none;
+  align-items: flex-start; justify-content: center;
+  background: rgba(5,7,12,0.6); backdrop-filter: blur(4px); padding: 80px 16px 16px;
+}
+.cmdk-overlay.open { display: flex; }
+.cmdk-box {
+  width: min(560px, 100%); max-height: calc(100vh - 120px);
+  background: var(--surface); border: 1px solid var(--border-light);
+  border-radius: 14px; box-shadow: 0 24px 80px rgba(0,0,0,0.55);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.cmdk-input {
+  width: 100%; padding: 15px 18px; border: none; border-bottom: 1px solid var(--border);
+  background: none; color: var(--text); font-size: 15px; outline: none; font-family: inherit;
+}
+.cmdk-input::placeholder { color: var(--text-dim); }
+.cmdk-results { overflow-y: auto; padding: 6px; }
+.cmdk-section {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--text-dim); padding: 8px 12px 4px;
+}
+.cmdk-item {
+  display: flex; align-items: center; gap: 10px; width: 100%;
+  padding: 9px 12px; border-radius: 8px; cursor: pointer; text-align: left;
+  background: none; border: none; color: var(--text); font-size: 13px;
+  font-family: inherit; transition: background .12s;
+}
+.cmdk-item:hover { background: var(--card); }
+.cmdk-item.sel { background: rgba(99,102,241,0.14); }
+.cmdk-item-icon { font-size: 14px; flex-shrink: 0; width: 18px; text-align: center; }
+.cmdk-item-label { font-weight: 600; white-space: nowrap; }
+.cmdk-item-sub {
+  color: var(--text-muted); font-size: 11.5px; margin-left: auto;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-left: 10px;
+}
+.cmdk-empty { padding: 22px 14px; text-align: center; color: var(--text-muted); font-size: 12.5px; }
+.cmdk-hint {
+  display: flex; gap: 14px; padding: 8px 14px; border-top: 1px solid var(--border);
+  font-size: 10.5px; color: var(--text-dim);
+}
+.cmdk-hint kbd {
+  background: var(--card); border: 1px solid var(--border); border-radius: 4px;
+  padding: 1px 5px; font-family: inherit; font-size: 10px;
+}
+
 /* ── Benchmark Table ────────────────────────────────────────────────── */
 .bm-table-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border); }
 .bm-name { display: flex; align-items: center; gap: 6px; }
@@ -514,11 +602,19 @@ td:first-child { text-align: left; }
   .stale-badge { padding: 3px 6px; font-size: 10px; }
   .refresh-btn { padding: 0 8px; font-size: 11px; }
   .logout-btn { padding: 4px 2px; }
+  .cmdk-btn { padding: 0 8px; font-size: 11px; }
 
-  /* tabs become a horizontal scroll strip */
-  .tabs { top: 52px; padding: 0 6px; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  /* both nav strips become horizontal scroll strips, stacked under the topbar */
+  .tabgroups { top: 52px; padding: 6px 8px; gap: 4px; -webkit-overflow-scrolling: touch; }
+  .tabgroup { padding: 6px 11px; font-size: 12px; }
+  .tabs { top: 95px; padding: 0 6px; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .tabs::-webkit-scrollbar { display: none; }
   .tab { padding: 12px 11px; font-size: 12px; }
+
+  .cmdk-overlay { padding: 40px 10px 10px; }
+  .cmdk-box { max-height: calc(100vh - 60px); }
+  .cmdk-input { padding: 13px 15px; font-size: 14px; }
+  .cmdk-item-sub { display: none; }
 
   .page { padding: 14px 12px; }
 
@@ -650,6 +746,8 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
       <div id="stale-badge" class="stale-badge" style="display:none">⚠ Stale</div>
       <div id="market-badge" class="market-badge closed">Market Closed</div>
       <div id="updated-at" class="updated-at">—</div>
+      <button class="cmdk-btn" id="cmdk-btn" onclick="openPalette()"
+              title="Search views and tickers (Ctrl-K / ⌘K)">🔍 <span id="cmdk-btn-key">Ctrl K</span></button>
       <button class="refresh-btn" id="refresh-btn" onclick="startRefresh(event)"
               title="Run the data pipeline &amp; redeploy (~3–4 min). Shift-click to change the token.">⟳ Refresh</button>
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark">🌙</button>
@@ -680,51 +778,27 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
     </div>
   </div>
 
-  <!-- Tab nav -->
-  <div class="tabs" role="tablist">
-    <div class="tab active" role="tab" tabindex="0" data-tab="overview" onclick="showTab('overview')">
-      <span class="tab-icon">📈</span> Overview
-    </div>
-    <div class="tab" role="tab" tabindex="0" data-tab="positions" onclick="showTab('positions')">
-      <span class="tab-icon">📋</span> Positions
-    </div>
-    <div class="tab" role="tab" tabindex="0" data-tab="journal" onclick="showTab('journal')">
-      <span class="tab-icon">📒</span> Journal
-    </div>
-    <div class="tab" role="tab" tabindex="0" data-tab="benchmarks" onclick="showTab('benchmarks')">
-      <span class="tab-icon">⚖️</span> Benchmarks
-    </div>
-    <div class="tab" role="tab" tabindex="0" data-tab="exposure" onclick="showTab('exposure')">
-      <span class="tab-icon">🔭</span> Exposure
-    </div>
-    <div class="tab" role="tab" tabindex="0" data-tab="risk" onclick="showTab('risk')">
-      <span class="tab-icon">🛡️</span> Risk
-    </div>
-    <div class="tab" role="tab" tabindex="0" data-tab="markets" onclick="showTab('markets')">
-      <span class="tab-icon">🌐</span> Markets
-    </div>
-    <div class="tab" role="tab" tabindex="0" data-tab="intel" onclick="showTab('intel')">
-      <span class="tab-icon">🧠</span> Intel
-    </div>
-    <div class="tab" role="tab" tabindex="0" data-tab="picks" onclick="showTab('picks')">
-      <span class="tab-icon">🎯</span> Stock Picks
-    </div>
-    <div class="tab" role="tab" tabindex="0" data-tab="signals" onclick="showTab('signals')">
-      <span class="tab-icon">🔬</span> Signals
-    </div>
-    <div class="tab" role="tab" tabindex="0" data-tab="rebalance" onclick="showTab('rebalance')">
-      <span class="tab-icon">🔁</span> Rebalance
-    </div>
-    <div class="tab" role="tab" tabindex="0" data-tab="altdata" onclick="showTab('altdata')">
-      <span class="tab-icon">🛰️</span> Alt-Data
-    </div>
-    <div class="tab" role="tab" tabindex="0" data-tab="process" onclick="showTab('process')">
-      <span class="tab-icon">🧭</span> Process
-    </div>
-    <div class="tab" role="tab" tabindex="0" data-tab="orders" onclick="showTab('orders')">
-      <span class="tab-icon">🧾</span> Orders
+  <!-- Command palette (Ctrl/Cmd-K). Jumps to any view, or opens the stock
+       detail modal for any ticker we hold data on. Wired in the PALETTE
+       section of the script; inert until the login gate is passed. -->
+  <div id="cmdk" class="cmdk-overlay" onclick="if (event.target === this) closePalette()">
+    <div class="cmdk-box" role="dialog" aria-modal="true" aria-label="Search">
+      <input id="cmdk-input" class="cmdk-input" type="text" autocomplete="off" spellcheck="false"
+             placeholder="Jump to a view, or type a ticker…" aria-controls="cmdk-results"
+             aria-label="Search views and tickers">
+      <div id="cmdk-results" class="cmdk-results" role="listbox" aria-label="Results"></div>
+      <div class="cmdk-hint">
+        <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+        <span><kbd>↵</kbd> open</span>
+        <span><kbd>esc</kbd> close</span>
+      </div>
     </div>
   </div>
+
+  <!-- Two-level tab nav. Both strips are built by buildNav() from the
+       TAB_GROUPS constant in the script below — edit the grouping there. -->
+  <div class="tabgroups" id="tabgroups" role="tablist" aria-label="Sections"></div>
+  <div class="tabs" id="tabs" role="tablist" aria-label="Views"></div>
 
   <!-- ─── Overview page ─────────────────────────────────────────── -->
   <div id="page-overview" class="page active">
@@ -1421,31 +1495,10 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
     <div style="font-size:11px;color:var(--text-muted);margin-top:10px;line-height:1.5;" id="picks-methodology">—</div>
   </div><!-- /picks -->
 
-  <!-- ─── Signals page (IC/IR scorecard + portfolio factor tilt) ──── -->
-  <div id="page-signals" class="page">
-    <div class="stat-block" style="margin-bottom:18px;">
-      <div class="stat-block-title">Portfolio Factor Tilt
-        <span id="ft-asof" style="font-weight:400;color:var(--text-muted);font-size:11px;"></span></div>
-      <div class="kpi-row" id="ft-cards"></div>
-      <div class="report-note" style="margin-top:8px;">Net exposure to each style factor, z-scored across the picks universe and weighted by signed position size. Positive = the book tilts toward that factor.</div>
-    </div>
-
-    <div class="table-panel">
-      <div class="table-header">
-        <div class="table-title">Signal Efficacy — rank-IC / IR</div>
-        <div style="font-size:11px;color:var(--text-muted)" id="sig-status">—</div>
-      </div>
-      <div class="table-wrapper">
-        <table>
-          <thead><tr>
-            <th style="text-align:left;">Signal</th><th>Rank-IC</th><th>IR</th><th>Hit Rate</th><th>Windows</th><th>Obs</th>
-          </tr></thead>
-          <tbody id="sig-tbody"><tr class="empty-row"><td colspan="6">Collecting history…</td></tr></tbody>
-        </table>
-      </div>
-      <div class="report-note" style="margin-top:10px;">Rank-IC = Spearman correlation of each score with the forward 20-day return; IR = mean IC ÷ its volatility. Measured on daily snapshots accumulated since this feature shipped — which of our eight sub-scores actually predicts returns.</div>
-    </div>
-  </div><!-- /signals -->
+  <!-- Signals (factor tilt + IC/IR scorecard) used to be its own tab; it now
+       lives inside the Process page, next to Channel Accuracy — both answer
+       "does this input actually predict returns". Ids are unchanged, so
+       renderSignals() still writes here. -->
 
   <!-- ─── Rebalance page: proposed-book micro review + trade list ── -->
   <div id="page-rebalance" class="page">
@@ -1530,6 +1583,31 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
         </table>
       </div>
       <div class="report-note" style="margin-top:10px;">KPI channels: MedAE = median |estimate − reported| per quarter, accuracy = 100 − MedAE. Score channels: hit rate of positive rank-IC windows. Direction channels: hit rate of each call vs the 20-snapshot-forward return. <b>Probation</b> and <b>accumulating</b> channels are display-only — never a decision input.</div>
+    </div>
+
+    <!-- Signal efficacy (was the standalone Signals tab) -->
+    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">🔬 Signal Efficacy &amp; Factor Tilt</div></div>
+    <div class="stat-block" style="margin-bottom:18px;">
+      <div class="stat-block-title">Portfolio Factor Tilt
+        <span id="ft-asof" style="font-weight:400;color:var(--text-muted);font-size:11px;"></span></div>
+      <div class="kpi-row" id="ft-cards"></div>
+      <div class="report-note" style="margin-top:8px;">Net exposure to each style factor, z-scored across the picks universe and weighted by signed position size. Positive = the book tilts toward that factor.</div>
+    </div>
+
+    <div class="table-panel">
+      <div class="table-header">
+        <div class="table-title">Signal Efficacy — rank-IC / IR</div>
+        <div style="font-size:11px;color:var(--text-muted)" id="sig-status">—</div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr>
+            <th style="text-align:left;">Signal</th><th>Rank-IC</th><th>IR</th><th>Hit Rate</th><th>Windows</th><th>Obs</th>
+          </tr></thead>
+          <tbody id="sig-tbody"><tr class="empty-row"><td colspan="6">Collecting history…</td></tr></tbody>
+        </table>
+      </div>
+      <div class="report-note" style="margin-top:10px;">Rank-IC = Spearman correlation of each score with the forward 20-day return; IR = mean IC ÷ its volatility. Measured on daily snapshots accumulated since this feature shipped — which of our eight sub-scores actually predicts returns.</div>
     </div>
 
     <!-- Decision log -->
@@ -1674,6 +1752,44 @@ const BENCHMARK_LABELS = {
   CPER: { label: 'Copper (CPER)',     color: '#f59e0b' },
 };
 
+// ═══════════════════════════════════════════ NAV ══
+// The single source of truth for the two-level nav: four groups, thirteen
+// views. Both nav strips, the hash router and the command palette all read
+// this — to move or rename a view, edit it here and nowhere else.
+// A tab's id must match its panel id (`page-<id>`); those ids are also the
+// keys the table-layout store persists under, so don't rename them casually.
+const TAB_GROUPS = [
+  { id: 'portfolio', icon: '📊', label: 'Portfolio', tabs: [
+      { id: 'overview',   icon: '📈', label: 'Overview'   },
+      { id: 'positions',  icon: '📋', label: 'Positions'  },
+      { id: 'exposure',   icon: '🔭', label: 'Exposure'   },
+      { id: 'risk',       icon: '🛡️', label: 'Risk'       },
+      { id: 'benchmarks', icon: '⚖️', label: 'Benchmarks' } ] },
+  { id: 'research', icon: '🔎', label: 'Research', tabs: [
+      { id: 'picks',      icon: '🎯', label: 'Stock Picks' },
+      { id: 'markets',    icon: '🌐', label: 'Markets'     },
+      { id: 'intel',      icon: '🧠', label: 'Intel'       },
+      { id: 'altdata',    icon: '🛰️', label: 'Alt-Data'    } ] },
+  { id: 'execution', icon: '⚙️', label: 'Execution', tabs: [
+      { id: 'rebalance',  icon: '🔁', label: 'Rebalance' },
+      { id: 'orders',     icon: '🧾', label: 'Orders'    } ] },
+  { id: 'review', icon: '📚', label: 'Review', tabs: [
+      { id: 'journal',    icon: '📒', label: 'Journal' },
+      { id: 'process',    icon: '🧭', label: 'Process' } ] },
+];
+
+// Derived lookups, built once.
+const ALL_TABS    = TAB_GROUPS.flatMap(g => g.tabs.map(t => t.id));
+const TAB_TO_GROUP = {};
+const TAB_META     = {};
+TAB_GROUPS.forEach(g => g.tabs.forEach(t => { TAB_TO_GROUP[t.id] = g.id; TAB_META[t.id] = t; }));
+
+// Views that folded into another view. Old links keep working.
+const TAB_ALIASES = { signals: 'process' };
+
+const DEFAULT_TAB = 'overview';
+const TAB_STORE_KEY = 'metallica_tab';
+
 // ═══════════════════════════════════════════ AUTH ══
 async function sha256(str) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
@@ -1685,9 +1801,7 @@ async function doLogin() {
   const hash = await sha256(pw);
   if (hash === PASSWORD_HASH) {
     sessionStorage.setItem('metallica_auth', '1');
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('dashboard').style.display = 'block';
-    await loadData();
+    await startDashboard();
   } else {
     document.getElementById('login-error').textContent = 'Incorrect password.';
     document.getElementById('pw-input').value = '';
@@ -4564,25 +4678,261 @@ function renderAltData() {
   }
 }
 
-function showTab(name) {
-  ftsExitFullscreen();   // a fullscreen table overlay must not survive a tab switch
-  document.querySelectorAll('.tab').forEach(t => {
-    const active = t.dataset.tab === name;
-    t.classList.toggle('active', active);
-    t.setAttribute('aria-selected', active ? 'true' : 'false');
+// ═══════════════════════════════════════════ NAV / ROUTING ══
+// Two-level nav driven by TAB_GROUPS. Both strips are rendered once; switching
+// groups only toggles which sub-tabs are `hidden`, so showTab's
+// querySelectorAll('.tab') always sees every tab and the aria state stays whole.
+
+const lastTabInGroup = {};   // remember where you were in each group
+let hashWriting = false;     // guards showTab → hashchange → showTab re-entry
+
+// Renderers that measure real layout width and therefore can't run while their
+// panel is hidden — re-run them the moment the panel is revealed. A panel can
+// now be hidden because its *group* is inactive, not just its tab, so this has
+// two triggers rather than one.
+const ON_REVEAL = {
+  exposure: () => renderHeatmap(),
+};
+
+function buildNav() {
+  const gs = document.getElementById('tabgroups');
+  const ts = document.getElementById('tabs');
+  if (!gs || !ts) return;
+  gs.innerHTML = TAB_GROUPS.map(g =>
+    `<button class="tabgroup" type="button" role="tab" data-group="${g.id}"`
+    + ` aria-selected="false" aria-controls="tabs" tabindex="-1">`
+    + `<span class="tabgroup-icon">${g.icon}</span>${g.label}</button>`).join('');
+  ts.innerHTML = TAB_GROUPS.flatMap(g => g.tabs.map(t =>
+    `<button class="tab" type="button" role="tab" data-tab="${t.id}" data-group="${g.id}"`
+    + ` aria-selected="false" aria-controls="page-${t.id}" tabindex="-1" hidden>`
+    + `<span class="tab-icon">${t.icon}</span>${t.label}</button>`)).join('');
+  gs.addEventListener('click', e => {
+    const b = e.target.closest('.tabgroup[data-group]');
+    if (b) showGroup(b.dataset.group);
   });
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + name).classList.add('active');
-  // heatmap boxes have zero width while their tab is hidden — lay out on reveal
-  if (name === 'exposure') renderHeatmap();
+  ts.addEventListener('click', e => {
+    const b = e.target.closest('.tab[data-tab]');
+    if (b) showTab(b.dataset.tab);
+  });
+  gs.addEventListener('keydown', e => navArrowKeys(e, '.tabgroup[data-group]', b => showGroup(b.dataset.group)));
+  ts.addEventListener('keydown', e => navArrowKeys(e, '.tab[data-tab]:not([hidden])', b => showTab(b.dataset.tab)));
 }
 
-// keyboard support for the (div-based) tab strip: Enter / Space activates
-document.addEventListener('keydown', e => {
-  if (e.key !== 'Enter' && e.key !== ' ') return;
-  const tab = e.target.closest && e.target.closest('.tab[data-tab]');
-  if (tab) { e.preventDefault(); showTab(tab.dataset.tab); }
-});
+// Roving arrow-key movement within one strip. Enter/Space need no handling:
+// both strips are real <button>s.
+function navArrowKeys(e, selector, activate) {
+  if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Home' && e.key !== 'End') return;
+  const items = Array.from(e.currentTarget.querySelectorAll(selector));
+  if (!items.length) return;
+  const i = items.indexOf(e.target.closest(selector));
+  if (i < 0) return;
+  e.preventDefault();
+  const next = e.key === 'Home'  ? items[0]
+             : e.key === 'End'   ? items[items.length - 1]
+             : items[(i + (e.key === 'ArrowRight' ? 1 : items.length - 1)) % items.length];
+  activate(next);
+  next.focus();
+}
+
+// Switch group and land on the view you last used inside it.
+function showGroup(gid) {
+  const g = TAB_GROUPS.find(x => x.id === gid);
+  if (!g) return;
+  showTab(lastTabInGroup[gid] || g.tabs[0].id);
+}
+
+function showTab(name, opts) {
+  const push = !opts || opts.push !== false;
+  // Resolve aliases (folded-away views) and fall back rather than throwing on
+  // an unknown name — a stale bookmark must not break the dashboard.
+  name = TAB_ALIASES[name] || name;
+  if (!TAB_TO_GROUP[name]) name = DEFAULT_TAB;
+  const gid = TAB_TO_GROUP[name];
+
+  ftsExitFullscreen();   // a fullscreen table overlay must not survive a tab switch
+
+  document.querySelectorAll('.tabgroup').forEach(b => {
+    const on = b.dataset.group === gid;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-selected', on ? 'true' : 'false');
+    b.tabIndex = on ? 0 : -1;
+  });
+  document.querySelectorAll('.tab').forEach(b => {
+    const inGroup = b.dataset.group === gid;
+    const on = b.dataset.tab === name;
+    b.hidden = !inGroup;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-selected', on ? 'true' : 'false');
+    b.tabIndex = on ? 0 : -1;
+  });
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById('page-' + name);
+  if (page) page.classList.add('active');
+
+  lastTabInGroup[gid] = name;
+  try { localStorage.setItem(TAB_STORE_KEY, name); } catch (e) { /* private mode */ }
+
+  if (push) {
+    const want = '#tab=' + name;
+    if (location.hash !== want) { hashWriting = true; location.hash = want; }
+  }
+
+  const reveal = ON_REVEAL[name];
+  if (reveal) { try { reveal(); } catch (e) { console.error('onReveal ' + name + ' failed', e); } }
+}
+
+// #tab=<name> drives the active view, so a view can be linked to and survives a
+// reload. Anything unrecognised falls back to the stored tab, then Overview.
+function tabFromHash() {
+  const m = /(?:^#|&)tab=([a-z0-9_-]+)/i.exec(location.hash || '');
+  return m ? m[1].toLowerCase() : null;
+}
+
+function applyHash() {
+  if (hashWriting) { hashWriting = false; return; }
+  const t = tabFromHash();
+  if (t) showTab(t, { push: false });
+}
+
+function initNavRouting() {
+  let start = tabFromHash();
+  if (!start) { try { start = localStorage.getItem(TAB_STORE_KEY); } catch (e) { /* ignore */ } }
+  showTab(start || DEFAULT_TAB);
+  window.addEventListener('hashchange', applyHash);
+}
+
+// ═══════════════════════════════════════════ PALETTE ══
+// Ctrl/Cmd-K: jump to any view, or open the stock-detail modal for any ticker
+// we hold data on. Sources are the TAB_GROUPS constant and STOCK_INDEX — the
+// palette builds no index of its own.
+
+const CMDK_MAX_TABS = 8, CMDK_MAX_STOCKS = 12;
+let cmdkOpen = false;
+let cmdkRows = [];           // [{kind:'tab'|'stock', id, icon, label, sub}]
+let cmdkSel = 0;
+let cmdkStocks = [];         // [{t, name}] snapshot, refreshed on each open
+let cmdkReturnFocus = null;
+
+// Ticker → company, resolved once per open from the data already in memory
+// (same precedence openStockModal uses for its title).
+function cmdkBuildStocks() {
+  const names = new Map();
+  ((micro && micro.tickers) || []).forEach(r => { if (r.ticker && r.company) names.set(String(r.ticker).toUpperCase(), r.company); });
+  ((altdata && altdata.items) || []).forEach(r => { if (r.ticker && r.name && !names.has(String(r.ticker).toUpperCase())) names.set(String(r.ticker).toUpperCase(), r.name); });
+  (positions || []).forEach(p => { if (p.ticker && p.description && !names.has(String(p.ticker).toUpperCase())) names.set(String(p.ticker).toUpperCase(), p.description); });
+  cmdkStocks = Array.from(STOCK_INDEX).sort().map(t => ({ t, name: names.get(t) || '' }));
+}
+
+function cmdkMatch(q) {
+  const rows = [];
+  const needle = q.trim().toLowerCase();
+
+  TAB_GROUPS.forEach(g => g.tabs.forEach(t => {
+    const hay = (t.label + ' ' + g.label).toLowerCase();
+    if (!needle || hay.includes(needle)) {
+      rows.push({ kind: 'tab', id: t.id, icon: t.icon, label: t.label, sub: g.label });
+    }
+  }));
+  const tabs = rows.slice(0, CMDK_MAX_TABS);
+
+  const stocks = [];
+  for (const s of cmdkStocks) {
+    if (stocks.length >= CMDK_MAX_STOCKS) break;
+    if (!needle) { stocks.push(s); continue; }
+    if (s.t.toLowerCase().includes(needle) || s.name.toLowerCase().includes(needle)) stocks.push(s);
+  }
+  // exact ticker first — typing "NUE" should not rank NUE below NUEB
+  stocks.sort((a, b) => (b.t.toLowerCase() === needle) - (a.t.toLowerCase() === needle));
+
+  return tabs.concat(stocks.map(s => ({ kind: 'stock', id: s.t, icon: '📊', label: s.t, sub: s.name })));
+}
+
+function renderPalette() {
+  const box = document.getElementById('cmdk-results');
+  if (!box) return;
+  if (!cmdkRows.length) { box.innerHTML = `<div class="cmdk-empty">No matching view or ticker.</div>`; return; }
+  let html = '', lastKind = null;
+  cmdkRows.forEach((r, i) => {
+    if (r.kind !== lastKind) {
+      html += `<div class="cmdk-section">${r.kind === 'tab' ? 'Views' : 'Tickers'}</div>`;
+      lastKind = r.kind;
+    }
+    html += `<button type="button" role="option" class="cmdk-item${i === cmdkSel ? ' sel' : ''}"`
+      + ` aria-selected="${i === cmdkSel}" data-i="${i}">`
+      + `<span class="cmdk-item-icon">${r.icon}</span>`
+      + `<span class="cmdk-item-label">${esc(r.label)}</span>`
+      + (r.sub ? `<span class="cmdk-item-sub">${esc(r.sub)}</span>` : '')
+      + `</button>`;
+  });
+  box.innerHTML = html;
+  const sel = box.querySelector('.cmdk-item.sel');
+  if (sel) sel.scrollIntoView({ block: 'nearest' });
+}
+
+function cmdkRefresh() {
+  const inp = document.getElementById('cmdk-input');
+  cmdkRows = cmdkMatch(inp ? inp.value : '');
+  cmdkSel = 0;
+  renderPalette();
+}
+
+function openPalette() {
+  if (sessionStorage.getItem('metallica_auth') !== '1') return;   // inert behind the login gate
+  const ov = document.getElementById('cmdk');
+  const inp = document.getElementById('cmdk-input');
+  if (!ov || !inp) return;
+  cmdkReturnFocus = (document.activeElement instanceof HTMLElement) ? document.activeElement : null;
+  cmdkBuildStocks();
+  cmdkOpen = true;
+  ov.classList.add('open');
+  inp.value = '';
+  cmdkRefresh();
+  inp.focus();
+}
+
+function closePalette() {
+  const ov = document.getElementById('cmdk');
+  if (ov) ov.classList.remove('open');
+  cmdkOpen = false;
+  if (cmdkReturnFocus && document.contains(cmdkReturnFocus)) cmdkReturnFocus.focus();
+  cmdkReturnFocus = null;
+}
+
+function cmdkChoose(i) {
+  const r = cmdkRows[i];
+  if (!r) return;
+  closePalette();   // close first: the stock modal sits above this overlay
+  if (r.kind === 'tab') showTab(r.id);
+  else { showTab('picks'); openStockModal(r.id); }
+}
+
+function initPalette() {
+  const inp = document.getElementById('cmdk-input');
+  const box = document.getElementById('cmdk-results');
+  const btn = document.getElementById('cmdk-btn-key');
+  if (!inp || !box) return;
+  // macOS reads ⌘K; everyone else Ctrl-K
+  if (btn && /Mac|iPhone|iPad/.test(navigator.platform || '')) btn.textContent = '⌘K';
+
+  inp.addEventListener('input', cmdkRefresh);
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown')      { e.preventDefault(); cmdkSel = Math.min(cmdkSel + 1, cmdkRows.length - 1); renderPalette(); }
+    else if (e.key === 'ArrowUp')   { e.preventDefault(); cmdkSel = Math.max(cmdkSel - 1, 0); renderPalette(); }
+    else if (e.key === 'Enter')     { e.preventDefault(); cmdkChoose(cmdkSel); }
+    else if (e.key === 'Escape')    { e.preventDefault(); e.stopPropagation(); closePalette(); }
+  });
+  box.addEventListener('click', e => {
+    const it = e.target.closest('.cmdk-item[data-i]');
+    if (it) cmdkChoose(Number(it.dataset.i));
+  });
+
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+      e.preventDefault();
+      cmdkOpen ? closePalette() : openPalette();
+    }
+  });
+}
 
 // ═══════════════════════════════════════════ CHART OPTS ══
 function chartOpts(yLabel, unit = null) {   // unit: '$' | '%' | null (bare numbers)
@@ -5657,14 +6007,21 @@ function ftsEnhanceAll() {
 }
 
 // ═══════════════════════════════════════════ INIT ══
+// Reveal the dashboard and route to the requested view. Shared by the login
+// handler and the already-authenticated path so the nav is wired exactly once.
+async function startDashboard() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+  initNavRouting();   // hash → stored tab → Overview
+  await loadData();
+}
+
 (async () => {
   applyTheme(localStorage.getItem('metallica_theme') || 'dark');
   rebalUpload = loadRebalanceBook();   // restore an uploaded book analysed in the Rebalance tab
-  if (sessionStorage.getItem('metallica_auth') === '1') {
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('dashboard').style.display = 'block';
-    await loadData();
-  }
+  buildNav();
+  initPalette();
+  if (sessionStorage.getItem('metallica_auth') === '1') await startDashboard();
 })();
 </script>
 </body>

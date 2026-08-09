@@ -54,6 +54,20 @@ jobs:
           fi
           echo "No private keys, key files, or .env files tracked."
 
+      # index.html is the whole front end, one file with ~4,000 lines of inline
+      # JS and no build step — nothing else would catch a syntax slip before it
+      # reached Pages. node is preinstalled on ubuntu-latest.
+      - name: Parse inline JS in index.html
+        run: |
+          python - inline.js <<'PY'
+          import re, sys, pathlib
+          html = pathlib.Path('index.html').read_text(encoding='utf-8')
+          blocks = re.findall(r'<script(?![^>]*\bsrc=)[^>]*>(.*?)</script>', html, re.S | re.I)
+          pathlib.Path(sys.argv[1]).write_text('\n;\n'.join(blocks), encoding='utf-8')
+          print(f"found {len(blocks)} inline script block(s)")
+          PY
+          node --check inline.js && echo "inline JS parses"
+
       # Advisory: style findings are surfaced but never fail the build, so
       # pre-existing lint debt in the pipeline scripts doesn't block a data fix.
       - name: Lint (advisory)
