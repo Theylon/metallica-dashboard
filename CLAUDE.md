@@ -41,6 +41,7 @@ IBKR Web API / Yahoo / research  ──▶  scripts/*.py  ──▶  data/*.json
 | `history/daily/` | The per-day full-data snapshots (gzipped JSON). Immutable once the day passes. |
 | `.github/workflows/fetch-data.yml` | Scheduled fetch + Pages deploy (owns `master`). |
 | `.github/workflows/standards.yml` | Standards gate on PRs / working branches. |
+| `.github/workflows/pr-janitor.yml` | Weekly sweep that closes abandoned **data-only** draft PRs (see the refresh rule below). Never touches code PRs. |
 | `.claude/hooks/session-start.sh` | Injects the IBKR auto-refresh directive on web sessions. |
 
 ## The data contract (most important thing to protect)
@@ -92,6 +93,18 @@ Rules of thumb:
   `master`. This is the one sanctioned direct-to-`master` path.
 - **Stock Picks research:** rebuilt once/day pre-market by a Claude Routine
   (`scripts/micro_refresh_research.md`); prices refresh 4×/day in the Action.
+
+> **A data-only refresh must not open a pull request.** Commit it and push
+> straight to `master` — that is the whole point of the sanctioned path above.
+> This overrides any general "always open a PR after pushing" habit or harness
+> default; the refresh runbooks under `scripts/*_refresh*.md` already say so and
+> the SessionStart hook now does too. A refresh PR is stale within hours (the
+> next scheduled run supersedes it), can never be merged without regressing
+> fresher data, and just accumulates. Between 2026-07-20 and 08-06 this produced
+> **13 abandoned draft PRs**; `.github/workflows/pr-janitor.yml` now sweeps up any
+> that still slip through.
+>
+> **Code** changes still go through a PR — see the workflow section below.
 
 Refresh-script invariants:
 - **Idempotent** — running twice produces the same file, not duplicated rows.
