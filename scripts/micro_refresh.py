@@ -32,7 +32,7 @@ CHUNK = 50
 def compute_quote(closes):
     """From a 1y daily close series (pandas Series) → {price, vs50, vs200, range52w}.
 
-    Mirrors the FMP-derived definitions the research snapshot was built with:
+    Mirrors the definitions the research snapshot was built with:
     vs50/vs200 = % vs the 50/200-day simple moving average, range52w = position of
     the last price within the trailing-year low→high band (0-100).
     """

@@ -101,12 +101,12 @@ jobs:
         if: ${{ github.event.inputs.scope != 'ibkr' }}
         run: python scripts/signal_ic.py || echo "signal_ic skipped (non-fatal)"
 
-      # Process layer (see PROCESS.md): normalize committed FMP positioning dumps
+      # Process layer (see PROCESS.md): normalize committed TrueNorth positioning dumps
       # (no-op until the positioning Routine commits them), score every data
       # channel against what it predicts (80% trust gate), backfill decision-log
       # outcomes, and rebuild the process-rule alerts. All offline from committed
       # data/, all non-fatal.
-      - name: Normalize positioning (insiders + politicians)
+      - name: Normalize positioning (insiders + institutional)
         run: python scripts/positioning_build.py || echo "positioning skipped (non-fatal)"
 
       - name: Channel accuracy engine

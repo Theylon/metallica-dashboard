@@ -14,8 +14,16 @@ Inputs (raw MCP tool outputs, saved verbatim by the routine):
   /tmp/macro_yield.json        <- macro_feedoracle yield_curve_v3
   /tmp/macro_inflation.json    <- macro_feedoracle inflation_v3
   /tmp/macro_stress.json       <- macro_feedoracle market_stress_v1
+  /tmp/truenorth_<TKR>.json    <- TrueNorth stock snapshot (ALB, SQM technicals)
+  /tmp/metalminer_<metal>.json <- MetalMiner spot prices
+  /tmp/bigdata_<TKR>.json      <- Bigdata research dumps
+  /tmp/bigdata_cal_<TKR>.json  <- Bigdata events calendar (next earnings)
+  /tmp/bigdata_sent_<TKR>.json <- Bigdata sentiment tearsheet
+  /tmp/bigdata_news_<TKR>.json <- Bigdata news (per ticker)
 
-Outputs: data/{commodities,analysts,macro,news}.json
+Outputs: data/{commodities,analysts,macro,news,technicals,metals_spot,research,
+events,macro_history}.json. data/positioning.json belongs to
+scripts/positioning_build.py — this script must not write it.
 """
 import json, datetime, pathlib
 
@@ -317,19 +325,18 @@ def _num(x):
 
 
 def _next_earnings(tkr):
-    """Earliest upcoming earnings date from an FMP calendar dump (list of {date,symbol})."""
+    """Earliest upcoming earnings date from a Bigdata events-calendar dump."""
     today = datetime.date.today().isoformat()
     dates = []
-    for fname in (f"fmp_cal_{tkr}.json", f"bigdata_cal_{tkr}.json"):
-        try:
-            raw = _read(fname)
-        except Exception:
-            continue
-        rows = raw if isinstance(raw, list) else (raw.get("data") or raw.get("events") or [])
-        for r in rows if isinstance(rows, list) else []:
-            d = r.get("date") or r.get("eventDate") or r.get("startDate")
-            if d and str(d)[:10] >= today:
-                dates.append(str(d)[:10])
+    try:
+        raw = _read(f"bigdata_cal_{tkr}.json")
+    except Exception:
+        return None
+    rows = raw if isinstance(raw, list) else (raw.get("data") or raw.get("events") or [])
+    for r in rows if isinstance(rows, list) else []:
+        d = r.get("date") or r.get("eventDate") or r.get("startDate")
+        if d and str(d)[:10] >= today:
+            dates.append(str(d)[:10])
     return min(dates) if dates else None
 
 
@@ -351,9 +358,9 @@ def _sentiment(tkr):
 
 
 def _recent_news(tkr):
-    """Recent headlines from an FMP news dump (list of {title,publishedDate,url,site})."""
+    """Recent headlines from a Bigdata news dump (list of {title,publishedDate,url})."""
     try:
-        raw = _read(f"fmp_news_{tkr}.json")
+        raw = _read(f"bigdata_news_{tkr}.json")
     except Exception:
         return []
     rows = raw if isinstance(raw, list) else (raw.get("data") or raw.get("content") or [])
@@ -387,53 +394,6 @@ def build_events(now):
         return len(items)
     return 0
 
-
-def build_positioning(now):
-    institutional, insider, cot = [], [], []
-    for tkr in _holdings():
-        # insider transactions (FMP insiderTrades: list of {transactionType, securitiesTransacted})
-        try:
-            raw = _read(f"fmp_insider_{tkr}.json")
-            rows = raw if isinstance(raw, list) else (raw.get("data") or [])
-            net = 0.0
-            for r in rows if isinstance(rows, list) else []:
-                qty = _num(r.get("securitiesTransacted")) or 0
-                tt = str(r.get("transactionType") or r.get("acquisitionOrDisposition") or "").upper()
-                net += qty if ("P" in tt or "A" == tt or "BUY" in tt) else -qty
-            if rows:
-                insider.append({"ticker": tkr, "netInsiderShares": round(net),
-                                "direction": "buying" if net > 0 else "selling" if net < 0 else "flat",
-                                "window": "recent"})
-        except Exception:
-            pass
-        # institutional ownership / 13F summary (best-effort)
-        try:
-            raw = _read(f"fmp_13f_{tkr}.json")
-            d = raw[0] if isinstance(raw, list) and raw else (raw if isinstance(raw, dict) else {})
-            own = _num(d.get("ownershipPercent") or d.get("institutionalOwnershipPercentage"))
-            chg = _num(d.get("ownershipPercentChange") or d.get("changeInOwnershipPercentage"))
-            if own is not None or chg is not None:
-                institutional.append({"ticker": tkr, "instOwnPct": own, "qoqChange": chg,
-                                      "topBuyers": d.get("topBuyers", []), "topSellers": d.get("topSellers", [])})
-        except Exception:
-            pass
-    # COT for the metals complex (FMP commitmentOfTraders: net spec = noncomm long - short)
-    for label, key in [("Gold", "gold"), ("Silver", "silver"), ("Copper", "copper"),
-                       ("Platinum", "platinum"), ("Aluminum", "aluminum")]:
-        try:
-            raw = _read(f"fmp_cot_{key}.json")
-            d = raw[0] if isinstance(raw, list) and raw else (raw if isinstance(raw, dict) else {})
-            lng = _num(d.get("noncommPositionsLong") or d.get("noncommercialLong"))
-            sht = _num(d.get("noncommPositionsShort") or d.get("noncommercialShort"))
-            if lng is not None and sht is not None:
-                cot.append({"commodity": label, "netSpecPosition": round(lng - sht),
-                            "wowChange": _num(d.get("changeInNetPosition")), "extreme": None})
-        except Exception:
-            continue
-    if institutional or insider or cot:
-        _write("positioning.json", {"institutional": institutional, "insider": insider, "cot": cot}, now)
-        return len(institutional) + len(insider) + len(cot)
-    return 0
 
 
 def _fedval():
@@ -504,10 +464,9 @@ def main():
     s = build_metals_spot(now)
     r = build_research(now)
     ev = build_events(now)
-    po = build_positioning(now)
     mh = build_macro_history(now)
     print(f"Enriched @ {now}: commodities={c} analysts={a} news={n} macro={m} "
-          f"technicals={t} spot={s} research={r} events={ev} positioning={po} "
+          f"technicals={t} spot={s} research={r} events={ev} "
           f"macroHistory={mh} (0 = kept existing)")
 
 

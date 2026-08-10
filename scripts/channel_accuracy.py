@@ -13,10 +13,10 @@ claims to predict, and writes data/channel_accuracy.json for the Process tab:
                          Phase 2 calibrations fill kpi.ourEst.
   score.<sub>          — each micro sub-score + composite vs forward returns,
                          straight from signal_scorecard.json (rank-IC hit rate).
-  direction.commodityBias / .insider / .politician
+  direction.commodityBias / .insider / .institutional
                        — directional calls (long/short, buying/selling) vs the
                          20-snapshot-forward return of the named ticker.
-  crossval.yahoo       — source consistency (Yahoo vs FMP/TipRanks cross-check);
+  crossval.yahoo       — source consistency (Yahoo vs TipRanks/TrueNorth cross-check);
                          informational, never gated.
 
 The gate: a channel is "trusted" only when its accuracyPct clears
@@ -110,7 +110,7 @@ def kpi_channels(altdata):
             med = statistics.median(cons_errs)
             out.append(_gate(channel(
                 f"kpi.consensus.{tkr}", f"Street consensus — {tkr} {kpi_name}", "kpi",
-                source="FMP consensus vs reported (altdata trackRecord)", ticker=tkr,
+                source="street consensus vs reported (altdata trackRecord)", ticker=tkr,
                 n=len(cons_errs), medAbsErrPct=round(med, 2),
                 meanAbsErrPct=round(sum(cons_errs) / len(cons_errs), 2),
                 accuracyPct=round(max(0.0, 100 - med), 1), detail=detail)))
@@ -219,7 +219,7 @@ def direction_channels(history_rows, positioning_rows):
         f"({len(dates)} days so far, {len(bias_calls)} directional rows)")
 
     for chan, label in (("insider", "Insider buys/sells (discretionary only)"),
-                        ("politician", "Politician / congressional trades")):
+                        ("institutional", "Institutional 13F cohort build/trim")):
         calls = [(r["date"], r["ticker"], r["signal"])
                  for r in positioning_rows
                  if r.get("channel") == chan and r.get("signal") in ("bullish", "bearish")]
@@ -238,7 +238,7 @@ def crossval_channel(micro):
         if a in counts:
             counts[a] += 1
     total = sum(counts.values())
-    ch = channel("crossval.yahoo", "Source consistency — Yahoo vs FMP/TipRanks",
+    ch = channel("crossval.yahoo", "Source consistency — Yahoo vs TipRanks/TrueNorth",
                  "crossval", source="micro.json crossVal (independent yfinance pull)",
                  gated=False, n=total,
                  accuracyPct=round(counts["agree"] / total * 100, 1) if total else None,
