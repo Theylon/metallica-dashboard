@@ -25,9 +25,13 @@ non-US listings, which have no Form 4s):
 - Save the raw JSON response **verbatim** to
   `data/positioning_src/truenorth_insider_<TKR>.json`.
   Delete stale `truenorth_insider_*.json` for names no longer held.
-- A `{"status": "not_found"}` response is normal — TrueNorth's Form 4 coverage is partial
-  even among US listings (CLF, SCCO and MLI return not_found today while ALB and FCX
-  work). Skip the name; do not save an empty dump.
+- A `{"status": "not_found"}` response is normal — TrueNorth's Form 4 coverage is partial,
+  and **which names it covers moves between runs**, so don't treat the misses as a fixed
+  list. On the 2026-08-10 run 7 of the 14 held US-listed names returned rows (AA, CENX,
+  CLF, FCX, NUE, SCCO, STLD) and 7 came back not_found (CMC, ERO, HBM, KALU, PKX, TECK,
+  TGB) — note CLF and SCCO now return data where an earlier run had them missing. Foreign
+  private issuers (PKX, TECK, ERO, HBM, TGB) file no Form 4s at all, so those misses are
+  structural rather than coverage gaps. Skip the name; do not save an empty dump.
 
 ## 2. Institutional ownership (13F, per held name)
 - `mcp__TrueNorth__financial_institutional_ownership` — `ticker=<TKR>`, `limit=20`.
