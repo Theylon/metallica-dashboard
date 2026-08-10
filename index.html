@@ -1104,7 +1104,8 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
 
     <div class="chart-panel">
       <div class="chart-header">
-        <div class="chart-title">Relative Return — Indexed (100 = shared start)</div>
+        <div class="chart-title" id="bm-chart-title"
+             title="Every line is rebased to 100 on the same day — the latest first-day across the strategy and all benchmarks, so no series is credited with moves that predate another. In windows older than the book, that day is inception (22 Jun 2026), which is why these percentages differ from a chart anchored on a calendar date.">Relative Return — Indexed (100 = shared start)</div>
         <div class="chart-controls">
           <div style="display:flex;gap:4px;flex-wrap:wrap;" id="bm-period-btns">
             <button class="period-btn" data-period="5D" onclick="setBmPeriod('5D')">5D</button>
@@ -1142,11 +1143,11 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
           <thead>
             <tr>
               <th style="text-align:left;">Benchmark</th>
-              <th>Return</th>
-              <th>Ann. Return</th>
-              <th>Volatility</th>
-              <th>Sharpe</th>
-              <th>Max DD</th>
+              <th title="Simple return across the shared window: last ÷ first − 1. Anchored on the same rebase day as the chart above.">Return</th>
+              <th title="The mean daily return compounded over 252 trading days: (1 + mean)^252 − 1. Geometric — a different annualisation from the one behind Sharpe, so Ann. Return ÷ Volatility does not reproduce the Sharpe column.">Ann. Return</th>
+              <th title="Standard deviation of daily returns × √252. Snapshot-based: each stored point counts as one period.">Volatility</th>
+              <th title="(mean ÷ stdev) × √252, with a risk-free rate of ZERO — so this is a raw return-to-risk ratio, not an excess-return Sharpe, and it reads high while cash pays ~4%. Equals (mean × 252) ÷ Volatility, i.e. an arithmetic annualisation, which is why it will not match Ann. Return ÷ Volatility.">Sharpe</th>
+              <th title="Largest peak-to-trough decline inside the window, measured on the same indexed series as the chart.">Max DD</th>
             </tr>
           </thead>
           <tbody id="bm-tbody"></tbody>
@@ -3393,6 +3394,22 @@ function applyBmCustomRange() {
   renderBmTable();
 }
 
+// Spell out the two dates that decide every number on this page: the day all
+// lines are rebased to 100, and the last day they share. Both are derived, not
+// picked — the rebase day is the book's inception in windows older than it, and
+// the end is the earliest last-day across the series (so a live intraday pnl
+// point never runs past a benchmark's previous close). Leaving them implicit
+// invites comparing these percentages against a chart anchored elsewhere, which
+// silently shifts every line.
+function updateBmChartTitle(win) {
+  const el = document.getElementById('bm-chart-title');
+  if (!el) return;
+  if (!win) { el.textContent = 'Relative Return — Indexed (100 = shared start)'; return; }
+  const d = ms => new Date(ms).toLocaleDateString('en-GB',
+    { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+  el.textContent = `Relative Return — 100 = ${d(win.start)} · through ${d(win.end)}`;
+}
+
 function updateBmPeriodLabel() {
   const el = document.getElementById('bm-period-label');
   const short = s => new Date(s + 'T00:00:00Z')
@@ -3432,6 +3449,7 @@ function renderBmChart() {
   const datasets = [];
   const bmCustom = { from: bmCustomFrom, to: bmCustomTo };
   const win = bmSharedWindow(bmCustom);
+  updateBmChartTitle(win);
 
   // Strategy line from pnl — indexed off the TWR series (deposit-adjusted),
   // not raw NAV, so a cash deposit never shows up as a strategy gain. Indexed
