@@ -138,17 +138,48 @@ jobs:
       - name: Verify data consistency
         run: python scripts/verify_data.py
 
+      # Best-effort by design: the deliverable of this job is the DEPLOY, and the
+      # site is assembled from the working tree below, not from what got pushed.
+      # So a rejected push must never skip the deploy — it only means this run's
+      # data isn't archived, and the next cycle regenerates it anyway.
+      #
+      # The push gets rejected whenever master moves while the run is working:
+      # the run checks out master, spends ~2 min fetching and computing, and by
+      # push time a merge or another commit has landed. The `pages` concurrency
+      # group doesn't prevent this — it serialises workflow runs against each
+      # other, not against pushes from outside the workflow. On 2026-08-09 five
+      # PR merges landed mid-run and two deploys were skipped this way.
       - name: Commit rolling P&L history
+        continue-on-error: true
         run: |
           git config user.name "metallica-bot"
           git config user.email "bot@metallica-dashboard.local"
           git add data/ history/
           if git diff --staged --quiet; then
             echo "No data changes this cycle."
-          else
-            git commit -m "data: update $(date -u +%Y-%m-%dT%H:%MZ)"
-            git push
+            exit 0
           fi
+          git commit -m "data: update $(date -u +%Y-%m-%dT%H:%MZ)"
+
+          for attempt in 1 2 3 4; do
+            if git push; then
+              echo "Pushed on attempt $attempt."
+              exit 0
+            fi
+            echo "Push rejected (attempt $attempt) — master moved; rebasing onto it."
+            # Plain rebase, no strategy option: a code merge touches different
+            # files and replays cleanly. A genuine conflict means another run
+            # wrote the same generated file, and blindly picking a side could
+            # regress fresher data — CLAUDE.md forbids that — so bail out and
+            # leave it to the next cycle instead of guessing.
+            if ! git pull --rebase --no-edit; then
+              git rebase --abort || true
+              echo "::warning::Rebase conflicted on generated data — skipping this run's commit. The deploy still ships this run's data; the next cycle will re-commit it."
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          echo "::warning::Could not push the data commit after 4 attempts. The deploy still ships this run's data; the next cycle will re-commit it."
 
       - name: Assemble static site
         run: |
