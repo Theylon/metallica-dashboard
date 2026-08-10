@@ -26,12 +26,12 @@ IBKR Web API / Yahoo / research  ──▶  scripts/*.py  ──▶  data/*.json
 
 | Path | Role |
 |------|------|
-| `index.html` | The entire dashboard — all HTML/CSS/JS inline. Fetches `data/*.json`. |
+| `index.html` | The entire dashboard — all HTML/CSS/JS inline. Fetches `data/*.json`. Nav is driven by the `TAB_GROUPS` constant (see below). |
 | `scripts/mcp_refresh.py` | Rebuilds `positions/account/pnl/benchmarks.json` from raw IBKR MCP dumps in `/tmp`. Used by the SessionStart auto-refresh. |
 | `scripts/enrich.py` | Builds `commodities/analysts/macro/news.json`. |
 | `scripts/micro_*.py`, `gen_*.py`, `build_universe.py` | Stock Picks pipeline → `data/micro.json` from `data/micro_src/`. |
 | `scripts/validate_data.py` | **Data-contract validator** (see below). |
-| `scripts/check.sh` | One-command local standards gate. |
+| `scripts/check.sh` | One-command local standards gate (data contract, script compile, secret guard, `index.html` inline-JS parse). |
 | `scripts/trade_gate.py` | **Pre-trade risk gate** — deterministic checks before any IBKR order instruction (see Trading below). |
 | `scripts/order_log.py` | Append-only order audit trail → `data/orders.jsonl`. |
 | `.claude/skills/trade/SKILL.md` | The `/trade` skill — the guarded execution workflow a session follows. |
@@ -41,6 +41,7 @@ IBKR Web API / Yahoo / research  ──▶  scripts/*.py  ──▶  data/*.json
 | `history/daily/` | The per-day full-data snapshots (gzipped JSON). Immutable once the day passes. |
 | `.github/workflows/fetch-data.yml` | Scheduled fetch + Pages deploy (owns `master`). |
 | `.github/workflows/standards.yml` | Standards gate on PRs / working branches. |
+| `.github/workflows/pr-janitor.yml` | Weekly sweep that closes abandoned **data-only** draft PRs (see the refresh rule below). Never touches code PRs. |
 | `.claude/hooks/session-start.sh` | Injects the IBKR auto-refresh directive on web sessions. |
 
 ## The data contract (most important thing to protect)
@@ -93,6 +94,18 @@ Rules of thumb:
 - **Stock Picks research:** rebuilt once/day pre-market by a Claude Routine
   (`scripts/micro_refresh_research.md`); prices refresh 4×/day in the Action.
 
+> **A data-only refresh must not open a pull request.** Commit it and push
+> straight to `master` — that is the whole point of the sanctioned path above.
+> This overrides any general "always open a PR after pushing" habit or harness
+> default; the refresh runbooks under `scripts/*_refresh*.md` already say so and
+> the SessionStart hook now does too. A refresh PR is stale within hours (the
+> next scheduled run supersedes it), can never be merged without regressing
+> fresher data, and just accumulates. Between 2026-07-20 and 08-06 this produced
+> **13 abandoned draft PRs**; `.github/workflows/pr-janitor.yml` now sweeps up any
+> that still slip through.
+>
+> **Code** changes still go through a PR — see the workflow section below.
+
 Refresh-script invariants:
 - **Idempotent** — running twice produces the same file, not duplicated rows.
 - **Never regress fresher data.** Before pushing a refresh to `master`, confirm
@@ -128,11 +141,36 @@ prepares, the owner executes. The full workflow lives in
 - **After fills, refresh** (`mcp_refresh.py` flow) so the dashboard shows the
   real book. `orders.jsonl` commits are data-only → straight to `master` is fine.
 
+## The dashboard's navigation
+
+Thirteen views under four groups (Portfolio / Research / Execution / Review),
+rendered as two stacked strips. The whole thing is driven by **one constant**:
+
+> `TAB_GROUPS`, near the top of the `<script>` block in `index.html`. Both nav
+> strips, the `#tab=<name>` hash router and the Ctrl-K palette read it.
+
+- **To add, move or rename a view, edit `TAB_GROUPS` and nothing else.**
+- A view's id **must** equal its panel id (`page-<id>`). Those ids also key the
+  persisted table layouts (`fts`, `metallica_table_layout`), so renaming one
+  silently resets a viewer's saved column/height choices for that page.
+- **Never delete a view id outright** — add it to `TAB_ALIASES` pointing at
+  wherever the content went (today: `signals` → `process`), so existing links
+  and bookmarks keep resolving. `showTab` falls back to Overview rather than
+  throwing on anything it still doesn't recognise.
+- A renderer that measures layout width can't run while its panel is hidden.
+  Register it in `ON_REVEAL` (as `exposure` → `renderHeatmap` does) instead of
+  special-casing inside `showTab` — a panel can be hidden because its *group*
+  is inactive, not just its tab.
+
 ## Coding conventions
 
 - Python 3.11, **standard-library first.** Runtime deps are only `requests`,
   `yfinance`, `cryptography` (installed in the Action). Keep tooling scripts
   (`validate_data.py`) dependency-free so they run anywhere.
+- `index.html` is the whole front end and has **no build step**, so nothing
+  transpiles or type-checks it. `check.sh` parses its inline `<script>` with
+  `node --check` — that catches syntax, not behaviour, so a UI change still
+  needs a real browser pass (workflow step 3 below).
 - Every script starts with `#!/usr/bin/env python3` and a docstring saying what
   it reads and writes. Match the surrounding style.
 - Write JSON with `json.dump(..., indent=2)`; timestamps are UTC ISO-8601
