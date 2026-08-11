@@ -1,21 +1,21 @@
 {
- "updatedAt": "2026-08-11T15:12:35+00:00",
+ "updatedAt": "2026-08-11T16:15:08+00:00",
  "asOf": "2026-08-11",
  "window": 90,
  "obs": 37,
  "headline": {
-  "annVol": 16.5,
+  "annVol": 16.6,
   "betaSpy": 0.45,
   "betaXme": 0.16,
-  "var1d95": -236,
-  "var1d99": -458,
+  "var1d95": -235,
+  "var1d99": -456,
   "hhi": 671.0,
   "effectiveN": 14.9
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "16.5%",
+   "v": "16.6%",
    "note": "from the account's daily TWR, 37 daily obs since inception",
    "tone": "neutral"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$236",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$458)",
+   "v": "-$235",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$456)",
    "tone": "neg"
   },
   {
@@ -365,22 +365,22 @@
    "ticker": "ERO",
    "side": "long",
    "weightPct": 9.7,
-   "riskContribPct": 12.4,
-   "mVaR": 63.3
+   "riskContribPct": 12.3,
+   "mVaR": 62.4
   },
   {
    "ticker": "HBM",
    "side": "long",
    "weightPct": 7.6,
-   "riskContribPct": 11.6,
-   "mVaR": 59.1
+   "riskContribPct": 11.5,
+   "mVaR": 58.5
   },
   {
    "ticker": "COPX",
    "side": "long",
    "weightPct": 9.6,
    "riskContribPct": 11.1,
-   "mVaR": 56.6
+   "mVaR": 56.4
   },
   {
    "ticker": "FCX",
@@ -401,21 +401,21 @@
    "side": "long",
    "weightPct": 7.3,
    "riskContribPct": 8.2,
-   "mVaR": 41.9
+   "mVaR": 41.7
   },
   {
    "ticker": "CLF",
    "side": "long",
    "weightPct": 5.3,
-   "riskContribPct": 4.9,
-   "mVaR": 25.2
+   "riskContribPct": 5.0,
+   "mVaR": 25.4
   },
   {
    "ticker": "CMC",
    "side": "long",
    "weightPct": 6.0,
    "riskContribPct": 3.4,
-   "mVaR": 17.0
+   "mVaR": 17.1
   },
   {
    "ticker": "SLX",
@@ -443,19 +443,19 @@
    "side": "long",
    "weightPct": 4.9,
    "riskContribPct": 2.4,
-   "mVaR": 12.2
+   "mVaR": 12.3
   },
   {
    "ticker": "MTUS",
    "side": "long",
    "weightPct": 5.3,
    "riskContribPct": 2.1,
-   "mVaR": 10.6
+   "mVaR": 10.7
   },
   {
    "ticker": "NUE",
    "side": "long",
-   "weightPct": 5.0,
+   "weightPct": 5.1,
    "riskContribPct": 2.1,
    "mVaR": 10.9
   }
