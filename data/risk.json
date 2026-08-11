@@ -1,14 +1,14 @@
 {
- "updatedAt": "2026-08-11T16:15:08+00:00",
+ "updatedAt": "2026-08-11T17:14:28+00:00",
  "asOf": "2026-08-11",
  "window": 90,
  "obs": 37,
  "headline": {
   "annVol": 16.6,
-  "betaSpy": 0.45,
+  "betaSpy": 0.46,
   "betaXme": 0.16,
-  "var1d95": -235,
-  "var1d99": -456,
+  "var1d95": -234,
+  "var1d99": -455,
   "hhi": 671.0,
   "effectiveN": 14.9
  },
@@ -21,7 +21,7 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.45",
+   "v": "0.46",
    "note": "36 overlapping daily obs",
    "tone": "neutral"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$235",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$456)",
+   "v": "-$234",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$455)",
    "tone": "neg"
   },
   {
@@ -357,9 +357,9 @@
   {
    "ticker": "TGB",
    "side": "long",
-   "weightPct": 8.7,
+   "weightPct": 8.8,
    "riskContribPct": 13.1,
-   "mVaR": 66.4
+   "mVaR": 66.6
   },
   {
    "ticker": "ERO",
@@ -373,40 +373,40 @@
    "side": "long",
    "weightPct": 7.6,
    "riskContribPct": 11.5,
-   "mVaR": 58.5
+   "mVaR": 58.4
   },
   {
    "ticker": "COPX",
    "side": "long",
    "weightPct": 9.6,
    "riskContribPct": 11.1,
-   "mVaR": 56.4
+   "mVaR": 56.3
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 9.0,
    "riskContribPct": 10.0,
-   "mVaR": 50.7
+   "mVaR": 50.5
   },
   {
    "ticker": "TECK",
    "side": "long",
    "weightPct": 9.4,
    "riskContribPct": 9.7,
-   "mVaR": 49.3
+   "mVaR": 49.2
   },
   {
    "ticker": "SCCO",
    "side": "long",
    "weightPct": 7.3,
    "riskContribPct": 8.2,
-   "mVaR": 41.7
+   "mVaR": 41.5
   },
   {
    "ticker": "CLF",
    "side": "long",
-   "weightPct": 5.3,
+   "weightPct": 5.4,
    "riskContribPct": 5.0,
    "mVaR": 25.4
   },
@@ -429,14 +429,14 @@
    "side": "long",
    "weightPct": 5.3,
    "riskContribPct": 3.0,
-   "mVaR": 15.3
+   "mVaR": 15.2
   },
   {
    "ticker": "GGB",
    "side": "long",
    "weightPct": 5.0,
    "riskContribPct": 2.5,
-   "mVaR": 12.7
+   "mVaR": 12.6
   },
   {
    "ticker": "STLD",
