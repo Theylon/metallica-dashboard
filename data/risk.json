@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-08-12T16:11:28+00:00",
+ "updatedAt": "2026-08-12T17:11:45+00:00",
  "asOf": "2026-08-12",
  "window": 90,
  "obs": 38,
@@ -7,10 +7,10 @@
   "annVol": 16.4,
   "betaSpy": 0.46,
   "betaXme": 0.16,
-  "var1d95": -235,
-  "var1d99": -457,
-  "hhi": 674.0,
-  "effectiveN": 14.8
+  "var1d95": -234,
+  "var1d99": -455,
+  "hhi": 673.0,
+  "effectiveN": 14.9
  },
  "metrics": [
   {
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$235",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$457)",
+   "v": "-$234",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$455)",
    "tone": "neg"
   },
   {
@@ -57,8 +57,8 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "674 / 14.8",
-   "note": "16 names, ~14.8 effective",
+   "v": "673 / 14.9",
+   "note": "16 names, ~14.9 effective",
    "tone": "pos"
   }
  ],
@@ -357,51 +357,51 @@
   {
    "ticker": "TGB",
    "side": "long",
-   "weightPct": 8.8,
-   "riskContribPct": 13.2,
-   "mVaR": 67.2
+   "weightPct": 8.7,
+   "riskContribPct": 13.1,
+   "mVaR": 66.3
   },
   {
    "ticker": "ERO",
    "side": "long",
    "weightPct": 9.8,
-   "riskContribPct": 12.4,
-   "mVaR": 63.5
+   "riskContribPct": 12.5,
+   "mVaR": 63.1
   },
   {
    "ticker": "HBM",
    "side": "long",
-   "weightPct": 7.8,
-   "riskContribPct": 11.8,
-   "mVaR": 60.0
+   "weightPct": 7.7,
+   "riskContribPct": 11.7,
+   "mVaR": 59.2
   },
   {
    "ticker": "COPX",
    "side": "long",
    "weightPct": 9.6,
    "riskContribPct": 11.2,
-   "mVaR": 56.9
+   "mVaR": 56.6
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 9.1,
    "riskContribPct": 10.0,
-   "mVaR": 51.0
+   "mVaR": 50.8
   },
   {
    "ticker": "TECK",
    "side": "long",
    "weightPct": 9.5,
    "riskContribPct": 9.7,
-   "mVaR": 49.7
+   "mVaR": 49.3
   },
   {
    "ticker": "SCCO",
    "side": "long",
    "weightPct": 7.4,
    "riskContribPct": 8.3,
-   "mVaR": 42.1
+   "mVaR": 41.9
   },
   {
    "ticker": "CLF",
@@ -413,21 +413,21 @@
   {
    "ticker": "SLX",
    "side": "long",
-   "weightPct": 6.0,
+   "weightPct": 6.1,
    "riskContribPct": 3.4,
    "mVaR": 17.4
   },
   {
    "ticker": "CMC",
    "side": "long",
-   "weightPct": 5.9,
+   "weightPct": 6.0,
    "riskContribPct": 3.3,
    "mVaR": 16.8
   },
   {
    "ticker": "PKX",
    "side": "long",
-   "weightPct": 5.2,
+   "weightPct": 5.3,
    "riskContribPct": 3.0,
    "mVaR": 15.1
   },
@@ -443,7 +443,7 @@
    "side": "long",
    "weightPct": 4.8,
    "riskContribPct": 2.4,
-   "mVaR": 12.1
+   "mVaR": 12.0
   },
   {
    "ticker": "NUE",
@@ -455,7 +455,7 @@
   {
    "ticker": "MTUS",
    "side": "long",
-   "weightPct": 5.2,
+   "weightPct": 5.1,
    "riskContribPct": 2.0,
    "mVaR": 10.3
   }
