@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-08-14T17:09:56+00:00",
+ "updatedAt": "2026-08-14T18:10:58+00:00",
  "asOf": "2026-08-14",
  "window": 90,
  "obs": 40,
@@ -8,7 +8,7 @@
   "betaSpy": 0.39,
   "betaXme": 0.17,
   "var1d95": -228,
-  "var1d99": -444,
+  "var1d99": -443,
   "hhi": 667.0,
   "effectiveN": 15.0
  },
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$228",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$444)",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$443)",
    "tone": "neg"
   },
   {
@@ -51,7 +51,7 @@
   },
   {
    "k": "Max drawdown (inception curve)",
-   "v": "-13.6%",
+   "v": "-13.8%",
    "note": "peak-to-trough on the cumulative TWR",
    "tone": "neg"
   },
@@ -357,30 +357,30 @@
   {
    "ticker": "TGB",
    "side": "long",
-   "weightPct": 8.7,
+   "weightPct": 8.6,
    "riskContribPct": 13.0,
-   "mVaR": 64.1
+   "mVaR": 63.6
   },
   {
    "ticker": "ERO",
    "side": "long",
-   "weightPct": 9.5,
-   "riskContribPct": 12.1,
-   "mVaR": 59.4
+   "weightPct": 9.4,
+   "riskContribPct": 12.0,
+   "mVaR": 59.0
   },
   {
    "ticker": "HBM",
    "side": "long",
    "weightPct": 7.6,
    "riskContribPct": 11.6,
-   "mVaR": 57.2
+   "mVaR": 57.0
   },
   {
    "ticker": "COPX",
    "side": "long",
    "weightPct": 9.6,
    "riskContribPct": 11.2,
-   "mVaR": 54.9
+   "mVaR": 54.8
   },
   {
    "ticker": "FCX",
@@ -394,14 +394,14 @@
    "side": "long",
    "weightPct": 9.3,
    "riskContribPct": 9.6,
-   "mVaR": 47.1
+   "mVaR": 47.0
   },
   {
    "ticker": "SCCO",
    "side": "long",
    "weightPct": 7.3,
    "riskContribPct": 8.2,
-   "mVaR": 40.5
+   "mVaR": 40.4
   },
   {
    "ticker": "CLF",
@@ -413,7 +413,7 @@
   {
    "ticker": "CMC",
    "side": "long",
-   "weightPct": 6.1,
+   "weightPct": 6.2,
    "riskContribPct": 3.5,
    "mVaR": 17.1
   },
@@ -429,21 +429,21 @@
    "side": "long",
    "weightPct": 5.6,
    "riskContribPct": 3.2,
-   "mVaR": 15.8
+   "mVaR": 15.7
   },
   {
    "ticker": "GGB",
    "side": "long",
-   "weightPct": 5.1,
+   "weightPct": 5.2,
    "riskContribPct": 2.6,
-   "mVaR": 12.6
+   "mVaR": 12.7
   },
   {
    "ticker": "STLD",
    "side": "long",
    "weightPct": 4.9,
    "riskContribPct": 2.4,
-   "mVaR": 11.9
+   "mVaR": 12.0
   },
   {
    "ticker": "NUE",
@@ -455,7 +455,7 @@
   {
    "ticker": "MTUS",
    "side": "long",
-   "weightPct": 5.3,
+   "weightPct": 5.4,
    "riskContribPct": 2.1,
    "mVaR": 10.5
   }
