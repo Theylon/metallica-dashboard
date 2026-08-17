@@ -1,21 +1,21 @@
 {
- "updatedAt": "2026-08-17T20:11:54+00:00",
+ "updatedAt": "2026-08-17T21:11:04+00:00",
  "asOf": "2026-08-17",
  "window": 90,
  "obs": 41,
  "headline": {
-  "annVol": 18.2,
+  "annVol": 18.3,
   "betaSpy": 0.33,
   "betaXme": 0.18,
   "var1d95": -233,
-  "var1d99": -452,
-  "hhi": 669.0,
+  "var1d99": -453,
+  "hhi": 670.0,
   "effectiveN": 14.9
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "18.2%",
+   "v": "18.3%",
    "note": "from the account's daily TWR, 41 daily obs since inception",
    "tone": "neutral"
   },
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$233",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$452)",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$453)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "669 / 14.9",
+   "v": "670 / 14.9",
    "note": "16 names, ~14.9 effective",
    "tone": "pos"
   }
@@ -364,9 +364,9 @@
   {
    "ticker": "ERO",
    "side": "long",
-   "weightPct": 9.5,
-   "riskContribPct": 12.1,
-   "mVaR": 60.9
+   "weightPct": 9.6,
+   "riskContribPct": 12.2,
+   "mVaR": 61.7
   },
   {
    "ticker": "HBM",
@@ -380,19 +380,19 @@
    "side": "long",
    "weightPct": 9.6,
    "riskContribPct": 11.1,
-   "mVaR": 55.9
+   "mVaR": 56.1
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 9.1,
    "riskContribPct": 10.0,
-   "mVaR": 50.4
+   "mVaR": 50.5
   },
   {
    "ticker": "TECK",
    "side": "long",
-   "weightPct": 9.3,
+   "weightPct": 9.2,
    "riskContribPct": 9.5,
    "mVaR": 47.9
   },
@@ -406,9 +406,9 @@
   {
    "ticker": "CLF",
    "side": "long",
-   "weightPct": 5.3,
+   "weightPct": 5.2,
    "riskContribPct": 4.9,
-   "mVaR": 24.8
+   "mVaR": 24.7
   },
   {
    "ticker": "CMC",
@@ -435,8 +435,8 @@
    "ticker": "GGB",
    "side": "long",
    "weightPct": 5.1,
-   "riskContribPct": 2.6,
-   "mVaR": 12.9
+   "riskContribPct": 2.5,
+   "mVaR": 12.8
   },
   {
    "ticker": "STLD",
