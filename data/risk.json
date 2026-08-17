@@ -1,33 +1,33 @@
 {
- "updatedAt": "2026-08-17T15:11:00+00:00",
+ "updatedAt": "2026-08-17T16:10:41+00:00",
  "asOf": "2026-08-17",
  "window": 90,
  "obs": 41,
  "headline": {
-  "annVol": 17.6,
-  "betaSpy": 0.38,
-  "betaXme": 0.17,
-  "var1d95": -231,
-  "var1d99": -449,
+  "annVol": 17.8,
+  "betaSpy": 0.37,
+  "betaXme": 0.18,
+  "var1d95": -232,
+  "var1d99": -450,
   "hhi": 670.0,
   "effectiveN": 14.9
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "17.6%",
+   "v": "17.8%",
    "note": "from the account's daily TWR, 41 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.38",
+   "v": "0.37",
    "note": "40 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.17",
+   "v": "0.18",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$231",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$449)",
+   "v": "-$232",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$450)",
    "tone": "neg"
   },
   {
@@ -357,23 +357,23 @@
   {
    "ticker": "TGB",
    "side": "long",
-   "weightPct": 8.8,
-   "riskContribPct": 13.2,
-   "mVaR": 65.8
+   "weightPct": 8.7,
+   "riskContribPct": 13.1,
+   "mVaR": 65.7
   },
   {
    "ticker": "ERO",
    "side": "long",
    "weightPct": 9.5,
    "riskContribPct": 12.1,
-   "mVaR": 60.5
+   "mVaR": 60.8
   },
   {
    "ticker": "HBM",
    "side": "long",
    "weightPct": 7.6,
    "riskContribPct": 11.6,
-   "mVaR": 57.9
+   "mVaR": 58.0
   },
   {
    "ticker": "COPX",
@@ -387,7 +387,7 @@
    "side": "long",
    "weightPct": 9.1,
    "riskContribPct": 10.1,
-   "mVaR": 50.4
+   "mVaR": 50.6
   },
   {
    "ticker": "TECK",
@@ -399,23 +399,23 @@
   {
    "ticker": "SCCO",
    "side": "long",
-   "weightPct": 7.3,
+   "weightPct": 7.4,
    "riskContribPct": 8.3,
-   "mVaR": 41.3
+   "mVaR": 41.6
   },
   {
    "ticker": "CLF",
    "side": "long",
    "weightPct": 5.1,
    "riskContribPct": 4.8,
-   "mVaR": 23.8
+   "mVaR": 24.0
   },
   {
    "ticker": "CMC",
    "side": "long",
-   "weightPct": 6.0,
+   "weightPct": 6.1,
    "riskContribPct": 3.4,
-   "mVaR": 16.9
+   "mVaR": 17.0
   },
   {
    "ticker": "SLX",
