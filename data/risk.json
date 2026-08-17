@@ -1,27 +1,27 @@
 {
- "updatedAt": "2026-08-17T16:10:41+00:00",
+ "updatedAt": "2026-08-17T17:10:36+00:00",
  "asOf": "2026-08-17",
  "window": 90,
  "obs": 41,
  "headline": {
-  "annVol": 17.8,
-  "betaSpy": 0.37,
+  "annVol": 18.1,
+  "betaSpy": 0.36,
   "betaXme": 0.18,
-  "var1d95": -232,
-  "var1d99": -450,
+  "var1d95": -233,
+  "var1d99": -452,
   "hhi": 670.0,
   "effectiveN": 14.9
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "17.8%",
+   "v": "18.1%",
    "note": "from the account's daily TWR, 41 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.37",
+   "v": "0.36",
    "note": "40 overlapping daily obs",
    "tone": "neutral"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$232",
-   "note": "-2.17% of NAV; 99% VaR -4.21% (-$450)",
+   "v": "-$233",
+   "note": "-2.17% of NAV; 99% VaR -4.21% (-$452)",
    "tone": "neg"
   },
   {
@@ -366,61 +366,61 @@
    "side": "long",
    "weightPct": 9.5,
    "riskContribPct": 12.1,
-   "mVaR": 60.8
+   "mVaR": 61.0
   },
   {
    "ticker": "HBM",
    "side": "long",
-   "weightPct": 7.6,
+   "weightPct": 7.7,
    "riskContribPct": 11.6,
-   "mVaR": 58.0
+   "mVaR": 58.4
   },
   {
    "ticker": "COPX",
    "side": "long",
    "weightPct": 9.6,
-   "riskContribPct": 11.2,
-   "mVaR": 55.8
+   "riskContribPct": 11.1,
+   "mVaR": 55.9
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 9.1,
    "riskContribPct": 10.1,
-   "mVaR": 50.6
+   "mVaR": 50.7
   },
   {
    "ticker": "TECK",
    "side": "long",
    "weightPct": 9.3,
-   "riskContribPct": 9.6,
-   "mVaR": 47.9
+   "riskContribPct": 9.5,
+   "mVaR": 48.0
   },
   {
    "ticker": "SCCO",
    "side": "long",
    "weightPct": 7.4,
    "riskContribPct": 8.3,
-   "mVaR": 41.6
+   "mVaR": 41.9
   },
   {
    "ticker": "CLF",
    "side": "long",
-   "weightPct": 5.1,
-   "riskContribPct": 4.8,
-   "mVaR": 24.0
+   "weightPct": 5.2,
+   "riskContribPct": 4.9,
+   "mVaR": 24.4
   },
   {
    "ticker": "CMC",
    "side": "long",
    "weightPct": 6.1,
    "riskContribPct": 3.4,
-   "mVaR": 17.0
+   "mVaR": 17.1
   },
   {
    "ticker": "SLX",
    "side": "long",
-   "weightPct": 6.1,
+   "weightPct": 6.0,
    "riskContribPct": 3.4,
    "mVaR": 17.2
   },
@@ -428,7 +428,7 @@
    "ticker": "PKX",
    "side": "long",
    "weightPct": 5.5,
-   "riskContribPct": 3.2,
+   "riskContribPct": 3.1,
    "mVaR": 15.8
   },
   {
