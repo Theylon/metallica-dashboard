@@ -431,7 +431,13 @@ def main():
             "vs50": q.get("vs50") if q else None,
             "vs200": q.get("vs200") if q else None,
             "range52w": q.get("range52w") if q else None,
-            "marketCap": q.get("marketCap") if q else None,
+            # quotes.json is a frozen FMP snapshot with no refresh path, so prefer the
+            # daily Yahoo pull when it has a cap. Without this the rebuild re-freezes the
+            # stale cap and the next Action run un-freezes it — a daily sawtooth in
+            # quality/composite, with micro_history.jsonl (first-write-wins per UTC day)
+            # capturing whichever side of the race won. Not a crossVal conflict: the
+            # cross-check compares price target / rating / EBITDA margin / price, not cap.
+            "marketCap": (q.get("marketCap") if q else None) or (yahoo.get(t) or {}).get("marketCap"),
             "tradable": tradable(rec, q),
             "quoteSuspect": bool(q and q.get("suspect")),
             "composite": composite,
