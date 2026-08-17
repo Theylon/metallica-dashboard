@@ -1,10 +1,10 @@
 {
- "updatedAt": "2026-07-13T20:11:17+00:00",
- "source": "1835c81d-mm_materials_stock_map_enriched.xlsx",
- "count": 203,
+ "updatedAt": "2026-08-05T20:10:10+00:00",
+ "source": "mm_materials_stock_map_verified.xlsx",
+ "count": 189,
  "tickers": [
   {
-   "ticker": "486.HK",
+   "ticker": "0486.HK",
    "company": "Rusal",
    "materials": [
     "Aluminum"
@@ -18,18 +18,8 @@
    "verified": "Y",
    "sources": 1,
    "excluded": false,
-   "tier1Rank": 28,
-   "omLinkage": {
-    "commodity": "aluminum",
-    "role": "Producer",
-    "exposure": 3,
-    "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
-    "tier": "Strong",
-    "confidence": "High",
-    "evidence": "Primary ~80% revenue; +30% rev on +7% LME"
-   },
+   "tier1Rank": null,
+   "omLinkage": null,
    "tipranks": {
     "consensus": null,
     "priceTarget": null,
@@ -45,6 +35,37 @@
    "discovered": false
   },
   {
+   "ticker": "2600.HK",
+   "company": "Chalco (Aluminum Corp of China)",
+   "materials": [
+    "Aluminum"
+   ],
+   "country": "CN",
+   "region": "Asia",
+   "exchange": "HKEX",
+   "capTier": "Large",
+   "role": "Producer",
+   "status": "YES",
+   "verified": "Y",
+   "sources": 1,
+   "excluded": false,
+   "tier1Rank": null,
+   "omLinkage": null,
+   "tipranks": {
+    "consensus": "Hold",
+    "priceTarget": 4.44,
+    "smartScore": 5.0,
+    "newsSentiment": "Unknown",
+    "hedgeFundTrend": "Decreased",
+    "insiderTrend": null,
+    "blogger": "Bullish",
+    "covered": "Y"
+   },
+   "bigdata": null,
+   "held": null,
+   "discovered": false
+  },
+  {
    "ticker": "AA",
    "company": "Alcoa",
    "materials": [
@@ -53,7 +74,7 @@
    "country": "US",
    "region": "North America",
    "exchange": "NYSE / Nasdaq",
-   "capTier": "Mid",
+   "capTier": "Large",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -63,10 +84,10 @@
    "omLinkage": {
     "commodity": "aluminum",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "$40M/yr per $100 LME move; revenue tracks aluminum"
@@ -84,53 +105,12 @@
    "bigdata": null,
    "held": {
     "side": "short",
-    "shares": 1.0,
-    "mktValue": -48.72,
-    "unrealizedPnl": 0.08,
-    "avgCost": 48.7961,
-    "lastPrice": 48.72
+    "shares": 12.0,
+    "mktValue": -571.08,
+    "unrealizedPnl": -7.8,
+    "avgCost": 46.94,
+    "lastPrice": 47.59
    },
-   "discovered": false
-  },
-  {
-   "ticker": "ACH",
-   "company": "Chalco (Aluminum Corp of China)",
-   "materials": [
-    "Aluminum"
-   ],
-   "country": "CN",
-   "region": "Asia",
-   "exchange": "NYSE / Nasdaq (ADR)",
-   "capTier": "Large",
-   "role": "Producer",
-   "status": "YES",
-   "verified": "Y",
-   "sources": 1,
-   "excluded": false,
-   "tier1Rank": 2,
-   "omLinkage": {
-    "commodity": "aluminum",
-    "role": "Producer",
-    "exposure": 3,
-    "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
-    "tier": "Strong",
-    "confidence": "High",
-    "evidence": "World's largest alumina/aluminum; price primary risk"
-   },
-   "tipranks": {
-    "consensus": "Hold",
-    "priceTarget": 4.44,
-    "smartScore": 5.0,
-    "newsSentiment": "Unknown",
-    "hedgeFundTrend": "Decreased",
-    "insiderTrend": null,
-    "blogger": "Bullish",
-    "covered": "Y"
-   },
-   "bigdata": null,
-   "held": null,
    "discovered": false
   },
   {
@@ -142,7 +122,7 @@
    "country": "US",
    "region": "North America",
    "exchange": "NYSE / Nasdaq",
-   "capTier": "Small",
+   "capTier": "Mid",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -152,10 +132,10 @@
    "omLinkage": {
     "commodity": "aluminum",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "LME/Midwest/EDPP explicit revenue components"
@@ -173,11 +153,11 @@
    "bigdata": null,
    "held": {
     "side": "short",
-    "shares": 1.0,
-    "mktValue": -45.41,
-    "unrealizedPnl": -0.0,
-    "avgCost": 45.4092,
-    "lastPrice": 45.41
+    "shares": 12.0,
+    "mktValue": -562.8,
+    "unrealizedPnl": -8.78,
+    "avgCost": 46.1683,
+    "lastPrice": 46.9
    },
    "discovered": false
   },
@@ -189,7 +169,7 @@
    ],
    "country": "FR",
    "region": "Europe",
-   "exchange": "NYSE / Nasdaq (ADR)",
+   "exchange": "NYSE",
    "capTier": "Mid",
    "role": "Fabricator",
    "status": "YES",
@@ -200,10 +180,10 @@
    "omLinkage": {
     "commodity": "aluminum",
     "role": "Fabricator",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 1,
-    "coupling": 2,
-    "score": 5,
+    "coupling": 2.0,
+    "score": 5.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Not materially exposed to primary aluminum price"
@@ -219,43 +199,26 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": {
-    "side": "short",
-    "shares": 2.0,
-    "mktValue": -57.62,
-    "unrealizedPnl": 1.7,
-    "avgCost": 29.66,
-    "lastPrice": 28.81
-   },
+   "held": null,
    "discovered": false
   },
   {
-   "ticker": "HNDNF",
+   "ticker": "HINDALCO.NS",
    "company": "Hindalco/Novelis",
    "materials": [
     "Aluminum"
    ],
    "country": "IN",
    "region": "Asia",
-   "exchange": "NYSE / Nasdaq (ADR)",
+   "exchange": "NSE India",
    "capTier": "Large",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
    "sources": 1,
    "excluded": false,
-   "tier1Rank": 3,
-   "omLinkage": {
-    "commodity": "aluminum",
-    "role": "Producer",
-    "exposure": 3,
-    "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
-    "tier": "Strong",
-    "confidence": "High",
-    "evidence": "Fully integrated; LME volatility core risk"
-   },
+   "tier1Rank": null,
+   "omLinkage": null,
    "tipranks": {
     "consensus": null,
     "priceTarget": null,
@@ -264,9 +227,16 @@
     "hedgeFundTrend": null,
     "insiderTrend": null,
     "blogger": null,
-    "covered": "N"
+    "covered": "N",
+    "note": "Foreign listing \u2014 TipRanks is US-only"
    },
-   "bigdata": null,
+   "bigdata": {
+    "role": "Producer",
+    "priceSens": 3,
+    "confidence": "high",
+    "suggestedStatus": "YES (core)",
+    "evidence": "Integrated aluminum producer; shares track LME aluminum"
+   },
    "held": null,
    "discovered": false
   },
@@ -289,10 +259,10 @@
    "omLinkage": {
     "commodity": "aluminum",
     "role": "Fabricator",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 1,
-    "coupling": 2,
-    "score": 5,
+    "coupling": 2.0,
+    "score": 5.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Metal-price-neutral policy passes LME to customers"
@@ -308,89 +278,14 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "MLI",
-   "company": "Mueller Industries",
-   "materials": [
-    "Aluminum"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Mid",
-   "role": "Consumer",
-   "status": "YES",
-   "verified": "Y",
-   "sources": 1,
-   "excluded": false,
-   "tier1Rank": null,
-   "omLinkage": {
-    "commodity": "copper/aluminum products",
-    "role": "Consumer",
-    "exposure": 2,
-    "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
-    "tier": "Moderate",
-    "confidence": "High",
-    "evidence": "Copper/brass largest cost; FIFO margins hit by moves"
+   "held": {
+    "side": "short",
+    "shares": 3.0,
+    "mktValue": -534.15,
+    "unrealizedPnl": -0.67,
+    "avgCost": 177.8267,
+    "lastPrice": 178.05
    },
-   "tipranks": {
-    "consensus": "Hold",
-    "priceTarget": null,
-    "smartScore": 5.0,
-    "newsSentiment": "Unknown",
-    "hedgeFundTrend": "Decreased",
-    "insiderTrend": "SoldShares",
-    "blogger": "Bullish",
-    "covered": "Y"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "MTRN",
-   "company": "Materion (specialty)",
-   "materials": [
-    "Aluminum"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Mid",
-   "role": "Producer",
-   "status": "YES",
-   "verified": "Y",
-   "sources": 1,
-   "excluded": false,
-   "tier1Rank": null,
-   "omLinkage": {
-    "commodity": "specialty metals",
-    "role": "Producer",
-    "exposure": 2,
-    "priceSens": 1,
-    "coupling": 1,
-    "score": 4,
-    "tier": "Moderate",
-    "confidence": "High",
-    "evidence": "Precious/specialty passed through; value-add insulated"
-   },
-   "tipranks": {
-    "consensus": "ModerateBuy",
-    "priceTarget": 237.0,
-    "smartScore": 7.0,
-    "newsSentiment": "VeryBullish",
-    "hedgeFundTrend": null,
-    "insiderTrend": "SoldShares",
-    "blogger": "Bullish",
-    "covered": "Y"
-   },
-   "bigdata": null,
-   "held": null,
    "discovered": false
   },
   {
@@ -403,13 +298,23 @@
    "region": "Latin America",
    "exchange": "B3 (Sao Paulo)",
    "capTier": "Small",
-   "role": null,
+   "role": "Consumer",
    "status": "weak-link",
-   "verified": "partial",
+   "verified": "Y",
    "sources": 1,
-   "excluded": true,
+   "excluded": false,
    "tier1Rank": null,
-   "omLinkage": null,
+   "omLinkage": {
+    "commodity": "aluminum",
+    "role": "Consumer",
+    "exposure": 1.0,
+    "priceSens": 1,
+    "coupling": 1.0,
+    "score": 3.0,
+    "tier": null,
+    "confidence": null,
+    "evidence": null
+   },
    "tipranks": {
     "consensus": null,
     "priceTarget": null,
@@ -432,7 +337,7 @@
    ],
    "country": "NO",
    "region": "Europe",
-   "exchange": "NYSE / Nasdaq (ADR)",
+   "exchange": "OTC (ADR); Oslo Bors primary",
    "capTier": "Large",
    "role": "Producer",
    "status": "YES",
@@ -443,10 +348,10 @@
    "omLinkage": {
     "commodity": "aluminum",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Near-record earnings on strong aluminium prices"
@@ -460,85 +365,6 @@
     "insiderTrend": null,
     "blogger": "Neutral",
     "covered": "Y"
-   },
-   "bigdata": null,
-   "held": {
-    "side": "short",
-    "shares": 8.0,
-    "mktValue": -70.96,
-    "unrealizedPnl": -0.92,
-    "avgCost": 8.755,
-    "lastPrice": 8.87
-   },
-   "discovered": false
-  },
-  {
-   "ticker": "NVL",
-   "company": "Novelis",
-   "materials": [
-    "Aluminum"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Mid",
-   "role": "Recycler",
-   "status": "YES",
-   "verified": "Y",
-   "sources": 1,
-   "excluded": false,
-   "tier1Rank": null,
-   "omLinkage": {
-    "commodity": "aluminum",
-    "role": "Recycler",
-    "exposure": 2,
-    "priceSens": 1,
-    "coupling": 2,
-    "score": 5,
-    "tier": "Moderate",
-    "confidence": "High",
-    "evidence": "Pass-through LME; scrap-spread real margin driver"
-   },
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "RDUS",
-   "company": "Radius Recycling",
-   "materials": [
-    "Aluminum"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "n/a (acquired)",
-   "role": null,
-   "status": "delisted/acquired",
-   "verified": "N",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
    },
    "bigdata": null,
    "held": null,
@@ -563,10 +389,10 @@
    "omLinkage": {
     "commodity": "aluminum",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Aluminum chain 35-50% rev; +10% price=+$300M EBIT"
@@ -604,10 +430,10 @@
    "omLinkage": {
     "commodity": "steel",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 7,
+    "coupling": 2.0,
+    "score": 7.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Spread/mix key driver; lagged pass-through"
@@ -645,10 +471,10 @@
    "omLinkage": {
     "commodity": "steel",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 7,
+    "coupling": 2.0,
+    "score": 7.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Pure-play Chinese flat-steel; price index -9% hit results"
@@ -686,10 +512,10 @@
    "omLinkage": {
     "commodity": "steel",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "CEO: more impacted by spot steel prices than any company"
@@ -706,12 +532,12 @@
    },
    "bigdata": null,
    "held": {
-    "side": "short",
-    "shares": 73.0,
-    "mktValue": -707.37,
-    "unrealizedPnl": 6.56,
-    "avgCost": 9.7799,
-    "lastPrice": 9.69
+    "side": "long",
+    "shares": 54.0,
+    "mktValue": 682.02,
+    "unrealizedPnl": 9.81,
+    "avgCost": 12.4483,
+    "lastPrice": 12.63
    },
    "discovered": false
   },
@@ -734,10 +560,10 @@
    "omLinkage": {
     "commodity": "steel",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Metal margin on steel is primary earnings driver"
@@ -753,7 +579,14 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": null,
+   "held": {
+    "side": "long",
+    "shares": 9.0,
+    "mktValue": 681.03,
+    "unrealizedPnl": 8.43,
+    "avgCost": 74.7333,
+    "lastPrice": 75.67
+   },
    "discovered": false
   },
   {
@@ -775,10 +608,10 @@
    "omLinkage": {
     "commodity": "steel",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Metal spread is stated primary earnings lever"
@@ -816,10 +649,10 @@
    "omLinkage": {
     "commodity": "steel",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "World's largest; price-cost #1 EBITDA driver"
@@ -857,10 +690,10 @@
    "omLinkage": {
     "commodity": "steel",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 7,
+    "coupling": 2.0,
+    "score": 7.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Specialty SBQ; surcharge mechanism passes costs"
@@ -898,10 +731,10 @@
    "omLinkage": {
     "commodity": "steel",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "N.America largest EAF; avg price/ton drives earnings"
@@ -918,12 +751,12 @@
    },
    "bigdata": null,
    "held": {
-    "side": "short",
-    "shares": 3.0,
-    "mktValue": -699.0,
-    "unrealizedPnl": -37.07,
-    "avgCost": 220.6423,
-    "lastPrice": 233.0
+    "side": "long",
+    "shares": 2.0,
+    "mktValue": 549.48,
+    "unrealizedPnl": 0.62,
+    "avgCost": 274.43,
+    "lastPrice": 274.74
    },
    "discovered": false
   },
@@ -946,10 +779,10 @@
    "omLinkage": {
     "commodity": "steel",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 7,
+    "coupling": 2.0,
+    "score": 7.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Steel primary segment; FX/raw-mat spread modulates"
@@ -965,7 +798,14 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": null,
+   "held": {
+    "side": "long",
+    "shares": 12.0,
+    "mktValue": 657.48,
+    "unrealizedPnl": 2.89,
+    "avgCost": 54.5495,
+    "lastPrice": 54.79
+   },
    "discovered": false
   },
   {
@@ -987,10 +827,10 @@
    "omLinkage": {
     "commodity": "steel",
     "role": "Distributor",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 7,
+    "coupling": 2.0,
+    "score": 7.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "10-K: profitability largely dependent on steel prices; spread-based"
@@ -1006,14 +846,7 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": {
-    "side": "short",
-    "shares": 2.0,
-    "mktValue": -770.8,
-    "unrealizedPnl": -33.94,
-    "avgCost": 368.4314,
-    "lastPrice": 385.4
-   },
+   "held": null,
    "discovered": false
   },
   {
@@ -1035,10 +868,10 @@
    "omLinkage": {
     "commodity": "steel",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 2,
-    "score": 8,
+    "coupling": 2.0,
+    "score": 8.0,
     "tier": "Strong",
     "confidence": "Low",
     "evidence": "Integrated iron ore+steel (Bigdata resolved wrong CSN)"
@@ -1065,8 +898,8 @@
    ],
    "country": "MX",
    "region": "Latin America",
-   "exchange": "NYSE / Nasdaq (ADR)",
-   "capTier": "Small",
+   "exchange": "NYSE Arca (ADR)",
+   "capTier": "Mid",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -1076,10 +909,10 @@
    "omLinkage": {
     "commodity": "steel",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 7,
+    "coupling": 2.0,
+    "score": 7.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "SBQ/structural 100% revenue; scrap-finished spread drives margin"
@@ -1117,10 +950,10 @@
    "omLinkage": {
     "commodity": "steel",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Record Q1 2026 driven by higher steel prices"
@@ -1137,12 +970,12 @@
    },
    "bigdata": null,
    "held": {
-    "side": "short",
-    "shares": 3.0,
-    "mktValue": -701.73,
-    "unrealizedPnl": -41.89,
-    "avgCost": 219.9453,
-    "lastPrice": 233.91
+    "side": "long",
+    "shares": 2.0,
+    "mktValue": 530.98,
+    "unrealizedPnl": -1.12,
+    "avgCost": 266.05,
+    "lastPrice": 265.49
    },
    "discovered": false
   },
@@ -1165,10 +998,10 @@
    "omLinkage": {
     "commodity": "steel",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Steel realisation moves revenue/EBITDA directly"
@@ -1193,10 +1026,10 @@
    "materials": [
     "Carbon/Raw Steel"
    ],
-   "country": "MX",
+   "country": "LU",
    "region": "Latin America",
    "exchange": "NYSE / Nasdaq (ADR)",
-   "capTier": "Mid",
+   "capTier": "Large",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -1206,10 +1039,10 @@
    "omLinkage": {
     "commodity": "steel",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "20-F: operating income swings 44-49% y/y with HRC"
@@ -1237,7 +1070,7 @@
    "country": "US",
    "region": "North America",
    "exchange": "NYSE / Nasdaq",
-   "capTier": "Mid",
+   "capTier": "Small",
    "role": "Processor",
    "status": "YES",
    "verified": "Y",
@@ -1247,10 +1080,10 @@
    "omLinkage": {
     "commodity": "steel",
     "role": "Processor",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 1,
-    "score": 5,
+    "coupling": 1.0,
+    "score": 5.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Processor; mirrors contracts to offset price swings"
@@ -1279,9 +1112,9 @@
    "region": "North America",
    "exchange": "NYSE / Nasdaq",
    "capTier": "n/a (acquired)",
-   "role": null,
+   "role": "Producer",
    "status": "delisted/acquired",
-   "verified": "N",
+   "verified": "Y",
    "sources": 1,
    "excluded": true,
    "tier1Rank": null,
@@ -1310,7 +1143,7 @@
    "region": "Asia",
    "exchange": "Shenzhen",
    "capTier": "Mid",
-   "role": "Producer",
+   "role": "Recycler",
    "status": "YES",
    "verified": "Y",
    "sources": 1,
@@ -1318,11 +1151,11 @@
    "tier1Rank": null,
    "omLinkage": {
     "commodity": "cathode precursor",
-    "role": "Producer",
-    "exposure": 3,
+    "role": "Recycler",
+    "exposure": 3.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 7,
+    "coupling": 2.0,
+    "score": 7.0,
     "tier": "Strong",
     "confidence": "Low",
     "evidence": "Pure-play pCAM+recycling; no Bigdata coverage"
@@ -1351,7 +1184,7 @@
    "region": "Asia",
    "exchange": "KRX (KOSPI)",
    "capTier": "Mid",
-   "role": "Producer",
+   "role": "Processor",
    "status": "YES",
    "verified": "Y",
    "sources": 2,
@@ -1359,11 +1192,11 @@
    "tier1Rank": 33,
    "omLinkage": {
     "commodity": "cathode materials",
-    "role": "Producer",
-    "exposure": 3,
+    "role": "Processor",
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Every deck tracks Li/Ni/Co as input-output driver"
@@ -1401,10 +1234,10 @@
    "omLinkage": {
     "commodity": "battery metals",
     "role": "Consumer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 1,
-    "coupling": 2,
-    "score": 5,
+    "coupling": 2.0,
+    "score": 5.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Cost pass-through limits EV-project impact"
@@ -1424,32 +1257,22 @@
    "discovered": false
   },
   {
-   "ticker": "066970.KQ",
+   "ticker": "066970.KS",
    "company": "L&F",
    "materials": [
     "Cathode/Cells/EV"
    ],
    "country": "KR",
    "region": "Asia",
-   "exchange": "KOSDAQ",
+   "exchange": "KRX (KOSPI)",
    "capTier": "Small",
-   "role": "Producer",
+   "role": "Processor",
    "status": "YES",
    "verified": "Y",
    "sources": 2,
    "excluded": false,
    "tier1Rank": null,
-   "omLinkage": {
-    "commodity": "cathode materials",
-    "role": "Producer",
-    "exposure": 3,
-    "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
-    "tier": "Strong",
-    "confidence": "High",
-    "evidence": "Metal drop hits NRV; reversal on price rise"
-   },
+   "omLinkage": null,
    "tipranks": {
     "consensus": null,
     "priceTarget": null,
@@ -1483,10 +1306,10 @@
    "omLinkage": {
     "commodity": "battery metals",
     "role": "Consumer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 4,
+    "coupling": 1.0,
+    "score": 4.0,
     "tier": "Moderate",
     "confidence": "Low",
     "evidence": "Vertically integrated LFP; low Bigdata signal"
@@ -1515,7 +1338,7 @@
    "region": "Asia",
    "exchange": "KOSDAQ",
    "capTier": "Mid",
-   "role": "Producer",
+   "role": "Processor",
    "status": "YES",
    "verified": "Y",
    "sources": 2,
@@ -1523,11 +1346,11 @@
    "tier1Rank": 34,
    "omLinkage": {
     "commodity": "cathode materials",
-    "role": "Producer",
-    "exposure": 3,
+    "role": "Processor",
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Ni smelter spread widens on higher LME; Li tailwind"
@@ -1565,10 +1388,10 @@
    "omLinkage": {
     "commodity": "battery metals",
     "role": "Consumer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Most lithium cost passed through; upstream buffers"
@@ -1606,10 +1429,10 @@
    "omLinkage": {
     "commodity": "battery metals",
     "role": "Consumer",
-    "exposure": 3,
-    "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "exposure": 3.0,
+    "priceSens": 2,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "ASP tracks Li/Ni with 1-2mo lag; metal-driven"
@@ -1647,10 +1470,10 @@
    "omLinkage": {
     "commodity": "battery metals",
     "role": "Consumer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 4,
+    "coupling": 1.0,
+    "score": 4.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Energy div cites Li/Co risk; group dilutes"
@@ -1679,7 +1502,7 @@
    "region": "Asia",
    "exchange": "Shanghai",
    "capTier": "Mid",
-   "role": "Producer",
+   "role": "Processor",
    "status": "YES",
    "verified": "Y",
    "sources": 2,
@@ -1687,11 +1510,11 @@
    "tier1Rank": null,
    "omLinkage": {
     "commodity": "cathode materials",
-    "role": "Producer",
-    "exposure": 3,
+    "role": "Processor",
+    "exposure": 3.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 7,
+    "coupling": 2.0,
+    "score": 7.0,
     "tier": "Strong",
     "confidence": "Low",
     "evidence": "High-Ni NCM pure-play; no Bigdata coverage"
@@ -1720,7 +1543,7 @@
    "region": "Europe",
    "exchange": "Xetra",
    "capTier": "Large",
-   "role": "Producer",
+   "role": "Processor",
    "status": "YES",
    "verified": "Y",
    "sources": 2,
@@ -1728,11 +1551,11 @@
    "tier1Rank": null,
    "omLinkage": {
     "commodity": "cathode materials",
-    "role": "Producer",
-    "exposure": 1,
+    "role": "Processor",
+    "exposure": 1.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 3,
+    "coupling": 1.0,
+    "score": 3.0,
     "tier": "Weak",
     "confidence": "High",
     "evidence": "CAM minor sub-segment; group buffered; capex paused"
@@ -1761,7 +1584,7 @@
    "region": "North America",
    "exchange": "Toronto (TSX)",
    "capTier": "Micro/Dev",
-   "role": "Producer",
+   "role": "Processor",
    "status": "YES",
    "verified": "Y",
    "sources": 1,
@@ -1769,11 +1592,11 @@
    "tier1Rank": null,
    "omLinkage": {
     "commodity": "cathode materials",
-    "role": "Producer",
-    "exposure": 2,
+    "role": "Processor",
+    "exposure": 2.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 4,
+    "coupling": 1.0,
+    "score": 4.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Pre-revenue LFP licensing; tech-stage"
@@ -1811,10 +1634,10 @@
    "omLinkage": {
     "commodity": "solid-state battery",
     "role": "Consumer",
-    "exposure": 1,
+    "exposure": 1.0,
     "priceSens": 0,
-    "coupling": 0,
-    "score": 1,
+    "coupling": 0.0,
+    "score": 1.0,
     "tier": "Weak",
     "confidence": "High",
     "evidence": "Pre-revenue; stock VW/tech-milestone driven"
@@ -1852,10 +1675,10 @@
    "omLinkage": {
     "commodity": "solid-state battery",
     "role": "Consumer",
-    "exposure": 1,
+    "exposure": 1.0,
     "priceSens": 0,
-    "coupling": 0,
-    "score": 1,
+    "coupling": 0.0,
+    "score": 1.0,
     "tier": "Weak",
     "confidence": "High",
     "evidence": "Pre-revenue; stock milestone-driven not metals"
@@ -1884,7 +1707,7 @@
    "region": "North America",
    "exchange": "NYSE / Nasdaq",
    "capTier": "Micro/Dev",
-   "role": "Producer",
+   "role": "Processor",
    "status": "YES",
    "verified": "Y",
    "sources": 1,
@@ -1892,11 +1715,11 @@
    "tier1Rank": null,
    "omLinkage": {
     "commodity": "battery anode materials",
-    "role": "Producer",
-    "exposure": 2,
+    "role": "Processor",
+    "exposure": 2.0,
     "priceSens": 0,
-    "coupling": 0,
-    "score": 2,
+    "coupling": 0.0,
+    "score": 2.0,
     "tier": "Weak",
     "confidence": "High",
     "evidence": "Pre-revenue S-1; biomass graphite reduces linkage"
@@ -1934,10 +1757,10 @@
    "omLinkage": {
     "commodity": "battery metals",
     "role": "Consumer",
-    "exposure": 2,
-    "priceSens": 2,
-    "coupling": 1,
-    "score": 5,
+    "exposure": 2.0,
+    "priceSens": 1,
+    "coupling": 1.0,
+    "score": 5.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "10-K: metal prices reduce profit if unrecouped; LTC-hedged"
@@ -1953,14 +1776,7 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": {
-    "side": "short",
-    "shares": 1.0,
-    "mktValue": -394.26,
-    "unrealizedPnl": 3.89,
-    "avgCost": 398.1466,
-    "lastPrice": 394.26
-   },
+   "held": null,
    "discovered": false
   },
   {
@@ -1973,7 +1789,7 @@
    "region": "Asia",
    "exchange": "KRX (KOSPI)",
    "capTier": "Small",
-   "role": "Producer",
+   "role": "Processor",
    "status": "YES",
    "verified": "Y",
    "sources": 1,
@@ -1981,11 +1797,11 @@
    "tier1Rank": null,
    "omLinkage": {
     "commodity": "cobalt sulfate",
-    "role": "Producer",
-    "exposure": 2,
+    "role": "Processor",
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 1,
-    "score": 5,
+    "coupling": 1.0,
+    "score": 5.0,
     "tier": "Moderate",
     "confidence": "Low",
     "evidence": "Korean cobalt sulfate; no Bigdata coverage"
@@ -2014,7 +1830,7 @@
    "region": "Asia",
    "exchange": "KOSDAQ",
    "capTier": "Mid",
-   "role": "Producer",
+   "role": "Processor",
    "status": "YES",
    "verified": "Y",
    "sources": 1,
@@ -2022,11 +1838,11 @@
    "tier1Rank": null,
    "omLinkage": {
     "commodity": "cobalt/cathode",
-    "role": "Producer",
-    "exposure": 2,
-    "priceSens": 2,
-    "coupling": 1,
-    "score": 5,
+    "role": "Processor",
+    "exposure": 2.0,
+    "priceSens": 1,
+    "coupling": 1.0,
+    "score": 4.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Cobalt byproduct of Ni smelter; nickel primary"
@@ -2064,13 +1880,54 @@
    "omLinkage": {
     "commodity": "cobalt",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 2,
-    "score": 8,
+    "coupling": 2.0,
+    "score": 8.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Cobalt price explicitly drives P&L; integrated"
+   },
+   "tipranks": {
+    "consensus": null,
+    "priceTarget": null,
+    "smartScore": null,
+    "newsSentiment": null,
+    "hedgeFundTrend": null,
+    "insiderTrend": null,
+    "blogger": null,
+    "covered": "N"
+   },
+   "bigdata": null,
+   "held": null,
+   "discovered": false
+  },
+  {
+   "ticker": "COB.AX",
+   "company": "Cobalt Blue",
+   "materials": [
+    "Cobalt"
+   ],
+   "country": "AU",
+   "region": "Oceania",
+   "exchange": "ASX",
+   "capTier": "Micro/Dev",
+   "role": "Producer",
+   "status": "YES",
+   "verified": "Y",
+   "sources": 1,
+   "excluded": false,
+   "tier1Rank": null,
+   "omLinkage": {
+    "commodity": "cobalt/manganese",
+    "role": "Producer",
+    "exposure": 2.0,
+    "priceSens": 0,
+    "coupling": 1.0,
+    "score": 3.0,
+    "tier": "Weak",
+    "confidence": "Low",
+    "evidence": "Pre-revenue; cobalt primary; no Bigdata coverage"
    },
    "tipranks": {
     "consensus": null,
@@ -2094,9 +1951,9 @@
    ],
    "country": "CA",
    "region": "North America",
-   "exchange": "NYSE / Nasdaq (ADR)",
+   "exchange": "Nasdaq",
    "capTier": "Micro/Dev",
-   "role": "Producer",
+   "role": "Processor",
    "status": "YES",
    "verified": "Y",
    "sources": 1,
@@ -2104,11 +1961,11 @@
    "tier1Rank": null,
    "omLinkage": {
     "commodity": "cobalt",
-    "role": "Producer",
-    "exposure": 3,
+    "role": "Processor",
+    "exposure": 3.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 5,
+    "coupling": 1.0,
+    "score": 5.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Cobalt refinery pre-revenue; tolling limits exposure"
@@ -2137,13 +1994,23 @@
    "region": "North America",
    "exchange": "TSX Venture",
    "capTier": "Micro/Dev",
-   "role": null,
-   "status": "unconfirmed",
-   "verified": "N",
+   "role": "Producer",
+   "status": "YES",
+   "verified": "Y",
    "sources": 1,
-   "excluded": true,
+   "excluded": false,
    "tier1Rank": null,
-   "omLinkage": null,
+   "omLinkage": {
+    "commodity": "cobalt (byproduct of nickel awaruite)",
+    "role": "Producer",
+    "exposure": 1.0,
+    "priceSens": 0,
+    "coupling": 1.0,
+    "score": 2.0,
+    "tier": null,
+    "confidence": null,
+    "evidence": null
+   },
    "tipranks": {
     "consensus": null,
     "priceTarget": null,
@@ -2168,7 +2035,7 @@
    "region": "Europe",
    "exchange": "Euronext Brussels",
    "capTier": "Mid",
-   "role": "Producer",
+   "role": "Processor",
    "status": "YES",
    "verified": "Y",
    "sources": 2,
@@ -2176,11 +2043,11 @@
    "tier1Rank": null,
    "omLinkage": {
     "commodity": "cobalt",
-    "role": "Producer",
-    "exposure": 2,
+    "role": "Processor",
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Cobalt one of 4 segments; cobalt upside Q1 2026"
@@ -2218,10 +2085,10 @@
    "omLinkage": {
     "commodity": "copper",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Copper #4 globally but gold/zinc/lithium material"
@@ -2259,10 +2126,10 @@
    "omLinkage": {
     "commodity": "copper",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "87-89% revenue copper+moly; top earnings risk"
@@ -2300,10 +2167,10 @@
    "omLinkage": {
     "commodity": "copper",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 8,
+    "coupling": 3.0,
+    "score": 8.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Copper 51% EBITDA record; iron ore dampens"
@@ -2330,8 +2197,8 @@
    ],
    "country": "CA",
    "region": "North America",
-   "exchange": "NYSE / Nasdaq (ADR)",
-   "capTier": "Small",
+   "exchange": "NYSE (also TSX: ERO)",
+   "capTier": "Mid",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -2341,10 +2208,10 @@
    "omLinkage": {
     "commodity": "copper",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Pure-play Brazil copper; depends on copper+gold"
@@ -2360,7 +2227,14 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": null,
+   "held": {
+    "side": "long",
+    "shares": 29.2405,
+    "mktValue": 889.79,
+    "unrealizedPnl": 24.52,
+    "avgCost": 29.5915,
+    "lastPrice": 30.43
+   },
    "discovered": false
   },
   {
@@ -2382,10 +2256,10 @@
    "omLinkage": {
     "commodity": "copper",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "75% revenue copper; realized price drives earnings"
@@ -2401,7 +2275,14 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": null,
+   "held": {
+    "side": "long",
+    "shares": 14.2308,
+    "mktValue": 987.76,
+    "unrealizedPnl": 15.16,
+    "avgCost": 68.3446,
+    "lastPrice": 69.41
+   },
    "discovered": false
   },
   {
@@ -2423,10 +2304,10 @@
    "omLinkage": {
     "commodity": "copper",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 2,
-    "coupling": 3,
-    "score": 8,
+    "coupling": 3.0,
+    "score": 8.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Copper primary; collars mute short-term sensitivity"
@@ -2453,7 +2334,7 @@
    ],
    "country": "CH",
    "region": "Europe",
-   "exchange": "NYSE / Nasdaq (ADR)",
+   "exchange": "OTC (ADR); LSE primary",
    "capTier": "Large",
    "role": "Producer",
    "status": "YES",
@@ -2464,10 +2345,10 @@
    "omLinkage": {
     "commodity": "copper",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 3,
-    "score": 7,
+    "coupling": 3.0,
+    "score": 7.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Copper ~46-50% EBITDA; coal/zinc mute coupling"
@@ -2494,7 +2375,7 @@
    ],
    "country": "MX",
    "region": "Latin America",
-   "exchange": "NYSE / Nasdaq (ADR)",
+   "exchange": "BMV (Mexico City)",
    "capTier": "Large",
    "role": "Producer",
    "status": "YES",
@@ -2505,10 +2386,10 @@
    "omLinkage": {
     "commodity": "copper",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 8,
+    "coupling": 3.0,
+    "score": 8.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Mining ~83% rev; copper primary, zinc/silver/moly material"
@@ -2535,8 +2416,8 @@
    ],
    "country": "CA",
    "region": "North America",
-   "exchange": "NYSE / Nasdaq (ADR)",
-   "capTier": "Mid",
+   "exchange": "NYSE (also TSX: HBM)",
+   "capTier": "Large",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -2546,10 +2427,10 @@
    "omLinkage": {
     "commodity": "copper",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 8,
+    "coupling": 3.0,
+    "score": 8.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Majority copper; gold 39% partial natural hedge"
@@ -2565,7 +2446,14 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": null,
+   "held": {
+    "side": "long",
+    "shares": 40.0,
+    "mktValue": 1037.6,
+    "unrealizedPnl": 22.96,
+    "avgCost": 25.3661,
+    "lastPrice": 25.94
+   },
    "discovered": false
   },
   {
@@ -2587,10 +2475,10 @@
    "omLinkage": {
     "commodity": "copper",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Kamoa-Kakula core; positioned for strong copper"
@@ -2604,6 +2492,47 @@
     "insiderTrend": null,
     "blogger": null,
     "covered": "N"
+   },
+   "bigdata": null,
+   "held": null,
+   "discovered": false
+  },
+  {
+   "ticker": "MLI",
+   "company": "Mueller Industries",
+   "materials": [
+    "Copper"
+   ],
+   "country": "US",
+   "region": "North America",
+   "exchange": "NYSE / Nasdaq",
+   "capTier": "Large",
+   "role": "Fabricator",
+   "status": "YES",
+   "verified": "Y",
+   "sources": 1,
+   "excluded": false,
+   "tier1Rank": null,
+   "omLinkage": {
+    "commodity": "copper/aluminum products",
+    "role": "Fabricator",
+    "exposure": 2.0,
+    "priceSens": 2,
+    "coupling": 2.0,
+    "score": 6.0,
+    "tier": "Moderate",
+    "confidence": "High",
+    "evidence": "Copper/brass largest cost; FIFO margins hit by moves"
+   },
+   "tipranks": {
+    "consensus": "Hold",
+    "priceTarget": null,
+    "smartScore": 5.0,
+    "newsSentiment": "Unknown",
+    "hedgeFundTrend": "Decreased",
+    "insiderTrend": "SoldShares",
+    "blogger": "Bullish",
+    "covered": "Y"
    },
    "bigdata": null,
    "held": null,
@@ -2628,10 +2557,10 @@
    "omLinkage": {
     "commodity": "copper",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Iron ore/aluminum/lithium dilute copper coupling"
@@ -2669,10 +2598,10 @@
    "omLinkage": {
     "commodity": "copper",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "76% revenue copper; $0.10/lb=$89M net income"
@@ -2688,7 +2617,14 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": null,
+   "held": {
+    "side": "long",
+    "shares": 4.0705,
+    "mktValue": 801.89,
+    "unrealizedPnl": 5.82,
+    "avgCost": 195.5704,
+    "lastPrice": 197.0
+   },
    "discovered": false
   },
   {
@@ -2710,10 +2646,10 @@
    "omLinkage": {
     "commodity": "copper",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "69% revenue copper; pure exposure post-hedge"
@@ -2751,10 +2687,10 @@
    "omLinkage": {
     "commodity": "copper",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Copper >70% production; EBITDA modeled vs copper"
@@ -2770,7 +2706,14 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": null,
+   "held": {
+    "side": "long",
+    "shares": 15.3446,
+    "mktValue": 1013.51,
+    "unrealizedPnl": 14.06,
+    "avgCost": 65.1337,
+    "lastPrice": 66.05
+   },
    "discovered": false
   },
   {
@@ -2792,10 +2735,10 @@
    "omLinkage": {
     "commodity": "electrical steel",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 7,
+    "coupling": 2.0,
+    "score": 7.0,
     "tier": "Strong",
     "confidence": "Low",
     "evidence": "China electrical/special steel major; no Bigdata coverage"
@@ -2833,10 +2776,10 @@
    "omLinkage": {
     "commodity": "electrical steel",
     "role": "Consumer",
-    "exposure": 1,
+    "exposure": 1.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 3,
+    "coupling": 1.0,
+    "score": 3.0,
     "tier": "Weak",
     "confidence": "Low",
     "evidence": "Diversified conglomerate; no Bigdata coverage"
@@ -2865,7 +2808,7 @@
    "region": "Europe",
    "exchange": "Vienna",
    "capTier": "Mid",
-   "role": "Producer",
+   "role": "Fabricator",
    "status": "YES",
    "verified": "Y",
    "sources": 1,
@@ -2873,11 +2816,11 @@
    "tier1Rank": null,
    "omLinkage": {
     "commodity": "electrical steel equip",
-    "role": "Producer",
-    "exposure": 2,
+    "role": "Fabricator",
+    "exposure": 2.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 4,
+    "coupling": 1.0,
+    "score": 4.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Makes GO/NGO lines; demand tracks capex not spot"
@@ -2915,10 +2858,10 @@
    "omLinkage": {
     "commodity": "electrical steel equip",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 4,
+    "coupling": 1.0,
+    "score": 4.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Plant+steel making; scrap/energy primary drivers"
@@ -2956,10 +2899,10 @@
    "omLinkage": {
     "commodity": "electrical steel",
     "role": "Consumer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 4,
+    "coupling": 1.0,
+    "score": 4.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Steel a key raw material; price risk managed"
@@ -2997,10 +2940,10 @@
    "omLinkage": {
     "commodity": "electrical steel",
     "role": "Consumer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 4,
+    "coupling": 1.0,
+    "score": 4.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Transformer maker; <$1M sensitivity to 10% commodity move"
@@ -3038,10 +2981,10 @@
    "omLinkage": {
     "commodity": "electrical steel",
     "role": "Consumer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 4,
+    "coupling": 1.0,
+    "score": 4.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Transformer capacity doubling; supplier price locks shield"
@@ -3079,14 +3022,45 @@
    "omLinkage": {
     "commodity": "electrical steel",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Electrical steel named segment; EU import pressure cited"
    },
+   "tipranks": {
+    "consensus": null,
+    "priceTarget": null,
+    "smartScore": null,
+    "newsSentiment": null,
+    "hedgeFundTrend": null,
+    "insiderTrend": null,
+    "blogger": null,
+    "covered": "N"
+   },
+   "bigdata": null,
+   "held": null,
+   "discovered": false
+  },
+  {
+   "ticker": "2259.HK",
+   "company": "Zijin Gold Intl",
+   "materials": [
+    "Gold"
+   ],
+   "country": "HK",
+   "region": "Asia",
+   "exchange": "HKEX",
+   "capTier": "Large",
+   "role": "Producer",
+   "status": "YES",
+   "verified": "Y",
+   "sources": 1,
+   "excluded": false,
+   "tier1Rank": null,
+   "omLinkage": null,
    "tipranks": {
     "consensus": null,
     "priceTarget": null,
@@ -3120,10 +3094,10 @@
    "omLinkage": {
     "commodity": "gold",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Gold volatility directly affects revenue/earnings; no hedging"
@@ -3148,9 +3122,9 @@
    "materials": [
     "Gold"
    ],
-   "country": "ZA",
-   "region": "Africa",
-   "exchange": "NYSE / Nasdaq (ADR)",
+   "country": "US",
+   "region": "North America",
+   "exchange": "NYSE (primary)",
    "capTier": "Large",
    "role": "Producer",
    "status": "YES",
@@ -3161,10 +3135,10 @@
    "omLinkage": {
     "commodity": "gold",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "Low",
     "evidence": "Pure-play gold; ~100% gold revenue; no Bigdata coverage"
@@ -3184,6 +3158,37 @@
    "discovered": false
   },
   {
+   "ticker": "B",
+   "company": "Barrick Mining",
+   "materials": [
+    "Gold"
+   ],
+   "country": "CA",
+   "region": "North America",
+   "exchange": "NYSE / Nasdaq (ADR)",
+   "capTier": "Large",
+   "role": "Producer",
+   "status": "YES",
+   "verified": "Y",
+   "sources": 2,
+   "excluded": false,
+   "tier1Rank": null,
+   "omLinkage": null,
+   "tipranks": {
+    "consensus": "StrongBuy",
+    "priceTarget": 67.25,
+    "smartScore": 7.0,
+    "newsSentiment": "Unknown",
+    "hedgeFundTrend": "Decreased",
+    "insiderTrend": "BoughtShares",
+    "blogger": "Bullish",
+    "covered": "Y"
+   },
+   "bigdata": null,
+   "held": null,
+   "discovered": false
+  },
+  {
    "ticker": "EDV.TO",
    "company": "Endeavour Mining",
    "materials": [
@@ -3191,8 +3196,8 @@
    ],
    "country": "UK",
    "region": "Europe",
-   "exchange": "Toronto (TSX)",
-   "capTier": "Mid",
+   "exchange": "LSE / TSX",
+   "capTier": "Large",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -3202,10 +3207,10 @@
    "omLinkage": {
     "commodity": "gold",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "Low",
     "evidence": "Pure-play W.Africa gold; no Bigdata coverage"
@@ -3243,10 +3248,10 @@
    "omLinkage": {
     "commodity": "gold",
     "role": "Royalty",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "110% leverage to gold price; 87% precious revenue"
@@ -3284,10 +3289,10 @@
    "omLinkage": {
     "commodity": "gold",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Substantially all revenue from gold; +45% price=+68% rev"
@@ -3325,10 +3330,10 @@
    "omLinkage": {
     "commodity": "gold",
     "role": "ETF",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "1:1 gold bullion tracking; pure pass-through"
@@ -3342,47 +3347,6 @@
     "insiderTrend": null,
     "blogger": null,
     "covered": "N"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "GOLD",
-   "company": "Barrick Mining",
-   "materials": [
-    "Gold"
-   ],
-   "country": "CA",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq (ADR)",
-   "capTier": "Large",
-   "role": "Producer",
-   "status": "YES",
-   "verified": "Y",
-   "sources": 2,
-   "excluded": false,
-   "tier1Rank": 15,
-   "omLinkage": {
-    "commodity": "gold",
-    "role": "Producer",
-    "exposure": 3,
-    "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
-    "tier": "Strong",
-    "confidence": "High",
-    "evidence": "$100/oz=~$650M EBITDA swing"
-   },
-   "tipranks": {
-    "consensus": "StrongBuy",
-    "priceTarget": 67.25,
-    "smartScore": 7.0,
-    "newsSentiment": "Unknown",
-    "hedgeFundTrend": "Decreased",
-    "insiderTrend": "BoughtShares",
-    "blogger": "Bullish",
-    "covered": "Y"
    },
    "bigdata": null,
    "held": null,
@@ -3407,10 +3371,10 @@
    "omLinkage": {
     "commodity": "gold",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "10% price move=~$860M pre-tax impact"
@@ -3438,7 +3402,7 @@
    "country": "CA",
    "region": "North America",
    "exchange": "Toronto (TSX)",
-   "capTier": "Mid",
+   "capTier": "Large",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -3448,10 +3412,10 @@
    "omLinkage": {
     "commodity": "gold",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Record revenues on gold; 72% AISC margin"
@@ -3489,10 +3453,10 @@
    "omLinkage": {
     "commodity": "gold",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Gold price significantly affects profit/cash flow; no hedges"
@@ -3530,10 +3494,10 @@
    "omLinkage": {
     "commodity": "gold",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "Low",
     "evidence": "Pure-play ASX gold; no Bigdata coverage"
@@ -3571,10 +3535,10 @@
    "omLinkage": {
     "commodity": "gold",
     "role": "Royalty",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Highest gold weighting in royalty sector; ~90% precious"
@@ -3612,10 +3576,10 @@
    "omLinkage": {
     "commodity": "gold/silver",
     "role": "Streaming",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "51% gold/47% silver; streaming amplifies leverage"
@@ -3629,47 +3593,6 @@
     "insiderTrend": "SoldShares",
     "blogger": "Bullish",
     "covered": "Y"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "ZIJMF",
-   "company": "Zijin Gold Intl",
-   "materials": [
-    "Gold"
-   ],
-   "country": "CN",
-   "region": "Asia",
-   "exchange": "NYSE / Nasdaq (ADR)",
-   "capTier": "Large",
-   "role": "Producer",
-   "status": "YES",
-   "verified": "Y",
-   "sources": 1,
-   "excluded": false,
-   "tier1Rank": null,
-   "omLinkage": {
-    "commodity": "gold",
-    "role": "Producer",
-    "exposure": 2,
-    "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
-    "tier": "Moderate",
-    "confidence": "High",
-    "evidence": "Gold 44% rev; copper ~30%, lithium ~10% dilute"
-   },
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
    },
    "bigdata": null,
    "held": null,
@@ -3694,11 +3617,11 @@
    "omLinkage": {
     "commodity": "graphite",
     "role": "Producer",
-    "exposure": 3,
-    "priceSens": 2,
-    "coupling": 1,
-    "score": 6,
-    "tier": "Moderate",
+    "exposure": 3.0,
+    "priceSens": 0,
+    "coupling": 1.0,
+    "score": 3.0,
+    "tier": "Weak",
     "confidence": "High",
     "evidence": "Pre-revenue CSPG plant; graphite-only, no cash flow yet"
    },
@@ -3717,48 +3640,7 @@
    "discovered": false
   },
   {
-   "ticker": "ELK.OL",
-   "company": "Elkem (Vianode)",
-   "materials": [
-    "Graphite"
-   ],
-   "country": "NO",
-   "region": "Europe",
-   "exchange": "Oslo Bors",
-   "capTier": "Mid",
-   "role": "Producer",
-   "status": "YES",
-   "verified": "Y",
-   "sources": 1,
-   "excluded": false,
-   "tier1Rank": null,
-   "omLinkage": {
-    "commodity": "graphite",
-    "role": "Producer",
-    "exposure": 1,
-    "priceSens": 1,
-    "coupling": 0,
-    "score": 2,
-    "tier": "Weak",
-    "confidence": "High",
-    "evidence": "Sold Vianode 2024; now silicon/ferrosilicon"
-   },
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "NGC",
+   "ticker": "NGC.V",
    "company": "Northern Graphite",
    "materials": [
     "Graphite"
@@ -3773,17 +3655,7 @@
    "sources": 1,
    "excluded": false,
    "tier1Rank": null,
-   "omLinkage": {
-    "commodity": "graphite",
-    "role": "Producer",
-    "exposure": 3,
-    "priceSens": 2,
-    "coupling": 2,
-    "score": 7,
-    "tier": "Strong",
-    "confidence": "Low",
-    "evidence": "Graphite miner; no Bigdata coverage"
-   },
+   "omLinkage": null,
    "tipranks": {
     "consensus": null,
     "priceTarget": null,
@@ -3817,11 +3689,11 @@
    "omLinkage": {
     "commodity": "graphite",
     "role": "Producer",
-    "exposure": 3,
-    "priceSens": 3,
-    "coupling": 2,
-    "score": 8,
-    "tier": "Strong",
+    "exposure": 3.0,
+    "priceSens": 0,
+    "coupling": 2.0,
+    "score": 5.0,
+    "tier": "Moderate",
     "confidence": "High",
     "evidence": "All future revenue from graphite; price key viability risk"
    },
@@ -3858,10 +3730,10 @@
    "omLinkage": {
     "commodity": "synthetic graphite",
     "role": "Producer",
-    "exposure": 3,
-    "priceSens": 3,
-    "coupling": 2,
-    "score": 8,
+    "exposure": 3.0,
+    "priceSens": 2,
+    "coupling": 2.0,
+    "score": 7.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Pure-play synthetic graphite anode; graphite price core risk"
@@ -3899,10 +3771,10 @@
    "omLinkage": {
     "commodity": "natural graphite",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Performance heavily reliant on graphite price"
@@ -3930,7 +3802,7 @@
    "country": "CN",
    "region": "Asia",
    "exchange": "HKEX",
-   "capTier": "Mid",
+   "capTier": "Large",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -3940,10 +3812,10 @@
    "omLinkage": {
     "commodity": "lithium",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 2,
-    "score": 8,
+    "coupling": 2.0,
+    "score": 8.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Revenue fell RMB8.6B on lithium price decline"
@@ -3981,10 +3853,10 @@
    "omLinkage": {
     "commodity": "lithium",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 2,
-    "score": 8,
+    "coupling": 2.0,
+    "score": 8.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Revenue dropped RMB27B on selling-price decline; pure lithium"
@@ -4022,10 +3894,10 @@
    "omLinkage": {
     "commodity": "lithium",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Energy Storage segment index-referenced; earnings strongly lithium-dependent"
@@ -4039,44 +3911,6 @@
     "insiderTrend": null,
     "blogger": "Bullish",
     "covered": "Y"
-   },
-   "bigdata": null,
-   "held": {
-    "side": "long",
-    "shares": 3.0,
-    "mktValue": 378.15,
-    "unrealizedPnl": -26.14,
-    "avgCost": 134.7633,
-    "lastPrice": 126.05
-   },
-   "discovered": false
-  },
-  {
-   "ticker": "ALTM",
-   "company": "Arcadium Lithium",
-   "materials": [
-    "Lithium"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "n/a (acquired)",
-   "role": null,
-   "status": "delisted/acquired",
-   "verified": "N",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
    },
    "bigdata": null,
    "held": null,
@@ -4101,10 +3935,10 @@
    "omLinkage": {
     "commodity": "lithium",
     "role": "ETF",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Leveraged bet on a single commodity (lithium)"
@@ -4120,14 +3954,48 @@
     "covered": "N"
    },
    "bigdata": null,
-   "held": {
-    "side": "short",
-    "shares": 30.0,
-    "mktValue": -428.7,
-    "unrealizedPnl": 29.96,
-    "avgCost": 15.2887,
-    "lastPrice": 14.29
+   "held": null,
+   "discovered": false
+  },
+  {
+   "ticker": "IGO.AX",
+   "company": "IGO",
+   "materials": [
+    "Lithium"
+   ],
+   "country": "AU",
+   "region": "Oceania",
+   "exchange": "ASX",
+   "capTier": "Mid",
+   "role": "Producer",
+   "status": "YES",
+   "verified": "Y",
+   "sources": 1,
+   "excluded": false,
+   "tier1Rank": null,
+   "omLinkage": {
+    "commodity": "nickel",
+    "role": "Producer",
+    "exposure": 2.0,
+    "priceSens": 1,
+    "coupling": 2.0,
+    "score": 2.0,
+    "tier": "Weak",
+    "confidence": "High",
+    "evidence": "Nova nickel ~$188M; lithium JV also material"
    },
+   "tipranks": {
+    "consensus": null,
+    "priceTarget": null,
+    "smartScore": null,
+    "newsSentiment": null,
+    "hedgeFundTrend": null,
+    "insiderTrend": null,
+    "blogger": null,
+    "covered": "N"
+   },
+   "bigdata": null,
+   "held": null,
    "discovered": false
   },
   {
@@ -4136,7 +4004,7 @@
    "materials": [
     "Lithium"
    ],
-   "country": "US",
+   "country": "CA",
    "region": "North America",
    "exchange": "NYSE / Nasdaq",
    "capTier": "Small",
@@ -4149,10 +4017,10 @@
    "omLinkage": {
     "commodity": "lithium",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 1,
-    "score": 5,
+    "coupling": 1.0,
+    "score": 5.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Pre-revenue developer; future results significantly lithium-affected"
@@ -4168,14 +4036,7 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": {
-    "side": "long",
-    "shares": 116.0,
-    "mktValue": 364.24,
-    "unrealizedPnl": -80.46,
-    "avgCost": 3.8336,
-    "lastPrice": 3.14
-   },
+   "held": null,
    "discovered": false
   },
   {
@@ -4197,10 +4058,10 @@
    "omLinkage": {
     "commodity": "lithium",
     "role": "ETF",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Tracks Solactive Global Lithium Index"
@@ -4216,14 +4077,7 @@
     "covered": "N"
    },
    "bigdata": null,
-   "held": {
-    "side": "short",
-    "shares": 6.0,
-    "mktValue": -421.44,
-    "unrealizedPnl": 33.89,
-    "avgCost": 75.8875,
-    "lastPrice": 70.24
-   },
+   "held": null,
    "discovered": false
   },
   {
@@ -4245,10 +4099,10 @@
    "omLinkage": {
     "commodity": "lithium",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Lithium one of three segments; iron ore/services dilute"
@@ -4269,7 +4123,7 @@
   },
   {
    "ticker": "PLS.AX",
-   "company": "Pilbara Minerals",
+   "company": "PLS Group Limited (fmr Pilbara Minerals)",
    "materials": [
     "Lithium"
    ],
@@ -4286,10 +4140,10 @@
    "omLinkage": {
     "commodity": "lithium",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Pure-play; every price move flows to bottom line"
@@ -4327,10 +4181,10 @@
    "omLinkage": {
     "commodity": "lithium",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 4,
+    "coupling": 1.0,
+    "score": 4.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Pre-revenue converter developer"
@@ -4368,10 +4222,10 @@
    "omLinkage": {
     "commodity": "lithium",
     "role": "Producer",
-    "exposure": 1,
+    "exposure": 1.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 3,
+    "coupling": 1.0,
+    "score": 3.0,
     "tier": "Weak",
     "confidence": "High",
     "evidence": "Development stage; no revenue; going-concern doubt"
@@ -4409,10 +4263,10 @@
    "omLinkage": {
     "commodity": "lithium",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Revenue swings 41%/qtr tracking lithium price"
@@ -4428,14 +4282,7 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": {
-    "side": "long",
-    "shares": 36.018,
-    "mktValue": 420.69,
-    "unrealizedPnl": -32.67,
-    "avgCost": 12.5871,
-    "lastPrice": 11.68
-   },
+   "held": null,
    "discovered": false
   },
   {
@@ -4457,10 +4304,10 @@
    "omLinkage": {
     "commodity": "lithium",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Contracts linked to lithium price indices; realized price tracks market"
@@ -4476,14 +4323,7 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": {
-    "side": "long",
-    "shares": 6.0,
-    "mktValue": 431.64,
-    "unrealizedPnl": -9.16,
-    "avgCost": 73.4667,
-    "lastPrice": 71.94
-   },
+   "held": null,
    "discovered": false
   },
   {
@@ -4505,54 +4345,13 @@
    "omLinkage": {
     "commodity": "lithium",
     "role": "Producer",
-    "exposure": 1,
+    "exposure": 1.0,
     "priceSens": 1,
-    "coupling": 2,
-    "score": 4,
+    "coupling": 2.0,
+    "score": 4.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Covalent Lithium minor segment in conglomerate"
-   },
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "AQMS",
-   "company": "Aqua Metals (recycling)",
-   "materials": [
-    "Manganese"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Micro/Dev",
-   "role": "Producer",
-   "status": "YES",
-   "verified": "Y",
-   "sources": 1,
-   "excluded": false,
-   "tier1Rank": null,
-   "omLinkage": {
-    "commodity": "battery recycling",
-    "role": "Producer",
-    "exposure": 1,
-    "priceSens": 1,
-    "coupling": 1,
-    "score": 3,
-    "tier": "Weak",
-    "confidence": "High",
-    "evidence": "Mn minor; lithium/nickel drive economics; pre-commercial"
    },
    "tipranks": {
     "consensus": null,
@@ -4587,10 +4386,10 @@
    "omLinkage": {
     "commodity": "manganese",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Mn -84% on lower prices; diversified PGM/Fe"
@@ -4619,37 +4418,6 @@
    "region": "Oceania",
    "exchange": "ASX",
    "capTier": "Micro/Dev",
-   "role": null,
-   "status": "unconfirmed",
-   "verified": "N",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "COB.AX",
-   "company": "Cobalt Blue",
-   "materials": [
-    "Manganese"
-   ],
-   "country": "AU",
-   "region": "Oceania",
-   "exchange": "ASX",
-   "capTier": "Micro/Dev",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -4657,15 +4425,15 @@
    "excluded": false,
    "tier1Rank": null,
    "omLinkage": {
-    "commodity": "cobalt/manganese",
+    "commodity": "manganese",
     "role": "Producer",
-    "exposure": 2,
-    "priceSens": 1,
-    "coupling": 1,
-    "score": 4,
-    "tier": "Moderate",
-    "confidence": "Low",
-    "evidence": "Pre-revenue; cobalt primary; no Bigdata coverage"
+    "exposure": 3.0,
+    "priceSens": 0,
+    "coupling": 1.0,
+    "score": 4.0,
+    "tier": null,
+    "confidence": null,
+    "evidence": null
    },
    "tipranks": {
     "consensus": null,
@@ -4700,10 +4468,10 @@
    "omLinkage": {
     "commodity": "manganese",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 7,
+    "coupling": 2.0,
+    "score": 7.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "100% Mn ore revenue; price risk disclosed; producing"
@@ -4723,14 +4491,14 @@
    "discovered": false
   },
   {
-   "ticker": "EML",
+   "ticker": "EML.V",
    "company": "Electric Metals (USA)",
    "materials": [
     "Manganese"
    ],
    "country": "US",
    "region": "North America",
-   "exchange": "NYSE / Nasdaq",
+   "exchange": "TSX Venture",
    "capTier": "Micro/Dev",
    "role": "Producer",
    "status": "YES",
@@ -4738,17 +4506,7 @@
    "sources": 1,
    "excluded": false,
    "tier1Rank": null,
-   "omLinkage": {
-    "commodity": "manganese",
-    "role": "Producer",
-    "exposure": 3,
-    "priceSens": 1,
-    "coupling": 1,
-    "score": 5,
-    "tier": "Moderate",
-    "confidence": "Low",
-    "evidence": "Pre-revenue developer; Bigdata resolved wrong entity"
-   },
+   "omLinkage": null,
    "tipranks": {
     "consensus": null,
     "priceTarget": null,
@@ -4764,14 +4522,14 @@
    "discovered": false
   },
   {
-   "ticker": "EMM",
+   "ticker": "EMM.V",
    "company": "Giyani Metals",
    "materials": [
     "Manganese"
    ],
    "country": "CA",
    "region": "North America",
-   "exchange": "Toronto (TSX)",
+   "exchange": "TSX Venture",
    "capTier": "Micro/Dev",
    "role": "Producer",
    "status": "YES",
@@ -4779,17 +4537,7 @@
    "sources": 1,
    "excluded": false,
    "tier1Rank": null,
-   "omLinkage": {
-    "commodity": "manganese",
-    "role": "Producer",
-    "exposure": 3,
-    "priceSens": 1,
-    "coupling": 1,
-    "score": 5,
-    "tier": "Moderate",
-    "confidence": "Low",
-    "evidence": "Pre-revenue HPMSM developer; no Bigdata coverage"
-   },
+   "omLinkage": null,
    "tipranks": {
     "consensus": null,
     "priceTarget": null,
@@ -4805,14 +4553,14 @@
    "discovered": false
   },
   {
-   "ticker": "EMN",
+   "ticker": "EMN.V",
    "company": "Euro Manganese",
    "materials": [
     "Manganese"
    ],
    "country": "CA",
    "region": "North America",
-   "exchange": "NYSE / Nasdaq (ADR)",
+   "exchange": "TSX Venture",
    "capTier": "Micro/Dev",
    "role": "Producer",
    "status": "YES",
@@ -4820,17 +4568,7 @@
    "sources": 2,
    "excluded": false,
    "tier1Rank": null,
-   "omLinkage": {
-    "commodity": "manganese",
-    "role": "Producer",
-    "exposure": 3,
-    "priceSens": 1,
-    "coupling": 1,
-    "score": 5,
-    "tier": "Moderate",
-    "confidence": "High",
-    "evidence": "Pre-revenue developer; economics assume Mn prices"
-   },
+   "omLinkage": null,
    "tipranks": {
     "consensus": "ModerateBuy",
     "priceTarget": 83.0,
@@ -4864,10 +4602,10 @@
    "omLinkage": {
     "commodity": "manganese",
     "role": "Producer",
-    "exposure": 3,
-    "priceSens": 1,
-    "coupling": 1,
-    "score": 5,
+    "exposure": 3.0,
+    "priceSens": 0,
+    "coupling": 1.0,
+    "score": 4.0,
     "tier": "Moderate",
     "confidence": "Low",
     "evidence": "Pre-revenue ASX explorer; no Bigdata coverage"
@@ -4905,10 +4643,10 @@
    "omLinkage": {
     "commodity": "manganese",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Mgmt: when Mn price up, JMS share price up; 100% Mn"
@@ -4928,7 +4666,7 @@
    "discovered": false
   },
   {
-   "ticker": "MN",
+   "ticker": "MN.V",
    "company": "Manganese X Energy",
    "materials": [
     "Manganese"
@@ -4943,17 +4681,7 @@
    "sources": 1,
    "excluded": false,
    "tier1Rank": null,
-   "omLinkage": {
-    "commodity": "manganese",
-    "role": "Producer",
-    "exposure": 3,
-    "priceSens": 1,
-    "coupling": 1,
-    "score": 5,
-    "tier": "Moderate",
-    "confidence": "Low",
-    "evidence": "Pre-revenue Canadian explorer; no Bigdata coverage"
-   },
+   "omLinkage": null,
    "tipranks": {
     "consensus": null,
     "priceTarget": null,
@@ -4976,7 +4704,7 @@
    ],
    "country": "US",
    "region": "North America",
-   "exchange": "NYSE / Nasdaq",
+   "exchange": "Nasdaq",
    "capTier": "Small",
    "role": "Producer",
    "status": "YES",
@@ -4987,11 +4715,11 @@
    "omLinkage": {
     "commodity": "manganese/nickel",
     "role": "Producer",
-    "exposure": 2,
-    "priceSens": 1,
-    "coupling": 1,
-    "score": 4,
-    "tier": "Moderate",
+    "exposure": 2.0,
+    "priceSens": 0,
+    "coupling": 1.0,
+    "score": 3.0,
+    "tier": "Weak",
     "confidence": "High",
     "evidence": "Pre-production; Mn by-product alongside Ni/Co/Cu"
    },
@@ -5028,10 +4756,10 @@
    "omLinkage": {
     "commodity": "molybdenum",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Moly ~7-8% group rev; copper/cobalt dominate"
@@ -5059,7 +4787,7 @@
    "country": "CN",
    "region": "Asia",
    "exchange": "Shanghai",
-   "capTier": "Mid",
+   "capTier": "Large",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -5069,10 +4797,10 @@
    "omLinkage": {
     "commodity": "molybdenum/copper",
     "role": "Producer",
-    "exposure": 1,
+    "exposure": 1.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 3,
+    "coupling": 1.0,
+    "score": 3.0,
     "tier": "Weak",
     "confidence": "Low",
     "evidence": "Copper-dominant; no Bigdata coverage; moly by-product"
@@ -5100,7 +4828,7 @@
    "country": "CN",
    "region": "Asia",
    "exchange": "Shanghai",
-   "capTier": "Mid",
+   "capTier": "Large",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -5110,10 +4838,10 @@
    "omLinkage": {
     "commodity": "molybdenum",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "~90% revenue from moly; pure-play producer"
@@ -5151,10 +4879,10 @@
    "omLinkage": {
     "commodity": "molybdenum/copper",
     "role": "Producer",
-    "exposure": 1,
-    "priceSens": 2,
-    "coupling": 2,
-    "score": 5,
+    "exposure": 1.0,
+    "priceSens": 1,
+    "coupling": 2.0,
+    "score": 4.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Copper ~39% rev; moly minor by-product"
@@ -5181,7 +4909,7 @@
    ],
    "country": "CA",
    "region": "North America",
-   "exchange": "NYSE / Nasdaq (ADR)",
+   "exchange": "Toronto (TSX) / NYSE dual list",
    "capTier": "Mid",
    "role": "Producer",
    "status": "YES",
@@ -5192,10 +4920,10 @@
    "omLinkage": {
     "commodity": "molybdenum/gold",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Moly ~20-25% rev via Langeloth; gold primary"
@@ -5223,7 +4951,7 @@
    "country": "PL",
    "region": "Europe",
    "exchange": "GPW Warsaw",
-   "capTier": "Mid",
+   "capTier": "Large",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -5233,14 +4961,45 @@
    "omLinkage": {
     "commodity": "molybdenum/copper",
     "role": "Producer",
-    "exposure": 1,
-    "priceSens": 2,
-    "coupling": 1,
-    "score": 4,
-    "tier": "Moderate",
+    "exposure": 1.0,
+    "priceSens": 1,
+    "coupling": 1.0,
+    "score": 3.0,
+    "tier": "Weak",
     "confidence": "High",
     "evidence": "Moly by-product; copper dominates >80%"
    },
+   "tipranks": {
+    "consensus": null,
+    "priceTarget": null,
+    "smartScore": null,
+    "newsSentiment": null,
+    "hedgeFundTrend": null,
+    "insiderTrend": null,
+    "blogger": null,
+    "covered": "N"
+   },
+   "bigdata": null,
+   "held": null,
+   "discovered": false
+  },
+  {
+   "ticker": "MOLYMET.SN",
+   "company": "Molymet (Molibdenos y Metales)",
+   "materials": [
+    "Molybdenum"
+   ],
+   "country": "CL",
+   "region": "Latin America",
+   "exchange": "Santiago (BCS)",
+   "capTier": "Mid",
+   "role": "Processor",
+   "status": "YES",
+   "verified": "Y",
+   "sources": 1,
+   "excluded": false,
+   "tier1Rank": null,
+   "omLinkage": null,
    "tipranks": {
     "consensus": null,
     "priceTarget": null,
@@ -5274,10 +5033,10 @@
    "omLinkage": {
     "commodity": "nickel",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Ni segment profit moves with LME; copper/gold large"
@@ -5315,10 +5074,10 @@
    "omLinkage": {
     "commodity": "stainless/nickel",
     "role": "Consumer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Inventory marks move with LME nickel rallies"
@@ -5356,10 +5115,10 @@
    "omLinkage": {
     "commodity": "specialty stainless",
     "role": "Consumer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 3,
-    "coupling": 2,
-    "score": 7,
+    "coupling": 2.0,
+    "score": 7.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Nickel main metal-basket driver; >SEK150M EBIT swings"
@@ -5397,10 +5156,10 @@
    "omLinkage": {
     "commodity": "stainless/nickel",
     "role": "Consumer",
-    "exposure": 1,
+    "exposure": 1.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 3,
+    "coupling": 1.0,
+    "score": 3.0,
     "tier": "Weak",
     "confidence": "High",
     "evidence": "Scrap-based; LME nickel negligible short-term"
@@ -5428,7 +5187,7 @@
    "country": "FR",
    "region": "Europe",
    "exchange": "Euronext Paris",
-   "capTier": "Mid",
+   "capTier": "Small",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -5438,10 +5197,10 @@
    "omLinkage": {
     "commodity": "nickel",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Nickel one of three; manganese often larger"
@@ -5479,54 +5238,13 @@
    "omLinkage": {
     "commodity": "nickel",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Namesake; Ni prices drive segment profit"
-   },
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "IGO.AX",
-   "company": "IGO",
-   "materials": [
-    "Nickel & Stainless"
-   ],
-   "country": "AU",
-   "region": "Oceania",
-   "exchange": "ASX",
-   "capTier": "Mid",
-   "role": "Producer",
-   "status": "YES",
-   "verified": "Y",
-   "sources": 1,
-   "excluded": false,
-   "tier1Rank": null,
-   "omLinkage": {
-    "commodity": "nickel",
-    "role": "Producer",
-    "exposure": 2,
-    "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
-    "tier": "Moderate",
-    "confidence": "High",
-    "evidence": "Nova nickel ~$188M; lithium JV also material"
    },
    "tipranks": {
     "consensus": null,
@@ -5551,7 +5269,7 @@
    "country": "AU",
    "region": "Oceania",
    "exchange": "ASX",
-   "capTier": "Small",
+   "capTier": "Mid",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -5561,10 +5279,10 @@
    "omLinkage": {
     "commodity": "nickel",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "World's largest listed pure nickel producer"
@@ -5602,10 +5320,10 @@
    "omLinkage": {
     "commodity": "stainless/nickel",
     "role": "Consumer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Nickel primary raw-material risk; surcharge offsets"
@@ -5643,10 +5361,10 @@
    "omLinkage": {
     "commodity": "nickel/cobalt",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Earnings explicitly depend on nickel/cobalt prices"
@@ -5684,10 +5402,10 @@
    "omLinkage": {
     "commodity": "nickel",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Nickel ~15-20% rev; iron ore dominates"
@@ -5707,512 +5425,6 @@
    "discovered": false
   },
   {
-   "ticker": "AMLX",
-   "company": "Amylyx Pharma",
-   "materials": [
-    "PDF spurious cluster"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Small",
-   "role": null,
-   "status": "NOT linked",
-   "verified": "N",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": "StrongBuy",
-    "priceTarget": 24.86,
-    "smartScore": 8.0,
-    "newsSentiment": "VeryBullish",
-    "hedgeFundTrend": "Decreased",
-    "insiderTrend": "BoughtShares",
-    "blogger": "Bullish",
-    "covered": "Y"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "CPHC",
-   "company": "Canterbury Park (horse racing)",
-   "materials": [
-    "PDF spurious cluster"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Micro",
-   "role": null,
-   "status": "NOT linked",
-   "verified": "N",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "DSHK",
-   "company": "Drive Shack (golf)",
-   "materials": [
-    "PDF spurious cluster"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "n/a (delisted)",
-   "role": null,
-   "status": "delisted/acquired",
-   "verified": "N",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "EXFY",
-   "company": "Expensify (software)",
-   "materials": [
-    "PDF spurious cluster"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Small",
-   "role": null,
-   "status": "NOT linked",
-   "verified": "N",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": "Hold",
-    "priceTarget": 1.25,
-    "smartScore": 4.0,
-    "newsSentiment": "VeryBearish",
-    "hedgeFundTrend": "Decreased",
-    "insiderTrend": null,
-    "blogger": "Bullish",
-    "covered": "Y"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "GNK",
-   "company": "Genco Shipping (dry-bulk)",
-   "materials": [
-    "PDF spurious cluster"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Small",
-   "role": null,
-   "status": "weak-link",
-   "verified": "partial",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": "ModerateBuy",
-    "priceTarget": 29.0,
-    "smartScore": 6.0,
-    "newsSentiment": "VeryBullish",
-    "hedgeFundTrend": "Decreased",
-    "insiderTrend": "SoldShares",
-    "blogger": "Bullish",
-    "covered": "Y"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "JMSB",
-   "company": "John Marshall Bancorp (bank)",
-   "materials": [
-    "PDF spurious cluster"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Small",
-   "role": null,
-   "status": "NOT linked",
-   "verified": "N",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": "ModerateBuy",
-    "priceTarget": 24.0,
-    "smartScore": 8.0,
-    "newsSentiment": "VeryBullish",
-    "hedgeFundTrend": "Decreased",
-    "insiderTrend": "BoughtShares",
-    "blogger": "Bullish",
-    "covered": "Y"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "MXL",
-   "company": "MaxLinear (semis)",
-   "materials": [
-    "PDF spurious cluster"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Mid",
-   "role": null,
-   "status": "NOT linked",
-   "verified": "N",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": "ModerateBuy",
-    "priceTarget": 65.7,
-    "smartScore": 7.0,
-    "newsSentiment": "VeryBullish",
-    "hedgeFundTrend": "Decreased",
-    "insiderTrend": "SoldShares",
-    "blogger": "Bullish",
-    "covered": "Y"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "MYFW",
-   "company": "First Western Financial (bank)",
-   "materials": [
-    "PDF spurious cluster"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Small",
-   "role": null,
-   "status": "NOT linked",
-   "verified": "N",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "NANX",
-   "company": "Nanophase Technologies",
-   "materials": [
-    "PDF spurious cluster"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Micro",
-   "role": null,
-   "status": "NOT linked",
-   "verified": "N",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "NRT",
-   "company": "North European Oil Royalty",
-   "materials": [
-    "PDF spurious cluster"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Micro",
-   "role": null,
-   "status": "NOT linked",
-   "verified": "N",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "PRPH",
-   "company": "ProPhase Labs (diagnostics)",
-   "materials": [
-    "PDF spurious cluster"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Micro",
-   "role": null,
-   "status": "NOT linked",
-   "verified": "N",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "SOTK",
-   "company": "Sono-Tek (battery coating equip)",
-   "materials": [
-    "PDF spurious cluster"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Micro",
-   "role": null,
-   "status": "weak-link",
-   "verified": "partial",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "SPRS",
-   "company": "Surge Components",
-   "materials": [
-    "PDF spurious cluster"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Micro",
-   "role": null,
-   "status": "NOT linked",
-   "verified": "N",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "UNFI",
-   "company": "United Natural Foods",
-   "materials": [
-    "PDF spurious cluster"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Mid",
-   "role": null,
-   "status": "NOT linked",
-   "verified": "N",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": "ModerateBuy",
-    "priceTarget": 49.8,
-    "smartScore": 9.0,
-    "newsSentiment": "VeryBearish",
-    "hedgeFundTrend": "Increased",
-    "insiderTrend": null,
-    "blogger": "Bullish",
-    "covered": "Y"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "VBFC",
-   "company": "Village Bank & Trust (bank)",
-   "materials": [
-    "PDF spurious cluster"
-   ],
-   "country": "US",
-   "region": "North America",
-   "exchange": "NYSE / Nasdaq",
-   "capTier": "Micro",
-   "role": null,
-   "status": "NOT linked",
-   "verified": "N",
-   "sources": 1,
-   "excluded": true,
-   "tier1Rank": null,
-   "omLinkage": null,
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "AMS.JO",
-   "company": "Anglo American Platinum (Valterra)",
-   "materials": [
-    "PGM"
-   ],
-   "country": "ZA",
-   "region": "Africa",
-   "exchange": "JSE",
-   "capTier": "Mid",
-   "role": "Producer",
-   "status": "YES",
-   "verified": "Y",
-   "sources": 1,
-   "excluded": false,
-   "tier1Rank": null,
-   "omLinkage": {
-    "commodity": "platinum",
-    "role": "Producer",
-    "exposure": 3,
-    "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
-    "tier": "Strong",
-    "confidence": "Low",
-    "evidence": "Pure-play platinum; no Bigdata coverage"
-   },
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
    "ticker": "IMPUY",
    "company": "Impala Platinum",
    "materials": [
@@ -6220,8 +5432,8 @@
    ],
    "country": "ZA",
    "region": "Africa",
-   "exchange": "NYSE / Nasdaq (ADR)",
-   "capTier": "Mid",
+   "exchange": "OTC (ADR); JSE primary",
+   "capTier": "Large",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -6231,10 +5443,10 @@
    "omLinkage": {
     "commodity": "platinum/palladium",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "Low",
     "evidence": "Major PGM; tracks basket; no Bigdata coverage"
@@ -6250,14 +5462,7 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": {
-    "side": "short",
-    "shares": 11.0,
-    "mktValue": -120.67,
-    "unrealizedPnl": 1.53,
-    "avgCost": 11.1091,
-    "lastPrice": 10.97
-   },
+   "held": null,
    "discovered": false
   },
   {
@@ -6268,7 +5473,7 @@
    ],
    "country": "CA",
    "region": "North America",
-   "exchange": "NYSE / Nasdaq (ADR)",
+   "exchange": "NYSE American / TSX",
    "capTier": "Micro/Dev",
    "role": "Producer",
    "status": "YES",
@@ -6279,10 +5484,10 @@
    "omLinkage": {
     "commodity": "platinum/palladium",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 2,
-    "score": 8,
+    "coupling": 2.0,
+    "score": 8.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Waterberg 72% Pd+Pt; dev-stage, sensitivity documented"
@@ -6298,14 +5503,7 @@
     "covered": "N"
    },
    "bigdata": null,
-   "held": {
-    "side": "short",
-    "shares": 81.0,
-    "mktValue": -104.49,
-    "unrealizedPnl": 8.07,
-    "avgCost": 1.3897,
-    "lastPrice": 1.29
-   },
+   "held": null,
    "discovered": false
   },
   {
@@ -6327,10 +5525,10 @@
    "omLinkage": {
     "commodity": "platinum/palladium",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "PGM ~90% SA segment; platinum +125% drove earnings"
@@ -6346,14 +5544,7 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": {
-    "side": "short",
-    "shares": 13.0,
-    "mktValue": -109.46,
-    "unrealizedPnl": -0.91,
-    "avgCost": 8.35,
-    "lastPrice": 8.42
-   },
+   "held": null,
    "discovered": false
   },
   {
@@ -6375,10 +5566,10 @@
    "omLinkage": {
     "commodity": "palladium/platinum",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 7,
+    "coupling": 2.0,
+    "score": 7.0,
     "tier": "Strong",
     "confidence": "Low",
     "evidence": "Pure-play Pd/Pt explorer; no Bigdata coverage"
@@ -6394,6 +5585,44 @@
     "covered": "N"
    },
    "bigdata": null,
+   "held": null,
+   "discovered": false
+  },
+  {
+   "ticker": "VAL.JO",
+   "company": "Valterra Platinum",
+   "materials": [
+    "PGM"
+   ],
+   "country": "ZA",
+   "region": "Africa",
+   "exchange": "JSE",
+   "capTier": "Large",
+   "role": "Producer",
+   "status": "YES",
+   "verified": "Y",
+   "sources": 1,
+   "excluded": false,
+   "tier1Rank": null,
+   "omLinkage": null,
+   "tipranks": {
+    "consensus": null,
+    "priceTarget": null,
+    "smartScore": null,
+    "newsSentiment": null,
+    "hedgeFundTrend": null,
+    "insiderTrend": null,
+    "blogger": null,
+    "covered": "N",
+    "note": "Foreign listing \u2014 TipRanks is US-only"
+   },
+   "bigdata": {
+    "role": "Producer",
+    "priceSens": 3,
+    "confidence": "high",
+    "suggestedStatus": "YES (core)",
+    "evidence": "World's largest primary Pt producer; revenue moves with basket"
+   },
    "held": null,
    "discovered": false
   },
@@ -6416,10 +5645,10 @@
    "omLinkage": {
     "commodity": "rare earths",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "State-owned dominant; results linked to RE market"
@@ -6447,7 +5676,7 @@
    "country": "US",
    "region": "North America",
    "exchange": "NYSE / Nasdaq",
-   "capTier": "Micro/Dev",
+   "capTier": "Small",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -6457,10 +5686,10 @@
    "omLinkage": {
     "commodity": "rare earth magnets",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 5,
+    "coupling": 1.0,
+    "score": 5.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "No commercial production; future earnings RE-price dependent"
@@ -6498,10 +5727,10 @@
    "omLinkage": {
     "commodity": "rare earths",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 1,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Pre-production; CEO: RE price biggest value driver"
@@ -6539,11 +5768,11 @@
    "omLinkage": {
     "commodity": "rare earths",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 4,
-    "tier": "Moderate",
+    "coupling": 1.0,
+    "score": 3.0,
+    "tier": "Weak",
     "confidence": "High",
     "evidence": "Pre-revenue developer; moves with RE sector"
    },
@@ -6580,10 +5809,10 @@
    "omLinkage": {
     "commodity": "rare earths",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 4,
+    "coupling": 1.0,
+    "score": 4.0,
     "tier": "Moderate",
     "confidence": "Low",
     "evidence": "Early-stage Wicheeda; no Bigdata coverage"
@@ -6612,7 +5841,7 @@
    "region": "North America",
    "exchange": "NYSE / Nasdaq",
    "capTier": "Small",
-   "role": "Producer",
+   "role": "Fabricator",
    "status": "YES",
    "verified": "Y",
    "sources": 1,
@@ -6620,11 +5849,11 @@
    "tier1Rank": null,
    "omLinkage": {
     "commodity": "rare earths",
-    "role": "Producer",
-    "exposure": 3,
+    "role": "Fabricator",
+    "exposure": 3.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 7,
+    "coupling": 2.0,
+    "score": 7.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Commercial Korean RE magnet ops; recently public"
@@ -6645,7 +5874,7 @@
   },
   {
    "ticker": "GRML",
-   "company": "Greenland Mines",
+   "company": "Greenland Mines Ltd (fka Klotho Neurosciences / ANEW Medical)",
    "materials": [
     "Rare Earths"
    ],
@@ -6653,13 +5882,23 @@
    "region": "North America",
    "exchange": "NYSE / Nasdaq",
    "capTier": "Micro/Dev",
-   "role": null,
+   "role": "Producer",
    "status": "unconfirmed",
    "verified": "N",
    "sources": 1,
    "excluded": true,
    "tier1Rank": null,
-   "omLinkage": null,
+   "omLinkage": {
+    "commodity": "rare earths",
+    "role": "Producer",
+    "exposure": 2.0,
+    "priceSens": 1,
+    "coupling": 1.0,
+    "score": 4.0,
+    "tier": null,
+    "confidence": null,
+    "evidence": null
+   },
    "tipranks": {
     "consensus": null,
     "priceTarget": null,
@@ -6683,7 +5922,7 @@
    "country": "AU",
    "region": "Oceania",
    "exchange": "ASX",
-   "capTier": "Mid",
+   "capTier": "Large",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -6693,10 +5932,10 @@
    "omLinkage": {
     "commodity": "rare earths",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Revenue formula references RE pricing; profit swung 10x"
@@ -6734,10 +5973,10 @@
    "omLinkage": {
     "commodity": "rare earths",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Revenue tracks NdPr price; PPA partial hedge only"
@@ -6766,7 +6005,7 @@
    "region": "North America",
    "exchange": "Toronto (TSX)",
    "capTier": "Small",
-   "role": "Producer",
+   "role": "Processor",
    "status": "YES",
    "verified": "Y",
    "sources": 2,
@@ -6774,11 +6013,11 @@
    "tier1Rank": null,
    "omLinkage": {
     "commodity": "rare earth magnets",
-    "role": "Producer",
-    "exposure": 2,
+    "role": "Processor",
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Mid-stream; RE exposure reduced post-China divestiture"
@@ -6816,54 +6055,13 @@
    "omLinkage": {
     "commodity": "rare earths",
     "role": "ETF",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "95-96% RE allocation; tracks Sprott ex-China index"
-   },
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
-   },
-   "bigdata": null,
-   "held": null,
-   "discovered": false
-  },
-  {
-   "ticker": "SVM.AX",
-   "company": "Sovereign Metals",
-   "materials": [
-    "Rare Earths"
-   ],
-   "country": "AU",
-   "region": "Oceania",
-   "exchange": "ASX",
-   "capTier": "Small",
-   "role": "Producer",
-   "status": "YES",
-   "verified": "Y",
-   "sources": 1,
-   "excluded": false,
-   "tier1Rank": null,
-   "omLinkage": {
-    "commodity": "rare earths/graphite",
-    "role": "Producer",
-    "exposure": 1,
-    "priceSens": 1,
-    "coupling": 2,
-    "score": 4,
-    "tier": "Moderate",
-    "confidence": "High",
-    "evidence": "Primary rutile+graphite; RE emerging by-product"
    },
    "tipranks": {
     "consensus": null,
@@ -6888,8 +6086,8 @@
    "country": "US",
    "region": "North America",
    "exchange": "NYSE / Nasdaq",
-   "capTier": "Small",
-   "role": "Producer",
+   "capTier": "Mid",
+   "role": "Fabricator",
    "status": "YES",
    "verified": "Y",
    "sources": 1,
@@ -6897,11 +6095,11 @@
    "tier1Rank": null,
    "omLinkage": {
     "commodity": "rare earths",
-    "role": "Producer",
-    "exposure": 3,
+    "role": "Fabricator",
+    "exposure": 3.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 7,
+    "coupling": 2.0,
+    "score": 7.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Pre-revenue mining; LCM metals operational; price floors"
@@ -6929,7 +6127,7 @@
    "country": "US",
    "region": "North America",
    "exchange": "NYSE / Nasdaq",
-   "capTier": "Small",
+   "capTier": "Mid",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -6939,10 +6137,10 @@
    "omLinkage": {
     "commodity": "rare earths",
     "role": "Producer",
-    "exposure": 2,
-    "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "exposure": 2.0,
+    "priceSens": 1,
+    "coupling": 2.0,
+    "score": 5.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "RE growing to majority; still split with uranium"
@@ -6970,7 +6168,7 @@
    "country": "CA",
    "region": "North America",
    "exchange": "NYSE / Nasdaq (ADR)",
-   "capTier": "Small",
+   "capTier": "Mid",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -6980,10 +6178,10 @@
    "omLinkage": {
     "commodity": "silver",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "~60% silver rev; 2-3x beta to silver; no hedge"
@@ -6999,14 +6197,7 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": {
-    "side": "short",
-    "shares": 4.0,
-    "mktValue": -65.64,
-    "unrealizedPnl": 2.26,
-    "avgCost": 16.975,
-    "lastPrice": 16.41
-   },
+   "held": null,
    "discovered": false
   },
   {
@@ -7018,7 +6209,7 @@
    "country": "PE",
    "region": "Latin America",
    "exchange": "NYSE / Nasdaq (ADR)",
-   "capTier": "Small",
+   "capTier": "Mid",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -7028,10 +6219,10 @@
    "omLinkage": {
     "commodity": "silver",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Diversified Peru; silver one of several metals"
@@ -7047,14 +6238,7 @@
     "covered": "N"
    },
    "bigdata": null,
-   "held": {
-    "side": "short",
-    "shares": 3.0,
-    "mktValue": -89.46,
-    "unrealizedPnl": -0.79,
-    "avgCost": 29.5567,
-    "lastPrice": 29.82
-   },
+   "held": null,
    "discovered": false
   },
   {
@@ -7066,7 +6250,7 @@
    "country": "US",
    "region": "North America",
    "exchange": "NYSE / Nasdaq",
-   "capTier": "Small",
+   "capTier": "Large",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -7076,10 +6260,10 @@
    "omLinkage": {
     "commodity": "silver",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "~30% silver rev; diversified gold/copper"
@@ -7095,14 +6279,7 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": {
-    "side": "short",
-    "shares": 4.0,
-    "mktValue": -62.36,
-    "unrealizedPnl": 4.1,
-    "avgCost": 16.615,
-    "lastPrice": 15.59
-   },
+   "held": null,
    "discovered": false
   },
   {
@@ -7114,7 +6291,7 @@
    "country": "MX",
    "region": "Latin America",
    "exchange": "LSE",
-   "capTier": "Mid",
+   "capTier": "Large",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -7124,10 +6301,10 @@
    "omLinkage": {
     "commodity": "silver",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "World's largest silver; +44% price=+$651M rev"
@@ -7155,7 +6332,7 @@
    "country": "US",
    "region": "North America",
    "exchange": "NYSE / Nasdaq",
-   "capTier": "Mid",
+   "capTier": "Large",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -7165,10 +6342,10 @@
    "omLinkage": {
     "commodity": "silver",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "50-73% silver rev; 90% realized-price margin"
@@ -7184,14 +6361,7 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": {
-    "side": "short",
-    "shares": 5.0,
-    "mktValue": -76.45,
-    "unrealizedPnl": 4.68,
-    "avgCost": 16.225,
-    "lastPrice": 15.29
-   },
+   "held": null,
    "discovered": false
   },
   {
@@ -7200,10 +6370,10 @@
    "materials": [
     "Silver"
    ],
-   "country": "PE",
+   "country": "UK",
    "region": "Latin America",
    "exchange": "LSE",
-   "capTier": "Small",
+   "capTier": "Mid",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -7213,10 +6383,10 @@
    "omLinkage": {
     "commodity": "silver",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "coupling": 2.0,
+    "score": 6.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Silver ~33% rev; dual gold-silver focus"
@@ -7244,7 +6414,7 @@
    "country": "CA",
    "region": "North America",
    "exchange": "NYSE / Nasdaq (ADR)",
-   "capTier": "Mid",
+   "capTier": "Large",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -7254,10 +6424,10 @@
    "omLinkage": {
     "commodity": "silver",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Best silver-price correlation; ~38-51% silver rev; no hedge"
@@ -7273,14 +6443,7 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": {
-    "side": "short",
-    "shares": 2.0,
-    "mktValue": -85.46,
-    "unrealizedPnl": 3.14,
-    "avgCost": 44.3018,
-    "lastPrice": 42.73
-   },
+   "held": null,
    "discovered": false
   },
   {
@@ -7292,7 +6455,7 @@
    "country": "CA",
    "region": "North America",
    "exchange": "NYSE / Nasdaq (ADR)",
-   "capTier": "Small",
+   "capTier": "Mid",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -7302,10 +6465,10 @@
    "omLinkage": {
     "commodity": "silver",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "63-72% silver rev; mgmt cites silver primary"
@@ -7325,6 +6488,78 @@
    "discovered": false
   },
   {
+   "ticker": "MTRN",
+   "company": "Materion (specialty)",
+   "materials": [
+    "Specialty metals (beryllium/precious)"
+   ],
+   "country": "US",
+   "region": "North America",
+   "exchange": "NYSE / Nasdaq",
+   "capTier": "Mid",
+   "role": "Processor",
+   "status": "YES",
+   "verified": "Y",
+   "sources": 1,
+   "excluded": false,
+   "tier1Rank": null,
+   "omLinkage": {
+    "commodity": "specialty metals",
+    "role": "Processor",
+    "exposure": 2.0,
+    "priceSens": 1,
+    "coupling": 1.0,
+    "score": 4.0,
+    "tier": "Moderate",
+    "confidence": "High",
+    "evidence": "Precious/specialty passed through; value-add insulated"
+   },
+   "tipranks": {
+    "consensus": "ModerateBuy",
+    "priceTarget": 237.0,
+    "smartScore": 7.0,
+    "newsSentiment": "VeryBullish",
+    "hedgeFundTrend": null,
+    "insiderTrend": "SoldShares",
+    "blogger": "Bullish",
+    "covered": "Y"
+   },
+   "bigdata": null,
+   "held": null,
+   "discovered": false
+  },
+  {
+   "ticker": "002149.SZ",
+   "company": "Western Metal Materials (Xi'an)",
+   "materials": [
+    "Titanium"
+   ],
+   "country": "CN",
+   "region": "Asia",
+   "exchange": "Shenzhen",
+   "capTier": "Mid",
+   "role": "Processor",
+   "status": "YES",
+   "verified": "Y",
+   "sources": 1,
+   "excluded": false,
+   "tier1Rank": null,
+   "omLinkage": null,
+   "tipranks": {
+    "consensus": null,
+    "priceTarget": null,
+    "smartScore": null,
+    "newsSentiment": null,
+    "hedgeFundTrend": null,
+    "insiderTrend": null,
+    "blogger": null,
+    "covered": "N"
+   },
+   "bigdata": null,
+   "held": null,
+   "discovered": false
+  },
+  {
    "ticker": "ATI",
    "company": "ATI Inc",
    "materials": [
@@ -7334,7 +6569,7 @@
    "region": "North America",
    "exchange": "NYSE / Nasdaq",
    "capTier": "Large",
-   "role": "Producer",
+   "role": "Processor",
    "status": "YES",
    "verified": "Y",
    "sources": 1,
@@ -7342,12 +6577,12 @@
    "tier1Rank": null,
    "omLinkage": {
     "commodity": "titanium",
-    "role": "Producer",
-    "exposure": 3,
-    "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
-    "tier": "Strong",
+    "role": "Processor",
+    "exposure": 3.0,
+    "priceSens": 1,
+    "coupling": 3.0,
+    "score": 5.0,
+    "tier": "Moderate",
     "confidence": "Low",
     "evidence": "Ti mill products ~50% rev; no Bigdata coverage"
    },
@@ -7362,14 +6597,7 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": {
-    "side": "long",
-    "shares": 1.0,
-    "mktValue": 183.75,
-    "unrealizedPnl": -8.93,
-    "avgCost": 192.68,
-    "lastPrice": 183.75
-   },
+   "held": null,
    "discovered": false
   },
   {
@@ -7391,10 +6619,10 @@
    "omLinkage": {
     "commodity": "titanium dioxide",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 2,
-    "score": 8,
+    "coupling": 2.0,
+    "score": 8.0,
     "tier": "Strong",
     "confidence": "Low",
     "evidence": "Ti-Pure ~30% rev; no Bigdata coverage"
@@ -7410,14 +6638,7 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": {
-    "side": "long",
-    "shares": 6.0,
-    "mktValue": 108.72,
-    "unrealizedPnl": -2.17,
-    "avgCost": 18.4817,
-    "lastPrice": 18.12
-   },
+   "held": null,
    "discovered": false
   },
   {
@@ -7439,10 +6660,10 @@
    "omLinkage": {
     "commodity": "titanium",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 5,
+    "coupling": 1.0,
+    "score": 5.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Pre-revenue explorer; Pitfield 100% titanium"
@@ -7480,10 +6701,10 @@
    "omLinkage": {
     "commodity": "titanium",
     "role": "Consumer",
-    "exposure": 2,
-    "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
+    "exposure": 2.0,
+    "priceSens": 1,
+    "coupling": 2.0,
+    "score": 5.0,
     "tier": "Moderate",
     "confidence": "High",
     "evidence": "Engineered Structures consumes Ti; Russia supply risk"
@@ -7521,10 +6742,10 @@
    "omLinkage": {
     "commodity": "titanium (mineral sands)",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Rutile/SR majority rev; TiO2 weakness forced cuts"
@@ -7562,10 +6783,10 @@
    "omLinkage": {
     "commodity": "titanium",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 2,
-    "coupling": 2,
-    "score": 7,
+    "coupling": 2.0,
+    "score": 7.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Pre-revenue; 100% titanium thesis"
@@ -7603,10 +6824,10 @@
    "omLinkage": {
     "commodity": "titanium dioxide",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 2,
-    "score": 8,
+    "coupling": 2.0,
+    "score": 8.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "TiO2 selling price #1 KPI; 100% TiO2 revenue"
@@ -7620,6 +6841,47 @@
     "insiderTrend": "BoughtShares",
     "blogger": "Bearish",
     "covered": "Y"
+   },
+   "bigdata": null,
+   "held": null,
+   "discovered": false
+  },
+  {
+   "ticker": "SVM.AX",
+   "company": "Sovereign Metals",
+   "materials": [
+    "Titanium"
+   ],
+   "country": "AU",
+   "region": "Oceania",
+   "exchange": "ASX",
+   "capTier": "Small",
+   "role": "Producer",
+   "status": "YES",
+   "verified": "Y",
+   "sources": 1,
+   "excluded": false,
+   "tier1Rank": null,
+   "omLinkage": {
+    "commodity": "rare earths/graphite",
+    "role": "Producer",
+    "exposure": 1.0,
+    "priceSens": 1,
+    "coupling": 2.0,
+    "score": 4.0,
+    "tier": "Moderate",
+    "confidence": "High",
+    "evidence": "Primary rutile+graphite; RE emerging by-product"
+   },
+   "tipranks": {
+    "consensus": null,
+    "priceTarget": null,
+    "smartScore": null,
+    "newsSentiment": null,
+    "hedgeFundTrend": null,
+    "insiderTrend": null,
+    "blogger": null,
+    "covered": "N"
    },
    "bigdata": null,
    "held": null,
@@ -7644,10 +6906,10 @@
    "omLinkage": {
     "commodity": "titanium dioxide",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Vertically integrated TiO2 pure-play"
@@ -7663,14 +6925,7 @@
     "covered": "Y"
    },
    "bigdata": null,
-   "held": {
-    "side": "long",
-    "shares": 18.0,
-    "mktValue": 110.52,
-    "unrealizedPnl": 0.89,
-    "avgCost": 6.0906,
-    "lastPrice": 6.14
-   },
+   "held": null,
    "discovered": false
   },
   {
@@ -7692,10 +6947,10 @@
    "omLinkage": {
     "commodity": "tin",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "LME tin price tracks earnings directly"
@@ -7724,7 +6979,7 @@
    "region": "Asia",
    "exchange": "KRX (KOSPI)",
    "capTier": "Large",
-   "role": "Producer",
+   "role": "Processor",
    "status": "YES",
    "verified": "Y",
    "sources": 1,
@@ -7732,11 +6987,11 @@
    "tier1Rank": 51,
    "omLinkage": {
     "commodity": "zinc/lead",
-    "role": "Producer",
-    "exposure": 2,
-    "priceSens": 3,
-    "coupling": 3,
-    "score": 8,
+    "role": "Processor",
+    "exposure": 2.0,
+    "priceSens": 2,
+    "coupling": 3.0,
+    "score": 8.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "LME zinc directly tracks operating profit"
@@ -7774,10 +7029,10 @@
    "omLinkage": {
     "commodity": "zinc/copper",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 8,
+    "coupling": 3.0,
+    "score": 8.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "$0.10/lb zinc=$26M EBIT; copper dominant"
@@ -7806,7 +7061,7 @@
    "region": "Asia",
    "exchange": "Bursa Malaysia",
    "capTier": "Small",
-   "role": "Producer",
+   "role": "Processor",
    "status": "YES",
    "verified": "Y",
    "sources": 2,
@@ -7814,13 +7069,13 @@
    "tier1Rank": null,
    "omLinkage": {
     "commodity": "tin",
-    "role": "Producer",
-    "exposure": 3,
+    "role": "Processor",
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 2,
-    "score": 8,
+    "coupling": 2.0,
+    "score": 8.0,
     "tier": "Strong",
-    "confidence": "Low",
+    "confidence": "Med",
     "evidence": "Pure-play tin smelter; thin Bigdata coverage"
    },
    "tipranks": {
@@ -7856,10 +7111,10 @@
    "omLinkage": {
     "commodity": "tin",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Bisie sole asset; filings tie stock to tin"
@@ -7887,7 +7142,7 @@
    "country": "SE",
    "region": "Europe",
    "exchange": "Nasdaq Stockholm",
-   "capTier": "Mid",
+   "capTier": "Large",
    "role": "Producer",
    "status": "YES",
    "verified": "Y",
@@ -7897,10 +7152,10 @@
    "omLinkage": {
     "commodity": "zinc",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 8,
+    "coupling": 3.0,
+    "score": 8.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Zinc ~28% gross profit; explicit $0.10/lb table"
@@ -7938,10 +7193,10 @@
    "omLinkage": {
     "commodity": "tin",
     "role": "Producer",
-    "exposure": 2,
+    "exposure": 2.0,
     "priceSens": 2,
-    "coupling": 1,
-    "score": 5,
+    "coupling": 1.0,
+    "score": 5.0,
     "tier": "Moderate",
     "confidence": "Low",
     "evidence": "Pre-revenue developer; NPV driven by tin"
@@ -7979,10 +7234,10 @@
    "omLinkage": {
     "commodity": "zinc",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "World's largest integrated zinc producer"
@@ -8002,7 +7257,7 @@
    "discovered": false
   },
   {
-   "ticker": "MINSURI1(Lima)",
+   "ticker": "MINSURI1.LM",
    "company": "Minsur (tin)",
    "materials": [
     "Zinc/Lead/Tin"
@@ -8018,6 +7273,47 @@
    "excluded": false,
    "tier1Rank": null,
    "omLinkage": null,
+   "tipranks": {
+    "consensus": null,
+    "priceTarget": null,
+    "smartScore": null,
+    "newsSentiment": null,
+    "hedgeFundTrend": null,
+    "insiderTrend": null,
+    "blogger": null,
+    "covered": "N"
+   },
+   "bigdata": null,
+   "held": null,
+   "discovered": false
+  },
+  {
+   "ticker": "NANX",
+   "company": "Solesence, Inc. (fka Nanophase Technologies)",
+   "materials": [
+    "Zinc/Lead/Tin"
+   ],
+   "country": "US",
+   "region": "North America",
+   "exchange": "OTCQB (Nasdaq uplisting approved, ticker SLSN)",
+   "capTier": "Micro",
+   "role": "Consumer",
+   "status": "YES",
+   "verified": "Y",
+   "sources": 1,
+   "excluded": false,
+   "tier1Rank": null,
+   "omLinkage": {
+    "commodity": null,
+    "role": "Consumer",
+    "exposure": null,
+    "priceSens": 1,
+    "coupling": null,
+    "score": null,
+    "tier": null,
+    "confidence": null,
+    "evidence": null
+   },
    "tipranks": {
     "consensus": null,
     "priceTarget": null,
@@ -8051,10 +7347,10 @@
    "omLinkage": {
     "commodity": "zinc",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "High",
     "evidence": "Zinc is our main product; integrated Americas"
@@ -8081,7 +7377,7 @@
    ],
    "country": "SG",
    "region": "Asia",
-   "exchange": "NYSE / Nasdaq (ADR)",
+   "exchange": "SGX (Singapore)",
    "capTier": "Small",
    "role": "Producer",
    "status": "YES",
@@ -8092,10 +7388,10 @@
    "omLinkage": {
     "commodity": "tin",
     "role": "Producer",
-    "exposure": 1,
+    "exposure": 1.0,
     "priceSens": 1,
-    "coupling": 1,
-    "score": 3,
+    "coupling": 1.0,
+    "score": 3.0,
     "tier": "Weak",
     "confidence": "Low",
     "evidence": "Now diversified property/hotels; tin legacy"
@@ -8133,10 +7429,10 @@
    "omLinkage": {
     "commodity": "tin",
     "role": "Producer",
-    "exposure": 3,
+    "exposure": 3.0,
     "priceSens": 3,
-    "coupling": 3,
-    "score": 9,
+    "coupling": 3.0,
+    "score": 9.0,
     "tier": "Strong",
     "confidence": "Low",
     "evidence": "State-owned tin monopoly; thin Bigdata coverage"
@@ -8156,7 +7452,38 @@
    "discovered": false
   },
   {
-   "ticker": "VCM.B(Lima)",
+   "ticker": "VEDL.NS",
+   "company": "Vedanta",
+   "materials": [
+    "Zinc/Lead/Tin"
+   ],
+   "country": "IN",
+   "region": "Asia",
+   "exchange": "NSE India",
+   "capTier": "Large",
+   "role": "Producer",
+   "status": "YES",
+   "verified": "Y",
+   "sources": 2,
+   "excluded": false,
+   "tier1Rank": null,
+   "omLinkage": null,
+   "tipranks": {
+    "consensus": null,
+    "priceTarget": null,
+    "smartScore": null,
+    "newsSentiment": null,
+    "hedgeFundTrend": null,
+    "insiderTrend": null,
+    "blogger": null,
+    "covered": "N"
+   },
+   "bigdata": null,
+   "held": null,
+   "discovered": false
+  },
+  {
+   "ticker": "VOLCABC1.LM",
    "company": "Compania Minera Volcan",
    "materials": [
     "Zinc/Lead/Tin"
@@ -8187,49 +7514,35 @@
    "discovered": false
   },
   {
-   "ticker": "VEDL",
-   "company": "Vedanta",
-   "materials": [
-    "Zinc/Lead/Tin"
-   ],
-   "country": "IN",
-   "region": "Asia",
-   "exchange": "NYSE / Nasdaq (ADR)",
-   "capTier": "Large",
-   "role": "Producer",
-   "status": "YES",
-   "verified": "Y",
-   "sources": 2,
+   "ticker": "COPX",
+   "company": "COPX",
+   "materials": [],
+   "country": null,
+   "region": null,
+   "exchange": null,
+   "capTier": null,
+   "role": null,
+   "status": "held-only",
+   "verified": null,
+   "sources": 0,
    "excluded": false,
    "tier1Rank": null,
-   "omLinkage": {
-    "commodity": "zinc",
-    "role": "Producer",
-    "exposure": 2,
-    "priceSens": 2,
-    "coupling": 2,
-    "score": 6,
-    "tier": "Moderate",
-    "confidence": "High",
-    "evidence": "Zinc India ~40% EBITDA; aluminium now largest"
-   },
-   "tipranks": {
-    "consensus": null,
-    "priceTarget": null,
-    "smartScore": null,
-    "newsSentiment": null,
-    "hedgeFundTrend": null,
-    "insiderTrend": null,
-    "blogger": null,
-    "covered": "N"
-   },
+   "omLinkage": null,
+   "tipranks": null,
    "bigdata": null,
-   "held": null,
+   "held": {
+    "side": "long",
+    "shares": 11.7804,
+    "mktValue": 1021.71,
+    "unrealizedPnl": 10.02,
+    "avgCost": 85.8794,
+    "lastPrice": 86.73
+   },
    "discovered": false
   },
   {
-   "ticker": "KARS",
-   "company": "KARS",
+   "ticker": "ROCK",
+   "company": "ROCK",
    "materials": [],
    "country": null,
    "region": null,
@@ -8246,11 +7559,65 @@
    "bigdata": null,
    "held": {
     "side": "short",
-    "shares": 14.0,
-    "mktValue": -415.8,
-    "unrealizedPnl": 28.67,
-    "avgCost": 31.7477,
-    "lastPrice": 29.7
+    "shares": 2.0,
+    "mktValue": -109.76,
+    "unrealizedPnl": -24.27,
+    "avgCost": 42.745,
+    "lastPrice": 54.879
+   },
+   "discovered": false
+  },
+  {
+   "ticker": "SLX",
+   "company": "SLX",
+   "materials": [],
+   "country": null,
+   "region": null,
+   "exchange": null,
+   "capTier": null,
+   "role": null,
+   "status": "held-only",
+   "verified": null,
+   "sources": 0,
+   "excluded": false,
+   "tier1Rank": null,
+   "omLinkage": null,
+   "tipranks": null,
+   "bigdata": null,
+   "held": {
+    "side": "long",
+    "shares": 6.0,
+    "mktValue": 660.0,
+    "unrealizedPnl": 6.39,
+    "avgCost": 108.9347,
+    "lastPrice": 110.0
+   },
+   "discovered": false
+  },
+  {
+   "ticker": "TGB",
+   "company": "TGB",
+   "materials": [],
+   "country": null,
+   "region": null,
+   "exchange": null,
+   "capTier": null,
+   "role": null,
+   "status": "held-only",
+   "verified": null,
+   "sources": 0,
+   "excluded": false,
+   "tier1Rank": null,
+   "omLinkage": null,
+   "tipranks": null,
+   "bigdata": null,
+   "held": {
+    "side": "long",
+    "shares": 107.8457,
+    "mktValue": 877.86,
+    "unrealizedPnl": 24.77,
+    "avgCost": 7.9103,
+    "lastPrice": 8.14
    },
    "discovered": false
   }

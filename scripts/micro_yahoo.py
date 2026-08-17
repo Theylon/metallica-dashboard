@@ -41,6 +41,10 @@ FIELD_MAP = {
     "returnOnEquity": "returnOnEquity", "returnOnAssets": "returnOnAssets",
     "debtToEquity": "debtToEquity",
     "revenueGrowth": "revenueGrowth", "earningsGrowth": "earningsGrowth",
+    # Company-profile fields for the supply-chain cross-validation layer:
+    # Yahoo's independent view of what each name is (sector/industry) to check
+    # the curated Material/Role/Supply Chain classification against.
+    "sector": "sector", "industry": "industry", "longName": "longName",
 }
 
 
