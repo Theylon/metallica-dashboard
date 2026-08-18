@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-08-10T11:32:53+00:00",
+ "updatedAt": "2026-08-18T14:15:12+00:00",
  "gate": {
   "trustedMinPct": 80
  },
@@ -131,7 +131,7 @@
    "accuracyPct": null,
    "status": "accumulating",
    "gated": true,
-   "note": "needs \u226525 snapshot days with biasDir recorded (22 days so far, 2052 directional rows)",
+   "note": "needs \u226525 snapshot days with biasDir recorded (23 days so far, 2166 directional rows)",
    "detail": []
   },
   {
@@ -199,7 +199,7 @@
    "accuracyPct": null,
    "status": "accumulating",
    "gated": true,
-   "note": "needs 25 daily snapshots (22 so far)",
+   "note": "needs 25 daily snapshots (23 so far)",
    "detail": []
   },
   {
@@ -213,14 +213,14 @@
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
    "hitRatePct": null,
-   "accuracyPct": 76.2,
+   "accuracyPct": 75.1,
    "status": "info",
    "gated": false,
    "note": null,
    "detail": [
     {
-     "agree": 147,
-     "mixed": 36,
+     "agree": 145,
+     "mixed": 38,
      "conflict": 10
     }
    ]
