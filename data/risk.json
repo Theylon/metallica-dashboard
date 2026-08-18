@@ -1,21 +1,21 @@
 {
- "updatedAt": "2026-08-18T20:10:34+00:00",
+ "updatedAt": "2026-08-18T21:10:44+00:00",
  "asOf": "2026-08-18",
  "window": 90,
  "obs": 42,
  "headline": {
-  "annVol": 19.5,
+  "annVol": 19.6,
   "betaSpy": 0.41,
   "betaXme": 0.22,
   "var1d95": -281,
   "var1d99": -437,
   "hhi": 656.0,
-  "effectiveN": 15.3
+  "effectiveN": 15.2
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "19.5%",
+   "v": "19.6%",
    "note": "from the account's daily TWR, 42 daily obs since inception",
    "tone": "neutral"
   },
@@ -57,8 +57,8 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "656 / 15.3",
-   "note": "16 names, ~15.3 effective",
+   "v": "656 / 15.2",
+   "note": "16 names, ~15.2 effective",
    "tone": "pos"
   }
  ],
@@ -391,9 +391,9 @@
   {
    "ticker": "TGB",
    "side": "long",
-   "weightPct": 8.6,
-   "riskContribPct": 13.1,
-   "mVaR": 61.2
+   "weightPct": 8.7,
+   "riskContribPct": 13.3,
+   "mVaR": 62.4
   },
   {
    "ticker": "ERO",
@@ -421,21 +421,21 @@
    "side": "long",
    "weightPct": 8.2,
    "riskContribPct": 9.1,
-   "mVaR": 42.4
+   "mVaR": 42.6
   },
   {
    "ticker": "SCCO",
    "side": "long",
    "weightPct": 7.4,
-   "riskContribPct": 8.2,
-   "mVaR": 38.3
+   "riskContribPct": 8.1,
+   "mVaR": 37.9
   },
   {
    "ticker": "TECK",
    "side": "long",
    "weightPct": 8.0,
-   "riskContribPct": 8.2,
-   "mVaR": 38.3
+   "riskContribPct": 8.1,
+   "mVaR": 38.1
   },
   {
    "ticker": "CLF",
@@ -447,7 +447,7 @@
   {
    "ticker": "CMC",
    "side": "long",
-   "weightPct": 6.1,
+   "weightPct": 6.2,
    "riskContribPct": 3.5,
    "mVaR": 16.3
   },
@@ -482,7 +482,7 @@
   {
    "ticker": "GGB",
    "side": "long",
-   "weightPct": 5.3,
+   "weightPct": 5.4,
    "riskContribPct": 2.2,
    "mVaR": 10.3
   },
@@ -498,7 +498,7 @@
    "side": "long",
    "weightPct": 4.8,
    "riskContribPct": 2.1,
-   "mVaR": 10.0
+   "mVaR": 9.9
   }
  ],
  "coverageNote": "16 of 16 holdings"
