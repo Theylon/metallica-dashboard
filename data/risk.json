@@ -1,33 +1,33 @@
 {
- "updatedAt": "2026-08-19T14:16:31+00:00",
+ "updatedAt": "2026-08-19T15:13:18+00:00",
  "asOf": "2026-08-19",
  "window": 90,
  "obs": 43,
  "headline": {
-  "annVol": 20.7,
-  "betaSpy": 0.44,
-  "betaXme": 0.25,
-  "var1d95": -288,
-  "var1d99": -449,
-  "hhi": 651.0,
-  "effectiveN": 15.4
+  "annVol": 21.0,
+  "betaSpy": 0.48,
+  "betaXme": 0.26,
+  "var1d95": -289,
+  "var1d99": -450,
+  "hhi": 652.0,
+  "effectiveN": 15.3
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "20.7%",
+   "v": "21.0%",
    "note": "from the account's daily TWR, 43 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.44",
+   "v": "0.48",
    "note": "42 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.25",
+   "v": "0.26",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$288",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$449)",
+   "v": "-$289",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$450)",
    "tone": "neg"
   },
   {
@@ -57,8 +57,8 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "651 / 15.4",
-   "note": "16 names, ~15.4 effective",
+   "v": "652 / 15.3",
+   "note": "16 names, ~15.3 effective",
    "tone": "pos"
   }
  ],
@@ -393,63 +393,63 @@
    "side": "long",
    "weightPct": 7.9,
    "riskContribPct": 12.3,
-   "mVaR": 56.6
+   "mVaR": 56.8
   },
   {
    "ticker": "HBM",
    "side": "long",
    "weightPct": 8.1,
    "riskContribPct": 11.9,
-   "mVaR": 54.6
+   "mVaR": 55.1
   },
   {
    "ticker": "ERO",
    "side": "long",
    "weightPct": 8.0,
    "riskContribPct": 10.9,
-   "mVaR": 50.0
+   "mVaR": 50.3
   },
   {
    "ticker": "COPX",
    "side": "long",
-   "weightPct": 8.2,
+   "weightPct": 8.3,
    "riskContribPct": 9.4,
-   "mVaR": 43.3
+   "mVaR": 43.6
   },
   {
    "ticker": "FCX",
    "side": "long",
-   "weightPct": 8.3,
-   "riskContribPct": 9.3,
-   "mVaR": 42.6
+   "weightPct": 8.4,
+   "riskContribPct": 9.4,
+   "mVaR": 43.4
   },
   {
    "ticker": "TECK",
    "side": "long",
-   "weightPct": 7.9,
-   "riskContribPct": 8.5,
-   "mVaR": 39.2
+   "weightPct": 8.0,
+   "riskContribPct": 8.6,
+   "mVaR": 39.7
   },
   {
    "ticker": "SCCO",
    "side": "long",
-   "weightPct": 7.5,
-   "riskContribPct": 8.3,
-   "mVaR": 38.3
+   "weightPct": 7.6,
+   "riskContribPct": 8.4,
+   "mVaR": 39.0
   },
   {
    "ticker": "CLF",
    "side": "long",
    "weightPct": 5.6,
    "riskContribPct": 6.2,
-   "mVaR": 28.4
+   "mVaR": 28.6
   },
   {
    "ticker": "TX",
    "side": "long",
-   "weightPct": 5.7,
+   "weightPct": 5.6,
    "riskContribPct": 3.8,
-   "mVaR": 17.6
+   "mVaR": 17.4
   },
   {
    "ticker": "PKX",
@@ -470,28 +470,21 @@
    "side": "long",
    "weightPct": 5.4,
    "riskContribPct": 3.2,
-   "mVaR": 14.8
+   "mVaR": 14.7
   },
   {
    "ticker": "GGB",
    "side": "long",
    "weightPct": 5.3,
    "riskContribPct": 2.4,
-   "mVaR": 11.0
+   "mVaR": 10.9
   },
   {
    "ticker": "MTUS",
    "side": "long",
-   "weightPct": 5.3,
-   "riskContribPct": 2.4,
-   "mVaR": 11.0
-  },
-  {
-   "ticker": "NUE",
-   "side": "long",
-   "weightPct": 5.0,
-   "riskContribPct": 2.2,
-   "mVaR": 9.9
+   "weightPct": 5.2,
+   "riskContribPct": 2.3,
+   "mVaR": 10.8
   },
   {
    "ticker": "STLD",
@@ -499,6 +492,13 @@
    "weightPct": 4.7,
    "riskContribPct": 2.2,
    "mVaR": 10.0
+  },
+  {
+   "ticker": "NUE",
+   "side": "long",
+   "weightPct": 4.9,
+   "riskContribPct": 2.1,
+   "mVaR": 9.8
   }
  ],
  "coverageNote": "16 of 16 holdings"
