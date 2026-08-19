@@ -1,21 +1,21 @@
 {
- "updatedAt": "2026-08-19T16:16:24+00:00",
+ "updatedAt": "2026-08-19T16:43:28+00:00",
  "asOf": "2026-08-19",
  "window": 90,
  "obs": 43,
  "headline": {
-  "annVol": 20.8,
+  "annVol": 20.5,
   "betaSpy": 0.46,
-  "betaXme": 0.26,
-  "var1d95": -289,
-  "var1d99": -450,
+  "betaXme": 0.25,
+  "var1d95": -288,
+  "var1d99": -448,
   "hhi": 654.0,
   "effectiveN": 15.3
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "20.8%",
+   "v": "20.5%",
    "note": "from the account's daily TWR, 43 daily obs since inception",
    "tone": "neutral"
   },
@@ -27,7 +27,7 @@
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.26",
+   "v": "0.25",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$289",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$450)",
+   "v": "-$288",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$448)",
    "tone": "neg"
   },
   {
@@ -393,27 +393,27 @@
    "side": "long",
    "weightPct": 7.9,
    "riskContribPct": 12.4,
-   "mVaR": 57.8
+   "mVaR": 57.5
   },
   {
    "ticker": "HBM",
    "side": "long",
    "weightPct": 8.1,
-   "riskContribPct": 12.2,
-   "mVaR": 56.7
+   "riskContribPct": 12.1,
+   "mVaR": 56.2
   },
   {
    "ticker": "ERO",
    "side": "long",
    "weightPct": 8.1,
    "riskContribPct": 11.1,
-   "mVaR": 51.5
+   "mVaR": 51.3
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 8.5,
-   "riskContribPct": 9.6,
+   "riskContribPct": 9.7,
    "mVaR": 44.9
   },
   {
@@ -421,28 +421,28 @@
    "side": "long",
    "weightPct": 8.3,
    "riskContribPct": 9.5,
-   "mVaR": 44.5
+   "mVaR": 44.3
   },
   {
    "ticker": "SCCO",
    "side": "long",
    "weightPct": 7.6,
    "riskContribPct": 8.7,
-   "mVaR": 40.6
+   "mVaR": 40.5
   },
   {
    "ticker": "TECK",
    "side": "long",
-   "weightPct": 8.0,
+   "weightPct": 8.1,
    "riskContribPct": 8.6,
-   "mVaR": 39.9
+   "mVaR": 39.8
   },
   {
    "ticker": "CLF",
    "side": "long",
    "weightPct": 5.5,
    "riskContribPct": 5.8,
-   "mVaR": 27.1
+   "mVaR": 27.0
   },
   {
    "ticker": "TX",
@@ -491,7 +491,7 @@
    "side": "long",
    "weightPct": 4.6,
    "riskContribPct": 2.1,
-   "mVaR": 9.6
+   "mVaR": 9.5
   },
   {
    "ticker": "NUE",
