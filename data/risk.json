@@ -1,16 +1,16 @@
 {
- "updatedAt": "2026-08-20T16:13:43+00:00",
+ "updatedAt": "2026-08-20T17:09:47+00:00",
  "asOf": "2026-08-20",
  "window": 90,
  "obs": 44,
  "headline": {
   "annVol": 19.1,
-  "betaSpy": 0.42,
-  "betaXme": 0.22,
-  "var1d95": -280,
-  "var1d99": -436,
-  "hhi": 664.0,
-  "effectiveN": 15.1
+  "betaSpy": 0.41,
+  "betaXme": 0.21,
+  "var1d95": -281,
+  "var1d99": -437,
+  "hhi": 665.0,
+  "effectiveN": 15.0
  },
  "metrics": [
   {
@@ -21,13 +21,13 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.42",
+   "v": "0.41",
    "note": "43 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.22",
+   "v": "0.21",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$280",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$436)",
+   "v": "-$281",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$437)",
    "tone": "neg"
   },
   {
@@ -51,14 +51,14 @@
   },
   {
    "k": "Max drawdown (inception curve)",
-   "v": "-15.2%",
+   "v": "-15.0%",
    "note": "peak-to-trough on the cumulative TWR",
    "tone": "neg"
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "664 / 15.1",
-   "note": "16 names, ~15.1 effective",
+   "v": "665 / 15.0",
+   "note": "16 names, ~15.0 effective",
    "tone": "pos"
   }
  ],
@@ -392,41 +392,41 @@
    "ticker": "TGB",
    "side": "long",
    "weightPct": 8.0,
-   "riskContribPct": 12.1,
-   "mVaR": 54.9
+   "riskContribPct": 12.2,
+   "mVaR": 55.3
   },
   {
    "ticker": "HBM",
    "side": "long",
-   "weightPct": 8.4,
+   "weightPct": 8.3,
    "riskContribPct": 12.0,
    "mVaR": 54.4
   },
   {
    "ticker": "ERO",
    "side": "long",
-   "weightPct": 8.4,
+   "weightPct": 8.5,
    "riskContribPct": 11.3,
-   "mVaR": 51.1
+   "mVaR": 51.2
   },
   {
    "ticker": "COPX",
    "side": "long",
    "weightPct": 8.6,
    "riskContribPct": 9.6,
-   "mVaR": 43.6
+   "mVaR": 43.8
   },
   {
    "ticker": "FCX",
    "side": "long",
-   "weightPct": 8.7,
-   "riskContribPct": 9.5,
-   "mVaR": 43.2
+   "weightPct": 8.8,
+   "riskContribPct": 9.6,
+   "mVaR": 43.6
   },
   {
    "ticker": "TECK",
    "side": "long",
-   "weightPct": 8.3,
+   "weightPct": 8.2,
    "riskContribPct": 9.0,
    "mVaR": 40.8
   },
@@ -435,20 +435,20 @@
    "side": "long",
    "weightPct": 7.8,
    "riskContribPct": 8.7,
-   "mVaR": 39.3
+   "mVaR": 39.5
   },
   {
    "ticker": "CLF",
    "side": "long",
    "weightPct": 5.0,
-   "riskContribPct": 5.5,
-   "mVaR": 25.1
+   "riskContribPct": 5.6,
+   "mVaR": 25.3
   },
   {
    "ticker": "TX",
    "side": "long",
-   "weightPct": 5.8,
-   "riskContribPct": 3.9,
+   "weightPct": 5.7,
+   "riskContribPct": 3.8,
    "mVaR": 17.4
   },
   {
@@ -456,13 +456,13 @@
    "side": "long",
    "weightPct": 5.5,
    "riskContribPct": 3.6,
-   "mVaR": 16.3
+   "mVaR": 16.2
   },
   {
    "ticker": "SLX",
    "side": "long",
    "weightPct": 6.1,
-   "riskContribPct": 3.4,
+   "riskContribPct": 3.3,
    "mVaR": 15.2
   },
   {
@@ -473,13 +473,6 @@
    "mVaR": 13.4
   },
   {
-   "ticker": "GGB",
-   "side": "long",
-   "weightPct": 5.0,
-   "riskContribPct": 2.2,
-   "mVaR": 9.7
-  },
-  {
    "ticker": "MTUS",
    "side": "long",
    "weightPct": 4.9,
@@ -487,17 +480,24 @@
    "mVaR": 10.1
   },
   {
+   "ticker": "GGB",
+   "side": "long",
+   "weightPct": 5.0,
+   "riskContribPct": 2.1,
+   "mVaR": 9.7
+  },
+  {
    "ticker": "NUE",
    "side": "long",
    "weightPct": 4.7,
    "riskContribPct": 2.0,
-   "mVaR": 9.0
+   "mVaR": 8.9
   },
   {
    "ticker": "STLD",
    "side": "long",
    "weightPct": 4.3,
-   "riskContribPct": 2.0,
+   "riskContribPct": 1.9,
    "mVaR": 8.8
   }
  ],
