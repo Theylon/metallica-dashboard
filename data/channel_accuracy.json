@@ -1,14 +1,110 @@
 {
- "updatedAt": "2026-08-19T21:13:16+00:00",
+ "updatedAt": "2026-08-20T13:19:09+00:00",
  "gate": {
   "trustedMinPct": 80
  },
  "summary": {
-  "trusted": 3,
-  "probation": 0,
-  "accumulating": 5
+  "trusted": 8,
+  "probation": 5,
+  "accumulating": 3
  },
  "channels": [
+  {
+   "id": "score.analyst",
+   "label": "Analyst score vs forward returns",
+   "kind": "score",
+   "source": "signal_scorecard.json (rank-IC engine)",
+   "ticker": null,
+   "n": 5,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": 100.0,
+   "accuracyPct": 100.0,
+   "status": "trusted",
+   "gated": true,
+   "note": null,
+   "detail": [
+    {
+     "rankIC": 0.226,
+     "IR": 12.79,
+     "tstat": 28.61,
+     "obs": 315
+    }
+   ]
+  },
+  {
+   "id": "score.fundamentals",
+   "label": "Fundamentals score vs forward returns",
+   "kind": "score",
+   "source": "signal_scorecard.json (rank-IC engine)",
+   "ticker": null,
+   "n": 5,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": 100.0,
+   "accuracyPct": 100.0,
+   "status": "trusted",
+   "gated": true,
+   "note": null,
+   "detail": [
+    {
+     "rankIC": 0.31,
+     "IR": 4.89,
+     "tstat": 10.94,
+     "obs": 520
+    }
+   ]
+  },
+  {
+   "id": "score.quality",
+   "label": "Quality score vs forward returns",
+   "kind": "score",
+   "source": "signal_scorecard.json (rank-IC engine)",
+   "ticker": null,
+   "n": 5,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": 100.0,
+   "accuracyPct": 100.0,
+   "status": "trusted",
+   "gated": true,
+   "note": null,
+   "detail": [
+    {
+     "rankIC": 0.21,
+     "IR": 14.05,
+     "tstat": 31.42,
+     "obs": 885
+    }
+   ]
+  },
+  {
+   "id": "score.smart",
+   "label": "Smart score vs forward returns",
+   "kind": "score",
+   "source": "signal_scorecard.json (rank-IC engine)",
+   "ticker": null,
+   "n": 5,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": 100.0,
+   "accuracyPct": 100.0,
+   "status": "trusted",
+   "gated": true,
+   "note": null,
+   "detail": [
+    {
+     "rankIC": 0.122,
+     "IR": 2.15,
+     "tstat": 4.8,
+     "obs": 330
+    }
+   ]
+  },
   {
    "id": "kpi.consensus.UBER",
    "label": "Street consensus \u2014 UBER Revenue",
@@ -118,21 +214,141 @@
    ]
   },
   {
+   "id": "score.deep",
+   "label": "Deep score vs forward returns",
+   "kind": "score",
+   "source": "signal_scorecard.json (rank-IC engine)",
+   "ticker": null,
+   "n": 5,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": 80.0,
+   "accuracyPct": 80.0,
+   "status": "trusted",
+   "gated": true,
+   "note": null,
+   "detail": [
+    {
+     "rankIC": 0.03,
+     "IR": 0.62,
+     "tstat": 1.4,
+     "obs": 1000
+    }
+   ]
+  },
+  {
+   "id": "score.sentiment",
+   "label": "Sentiment score vs forward returns",
+   "kind": "score",
+   "source": "signal_scorecard.json (rank-IC engine)",
+   "ticker": null,
+   "n": 5,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": 60.0,
+   "accuracyPct": 60.0,
+   "status": "probation",
+   "gated": true,
+   "note": null,
+   "detail": [
+    {
+     "rankIC": 0.12,
+     "IR": 1.0,
+     "tstat": 2.24,
+     "obs": 195
+    }
+   ]
+  },
+  {
    "id": "direction.commodityBias",
    "label": "Commodity bias (long/short per material)",
    "kind": "direction",
    "source": "micro_history.jsonl biasDir vs 20-snapshot-forward return",
    "ticker": null,
-   "n": 0,
+   "n": 114,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": null,
-   "accuracyPct": null,
-   "status": "accumulating",
+   "hitRatePct": 50.9,
+   "accuracyPct": 50.9,
+   "status": "probation",
    "gated": true,
-   "note": "needs \u226525 snapshot days with biasDir recorded (24 days so far, 2280 directional rows)",
+   "note": null,
    "detail": []
+  },
+  {
+   "id": "score.commodity",
+   "label": "Commodity score vs forward returns",
+   "kind": "score",
+   "source": "signal_scorecard.json (rank-IC engine)",
+   "ticker": null,
+   "n": 5,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": 0.0,
+   "accuracyPct": 0.0,
+   "status": "probation",
+   "gated": true,
+   "note": null,
+   "detail": [
+    {
+     "rankIC": -0.159,
+     "IR": -5.37,
+     "tstat": -12.01,
+     "obs": 880
+    }
+   ]
+  },
+  {
+   "id": "score.composite",
+   "label": "Composite score vs forward returns",
+   "kind": "score",
+   "source": "signal_scorecard.json (rank-IC engine)",
+   "ticker": null,
+   "n": 5,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": 0.0,
+   "accuracyPct": 0.0,
+   "status": "probation",
+   "gated": true,
+   "note": null,
+   "detail": [
+    {
+     "rankIC": -0.114,
+     "IR": -1.88,
+     "tstat": -4.21,
+     "obs": 1002
+    }
+   ]
+  },
+  {
+   "id": "score.momentum",
+   "label": "Momentum score vs forward returns",
+   "kind": "score",
+   "source": "signal_scorecard.json (rank-IC engine)",
+   "ticker": null,
+   "n": 5,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": 0.0,
+   "accuracyPct": 0.0,
+   "status": "probation",
+   "gated": true,
+   "note": null,
+   "detail": [
+    {
+     "rankIC": -0.158,
+     "IR": -2.11,
+     "tstat": -4.72,
+     "obs": 942
+    }
+   ]
   },
   {
    "id": "direction.insider",
@@ -186,23 +402,6 @@
    "detail": []
   },
   {
-   "id": "score.microScores",
-   "label": "Micro sub-scores + composite vs forward returns",
-   "kind": "score",
-   "source": "signal_scorecard.json (rank-IC engine)",
-   "ticker": null,
-   "n": 0,
-   "medAbsErrPct": null,
-   "meanAbsErrPct": null,
-   "beatConsensusPct": null,
-   "hitRatePct": null,
-   "accuracyPct": null,
-   "status": "accumulating",
-   "gated": true,
-   "note": "needs 25 daily snapshots (24 so far)",
-   "detail": []
-  },
-  {
    "id": "crossval.yahoo",
    "label": "Source consistency \u2014 Yahoo vs FMP/TipRanks",
    "kind": "crossval",
@@ -213,15 +412,15 @@
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
    "hitRatePct": null,
-   "accuracyPct": 75.1,
+   "accuracyPct": 75.6,
    "status": "info",
    "gated": false,
    "note": null,
    "detail": [
     {
-     "agree": 145,
+     "agree": 146,
      "mixed": 38,
-     "conflict": 10
+     "conflict": 9
     }
    ]
   }
