@@ -1,33 +1,33 @@
 {
- "updatedAt": "2026-08-21T18:12:46+00:00",
+ "updatedAt": "2026-08-21T19:10:28+00:00",
  "asOf": "2026-08-21",
  "window": 90,
  "obs": 45,
  "headline": {
-  "annVol": 21.8,
-  "betaSpy": 0.44,
-  "betaXme": 0.26,
-  "var1d95": -294,
-  "var1d99": -457,
+  "annVol": 22.3,
+  "betaSpy": 0.46,
+  "betaXme": 0.27,
+  "var1d95": -295,
+  "var1d99": -459,
   "hhi": 674.0,
   "effectiveN": 14.8
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "21.8%",
+   "v": "22.3%",
    "note": "from the account's daily TWR, 45 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.44",
+   "v": "0.46",
    "note": "44 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.26",
+   "v": "0.27",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$294",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$457)",
+   "v": "-$295",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$459)",
    "tone": "neg"
   },
   {
@@ -389,30 +389,30 @@
  },
  "contributions": [
   {
+   "ticker": "TGB",
+   "side": "long",
+   "weightPct": 8.2,
+   "riskContribPct": 12.6,
+   "mVaR": 61.3
+  },
+  {
    "ticker": "HBM",
    "side": "long",
    "weightPct": 8.5,
    "riskContribPct": 12.5,
-   "mVaR": 60.5
-  },
-  {
-   "ticker": "TGB",
-   "side": "long",
-   "weightPct": 8.1,
-   "riskContribPct": 12.5,
-   "mVaR": 60.9
+   "mVaR": 61.0
   },
   {
    "ticker": "ERO",
    "side": "long",
-   "weightPct": 8.9,
-   "riskContribPct": 12.1,
-   "mVaR": 59.0
+   "weightPct": 9.0,
+   "riskContribPct": 12.2,
+   "mVaR": 59.5
   },
   {
    "ticker": "FCX",
    "side": "long",
-   "weightPct": 9.2,
+   "weightPct": 9.1,
    "riskContribPct": 10.4,
    "mVaR": 50.5
   },
@@ -421,40 +421,40 @@
    "side": "long",
    "weightPct": 8.7,
    "riskContribPct": 9.8,
-   "mVaR": 47.6
+   "mVaR": 47.7
   },
   {
    "ticker": "SCCO",
    "side": "long",
    "weightPct": 8.1,
    "riskContribPct": 9.3,
-   "mVaR": 45.1
+   "mVaR": 45.5
   },
   {
    "ticker": "TECK",
    "side": "long",
    "weightPct": 8.2,
    "riskContribPct": 8.5,
-   "mVaR": 41.2
+   "mVaR": 41.4
   },
   {
    "ticker": "CLF",
    "side": "long",
-   "weightPct": 5.1,
+   "weightPct": 5.0,
    "riskContribPct": 5.1,
-   "mVaR": 24.9
+   "mVaR": 24.7
   },
   {
    "ticker": "TX",
    "side": "long",
    "weightPct": 5.6,
    "riskContribPct": 3.4,
-   "mVaR": 16.7
+   "mVaR": 16.8
   },
   {
    "ticker": "PKX",
    "side": "long",
-   "weightPct": 5.3,
+   "weightPct": 5.2,
    "riskContribPct": 3.1,
    "mVaR": 15.3
   },
@@ -468,9 +468,9 @@
   {
    "ticker": "CMC",
    "side": "long",
-   "weightPct": 4.8,
+   "weightPct": 4.9,
    "riskContribPct": 2.7,
-   "mVaR": 13.0
+   "mVaR": 13.1
   },
   {
    "ticker": "GGB",
@@ -484,7 +484,7 @@
    "side": "long",
    "weightPct": 4.7,
    "riskContribPct": 1.9,
-   "mVaR": 9.3
+   "mVaR": 9.4
   },
   {
    "ticker": "STLD",
