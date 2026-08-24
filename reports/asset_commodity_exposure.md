@@ -284,3 +284,11 @@ Tracks each held ticker's exposure to its linked commodities (T1/T2 links from m
 | copper | 8.63% |
 | molybdenum bar | 4.55% |
 
+## 2026-08-24
+
+| Commodity | Exposure (% NAV, tier-weighted) |
+|---|---|
+| steel | 11.47% |
+| copper | 8.62% |
+| molybdenum bar | 4.52% |
+
