@@ -1,27 +1,27 @@
 {
- "updatedAt": "2026-08-25T18:14:02+00:00",
+ "updatedAt": "2026-08-25T19:11:13+00:00",
  "asOf": "2026-08-25",
  "window": 90,
  "obs": 47,
  "headline": {
-  "annVol": 22.7,
-  "betaSpy": 0.46,
+  "annVol": 22.8,
+  "betaSpy": 0.47,
   "betaXme": 0.29,
   "var1d95": -301,
-  "var1d99": -468,
+  "var1d99": -469,
   "hhi": 557.0,
   "effectiveN": 18.0
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "22.7%",
+   "v": "22.8%",
    "note": "from the account's daily TWR, 47 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.46",
+   "v": "0.47",
    "note": "46 overlapping daily obs",
    "tone": "neutral"
   },
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$301",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$468)",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$469)",
    "tone": "neg"
   },
   {
@@ -507,35 +507,35 @@
    "side": "long",
    "weightPct": 7.8,
    "riskContribPct": 14.7,
-   "mVaR": 60.3
+   "mVaR": 60.1
   },
   {
    "ticker": "HBM",
    "side": "long",
    "weightPct": 8.0,
-   "riskContribPct": 14.1,
-   "mVaR": 57.9
+   "riskContribPct": 14.2,
+   "mVaR": 58.1
   },
   {
    "ticker": "ERO",
    "side": "long",
    "weightPct": 7.9,
    "riskContribPct": 12.8,
-   "mVaR": 52.3
+   "mVaR": 52.7
   },
   {
    "ticker": "SCCO",
    "side": "long",
    "weightPct": 8.1,
    "riskContribPct": 11.3,
-   "mVaR": 46.2
+   "mVaR": 46.3
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 7.8,
    "riskContribPct": 10.7,
-   "mVaR": 43.8
+   "mVaR": 44.1
   },
   {
    "ticker": "COPX",
@@ -554,9 +554,9 @@
   {
    "ticker": "CLF",
    "side": "long",
-   "weightPct": 5.1,
+   "weightPct": 5.0,
    "riskContribPct": 6.1,
-   "mVaR": 25.0
+   "mVaR": 24.9
   },
   {
    "ticker": "PKX",
@@ -590,8 +590,8 @@
    "ticker": "GGB",
    "side": "long",
    "weightPct": 4.6,
-   "riskContribPct": 2.3,
-   "mVaR": 9.6
+   "riskContribPct": 2.4,
+   "mVaR": 9.7
   },
   {
    "ticker": "MTUS",
@@ -622,18 +622,18 @@
    "mVaR": -15.6
   },
   {
-   "ticker": "AA",
-   "side": "short",
-   "weightPct": -5.5,
-   "riskContribPct": -4.4,
-   "mVaR": -18.2
-  },
-  {
    "ticker": "KALU",
    "side": "short",
    "weightPct": -5.5,
    "riskContribPct": -4.4,
-   "mVaR": -18.2
+   "mVaR": -18.1
+  },
+  {
+   "ticker": "AA",
+   "side": "short",
+   "weightPct": -5.5,
+   "riskContribPct": -4.5,
+   "mVaR": -18.3
   }
  ],
  "coverageNote": "19 of 19 holdings"
