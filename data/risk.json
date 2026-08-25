@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-08-25T07:48:51+00:00",
+ "updatedAt": "2026-08-25T13:15:28+00:00",
  "asOf": "2026-08-25",
  "window": 90,
  "obs": 47,
@@ -7,9 +7,9 @@
   "annVol": 22.2,
   "betaSpy": 0.45,
   "betaXme": 0.28,
-  "var1d95": -296,
-  "var1d99": -460,
-  "hhi": 675.0,
+  "var1d95": -295,
+  "var1d99": -459,
+  "hhi": 674.0,
   "effectiveN": 14.8
  },
  "metrics": [
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$296",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$460)",
+   "v": "-$295",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$459)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "675 / 14.8",
+   "v": "674 / 14.8",
    "note": "16 names, ~14.8 effective",
    "tone": "pos"
   }
@@ -393,14 +393,14 @@
    "side": "long",
    "weightPct": 8.3,
    "riskContribPct": 12.7,
-   "mVaR": 62.3
+   "mVaR": 62.0
   },
   {
    "ticker": "HBM",
    "side": "long",
    "weightPct": 8.4,
    "riskContribPct": 12.3,
-   "mVaR": 60.6
+   "mVaR": 60.4
   },
   {
    "ticker": "ERO",
@@ -414,7 +414,7 @@
    "side": "long",
    "weightPct": 9.2,
    "riskContribPct": 10.5,
-   "mVaR": 51.6
+   "mVaR": 51.4
   },
   {
    "ticker": "COPX",
@@ -426,37 +426,37 @@
   {
    "ticker": "SCCO",
    "side": "long",
-   "weightPct": 8.1,
+   "weightPct": 8.0,
    "riskContribPct": 9.3,
-   "mVaR": 45.7
+   "mVaR": 45.5
   },
   {
    "ticker": "TECK",
    "side": "long",
    "weightPct": 8.3,
    "riskContribPct": 8.6,
-   "mVaR": 42.4
+   "mVaR": 42.2
   },
   {
    "ticker": "CLF",
    "side": "long",
    "weightPct": 5.1,
-   "riskContribPct": 5.1,
-   "mVaR": 25.1
+   "riskContribPct": 5.2,
+   "mVaR": 25.2
   },
   {
    "ticker": "TX",
    "side": "long",
-   "weightPct": 5.5,
+   "weightPct": 5.6,
    "riskContribPct": 3.4,
    "mVaR": 16.6
   },
   {
    "ticker": "PKX",
    "side": "long",
-   "weightPct": 5.4,
+   "weightPct": 5.5,
    "riskContribPct": 3.2,
-   "mVaR": 15.6
+   "mVaR": 15.9
   },
   {
    "ticker": "SLX",
@@ -468,7 +468,7 @@
   {
    "ticker": "CMC",
    "side": "long",
-   "weightPct": 4.7,
+   "weightPct": 4.8,
    "riskContribPct": 2.6,
    "mVaR": 12.9
   },
@@ -491,7 +491,7 @@
    "side": "long",
    "weightPct": 4.5,
    "riskContribPct": 1.8,
-   "mVaR": 8.9
+   "mVaR": 9.0
   },
   {
    "ticker": "NUE",
