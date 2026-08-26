@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-08-26T18:58:15+00:00",
+ "updatedAt": "2026-08-26T19:10:26+00:00",
  "asOf": "2026-08-26",
  "window": 90,
  "obs": 48,
@@ -7,10 +7,10 @@
   "annVol": 22.6,
   "betaSpy": 0.47,
   "betaXme": 0.29,
-  "var1d95": -300,
+  "var1d95": -301,
   "var1d99": -468,
   "hhi": 554.0,
-  "effectiveN": 18.1
+  "effectiveN": 18.0
  },
  "metrics": [
   {
@@ -39,7 +39,7 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$300",
+   "v": "-$301",
    "note": "-2.70% of NAV; 99% VaR -4.21% (-$468)",
    "tone": "neg"
   },
@@ -57,8 +57,8 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "554 / 18.1",
-   "note": "19 names, ~18.1 effective",
+   "v": "554 / 18.0",
+   "note": "19 names, ~18.0 effective",
    "tone": "pos"
   }
  ],
@@ -507,42 +507,42 @@
    "side": "long",
    "weightPct": 7.6,
    "riskContribPct": 14.4,
-   "mVaR": 58.4
+   "mVaR": 58.5
   },
   {
    "ticker": "HBM",
    "side": "long",
-   "weightPct": 7.8,
+   "weightPct": 7.9,
    "riskContribPct": 14.0,
-   "mVaR": 56.5
+   "mVaR": 56.8
   },
   {
    "ticker": "ERO",
    "side": "long",
    "weightPct": 7.8,
    "riskContribPct": 13.0,
-   "mVaR": 52.8
+   "mVaR": 52.6
   },
   {
    "ticker": "SCCO",
    "side": "long",
    "weightPct": 7.9,
    "riskContribPct": 11.2,
-   "mVaR": 45.2
+   "mVaR": 45.3
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 7.8,
    "riskContribPct": 10.8,
-   "mVaR": 43.6
+   "mVaR": 43.8
   },
   {
    "ticker": "COPX",
    "side": "long",
    "weightPct": 7.7,
    "riskContribPct": 10.7,
-   "mVaR": 43.2
+   "mVaR": 43.4
   },
   {
    "ticker": "TECK",
@@ -577,7 +577,7 @@
    "side": "long",
    "weightPct": 5.0,
    "riskContribPct": 3.7,
-   "mVaR": 14.9
+   "mVaR": 14.8
   },
   {
    "ticker": "SLX",
@@ -624,9 +624,9 @@
   {
    "ticker": "KALU",
    "side": "short",
-   "weightPct": -5.7,
+   "weightPct": -5.6,
    "riskContribPct": -4.5,
-   "mVaR": -18.3
+   "mVaR": -18.2
   },
   {
    "ticker": "AA",
