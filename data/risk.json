@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-08-26T14:24:08+00:00",
+ "updatedAt": "2026-08-26T15:12:47+00:00",
  "asOf": "2026-08-26",
  "window": 90,
  "obs": 48,
@@ -7,9 +7,9 @@
   "annVol": 22.6,
   "betaSpy": 0.47,
   "betaXme": 0.29,
-  "var1d95": -303,
-  "var1d99": -472,
-  "hhi": 556.0,
+  "var1d95": -301,
+  "var1d99": -468,
+  "hhi": 554.0,
   "effectiveN": 18.0
  },
  "metrics": [
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$303",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$472)",
+   "v": "-$301",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$468)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "556 / 18.0",
+   "v": "554 / 18.0",
    "note": "19 names, ~18.0 effective",
    "tone": "pos"
   }
@@ -507,70 +507,70 @@
    "side": "long",
    "weightPct": 7.6,
    "riskContribPct": 14.4,
-   "mVaR": 59.1
+   "mVaR": 58.5
   },
   {
    "ticker": "HBM",
    "side": "long",
-   "weightPct": 7.9,
+   "weightPct": 7.8,
    "riskContribPct": 14.0,
-   "mVaR": 57.5
+   "mVaR": 56.6
   },
   {
    "ticker": "ERO",
    "side": "long",
-   "weightPct": 8.0,
-   "riskContribPct": 13.2,
-   "mVaR": 54.2
+   "weightPct": 7.9,
+   "riskContribPct": 13.1,
+   "mVaR": 53.0
   },
   {
    "ticker": "SCCO",
    "side": "long",
-   "weightPct": 8.1,
-   "riskContribPct": 11.3,
-   "mVaR": 46.5
+   "weightPct": 8.0,
+   "riskContribPct": 11.2,
+   "mVaR": 45.5
+  },
+  {
+   "ticker": "COPX",
+   "side": "long",
+   "weightPct": 7.7,
+   "riskContribPct": 10.7,
+   "mVaR": 43.3
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 7.8,
-   "riskContribPct": 10.8,
-   "mVaR": 44.2
-  },
-  {
-   "ticker": "COPX",
-   "side": "long",
-   "weightPct": 7.8,
    "riskContribPct": 10.7,
-   "mVaR": 43.8
+   "mVaR": 43.5
   },
   {
    "ticker": "TECK",
    "side": "long",
    "weightPct": 7.7,
-   "riskContribPct": 9.6,
-   "mVaR": 39.5
+   "riskContribPct": 9.7,
+   "mVaR": 39.3
   },
   {
    "ticker": "CLF",
    "side": "long",
    "weightPct": 5.1,
    "riskContribPct": 6.2,
-   "mVaR": 25.6
+   "mVaR": 25.3
   },
   {
    "ticker": "CMC",
    "side": "long",
-   "weightPct": 5.4,
+   "weightPct": 5.5,
    "riskContribPct": 3.7,
-   "mVaR": 15.0
+   "mVaR": 15.1
   },
   {
    "ticker": "PKX",
    "side": "long",
-   "weightPct": 5.3,
+   "weightPct": 5.2,
    "riskContribPct": 3.7,
-   "mVaR": 15.2
+   "mVaR": 15.1
   },
   {
    "ticker": "TX",
@@ -594,16 +594,16 @@
    "mVaR": 9.9
   },
   {
-   "ticker": "MTUS",
-   "side": "long",
-   "weightPct": 4.5,
-   "riskContribPct": 2.1,
-   "mVaR": 8.6
-  },
-  {
    "ticker": "STLD",
    "side": "long",
    "weightPct": 4.2,
+   "riskContribPct": 2.2,
+   "mVaR": 8.7
+  },
+  {
+   "ticker": "MTUS",
+   "side": "long",
+   "weightPct": 4.6,
    "riskContribPct": 2.1,
    "mVaR": 8.7
   },
@@ -611,29 +611,29 @@
    "ticker": "NUE",
    "side": "long",
    "weightPct": 4.5,
-   "riskContribPct": 2.0,
-   "mVaR": 8.3
+   "riskContribPct": 2.1,
+   "mVaR": 8.4
   },
   {
    "ticker": "CENX",
    "side": "short",
    "weightPct": -5.1,
    "riskContribPct": -4.0,
-   "mVaR": -16.4
+   "mVaR": -16.3
   },
   {
    "ticker": "KALU",
    "side": "short",
-   "weightPct": -5.5,
-   "riskContribPct": -4.4,
+   "weightPct": -5.6,
+   "riskContribPct": -4.5,
    "mVaR": -18.2
   },
   {
    "ticker": "AA",
    "side": "short",
-   "weightPct": -5.4,
-   "riskContribPct": -4.7,
-   "mVaR": -19.2
+   "weightPct": -5.3,
+   "riskContribPct": -4.6,
+   "mVaR": -18.8
   }
  ],
  "coverageNote": "19 of 19 holdings"
