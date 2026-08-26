@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-08-26T16:33:38+00:00",
+ "updatedAt": "2026-08-26T17:10:06+00:00",
  "asOf": "2026-08-26",
  "window": 90,
  "obs": 48,
@@ -7,10 +7,10 @@
   "annVol": 22.6,
   "betaSpy": 0.47,
   "betaXme": 0.29,
-  "var1d95": -301,
+  "var1d95": -300,
   "var1d99": -468,
   "hhi": 554.0,
-  "effectiveN": 18.0
+  "effectiveN": 18.1
  },
  "metrics": [
   {
@@ -39,7 +39,7 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$301",
+   "v": "-$300",
    "note": "-2.70% of NAV; 99% VaR -4.21% (-$468)",
    "tone": "neg"
   },
@@ -57,8 +57,8 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "554 / 18.0",
-   "note": "19 names, ~18.0 effective",
+   "v": "554 / 18.1",
+   "note": "19 names, ~18.1 effective",
    "tone": "pos"
   }
  ],
@@ -514,14 +514,14 @@
    "side": "long",
    "weightPct": 7.8,
    "riskContribPct": 14.0,
-   "mVaR": 56.7
+   "mVaR": 56.6
   },
   {
    "ticker": "ERO",
    "side": "long",
    "weightPct": 7.9,
-   "riskContribPct": 13.1,
-   "mVaR": 53.1
+   "riskContribPct": 13.0,
+   "mVaR": 52.9
   },
   {
    "ticker": "SCCO",
@@ -547,28 +547,28 @@
   {
    "ticker": "TECK",
    "side": "long",
-   "weightPct": 7.7,
+   "weightPct": 7.8,
    "riskContribPct": 9.8,
-   "mVaR": 39.5
+   "mVaR": 39.7
   },
   {
    "ticker": "CLF",
    "side": "long",
    "weightPct": 5.1,
-   "riskContribPct": 6.2,
-   "mVaR": 25.2
+   "riskContribPct": 6.3,
+   "mVaR": 25.4
   },
   {
    "ticker": "CMC",
    "side": "long",
    "weightPct": 5.5,
    "riskContribPct": 3.7,
-   "mVaR": 15.1
+   "mVaR": 15.2
   },
   {
    "ticker": "PKX",
    "side": "long",
-   "weightPct": 5.2,
+   "weightPct": 5.3,
    "riskContribPct": 3.7,
    "mVaR": 15.1
   },
@@ -589,9 +589,16 @@
   {
    "ticker": "GGB",
    "side": "long",
-   "weightPct": 4.7,
+   "weightPct": 4.8,
    "riskContribPct": 2.4,
-   "mVaR": 9.8
+   "mVaR": 9.9
+  },
+  {
+   "ticker": "STLD",
+   "side": "long",
+   "weightPct": 4.2,
+   "riskContribPct": 2.2,
+   "mVaR": 8.7
   },
   {
    "ticker": "MTUS",
@@ -608,30 +615,23 @@
    "mVaR": 8.4
   },
   {
-   "ticker": "STLD",
-   "side": "long",
-   "weightPct": 4.2,
-   "riskContribPct": 2.1,
-   "mVaR": 8.7
-  },
-  {
    "ticker": "CENX",
    "side": "short",
-   "weightPct": -5.1,
+   "weightPct": -5.2,
    "riskContribPct": -4.0,
-   "mVaR": -16.3
+   "mVaR": -16.4
   },
   {
    "ticker": "KALU",
    "side": "short",
    "weightPct": -5.6,
    "riskContribPct": -4.5,
-   "mVaR": -18.2
+   "mVaR": -18.3
   },
   {
    "ticker": "AA",
    "side": "short",
-   "weightPct": -5.3,
+   "weightPct": -5.4,
    "riskContribPct": -4.7,
    "mVaR": -18.9
   }
