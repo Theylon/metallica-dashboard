@@ -2176,5 +2176,63 @@
         }
       ]
     }
+  },
+  "2026-08-27": {
+    "commodityExposure": {
+      "steel": 0.113326,
+      "copper": 0.076845,
+      "molybdenum bar": 0.038758,
+      "aluminum n": -0.02679,
+      "aluminum": -0.05358
+    },
+    "byTicker": {
+      "AA": [
+        {
+          "commodity": "aluminum",
+          "tier": "T1",
+          "weight": -0.05358
+        },
+        {
+          "commodity": "aluminum n",
+          "tier": "T2",
+          "weight": -0.02679
+        }
+      ],
+      "CLF": [
+        {
+          "commodity": "steel",
+          "tier": "T2",
+          "weight": 0.025562
+        }
+      ],
+      "COPX": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.076845
+        }
+      ],
+      "FCX": [
+        {
+          "commodity": "molybdenum bar",
+          "tier": "T2",
+          "weight": 0.038758
+        }
+      ],
+      "NUE": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.045596
+        }
+      ],
+      "STLD": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.042168
+        }
+      ]
+    }
   }
 }
