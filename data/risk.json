@@ -1,14 +1,14 @@
 {
- "updatedAt": "2026-08-27T18:13:04+00:00",
+ "updatedAt": "2026-08-27T19:10:34+00:00",
  "asOf": "2026-08-27",
  "window": 90,
  "obs": 49,
  "headline": {
   "annVol": 22.5,
-  "betaSpy": 0.48,
+  "betaSpy": 0.49,
   "betaXme": 0.29,
   "var1d95": -302,
-  "var1d99": -470,
+  "var1d99": -471,
   "hhi": 553.0,
   "effectiveN": 18.1
  },
@@ -21,7 +21,7 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.48",
+   "v": "0.49",
    "note": "48 overlapping daily obs",
    "tone": "neutral"
   },
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$302",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$470)",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$471)",
    "tone": "neg"
   },
   {
@@ -507,21 +507,21 @@
    "side": "long",
    "weightPct": 7.7,
    "riskContribPct": 14.7,
-   "mVaR": 59.6
+   "mVaR": 59.9
   },
   {
    "ticker": "HBM",
    "side": "long",
-   "weightPct": 7.8,
-   "riskContribPct": 13.9,
-   "mVaR": 56.6
+   "weightPct": 7.9,
+   "riskContribPct": 14.0,
+   "mVaR": 57.3
   },
   {
    "ticker": "ERO",
    "side": "long",
    "weightPct": 7.8,
    "riskContribPct": 12.9,
-   "mVaR": 52.6
+   "mVaR": 52.9
   },
   {
    "ticker": "SCCO",
@@ -535,7 +535,7 @@
    "side": "long",
    "weightPct": 7.7,
    "riskContribPct": 10.7,
-   "mVaR": 43.4
+   "mVaR": 43.6
   },
   {
    "ticker": "FCX",
@@ -549,14 +549,14 @@
    "side": "long",
    "weightPct": 7.6,
    "riskContribPct": 9.5,
-   "mVaR": 38.8
+   "mVaR": 38.9
   },
   {
    "ticker": "CLF",
    "side": "long",
-   "weightPct": 5.1,
+   "weightPct": 5.2,
    "riskContribPct": 6.3,
-   "mVaR": 25.6
+   "mVaR": 25.7
   },
   {
    "ticker": "PKX",
@@ -570,7 +570,7 @@
    "side": "long",
    "weightPct": 5.5,
    "riskContribPct": 3.7,
-   "mVaR": 15.2
+   "mVaR": 15.3
   },
   {
    "ticker": "TX",
@@ -584,12 +584,12 @@
    "side": "long",
    "weightPct": 4.9,
    "riskContribPct": 3.1,
-   "mVaR": 12.8
+   "mVaR": 12.7
   },
   {
    "ticker": "GGB",
    "side": "long",
-   "weightPct": 4.9,
+   "weightPct": 5.0,
    "riskContribPct": 2.6,
    "mVaR": 10.4
   },
@@ -617,16 +617,16 @@
   {
    "ticker": "CENX",
    "side": "short",
-   "weightPct": -5.2,
+   "weightPct": -5.3,
    "riskContribPct": -4.1,
-   "mVaR": -16.7
+   "mVaR": -16.9
   },
   {
    "ticker": "KALU",
    "side": "short",
-   "weightPct": -5.6,
+   "weightPct": -5.7,
    "riskContribPct": -4.5,
-   "mVaR": -18.4
+   "mVaR": -18.5
   },
   {
    "ticker": "AA",
