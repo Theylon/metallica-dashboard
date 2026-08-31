@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-08-31T20:12:49+00:00",
+ "updatedAt": "2026-08-31T21:10:52+00:00",
  "asOf": "2026-08-31",
  "window": 90,
  "obs": 51,
@@ -8,8 +8,8 @@
   "betaSpy": 0.52,
   "betaXme": 0.31,
   "var1d95": -293,
-  "var1d99": -457,
-  "hhi": 894.0,
+  "var1d99": -456,
+  "hhi": 893.0,
   "effectiveN": 11.2
  },
  "metrics": [
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$293",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$457)",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$456)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "894 / 11.2",
+   "v": "893 / 11.2",
    "note": "15 names, ~11.2 effective",
    "tone": "pos"
   }
@@ -358,21 +358,21 @@
    "ticker": "GDX",
    "side": "long",
    "weightPct": 18.1,
-   "riskContribPct": 25.7,
-   "mVaR": 95.7
+   "riskContribPct": 25.6,
+   "mVaR": 95.6
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 8.4,
-   "riskContribPct": 12.4,
+   "riskContribPct": 12.3,
    "mVaR": 46.1
   },
   {
    "ticker": "HBM",
    "side": "long",
    "weightPct": 6.3,
-   "riskContribPct": 12.1,
+   "riskContribPct": 12.0,
    "mVaR": 45.0
   },
   {
@@ -380,21 +380,21 @@
    "side": "long",
    "weightPct": 7.7,
    "riskContribPct": 11.2,
-   "mVaR": 41.6
+   "mVaR": 41.7
   },
   {
    "ticker": "ERO",
    "side": "long",
    "weightPct": 6.2,
-   "riskContribPct": 11.2,
-   "mVaR": 41.7
+   "riskContribPct": 11.1,
+   "mVaR": 41.6
   },
   {
    "ticker": "SCCO",
    "side": "long",
    "weightPct": 5.8,
-   "riskContribPct": 8.6,
-   "mVaR": 32.2
+   "riskContribPct": 8.7,
+   "mVaR": 32.6
   },
   {
    "ticker": "MT",
@@ -414,15 +414,15 @@
    "ticker": "TECK",
    "side": "long",
    "weightPct": 3.1,
-   "riskContribPct": 4.0,
+   "riskContribPct": 3.9,
    "mVaR": 14.7
   },
   {
    "ticker": "TGB",
    "side": "long",
    "weightPct": 1.8,
-   "riskContribPct": 3.4,
-   "mVaR": 12.7
+   "riskContribPct": 3.5,
+   "mVaR": 13.0
   },
   {
    "ticker": "STLD",
