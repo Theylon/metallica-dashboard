@@ -1,4 +1,12 @@
 {
- "updatedAt": "2026-08-31T18:13:35+00:00",
- "items": []
+ "updatedAt": "2026-08-31T19:13:52+00:00",
+ "items": [
+  {
+   "type": "micro_override",
+   "ticker": "GLD",
+   "severity": "info",
+   "rule": "Micro override of the macro bias must stay visible until resolved",
+   "message": "GLD: micro call \"long\" (held long) contradicts the short Gold bias (decision logged 2026-08-31)"
+  }
+ ]
 }
