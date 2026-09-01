@@ -1,33 +1,33 @@
 {
- "updatedAt": "2026-09-01T17:26:53+00:00",
- "asOf": "2026-08-31",
+ "updatedAt": "2026-09-01T19:12:29+00:00",
+ "asOf": "2026-09-01",
  "window": 90,
- "obs": 51,
+ "obs": 52,
  "headline": {
-  "annVol": 22.7,
-  "betaSpy": 0.52,
-  "betaXme": 0.31,
-  "var1d95": -293,
-  "var1d99": -456,
-  "hhi": 893.0,
+  "annVol": 22.9,
+  "betaSpy": 0.57,
+  "betaXme": 0.32,
+  "var1d95": -286,
+  "var1d99": -446,
+  "hhi": 895.0,
   "effectiveN": 11.2
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "22.7%",
-   "note": "from the account's daily TWR, 51 daily obs since inception",
+   "v": "22.9%",
+   "note": "from the account's daily TWR, 52 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.52",
-   "note": "50 overlapping daily obs",
+   "v": "0.57",
+   "note": "51 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.31",
+   "v": "0.32",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$293",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$456)",
+   "v": "-$286",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$446)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "893 / 11.2",
+   "v": "895 / 11.2",
    "note": "15 names, ~11.2 effective",
    "tone": "pos"
   }
@@ -357,106 +357,106 @@
   {
    "ticker": "GDX",
    "side": "long",
-   "weightPct": 18.1,
-   "riskContribPct": 25.5,
-   "mVaR": 95.2
+   "weightPct": 18.0,
+   "riskContribPct": 25.7,
+   "mVaR": 92.3
   },
   {
    "ticker": "HBM",
    "side": "long",
-   "weightPct": 6.3,
-   "riskContribPct": 12.1,
-   "mVaR": 45.3
+   "weightPct": 6.2,
+   "riskContribPct": 11.9,
+   "mVaR": 42.9
   },
   {
    "ticker": "FCX",
    "side": "long",
-   "weightPct": 8.4,
+   "weightPct": 8.3,
    "riskContribPct": 11.8,
-   "mVaR": 44.2
-  },
-  {
-   "ticker": "ERO",
-   "side": "long",
-   "weightPct": 6.2,
-   "riskContribPct": 11.4,
-   "mVaR": 42.7
+   "mVaR": 42.6
   },
   {
    "ticker": "COPX",
    "side": "long",
    "weightPct": 7.7,
    "riskContribPct": 11.3,
-   "mVaR": 42.1
+   "mVaR": 40.7
+  },
+  {
+   "ticker": "ERO",
+   "side": "long",
+   "weightPct": 6.0,
+   "riskContribPct": 11.2,
+   "mVaR": 40.2
   },
   {
    "ticker": "SCCO",
    "side": "long",
-   "weightPct": 5.8,
-   "riskContribPct": 8.8,
-   "mVaR": 32.8
+   "weightPct": 5.7,
+   "riskContribPct": 8.7,
+   "mVaR": 31.5
   },
   {
    "ticker": "MT",
    "side": "long",
-   "weightPct": 5.5,
-   "riskContribPct": 5.4,
-   "mVaR": 20.3
+   "weightPct": 5.6,
+   "riskContribPct": 5.6,
+   "mVaR": 20.0
   },
   {
    "ticker": "PKX",
    "side": "long",
-   "weightPct": 5.7,
-   "riskContribPct": 4.4,
+   "weightPct": 5.8,
+   "riskContribPct": 4.5,
    "mVaR": 16.3
   },
   {
    "ticker": "TECK",
    "side": "long",
-   "weightPct": 3.1,
-   "riskContribPct": 4.1,
-   "mVaR": 15.3
+   "weightPct": 3.2,
+   "riskContribPct": 4.2,
+   "mVaR": 15.0
   },
   {
    "ticker": "TGB",
    "side": "long",
    "weightPct": 1.8,
-   "riskContribPct": 3.5,
-   "mVaR": 13.2
+   "riskContribPct": 3.4,
+   "mVaR": 12.4
   },
   {
    "ticker": "STLD",
    "side": "long",
-   "weightPct": 6.4,
-   "riskContribPct": 2.8,
-   "mVaR": 10.4
+   "weightPct": 6.7,
+   "riskContribPct": 2.9,
+   "mVaR": 10.6
   },
   {
    "ticker": "NUE",
    "side": "long",
-   "weightPct": 6.9,
-   "riskContribPct": 2.5,
-   "mVaR": 9.2
+   "weightPct": 7.1,
+   "riskContribPct": 2.6,
+   "mVaR": 9.4
   },
   {
    "ticker": "GLD",
    "side": "long",
-   "weightPct": 3.8,
+   "weightPct": 3.7,
    "riskContribPct": 2.3,
-   "mVaR": 8.5
+   "mVaR": 8.3
   },
   {
    "ticker": "CMC",
    "side": "long",
    "weightPct": 2.5,
-   "riskContribPct": 1.4,
+   "riskContribPct": 1.5,
    "mVaR": 5.4
   },
   {
    "ticker": "KALU",
    "side": "short",
-   "weightPct": -11.7,
-   "riskContribPct": -7.4,
+   "weightPct": -12.3,
+   "riskContribPct": -7.7,
    "mVaR": -27.7
   }
  ],
