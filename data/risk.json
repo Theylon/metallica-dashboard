@@ -1,21 +1,21 @@
 {
- "updatedAt": "2026-09-01T20:14:02+00:00",
+ "updatedAt": "2026-09-01T21:12:09+00:00",
  "asOf": "2026-09-01",
  "window": 90,
  "obs": 52,
  "headline": {
-  "annVol": 23.2,
+  "annVol": 23.1,
   "betaSpy": 0.58,
   "betaXme": 0.32,
-  "var1d95": -301,
-  "var1d99": -443,
-  "hhi": 894.0,
+  "var1d95": -288,
+  "var1d99": -444,
+  "hhi": 895.0,
   "effectiveN": 11.2
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "23.2%",
+   "v": "23.1%",
    "note": "from the account's daily TWR, 52 daily obs since inception",
    "tone": "neutral"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$301",
-   "note": "-2.85% of NAV; 99% VaR -4.21% (-$443)",
+   "v": "-$288",
+   "note": "-2.73% of NAV; 99% VaR -4.21% (-$444)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "894 / 11.2",
+   "v": "895 / 11.2",
    "note": "15 names, ~11.2 effective",
    "tone": "pos"
   }
@@ -357,9 +357,9 @@
   {
    "ticker": "GDX",
    "side": "long",
-   "weightPct": 18.0,
-   "riskContribPct": 25.6,
-   "mVaR": 92.0
+   "weightPct": 18.1,
+   "riskContribPct": 25.7,
+   "mVaR": 92.5
   },
   {
    "ticker": "HBM",
@@ -373,14 +373,14 @@
    "side": "long",
    "weightPct": 8.3,
    "riskContribPct": 11.8,
-   "mVaR": 42.5
+   "mVaR": 42.6
   },
   {
    "ticker": "COPX",
    "side": "long",
-   "weightPct": 7.7,
-   "riskContribPct": 11.3,
-   "mVaR": 40.7
+   "weightPct": 7.6,
+   "riskContribPct": 11.2,
+   "mVaR": 40.5
   },
   {
    "ticker": "ERO",
@@ -394,7 +394,7 @@
    "side": "long",
    "weightPct": 5.7,
    "riskContribPct": 8.7,
-   "mVaR": 31.3
+   "mVaR": 31.4
   },
   {
    "ticker": "MT",
