@@ -42,7 +42,7 @@ CATEGORY = {
     "MP": "Rare Earth", "REMX": "Rare Earth", "UUUU": "Uranium",
     "GLD": "Precious", "SLV": "Precious", "PALL": "Precious", "SBSW": "Precious",
     "AG": "Precious", "CDE": "Precious", "HL": "Precious", "PAAS": "Precious",
-    "BVN": "Precious", "PLG": "Precious",
+    "BVN": "Precious", "PLG": "Precious", "GDX": "Precious",
     "BHP": "Diversified", "RIO": "Diversified", "VALE": "Diversified",
     "XME": "Mining ETF", "BEPC": "Renewables",
 }
