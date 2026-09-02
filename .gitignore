@@ -12,3 +12,8 @@ id_rsa.*
 # Local build / server cruft
 _site/
 .DS_Store
+
+# MetalMiner historical dumps are licensed — pass them to scripts by path, never commit.
+# (Not *.json.gz: history/daily/*.json.gz is the committed snapshot archive.)
+historical_*.json.gz
+historical_*.json

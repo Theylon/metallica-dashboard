@@ -33,7 +33,13 @@ DEFAULT_INDEX = 1477
 DEFAULT_ASSESS = [270930, 270907, 270923, 270928]
 
 
-def load_dump(path):
+def load_dump(path, structured=False):
+    """{commodity_id: {date: value}}, {commodity_id: label}.
+
+    With structured=True the second dict holds {category, type, origin, description,
+    unit, label} per id instead of the label string (mm_series_quality.py needs the
+    category field on its own).
+    """
     opener = gzip.open if str(path).endswith(".gz") else open
     with opener(path, "rt", encoding="utf-8") as fh:
         rows = json.load(fh)["commodities"]
@@ -41,7 +47,10 @@ def load_dump(path):
     for r in rows:
         cid = r["commodity_id"]
         series.setdefault(cid, {})[r["collection_date"]] = r["value"]
-        meta[cid] = f"{r['type']} ({r['category']}, {r['origin']}, {r['description']}, {r['unit']})"
+        label = f"{r['type']} ({r['category']}, {r['origin']}, {r['description']}, {r['unit']})"
+        meta[cid] = ({"category": r["category"], "type": r["type"], "origin": r["origin"],
+                      "description": r["description"], "unit": r["unit"], "label": label}
+                     if structured else label)
     return series, meta
 
 
