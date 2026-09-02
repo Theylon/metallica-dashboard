@@ -306,8 +306,8 @@ def check_linkage_map():
     - index links (MetalMiner MMIs, category "mmi index values") sitting at
       T1/T2: exposure.py drops them, but a rising count means the upstream
       miner is still scoring clusters off a stepped composite index instead
-      of a price (the rare-earth MMI has ~0.30 weekly-return correlation
-      with PrNd oxide).
+      of a price (the rare-earth MMI has ~0.22 weekly-return correlation
+      with PrNd oxide — scripts/mmi_proxy_audit.py).
     - Rare Earth tickers with no real (non-index) T1/T2 price link: the
       cluster then carries zero commodity exposure and needs a real
       assessment (PrNd/NdPr oxide, Nd, Dy, Tb) mined in.

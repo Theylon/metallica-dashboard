@@ -30,7 +30,8 @@ IBKR Web API / Yahoo / research  ──▶  scripts/*.py  ──▶  data/*.json
 | `scripts/mcp_refresh.py` | Rebuilds `positions/account/pnl/benchmarks.json` from raw IBKR MCP dumps in `/tmp`. Used by the SessionStart auto-refresh. |
 | `scripts/enrich.py` | Builds `commodities/analysts/macro/news.json`. |
 | `scripts/micro_*.py`, `gen_*.py`, `build_universe.py` | Stock Picks pipeline → `data/micro.json` from `data/micro_src/`. |
-| `scripts/exposure.py` + `data/linkage_map.json` | Per-holding commodity exposure from the upstream (metallica-fund) signal-mined linkage map. **Index links (MetalMiner MMIs, category `mmi index values`) never count as exposure** — an MMI is a stepped monthly composite, not a price (rare-earth MMI vs PrNd oxide weekly-return correlation ≈ 0.30). `verify_data.py` warns when the map carries T1/T2 index links or a Rare Earth ticker has no real price link. |
+| `scripts/exposure.py` + `data/linkage_map.json` | Per-holding commodity exposure from the upstream (metallica-fund) signal-mined linkage map. **Index links (MetalMiner MMIs, category `mmi index values`) never count as exposure** — an MMI is a stepped monthly composite, not a price (rare-earth MMI vs PrNd oxide weekly-return correlation ≈ 0.22, vs 0.79–0.97 among the real assessments). `verify_data.py` warns when the map carries T1/T2 index links or a Rare Earth ticker has no real price link. |
+| `scripts/mmi_proxy_audit.py` | Re-measures an MMI against the assessments it proxies from a MetalMiner historical dump (path on the command line — licensed data, **never commit the dump or an API token**) → `reports/mmi_proxy_audit.md`. |
 | `scripts/validate_data.py` | **Data-contract validator** (see below). |
 | `scripts/check.sh` | One-command local standards gate (data contract, script compile, secret guard, `index.html` inline-JS parse). |
 | `scripts/trade_gate.py` | **Pre-trade risk gate** — deterministic checks before any IBKR order instruction (see Trading below). |

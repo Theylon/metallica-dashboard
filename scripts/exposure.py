@@ -28,12 +28,14 @@ REPORTS = ROOT / "reports"
 TIER_WEIGHT = {"T1": 1.0, "T2": 0.5}  # T3/T4 excluded per methodology tier cutoff
 
 # Link categories that are NOT a price and must never count as commodity exposure.
-# MetalMiner's MMIs ("rare earths mmi", "renewables mmi", ...) are stepped monthly
-# composite indices, forward-filled to weekly: about half the observations of a
-# real assessment, ~1.6x its volatility, flat 7.3% of weeks, and only ~0.30
-# weekly-return correlation with PrNd oxide (the three real rare-earth
-# assessments correlate 0.95-0.97 with each other). A link to one is a link to
-# ~70% unrelated noise, so it is dropped here regardless of tier or family.
+# MetalMiner's MMIs ("rare earths mmi", "renewables mmi", ...) are stepped
+# composite indices: monthly points until 2021, daily since but ~45% of days
+# unchanged. Measured against the 2026-08-18 historical dump
+# (scripts/mmi_proxy_audit.py, reports/mmi_proxy_audit.md): the rare-earth MMI
+# has half the observed weeks of PrNd oxide (321 vs 646), 55% flat weeks, and a
+# weekly-return correlation of only 0.22-0.25 with PrNd/Nd/Pr oxide, while the
+# real assessments correlate 0.79-0.97 with each other. A link to one is a link
+# to mostly unrelated noise, so it is dropped here regardless of tier or family.
 NON_PRICE_CATEGORIES = {"mmi index values"}
 
 # equity_group -> commodity substrings that are economically plausible exposure.
