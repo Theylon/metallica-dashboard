@@ -27,6 +27,15 @@ REPORTS = ROOT / "reports"
 
 TIER_WEIGHT = {"T1": 1.0, "T2": 0.5}  # T3/T4 excluded per methodology tier cutoff
 
+# Link categories that are NOT a price and must never count as commodity exposure.
+# MetalMiner's MMIs ("rare earths mmi", "renewables mmi", ...) are stepped monthly
+# composite indices, forward-filled to weekly: about half the observations of a
+# real assessment, ~1.6x its volatility, flat 7.3% of weeks, and only ~0.30
+# weekly-return correlation with PrNd oxide (the three real rare-earth
+# assessments correlate 0.95-0.97 with each other). A link to one is a link to
+# ~70% unrelated noise, so it is dropped here regardless of tier or family.
+NON_PRICE_CATEGORIES = {"mmi index values"}
+
 # equity_group -> commodity substrings that are economically plausible exposure.
 # The linkage map is signal-mined from rolling price correlations, so it carries
 # statistical artifacts (e.g. an aluminum smelter "linked" T1 to cobalt sulfate).
@@ -52,7 +61,12 @@ FAMILY = {
     "Pgm Equity": ("platinum", "palladium", "rhodium", "ruthenium"),
     "Platinum Etf": ("platinum", "palladium", "rhodium", "ruthenium"),
     "Platinum Futures": ("platinum", "palladium", "rhodium", "ruthenium"),
-    "Rare Earth": ("rare earth",),
+    # Real rare-earth assessments only (PrNd/NdPr oxide, Nd, Dy, Tb, ...). The
+    # "rare earths mmi" index also contains "rare earth" but is dropped upstream
+    # by NON_PRICE_CATEGORIES — today no real rare-earth price is in the map at
+    # all, so this cluster carries zero exposure until one is mined in.
+    "Rare Earth": ("rare earth", "neodymium", "praseodymium", "ndpr", "prnd",
+                   "dysprosium", "terbium"),
     "Silver Equity": ("silver",),
     "Silver Etf": ("silver",),
     "Silver Futures": ("silver",),
@@ -66,6 +80,11 @@ FAMILY = {
 # rare-earth miner) is grouped "Lithium Miner" and would otherwise contribute a
 # spurious lithium-carbonate (lco) exposure.
 TICKER_GROUP_OVERRIDE = {"MP": "Rare Earth"}
+
+
+def is_non_price(link):
+    """True for links whose 'commodity' is a composite index, not a price."""
+    return str(link.get("category", "")).lower() in NON_PRICE_CATEGORIES
 
 
 def _family_ok(link):
@@ -85,12 +104,15 @@ def load_linkage_map():
     quoted in both pounds and metric tons). Collapsing to one row per
     (ticker, commodity) avoids counting the same real-world exposure several
     times over. Links outside their equity group's product family (see FAMILY)
-    are dropped as statistical artifacts.
+    are dropped as statistical artifacts, and index links (NON_PRICE_CATEGORIES)
+    are dropped because an index is not a price.
     """
     links = json.loads((DATA / "linkage_map.json").read_text())["links"]
     best = {}
     for link in links:
         if link["tier"] not in TIER_WEIGHT:
+            continue
+        if is_non_price(link):
             continue
         if not _family_ok(link):
             continue

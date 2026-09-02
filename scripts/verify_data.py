@@ -297,6 +297,53 @@ def check_process_files():
             ok(f"orders.jsonl: {n} instructions parse, statuses valid, ts monotonic, ids unique-while-open")
 
 
+def check_linkage_map():
+    """Linkage-map proxy audit (data/linkage_map.json) — WARN-only.
+
+    The map is signal-mined upstream (metallica-fund) and re-committed here
+    verbatim, so this is where a bad proxy is caught before it reaches
+    exposure_history.json. Two things are tracked:
+    - index links (MetalMiner MMIs, category "mmi index values") sitting at
+      T1/T2: exposure.py drops them, but a rising count means the upstream
+      miner is still scoring clusters off a stepped composite index instead
+      of a price (the rare-earth MMI has ~0.30 weekly-return correlation
+      with PrNd oxide).
+    - Rare Earth tickers with no real (non-index) T1/T2 price link: the
+      cluster then carries zero commodity exposure and needs a real
+      assessment (PrNd/NdPr oxide, Nd, Dy, Tb) mined in.
+    """
+    p = DATA / "linkage_map.json"
+    if not p.exists():
+        return
+    try:
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+        import exposure
+        links = json.loads(p.read_text())["links"]
+    except Exception as e:
+        warn(f"linkage_map.json unreadable: {e}")
+        return
+
+    index_links = [lk for lk in links if exposure.is_non_price(lk)]
+    high_index = sorted({(lk["ticker"], lk["commodity"], lk["tier"]) for lk in index_links
+                         if lk.get("tier") in exposure.TIER_WEIGHT})
+    if high_index:
+        warn(f"linkage_map: {len(high_index)} index (MMI) link(s) at T1/T2, dropped by "
+             f"exposure.py — upstream still scores off a composite index: {high_index}")
+    else:
+        ok(f"linkage_map: {len(index_links)} index links, none at T1/T2")
+
+    kept = exposure.load_linkage_map()
+    rare = sorted({lk["ticker"] for lk in links
+                   if exposure.TICKER_GROUP_OVERRIDE.get(lk["ticker"], lk["equity_group"])
+                   == "Rare Earth"})
+    unlinked = [t for t in rare if not kept.get(t)]
+    if unlinked:
+        warn(f"linkage_map: Rare Earth tickers with no real T1/T2 price link "
+             f"(cluster has zero exposure until PrNd/NdPr oxide is mined in): {unlinked}")
+    else:
+        ok(f"linkage_map: all {len(rare)} Rare Earth tickers carry a real price link")
+
+
 def check_freshness(account, risk, pnl):
     now = datetime.datetime.now(datetime.timezone.utc)
     try:
@@ -340,6 +387,7 @@ def main():
         check_micro(micro, positions)
     check_categories(positions)
     check_process_files()
+    check_linkage_map()
     check_freshness(account, risk, pnl)
 
     print(f"\n{len(FAILS)} failure(s), {len(WARNS)} warning(s)")
