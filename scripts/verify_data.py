@@ -332,6 +332,28 @@ def check_linkage_map():
     else:
         ok(f"linkage_map: {len(index_links)} index links, none at T1/T2")
 
+    # Registry cross-check (data/mm_series_registry.json, written by
+    # mm_series_quality.py): a T1/T2 link whose commodity the registry graded
+    # "rejected" (stopped, frozen, index, unit flip) would pass exposure.py's
+    # family filter yet be built on a dead series. Silent until the registry exists.
+    reg = DATA / "mm_series_registry.json"
+    if reg.exists():
+        try:
+            grades = {str(r["id"]): r for r in json.loads(reg.read_text())["series"]}
+            bad = sorted({(lk["ticker"], lk["commodity"], lk["tier"],
+                           "; ".join(grades[str(lk["commodity_id"])]["reasons"]))
+                          for lk in links if lk.get("tier") in exposure.TIER_WEIGHT
+                          and str(lk.get("commodity_id")) in grades
+                          and grades[str(lk["commodity_id"])]["grade"] == "rejected"
+                          and not exposure.is_non_price(lk)})
+            if bad:
+                warn(f"linkage_map: {len(bad)} T1/T2 link(s) on series the registry rejects "
+                     f"(not index links, so exposure.py keeps them): {bad}")
+            else:
+                ok("linkage_map: no T1/T2 link on a registry-rejected price series")
+        except Exception as e:
+            warn(f"mm_series_registry.json unreadable: {e}")
+
     kept = exposure.load_linkage_map()
     rare = sorted({lk["ticker"] for lk in links
                    if exposure.TICKER_GROUP_OVERRIDE.get(lk["ticker"], lk["equity_group"])

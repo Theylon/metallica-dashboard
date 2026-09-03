@@ -1,0 +1,3876 @@
+{
+  "updatedAt": "2026-09-02T10:35:16+00:00",
+  "asOf": "2026-08-18",
+  "dumpDate": "2026-08-18",
+  "counts": {
+    "rejected": 42,
+    "level_only": 65,
+    "tradable": 57,
+    "tradable_public": 21,
+    "tradable_proprietary": 36
+  },
+  "series": [
+    {
+      "id": 5,
+      "category": "steel",
+      "name": "steel (steel, united states, wire rod, cwt)",
+      "grade": "rejected",
+      "unit": "cwt",
+      "public": false,
+      "reasons": [
+        "frozen: 72% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 1748,
+        "start": "2012-04-29",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1,
+        "maxGapDays": 34,
+        "flatShare": 0.7184,
+        "longestFlatRun": 22,
+        "bigJumps": 0,
+        "recentObs": 874,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 48,
+      "category": "scrap",
+      "name": "steel (scrap, united states, total us prompt industrial comp., gross ton)",
+      "grade": "level_only",
+      "unit": "gross ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 33 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 171,
+        "start": "2011-12-30",
+        "end": "2026-07-21",
+        "staleDays": 28,
+        "medianGapDays": 31.0,
+        "maxGapDays": 63,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 33,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 69,
+      "category": "steel",
+      "name": "goes (grain oriented electrical steel) (steel, united states, coil, metric ton)",
+      "grade": "level_only",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 28d",
+        "only 36 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 219,
+        "start": "2011-12-26",
+        "end": "2026-08-03",
+        "staleDays": 15,
+        "medianGapDays": 28.0,
+        "maxGapDays": 102,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 36,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 132,
+      "category": "scrap",
+      "name": "steel (scrap, united states, south prompt industrial comp., gross ton)",
+      "grade": "level_only",
+      "unit": "gross ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 33 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 176,
+        "start": "2011-12-30",
+        "end": "2026-07-21",
+        "staleDays": 28,
+        "medianGapDays": 31,
+        "maxGapDays": 92,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 33,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 138,
+      "category": "non ferrous metals",
+      "name": "lead n (non ferrous metals, lme, primary 3 month, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1948,
+        "start": "2011-12-30",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1,
+        "maxGapDays": 33,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 739,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 143,
+      "category": "steel",
+      "name": "steel (steel, united states, hdg, short ton)",
+      "grade": "level_only",
+      "unit": "short ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 7d",
+        "only 150 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 739,
+        "start": "2011-12-28",
+        "end": "2026-08-14",
+        "staleDays": 4,
+        "medianGapDays": 7.0,
+        "maxGapDays": 29,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 150,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 153,
+      "category": "scrap",
+      "name": "steel (scrap, united states, total us shredded scrap (#2), gross ton)",
+      "grade": "level_only",
+      "unit": "gross ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 30d",
+        "only 34 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 175,
+        "start": "2011-12-30",
+        "end": "2026-07-21",
+        "staleDays": 28,
+        "medianGapDays": 30.5,
+        "maxGapDays": 63,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 34,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 184,
+      "category": "precious metals",
+      "name": "palladium (precious metals, united states, sponge 99.95% purity, troy ounce)",
+      "grade": "level_only",
+      "unit": "troy ounce",
+      "public": false,
+      "reasons": [
+        "1 >50% jump(s) \u2014 check before use"
+      ],
+      "stats": {
+        "obs": 3254,
+        "start": "2012-01-03",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1,
+        "maxGapDays": 92,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 1,
+        "recentObs": 700,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 187,
+      "category": "precious metals",
+      "name": "platinum (precious metals, united states, sponge 99.95% purity, troy ounce)",
+      "grade": "tradable",
+      "unit": "troy ounce",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3369,
+        "start": "2012-01-03",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1.0,
+        "maxGapDays": 10,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 711,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 191,
+      "category": "stainless steel",
+      "name": "304 (stainless steel, united states, #4 polish vinyl ctl (0.048 in x 48 in) sheet, pound)",
+      "grade": "rejected",
+      "unit": "pound",
+      "public": false,
+      "reasons": [
+        "frozen: 72% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 342,
+        "start": "2020-01-01",
+        "end": "2026-08-01",
+        "staleDays": 17,
+        "medianGapDays": 1,
+        "maxGapDays": 90,
+        "flatShare": 0.7155,
+        "longestFlatRun": 34,
+        "bigJumps": 0,
+        "recentObs": 154,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 213,
+      "category": "scrap",
+      "name": "steel (scrap, united states, north central / east #1 heavy melting steel, gross ton)",
+      "grade": "level_only",
+      "unit": "gross ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 36 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 172,
+        "start": "2011-12-30",
+        "end": "2026-07-21",
+        "staleDays": 28,
+        "medianGapDays": 31,
+        "maxGapDays": 63,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 36,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 235,
+      "category": "stainless steel",
+      "name": "430 (stainless steel, united states, #4 polish vinyl ctl (0.048 in x 48 in) sheet, pound)",
+      "grade": "rejected",
+      "unit": "pound",
+      "public": false,
+      "reasons": [
+        "frozen: 62% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 240,
+        "start": "2020-01-01",
+        "end": "2026-08-01",
+        "staleDays": 17,
+        "medianGapDays": 1,
+        "maxGapDays": 91,
+        "flatShare": 0.6234,
+        "longestFlatRun": 32,
+        "bigJumps": 0,
+        "recentObs": 140,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 241,
+      "category": "precious metals",
+      "name": "rhodium (precious metals, united states, sponge 99.9% purity, troy ounce)",
+      "grade": "level_only",
+      "unit": "troy ounce",
+      "public": false,
+      "reasons": [
+        "only 321 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 1707,
+        "start": "2012-01-03",
+        "end": "2026-08-14",
+        "staleDays": 4,
+        "medianGapDays": 1.0,
+        "maxGapDays": 78,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 321,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 245,
+      "category": "non ferrous metals",
+      "name": "copper n (non ferrous metals, lme, primary 3 month, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1967,
+        "start": "2011-12-01",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1.0,
+        "maxGapDays": 61,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 744,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 257,
+      "category": "steel",
+      "name": "steel (steel, united states, hrc, short ton)",
+      "grade": "level_only",
+      "unit": "short ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 7d",
+        "only 151 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 803,
+        "start": "2011-12-28",
+        "end": "2026-08-14",
+        "staleDays": 4,
+        "medianGapDays": 7.0,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 151,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 258,
+      "category": "steel",
+      "name": "steel (steel, china, hrc, short ton)",
+      "grade": "tradable",
+      "unit": "short ton",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 2079,
+        "start": "2011-12-30",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1.0,
+        "maxGapDays": 66,
+        "flatShare": 0.0188,
+        "longestFlatRun": 4,
+        "bigJumps": 0,
+        "recentObs": 934,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 260,
+      "category": "scrap",
+      "name": "steel (scrap, united states, south #1 heavy melting steel, gross ton)",
+      "grade": "level_only",
+      "unit": "gross ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 33 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 176,
+        "start": "2011-12-30",
+        "end": "2026-07-21",
+        "staleDays": 28,
+        "medianGapDays": 31,
+        "maxGapDays": 63,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 33,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 290,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, europe, 6082 plate, metric ton)",
+      "grade": "level_only",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 35 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 173,
+        "start": "2011-11-16",
+        "end": "2026-08-03",
+        "staleDays": 15,
+        "medianGapDays": 31.0,
+        "maxGapDays": 141,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 35,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 295,
+      "category": "non ferrous metals",
+      "name": "aluminum n (non ferrous metals, lme, primary cash, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1965,
+        "start": "2011-12-01",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1.0,
+        "maxGapDays": 32,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 745,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 318,
+      "category": "non ferrous metals",
+      "name": "lead n (non ferrous metals, lme, primary cash, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1953,
+        "start": "2011-12-30",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1.0,
+        "maxGapDays": 33,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 738,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 343,
+      "category": "steel",
+      "name": "steel (steel, united states, plate a36 astm a36 (0.75 in x 120 in), cwt)",
+      "grade": "level_only",
+      "unit": "cwt",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 7d",
+        "only 131 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 277,
+        "start": "2020-01-01",
+        "end": "2026-08-15",
+        "staleDays": 3,
+        "medianGapDays": 7.0,
+        "maxGapDays": 26,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 131,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 356,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, korea, commercial 1050 sheet, kilogram)",
+      "grade": "rejected",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "stale 271d (last 2025-11-20)"
+      ],
+      "stats": {
+        "obs": 265,
+        "start": "2011-10-31",
+        "end": "2025-11-20",
+        "staleDays": 271,
+        "medianGapDays": 8.0,
+        "maxGapDays": 815,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 46,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 379,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, united states, us midwest premium futures 3 mo, pound)",
+      "grade": "level_only",
+      "unit": "pound",
+      "public": true,
+      "reasons": [
+        "only 512 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 1589,
+        "start": "2013-04-12",
+        "end": "2026-08-14",
+        "staleDays": 4,
+        "medianGapDays": 2.0,
+        "maxGapDays": 84,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 512,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 393,
+      "category": "steel",
+      "name": "steel (steel, china, plate, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 2002,
+        "start": "2011-12-30",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1,
+        "maxGapDays": 73,
+        "flatShare": 0.0195,
+        "longestFlatRun": 4,
+        "bigJumps": 0,
+        "recentObs": 929,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 408,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, europe, 5083 plate, metric ton)",
+      "grade": "level_only",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 35 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 177,
+        "start": "2011-11-16",
+        "end": "2026-08-03",
+        "staleDays": 15,
+        "medianGapDays": 31.0,
+        "maxGapDays": 77,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 35,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 414,
+      "category": "steel",
+      "name": "steel (steel, china, hdg coil, metric ton)",
+      "grade": "level_only",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 5d",
+        "only 197 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 438,
+        "start": "2011-12-26",
+        "end": "2026-08-12",
+        "staleDays": 6,
+        "medianGapDays": 5,
+        "maxGapDays": 316,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 197,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 429,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, europe, 6082 bar, metric ton)",
+      "grade": "level_only",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 35 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 171,
+        "start": "2011-11-16",
+        "end": "2026-08-03",
+        "staleDays": 15,
+        "medianGapDays": 31.0,
+        "maxGapDays": 77,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 35,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 434,
+      "category": "stainless steel",
+      "name": "316l (stainless steel, united states, 2b ctl (0.075 in x 48 in) sheet, pound)",
+      "grade": "rejected",
+      "unit": "pound",
+      "public": false,
+      "reasons": [
+        "frozen: 66% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 286,
+        "start": "2020-01-01",
+        "end": "2026-08-01",
+        "staleDays": 17,
+        "medianGapDays": 1,
+        "maxGapDays": 90,
+        "flatShare": 0.6561,
+        "longestFlatRun": 34,
+        "bigJumps": 0,
+        "recentObs": 174,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 457,
+      "category": "non ferrous metals",
+      "name": "nickel (non ferrous metals, china, primary, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3089,
+        "start": "2011-12-30",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1.0,
+        "maxGapDays": 99,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 613,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 468,
+      "category": "stainless steel",
+      "name": "409 (stainless steel, united states, 2d (0.06 in x 48 in) sheet, pound)",
+      "grade": "rejected",
+      "unit": "pound",
+      "public": false,
+      "reasons": [
+        "frozen: 81% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 435,
+        "start": "2020-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
+        "maxGapDays": 91,
+        "flatShare": 0.8111,
+        "longestFlatRun": 32,
+        "bigJumps": 1,
+        "recentObs": 296,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 486,
+      "category": "scrap",
+      "name": "steel (scrap, united states, north midwest #1 heavy melting steel, gross ton)",
+      "grade": "level_only",
+      "unit": "gross ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 33 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 174,
+        "start": "2011-12-30",
+        "end": "2026-07-21",
+        "staleDays": 28,
+        "medianGapDays": 31,
+        "maxGapDays": 92,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 33,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 503,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, united states, 1100 h14 (0.08 in x 48 in) sheet, metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "frozen: 45% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 1874,
+        "start": "2020-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1,
+        "maxGapDays": 21,
+        "flatShare": 0.4522,
+        "longestFlatRun": 13,
+        "bigJumps": 0,
+        "recentObs": 973,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 523,
+      "category": "steel",
+      "name": "steel (steel, united states, aluminized dds astm a463 t1 40 (0.05 in x 60 in), cwt)",
+      "grade": "rejected",
+      "unit": "cwt",
+      "public": false,
+      "reasons": [
+        "frozen: 51% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 698,
+        "start": "2020-01-01",
+        "end": "2026-08-15",
+        "staleDays": 3,
+        "medianGapDays": 1,
+        "maxGapDays": 23,
+        "flatShare": 0.5136,
+        "longestFlatRun": 17,
+        "bigJumps": 0,
+        "recentObs": 351,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 538,
+      "category": "stainless steel",
+      "name": "304 (stainless steel, united states, 2b (0.075 in x 48 in) sheet, pound)",
+      "grade": "rejected",
+      "unit": "pound",
+      "public": false,
+      "reasons": [
+        "frozen: 73% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 332,
+        "start": "2020-01-01",
+        "end": "2026-08-01",
+        "staleDays": 17,
+        "medianGapDays": 1,
+        "maxGapDays": 90,
+        "flatShare": 0.7251,
+        "longestFlatRun": 34,
+        "bigJumps": 0,
+        "recentObs": 122,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 539,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, china, aluminum billet, metric ton)",
+      "grade": "level_only",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "only 471 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 1712,
+        "start": "2011-12-23",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1,
+        "maxGapDays": 302,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 471,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 552,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, europe, commercial 1050 sheet, metric ton)",
+      "grade": "level_only",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 35 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 180,
+        "start": "2011-11-16",
+        "end": "2026-08-03",
+        "staleDays": 15,
+        "medianGapDays": 31,
+        "maxGapDays": 77,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 35,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 561,
+      "category": "scrap",
+      "name": "steel (scrap, united states, north central / east prompt industrial comp., gross ton)",
+      "grade": "level_only",
+      "unit": "gross ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 32 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 159,
+        "start": "2012-10-31",
+        "end": "2026-07-21",
+        "staleDays": 28,
+        "medianGapDays": 31.0,
+        "maxGapDays": 92,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 32,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 581,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, korea, 5052 coil premium over 1050, kilogram)",
+      "grade": "rejected",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "stale 271d (last 2025-11-20)"
+      ],
+      "stats": {
+        "obs": 268,
+        "start": "2011-11-14",
+        "end": "2025-11-20",
+        "staleDays": 271,
+        "medianGapDays": 8,
+        "maxGapDays": 815,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 46,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 613,
+      "category": "rare earth metals",
+      "name": "yttria (rare earth metals, china, 99.99-99.999% avg ref price, metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "3 >50% jump(s) in a 172-obs series"
+      ],
+      "stats": {
+        "obs": 172,
+        "start": "2011-12-15",
+        "end": "2026-08-14",
+        "staleDays": 4,
+        "medianGapDays": 15,
+        "maxGapDays": 395,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 3,
+        "recentObs": 56,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 618,
+      "category": "steel",
+      "name": "steel (steel, korea, rebar, metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "stale 229d (last 2026-01-01)"
+      ],
+      "stats": {
+        "obs": 359,
+        "start": "2011-12-28",
+        "end": "2026-01-01",
+        "staleDays": 229,
+        "medianGapDays": 9.0,
+        "maxGapDays": 78,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 64,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 625,
+      "category": "steel",
+      "name": "steel (steel, united states, cold-rolled coil a36 astm 1008 (0.05 in x 60 in), cwt)",
+      "grade": "level_only",
+      "unit": "cwt",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 7d",
+        "only 153 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 334,
+        "start": "2020-01-01",
+        "end": "2026-08-15",
+        "staleDays": 3,
+        "medianGapDays": 7,
+        "maxGapDays": 26,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 153,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 655,
+      "category": "non ferrous metals",
+      "name": "zinc n (non ferrous metals, lme, primary 3 month, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1969,
+        "start": "2011-12-31",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1.0,
+        "maxGapDays": 61,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 745,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 663,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, united states, 3003 h14 (0.08 in x 48 in) sheet, metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "frozen: 47% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 1740,
+        "start": "2020-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1,
+        "maxGapDays": 90,
+        "flatShare": 0.4727,
+        "longestFlatRun": 13,
+        "bigJumps": 0,
+        "recentObs": 948,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 671,
+      "category": "scrap",
+      "name": "steel (scrap, united states, north midwest shredded scrap (#2), gross ton)",
+      "grade": "level_only",
+      "unit": "gross ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 34 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 174,
+        "start": "2011-12-30",
+        "end": "2026-07-21",
+        "staleDays": 28,
+        "medianGapDays": 31,
+        "maxGapDays": 63,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 34,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 678,
+      "category": "non ferrous metals",
+      "name": "tin n (non ferrous metals, lme, primary cash, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1952,
+        "start": "2011-12-30",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1,
+        "maxGapDays": 33,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 744,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 715,
+      "category": "scrap",
+      "name": "steel (scrap, united states, south shredded scrap (#2), gross ton)",
+      "grade": "level_only",
+      "unit": "gross ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 32 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 171,
+        "start": "2011-12-30",
+        "end": "2026-07-21",
+        "staleDays": 28,
+        "medianGapDays": 31.0,
+        "maxGapDays": 91,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 32,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 733,
+      "category": "steel",
+      "name": "steel (steel, china, rebar, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 2157,
+        "start": "2011-12-28",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1.0,
+        "maxGapDays": 98,
+        "flatShare": 0.0181,
+        "longestFlatRun": 4,
+        "bigJumps": 0,
+        "recentObs": 926,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 806,
+      "category": "non ferrous metals",
+      "name": "nickel n (non ferrous metals, lme, primary 3 month, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1952,
+        "start": "2011-12-30",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1,
+        "maxGapDays": 33,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 735,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 821,
+      "category": "non ferrous metals",
+      "name": "zinc (non ferrous metals, china, primary cash, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3002,
+        "start": "2011-12-30",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1,
+        "maxGapDays": 99,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 610,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 827,
+      "category": "stainless steel",
+      "name": "201 (stainless steel, united states, 2b ctl (0.075 in x 48 in) sheet, pound)",
+      "grade": "rejected",
+      "unit": "pound",
+      "public": false,
+      "reasons": [
+        "frozen: 94% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 1272,
+        "start": "2020-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1,
+        "maxGapDays": 90,
+        "flatShare": 0.9355,
+        "longestFlatRun": 34,
+        "bigJumps": 0,
+        "recentObs": 883,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 852,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, china, primary cash, metric ton)",
+      "grade": "level_only",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "only 594 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 2994,
+        "start": "2011-12-30",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1,
+        "maxGapDays": 100,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 594,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 905,
+      "category": "steel",
+      "name": "steel (steel, united states, galvanized type a astm a653 g30 (0.06 in x 48 in), cwt)",
+      "grade": "level_only",
+      "unit": "cwt",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 5d",
+        "38% of steps unchanged",
+        "only 153 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 539,
+        "start": "2020-01-01",
+        "end": "2026-08-15",
+        "staleDays": 3,
+        "medianGapDays": 5.0,
+        "maxGapDays": 23,
+        "flatShare": 0.381,
+        "longestFlatRun": 17,
+        "bigJumps": 0,
+        "recentObs": 153,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 916,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, united states, 5052 h32 (0.06 in x 60 in) sheet, metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "frozen: 49% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 1784,
+        "start": "2020-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1,
+        "maxGapDays": 90,
+        "flatShare": 0.4863,
+        "longestFlatRun": 13,
+        "bigJumps": 0,
+        "recentObs": 995,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 924,
+      "category": "steel",
+      "name": "steel (steel, united states, hot-rolled coil 50 astm 1018 (0.25 in x 60 in), cwt)",
+      "grade": "level_only",
+      "unit": "cwt",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 7d",
+        "only 154 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 341,
+        "start": "2020-01-01",
+        "end": "2026-08-15",
+        "staleDays": 3,
+        "medianGapDays": 7.0,
+        "maxGapDays": 26,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 154,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 947,
+      "category": "steel",
+      "name": "steel (steel, united states, plate, short ton)",
+      "grade": "level_only",
+      "unit": "short ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 7d",
+        "only 131 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 521,
+        "start": "2011-12-28",
+        "end": "2026-08-14",
+        "staleDays": 4,
+        "medianGapDays": 7.0,
+        "maxGapDays": 34,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 131,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 972,
+      "category": "non ferrous metals",
+      "name": "zinc n (non ferrous metals, lme, primary cash, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1974,
+        "start": "2011-12-31",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1,
+        "maxGapDays": 33,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 748,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 982,
+      "category": "steel",
+      "name": "steel (steel, china, slab, metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "stale 42d (last 2026-07-07)"
+      ],
+      "stats": {
+        "obs": 1512,
+        "start": "2011-12-27",
+        "end": "2026-07-07",
+        "staleDays": 42,
+        "medianGapDays": 2,
+        "maxGapDays": 314,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 382,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1024,
+      "category": "non ferrous metals",
+      "name": "tin n (non ferrous metals, lme, primary 3 month, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1948,
+        "start": "2011-12-30",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1,
+        "maxGapDays": 39,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 732,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1040,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, united states, 6061 t651 (0.5 in x 48 in) sheet, metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "frozen: 48% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 1767,
+        "start": "2020-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
+        "maxGapDays": 90,
+        "flatShare": 0.4813,
+        "longestFlatRun": 13,
+        "bigJumps": 0,
+        "recentObs": 966,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1044,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, korea, 3003 coil premium over 1050, kilogram)",
+      "grade": "rejected",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "stale 271d (last 2025-11-20)"
+      ],
+      "stats": {
+        "obs": 270,
+        "start": "2011-11-14",
+        "end": "2025-11-20",
+        "staleDays": 271,
+        "medianGapDays": 8,
+        "maxGapDays": 815,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 46,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1072,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, india, primary cash, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3407,
+        "start": "2011-12-30",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1.0,
+        "maxGapDays": 24,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 634,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1136,
+      "category": "steel",
+      "name": "steel (steel, korea, hrc, metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "stale 229d (last 2026-01-01)"
+      ],
+      "stats": {
+        "obs": 283,
+        "start": "2011-12-28",
+        "end": "2026-01-01",
+        "staleDays": 229,
+        "medianGapDays": 14.0,
+        "maxGapDays": 111,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 47,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1152,
+      "category": "scrap",
+      "name": "steel (scrap, united states, total us #1 heavy melting steel, gross ton)",
+      "grade": "level_only",
+      "unit": "gross ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 30d",
+        "only 33 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 175,
+        "start": "2011-12-30",
+        "end": "2026-07-21",
+        "staleDays": 28,
+        "medianGapDays": 30.5,
+        "maxGapDays": 63,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 33,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1189,
+      "category": "stainless surcharges",
+      "name": "430-coil (stainless surcharges, united states, nas surcharge, pound)",
+      "grade": "rejected",
+      "unit": "pound",
+      "public": false,
+      "reasons": [
+        "1 >50% jump(s) in a 156-obs series"
+      ],
+      "stats": {
+        "obs": 156,
+        "start": "2011-10-26",
+        "end": "2026-07-27",
+        "staleDays": 22,
+        "medianGapDays": 31,
+        "maxGapDays": 272,
+        "flatShare": 0.0065,
+        "longestFlatRun": 1,
+        "bigJumps": 1,
+        "recentObs": 32,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1222,
+      "category": "stainless surcharges",
+      "name": "304/304l-coil (stainless surcharges, united states, nas surcharge, pound)",
+      "grade": "level_only",
+      "unit": "pound",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 30d",
+        "only 36 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 175,
+        "start": "2011-12-22",
+        "end": "2026-07-27",
+        "staleDays": 22,
+        "medianGapDays": 30.0,
+        "maxGapDays": 57,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 36,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1228,
+      "category": "non ferrous metals",
+      "name": "nickel (non ferrous metals, india, primary, kilogram)",
+      "grade": "level_only",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "2 >50% jump(s) \u2014 check before use"
+      ],
+      "stats": {
+        "obs": 3305,
+        "start": "2011-12-30",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1.0,
+        "maxGapDays": 42,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 2,
+        "recentObs": 642,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1248,
+      "category": "steel",
+      "name": "steel (steel, china, crc, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 1765,
+        "start": "2011-12-22",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1.0,
+        "maxGapDays": 401,
+        "flatShare": 0.0221,
+        "longestFlatRun": 4,
+        "bigJumps": 0,
+        "recentObs": 896,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1270,
+      "category": "non ferrous metals",
+      "name": "nickel n (non ferrous metals, lme, primary cash, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1954,
+        "start": "2011-12-30",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1,
+        "maxGapDays": 33,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 742,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1273,
+      "category": "steel",
+      "name": "steel (steel, united states, crc, short ton)",
+      "grade": "level_only",
+      "unit": "short ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 7d",
+        "only 151 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 786,
+        "start": "2011-12-28",
+        "end": "2026-08-14",
+        "staleDays": 4,
+        "medianGapDays": 7,
+        "maxGapDays": 26,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 151,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1281,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, united states, 6061 t6 (0.08 in x 48 in) sheet, metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "frozen: 47% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 1735,
+        "start": "2020-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
+        "maxGapDays": 90,
+        "flatShare": 0.4717,
+        "longestFlatRun": 13,
+        "bigJumps": 0,
+        "recentObs": 949,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1337,
+      "category": "non ferrous metals",
+      "name": "zinc (non ferrous metals, india, primary cash, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3422,
+        "start": "2011-12-31",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1,
+        "maxGapDays": 14,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 642,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1346,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, united states, 5083 h321 (1 in x 60 in) sheet, metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "frozen: 49% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 1788,
+        "start": "2020-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1,
+        "maxGapDays": 90,
+        "flatShare": 0.4868,
+        "longestFlatRun": 13,
+        "bigJumps": 0,
+        "recentObs": 970,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1373,
+      "category": "scrap",
+      "name": "steel (scrap, united states, north midwest prompt industrial comp., gross ton)",
+      "grade": "level_only",
+      "unit": "gross ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 33 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 169,
+        "start": "2011-12-30",
+        "end": "2026-07-21",
+        "staleDays": 28,
+        "medianGapDays": 31.0,
+        "maxGapDays": 62,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 33,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1416,
+      "category": "non ferrous metals",
+      "name": "copper n (non ferrous metals, lme, primary cash, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1973,
+        "start": "2011-12-01",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1.0,
+        "maxGapDays": 61,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 746,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1430,
+      "category": "non ferrous metals",
+      "name": "aluminum n (non ferrous metals, lme, primary 3 month, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1967,
+        "start": "2011-12-01",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1.0,
+        "maxGapDays": 32,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 745,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1456,
+      "category": "scrap",
+      "name": "steel (scrap, united states, north central / east shredded scrap (#2), gross ton)",
+      "grade": "level_only",
+      "unit": "gross ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 30 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 161,
+        "start": "2011-12-30",
+        "end": "2026-07-21",
+        "staleDays": 28,
+        "medianGapDays": 31.0,
+        "maxGapDays": 63,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 30,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1471,
+      "category": "mmi index values",
+      "name": "aluminum mmi (mmi index values, global, na, index)",
+      "grade": "rejected",
+      "unit": "index",
+      "public": false,
+      "reasons": [
+        "composite index, not a price"
+      ],
+      "stats": {
+        "obs": 1867,
+        "start": "2012-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
+        "maxGapDays": 121,
+        "flatShare": 0.3344,
+        "longestFlatRun": 26,
+        "bigJumps": 0,
+        "recentObs": 1082,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1472,
+      "category": "mmi index values",
+      "name": "automotive mmi (mmi index values, global, na, index)",
+      "grade": "rejected",
+      "unit": "index",
+      "public": false,
+      "reasons": [
+        "composite index, not a price"
+      ],
+      "stats": {
+        "obs": 1900,
+        "start": "2012-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1,
+        "maxGapDays": 122,
+        "flatShare": 0.2628,
+        "longestFlatRun": 9,
+        "bigJumps": 0,
+        "recentObs": 1082,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1473,
+      "category": "mmi index values",
+      "name": "construction mmi (mmi index values, global, na, index)",
+      "grade": "rejected",
+      "unit": "index",
+      "public": false,
+      "reasons": [
+        "composite index, not a price"
+      ],
+      "stats": {
+        "obs": 1910,
+        "start": "2012-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1,
+        "maxGapDays": 89,
+        "flatShare": 0.2111,
+        "longestFlatRun": 23,
+        "bigJumps": 0,
+        "recentObs": 1082,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1474,
+      "category": "mmi index values",
+      "name": "copper mmi (mmi index values, global, na, index)",
+      "grade": "rejected",
+      "unit": "index",
+      "public": false,
+      "reasons": [
+        "composite index, not a price"
+      ],
+      "stats": {
+        "obs": 1891,
+        "start": "2012-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
+        "maxGapDays": 62,
+        "flatShare": 0.2958,
+        "longestFlatRun": 9,
+        "bigJumps": 0,
+        "recentObs": 1082,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1475,
+      "category": "mmi index values",
+      "name": "global precious metals mmi (mmi index values, global, na, index)",
+      "grade": "rejected",
+      "unit": "index",
+      "public": false,
+      "reasons": [
+        "composite index, not a price"
+      ],
+      "stats": {
+        "obs": 1924,
+        "start": "2012-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1,
+        "maxGapDays": 91,
+        "flatShare": 0.286,
+        "longestFlatRun": 9,
+        "bigJumps": 0,
+        "recentObs": 1082,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1476,
+      "category": "mmi index values",
+      "name": "goes mmi (mmi index values, global, na, index)",
+      "grade": "rejected",
+      "unit": "index",
+      "public": false,
+      "reasons": [
+        "composite index, not a price"
+      ],
+      "stats": {
+        "obs": 220,
+        "start": "2012-01-01",
+        "end": "2026-08-03",
+        "staleDays": 15,
+        "medianGapDays": 28,
+        "maxGapDays": 61,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 37,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1477,
+      "category": "mmi index values",
+      "name": "rare earths mmi (mmi index values, global, na, index)",
+      "grade": "rejected",
+      "unit": "index",
+      "public": false,
+      "reasons": [
+        "composite index, not a price",
+        "frozen: 45% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 1892,
+        "start": "2012-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1,
+        "maxGapDays": 243,
+        "flatShare": 0.4506,
+        "longestFlatRun": 34,
+        "bigJumps": 0,
+        "recentObs": 1082,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1478,
+      "category": "mmi index values",
+      "name": "raw steels mmi (mmi index values, global, na, index)",
+      "grade": "rejected",
+      "unit": "index",
+      "public": false,
+      "reasons": [
+        "composite index, not a price"
+      ],
+      "stats": {
+        "obs": 1909,
+        "start": "2012-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
+        "maxGapDays": 125,
+        "flatShare": 0.1499,
+        "longestFlatRun": 8,
+        "bigJumps": 0,
+        "recentObs": 1082,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1479,
+      "category": "mmi index values",
+      "name": "renewables mmi (mmi index values, global, na, index)",
+      "grade": "rejected",
+      "unit": "index",
+      "public": false,
+      "reasons": [
+        "composite index, not a price"
+      ],
+      "stats": {
+        "obs": 1874,
+        "start": "2012-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1,
+        "maxGapDays": 124,
+        "flatShare": 0.2429,
+        "longestFlatRun": 10,
+        "bigJumps": 0,
+        "recentObs": 1057,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 1480,
+      "category": "mmi index values",
+      "name": "stainless mmi (mmi index values, global, na, index)",
+      "grade": "rejected",
+      "unit": "index",
+      "public": false,
+      "reasons": [
+        "composite index, not a price"
+      ],
+      "stats": {
+        "obs": 1919,
+        "start": "2012-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
+        "maxGapDays": 92,
+        "flatShare": 0.3201,
+        "longestFlatRun": 21,
+        "bigJumps": 0,
+        "recentObs": 1082,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 9933,
+      "category": "precious metals",
+      "name": "gold (precious metals, united states, globex (comex) spot, troy ounce)",
+      "grade": "tradable",
+      "unit": "troy ounce",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1855,
+        "start": "2019-01-01",
+        "end": "2026-08-14",
+        "staleDays": 4,
+        "medianGapDays": 1.0,
+        "maxGapDays": 8,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 704,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 9938,
+      "category": "precious metals",
+      "name": "silver (precious metals, united states, globex (comex) spot, troy ounce)",
+      "grade": "tradable",
+      "unit": "troy ounce",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1856,
+        "start": "2019-01-01",
+        "end": "2026-08-14",
+        "staleDays": 4,
+        "medianGapDays": 1,
+        "maxGapDays": 8,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 706,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 29003,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, europe, 5251 H32 (0.08 in x 48 in) sheet, metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "frozen: 60% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 1369,
+        "start": "2019-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
+        "maxGapDays": 34,
+        "flatShare": 0.6045,
+        "longestFlatRun": 19,
+        "bigJumps": 0,
+        "recentObs": 900,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 29004,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, europe, 6082 T6 (0.08 in x 48 in) sheet, metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "frozen: 61% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 1371,
+        "start": "2019-01-01",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
+        "maxGapDays": 34,
+        "flatShare": 0.6051,
+        "longestFlatRun": 19,
+        "bigJumps": 0,
+        "recentObs": 900,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 33075,
+      "category": "steel",
+      "name": "steel (steel, europe, hrc, metric ton)",
+      "grade": "level_only",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 36 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 152,
+        "start": "2014-01-01",
+        "end": "2026-08-06",
+        "staleDays": 12,
+        "medianGapDays": 31,
+        "maxGapDays": 52,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 36,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 33076,
+      "category": "steel",
+      "name": "steel (steel, europe, crc, metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "2 >50% jump(s) in a 152-obs series"
+      ],
+      "stats": {
+        "obs": 152,
+        "start": "2014-01-01",
+        "end": "2026-08-06",
+        "staleDays": 12,
+        "medianGapDays": 31,
+        "maxGapDays": 52,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 2,
+        "recentObs": 36,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 33077,
+      "category": "steel",
+      "name": "steel (steel, europe, plate, metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "1 >50% jump(s) in a 152-obs series"
+      ],
+      "stats": {
+        "obs": 152,
+        "start": "2014-01-01",
+        "end": "2026-08-06",
+        "staleDays": 12,
+        "medianGapDays": 31,
+        "maxGapDays": 52,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 1,
+        "recentObs": 36,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 33920,
+      "category": "steel",
+      "name": "steel (steel, europe, hdg, metric ton)",
+      "grade": "level_only",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 36 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 151,
+        "start": "2014-01-01",
+        "end": "2026-08-06",
+        "staleDays": 12,
+        "medianGapDays": 31.0,
+        "maxGapDays": 60,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 36,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 42604,
+      "category": "stainless steel",
+      "name": "304 (stainless steel, europe, cr coil, metric ton)",
+      "grade": "level_only",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 36 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 151,
+        "start": "2014-01-01",
+        "end": "2026-08-06",
+        "staleDays": 12,
+        "medianGapDays": 31.0,
+        "maxGapDays": 89,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 36,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 42605,
+      "category": "stainless steel",
+      "name": "430 (stainless steel, europe, cr coil, metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "2 >50% jump(s) in a 150-obs series"
+      ],
+      "stats": {
+        "obs": 150,
+        "start": "2014-01-01",
+        "end": "2026-08-06",
+        "staleDays": 12,
+        "medianGapDays": 31,
+        "maxGapDays": 90,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 2,
+        "recentObs": 35,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 49796,
+      "category": "stainless steel",
+      "name": "304 (stainless steel, europe, round bar (25-80 mm), metric ton)",
+      "grade": "level_only",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 36 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 152,
+        "start": "2014-01-01",
+        "end": "2026-08-06",
+        "staleDays": 12,
+        "medianGapDays": 31,
+        "maxGapDays": 59,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 36,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 49797,
+      "category": "stainless steel",
+      "name": "304 (stainless steel, europe, round bar (<25mm), metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "1 >50% jump(s) in a 152-obs series"
+      ],
+      "stats": {
+        "obs": 152,
+        "start": "2014-01-01",
+        "end": "2026-08-06",
+        "staleDays": 12,
+        "medianGapDays": 31,
+        "maxGapDays": 59,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 1,
+        "recentObs": 36,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 49798,
+      "category": "stainless steel",
+      "name": "304 (stainless steel, europe, square bar, metric ton)",
+      "grade": "level_only",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 36 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 151,
+        "start": "2014-01-01",
+        "end": "2026-08-06",
+        "staleDays": 12,
+        "medianGapDays": 31.0,
+        "maxGapDays": 84,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 36,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 72092,
+      "category": "battery prices",
+      "name": "nca811 (battery prices, global, index, index)",
+      "grade": "level_only",
+      "unit": "index",
+      "public": false,
+      "reasons": [
+        "17% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 2473,
+        "start": "2018-06-30",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
+        "maxGapDays": 11,
+        "flatShare": 0.1683,
+        "longestFlatRun": 4,
+        "bigJumps": 0,
+        "recentObs": 1085,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 72093,
+      "category": "battery prices",
+      "name": "nca955 (battery prices, global, index, index)",
+      "grade": "level_only",
+      "unit": "index",
+      "public": false,
+      "reasons": [
+        "17% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 2473,
+        "start": "2018-06-30",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
+        "maxGapDays": 11,
+        "flatShare": 0.1683,
+        "longestFlatRun": 4,
+        "bigJumps": 0,
+        "recentObs": 1085,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 72094,
+      "category": "battery prices",
+      "name": "lmo carbonate-based (battery prices, global, index, index)",
+      "grade": "level_only",
+      "unit": "index",
+      "public": false,
+      "reasons": [
+        "24% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 2344,
+        "start": "2018-06-30",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1,
+        "maxGapDays": 18,
+        "flatShare": 0.2411,
+        "longestFlatRun": 48,
+        "bigJumps": 0,
+        "recentObs": 1085,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 72095,
+      "category": "battery prices",
+      "name": "lmo hydroxide-based (battery prices, global, index, index)",
+      "grade": "level_only",
+      "unit": "index",
+      "public": false,
+      "reasons": [
+        "25% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 2323,
+        "start": "2018-06-30",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
+        "maxGapDays": 18,
+        "flatShare": 0.2489,
+        "longestFlatRun": 92,
+        "bigJumps": 0,
+        "recentObs": 1085,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 72096,
+      "category": "battery prices",
+      "name": "nmc111 carbonate-based (battery prices, global, index, index)",
+      "grade": "level_only",
+      "unit": "index",
+      "public": false,
+      "reasons": [
+        "22% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 2363,
+        "start": "2018-06-30",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
+        "maxGapDays": 14,
+        "flatShare": 0.2231,
+        "longestFlatRun": 30,
+        "bigJumps": 0,
+        "recentObs": 1085,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 72097,
+      "category": "battery prices",
+      "name": "nmc811 hydroxide-based (battery prices, global, index, index)",
+      "grade": "level_only",
+      "unit": "index",
+      "public": false,
+      "reasons": [
+        "25% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 2327,
+        "start": "2018-06-30",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
+        "maxGapDays": 18,
+        "flatShare": 0.2481,
+        "longestFlatRun": 92,
+        "bigJumps": 0,
+        "recentObs": 1085,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 72098,
+      "category": "battery prices",
+      "name": "lco (battery prices, global, index, index)",
+      "grade": "level_only",
+      "unit": "index",
+      "public": false,
+      "reasons": [
+        "20% of steps unchanged"
+      ],
+      "stats": {
+        "obs": 2414,
+        "start": "2018-06-30",
+        "end": "2026-08-18",
+        "staleDays": 0,
+        "medianGapDays": 1,
+        "maxGapDays": 11,
+        "flatShare": 0.2018,
+        "longestFlatRun": 6,
+        "bigJumps": 0,
+        "recentObs": 1085,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 80746,
+      "category": "steel",
+      "name": "goes (grain oriented electrical steel) (steel, europe, coil (>600mm), metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "4 >50% jump(s) in a 115-obs series"
+      ],
+      "stats": {
+        "obs": 115,
+        "start": "2017-01-01",
+        "end": "2026-08-06",
+        "staleDays": 12,
+        "medianGapDays": 31.0,
+        "maxGapDays": 64,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 4,
+        "recentObs": 35,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 80747,
+      "category": "steel",
+      "name": "goes (grain oriented electrical steel) (steel, europe, coil (<600mm), metric ton)",
+      "grade": "rejected",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "1 >50% jump(s) in a 114-obs series"
+      ],
+      "stats": {
+        "obs": 114,
+        "start": "2017-01-01",
+        "end": "2026-08-06",
+        "staleDays": 12,
+        "medianGapDays": 31,
+        "maxGapDays": 64,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 1,
+        "recentObs": 35,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 82095,
+      "category": "precious metals",
+      "name": "gold (precious metals, united states, globex (comex) future 3 month, troy ounce)",
+      "grade": "tradable",
+      "unit": "troy ounce",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1794,
+        "start": "2019-01-01",
+        "end": "2026-08-14",
+        "staleDays": 4,
+        "medianGapDays": 1,
+        "maxGapDays": 8,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 702,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 82096,
+      "category": "precious metals",
+      "name": "silver (precious metals, united states, globex (comex) future 3 month, troy ounce)",
+      "grade": "tradable",
+      "unit": "troy ounce",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1801,
+        "start": "2019-01-01",
+        "end": "2026-08-14",
+        "staleDays": 4,
+        "medianGapDays": 1.0,
+        "maxGapDays": 9,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 707,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 82097,
+      "category": "non ferrous metals",
+      "name": "copper (non ferrous metals, united states, globex (comex) spot, pound)",
+      "grade": "tradable",
+      "unit": "pound",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1850,
+        "start": "2019-01-01",
+        "end": "2026-08-14",
+        "staleDays": 4,
+        "medianGapDays": 1,
+        "maxGapDays": 8,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 701,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 82098,
+      "category": "non ferrous metals",
+      "name": "copper (non ferrous metals, united states, globex (comex) future 3 month, pound)",
+      "grade": "tradable",
+      "unit": "pound",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1855,
+        "start": "2019-01-01",
+        "end": "2026-08-14",
+        "staleDays": 4,
+        "medianGapDays": 1.0,
+        "maxGapDays": 8,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 705,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 82099,
+      "category": "steel",
+      "name": "steel (steel, united states, hrc (cru) spot, short ton)",
+      "grade": "level_only",
+      "unit": "short ton",
+      "public": true,
+      "reasons": [
+        "only 540 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 1442,
+        "start": "2019-01-01",
+        "end": "2026-08-12",
+        "staleDays": 6,
+        "medianGapDays": 1,
+        "maxGapDays": 17,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 540,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 82100,
+      "category": "steel",
+      "name": "steel (steel, united states, hrc (cru) future 3 month, short ton)",
+      "grade": "tradable",
+      "unit": "short ton",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1687,
+        "start": "2019-01-01",
+        "end": "2026-08-13",
+        "staleDays": 5,
+        "medianGapDays": 1.0,
+        "maxGapDays": 28,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 648,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 82101,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, united states, aup (mw premium) future 3 month, pound)",
+      "grade": "level_only",
+      "unit": "pound",
+      "public": true,
+      "reasons": [
+        "only 473 obs in last 3y",
+        "1 >50% jump(s) \u2014 check before use"
+      ],
+      "stats": {
+        "obs": 1140,
+        "start": "2019-01-01",
+        "end": "2026-08-14",
+        "staleDays": 4,
+        "medianGapDays": 1,
+        "maxGapDays": 24,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 1,
+        "recentObs": 473,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 82102,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, united states, aup (mw premium) spot, pound)",
+      "grade": "level_only",
+      "unit": "pound",
+      "public": false,
+      "reasons": [
+        "1 >50% jump(s) \u2014 check before use"
+      ],
+      "stats": {
+        "obs": 1281,
+        "start": "2019-01-01",
+        "end": "2026-08-14",
+        "staleDays": 4,
+        "medianGapDays": 1.0,
+        "maxGapDays": 26,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 1,
+        "recentObs": 622,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 84289,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, united states, globex (comex) spot, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 959,
+        "start": "2022-01-25",
+        "end": "2026-08-14",
+        "staleDays": 4,
+        "medianGapDays": 1.0,
+        "maxGapDays": 19,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 653,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 84290,
+      "category": "non ferrous metals",
+      "name": "aluminum (non ferrous metals, united states, globex (comex) future 3 month, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": true,
+      "reasons": [],
+      "stats": {
+        "obs": 1091,
+        "start": "2022-01-25",
+        "end": "2026-08-14",
+        "staleDays": 4,
+        "medianGapDays": 1.0,
+        "maxGapDays": 8,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 703,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 94320,
+      "category": "steel",
+      "name": "steel (steel, korea, hr plate, kilogram)",
+      "grade": "rejected",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "5 >50% jump(s) in a 76-obs series"
+      ],
+      "stats": {
+        "obs": 76,
+        "start": "2020-01-01",
+        "end": "2026-08-06",
+        "staleDays": 12,
+        "medianGapDays": 31,
+        "maxGapDays": 121,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 5,
+        "recentObs": 34,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 94323,
+      "category": "steel",
+      "name": "steel (steel, korea, cr coil, kilogram)",
+      "grade": "level_only",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 34 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 76,
+        "start": "2020-01-01",
+        "end": "2026-08-06",
+        "staleDays": 12,
+        "medianGapDays": 31,
+        "maxGapDays": 121,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 34,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 94901,
+      "category": "precious metals",
+      "name": "iridium (precious metals, united states, granules min. 99.90%, kilogram)",
+      "grade": "level_only",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "only 549 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 2490,
+        "start": "2013-04-02",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 1,
+        "maxGapDays": 10,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 549,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 94902,
+      "category": "precious metals",
+      "name": "ruthenium (precious metals, united states, granules min. 99.90%, kilogram)",
+      "grade": "level_only",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "only 501 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 1478,
+        "start": "2014-01-02",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 2,
+        "maxGapDays": 347,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 501,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 199342,
+      "category": "rare earth metals",
+      "name": "lanthanum-cerium mixed metal (rare earth metals, china, trem>99%;ce/trem>65%;fe<0.3%, metric ton)",
+      "grade": "level_only",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 7d",
+        "only 18 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 227,
+        "start": "2012-01-04",
+        "end": "2026-08-17",
+        "staleDays": 1,
+        "medianGapDays": 7.0,
+        "maxGapDays": 316,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 18,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 199344,
+      "category": "rare earth metals",
+      "name": "neodymium metal (rare earth metals, china, trem>99%;nd/rem:99~99.9%;fe<0.3%;c<0.05%, metric ton)",
+      "grade": "level_only",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "only 266 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 1174,
+        "start": "2012-01-04",
+        "end": "2026-08-13",
+        "staleDays": 5,
+        "medianGapDays": 2,
+        "maxGapDays": 122,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 266,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 229555,
+      "category": "rare earth metals",
+      "name": "erbium oxide (rare earth metals, northeast asia, , kilogram)",
+      "grade": "level_only",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 36 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 68,
+        "start": "2020-12-01",
+        "end": "2026-08-01",
+        "staleDays": 17,
+        "medianGapDays": 31,
+        "maxGapDays": 62,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 36,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 229561,
+      "category": "rare earth metals",
+      "name": "yttrium oxide (rare earth metals, northeast asia, , kilogram)",
+      "grade": "level_only",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 36 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 68,
+        "start": "2020-12-01",
+        "end": "2026-08-01",
+        "staleDays": 17,
+        "medianGapDays": 31,
+        "maxGapDays": 62,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 36,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 229577,
+      "category": "rare earth metals",
+      "name": "rare earth elements (rare earth metals, northeast asia, , kilogram)",
+      "grade": "level_only",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "cadence: median gap 31d",
+        "only 36 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 140,
+        "start": "2015-01-01",
+        "end": "2026-08-01",
+        "staleDays": 17,
+        "medianGapDays": 31,
+        "maxGapDays": 31,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 36,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 229605,
+      "category": "rare earth metals",
+      "name": "yttrium (rare earth metals, northeast asia, , kilogram)",
+      "grade": "rejected",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "1 >50% jump(s) in a 66-obs series"
+      ],
+      "stats": {
+        "obs": 66,
+        "start": "2020-12-01",
+        "end": "2026-08-01",
+        "staleDays": 17,
+        "medianGapDays": 31,
+        "maxGapDays": 62,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 1,
+        "recentObs": 36,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270557,
+      "category": "minor metals",
+      "name": "cobalt sulfate (minor metals, china, 20.5%min delivered, kilogram)",
+      "grade": "level_only",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "only 543 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 2351,
+        "start": "2015-01-22",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 543,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270585,
+      "category": "stainless steel",
+      "name": "electrical steel (stainless steel, china, grain oriented 130 0.3*980mm in warehouse, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3225,
+        "start": "2012-06-14",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 647,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270596,
+      "category": "ferro alloys",
+      "name": "ferro-chrome (ferro alloys, rotterdam, cr 60%min, c 8%max in warehouse, kilogram)",
+      "grade": "level_only",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "only 397 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 1822,
+        "start": "2012-07-12",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 2,
+        "maxGapDays": 30,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 397,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270601,
+      "category": "ferro alloys",
+      "name": "ferro-chrome (ferro alloys, china, kazakhstan cr 68%min, c 8.5%max in port, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 1906,
+        "start": "2017-12-18",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 646,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270612,
+      "category": "rare earth metals",
+      "name": "ferro-holmium (rare earth metals, china, 80% exw, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3109,
+        "start": "2012-10-29",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 18,
+        "flatShare": 0.0003,
+        "longestFlatRun": 1,
+        "bigJumps": 0,
+        "recentObs": 641,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270704,
+      "category": "steel",
+      "name": "h-beam steel (steel, shanghai, q235 200*200mm in warehouse, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3295,
+        "start": "2012-03-08",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 649,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270748,
+      "category": "rare earth metals",
+      "name": "ionic re conc. (rare earth metals, china, treo 92%min in port, metric ton)",
+      "grade": "level_only",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [
+        "only 475 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 475,
+        "start": "2024-06-14",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 12,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 475,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270764,
+      "category": "rare earth metals",
+      "name": "lanthanum metal (rare earth metals, china, 99%min exw, kilogram)",
+      "grade": "level_only",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "only 457 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 2495,
+        "start": "2013-04-09",
+        "end": "2026-08-03",
+        "staleDays": 15,
+        "medianGapDays": 1.0,
+        "maxGapDays": 21,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 457,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270765,
+      "category": "rare earth metals",
+      "name": "lanthanum metal (rare earth metals, china, 99%min fob, kilogram)",
+      "grade": "level_only",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "only 548 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 2638,
+        "start": "2013-01-23",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1,
+        "maxGapDays": 30,
+        "flatShare": 0.0004,
+        "longestFlatRun": 1,
+        "bigJumps": 0,
+        "recentObs": 548,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270766,
+      "category": "rare earth metals",
+      "name": "lanthanum oxide (rare earth metals, china, 99.9%min exw, kilogram)",
+      "grade": "level_only",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "only 215 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 1845,
+        "start": "2012-12-05",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 55,
+        "flatShare": 0.0005,
+        "longestFlatRun": 1,
+        "bigJumps": 0,
+        "recentObs": 215,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270767,
+      "category": "rare earth metals",
+      "name": "lanthanum oxide (rare earth metals, china, 99.9%min fob, kilogram)",
+      "grade": "level_only",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "only 304 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 2038,
+        "start": "2012-11-19",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1,
+        "maxGapDays": 30,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 304,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270768,
+      "category": "rare earth metals",
+      "name": "lanthanum oxide (rare earth metals, china, 99.999%min exw, kilogram)",
+      "grade": "level_only",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "only 403 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 2655,
+        "start": "2011-12-30",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 21,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 403,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270787,
+      "category": "minor metals",
+      "name": "lithium carbonate (minor metals, america, 99.5%min fob south, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 1771,
+        "start": "2018-01-31",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 30,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 625,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270789,
+      "category": "minor metals",
+      "name": "lithium hydroxide monohydrate (minor metals, china, lioh 56.5%min, magnets 0.0001%max delivered, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 2418,
+        "start": "2015-10-29",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 648,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270800,
+      "category": "rare earth metals",
+      "name": "lutetium oxide (rare earth metals, exw, exw, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 1444,
+        "start": "2019-11-21",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 646,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270840,
+      "category": "minor metals",
+      "name": "manganese dioxide (minor metals, china, alkaline 91%min exw, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3091,
+        "start": "2013-01-04",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 648,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270860,
+      "category": "minor metals",
+      "name": "manganese sulfate (minor metals, china, mn 32%min exw, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 1920,
+        "start": "2017-11-22",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 649,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270879,
+      "category": "minor metals",
+      "name": "molybdenum bar (minor metals, china, 99.9%min exw, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3285,
+        "start": "2011-12-30",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 638,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270898,
+      "category": "rare earth metals",
+      "name": "ndfeb (rare earth metals, china, sintered rough 35m exw, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 1123,
+        "start": "2021-02-22",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 622,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270899,
+      "category": "rare earth metals",
+      "name": "ndfeb (rare earth metals, china, sintered rough 45m exw, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 1118,
+        "start": "2021-02-22",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 623,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270900,
+      "category": "rare earth metals",
+      "name": "ndfeb (rare earth metals, china, sintered rough 50m exw, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 1128,
+        "start": "2021-02-22",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1,
+        "maxGapDays": 18,
+        "flatShare": 0.0009,
+        "longestFlatRun": 1,
+        "bigJumps": 0,
+        "recentObs": 627,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270901,
+      "category": "rare earth metals",
+      "name": "ndfeb (rare earth metals, china, sintered rough 35h exw, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 1125,
+        "start": "2021-02-22",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 18,
+        "flatShare": 0.0009,
+        "longestFlatRun": 1,
+        "bigJumps": 0,
+        "recentObs": 627,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270902,
+      "category": "rare earth metals",
+      "name": "ndfeb (rare earth metals, china, sintered rough 45h exw, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 1127,
+        "start": "2021-02-22",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 18,
+        "flatShare": 0.0009,
+        "longestFlatRun": 1,
+        "bigJumps": 0,
+        "recentObs": 626,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270903,
+      "category": "rare earth metals",
+      "name": "ndfeb (rare earth metals, china, sintered rough 48h exw, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 1127,
+        "start": "2021-02-22",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 627,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270904,
+      "category": "rare earth metals",
+      "name": "ndfeb (rare earth metals, china, sintered rough 50h exw, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 1126,
+        "start": "2021-02-22",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 626,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270905,
+      "category": "rare earth metals",
+      "name": "neodymium metal (rare earth metals, china, 99%min exw, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3315,
+        "start": "2011-12-30",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 18,
+        "flatShare": 0.0003,
+        "longestFlatRun": 1,
+        "bigJumps": 0,
+        "recentObs": 638,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270906,
+      "category": "rare earth metals",
+      "name": "neodymium metal (rare earth metals, china, 99%min fob, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3295,
+        "start": "2011-12-30",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 30,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 653,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270907,
+      "category": "rare earth metals",
+      "name": "neodymium oxide (rare earth metals, china, 99.5%min exw, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 2931,
+        "start": "2013-08-19",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 640,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270914,
+      "category": "non ferrous metals",
+      "name": "nickel sulfate (non ferrous metals, china, ni 22%min; co 0.05%max exw, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3268,
+        "start": "2012-04-17",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1,
+        "maxGapDays": 20,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 650,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270922,
+      "category": "rare earth metals",
+      "name": "praseodymium metal (rare earth metals, china, 99.5%min fob, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3286,
+        "start": "2011-12-30",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1,
+        "maxGapDays": 30,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 650,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270923,
+      "category": "rare earth metals",
+      "name": "praseodymium oxide (rare earth metals, china, 99.5%min exw, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3056,
+        "start": "2013-01-11",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1,
+        "maxGapDays": 18,
+        "flatShare": 0.0003,
+        "longestFlatRun": 1,
+        "bigJumps": 0,
+        "recentObs": 641,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270928,
+      "category": "rare earth metals",
+      "name": "prnd mischmetal (rare earth metals, china, pr 25%, nd 75% exw, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3327,
+        "start": "2011-12-30",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 645,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270929,
+      "category": "rare earth metals",
+      "name": "prnd mischmetal (rare earth metals, china, pr 25%, nd 75% fob, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3000,
+        "start": "2013-03-25",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1,
+        "maxGapDays": 30,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 651,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270930,
+      "category": "rare earth metals",
+      "name": "prnd oxide (rare earth metals, china, pr6o11 25%, nd2o3 75% exw, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3142,
+        "start": "2012-09-20",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 641,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 271075,
+      "category": "minor metals",
+      "name": "titanium plate (minor metals, china, ta2 2mm exw, kilogram)",
+      "grade": "level_only",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [
+        "only 597 obs in last 3y"
+      ],
+      "stats": {
+        "obs": 3084,
+        "start": "2012-04-16",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 597,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 271078,
+      "category": "minor metals",
+      "name": "titanium sponge (minor metals, china, 99.7%min exw, metric ton)",
+      "grade": "tradable",
+      "unit": "metric ton",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3199,
+        "start": "2012-07-24",
+        "end": "2026-08-07",
+        "staleDays": 11,
+        "medianGapDays": 1.0,
+        "maxGapDays": 18,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 645,
+        "nonPositive": 0
+      }
+    }
+  ]
+}
