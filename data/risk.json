@@ -1,21 +1,21 @@
 {
- "updatedAt": "2026-09-03T15:15:09+00:00",
+ "updatedAt": "2026-09-03T16:09:51+00:00",
  "asOf": "2026-09-03",
  "window": 90,
  "obs": 54,
  "headline": {
-  "annVol": 23.5,
+  "annVol": 23.4,
   "betaSpy": 0.63,
-  "betaXme": 0.34,
-  "var1d95": -322,
-  "var1d99": -456,
+  "betaXme": 0.33,
+  "var1d95": -321,
+  "var1d99": -455,
   "hhi": 905.0,
-  "effectiveN": 11.1
+  "effectiveN": 11.0
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "23.5%",
+   "v": "23.4%",
    "note": "from the account's daily TWR, 54 daily obs since inception",
    "tone": "neutral"
   },
@@ -27,7 +27,7 @@
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.34",
+   "v": "0.33",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$322",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$456)",
+   "v": "-$321",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$455)",
    "tone": "neg"
   },
   {
@@ -57,8 +57,8 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "905 / 11.1",
-   "note": "15 names, ~11.1 effective",
+   "v": "905 / 11.0",
+   "note": "15 names, ~11.0 effective",
    "tone": "pos"
   }
  ],
@@ -358,43 +358,43 @@
    "ticker": "GDX",
    "side": "long",
    "weightPct": 18.6,
-   "riskContribPct": 26.9,
-   "mVaR": 99.8
+   "riskContribPct": 27.0,
+   "mVaR": 99.5
   },
   {
    "ticker": "HBM",
    "side": "long",
    "weightPct": 6.1,
-   "riskContribPct": 11.8,
-   "mVaR": 43.7
+   "riskContribPct": 11.7,
+   "mVaR": 43.2
   },
   {
    "ticker": "FCX",
    "side": "long",
-   "weightPct": 8.1,
+   "weightPct": 8.0,
    "riskContribPct": 11.4,
-   "mVaR": 42.2
+   "mVaR": 42.0
   },
   {
    "ticker": "COPX",
    "side": "long",
    "weightPct": 7.6,
    "riskContribPct": 11.0,
-   "mVaR": 40.8
+   "mVaR": 40.7
   },
   {
    "ticker": "ERO",
    "side": "long",
-   "weightPct": 5.8,
+   "weightPct": 5.7,
    "riskContribPct": 10.6,
-   "mVaR": 39.4
+   "mVaR": 39.0
   },
   {
    "ticker": "SCCO",
    "side": "long",
    "weightPct": 5.6,
    "riskContribPct": 8.4,
-   "mVaR": 31.1
+   "mVaR": 30.8
   },
   {
    "ticker": "MT",
@@ -415,14 +415,14 @@
    "side": "long",
    "weightPct": 3.1,
    "riskContribPct": 4.1,
-   "mVaR": 15.0
+   "mVaR": 14.9
   },
   {
    "ticker": "TGB",
    "side": "long",
    "weightPct": 1.7,
    "riskContribPct": 3.2,
-   "mVaR": 12.0
+   "mVaR": 11.9
   },
   {
    "ticker": "STLD",
@@ -455,9 +455,9 @@
   {
    "ticker": "KALU",
    "side": "short",
-   "weightPct": -12.1,
+   "weightPct": -12.0,
    "riskContribPct": -7.5,
-   "mVaR": -27.7
+   "mVaR": -27.5
   }
  ],
  "coverageNote": "15 of 15 holdings"
