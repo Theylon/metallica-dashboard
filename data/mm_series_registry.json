@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-09-02T10:35:16+00:00",
-  "asOf": "2026-08-18",
-  "dumpDate": "2026-08-18",
+  "updatedAt": "2026-09-03T11:55:08+00:00",
+  "asOf": "2026-09-03",
+  "dumpDate": "2026-09-03",
   "counts": {
-    "rejected": 42,
-    "level_only": 65,
-    "tradable": 57,
+    "rejected": 45,
+    "level_only": 66,
+    "tradable": 58,
     "tradable_public": 21,
-    "tradable_proprietary": 36
+    "tradable_proprietary": 37
   },
   "series": [
     {
@@ -21,16 +21,16 @@
         "frozen: 72% of steps unchanged"
       ],
       "stats": {
-        "obs": 1748,
+        "obs": 1763,
         "start": "2012-04-29",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 34,
-        "flatShare": 0.7184,
+        "flatShare": 0.7202,
         "longestFlatRun": 22,
         "bigJumps": 0,
-        "recentObs": 874,
+        "recentObs": 886,
         "nonPositive": 0
       }
     },
@@ -43,19 +43,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 31d",
-        "only 33 obs in last 3y"
+        "only 34 obs in last 3y"
       ],
       "stats": {
-        "obs": 171,
+        "obs": 172,
         "start": "2011-12-30",
-        "end": "2026-07-21",
-        "staleDays": 28,
-        "medianGapDays": 31.0,
+        "end": "2026-08-24",
+        "staleDays": 10,
+        "medianGapDays": 31,
         "maxGapDays": 63,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 33,
+        "recentObs": 34,
         "nonPositive": 0
       }
     },
@@ -71,11 +71,11 @@
         "only 36 obs in last 3y"
       ],
       "stats": {
-        "obs": 219,
+        "obs": 220,
         "start": "2011-12-26",
-        "end": "2026-08-03",
-        "staleDays": 15,
-        "medianGapDays": 28.0,
+        "end": "2026-09-01",
+        "staleDays": 2,
+        "medianGapDays": 28,
         "maxGapDays": 102,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -96,11 +96,11 @@
         "only 33 obs in last 3y"
       ],
       "stats": {
-        "obs": 176,
+        "obs": 177,
         "start": "2011-12-30",
-        "end": "2026-07-21",
-        "staleDays": 28,
-        "medianGapDays": 31,
+        "end": "2026-08-24",
+        "staleDays": 10,
+        "medianGapDays": 31.0,
         "maxGapDays": 92,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -118,16 +118,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1948,
+        "obs": 1959,
         "start": "2011-12-30",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 33,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 739,
+        "recentObs": 741,
         "nonPositive": 0
       }
     },
@@ -143,10 +143,10 @@
         "only 150 obs in last 3y"
       ],
       "stats": {
-        "obs": 739,
+        "obs": 741,
         "start": "2011-12-28",
-        "end": "2026-08-14",
-        "staleDays": 4,
+        "end": "2026-08-28",
+        "staleDays": 6,
         "medianGapDays": 7.0,
         "maxGapDays": 29,
         "flatShare": 0.0,
@@ -164,15 +164,15 @@
       "unit": "gross ton",
       "public": false,
       "reasons": [
-        "cadence: median gap 30d",
+        "cadence: median gap 31d",
         "only 34 obs in last 3y"
       ],
       "stats": {
-        "obs": 175,
+        "obs": 176,
         "start": "2011-12-30",
-        "end": "2026-07-21",
-        "staleDays": 28,
-        "medianGapDays": 30.5,
+        "end": "2026-08-24",
+        "staleDays": 10,
+        "medianGapDays": 31,
         "maxGapDays": 63,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -192,16 +192,16 @@
         "1 >50% jump(s) \u2014 check before use"
       ],
       "stats": {
-        "obs": 3254,
+        "obs": 3266,
         "start": "2012-01-03",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
         "medianGapDays": 1,
         "maxGapDays": 92,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 1,
-        "recentObs": 700,
+        "recentObs": 702,
         "nonPositive": 0
       }
     },
@@ -214,16 +214,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3369,
+        "obs": 3381,
         "start": "2012-01-03",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
         "medianGapDays": 1.0,
         "maxGapDays": 10,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 711,
+        "recentObs": 713,
         "nonPositive": 0
       }
     },
@@ -238,16 +238,16 @@
         "frozen: 72% of steps unchanged"
       ],
       "stats": {
-        "obs": 342,
+        "obs": 349,
         "start": "2020-01-01",
-        "end": "2026-08-01",
-        "staleDays": 17,
-        "medianGapDays": 1,
+        "end": "2026-09-03",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
         "maxGapDays": 90,
-        "flatShare": 0.7155,
+        "flatShare": 0.7184,
         "longestFlatRun": 34,
         "bigJumps": 0,
-        "recentObs": 154,
+        "recentObs": 160,
         "nonPositive": 0
       }
     },
@@ -263,11 +263,11 @@
         "only 36 obs in last 3y"
       ],
       "stats": {
-        "obs": 172,
+        "obs": 173,
         "start": "2011-12-30",
-        "end": "2026-07-21",
-        "staleDays": 28,
-        "medianGapDays": 31,
+        "end": "2026-08-24",
+        "staleDays": 10,
+        "medianGapDays": 31.0,
         "maxGapDays": 63,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -287,13 +287,13 @@
         "frozen: 62% of steps unchanged"
       ],
       "stats": {
-        "obs": 240,
+        "obs": 241,
         "start": "2020-01-01",
-        "end": "2026-08-01",
-        "staleDays": 17,
-        "medianGapDays": 1,
+        "end": "2026-08-28",
+        "staleDays": 6,
+        "medianGapDays": 1.0,
         "maxGapDays": 91,
-        "flatShare": 0.6234,
+        "flatShare": 0.6208,
         "longestFlatRun": 32,
         "bigJumps": 0,
         "recentObs": 140,
@@ -308,19 +308,19 @@
       "unit": "troy ounce",
       "public": false,
       "reasons": [
-        "only 321 obs in last 3y"
+        "only 326 obs in last 3y"
       ],
       "stats": {
-        "obs": 1707,
+        "obs": 1712,
         "start": "2012-01-03",
-        "end": "2026-08-14",
-        "staleDays": 4,
-        "medianGapDays": 1.0,
+        "end": "2026-09-02",
+        "staleDays": 1,
+        "medianGapDays": 1,
         "maxGapDays": 78,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 321,
+        "recentObs": 326,
         "nonPositive": 0
       }
     },
@@ -333,16 +333,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1967,
+        "obs": 1978,
         "start": "2011-12-01",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 61,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 744,
+        "recentObs": 746,
         "nonPositive": 0
       }
     },
@@ -358,10 +358,10 @@
         "only 151 obs in last 3y"
       ],
       "stats": {
-        "obs": 803,
+        "obs": 805,
         "start": "2011-12-28",
-        "end": "2026-08-14",
-        "staleDays": 4,
+        "end": "2026-08-28",
+        "staleDays": 6,
         "medianGapDays": 7.0,
         "maxGapDays": 18,
         "flatShare": 0.0,
@@ -375,21 +375,23 @@
       "id": 258,
       "category": "steel",
       "name": "steel (steel, china, hrc, short ton)",
-      "grade": "tradable",
+      "grade": "level_only",
       "unit": "short ton",
       "public": false,
-      "reasons": [],
+      "reasons": [
+        "18% of steps unchanged"
+      ],
       "stats": {
-        "obs": 2079,
+        "obs": 2096,
         "start": "2011-12-30",
-        "end": "2026-08-17",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-09-03",
+        "staleDays": 0,
+        "medianGapDays": 1,
         "maxGapDays": 66,
-        "flatShare": 0.0188,
-        "longestFlatRun": 4,
+        "flatShare": 0.1838,
+        "longestFlatRun": 91,
         "bigJumps": 0,
-        "recentObs": 934,
+        "recentObs": 945,
         "nonPositive": 0
       }
     },
@@ -405,11 +407,11 @@
         "only 33 obs in last 3y"
       ],
       "stats": {
-        "obs": 176,
+        "obs": 177,
         "start": "2011-12-30",
-        "end": "2026-07-21",
-        "staleDays": 28,
-        "medianGapDays": 31,
+        "end": "2026-08-24",
+        "staleDays": 10,
+        "medianGapDays": 31.0,
         "maxGapDays": 63,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -422,24 +424,23 @@
       "id": 290,
       "category": "non ferrous metals",
       "name": "aluminum (non ferrous metals, europe, 6082 plate, metric ton)",
-      "grade": "level_only",
+      "grade": "rejected",
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "cadence: median gap 31d",
-        "only 35 obs in last 3y"
+        "stale 31d (last 2026-08-03)"
       ],
       "stats": {
         "obs": 173,
         "start": "2011-11-16",
         "end": "2026-08-03",
-        "staleDays": 15,
+        "staleDays": 31,
         "medianGapDays": 31.0,
         "maxGapDays": 141,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 35,
+        "recentObs": 34,
         "nonPositive": 0
       }
     },
@@ -452,16 +453,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1965,
+        "obs": 1976,
         "start": "2011-12-01",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 32,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 745,
+        "recentObs": 747,
         "nonPositive": 0
       }
     },
@@ -474,16 +475,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1953,
+        "obs": 1964,
         "start": "2011-12-30",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 33,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 738,
+        "recentObs": 740,
         "nonPositive": 0
       }
     },
@@ -496,19 +497,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 7d",
-        "only 131 obs in last 3y"
+        "only 130 obs in last 3y"
       ],
       "stats": {
-        "obs": 277,
+        "obs": 278,
         "start": "2020-01-01",
-        "end": "2026-08-15",
-        "staleDays": 3,
-        "medianGapDays": 7.0,
+        "end": "2026-08-22",
+        "staleDays": 12,
+        "medianGapDays": 7,
         "maxGapDays": 26,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 131,
+        "recentObs": 130,
         "nonPositive": 0
       }
     },
@@ -520,13 +521,13 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "stale 271d (last 2025-11-20)"
+        "stale 287d (last 2025-11-20)"
       ],
       "stats": {
         "obs": 265,
         "start": "2011-10-31",
         "end": "2025-11-20",
-        "staleDays": 271,
+        "staleDays": 287,
         "medianGapDays": 8.0,
         "maxGapDays": 815,
         "flatShare": 0.0,
@@ -544,19 +545,19 @@
       "unit": "pound",
       "public": true,
       "reasons": [
-        "only 512 obs in last 3y"
+        "only 519 obs in last 3y"
       ],
       "stats": {
-        "obs": 1589,
+        "obs": 1601,
         "start": "2013-04-12",
-        "end": "2026-08-14",
-        "staleDays": 4,
+        "end": "2026-09-03",
+        "staleDays": 0,
         "medianGapDays": 2.0,
         "maxGapDays": 84,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 512,
+        "recentObs": 519,
         "nonPositive": 0
       }
     },
@@ -564,21 +565,23 @@
       "id": 393,
       "category": "steel",
       "name": "steel (steel, china, plate, metric ton)",
-      "grade": "tradable",
+      "grade": "level_only",
       "unit": "metric ton",
       "public": false,
-      "reasons": [],
+      "reasons": [
+        "19% of steps unchanged"
+      ],
       "stats": {
-        "obs": 2002,
+        "obs": 2019,
         "start": "2011-12-30",
-        "end": "2026-08-17",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-09-03",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
         "maxGapDays": 73,
-        "flatShare": 0.0195,
-        "longestFlatRun": 4,
+        "flatShare": 0.1908,
+        "longestFlatRun": 91,
         "bigJumps": 0,
-        "recentObs": 929,
+        "recentObs": 941,
         "nonPositive": 0
       }
     },
@@ -586,24 +589,23 @@
       "id": 408,
       "category": "non ferrous metals",
       "name": "aluminum (non ferrous metals, europe, 5083 plate, metric ton)",
-      "grade": "level_only",
+      "grade": "rejected",
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "cadence: median gap 31d",
-        "only 35 obs in last 3y"
+        "stale 31d (last 2026-08-03)"
       ],
       "stats": {
         "obs": 177,
         "start": "2011-11-16",
         "end": "2026-08-03",
-        "staleDays": 15,
+        "staleDays": 31,
         "medianGapDays": 31.0,
         "maxGapDays": 77,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 35,
+        "recentObs": 34,
         "nonPositive": 0
       }
     },
@@ -619,11 +621,11 @@
         "only 197 obs in last 3y"
       ],
       "stats": {
-        "obs": 438,
+        "obs": 441,
         "start": "2011-12-26",
-        "end": "2026-08-12",
-        "staleDays": 6,
-        "medianGapDays": 5,
+        "end": "2026-09-01",
+        "staleDays": 2,
+        "medianGapDays": 5.0,
         "maxGapDays": 316,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -636,24 +638,23 @@
       "id": 429,
       "category": "non ferrous metals",
       "name": "aluminum (non ferrous metals, europe, 6082 bar, metric ton)",
-      "grade": "level_only",
+      "grade": "rejected",
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "cadence: median gap 31d",
-        "only 35 obs in last 3y"
+        "stale 31d (last 2026-08-03)"
       ],
       "stats": {
         "obs": 171,
         "start": "2011-11-16",
         "end": "2026-08-03",
-        "staleDays": 15,
+        "staleDays": 31,
         "medianGapDays": 31.0,
         "maxGapDays": 77,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 35,
+        "recentObs": 34,
         "nonPositive": 0
       }
     },
@@ -668,16 +669,16 @@
         "frozen: 66% of steps unchanged"
       ],
       "stats": {
-        "obs": 286,
+        "obs": 293,
         "start": "2020-01-01",
-        "end": "2026-08-01",
-        "staleDays": 17,
-        "medianGapDays": 1,
+        "end": "2026-09-03",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
         "maxGapDays": 90,
-        "flatShare": 0.6561,
+        "flatShare": 0.661,
         "longestFlatRun": 34,
         "bigJumps": 0,
-        "recentObs": 174,
+        "recentObs": 180,
         "nonPositive": 0
       }
     },
@@ -690,16 +691,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3089,
+        "obs": 3101,
         "start": "2011-12-30",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
         "medianGapDays": 1.0,
         "maxGapDays": 99,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 613,
+        "recentObs": 616,
         "nonPositive": 0
       }
     },
@@ -711,19 +712,19 @@
       "unit": "pound",
       "public": false,
       "reasons": [
-        "frozen: 81% of steps unchanged"
+        "frozen: 82% of steps unchanged"
       ],
       "stats": {
-        "obs": 435,
+        "obs": 451,
         "start": "2020-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 91,
-        "flatShare": 0.8111,
+        "flatShare": 0.8156,
         "longestFlatRun": 32,
         "bigJumps": 1,
-        "recentObs": 296,
+        "recentObs": 311,
         "nonPositive": 0
       }
     },
@@ -739,11 +740,11 @@
         "only 33 obs in last 3y"
       ],
       "stats": {
-        "obs": 174,
+        "obs": 175,
         "start": "2011-12-30",
-        "end": "2026-07-21",
-        "staleDays": 28,
-        "medianGapDays": 31,
+        "end": "2026-08-24",
+        "staleDays": 10,
+        "medianGapDays": 31.0,
         "maxGapDays": 92,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -763,16 +764,16 @@
         "frozen: 45% of steps unchanged"
       ],
       "stats": {
-        "obs": 1874,
+        "obs": 1890,
         "start": "2020-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 21,
-        "flatShare": 0.4522,
+        "flatShare": 0.45,
         "longestFlatRun": 13,
         "bigJumps": 0,
-        "recentObs": 973,
+        "recentObs": 981,
         "nonPositive": 0
       }
     },
@@ -787,16 +788,16 @@
         "frozen: 51% of steps unchanged"
       ],
       "stats": {
-        "obs": 698,
+        "obs": 701,
         "start": "2020-01-01",
-        "end": "2026-08-15",
-        "staleDays": 3,
-        "medianGapDays": 1,
+        "end": "2026-09-02",
+        "staleDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 23,
-        "flatShare": 0.5136,
+        "flatShare": 0.5114,
         "longestFlatRun": 17,
         "bigJumps": 0,
-        "recentObs": 351,
+        "recentObs": 350,
         "nonPositive": 0
       }
     },
@@ -808,16 +809,16 @@
       "unit": "pound",
       "public": false,
       "reasons": [
-        "frozen: 73% of steps unchanged"
+        "frozen: 72% of steps unchanged"
       ],
       "stats": {
-        "obs": 332,
+        "obs": 333,
         "start": "2020-01-01",
-        "end": "2026-08-01",
-        "staleDays": 17,
-        "medianGapDays": 1,
+        "end": "2026-08-28",
+        "staleDays": 6,
+        "medianGapDays": 1.0,
         "maxGapDays": 90,
-        "flatShare": 0.7251,
+        "flatShare": 0.7229,
         "longestFlatRun": 34,
         "bigJumps": 0,
         "recentObs": 122,
@@ -832,19 +833,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "only 471 obs in last 3y"
+        "only 474 obs in last 3y"
       ],
       "stats": {
-        "obs": 1712,
+        "obs": 1724,
         "start": "2011-12-23",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
         "medianGapDays": 1,
         "maxGapDays": 302,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 471,
+        "recentObs": 474,
         "nonPositive": 0
       }
     },
@@ -852,24 +853,23 @@
       "id": 552,
       "category": "non ferrous metals",
       "name": "aluminum (non ferrous metals, europe, commercial 1050 sheet, metric ton)",
-      "grade": "level_only",
+      "grade": "rejected",
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "cadence: median gap 31d",
-        "only 35 obs in last 3y"
+        "stale 31d (last 2026-08-03)"
       ],
       "stats": {
         "obs": 180,
         "start": "2011-11-16",
         "end": "2026-08-03",
-        "staleDays": 15,
+        "staleDays": 31,
         "medianGapDays": 31,
         "maxGapDays": 77,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 35,
+        "recentObs": 34,
         "nonPositive": 0
       }
     },
@@ -885,11 +885,11 @@
         "only 32 obs in last 3y"
       ],
       "stats": {
-        "obs": 159,
+        "obs": 160,
         "start": "2012-10-31",
-        "end": "2026-07-21",
-        "staleDays": 28,
-        "medianGapDays": 31.0,
+        "end": "2026-08-24",
+        "staleDays": 10,
+        "medianGapDays": 31,
         "maxGapDays": 92,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -906,13 +906,13 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "stale 271d (last 2025-11-20)"
+        "stale 287d (last 2025-11-20)"
       ],
       "stats": {
         "obs": 268,
         "start": "2011-11-14",
         "end": "2025-11-20",
-        "staleDays": 271,
+        "staleDays": 287,
         "medianGapDays": 8,
         "maxGapDays": 815,
         "flatShare": 0.0,
@@ -936,7 +936,7 @@
         "obs": 172,
         "start": "2011-12-15",
         "end": "2026-08-14",
-        "staleDays": 4,
+        "staleDays": 20,
         "medianGapDays": 15,
         "maxGapDays": 395,
         "flatShare": 0.0,
@@ -954,19 +954,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "stale 229d (last 2026-01-01)"
+        "stale 245d (last 2026-01-01)"
       ],
       "stats": {
         "obs": 359,
         "start": "2011-12-28",
         "end": "2026-01-01",
-        "staleDays": 229,
+        "staleDays": 245,
         "medianGapDays": 9.0,
         "maxGapDays": 78,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 64,
+        "recentObs": 63,
         "nonPositive": 0
       }
     },
@@ -982,11 +982,11 @@
         "only 153 obs in last 3y"
       ],
       "stats": {
-        "obs": 334,
+        "obs": 337,
         "start": "2020-01-01",
-        "end": "2026-08-15",
-        "staleDays": 3,
-        "medianGapDays": 7,
+        "end": "2026-09-02",
+        "staleDays": 1,
+        "medianGapDays": 7.0,
         "maxGapDays": 26,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -1004,16 +1004,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1969,
+        "obs": 1980,
         "start": "2011-12-31",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 61,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 745,
+        "recentObs": 747,
         "nonPositive": 0
       }
     },
@@ -1028,16 +1028,16 @@
         "frozen: 47% of steps unchanged"
       ],
       "stats": {
-        "obs": 1740,
+        "obs": 1756,
         "start": "2020-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 90,
-        "flatShare": 0.4727,
+        "flatShare": 0.4701,
         "longestFlatRun": 13,
         "bigJumps": 0,
-        "recentObs": 948,
+        "recentObs": 957,
         "nonPositive": 0
       }
     },
@@ -1053,11 +1053,11 @@
         "only 34 obs in last 3y"
       ],
       "stats": {
-        "obs": 174,
+        "obs": 175,
         "start": "2011-12-30",
-        "end": "2026-07-21",
-        "staleDays": 28,
-        "medianGapDays": 31,
+        "end": "2026-08-24",
+        "staleDays": 10,
+        "medianGapDays": 31.0,
         "maxGapDays": 63,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -1075,16 +1075,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1952,
+        "obs": 1963,
         "start": "2011-12-30",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 33,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0005,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 744,
+        "recentObs": 746,
         "nonPositive": 0
       }
     },
@@ -1100,11 +1100,11 @@
         "only 32 obs in last 3y"
       ],
       "stats": {
-        "obs": 171,
+        "obs": 172,
         "start": "2011-12-30",
-        "end": "2026-07-21",
-        "staleDays": 28,
-        "medianGapDays": 31.0,
+        "end": "2026-08-24",
+        "staleDays": 10,
+        "medianGapDays": 31,
         "maxGapDays": 91,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -1117,21 +1117,23 @@
       "id": 733,
       "category": "steel",
       "name": "steel (steel, china, rebar, metric ton)",
-      "grade": "tradable",
+      "grade": "level_only",
       "unit": "metric ton",
       "public": false,
-      "reasons": [],
+      "reasons": [
+        "18% of steps unchanged"
+      ],
       "stats": {
-        "obs": 2157,
+        "obs": 2174,
         "start": "2011-12-28",
-        "end": "2026-08-17",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-09-03",
+        "staleDays": 0,
+        "medianGapDays": 1,
         "maxGapDays": 98,
-        "flatShare": 0.0181,
-        "longestFlatRun": 4,
+        "flatShare": 0.1767,
+        "longestFlatRun": 91,
         "bigJumps": 0,
-        "recentObs": 926,
+        "recentObs": 937,
         "nonPositive": 0
       }
     },
@@ -1144,16 +1146,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1952,
+        "obs": 1963,
         "start": "2011-12-30",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 33,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0005,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 735,
+        "recentObs": 737,
         "nonPositive": 0
       }
     },
@@ -1166,16 +1168,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3002,
+        "obs": 3014,
         "start": "2011-12-30",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
         "medianGapDays": 1,
         "maxGapDays": 99,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 610,
+        "recentObs": 613,
         "nonPositive": 0
       }
     },
@@ -1190,9 +1192,9 @@
         "frozen: 94% of steps unchanged"
       ],
       "stats": {
-        "obs": 1272,
+        "obs": 1288,
         "start": "2020-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 90,
@@ -1211,19 +1213,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "only 594 obs in last 3y"
+        "only 597 obs in last 3y"
       ],
       "stats": {
-        "obs": 2994,
+        "obs": 3006,
         "start": "2011-12-30",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
         "medianGapDays": 1,
         "maxGapDays": 100,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 594,
+        "recentObs": 597,
         "nonPositive": 0
       }
     },
@@ -1240,13 +1242,13 @@
         "only 153 obs in last 3y"
       ],
       "stats": {
-        "obs": 539,
+        "obs": 542,
         "start": "2020-01-01",
-        "end": "2026-08-15",
-        "staleDays": 3,
-        "medianGapDays": 5.0,
+        "end": "2026-09-02",
+        "staleDays": 1,
+        "medianGapDays": 5,
         "maxGapDays": 23,
-        "flatShare": 0.381,
+        "flatShare": 0.3789,
         "longestFlatRun": 17,
         "bigJumps": 0,
         "recentObs": 153,
@@ -1261,19 +1263,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "frozen: 49% of steps unchanged"
+        "frozen: 48% of steps unchanged"
       ],
       "stats": {
-        "obs": 1784,
+        "obs": 1800,
         "start": "2020-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 90,
-        "flatShare": 0.4863,
+        "flatShare": 0.4836,
         "longestFlatRun": 13,
         "bigJumps": 0,
-        "recentObs": 995,
+        "recentObs": 1003,
         "nonPositive": 0
       }
     },
@@ -1289,11 +1291,11 @@
         "only 154 obs in last 3y"
       ],
       "stats": {
-        "obs": 341,
+        "obs": 344,
         "start": "2020-01-01",
-        "end": "2026-08-15",
-        "staleDays": 3,
-        "medianGapDays": 7.0,
+        "end": "2026-09-02",
+        "staleDays": 1,
+        "medianGapDays": 7,
         "maxGapDays": 26,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -1314,11 +1316,11 @@
         "only 131 obs in last 3y"
       ],
       "stats": {
-        "obs": 521,
+        "obs": 522,
         "start": "2011-12-28",
-        "end": "2026-08-14",
-        "staleDays": 4,
-        "medianGapDays": 7.0,
+        "end": "2026-08-21",
+        "staleDays": 13,
+        "medianGapDays": 7,
         "maxGapDays": 34,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -1336,16 +1338,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1974,
+        "obs": 1985,
         "start": "2011-12-31",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 33,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0005,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 748,
+        "recentObs": 750,
         "nonPositive": 0
       }
     },
@@ -1353,23 +1355,23 @@
       "id": 982,
       "category": "steel",
       "name": "steel (steel, china, slab, metric ton)",
-      "grade": "rejected",
+      "grade": "level_only",
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "stale 42d (last 2026-07-07)"
+        "only 386 obs in last 3y"
       ],
       "stats": {
-        "obs": 1512,
+        "obs": 1519,
         "start": "2011-12-27",
-        "end": "2026-07-07",
-        "staleDays": 42,
-        "medianGapDays": 2,
+        "end": "2026-09-02",
+        "staleDays": 1,
+        "medianGapDays": 2.0,
         "maxGapDays": 314,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 382,
+        "recentObs": 386,
         "nonPositive": 0
       }
     },
@@ -1382,16 +1384,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1948,
+        "obs": 1960,
         "start": "2011-12-30",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
         "medianGapDays": 1,
         "maxGapDays": 39,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0005,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 732,
+        "recentObs": 735,
         "nonPositive": 0
       }
     },
@@ -1406,16 +1408,16 @@
         "frozen: 48% of steps unchanged"
       ],
       "stats": {
-        "obs": 1767,
+        "obs": 1783,
         "start": "2020-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 90,
-        "flatShare": 0.4813,
+        "flatShare": 0.4787,
         "longestFlatRun": 13,
         "bigJumps": 0,
-        "recentObs": 966,
+        "recentObs": 974,
         "nonPositive": 0
       }
     },
@@ -1427,13 +1429,13 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "stale 271d (last 2025-11-20)"
+        "stale 287d (last 2025-11-20)"
       ],
       "stats": {
         "obs": 270,
         "start": "2011-11-14",
         "end": "2025-11-20",
-        "staleDays": 271,
+        "staleDays": 287,
         "medianGapDays": 8,
         "maxGapDays": 815,
         "flatShare": 0.0,
@@ -1452,16 +1454,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3407,
+        "obs": 3419,
         "start": "2011-12-30",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
         "medianGapDays": 1.0,
         "maxGapDays": 24,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 634,
+        "recentObs": 637,
         "nonPositive": 0
       }
     },
@@ -1473,13 +1475,13 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "stale 229d (last 2026-01-01)"
+        "stale 245d (last 2026-01-01)"
       ],
       "stats": {
         "obs": 283,
         "start": "2011-12-28",
         "end": "2026-01-01",
-        "staleDays": 229,
+        "staleDays": 245,
         "medianGapDays": 14.0,
         "maxGapDays": 111,
         "flatShare": 0.0,
@@ -1497,15 +1499,15 @@
       "unit": "gross ton",
       "public": false,
       "reasons": [
-        "cadence: median gap 30d",
+        "cadence: median gap 31d",
         "only 33 obs in last 3y"
       ],
       "stats": {
-        "obs": 175,
+        "obs": 176,
         "start": "2011-12-30",
-        "end": "2026-07-21",
-        "staleDays": 28,
-        "medianGapDays": 30.5,
+        "end": "2026-08-24",
+        "staleDays": 10,
+        "medianGapDays": 31,
         "maxGapDays": 63,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -1522,16 +1524,16 @@
       "unit": "pound",
       "public": false,
       "reasons": [
-        "1 >50% jump(s) in a 156-obs series"
+        "1 >50% jump(s) in a 157-obs series"
       ],
       "stats": {
-        "obs": 156,
+        "obs": 157,
         "start": "2011-10-26",
-        "end": "2026-07-27",
-        "staleDays": 22,
-        "medianGapDays": 31,
+        "end": "2026-08-27",
+        "staleDays": 7,
+        "medianGapDays": 31.0,
         "maxGapDays": 272,
-        "flatShare": 0.0065,
+        "flatShare": 0.0064,
         "longestFlatRun": 1,
         "bigJumps": 1,
         "recentObs": 32,
@@ -1550,11 +1552,11 @@
         "only 36 obs in last 3y"
       ],
       "stats": {
-        "obs": 175,
+        "obs": 176,
         "start": "2011-12-22",
-        "end": "2026-07-27",
-        "staleDays": 22,
-        "medianGapDays": 30.0,
+        "end": "2026-08-27",
+        "staleDays": 7,
+        "medianGapDays": 30,
         "maxGapDays": 57,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -1574,16 +1576,16 @@
         "2 >50% jump(s) \u2014 check before use"
       ],
       "stats": {
-        "obs": 3305,
+        "obs": 3317,
         "start": "2011-12-30",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
         "medianGapDays": 1.0,
         "maxGapDays": 42,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 2,
-        "recentObs": 642,
+        "recentObs": 645,
         "nonPositive": 0
       }
     },
@@ -1591,21 +1593,23 @@
       "id": 1248,
       "category": "steel",
       "name": "steel (steel, china, crc, metric ton)",
-      "grade": "tradable",
+      "grade": "level_only",
       "unit": "metric ton",
       "public": false,
-      "reasons": [],
+      "reasons": [
+        "22% of steps unchanged"
+      ],
       "stats": {
-        "obs": 1765,
+        "obs": 1782,
         "start": "2011-12-22",
-        "end": "2026-08-17",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-09-03",
+        "staleDays": 0,
+        "medianGapDays": 1,
         "maxGapDays": 401,
-        "flatShare": 0.0221,
-        "longestFlatRun": 4,
+        "flatShare": 0.2162,
+        "longestFlatRun": 91,
         "bigJumps": 0,
-        "recentObs": 896,
+        "recentObs": 912,
         "nonPositive": 0
       }
     },
@@ -1618,16 +1622,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1954,
+        "obs": 1965,
         "start": "2011-12-30",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 33,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 742,
+        "recentObs": 744,
         "nonPositive": 0
       }
     },
@@ -1643,10 +1647,10 @@
         "only 151 obs in last 3y"
       ],
       "stats": {
-        "obs": 786,
+        "obs": 788,
         "start": "2011-12-28",
-        "end": "2026-08-14",
-        "staleDays": 4,
+        "end": "2026-08-28",
+        "staleDays": 6,
         "medianGapDays": 7,
         "maxGapDays": 26,
         "flatShare": 0.0,
@@ -1667,16 +1671,16 @@
         "frozen: 47% of steps unchanged"
       ],
       "stats": {
-        "obs": 1735,
+        "obs": 1751,
         "start": "2020-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 90,
-        "flatShare": 0.4717,
+        "flatShare": 0.4691,
         "longestFlatRun": 13,
         "bigJumps": 0,
-        "recentObs": 949,
+        "recentObs": 958,
         "nonPositive": 0
       }
     },
@@ -1689,16 +1693,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3422,
+        "obs": 3434,
         "start": "2011-12-31",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
         "medianGapDays": 1,
         "maxGapDays": 14,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 642,
+        "recentObs": 645,
         "nonPositive": 0
       }
     },
@@ -1710,19 +1714,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "frozen: 49% of steps unchanged"
+        "frozen: 48% of steps unchanged"
       ],
       "stats": {
-        "obs": 1788,
+        "obs": 1804,
         "start": "2020-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 90,
-        "flatShare": 0.4868,
+        "flatShare": 0.4842,
         "longestFlatRun": 13,
         "bigJumps": 0,
-        "recentObs": 970,
+        "recentObs": 978,
         "nonPositive": 0
       }
     },
@@ -1735,19 +1739,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 31d",
-        "only 33 obs in last 3y"
+        "only 34 obs in last 3y"
       ],
       "stats": {
-        "obs": 169,
+        "obs": 170,
         "start": "2011-12-30",
-        "end": "2026-07-21",
-        "staleDays": 28,
-        "medianGapDays": 31.0,
+        "end": "2026-08-24",
+        "staleDays": 10,
+        "medianGapDays": 31,
         "maxGapDays": 62,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 33,
+        "recentObs": 34,
         "nonPositive": 0
       }
     },
@@ -1760,16 +1764,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1973,
+        "obs": 1984,
         "start": "2011-12-01",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 61,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 746,
+        "recentObs": 748,
         "nonPositive": 0
       }
     },
@@ -1782,16 +1786,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1967,
+        "obs": 1978,
         "start": "2011-12-01",
-        "end": "2026-08-17",
+        "end": "2026-09-02",
         "staleDays": 1,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 32,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 745,
+        "recentObs": 747,
         "nonPositive": 0
       }
     },
@@ -1807,11 +1811,11 @@
         "only 30 obs in last 3y"
       ],
       "stats": {
-        "obs": 161,
+        "obs": 162,
         "start": "2011-12-30",
-        "end": "2026-07-21",
-        "staleDays": 28,
-        "medianGapDays": 31.0,
+        "end": "2026-08-24",
+        "staleDays": 10,
+        "medianGapDays": 31,
         "maxGapDays": 63,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -1831,13 +1835,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1867,
+        "obs": 1883,
         "start": "2012-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 121,
-        "flatShare": 0.3344,
+        "flatShare": 0.3337,
         "longestFlatRun": 26,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -1855,13 +1859,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1900,
+        "obs": 1916,
         "start": "2012-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 122,
-        "flatShare": 0.2628,
+        "flatShare": 0.2627,
         "longestFlatRun": 9,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -1879,13 +1883,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1910,
+        "obs": 1926,
         "start": "2012-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 89,
-        "flatShare": 0.2111,
+        "flatShare": 0.2094,
         "longestFlatRun": 23,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -1903,13 +1907,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1891,
+        "obs": 1907,
         "start": "2012-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 62,
-        "flatShare": 0.2958,
+        "flatShare": 0.2954,
         "longestFlatRun": 9,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -1927,13 +1931,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1924,
+        "obs": 1940,
         "start": "2012-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 91,
-        "flatShare": 0.286,
+        "flatShare": 0.2857,
         "longestFlatRun": 9,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -1951,11 +1955,11 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 220,
+        "obs": 221,
         "start": "2012-01-01",
-        "end": "2026-08-03",
-        "staleDays": 15,
-        "medianGapDays": 28,
+        "end": "2026-09-01",
+        "staleDays": 2,
+        "medianGapDays": 28.5,
         "maxGapDays": 61,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -1973,16 +1977,16 @@
       "public": false,
       "reasons": [
         "composite index, not a price",
-        "frozen: 45% of steps unchanged"
+        "frozen: 46% of steps unchanged"
       ],
       "stats": {
-        "obs": 1892,
+        "obs": 1908,
         "start": "2012-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 243,
-        "flatShare": 0.4506,
+        "flatShare": 0.4552,
         "longestFlatRun": 34,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -2000,13 +2004,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1909,
+        "obs": 1925,
         "start": "2012-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 125,
-        "flatShare": 0.1499,
+        "flatShare": 0.1486,
         "longestFlatRun": 8,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -2024,13 +2028,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1874,
+        "obs": 1890,
         "start": "2012-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 124,
-        "flatShare": 0.2429,
+        "flatShare": 0.2414,
         "longestFlatRun": 10,
         "bigJumps": 0,
         "recentObs": 1057,
@@ -2048,13 +2052,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1919,
+        "obs": 1935,
         "start": "2012-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 92,
-        "flatShare": 0.3201,
+        "flatShare": 0.3195,
         "longestFlatRun": 21,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -2070,16 +2074,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1855,
+        "obs": 1867,
         "start": "2019-01-01",
-        "end": "2026-08-14",
-        "staleDays": 4,
+        "end": "2026-09-01",
+        "staleDays": 2,
         "medianGapDays": 1.0,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 704,
+        "recentObs": 706,
         "nonPositive": 0
       }
     },
@@ -2092,16 +2096,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1856,
+        "obs": 1868,
         "start": "2019-01-01",
-        "end": "2026-08-14",
-        "staleDays": 4,
+        "end": "2026-09-01",
+        "staleDays": 2,
         "medianGapDays": 1,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 706,
+        "recentObs": 708,
         "nonPositive": 0
       }
     },
@@ -2116,16 +2120,16 @@
         "frozen: 60% of steps unchanged"
       ],
       "stats": {
-        "obs": 1369,
+        "obs": 1385,
         "start": "2019-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 34,
-        "flatShare": 0.6045,
+        "flatShare": 0.6026,
         "longestFlatRun": 19,
         "bigJumps": 0,
-        "recentObs": 900,
+        "recentObs": 912,
         "nonPositive": 0
       }
     },
@@ -2137,19 +2141,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "frozen: 61% of steps unchanged"
+        "frozen: 60% of steps unchanged"
       ],
       "stats": {
-        "obs": 1371,
+        "obs": 1387,
         "start": "2019-01-01",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 34,
-        "flatShare": 0.6051,
+        "flatShare": 0.6032,
         "longestFlatRun": 19,
         "bigJumps": 0,
-        "recentObs": 900,
+        "recentObs": 912,
         "nonPositive": 0
       }
     },
@@ -2162,19 +2166,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 31d",
-        "only 36 obs in last 3y"
+        "only 35 obs in last 3y"
       ],
       "stats": {
         "obs": 152,
         "start": "2014-01-01",
         "end": "2026-08-06",
-        "staleDays": 12,
+        "staleDays": 28,
         "medianGapDays": 31,
         "maxGapDays": 52,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 36,
+        "recentObs": 35,
         "nonPositive": 0
       }
     },
@@ -2186,19 +2190,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "2 >50% jump(s) in a 152-obs series"
+        "1 >50% jump(s) in a 152-obs series"
       ],
       "stats": {
         "obs": 152,
         "start": "2014-01-01",
         "end": "2026-08-06",
-        "staleDays": 12,
+        "staleDays": 28,
         "medianGapDays": 31,
         "maxGapDays": 52,
         "flatShare": 0.0,
         "longestFlatRun": 0,
-        "bigJumps": 2,
-        "recentObs": 36,
+        "bigJumps": 1,
+        "recentObs": 35,
         "nonPositive": 0
       }
     },
@@ -2206,23 +2210,24 @@
       "id": 33077,
       "category": "steel",
       "name": "steel (steel, europe, plate, metric ton)",
-      "grade": "rejected",
+      "grade": "level_only",
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "1 >50% jump(s) in a 152-obs series"
+        "cadence: median gap 31d",
+        "only 35 obs in last 3y"
       ],
       "stats": {
         "obs": 152,
         "start": "2014-01-01",
         "end": "2026-08-06",
-        "staleDays": 12,
+        "staleDays": 28,
         "medianGapDays": 31,
         "maxGapDays": 52,
         "flatShare": 0.0,
         "longestFlatRun": 0,
-        "bigJumps": 1,
-        "recentObs": 36,
+        "bigJumps": 0,
+        "recentObs": 35,
         "nonPositive": 0
       }
     },
@@ -2235,19 +2240,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 31d",
-        "only 36 obs in last 3y"
+        "only 35 obs in last 3y"
       ],
       "stats": {
         "obs": 151,
         "start": "2014-01-01",
         "end": "2026-08-06",
-        "staleDays": 12,
+        "staleDays": 28,
         "medianGapDays": 31.0,
         "maxGapDays": 60,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 36,
+        "recentObs": 35,
         "nonPositive": 0
       }
     },
@@ -2260,19 +2265,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 31d",
-        "only 36 obs in last 3y"
+        "only 35 obs in last 3y"
       ],
       "stats": {
         "obs": 151,
         "start": "2014-01-01",
         "end": "2026-08-06",
-        "staleDays": 12,
+        "staleDays": 28,
         "medianGapDays": 31.0,
         "maxGapDays": 89,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 36,
+        "recentObs": 35,
         "nonPositive": 0
       }
     },
@@ -2284,19 +2289,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "2 >50% jump(s) in a 150-obs series"
+        "3 >50% jump(s) in a 150-obs series"
       ],
       "stats": {
         "obs": 150,
         "start": "2014-01-01",
         "end": "2026-08-06",
-        "staleDays": 12,
+        "staleDays": 28,
         "medianGapDays": 31,
         "maxGapDays": 90,
         "flatShare": 0.0,
         "longestFlatRun": 0,
-        "bigJumps": 2,
-        "recentObs": 35,
+        "bigJumps": 3,
+        "recentObs": 34,
         "nonPositive": 0
       }
     },
@@ -2309,19 +2314,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 31d",
-        "only 36 obs in last 3y"
+        "only 35 obs in last 3y"
       ],
       "stats": {
         "obs": 152,
         "start": "2014-01-01",
         "end": "2026-08-06",
-        "staleDays": 12,
+        "staleDays": 28,
         "medianGapDays": 31,
         "maxGapDays": 59,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 36,
+        "recentObs": 35,
         "nonPositive": 0
       }
     },
@@ -2339,13 +2344,13 @@
         "obs": 152,
         "start": "2014-01-01",
         "end": "2026-08-06",
-        "staleDays": 12,
+        "staleDays": 28,
         "medianGapDays": 31,
         "maxGapDays": 59,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 1,
-        "recentObs": 36,
+        "recentObs": 35,
         "nonPositive": 0
       }
     },
@@ -2358,19 +2363,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 31d",
-        "only 36 obs in last 3y"
+        "only 35 obs in last 3y"
       ],
       "stats": {
         "obs": 151,
         "start": "2014-01-01",
         "end": "2026-08-06",
-        "staleDays": 12,
+        "staleDays": 28,
         "medianGapDays": 31.0,
         "maxGapDays": 84,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 36,
+        "recentObs": 35,
         "nonPositive": 0
       }
     },
@@ -2385,13 +2390,13 @@
         "17% of steps unchanged"
       ],
       "stats": {
-        "obs": 2473,
+        "obs": 2489,
         "start": "2018-06-30",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 11,
-        "flatShare": 0.1683,
+        "flatShare": 0.1692,
         "longestFlatRun": 4,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2409,13 +2414,13 @@
         "17% of steps unchanged"
       ],
       "stats": {
-        "obs": 2473,
+        "obs": 2489,
         "start": "2018-06-30",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 11,
-        "flatShare": 0.1683,
+        "flatShare": 0.1692,
         "longestFlatRun": 4,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2430,16 +2435,16 @@
       "unit": "index",
       "public": false,
       "reasons": [
-        "24% of steps unchanged"
+        "25% of steps unchanged"
       ],
       "stats": {
-        "obs": 2344,
+        "obs": 2360,
         "start": "2018-06-30",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.2411,
+        "flatShare": 0.2459,
         "longestFlatRun": 48,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2457,13 +2462,13 @@
         "25% of steps unchanged"
       ],
       "stats": {
-        "obs": 2323,
+        "obs": 2339,
         "start": "2018-06-30",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.2489,
+        "flatShare": 0.2541,
         "longestFlatRun": 92,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2478,16 +2483,16 @@
       "unit": "index",
       "public": false,
       "reasons": [
-        "22% of steps unchanged"
+        "23% of steps unchanged"
       ],
       "stats": {
-        "obs": 2363,
+        "obs": 2379,
         "start": "2018-06-30",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 14,
-        "flatShare": 0.2231,
+        "flatShare": 0.2279,
         "longestFlatRun": 30,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2505,13 +2510,13 @@
         "25% of steps unchanged"
       ],
       "stats": {
-        "obs": 2327,
+        "obs": 2343,
         "start": "2018-06-30",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.2481,
+        "flatShare": 0.2532,
         "longestFlatRun": 92,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2529,13 +2534,13 @@
         "20% of steps unchanged"
       ],
       "stats": {
-        "obs": 2414,
+        "obs": 2430,
         "start": "2018-06-30",
-        "end": "2026-08-18",
+        "end": "2026-09-03",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 11,
-        "flatShare": 0.2018,
+        "flatShare": 0.2038,
         "longestFlatRun": 6,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2556,13 +2561,13 @@
         "obs": 115,
         "start": "2017-01-01",
         "end": "2026-08-06",
-        "staleDays": 12,
+        "staleDays": 28,
         "medianGapDays": 31.0,
         "maxGapDays": 64,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 4,
-        "recentObs": 35,
+        "recentObs": 34,
         "nonPositive": 0
       }
     },
@@ -2580,13 +2585,13 @@
         "obs": 114,
         "start": "2017-01-01",
         "end": "2026-08-06",
-        "staleDays": 12,
+        "staleDays": 28,
         "medianGapDays": 31,
         "maxGapDays": 64,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 1,
-        "recentObs": 35,
+        "recentObs": 34,
         "nonPositive": 0
       }
     },
@@ -2599,16 +2604,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1794,
+        "obs": 1806,
         "start": "2019-01-01",
-        "end": "2026-08-14",
-        "staleDays": 4,
+        "end": "2026-09-01",
+        "staleDays": 2,
         "medianGapDays": 1,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 702,
+        "recentObs": 704,
         "nonPositive": 0
       }
     },
@@ -2621,16 +2626,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1801,
+        "obs": 1813,
         "start": "2019-01-01",
-        "end": "2026-08-14",
-        "staleDays": 4,
+        "end": "2026-09-01",
+        "staleDays": 2,
         "medianGapDays": 1.0,
         "maxGapDays": 9,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 707,
+        "recentObs": 709,
         "nonPositive": 0
       }
     },
@@ -2643,16 +2648,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1850,
+        "obs": 1862,
         "start": "2019-01-01",
-        "end": "2026-08-14",
-        "staleDays": 4,
+        "end": "2026-09-01",
+        "staleDays": 2,
         "medianGapDays": 1,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 701,
+        "recentObs": 703,
         "nonPositive": 0
       }
     },
@@ -2665,16 +2670,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1855,
+        "obs": 1867,
         "start": "2019-01-01",
-        "end": "2026-08-14",
-        "staleDays": 4,
+        "end": "2026-09-01",
+        "staleDays": 2,
         "medianGapDays": 1.0,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 705,
+        "recentObs": 707,
         "nonPositive": 0
       }
     },
@@ -2686,19 +2691,19 @@
       "unit": "short ton",
       "public": true,
       "reasons": [
-        "only 540 obs in last 3y"
+        "only 542 obs in last 3y"
       ],
       "stats": {
-        "obs": 1442,
+        "obs": 1450,
         "start": "2019-01-01",
-        "end": "2026-08-12",
-        "staleDays": 6,
+        "end": "2026-09-01",
+        "staleDays": 2,
         "medianGapDays": 1,
         "maxGapDays": 17,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 540,
+        "recentObs": 542,
         "nonPositive": 0
       }
     },
@@ -2711,16 +2716,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1687,
+        "obs": 1699,
         "start": "2019-01-01",
-        "end": "2026-08-13",
-        "staleDays": 5,
+        "end": "2026-09-01",
+        "staleDays": 2,
         "medianGapDays": 1.0,
         "maxGapDays": 28,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 648,
+        "recentObs": 651,
         "nonPositive": 0
       }
     },
@@ -2732,20 +2737,20 @@
       "unit": "pound",
       "public": true,
       "reasons": [
-        "only 473 obs in last 3y",
+        "only 481 obs in last 3y",
         "1 >50% jump(s) \u2014 check before use"
       ],
       "stats": {
-        "obs": 1140,
+        "obs": 1152,
         "start": "2019-01-01",
-        "end": "2026-08-14",
-        "staleDays": 4,
+        "end": "2026-09-01",
+        "staleDays": 2,
         "medianGapDays": 1,
         "maxGapDays": 24,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 1,
-        "recentObs": 473,
+        "recentObs": 481,
         "nonPositive": 0
       }
     },
@@ -2760,16 +2765,16 @@
         "1 >50% jump(s) \u2014 check before use"
       ],
       "stats": {
-        "obs": 1281,
+        "obs": 1293,
         "start": "2019-01-01",
-        "end": "2026-08-14",
-        "staleDays": 4,
+        "end": "2026-09-01",
+        "staleDays": 2,
         "medianGapDays": 1.0,
         "maxGapDays": 26,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 1,
-        "recentObs": 622,
+        "recentObs": 626,
         "nonPositive": 0
       }
     },
@@ -2782,16 +2787,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 959,
+        "obs": 971,
         "start": "2022-01-25",
-        "end": "2026-08-14",
-        "staleDays": 4,
+        "end": "2026-09-01",
+        "staleDays": 2,
         "medianGapDays": 1.0,
         "maxGapDays": 19,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 653,
+        "recentObs": 655,
         "nonPositive": 0
       }
     },
@@ -2804,16 +2809,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1091,
+        "obs": 1103,
         "start": "2022-01-25",
-        "end": "2026-08-14",
-        "staleDays": 4,
+        "end": "2026-09-01",
+        "staleDays": 2,
         "medianGapDays": 1.0,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 703,
+        "recentObs": 705,
         "nonPositive": 0
       }
     },
@@ -2831,7 +2836,7 @@
         "obs": 76,
         "start": "2020-01-01",
         "end": "2026-08-06",
-        "staleDays": 12,
+        "staleDays": 28,
         "medianGapDays": 31,
         "maxGapDays": 121,
         "flatShare": 0.0,
@@ -2856,7 +2861,7 @@
         "obs": 76,
         "start": "2020-01-01",
         "end": "2026-08-06",
-        "staleDays": 12,
+        "staleDays": 28,
         "medianGapDays": 31,
         "maxGapDays": 121,
         "flatShare": 0.0,
@@ -2877,11 +2882,11 @@
         "only 549 obs in last 3y"
       ],
       "stats": {
-        "obs": 2490,
+        "obs": 2499,
         "start": "2013-04-02",
-        "end": "2026-08-17",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-09-01",
+        "staleDays": 2,
+        "medianGapDays": 1.0,
         "maxGapDays": 10,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -2898,19 +2903,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 501 obs in last 3y"
+        "only 502 obs in last 3y"
       ],
       "stats": {
-        "obs": 1478,
+        "obs": 1487,
         "start": "2014-01-02",
-        "end": "2026-08-17",
-        "staleDays": 1,
-        "medianGapDays": 2,
+        "end": "2026-09-01",
+        "staleDays": 2,
+        "medianGapDays": 2.0,
         "maxGapDays": 347,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 501,
+        "recentObs": 502,
         "nonPositive": 0
       }
     },
@@ -2923,19 +2928,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 7d",
-        "only 18 obs in last 3y"
+        "only 17 obs in last 3y"
       ],
       "stats": {
         "obs": 227,
         "start": "2012-01-04",
         "end": "2026-08-17",
-        "staleDays": 1,
+        "staleDays": 17,
         "medianGapDays": 7.0,
         "maxGapDays": 316,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 18,
+        "recentObs": 17,
         "nonPositive": 0
       }
     },
@@ -2947,19 +2952,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "only 266 obs in last 3y"
+        "only 264 obs in last 3y"
       ],
       "stats": {
-        "obs": 1174,
+        "obs": 1175,
         "start": "2012-01-04",
-        "end": "2026-08-13",
-        "staleDays": 5,
-        "medianGapDays": 2,
+        "end": "2026-08-27",
+        "staleDays": 7,
+        "medianGapDays": 2.0,
         "maxGapDays": 122,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 266,
+        "recentObs": 264,
         "nonPositive": 0
       }
     },
@@ -2975,11 +2980,11 @@
         "only 36 obs in last 3y"
       ],
       "stats": {
-        "obs": 68,
+        "obs": 69,
         "start": "2020-12-01",
-        "end": "2026-08-01",
-        "staleDays": 17,
-        "medianGapDays": 31,
+        "end": "2026-09-01",
+        "staleDays": 2,
+        "medianGapDays": 31.0,
         "maxGapDays": 62,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -3000,11 +3005,11 @@
         "only 36 obs in last 3y"
       ],
       "stats": {
-        "obs": 68,
+        "obs": 69,
         "start": "2020-12-01",
-        "end": "2026-08-01",
-        "staleDays": 17,
-        "medianGapDays": 31,
+        "end": "2026-09-01",
+        "staleDays": 2,
+        "medianGapDays": 31.0,
         "maxGapDays": 62,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -3025,11 +3030,11 @@
         "only 36 obs in last 3y"
       ],
       "stats": {
-        "obs": 140,
+        "obs": 141,
         "start": "2015-01-01",
-        "end": "2026-08-01",
-        "staleDays": 17,
-        "medianGapDays": 31,
+        "end": "2026-09-01",
+        "staleDays": 2,
+        "medianGapDays": 31.0,
         "maxGapDays": 31,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -3046,14 +3051,14 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "1 >50% jump(s) in a 66-obs series"
+        "1 >50% jump(s) in a 67-obs series"
       ],
       "stats": {
-        "obs": 66,
+        "obs": 67,
         "start": "2020-12-01",
-        "end": "2026-08-01",
-        "staleDays": 17,
-        "medianGapDays": 31,
+        "end": "2026-09-01",
+        "staleDays": 2,
+        "medianGapDays": 31.0,
         "maxGapDays": 62,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -3070,19 +3075,41 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 543 obs in last 3y"
+        "only 536 obs in last 3y"
       ],
       "stats": {
         "obs": 2351,
         "start": "2015-01-22",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 543,
+        "recentObs": 536,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270581,
+      "category": "rare earth metals",
+      "name": "dysprosium oxide (rare earth metals, china, 99.5%min fob, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3008,
+        "start": "2013-03-21",
+        "end": "2026-08-07",
+        "staleDays": 27,
+        "medianGapDays": 1,
+        "maxGapDays": 30,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 645,
         "nonPositive": 0
       }
     },
@@ -3098,13 +3125,13 @@
         "obs": 3225,
         "start": "2012-06-14",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 647,
+        "recentObs": 638,
         "nonPositive": 0
       }
     },
@@ -3116,19 +3143,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 397 obs in last 3y"
+        "only 390 obs in last 3y"
       ],
       "stats": {
         "obs": 1822,
         "start": "2012-07-12",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 2,
         "maxGapDays": 30,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0044,
+        "longestFlatRun": 2,
         "bigJumps": 0,
-        "recentObs": 397,
+        "recentObs": 390,
         "nonPositive": 0
       }
     },
@@ -3144,13 +3171,13 @@
         "obs": 1906,
         "start": "2017-12-18",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0005,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 646,
+        "recentObs": 637,
         "nonPositive": 0
       }
     },
@@ -3166,13 +3193,13 @@
         "obs": 3109,
         "start": "2012-10-29",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0003,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 641,
+        "recentObs": 632,
         "nonPositive": 0
       }
     },
@@ -3188,13 +3215,13 @@
         "obs": 3295,
         "start": "2012-03-08",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0003,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 649,
+        "recentObs": 640,
         "nonPositive": 0
       }
     },
@@ -3212,11 +3239,11 @@
         "obs": 475,
         "start": "2024-06-14",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 12,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0021,
+        "longestFlatRun": 1,
         "bigJumps": 0,
         "recentObs": 475,
         "nonPositive": 0
@@ -3226,23 +3253,23 @@
       "id": 270764,
       "category": "rare earth metals",
       "name": "lanthanum metal (rare earth metals, china, 99%min exw, kilogram)",
-      "grade": "level_only",
+      "grade": "rejected",
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 457 obs in last 3y"
+        "stale 31d (last 2026-08-03)"
       ],
       "stats": {
         "obs": 2495,
         "start": "2013-04-09",
         "end": "2026-08-03",
-        "staleDays": 15,
+        "staleDays": 31,
         "medianGapDays": 1.0,
         "maxGapDays": 21,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0024,
+        "longestFlatRun": 3,
         "bigJumps": 0,
-        "recentObs": 457,
+        "recentObs": 451,
         "nonPositive": 0
       }
     },
@@ -3254,19 +3281,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 548 obs in last 3y"
+        "only 540 obs in last 3y"
       ],
       "stats": {
         "obs": 2638,
         "start": "2013-01-23",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1,
         "maxGapDays": 30,
-        "flatShare": 0.0004,
+        "flatShare": 0.0027,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 548,
+        "recentObs": 540,
         "nonPositive": 0
       }
     },
@@ -3278,19 +3305,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 215 obs in last 3y"
+        "only 211 obs in last 3y"
       ],
       "stats": {
         "obs": 1845,
         "start": "2012-12-05",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 55,
         "flatShare": 0.0005,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 215,
+        "recentObs": 211,
         "nonPositive": 0
       }
     },
@@ -3302,19 +3329,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 304 obs in last 3y"
+        "only 297 obs in last 3y"
       ],
       "stats": {
         "obs": 2038,
         "start": "2012-11-19",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1,
         "maxGapDays": 30,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0039,
+        "longestFlatRun": 4,
         "bigJumps": 0,
-        "recentObs": 304,
+        "recentObs": 297,
         "nonPositive": 0
       }
     },
@@ -3326,19 +3353,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 403 obs in last 3y"
+        "only 394 obs in last 3y"
       ],
       "stats": {
         "obs": 2655,
         "start": "2011-12-30",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 21,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0015,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 403,
+        "recentObs": 394,
         "nonPositive": 0
       }
     },
@@ -3354,13 +3381,13 @@
         "obs": 1771,
         "start": "2018-01-31",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 30,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0006,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 625,
+        "recentObs": 616,
         "nonPositive": 0
       }
     },
@@ -3376,13 +3403,13 @@
         "obs": 2418,
         "start": "2015-10-29",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1,
         "maxGapDays": 18,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 648,
+        "recentObs": 639,
         "nonPositive": 0
       }
     },
@@ -3398,13 +3425,13 @@
         "obs": 1444,
         "start": "2019-11-21",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1,
         "maxGapDays": 18,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 646,
+        "recentObs": 637,
         "nonPositive": 0
       }
     },
@@ -3420,13 +3447,13 @@
         "obs": 3091,
         "start": "2013-01-04",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0003,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 648,
+        "recentObs": 639,
         "nonPositive": 0
       }
     },
@@ -3442,13 +3469,13 @@
         "obs": 1920,
         "start": "2017-11-22",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0005,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 649,
+        "recentObs": 640,
         "nonPositive": 0
       }
     },
@@ -3464,13 +3491,13 @@
         "obs": 3285,
         "start": "2011-12-30",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 638,
+        "recentObs": 629,
         "nonPositive": 0
       }
     },
@@ -3486,13 +3513,13 @@
         "obs": 1123,
         "start": "2021-02-22",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0018,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 622,
+        "recentObs": 614,
         "nonPositive": 0
       }
     },
@@ -3508,13 +3535,13 @@
         "obs": 1118,
         "start": "2021-02-22",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0009,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 623,
+        "recentObs": 614,
         "nonPositive": 0
       }
     },
@@ -3530,13 +3557,13 @@
         "obs": 1128,
         "start": "2021-02-22",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1,
         "maxGapDays": 18,
         "flatShare": 0.0009,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 627,
+        "recentObs": 619,
         "nonPositive": 0
       }
     },
@@ -3552,13 +3579,13 @@
         "obs": 1125,
         "start": "2021-02-22",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.0009,
+        "flatShare": 0.0018,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 627,
+        "recentObs": 620,
         "nonPositive": 0
       }
     },
@@ -3574,13 +3601,13 @@
         "obs": 1127,
         "start": "2021-02-22",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0009,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 626,
+        "recentObs": 618,
         "nonPositive": 0
       }
     },
@@ -3596,13 +3623,13 @@
         "obs": 1127,
         "start": "2021-02-22",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0009,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 627,
+        "recentObs": 619,
         "nonPositive": 0
       }
     },
@@ -3618,13 +3645,13 @@
         "obs": 1126,
         "start": "2021-02-22",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0018,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 626,
+        "recentObs": 618,
         "nonPositive": 0
       }
     },
@@ -3640,13 +3667,13 @@
         "obs": 3315,
         "start": "2011-12-30",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0003,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 638,
+        "recentObs": 630,
         "nonPositive": 0
       }
     },
@@ -3662,13 +3689,13 @@
         "obs": 3295,
         "start": "2011-12-30",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 30,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 653,
+        "recentObs": 644,
         "nonPositive": 0
       }
     },
@@ -3684,13 +3711,35 @@
         "obs": 2931,
         "start": "2013-08-19",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
+        "flatShare": 0.0003,
+        "longestFlatRun": 1,
+        "bigJumps": 0,
+        "recentObs": 632,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270908,
+      "category": "rare earth metals",
+      "name": "neodymium oxide (rare earth metals, china, 99.5%min fob, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3283,
+        "start": "2011-12-30",
+        "end": "2026-08-07",
+        "staleDays": 27,
+        "medianGapDays": 1.0,
+        "maxGapDays": 30,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 640,
+        "recentObs": 642,
         "nonPositive": 0
       }
     },
@@ -3706,13 +3755,13 @@
         "obs": 3268,
         "start": "2012-04-17",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1,
         "maxGapDays": 20,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0003,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 650,
+        "recentObs": 641,
         "nonPositive": 0
       }
     },
@@ -3728,13 +3777,13 @@
         "obs": 3286,
         "start": "2011-12-30",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1,
         "maxGapDays": 30,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 650,
+        "recentObs": 641,
         "nonPositive": 0
       }
     },
@@ -3750,13 +3799,35 @@
         "obs": 3056,
         "start": "2013-01-11",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0003,
+        "flatShare": 0.0007,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 641,
+        "recentObs": 633,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 270924,
+      "category": "rare earth metals",
+      "name": "praseodymium oxide (rare earth metals, china, 99.5%min fob, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 3287,
+        "start": "2011-12-30",
+        "end": "2026-08-07",
+        "staleDays": 27,
+        "medianGapDays": 1.0,
+        "maxGapDays": 30,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 645,
         "nonPositive": 0
       }
     },
@@ -3772,13 +3843,13 @@
         "obs": 3327,
         "start": "2011-12-30",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 645,
+        "recentObs": 637,
         "nonPositive": 0
       }
     },
@@ -3794,13 +3865,13 @@
         "obs": 3000,
         "start": "2013-03-25",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1,
         "maxGapDays": 30,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 651,
+        "recentObs": 642,
         "nonPositive": 0
       }
     },
@@ -3816,13 +3887,57 @@
         "obs": 3142,
         "start": "2012-09-20",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1,
         "maxGapDays": 18,
+        "flatShare": 0.0003,
+        "longestFlatRun": 1,
+        "bigJumps": 0,
+        "recentObs": 633,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 271053,
+      "category": "rare earth metals",
+      "name": "terbium metal (rare earth metals, china, 99.9%min fob, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 1610,
+        "start": "2019-01-28",
+        "end": "2026-08-07",
+        "staleDays": 27,
+        "medianGapDays": 1,
+        "maxGapDays": 30,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 641,
+        "recentObs": 645,
+        "nonPositive": 0
+      }
+    },
+    {
+      "id": 271055,
+      "category": "rare earth metals",
+      "name": "terbium oxide (rare earth metals, china, 99.99%min fob, kilogram)",
+      "grade": "tradable",
+      "unit": "kilogram",
+      "public": false,
+      "reasons": [],
+      "stats": {
+        "obs": 1621,
+        "start": "2019-01-16",
+        "end": "2026-08-07",
+        "staleDays": 27,
+        "medianGapDays": 1.0,
+        "maxGapDays": 30,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
+        "bigJumps": 0,
+        "recentObs": 646,
         "nonPositive": 0
       }
     },
@@ -3834,19 +3949,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 597 obs in last 3y"
+        "only 590 obs in last 3y"
       ],
       "stats": {
         "obs": 3084,
         "start": "2012-04-16",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0006,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 597,
+        "recentObs": 590,
         "nonPositive": 0
       }
     },
@@ -3862,13 +3977,13 @@
         "obs": 3199,
         "start": "2012-07-24",
         "end": "2026-08-07",
-        "staleDays": 11,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 645,
+        "recentObs": 636,
         "nonPositive": 0
       }
     }
