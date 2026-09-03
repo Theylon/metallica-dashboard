@@ -1,21 +1,21 @@
 {
- "updatedAt": "2026-09-03T18:11:50+00:00",
+ "updatedAt": "2026-09-03T19:09:32+00:00",
  "asOf": "2026-09-03",
  "window": 90,
  "obs": 54,
  "headline": {
-  "annVol": 23.5,
+  "annVol": 23.4,
   "betaSpy": 0.63,
   "betaXme": 0.33,
-  "var1d95": -322,
-  "var1d99": -456,
-  "hhi": 905.0,
+  "var1d95": -321,
+  "var1d99": -455,
+  "hhi": 906.0,
   "effectiveN": 11.0
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "23.5%",
+   "v": "23.4%",
    "note": "from the account's daily TWR, 54 daily obs since inception",
    "tone": "neutral"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$322",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$456)",
+   "v": "-$321",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$455)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "905 / 11.0",
+   "v": "906 / 11.0",
    "note": "15 names, ~11.0 effective",
    "tone": "pos"
   }
@@ -357,30 +357,30 @@
   {
    "ticker": "GDX",
    "side": "long",
-   "weightPct": 18.6,
+   "weightPct": 18.7,
    "riskContribPct": 27.0,
-   "mVaR": 100.0
+   "mVaR": 99.9
   },
   {
    "ticker": "HBM",
    "side": "long",
    "weightPct": 6.1,
    "riskContribPct": 11.7,
-   "mVaR": 43.3
+   "mVaR": 43.4
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 8.0,
    "riskContribPct": 11.3,
-   "mVaR": 41.9
+   "mVaR": 41.8
   },
   {
    "ticker": "COPX",
    "side": "long",
    "weightPct": 7.6,
    "riskContribPct": 11.0,
-   "mVaR": 40.8
+   "mVaR": 40.7
   },
   {
    "ticker": "ERO",
@@ -392,9 +392,9 @@
   {
    "ticker": "SCCO",
    "side": "long",
-   "weightPct": 5.6,
+   "weightPct": 5.5,
    "riskContribPct": 8.3,
-   "mVaR": 30.8
+   "mVaR": 30.5
   },
   {
    "ticker": "MT",
@@ -413,7 +413,7 @@
   {
    "ticker": "TECK",
    "side": "long",
-   "weightPct": 3.1,
+   "weightPct": 3.2,
    "riskContribPct": 4.1,
    "mVaR": 15.1
   },
@@ -422,7 +422,7 @@
    "side": "long",
    "weightPct": 1.7,
    "riskContribPct": 3.2,
-   "mVaR": 12.0
+   "mVaR": 11.9
   },
   {
    "ticker": "STLD",
