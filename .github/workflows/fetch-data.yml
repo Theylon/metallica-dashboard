@@ -78,7 +78,8 @@ jobs:
           python scripts/mm_series_quality.py /tmp/historical_latest.json.gz > /dev/null || echo "mm_series_quality failed (non-fatal)"
           python scripts/mm_equities.py --out /tmp/mm_equities.json || echo "mm_equities failed (non-fatal)"
           if [ -f /tmp/mm_equities.json ] && [ -f scripts/rare_earth_leadlag.py ]; then
-            DELAY=$(python -c "import json;d=json.load(open('data/mm_freshness.json'));print(max(1, d['series'].get('270930', {}).get('lagDays', 11)))" 2>/dev/null || echo 11)
+            # lagDays is calendar days; the research script counts trading days (x5/7)
+            DELAY=$(python -c "import json;d=json.load(open('data/mm_freshness.json'));print(max(1, round(d['series'].get('270930', {}).get('lagDays', 15) * 5 / 7)))" 2>/dev/null || echo 11)
             python scripts/rare_earth_leadlag.py /tmp/historical_latest.json.gz --equities /tmp/mm_equities.json --delay "$DELAY" > /dev/null || echo "rare_earth_leadlag failed (non-fatal)"
           fi
           rm -f /tmp/historical_latest.json.gz /tmp/mm_equities.json
