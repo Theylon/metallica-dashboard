@@ -1,27 +1,27 @@
 {
- "updatedAt": "2026-09-03T19:39:20+00:00",
+ "updatedAt": "2026-09-03T20:09:14+00:00",
  "asOf": "2026-09-03",
  "window": 90,
  "obs": 54,
  "headline": {
-  "annVol": 23.4,
-  "betaSpy": 0.63,
+  "annVol": 23.5,
+  "betaSpy": 0.64,
   "betaXme": 0.33,
-  "var1d95": -321,
-  "var1d99": -455,
+  "var1d95": -322,
+  "var1d99": -457,
   "hhi": 906.0,
   "effectiveN": 11.0
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "23.4%",
+   "v": "23.5%",
    "note": "from the account's daily TWR, 54 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.63",
+   "v": "0.64",
    "note": "53 overlapping daily obs",
    "tone": "neutral"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$321",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$455)",
+   "v": "-$322",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$457)",
    "tone": "neg"
   },
   {
@@ -359,41 +359,41 @@
    "side": "long",
    "weightPct": 18.7,
    "riskContribPct": 27.0,
-   "mVaR": 100.0
+   "mVaR": 100.5
   },
   {
    "ticker": "HBM",
    "side": "long",
    "weightPct": 6.1,
-   "riskContribPct": 11.7,
-   "mVaR": 43.4
+   "riskContribPct": 11.8,
+   "mVaR": 43.7
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 8.0,
    "riskContribPct": 11.3,
-   "mVaR": 41.9
+   "mVaR": 42.0
   },
   {
    "ticker": "COPX",
    "side": "long",
    "weightPct": 7.6,
    "riskContribPct": 11.0,
-   "mVaR": 40.7
+   "mVaR": 40.9
   },
   {
    "ticker": "ERO",
    "side": "long",
-   "weightPct": 5.8,
-   "riskContribPct": 10.7,
-   "mVaR": 39.5
+   "weightPct": 5.9,
+   "riskContribPct": 10.8,
+   "mVaR": 40.0
   },
   {
    "ticker": "SCCO",
    "side": "long",
    "weightPct": 5.5,
-   "riskContribPct": 8.3,
+   "riskContribPct": 8.2,
    "mVaR": 30.5
   },
   {
@@ -415,14 +415,14 @@
    "side": "long",
    "weightPct": 3.2,
    "riskContribPct": 4.1,
-   "mVaR": 15.1
+   "mVaR": 15.2
   },
   {
    "ticker": "TGB",
    "side": "long",
    "weightPct": 1.7,
    "riskContribPct": 3.2,
-   "mVaR": 11.9
+   "mVaR": 12.1
   },
   {
    "ticker": "STLD",
@@ -455,8 +455,8 @@
   {
    "ticker": "KALU",
    "side": "short",
-   "weightPct": -11.9,
-   "riskContribPct": -7.4,
+   "weightPct": -11.8,
+   "riskContribPct": -7.3,
    "mVaR": -27.3
   }
  ],
