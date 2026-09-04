@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-09-04T15:17:31+00:00",
+ "updatedAt": "2026-09-04T16:10:56+00:00",
  "asOf": "2026-09-04",
  "window": 90,
  "obs": 55,
@@ -7,9 +7,9 @@
   "annVol": 23.3,
   "betaSpy": 0.64,
   "betaXme": 0.33,
-  "var1d95": -320,
-  "var1d99": -454,
-  "hhi": 902.0,
+  "var1d95": -321,
+  "var1d99": -455,
+  "hhi": 900.0,
   "effectiveN": 11.1
  },
  "metrics": [
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$320",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$454)",
+   "v": "-$321",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$455)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "902 / 11.1",
+   "v": "900 / 11.1",
    "note": "15 names, ~11.1 effective",
    "tone": "pos"
   }
@@ -357,23 +357,23 @@
   {
    "ticker": "GDX",
    "side": "long",
-   "weightPct": 18.5,
+   "weightPct": 18.4,
    "riskContribPct": 26.6,
-   "mVaR": 98.1
+   "mVaR": 97.9
   },
   {
    "ticker": "HBM",
    "side": "long",
    "weightPct": 6.2,
    "riskContribPct": 11.8,
-   "mVaR": 43.5
+   "mVaR": 43.4
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 8.1,
    "riskContribPct": 11.3,
-   "mVaR": 41.5
+   "mVaR": 41.6
   },
   {
    "ticker": "COPX",
@@ -385,9 +385,9 @@
   {
    "ticker": "ERO",
    "side": "long",
-   "weightPct": 5.9,
+   "weightPct": 5.8,
    "riskContribPct": 10.7,
-   "mVaR": 39.4
+   "mVaR": 39.5
   },
   {
    "ticker": "SCCO",
@@ -400,7 +400,7 @@
    "ticker": "MT",
    "side": "long",
    "weightPct": 5.8,
-   "riskContribPct": 5.7,
+   "riskContribPct": 5.8,
    "mVaR": 21.2
   },
   {
@@ -436,7 +436,7 @@
    "side": "long",
    "weightPct": 7.2,
    "riskContribPct": 2.9,
-   "mVaR": 10.6
+   "mVaR": 10.7
   },
   {
    "ticker": "GLD",
