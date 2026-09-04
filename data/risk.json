@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-09-04T18:14:08+00:00",
+ "updatedAt": "2026-09-04T19:10:49+00:00",
  "asOf": "2026-09-04",
  "window": 90,
  "obs": 55,
@@ -8,8 +8,8 @@
   "betaSpy": 0.64,
   "betaXme": 0.33,
   "var1d95": -320,
-  "var1d99": -454,
-  "hhi": 899.0,
+  "var1d99": -453,
+  "hhi": 900.0,
   "effectiveN": 11.1
  },
  "metrics": [
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$320",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$454)",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$453)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "899 / 11.1",
+   "v": "900 / 11.1",
    "note": "15 names, ~11.1 effective",
    "tone": "pos"
   }
@@ -358,43 +358,43 @@
    "ticker": "GDX",
    "side": "long",
    "weightPct": 18.4,
-   "riskContribPct": 26.5,
+   "riskContribPct": 26.6,
    "mVaR": 97.5
   },
   {
    "ticker": "HBM",
    "side": "long",
-   "weightPct": 6.2,
+   "weightPct": 6.1,
    "riskContribPct": 11.7,
-   "mVaR": 43.2
+   "mVaR": 43.0
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 8.1,
-   "riskContribPct": 11.4,
-   "mVaR": 41.8
+   "riskContribPct": 11.3,
+   "mVaR": 41.6
   },
   {
    "ticker": "COPX",
    "side": "long",
-   "weightPct": 7.6,
+   "weightPct": 7.5,
    "riskContribPct": 10.9,
-   "mVaR": 40.3
+   "mVaR": 40.2
   },
   {
    "ticker": "ERO",
    "side": "long",
-   "weightPct": 5.9,
+   "weightPct": 5.8,
    "riskContribPct": 10.7,
-   "mVaR": 39.5
+   "mVaR": 39.2
   },
   {
    "ticker": "SCCO",
    "side": "long",
-   "weightPct": 5.6,
+   "weightPct": 5.5,
    "riskContribPct": 8.2,
-   "mVaR": 30.2
+   "mVaR": 30.1
   },
   {
    "ticker": "MT",
@@ -434,7 +434,7 @@
   {
    "ticker": "NUE",
    "side": "long",
-   "weightPct": 7.2,
+   "weightPct": 7.3,
    "riskContribPct": 2.9,
    "mVaR": 10.7
   },
@@ -450,14 +450,14 @@
    "side": "long",
    "weightPct": 2.6,
    "riskContribPct": 1.5,
-   "mVaR": 5.6
+   "mVaR": 5.7
   },
   {
    "ticker": "KALU",
    "side": "short",
    "weightPct": -12.1,
    "riskContribPct": -7.4,
-   "mVaR": -27.2
+   "mVaR": -27.1
   }
  ],
  "coverageNote": "15 of 15 holdings"
