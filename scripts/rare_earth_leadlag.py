@@ -23,10 +23,16 @@ episodes, and bootstrap p < P_CONFIRM.
     python3 scripts/rare_earth_leadlag.py dump.json.gz --equities eq.json \\
         --tickers MP,REMX,LYSCF --commodity 270930 --delay 11
 
-Defaults: commodity 270930 (PrNd oxide, China exw), DELAY 11 trading days (the gap
-between a series' last observation and the dump date, i.e. what a dump user actually
-sees), LOOK 20, FWD 20, THRESH 0.5 sd. MP is cut at 2020-11-18 (SPAC shell before).
-Stdlib only.
+Defaults: commodity 270930 (PrNd oxide, China exw), DELAY 19 trading days, LOOK 20,
+FWD 20, THRESH 0.5 sd. MP is cut at 2020-11-18 (SPAC shell before).
+
+On DELAY: it is the gap between a series' last observation and the day we see it, so
+it decides how much of the signal is real. The first live API pull (2026-09-03,
+data/mm_freshness.json) measured 27 calendar days ~= 19 trading days for the whole
+Chinese rare-earth complex, not the 11 first assumed from the 2026-08-18 dump. That
+correction matters: at 19 the MP divergence result drops from -11.9% (p 0.005) to
+-2.0% (p 0.43) and only LYSCF survives. The fetch Action derives --delay per run from
+mm_freshness.json rather than trusting this default. Stdlib only.
 """
 import argparse
 import json
@@ -288,7 +294,9 @@ def main():
     ap.add_argument("--equities", required=True, help='JSON {ticker: {"YYYY-MM-DD": close}}')
     ap.add_argument("--tickers", default="MP,REMX,LYSCF")
     ap.add_argument("--commodity", type=int, default=270930)
-    ap.add_argument("--delay", type=int, default=11)
+    ap.add_argument("--delay", type=int, default=19,
+                    help="trading days between the assessment date and seeing it "
+                         "(measured: data/mm_freshness.json)")
     ap.add_argument("--look", type=int, default=20)
     ap.add_argument("--fwd", type=int, default=20)
     ap.add_argument("--threshold-sd", type=float, default=0.5)
