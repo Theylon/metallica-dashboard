@@ -23,16 +23,22 @@ episodes, and bootstrap p < P_CONFIRM.
     python3 scripts/rare_earth_leadlag.py dump.json.gz --equities eq.json \\
         --tickers MP,REMX,LYSCF --commodity 270930 --delay 11
 
-Defaults: commodity 270930 (PrNd oxide, China exw), DELAY 19 trading days, LOOK 20,
+Defaults: commodity 270930 (PrNd oxide, China exw), DELAY 3 trading days, LOOK 20,
 FWD 20, THRESH 0.5 sd. MP is cut at 2020-11-18 (SPAC shell before).
 
-On DELAY: it is the gap between a series' last observation and the day we see it, so
-it decides how much of the signal is real. The first live API pull (2026-09-03,
-data/mm_freshness.json) measured 27 calendar days ~= 19 trading days for the whole
-Chinese rare-earth complex, not the 11 first assumed from the 2026-08-18 dump. That
-correction matters: at 19 the MP divergence result drops from -11.9% (p 0.005) to
--2.0% (p 0.43) and only LYSCF survives. The fetch Action derives --delay per run from
-mm_freshness.json rather than trusting this default. Stdlib only.
+On DELAY: it is the gap between a series' last observation and the day we see it, so it
+decides how much of the signal is real, and it is easy to measure wrongly. History here:
+11 trading days was first assumed from the 2026-08-18 dump; the 2026-09-03 live pull
+appeared to measure 27 calendar days and the result collapsed; but that pull happened
+during a MetalMiner outage in which 40 series published nothing between 2026-08-07 and
+2026-09-04. Once the feed recovered, the normal lag is 4 calendar days ~= 3 trading days.
+At the true delay the divergence result is stronger than either earlier estimate:
+MP -16.1% (p<0.001), LYSCF -11.2% (p<0.001), REMX -1.9% (p 0.36).
+
+The lesson is in MAX_SANE_DELAY below: a lag beyond ~2 trading weeks means the feed is
+broken, not lagged, and a delay measured then describes an outage rather than the
+publication schedule. The fetch Action passes --delay from data/mm_freshness.json but
+skips this script entirely while the reference series is graded "rejected". Stdlib only.
 """
 import argparse
 import json
@@ -53,6 +59,7 @@ MIN_EPISODES = 6
 P_CONFIRM = 0.10
 BOOT = 2000
 SEED = 7
+MAX_SANE_DELAY = 10  # trading days; beyond this the feed is broken, not merely lagged
 
 
 # ---------- small numeric helpers (stdlib) ----------
@@ -240,6 +247,11 @@ def render(results, pooled, args, comm_label, dump_name):
          f"tickers {', '.join(results)}.", "",
          f"Verdict rule (fixed before running): the 'stock up / commodity down' cell is CONFIRMED on a "
          f"ticker when mean fwd {args.fwd}d < 0, ≥{MIN_EPISODES} episodes, bootstrap p < {P_CONFIRM}.", ""]
+    if args.delay > MAX_SANE_DELAY:
+        L += [f"> **Warning:** --delay {args.delay} exceeds MAX_SANE_DELAY ({MAX_SANE_DELAY} trading "
+              "days). A lag that large means the feed had stopped, not that publication is slow, so "
+              "these numbers describe an outage rather than the real relationship. Re-run once the "
+              "series is publishing again.", ""]
     L += ["## Verdicts", "", "| ticker | window | episodes | mean fwd (weekly sample) | negative share | p | confirmed |",
           "|---|---|---|---|---|---|---|"]
     for t, r in results.items():
@@ -294,9 +306,9 @@ def main():
     ap.add_argument("--equities", required=True, help='JSON {ticker: {"YYYY-MM-DD": close}}')
     ap.add_argument("--tickers", default="MP,REMX,LYSCF")
     ap.add_argument("--commodity", type=int, default=270930)
-    ap.add_argument("--delay", type=int, default=19,
+    ap.add_argument("--delay", type=int, default=3,
                     help="trading days between the assessment date and seeing it "
-                         "(measured: data/mm_freshness.json)")
+                         "(measured: data/mm_freshness.json; normal is 3)")
     ap.add_argument("--look", type=int, default=20)
     ap.add_argument("--fwd", type=int, default=20)
     ap.add_argument("--threshold-sd", type=float, default=0.5)
