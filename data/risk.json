@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-09-09T20:14:39+00:00",
+ "updatedAt": "2026-09-09T21:10:32+00:00",
  "asOf": "2026-09-09",
  "window": 90,
  "obs": 58,
@@ -8,8 +8,8 @@
   "betaSpy": 0.59,
   "betaXme": 0.33,
   "var1d95": -325,
-  "var1d99": -460,
-  "hhi": 894.0,
+  "var1d99": -461,
+  "hhi": 893.0,
   "effectiveN": 11.2
  },
  "metrics": [
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$325",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$460)",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$461)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "894 / 11.2",
+   "v": "893 / 11.2",
    "note": "15 names, ~11.2 effective",
    "tone": "pos"
   }
@@ -359,28 +359,28 @@
    "side": "long",
    "weightPct": 18.2,
    "riskContribPct": 25.6,
-   "mVaR": 95.9
+   "mVaR": 96.0
   },
   {
    "ticker": "HBM",
    "side": "long",
    "weightPct": 6.3,
    "riskContribPct": 12.0,
-   "mVaR": 45.0
+   "mVaR": 45.1
   },
   {
    "ticker": "ERO",
    "side": "long",
    "weightPct": 6.3,
    "riskContribPct": 11.8,
-   "mVaR": 44.1
+   "mVaR": 44.4
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 8.4,
-   "riskContribPct": 11.8,
-   "mVaR": 44.1
+   "riskContribPct": 11.7,
+   "mVaR": 43.7
   },
   {
    "ticker": "COPX",
@@ -394,7 +394,7 @@
    "side": "long",
    "weightPct": 5.7,
    "riskContribPct": 8.4,
-   "mVaR": 31.4
+   "mVaR": 31.5
   },
   {
    "ticker": "MT",
@@ -415,14 +415,14 @@
    "side": "long",
    "weightPct": 3.2,
    "riskContribPct": 4.0,
-   "mVaR": 15.1
+   "mVaR": 15.2
   },
   {
    "ticker": "TGB",
    "side": "long",
    "weightPct": 1.8,
-   "riskContribPct": 3.4,
-   "mVaR": 12.8
+   "riskContribPct": 3.5,
+   "mVaR": 12.9
   },
   {
    "ticker": "STLD",
