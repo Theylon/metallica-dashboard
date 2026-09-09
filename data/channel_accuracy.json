@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-09-09T20:14:39+00:00",
+ "updatedAt": "2026-09-09T21:13:40+00:00",
  "gate": {
   "trustedMinPct": 80
  },
@@ -407,19 +407,19 @@
    "kind": "crossval",
    "source": "micro.json crossVal (independent yfinance pull)",
    "ticker": null,
-   "n": 193,
+   "n": 192,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
    "hitRatePct": null,
-   "accuracyPct": 74.6,
+   "accuracyPct": 75.0,
    "status": "info",
    "gated": false,
    "note": null,
    "detail": [
     {
      "agree": 144,
-     "mixed": 38,
+     "mixed": 37,
      "conflict": 11
     }
    ]
