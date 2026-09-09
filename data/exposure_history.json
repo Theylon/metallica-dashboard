@@ -2607,5 +2607,50 @@
         }
       ]
     }
+  },
+  "2026-09-09": {
+    "commodityExposure": {
+      "steel": 0.135822,
+      "copper": 0.077685,
+      "molybdenum bar": 0.042001,
+      "gold": 0.018424
+    },
+    "byTicker": {
+      "COPX": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.077685
+        }
+      ],
+      "FCX": [
+        {
+          "commodity": "molybdenum bar",
+          "tier": "T2",
+          "weight": 0.042001
+        }
+      ],
+      "GLD": [
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": 0.018424
+        }
+      ],
+      "NUE": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.070111
+        }
+      ],
+      "STLD": [
+        {
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.065711
+        }
+      ]
+    }
   }
 }
