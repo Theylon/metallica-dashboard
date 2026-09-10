@@ -1,33 +1,33 @@
 {
- "updatedAt": "2026-09-10T17:15:49+00:00",
+ "updatedAt": "2026-09-10T18:09:32+00:00",
  "asOf": "2026-09-10",
  "window": 90,
  "obs": 59,
  "headline": {
-  "annVol": 23.6,
-  "betaSpy": 0.64,
-  "betaXme": 0.35,
-  "var1d95": -349,
+  "annVol": 23.7,
+  "betaSpy": 0.65,
+  "betaXme": 0.36,
+  "var1d95": -358,
   "var1d99": -445,
-  "hhi": 901.0,
+  "hhi": 900.0,
   "effectiveN": 11.1
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "23.6%",
+   "v": "23.7%",
    "note": "from the account's daily TWR, 59 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.64",
+   "v": "0.65",
    "note": "57 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.35",
+   "v": "0.36",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$349",
-   "note": "-3.30% of NAV; 99% VaR -4.21% (-$445)",
+   "v": "-$358",
+   "note": "-3.39% of NAV; 99% VaR -4.21% (-$445)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "901 / 11.1",
+   "v": "900 / 11.1",
    "note": "15 names, ~11.1 effective",
    "tone": "pos"
   }
@@ -359,14 +359,14 @@
    "side": "long",
    "weightPct": 18.3,
    "riskContribPct": 26.1,
-   "mVaR": 93.7
+   "mVaR": 93.3
   },
   {
    "ticker": "HBM",
    "side": "long",
    "weightPct": 6.0,
    "riskContribPct": 11.8,
-   "mVaR": 42.2
+   "mVaR": 42.4
   },
   {
    "ticker": "FCX",
@@ -380,14 +380,14 @@
    "side": "long",
    "weightPct": 6.0,
    "riskContribPct": 11.5,
-   "mVaR": 41.2
+   "mVaR": 41.0
   },
   {
    "ticker": "COPX",
    "side": "long",
    "weightPct": 7.5,
    "riskContribPct": 11.3,
-   "mVaR": 40.5
+   "mVaR": 40.4
   },
   {
    "ticker": "SCCO",
