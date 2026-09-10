@@ -1,14 +1,14 @@
 {
- "updatedAt": "2026-09-10T14:11:28+00:00",
+ "updatedAt": "2026-09-10T15:11:58+00:00",
  "asOf": "2026-09-10",
  "window": 90,
  "obs": 59,
  "headline": {
   "annVol": 23.7,
-  "betaSpy": 0.66,
+  "betaSpy": 0.64,
   "betaXme": 0.35,
-  "var1d95": -361,
-  "var1d99": -446,
+  "var1d95": -358,
+  "var1d99": -444,
   "hhi": 901.0,
   "effectiveN": 11.1
  },
@@ -21,7 +21,7 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.66",
+   "v": "0.64",
    "note": "57 overlapping daily obs",
    "tone": "neutral"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$361",
-   "note": "-3.41% of NAV; 99% VaR -4.21% (-$446)",
+   "v": "-$358",
+   "note": "-3.39% of NAV; 99% VaR -4.21% (-$444)",
    "tone": "neg"
   },
   {
@@ -359,28 +359,28 @@
    "side": "long",
    "weightPct": 18.3,
    "riskContribPct": 26.4,
-   "mVaR": 93.5
+   "mVaR": 93.6
   },
   {
    "ticker": "HBM",
    "side": "long",
-   "weightPct": 6.0,
-   "riskContribPct": 11.7,
-   "mVaR": 41.5
-  },
-  {
-   "ticker": "ERO",
-   "side": "long",
-   "weightPct": 6.0,
-   "riskContribPct": 11.5,
-   "mVaR": 40.6
+   "weightPct": 6.1,
+   "riskContribPct": 11.8,
+   "mVaR": 41.7
   },
   {
    "ticker": "FCX",
    "side": "long",
    "weightPct": 8.0,
    "riskContribPct": 11.4,
-   "mVaR": 40.3
+   "mVaR": 40.4
+  },
+  {
+   "ticker": "ERO",
+   "side": "long",
+   "weightPct": 6.0,
+   "riskContribPct": 11.3,
+   "mVaR": 40.1
   },
   {
    "ticker": "COPX",
@@ -408,13 +408,13 @@
    "side": "long",
    "weightPct": 5.8,
    "riskContribPct": 4.8,
-   "mVaR": 17.0
+   "mVaR": 17.1
   },
   {
    "ticker": "TECK",
    "side": "long",
    "weightPct": 3.1,
-   "riskContribPct": 3.9,
+   "riskContribPct": 4.0,
    "mVaR": 14.0
   },
   {
@@ -422,21 +422,21 @@
    "side": "long",
    "weightPct": 1.7,
    "riskContribPct": 3.3,
-   "mVaR": 11.6
+   "mVaR": 11.7
   },
   {
    "ticker": "STLD",
    "side": "long",
-   "weightPct": 6.7,
+   "weightPct": 6.8,
    "riskContribPct": 3.1,
-   "mVaR": 11.0
+   "mVaR": 11.1
   },
   {
    "ticker": "NUE",
    "side": "long",
-   "weightPct": 7.2,
+   "weightPct": 7.3,
    "riskContribPct": 2.8,
-   "mVaR": 10.0
+   "mVaR": 10.1
   },
   {
    "ticker": "GLD",
@@ -457,7 +457,7 @@
    "side": "short",
    "weightPct": -12.3,
    "riskContribPct": -7.7,
-   "mVaR": -27.2
+   "mVaR": -27.1
   }
  ],
  "coverageNote": "15 of 15 holdings"
