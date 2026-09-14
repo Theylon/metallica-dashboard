@@ -40,11 +40,18 @@ CATEGORY = {
     "TX": "Steel", "WOR": "Steel", "ROCK": "Steel", "SLX": "Steel",
     "AA": "Aluminum", "CENX": "Aluminum", "KALU": "Aluminum", "CSTM": "Aluminum",
     "MP": "Rare Earth", "REMX": "Rare Earth", "UUUU": "Uranium",
+    # Specialty/aerospace alloys — titanium & superalloy producers (ATI/CRS)
+    # and Howmet's aerospace-grade castings/fasteners; distinct cycle from
+    # commodity steel.
+    "ATI": "Specialty Metals", "CRS": "Specialty Metals", "HWM": "Specialty Metals",
+    # EnerSys — industrial/motive-power batteries, a downstream demand proxy
+    # like the other non-producer names already grouped under Lithium.
+    "ENS": "Lithium",
     "GLD": "Precious", "SLV": "Precious", "PALL": "Precious", "SBSW": "Precious",
     "GDX": "Precious",
     "AG": "Precious", "CDE": "Precious", "HL": "Precious", "PAAS": "Precious",
     "BVN": "Precious", "PLG": "Precious", "GDX": "Precious",
-    "BHP": "Diversified", "RIO": "Diversified", "VALE": "Diversified",
+    "BHP": "Diversified", "RIO": "Diversified", "VALE": "Diversified", "GLNCY": "Diversified",
     "XME": "Mining ETF", "BEPC": "Renewables",
 }
 
