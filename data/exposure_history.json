@@ -2745,65 +2745,73 @@
   },
   "2026-09-14": {
     "commodityExposure": {
-      "steel": 0.199292,
-      "copper": 0.074074,
-      "gold": 0.018947,
-      "aluminum n": -0.020542,
-      "aluminum": -0.041083
+      "copper": 0.074535,
+      "steel": 0.056126,
+      "gold": 0.019002,
+      "aluminum n": -0.020504,
+      "manganese dioxide": -0.036953,
+      "lco": -0.038068,
+      "aluminum": -0.041007,
+      "cobalt sulfate": -0.073906
     },
     "byTicker": {
       "AA": [
         {
           "commodity": "aluminum",
           "tier": "T1",
-          "weight": -0.041083
+          "weight": -0.041007
         },
         {
           "commodity": "aluminum n",
           "tier": "T2",
-          "weight": -0.020542
+          "weight": -0.020504
         }
       ],
       "BHP": [
         {
           "commodity": "steel",
           "tier": "T2",
-          "weight": 0.028517
+          "weight": 0.028636
         }
       ],
       "COPX": [
         {
           "commodity": "copper",
           "tier": "T1",
-          "weight": 0.074074
+          "weight": 0.074535
         }
       ],
       "GLD": [
         {
           "commodity": "gold",
           "tier": "T2",
-          "weight": 0.018947
+          "weight": 0.019002
         }
       ],
-      "NUE": [
+      "SGML": [
         {
-          "commodity": "steel",
-          "tier": "T1",
-          "weight": 0.074274
+          "commodity": "lco",
+          "tier": "T2",
+          "weight": -0.038068
         }
       ],
-      "STLD": [
+      "SQM": [
         {
-          "commodity": "steel",
+          "commodity": "cobalt sulfate",
           "tier": "T1",
-          "weight": 0.068926
+          "weight": -0.073906
+        },
+        {
+          "commodity": "manganese dioxide",
+          "tier": "T2",
+          "weight": -0.036953
         }
       ],
       "VALE": [
         {
           "commodity": "steel",
           "tier": "T2",
-          "weight": 0.027576
+          "weight": 0.02749
         }
       ]
     }
