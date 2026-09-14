@@ -45,6 +45,7 @@ CATEGORY = {
     "AG": "Precious", "CDE": "Precious", "HL": "Precious", "PAAS": "Precious",
     "BVN": "Precious", "PLG": "Precious", "GDX": "Precious",
     "BHP": "Diversified", "RIO": "Diversified", "VALE": "Diversified",
+    "GLNCY": "Diversified",
     "XME": "Mining ETF", "BEPC": "Renewables",
 }
 
