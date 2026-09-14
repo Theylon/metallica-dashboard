@@ -1,21 +1,21 @@
 {
- "updatedAt": "2026-09-14T17:14:01+00:00",
+ "updatedAt": "2026-09-14T18:11:50+00:00",
  "asOf": "2026-09-14",
  "window": 90,
  "obs": 61,
  "headline": {
-  "annVol": 23.7,
+  "annVol": 23.8,
   "betaSpy": 0.68,
   "betaXme": 0.36,
-  "var1d95": -309,
-  "var1d99": -438,
+  "var1d95": -308,
+  "var1d99": -437,
   "hhi": 580.0,
   "effectiveN": 17.2
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "23.7%",
+   "v": "23.8%",
    "note": "from the account's daily TWR, 61 daily obs since inception",
    "tone": "neutral"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$309",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$438)",
+   "v": "-$308",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$437)",
    "tone": "neg"
   },
   {
@@ -465,30 +465,30 @@
   {
    "ticker": "HBM",
    "side": "long",
-   "weightPct": 6.0,
+   "weightPct": 5.9,
    "riskContribPct": 18.3,
-   "mVaR": 36.0
+   "mVaR": 35.7
   },
   {
    "ticker": "COPX",
    "side": "long",
-   "weightPct": 7.5,
+   "weightPct": 7.4,
    "riskContribPct": 17.9,
-   "mVaR": 35.2
+   "mVaR": 35.1
   },
   {
    "ticker": "ERO",
    "side": "long",
    "weightPct": 5.8,
    "riskContribPct": 17.4,
-   "mVaR": 34.2
+   "mVaR": 34.0
   },
   {
    "ticker": "SCCO",
    "side": "long",
-   "weightPct": 5.5,
-   "riskContribPct": 12.9,
-   "mVaR": 25.4
+   "weightPct": 5.4,
+   "riskContribPct": 12.8,
+   "mVaR": 25.1
   },
   {
    "ticker": "BHP",
@@ -509,20 +509,20 @@
    "side": "long",
    "weightPct": 5.8,
    "riskContribPct": 7.3,
-   "mVaR": 14.4
+   "mVaR": 14.3
   },
   {
    "ticker": "MLI",
    "side": "long",
    "weightPct": 7.5,
    "riskContribPct": 7.2,
-   "mVaR": 14.2
+   "mVaR": 14.1
   },
   {
    "ticker": "TECK",
    "side": "long",
    "weightPct": 3.2,
-   "riskContribPct": 6.7,
+   "riskContribPct": 6.8,
    "mVaR": 13.3
   },
   {
@@ -537,7 +537,7 @@
    "side": "long",
    "weightPct": 1.7,
    "riskContribPct": 5.1,
-   "mVaR": 10.1
+   "mVaR": 10.0
   },
   {
    "ticker": "GLD",
@@ -551,7 +551,7 @@
    "side": "long",
    "weightPct": 2.5,
    "riskContribPct": 2.5,
-   "mVaR": 4.9
+   "mVaR": 4.8
   },
   {
    "ticker": "SQM",
@@ -563,7 +563,7 @@
   {
    "ticker": "SGML",
    "side": "short",
-   "weightPct": -7.6,
+   "weightPct": -7.5,
    "riskContribPct": -2.5,
    "mVaR": -4.9
   },
@@ -571,21 +571,21 @@
    "ticker": "KALU",
    "side": "short",
    "weightPct": -4.4,
-   "riskContribPct": -4.1,
-   "mVaR": -8.2
+   "riskContribPct": -4.2,
+   "mVaR": -8.1
   },
   {
    "ticker": "AA",
    "side": "short",
    "weightPct": -4.1,
    "riskContribPct": -5.6,
-   "mVaR": -11.1
+   "mVaR": -11.0
   },
   {
    "ticker": "LAC",
    "side": "short",
-   "weightPct": -7.8,
-   "riskContribPct": -8.1,
+   "weightPct": -7.9,
+   "riskContribPct": -8.2,
    "mVaR": -16.0
   }
  ],
