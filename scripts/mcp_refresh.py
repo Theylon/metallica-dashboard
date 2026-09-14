@@ -38,6 +38,11 @@ CATEGORY = {
     "NUE": "Steel", "CLF": "Steel", "RS": "Steel", "STLD": "Steel", "CMC": "Steel",
     "GGB": "Steel", "MT": "Steel", "MTUS": "Steel", "PKX": "Steel",
     "TX": "Steel", "WOR": "Steel", "ROCK": "Steel", "SLX": "Steel",
+    # ATI/CRS/HWM make specialty steel and titanium/nickel superalloys (aerospace
+    # castings for HWM) — no separate bucket exists for specialty alloys, and
+    # they move with the same ferrous/high-strength-metals cycle as the Steel
+    # complex above.
+    "ATI": "Steel", "CRS": "Steel", "HWM": "Steel",
     "AA": "Aluminum", "CENX": "Aluminum", "KALU": "Aluminum", "CSTM": "Aluminum",
     "MP": "Rare Earth", "REMX": "Rare Earth", "UUUU": "Uranium",
     "GLD": "Precious", "SLV": "Precious", "PALL": "Precious", "SBSW": "Precious",
@@ -45,6 +50,10 @@ CATEGORY = {
     "AG": "Precious", "CDE": "Precious", "HL": "Precious", "PAAS": "Precious",
     "BVN": "Precious", "PLG": "Precious", "GDX": "Precious",
     "BHP": "Diversified", "RIO": "Diversified", "VALE": "Diversified",
+    "GLNCY": "Diversified",
+    # EnerSys makes lead-acid/lithium industrial batteries — battery-complex
+    # demand exposure, same bucket as BATT/LAC/KARS.
+    "ENS": "Lithium",
     "XME": "Mining ETF", "BEPC": "Renewables",
 }
 
