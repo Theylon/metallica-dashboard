@@ -457,8 +457,8 @@ Tracks each held ticker's exposure to its linked commodities (T1/T2 links from m
 | steel | 5.49% |
 | aluminum n | -2.00% |
 | manganese sulfate | -3.70% |
-| lco | -3.77% |
+| lco | -3.72% |
 | aluminum | -4.01% |
-| manganese dioxide | -7.32% |
-| cobalt sulfate | -10.97% |
+| manganese dioxide | -7.36% |
+| cobalt sulfate | -10.96% |
 
