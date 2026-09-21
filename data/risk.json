@@ -1,14 +1,14 @@
 {
- "updatedAt": "2026-09-21T18:55:04+00:00",
+ "updatedAt": "2026-09-21T19:09:38+00:00",
  "asOf": "2026-09-21",
  "window": 90,
  "obs": 66,
  "headline": {
   "annVol": 23.1,
-  "betaSpy": 0.37,
+  "betaSpy": 0.36,
   "betaXme": 0.3,
-  "var1d95": -301,
-  "var1d99": -427,
+  "var1d95": -300,
+  "var1d99": -426,
   "hhi": 654.0,
   "effectiveN": 15.3
  },
@@ -21,7 +21,7 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.37",
+   "v": "0.36",
    "note": "61 overlapping daily obs",
    "tone": "neutral"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$301",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$427)",
+   "v": "-$300",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$426)",
    "tone": "neg"
   },
   {
@@ -51,7 +51,7 @@
   },
   {
    "k": "Max drawdown (inception curve)",
-   "v": "-16.9%",
+   "v": "-17.1%",
    "note": "peak-to-trough on the cumulative TWR",
    "tone": "neg"
   },
@@ -358,29 +358,29 @@
    "ticker": "SGML",
    "side": "short",
    "weightPct": -8.8,
-   "riskContribPct": 32.5,
-   "mVaR": 53.8
+   "riskContribPct": 32.7,
+   "mVaR": 54.1
   },
   {
    "ticker": "LAC",
    "side": "short",
    "weightPct": -8.2,
-   "riskContribPct": 22.6,
-   "mVaR": 37.3
+   "riskContribPct": 22.5,
+   "mVaR": 37.2
   },
   {
    "ticker": "ALB",
    "side": "short",
    "weightPct": -7.8,
    "riskContribPct": 16.9,
-   "mVaR": 27.9
+   "mVaR": 28.0
   },
   {
    "ticker": "SQM",
    "side": "short",
-   "weightPct": -7.5,
+   "weightPct": -7.6,
    "riskContribPct": 12.8,
-   "mVaR": 21.1
+   "mVaR": 21.2
   },
   {
    "ticker": "ENS",
@@ -421,21 +421,21 @@
    "ticker": "MLI",
    "side": "long",
    "weightPct": 7.8,
-   "riskContribPct": -0.5,
+   "riskContribPct": -0.6,
    "mVaR": -0.9
   },
   {
    "ticker": "CRS",
    "side": "long",
-   "weightPct": 8.0,
-   "riskContribPct": -1.4,
-   "mVaR": -2.4
+   "weightPct": 7.9,
+   "riskContribPct": -1.5,
+   "mVaR": -2.5
   },
   {
    "ticker": "ATI",
    "side": "long",
-   "weightPct": 7.5,
-   "riskContribPct": -2.5,
+   "weightPct": 7.4,
+   "riskContribPct": -2.6,
    "mVaR": -4.2
   },
   {
@@ -448,16 +448,16 @@
   {
    "ticker": "RIO",
    "side": "long",
-   "weightPct": 5.7,
+   "weightPct": 5.8,
    "riskContribPct": -4.2,
    "mVaR": -7.0
   },
   {
    "ticker": "BHP",
    "side": "long",
-   "weightPct": 5.9,
+   "weightPct": 6.0,
    "riskContribPct": -5.6,
-   "mVaR": -9.3
+   "mVaR": -9.4
   }
  ],
  "coverageNote": "15 of 16 holdings (1 OTC excluded)"
