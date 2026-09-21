@@ -3162,77 +3162,73 @@
   },
   "2026-09-21": {
     "commodityExposure": {
-      "steel": 0.057122,
-      "aluminum n": -0.019885,
-      "manganese sulfate": -0.038477,
-      "aluminum": -0.03977,
-      "lco": -0.044109,
-      "manganese dioxide": -0.076974,
-      "cobalt sulfate": -0.114068
+      "steel": 0.165725,
+      "copper": 0.052037,
+      "gold": 0.044626,
+      "manganese dioxide": -0.050641,
+      "cobalt sulfate": -0.073741,
+      "manganese sulfate": -0.073741
     },
     "byTicker": {
-      "AA": [
-        {
-          "commodity": "aluminum",
-          "tier": "T1",
-          "weight": -0.03977
-        },
-        {
-          "commodity": "aluminum n",
-          "tier": "T2",
-          "weight": -0.019885
-        }
-      ],
       "ALB": [
         {
           "commodity": "manganese dioxide",
           "tier": "T2",
-          "weight": -0.039178
+          "weight": -0.050641
         }
       ],
       "BHP": [
         {
           "commodity": "steel",
           "tier": "T2",
-          "weight": 0.029802
+          "weight": 0.029876
+        }
+      ],
+      "COPX": [
+        {
+          "commodity": "copper",
+          "tier": "T1",
+          "weight": 0.052037
+        }
+      ],
+      "GLD": [
+        {
+          "commodity": "gold",
+          "tier": "T2",
+          "weight": 0.044626
         }
       ],
       "LIT": [
         {
           "commodity": "cobalt sulfate",
           "tier": "T2",
-          "weight": -0.038477
+          "weight": -0.073741
         },
         {
           "commodity": "manganese sulfate",
           "tier": "T2",
-          "weight": -0.038477
+          "weight": -0.073741
         }
       ],
-      "SGML": [
+      "NUE": [
         {
-          "commodity": "lco",
-          "tier": "T2",
-          "weight": -0.044109
-        }
-      ],
-      "SQM": [
-        {
-          "commodity": "cobalt sulfate",
+          "commodity": "steel",
           "tier": "T1",
-          "weight": -0.075591
-        },
+          "weight": 0.05312
+        }
+      ],
+      "STLD": [
         {
-          "commodity": "manganese dioxide",
-          "tier": "T2",
-          "weight": -0.037796
+          "commodity": "steel",
+          "tier": "T1",
+          "weight": 0.053133
         }
       ],
       "VALE": [
         {
           "commodity": "steel",
           "tier": "T2",
-          "weight": 0.02732
+          "weight": 0.029596
         }
       ]
     }
