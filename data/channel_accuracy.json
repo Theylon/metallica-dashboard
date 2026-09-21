@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-09-18T20:12:22+00:00",
+ "updatedAt": "2026-09-21T13:12:28+00:00",
  "gate": {
   "trustedMinPct": 80
  },
@@ -15,7 +15,7 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 27,
+   "n": 28,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
@@ -26,10 +26,10 @@
    "note": null,
    "detail": [
     {
-     "rankIC": 0.312,
-     "IR": 3.3,
-     "tstat": 17.12,
-     "obs": 2808
+     "rankIC": 0.305,
+     "IR": 3.07,
+     "tstat": 16.24,
+     "obs": 2912
     }
    ]
   },
@@ -39,7 +39,7 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 27,
+   "n": 28,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
@@ -50,10 +50,10 @@
    "note": null,
    "detail": [
     {
-     "rankIC": 0.149,
-     "IR": 2.77,
-     "tstat": 14.41,
-     "obs": 4779
+     "rankIC": 0.146,
+     "IR": 2.67,
+     "tstat": 14.13,
+     "obs": 4956
     }
    ]
   },
@@ -171,21 +171,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 27,
+   "n": 28,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 89.0,
-   "accuracyPct": 89.0,
+   "hitRatePct": 86.0,
+   "accuracyPct": 86.0,
    "status": "trusted",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": 0.177,
-     "IR": 1.12,
-     "tstat": 5.84,
-     "obs": 1701
+     "rankIC": 0.165,
+     "IR": 0.99,
+     "tstat": 5.22,
+     "obs": 1764
     }
    ]
   },
@@ -195,21 +195,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 27,
+   "n": 28,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 85.0,
-   "accuracyPct": 85.0,
+   "hitRatePct": 82.0,
+   "accuracyPct": 82.0,
    "status": "trusted",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": 0.084,
-     "IR": 0.75,
-     "tstat": 3.89,
-     "obs": 1782
+     "rankIC": 0.076,
+     "IR": 0.64,
+     "tstat": 3.38,
+     "obs": 1848
     }
    ]
   },
@@ -219,21 +219,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 27,
+   "n": 28,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 74.0,
-   "accuracyPct": 74.0,
+   "hitRatePct": 75.0,
+   "accuracyPct": 75.0,
    "status": "probation",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": 0.083,
-     "IR": 0.94,
-     "tstat": 4.88,
-     "obs": 1053
+     "rankIC": 0.086,
+     "IR": 0.98,
+     "tstat": 5.16,
+     "obs": 1092
     }
    ]
   },
@@ -243,12 +243,12 @@
    "kind": "direction",
    "source": "micro_history.jsonl biasDir vs 20-snapshot-forward return",
    "ticker": null,
-   "n": 2622,
+   "n": 2736,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 46.1,
-   "accuracyPct": 46.1,
+   "hitRatePct": 46.4,
+   "accuracyPct": 46.4,
    "status": "probation",
    "gated": true,
    "note": null,
@@ -260,21 +260,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 27,
+   "n": 28,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 22.0,
-   "accuracyPct": 22.0,
+   "hitRatePct": 25.0,
+   "accuracyPct": 25.0,
    "status": "probation",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": -0.098,
-     "IR": -0.8,
-     "tstat": -4.17,
-     "obs": 5490
+     "rankIC": -0.092,
+     "IR": -0.75,
+     "tstat": -3.95,
+     "obs": 5696
     }
    ]
   },
@@ -284,21 +284,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 27,
+   "n": 28,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 22.0,
-   "accuracyPct": 22.0,
+   "hitRatePct": 25.0,
+   "accuracyPct": 25.0,
    "status": "probation",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": -0.052,
-     "IR": -0.76,
-     "tstat": -3.94,
-     "obs": 5400
+     "rankIC": -0.05,
+     "IR": -0.73,
+     "tstat": -3.85,
+     "obs": 5600
     }
    ]
   },
@@ -308,21 +308,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 27,
+   "n": 28,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 22.0,
-   "accuracyPct": 22.0,
+   "hitRatePct": 25.0,
+   "accuracyPct": 25.0,
    "status": "probation",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": -0.148,
-     "IR": -0.88,
-     "tstat": -4.58,
-     "obs": 5166
+     "rankIC": -0.14,
+     "IR": -0.83,
+     "tstat": -4.39,
+     "obs": 5360
     }
    ]
   },
@@ -332,21 +332,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 27,
+   "n": 28,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 11.0,
-   "accuracyPct": 11.0,
+   "hitRatePct": 14.0,
+   "accuracyPct": 14.0,
    "status": "probation",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": -0.162,
-     "IR": -1.55,
-     "tstat": -8.05,
-     "obs": 4752
+     "rankIC": -0.152,
+     "IR": -1.32,
+     "tstat": -7.0,
+     "obs": 4928
     }
    ]
   },
@@ -412,15 +412,15 @@
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
    "hitRatePct": null,
-   "accuracyPct": 75.0,
+   "accuracyPct": 74.5,
    "status": "info",
    "gated": false,
    "note": null,
    "detail": [
     {
-     "agree": 147,
-     "mixed": 37,
-     "conflict": 12
+     "agree": 146,
+     "mixed": 35,
+     "conflict": 15
     }
    ]
   }
