@@ -508,3 +508,14 @@ Tracks each held ticker's exposure to its linked commodities (T1/T2 links from m
 | cobalt sulfate | -7.38% |
 | manganese sulfate | -7.38% |
 
+## 2026-09-23
+
+| Commodity | Exposure (% NAV, tier-weighted) |
+|---|---|
+| steel | 16.75% |
+| copper | 5.28% |
+| gold | 4.43% |
+| manganese dioxide | -5.13% |
+| cobalt sulfate | -7.42% |
+| manganese sulfate | -7.42% |
+
