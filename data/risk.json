@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-09-24T18:14:41+00:00",
+ "updatedAt": "2026-09-24T19:10:47+00:00",
  "asOf": "2026-09-24",
  "window": 90,
  "obs": 69,
@@ -7,9 +7,9 @@
   "annVol": 22.8,
   "betaSpy": 0.33,
   "betaXme": 0.3,
-  "var1d95": -299,
-  "var1d99": -424,
-  "hhi": 672.0,
+  "var1d95": -300,
+  "var1d99": -425,
+  "hhi": 673.0,
   "effectiveN": 14.9
  },
  "metrics": [
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$299",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$424)",
+   "v": "-$300",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$425)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "672 / 14.9",
+   "v": "673 / 14.9",
    "note": "17 names, ~14.9 effective",
    "tone": "pos"
   }
@@ -392,8 +392,8 @@
    "ticker": "COPX",
    "side": "long",
    "weightPct": 5.1,
-   "riskContribPct": 11.3,
-   "mVaR": 17.5
+   "riskContribPct": 11.4,
+   "mVaR": 17.6
   },
   {
    "ticker": "MT",
@@ -407,21 +407,21 @@
    "side": "long",
    "weightPct": 5.4,
    "riskContribPct": 10.6,
-   "mVaR": 16.3
+   "mVaR": 16.4
   },
   {
    "ticker": "BHP",
    "side": "long",
    "weightPct": 5.9,
    "riskContribPct": 9.7,
-   "mVaR": 14.9
+   "mVaR": 15.0
   },
   {
    "ticker": "STLD",
    "side": "long",
    "weightPct": 5.5,
    "riskContribPct": 9.5,
-   "mVaR": 14.6
+   "mVaR": 14.7
   },
   {
    "ticker": "NUE",
@@ -440,16 +440,16 @@
   {
    "ticker": "ATI",
    "side": "long",
-   "weightPct": 4.9,
-   "riskContribPct": 8.0,
+   "weightPct": 4.8,
+   "riskContribPct": 7.9,
    "mVaR": 12.3
   },
   {
    "ticker": "PKX",
    "side": "long",
-   "weightPct": 5.2,
+   "weightPct": 5.1,
    "riskContribPct": 7.7,
-   "mVaR": 11.9
+   "mVaR": 11.8
   },
   {
    "ticker": "RIO",
@@ -498,7 +498,7 @@
    "side": "short",
    "weightPct": -14.3,
    "riskContribPct": -14.1,
-   "mVaR": -21.8
+   "mVaR": -21.9
   }
  ],
  "coverageNote": "16 of 17 holdings (1 OTC excluded)"
