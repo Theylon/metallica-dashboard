@@ -1,21 +1,21 @@
 {
- "updatedAt": "2026-09-24T15:13:50+00:00",
+ "updatedAt": "2026-09-24T16:10:30+00:00",
  "asOf": "2026-09-24",
  "window": 90,
  "obs": 69,
  "headline": {
-  "annVol": 22.8,
+  "annVol": 22.7,
   "betaSpy": 0.32,
   "betaXme": 0.3,
-  "var1d95": -299,
-  "var1d99": -424,
+  "var1d95": -298,
+  "var1d99": -423,
   "hhi": 673.0,
-  "effectiveN": 14.9
+  "effectiveN": 14.8
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "22.8%",
+   "v": "22.7%",
    "note": "from the account's daily TWR, 69 daily obs since inception",
    "tone": "neutral"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$299",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$424)",
+   "v": "-$298",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$423)",
    "tone": "neg"
   },
   {
@@ -57,8 +57,8 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "673 / 14.9",
-   "note": "17 names, ~14.9 effective",
+   "v": "673 / 14.8",
+   "note": "17 names, ~14.8 effective",
    "tone": "pos"
   }
  ],
@@ -399,13 +399,13 @@
    "ticker": "MT",
    "side": "long",
    "weightPct": 5.2,
-   "riskContribPct": 10.8,
-   "mVaR": 16.6
+   "riskContribPct": 10.7,
+   "mVaR": 16.5
   },
   {
    "ticker": "CMC",
    "side": "long",
-   "weightPct": 5.3,
+   "weightPct": 5.4,
    "riskContribPct": 10.6,
    "mVaR": 16.3
   },
@@ -419,30 +419,30 @@
   {
    "ticker": "STLD",
    "side": "long",
-   "weightPct": 5.5,
+   "weightPct": 5.4,
    "riskContribPct": 9.5,
-   "mVaR": 14.6
+   "mVaR": 14.5
   },
   {
    "ticker": "NUE",
    "side": "long",
    "weightPct": 5.5,
    "riskContribPct": 8.9,
-   "mVaR": 13.7
+   "mVaR": 13.6
   },
   {
    "ticker": "GLD",
    "side": "long",
-   "weightPct": 8.7,
+   "weightPct": 8.8,
    "riskContribPct": 8.2,
    "mVaR": 12.6
   },
   {
    "ticker": "ATI",
    "side": "long",
-   "weightPct": 4.9,
-   "riskContribPct": 8.0,
-   "mVaR": 12.3
+   "weightPct": 4.8,
+   "riskContribPct": 7.9,
+   "mVaR": 12.1
   },
   {
    "ticker": "RIO",
@@ -454,16 +454,16 @@
   {
    "ticker": "PKX",
    "side": "long",
-   "weightPct": 5.1,
+   "weightPct": 5.2,
    "riskContribPct": 7.7,
-   "mVaR": 11.8
+   "mVaR": 11.9
   },
   {
    "ticker": "CRS",
    "side": "long",
-   "weightPct": 4.9,
+   "weightPct": 4.8,
    "riskContribPct": 7.4,
-   "mVaR": 11.4
+   "mVaR": 11.3
   },
   {
    "ticker": "VALE",
@@ -491,7 +491,7 @@
    "side": "short",
    "weightPct": -9.7,
    "riskContribPct": -3.9,
-   "mVaR": -6.0
+   "mVaR": -5.9
   },
   {
    "ticker": "LIT",
