@@ -1,11 +1,11 @@
 {
- "updatedAt": "2026-09-24T14:15:12+00:00",
+ "updatedAt": "2026-09-24T15:10:15+00:00",
  "asOf": "2026-09-24",
  "window": 90,
  "obs": 69,
  "headline": {
   "annVol": 22.8,
-  "betaSpy": 0.33,
+  "betaSpy": 0.32,
   "betaXme": 0.3,
   "var1d95": -299,
   "var1d99": -424,
@@ -21,7 +21,7 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.33",
+   "v": "0.32",
    "note": "61 overlapping daily obs",
    "tone": "neutral"
   },
@@ -392,15 +392,15 @@
    "ticker": "COPX",
    "side": "long",
    "weightPct": 5.1,
-   "riskContribPct": 11.4,
-   "mVaR": 17.6
+   "riskContribPct": 11.3,
+   "mVaR": 17.5
   },
   {
    "ticker": "MT",
    "side": "long",
-   "weightPct": 5.3,
-   "riskContribPct": 10.8,
-   "mVaR": 16.7
+   "weightPct": 5.2,
+   "riskContribPct": 10.7,
+   "mVaR": 16.5
   },
   {
    "ticker": "CMC",
@@ -414,63 +414,63 @@
    "side": "long",
    "weightPct": 5.9,
    "riskContribPct": 9.7,
-   "mVaR": 15.0
+   "mVaR": 14.9
   },
   {
    "ticker": "STLD",
    "side": "long",
    "weightPct": 5.5,
-   "riskContribPct": 9.4,
+   "riskContribPct": 9.5,
    "mVaR": 14.6
   },
   {
    "ticker": "NUE",
    "side": "long",
-   "weightPct": 5.4,
-   "riskContribPct": 8.8,
-   "mVaR": 13.6
+   "weightPct": 5.5,
+   "riskContribPct": 8.9,
+   "mVaR": 13.7
   },
   {
    "ticker": "GLD",
    "side": "long",
-   "weightPct": 8.8,
+   "weightPct": 8.7,
    "riskContribPct": 8.2,
-   "mVaR": 12.7
+   "mVaR": 12.6
   },
   {
    "ticker": "ATI",
    "side": "long",
    "weightPct": 4.9,
-   "riskContribPct": 7.9,
+   "riskContribPct": 8.0,
    "mVaR": 12.3
+  },
+  {
+   "ticker": "PKX",
+   "side": "long",
+   "weightPct": 5.1,
+   "riskContribPct": 7.7,
+   "mVaR": 11.8
   },
   {
    "ticker": "RIO",
    "side": "long",
    "weightPct": 5.6,
-   "riskContribPct": 7.8,
-   "mVaR": 12.0
-  },
-  {
-   "ticker": "PKX",
-   "side": "long",
-   "weightPct": 5.2,
    "riskContribPct": 7.7,
-   "mVaR": 12.0
+   "mVaR": 11.9
   },
   {
    "ticker": "CRS",
    "side": "long",
    "weightPct": 4.9,
    "riskContribPct": 7.4,
-   "mVaR": 11.4
+   "mVaR": 11.5
   },
   {
    "ticker": "VALE",
    "side": "long",
-   "weightPct": 5.8,
+   "weightPct": 5.7,
    "riskContribPct": 6.7,
-   "mVaR": 10.4
+   "mVaR": 10.3
   },
   {
    "ticker": "MLI",
@@ -491,14 +491,14 @@
    "side": "short",
    "weightPct": -9.7,
    "riskContribPct": -3.7,
-   "mVaR": -5.8
+   "mVaR": -5.7
   },
   {
    "ticker": "LIT",
    "side": "short",
-   "weightPct": -14.4,
+   "weightPct": -14.3,
    "riskContribPct": -14.2,
-   "mVaR": -22.0
+   "mVaR": -21.8
   }
  ],
  "coverageNote": "16 of 17 holdings (1 OTC excluded)"
