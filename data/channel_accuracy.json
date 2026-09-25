@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-09-24T21:13:22+00:00",
+ "updatedAt": "2026-09-25T14:15:31+00:00",
  "gate": {
   "trustedMinPct": 80
  },
@@ -15,7 +15,7 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 31,
+   "n": 32,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
@@ -26,10 +26,10 @@
    "note": null,
    "detail": [
     {
-     "rankIC": 0.283,
-     "IR": 2.42,
-     "tstat": 13.46,
-     "obs": 3224
+     "rankIC": 0.279,
+     "IR": 2.38,
+     "tstat": 13.47,
+     "obs": 3328
     }
    ]
   },
@@ -147,45 +147,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 31,
+   "n": 32,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 94.0,
-   "accuracyPct": 94.0,
+   "hitRatePct": 91.0,
+   "accuracyPct": 91.0,
    "status": "trusted",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": 0.132,
-     "IR": 1.95,
-     "tstat": 10.84,
-     "obs": 5487
-    }
-   ]
-  },
-  {
-   "id": "score.analyst",
-   "label": "Analyst score vs forward returns",
-   "kind": "score",
-   "source": "signal_scorecard.json (rank-IC engine)",
-   "ticker": null,
-   "n": 31,
-   "medAbsErrPct": null,
-   "meanAbsErrPct": null,
-   "beatConsensusPct": null,
-   "hitRatePct": 77.0,
-   "accuracyPct": 77.0,
-   "status": "probation",
-   "gated": true,
-   "note": null,
-   "detail": [
-    {
-     "rankIC": 0.124,
-     "IR": 0.61,
-     "tstat": 3.38,
-     "obs": 1953
+     "rankIC": 0.126,
+     "IR": 1.73,
+     "tstat": 9.78,
+     "obs": 5664
     }
    ]
   },
@@ -195,21 +171,45 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 31,
+   "n": 32,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 77.0,
-   "accuracyPct": 77.0,
+   "hitRatePct": 78.0,
+   "accuracyPct": 78.0,
    "status": "probation",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": 0.092,
-     "IR": 1.07,
-     "tstat": 5.97,
-     "obs": 1209
+     "rankIC": 0.095,
+     "IR": 1.1,
+     "tstat": 6.22,
+     "obs": 1248
+    }
+   ]
+  },
+  {
+   "id": "score.analyst",
+   "label": "Analyst score vs forward returns",
+   "kind": "score",
+   "source": "signal_scorecard.json (rank-IC engine)",
+   "ticker": null,
+   "n": 32,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": 75.0,
+   "accuracyPct": 75.0,
+   "status": "probation",
+   "gated": true,
+   "note": null,
+   "detail": [
+    {
+     "rankIC": 0.11,
+     "IR": 0.51,
+     "tstat": 2.9,
+     "obs": 2016
     }
    ]
   },
@@ -219,21 +219,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 31,
+   "n": 32,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 74.0,
-   "accuracyPct": 74.0,
+   "hitRatePct": 72.0,
+   "accuracyPct": 72.0,
    "status": "probation",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": 0.049,
-     "IR": 0.35,
-     "tstat": 1.97,
-     "obs": 2046
+     "rankIC": 0.045,
+     "IR": 0.32,
+     "tstat": 1.8,
+     "obs": 2112
     }
    ]
   },
@@ -243,12 +243,12 @@
    "kind": "direction",
    "source": "micro_history.jsonl biasDir vs 20-snapshot-forward return",
    "ticker": null,
-   "n": 3078,
+   "n": 3192,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 47.1,
-   "accuracyPct": 47.1,
+   "hitRatePct": 47.4,
+   "accuracyPct": 47.4,
    "status": "probation",
    "gated": true,
    "note": null,
@@ -260,21 +260,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 31,
+   "n": 32,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 32.0,
-   "accuracyPct": 32.0,
+   "hitRatePct": 34.0,
+   "accuracyPct": 34.0,
    "status": "probation",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": -0.08,
-     "IR": -0.64,
-     "tstat": -3.59,
-     "obs": 6314
+     "rankIC": -0.073,
+     "IR": -0.57,
+     "tstat": -3.24,
+     "obs": 6520
     }
    ]
   },
@@ -284,21 +284,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 31,
+   "n": 32,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 32.0,
-   "accuracyPct": 32.0,
+   "hitRatePct": 34.0,
+   "accuracyPct": 34.0,
    "status": "probation",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": -0.039,
-     "IR": -0.54,
-     "tstat": -3.01,
-     "obs": 6200
+     "rankIC": -0.035,
+     "IR": -0.46,
+     "tstat": -2.61,
+     "obs": 6400
     }
    ]
   },
@@ -308,21 +308,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 31,
+   "n": 32,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 32.0,
-   "accuracyPct": 32.0,
+   "hitRatePct": 34.0,
+   "accuracyPct": 34.0,
    "status": "probation",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": -0.122,
-     "IR": -0.72,
-     "tstat": -4.0,
-     "obs": 5942
+     "rankIC": -0.114,
+     "IR": -0.66,
+     "tstat": -3.72,
+     "obs": 6136
     }
    ]
   },
@@ -332,21 +332,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 31,
+   "n": 32,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 23.0,
-   "accuracyPct": 23.0,
+   "hitRatePct": 25.0,
+   "accuracyPct": 25.0,
    "status": "probation",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": -0.123,
-     "IR": -0.87,
-     "tstat": -4.82,
-     "obs": 5456
+     "rankIC": -0.112,
+     "IR": -0.74,
+     "tstat": -4.17,
+     "obs": 5632
     }
    ]
   },
