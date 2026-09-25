@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-09-25T16:17:34+00:00",
+ "updatedAt": "2026-09-25T17:12:53+00:00",
  "asOf": "2026-09-25",
  "window": 90,
  "obs": 70,
@@ -9,8 +9,8 @@
   "betaXme": 0.3,
   "var1d95": -300,
   "var1d99": -425,
-  "hhi": 674.0,
-  "effectiveN": 14.8
+  "hhi": 673.0,
+  "effectiveN": 14.9
  },
  "metrics": [
   {
@@ -57,8 +57,8 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "674 / 14.8",
-   "note": "17 names, ~14.8 effective",
+   "v": "673 / 14.9",
+   "note": "17 names, ~14.9 effective",
    "tone": "pos"
   }
  ],
@@ -391,21 +391,21 @@
   {
    "ticker": "COPX",
    "side": "long",
-   "weightPct": 5.2,
+   "weightPct": 5.1,
    "riskContribPct": 11.6,
-   "mVaR": 17.9
+   "mVaR": 17.8
+  },
+  {
+   "ticker": "CMC",
+   "side": "long",
+   "weightPct": 5.5,
+   "riskContribPct": 10.7,
+   "mVaR": 16.5
   },
   {
    "ticker": "MT",
    "side": "long",
    "weightPct": 5.2,
-   "riskContribPct": 10.8,
-   "mVaR": 16.6
-  },
-  {
-   "ticker": "CMC",
-   "side": "long",
-   "weightPct": 5.4,
    "riskContribPct": 10.7,
    "mVaR": 16.5
   },
@@ -440,23 +440,23 @@
   {
    "ticker": "PKX",
    "side": "long",
-   "weightPct": 5.3,
+   "weightPct": 5.2,
    "riskContribPct": 7.9,
-   "mVaR": 12.2
+   "mVaR": 12.1
+  },
+  {
+   "ticker": "ATI",
+   "side": "long",
+   "weightPct": 4.8,
+   "riskContribPct": 7.8,
+   "mVaR": 12.0
   },
   {
    "ticker": "RIO",
    "side": "long",
    "weightPct": 5.6,
    "riskContribPct": 7.8,
-   "mVaR": 12.0
-  },
-  {
-   "ticker": "ATI",
-   "side": "long",
-   "weightPct": 4.8,
-   "riskContribPct": 7.7,
-   "mVaR": 12.0
+   "mVaR": 11.9
   },
   {
    "ticker": "CRS",
@@ -475,7 +475,7 @@
   {
    "ticker": "MLI",
    "side": "long",
-   "weightPct": 5.0,
+   "weightPct": 4.9,
    "riskContribPct": 6.3,
    "mVaR": 9.7
   },
@@ -489,16 +489,16 @@
   {
    "ticker": "ALB",
    "side": "short",
-   "weightPct": -10.0,
+   "weightPct": -9.9,
    "riskContribPct": -3.9,
    "mVaR": -6.0
   },
   {
    "ticker": "LIT",
    "side": "short",
-   "weightPct": -14.4,
-   "riskContribPct": -14.3,
-   "mVaR": -22.0
+   "weightPct": -14.3,
+   "riskContribPct": -14.2,
+   "mVaR": -21.9
   }
  ],
  "coverageNote": "16 of 17 holdings (1 OTC excluded)"
