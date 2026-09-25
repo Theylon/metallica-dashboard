@@ -1,14 +1,14 @@
 {
- "updatedAt": "2026-09-25T14:15:30+00:00",
+ "updatedAt": "2026-09-25T15:13:18+00:00",
  "asOf": "2026-09-25",
  "window": 90,
  "obs": 70,
  "headline": {
   "annVol": 22.6,
-  "betaSpy": 0.33,
+  "betaSpy": 0.32,
   "betaXme": 0.3,
   "var1d95": -298,
-  "var1d99": -422,
+  "var1d99": -423,
   "hhi": 674.0,
   "effectiveN": 14.8
  },
@@ -21,7 +21,7 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.33",
+   "v": "0.32",
    "note": "62 overlapping daily obs",
    "tone": "neutral"
   },
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$298",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$422)",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$423)",
    "tone": "neg"
   },
   {
@@ -51,7 +51,7 @@
   },
   {
    "k": "Max drawdown (inception curve)",
-   "v": "-17.8%",
+   "v": "-17.7%",
    "note": "peak-to-trough on the cumulative TWR",
    "tone": "neg"
   },
@@ -393,21 +393,21 @@
    "side": "long",
    "weightPct": 5.1,
    "riskContribPct": 11.5,
-   "mVaR": 17.6
+   "mVaR": 17.7
   },
   {
    "ticker": "MT",
    "side": "long",
    "weightPct": 5.2,
-   "riskContribPct": 10.8,
-   "mVaR": 16.6
+   "riskContribPct": 10.7,
+   "mVaR": 16.5
   },
   {
    "ticker": "CMC",
    "side": "long",
    "weightPct": 5.4,
-   "riskContribPct": 10.5,
-   "mVaR": 16.1
+   "riskContribPct": 10.6,
+   "mVaR": 16.2
   },
   {
    "ticker": "BHP",
@@ -428,7 +428,7 @@
    "side": "long",
    "weightPct": 5.4,
    "riskContribPct": 8.8,
-   "mVaR": 13.4
+   "mVaR": 13.5
   },
   {
    "ticker": "GLD",
@@ -442,7 +442,7 @@
    "side": "long",
    "weightPct": 4.8,
    "riskContribPct": 7.8,
-   "mVaR": 12.0
+   "mVaR": 12.1
   },
   {
    "ticker": "PKX",
@@ -455,7 +455,7 @@
    "ticker": "RIO",
    "side": "long",
    "weightPct": 5.6,
-   "riskContribPct": 7.8,
+   "riskContribPct": 7.7,
    "mVaR": 11.9
   },
   {
@@ -463,7 +463,7 @@
    "side": "long",
    "weightPct": 4.8,
    "riskContribPct": 7.4,
-   "mVaR": 11.3
+   "mVaR": 11.4
   },
   {
    "ticker": "VALE",
@@ -475,29 +475,29 @@
   {
    "ticker": "MLI",
    "side": "long",
-   "weightPct": 4.9,
-   "riskContribPct": 6.2,
-   "mVaR": 9.5
+   "weightPct": 5.0,
+   "riskContribPct": 6.3,
+   "mVaR": 9.7
   },
   {
    "ticker": "HWM",
    "side": "long",
    "weightPct": 5.0,
-   "riskContribPct": 5.3,
-   "mVaR": 8.1
+   "riskContribPct": 5.2,
+   "mVaR": 8.0
   },
   {
    "ticker": "ALB",
    "side": "short",
-   "weightPct": -9.8,
+   "weightPct": -9.9,
    "riskContribPct": -3.7,
-   "mVaR": -5.7
+   "mVaR": -5.6
   },
   {
    "ticker": "LIT",
    "side": "short",
    "weightPct": -14.4,
-   "riskContribPct": -14.2,
+   "riskContribPct": -14.1,
    "mVaR": -21.8
   }
  ],
