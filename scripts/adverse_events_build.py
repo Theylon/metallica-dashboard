@@ -5,9 +5,13 @@ Reads (never writes):
   research/pls_adverse_events/stories_raw.json   every story the Bigdata.com
                                                  searches returned, one row per
                                                  document, timestamps verbatim
-  research/pls_adverse_events/event_merges.json  manual map {alias_key: canonical_key}
-                                                 for the same event filed under two
-                                                 keys; also lists rejected keys
+  research/pls_adverse_events/event_merges.json  manual review: `merges` {alias_key:
+                                                 canonical_key} for one event filed under
+                                                 two keys; `rejected` {key: reason} for
+                                                 events that are out of scope;
+                                                 `excludeStories` {doc_id: reason} for
+                                                 stories whose index timestamp is wrong;
+                                                 `overrides` {key: {field: value}}
 Writes:
   research/pls_adverse_events/stories.json       unique stories (duplicates removed)
   research/pls_adverse_events/events.json        one row per event, with the UTC
@@ -56,6 +60,9 @@ def main() -> int:
     merges = merges_doc.get("merges", {})
     rejected = set(merges_doc.get("rejected", {}))
     overrides = merges_doc.get("overrides", {})
+    excluded = merges_doc.get("excludeStories", {})
+    n_excl = sum(s.get("doc_id") in excluded for s in raw)
+    raw = [s for s in raw if s.get("doc_id") not in excluded]
 
     # canonical event key first, so step 1 sees merged keys
     for s in raw:
@@ -128,7 +135,8 @@ def main() -> int:
         "source": "Bigdata.com search (entity 9561FC, fast and smart modes), PLS Group Ltd / Pilbara Minerals",
         "newsWindow": "2020-12-01 to 2026-09-23",
         "categories": CATEGORIES,
-        "dedupe": {"rawStories": len(raw), "duplicateDocEventPairs": n_idDup,
+        "dedupe": {"rawStories": len(raw) + n_excl, "excludedBadTimestamp": n_excl,
+                   "duplicateDocEventPairs": n_idDup,
                    "rejectedEventStories": n_rej, "syndicatedCopies": n_synd},
         "nStories": len(kept),
         "nEvents": len(out_events),
@@ -136,7 +144,7 @@ def main() -> int:
     }
     (RES / "stories.json").write_text(json.dumps({**meta, "stories": kept}, indent=2, ensure_ascii=False))
     (RES / "events.json").write_text(json.dumps({**meta, "events": out_events}, indent=2, ensure_ascii=False))
-    print(f"raw {len(raw)} → doc/event dupes {n_idDup}, rejected {n_rej}, syndicated {n_synd} "
+    print(f"raw {len(raw) + n_excl} → excluded {n_excl}, doc/event dupes {n_idDup}, rejected {n_rej}, syndicated {n_synd} "
           f"→ {len(kept)} stories, {len(out_events)} events")
     return 0
 
