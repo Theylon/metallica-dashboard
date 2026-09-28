@@ -98,6 +98,8 @@ def reaction_index(ts_utc: str, dates: list[dt.date]) -> int | None:
     """Index of the first session whose close is after the first report."""
     local = parse_utc(ts_utc).astimezone(SYD)
     d = local.date()
+    if d < dates[0]:
+        return None                     # before the price history: untestable
     i = bisect.bisect_left(dates, d)
     if i < len(dates) and dates[i] == d and local.time() < ASX_CLOSE:
         return i
@@ -300,13 +302,20 @@ def analyse(events, dates, close, tr, mkt, n_block, reps, seed):
         es = every_session(tr, mkt, decision_idx, blocked, h)
         res["everySession"][h] = es
         if h == 20 and es["mktAdj"]["diff"] is not None:
-            res["placebo"][h] = placebo(tr, mkt, decision_idx, len(in_window), n_block, h,
+            # one random date per distinct real reaction session: events cluster on
+            # report days, so drawing one date per event would block far more sessions
+            res["placebo"][h] = placebo(tr, mkt, decision_idx, len(set(in_window)), n_block, h,
                                         es["mktAdj"]["diff"], reps, seed)
     rows = event_rows(events, react, dates, tr, mkt)
     rows = [r for r in rows if dt.date.fromisoformat(r["reactionSession"]) <= STUDY_END]
-    res["drift"] = {k: summ([r[k] for r in rows])
-                    for k in ("reactionDay", "reactionDayMktAdj", "drift5", "drift5MktAdj",
-                              "drift20", "drift20MktAdj", "drift60", "drift60MktAdj")}
+    keys = ("reactionDay", "reactionDayMktAdj", "drift5", "drift5MktAdj",
+            "drift20", "drift20MktAdj", "drift60", "drift60MktAdj")
+    res["drift"] = {k: summ([r[k] for r in rows]) for k in keys}
+    # the same numbers counted once per reaction session (a report carrying five
+    # events is one market reaction, not five)
+    per_sess = {r["reactionSession"]: r for r in rows}
+    res["driftPerSession"] = {k: summ([r[k] for r in per_sess.values()]) for k in keys}
+    res["distinctReactionSessions"] = len(per_sess)
     strat = {}
     for name, fn in (("dipBuy", dip_buy), ("trend", trend)):
         base = strat_stats(fn(close, tr, last, set(), "skip"))
@@ -384,21 +393,26 @@ def write_report(meta, main, sens, subsets, rows, v, n_block):
                  f"{pct(r['diff'])} | {pct(m['blocked'].get('mean'))} | {pct(m['allowed'].get('mean'))} | "
                  f"{pct(m['diff'])} |")
     pl = main["placebo"].get(20, {})
-    L.append(f"\nPlacebo (20-session, market-adjusted gap): {pl.get('reps')} random draws of the same "
-             f"number of event dates. Share of draws with a gap at least as negative: "
+    L.append(f"\nPlacebo (20-session, market-adjusted gap): {pl.get('reps')} random draws of "
+             f"{main['distinctReactionSessions']} event dates (one per distinct real reaction session). "
+             f"Share of draws with a gap at least as negative: "
              f"**p = {pval(main)}** "
              f"(placebo mean gap {pct(pl.get('placeboMeanDiff'))}).\n")
     L.append("## 2. What the stock does after an event\n")
-    L.append("| Window | n | Mean | Median | Share positive |\n|---|---|---|---|---|")
+    L.append(f"Per event ({main['eventsTested']} events), and in brackets once per reaction "
+             f"session ({main['distinctReactionSessions']} sessions; events disclosed together "
+             "count once). Rule 2 uses the per-event figures.\n")
+    L.append("| Window | n | Mean | Median | Share positive | Per session: mean / median |")
+    L.append("|---|---|---|---|---|---|")
     labels = {"reactionDay": "Reaction day (close before → reaction close)",
               "reactionDayMktAdj": "Reaction day, mkt-adj",
               "drift5": "Reaction close → +5 sessions", "drift5MktAdj": "  … mkt-adj",
               "drift20": "Reaction close → +20 sessions", "drift20MktAdj": "  … mkt-adj",
               "drift60": "Reaction close → +60 sessions", "drift60MktAdj": "  … mkt-adj"}
     for k, lab in labels.items():
-        s = main["drift"][k]
+        s, q = main["drift"][k], main["driftPerSession"][k]
         L.append(f"| {lab} | {s.get('n', 0)} | {pct(s.get('mean'))} | {pct(s.get('median'))} | "
-                 f"{share(s)} |")
+                 f"{share(s)} | ({pct(q.get('mean'))} / {pct(q.get('median'))}) |")
     L.append("\n## 3. Rule-based strategies with and without the block\n")
     L.append("| Strategy | Variant | Trades | Mean trade | Median trade | Hit rate | Compounded |")
     L.append("|---|---|---|---|---|---|---|")
