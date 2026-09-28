@@ -1,16 +1,16 @@
 {
- "updatedAt": "2026-09-28T11:57:37+00:00",
+ "updatedAt": "2026-09-28T13:10:28+00:00",
  "asOf": "2026-09-28",
  "window": 90,
  "obs": 71,
  "headline": {
   "annVol": 22.5,
-  "betaSpy": 0.33,
+  "betaSpy": 0.3,
   "betaXme": 0.3,
-  "var1d95": -298,
-  "var1d99": -423,
-  "hhi": 673.0,
-  "effectiveN": 14.9
+  "var1d95": -297,
+  "var1d99": -422,
+  "hhi": 674.0,
+  "effectiveN": 14.8
  },
  "metrics": [
   {
@@ -21,8 +21,8 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.33",
-   "note": "62 overlapping daily obs",
+   "v": "0.30",
+   "note": "60 overlapping daily obs",
    "tone": "neutral"
   },
   {
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$298",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$423)",
+   "v": "-$297",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$422)",
    "tone": "neg"
   },
   {
@@ -51,14 +51,14 @@
   },
   {
    "k": "Max drawdown (inception curve)",
-   "v": "-17.7%",
+   "v": "-17.9%",
    "note": "peak-to-trough on the cumulative TWR",
    "tone": "neg"
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "673 / 14.9",
-   "note": "17 names, ~14.9 effective",
+   "v": "674 / 14.8",
+   "note": "17 names, ~14.8 effective",
    "tone": "pos"
   }
  ],
@@ -393,7 +393,7 @@
    "side": "long",
    "weightPct": 5.0,
    "riskContribPct": 11.3,
-   "mVaR": 17.3
+   "mVaR": 17.2
   },
   {
    "ticker": "CMC",
@@ -406,8 +406,8 @@
    "ticker": "MT",
    "side": "long",
    "weightPct": 5.1,
-   "riskContribPct": 10.5,
-   "mVaR": 16.0
+   "riskContribPct": 10.6,
+   "mVaR": 16.1
   },
   {
    "ticker": "BHP",
@@ -442,7 +442,7 @@
    "side": "long",
    "weightPct": 5.3,
    "riskContribPct": 8.0,
-   "mVaR": 12.2
+   "mVaR": 12.1
   },
   {
    "ticker": "ATI",
@@ -454,7 +454,7 @@
   {
    "ticker": "RIO",
    "side": "long",
-   "weightPct": 5.5,
+   "weightPct": 5.6,
    "riskContribPct": 7.7,
    "mVaR": 11.7
   },
@@ -482,7 +482,7 @@
   {
    "ticker": "HWM",
    "side": "long",
-   "weightPct": 5.1,
+   "weightPct": 5.0,
    "riskContribPct": 5.4,
    "mVaR": 8.2
   },
