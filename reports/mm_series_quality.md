@@ -77,11 +77,11 @@ Counts: {"rejected": 47, "level_only": 64, "tradable": 58, "tradable_public": 21
 | 1044 | aluminum (non ferrous metals, korea, 3003 coil premium over 1050, kilo | 815 | 8 | 270 |
 | 1248 | steel (steel, china, crc, metric ton) | 401 | 1.0 | 1807 |
 | 613 | yttria (rare earth metals, china, 99.99-99.999% avg ref price, metric  | 395 | 15 | 172 |
-| 94902 | ruthenium (precious metals, united states, granules min. 99.90%, kilog | 347 | 2 | 1498 |
+| 94902 | ruthenium (precious metals, united states, granules min. 99.90%, kilog | 347 | 2.0 | 1499 |
 | 414 | steel (steel, china, hdg coil, metric ton) | 316 | 5.0 | 445 |
 | 199342 | lanthanum-cerium mixed metal (rare earth metals, china, trem>99%;ce/tr | 316 | 7.0 | 227 |
-| 982 | steel (steel, china, slab, metric ton) | 314 | 2 | 1522 |
-| 539 | aluminum (non ferrous metals, china, aluminum billet, metric ton) | 302 | 1.0 | 1739 |
+| 982 | steel (steel, china, slab, metric ton) | 314 | 2.0 | 1523 |
+| 539 | aluminum (non ferrous metals, china, aluminum billet, metric ton) | 302 | 1 | 1740 |
 | 1477 | rare earths mmi (mmi index values, global, na, index) | 243 | 1.0 | 1933 |
 | 1478 | raw steels mmi (mmi index values, global, na, index) | 125 | 1 | 1950 |
 | 1479 | renewables mmi (mmi index values, global, na, index) | 124 | 1.0 | 1915 |
@@ -97,8 +97,8 @@ Counts: {"rejected": 47, "level_only": 64, "tradable": 58, "tradable_public": 21
 | 80746 | goes (grain oriented electrical steel) (steel, europe, coil (>600mm),  | 4 | 116 | 2017-01-01 | 2026-09-07 |
 | 613 | yttria (rare earth metals, china, 99.99-99.999% avg ref price, metric  | 3 | 172 | 2011-12-15 | 2026-08-14 |
 | 42605 | 430 (stainless steel, europe, cr coil, metric ton) | 3 | 151 | 2014-01-01 | 2026-09-07 |
-| 1228 | nickel (non ferrous metals, india, primary, kilogram) | 2 | 3333 | 2011-12-30 | 2026-09-25 |
-| 184 | palladium (precious metals, united states, sponge 99.95% purity, troy  | 1 | 3282 | 2012-01-03 | 2026-09-25 |
+| 1228 | nickel (non ferrous metals, india, primary, kilogram) | 2 | 3334 | 2011-12-30 | 2026-09-28 |
+| 184 | palladium (precious metals, united states, sponge 99.95% purity, troy  | 1 | 3283 | 2012-01-03 | 2026-09-28 |
 | 468 | 409 (stainless steel, united states, 2d (0.06 in x 48 in) sheet, pound | 1 | 476 | 2020-01-01 | 2026-09-28 |
 | 1189 | 430-coil (stainless surcharges, united states, nas surcharge, pound) | 1 | 158 | 2011-10-26 | 2026-09-28 |
 | 33076 | steel (steel, europe, crc, metric ton) | 1 | 153 | 2014-01-01 | 2026-09-07 |
@@ -112,11 +112,11 @@ Counts: {"rejected": 47, "level_only": 64, "tradable": 58, "tradable_public": 21
 
 | id | series | obs | start | recentObs | staleDays |
 |---|---|---|---|---|---|
-| 187 | platinum (precious metals, united states, sponge 99.95% purity, troy o | 3396 | 2012-01-03 | 712 | 3 |
-| 457 | nickel (non ferrous metals, china, primary, metric ton) | 3116 | 2011-12-30 | 612 | 4 |
-| 821 | zinc (non ferrous metals, china, primary cash, metric ton) | 3030 | 2011-12-30 | 610 | 4 |
-| 1072 | aluminum (non ferrous metals, india, primary cash, kilogram) | 3434 | 2011-12-30 | 635 | 3 |
-| 1337 | zinc (non ferrous metals, india, primary cash, kilogram) | 3450 | 2011-12-31 | 643 | 3 |
+| 187 | platinum (precious metals, united states, sponge 99.95% purity, troy o | 3397 | 2012-01-03 | 713 | 0 |
+| 457 | nickel (non ferrous metals, china, primary, metric ton) | 3117 | 2011-12-30 | 613 | 0 |
+| 821 | zinc (non ferrous metals, china, primary cash, metric ton) | 3031 | 2011-12-30 | 611 | 0 |
+| 1072 | aluminum (non ferrous metals, india, primary cash, kilogram) | 3435 | 2011-12-30 | 636 | 0 |
+| 1337 | zinc (non ferrous metals, india, primary cash, kilogram) | 3451 | 2011-12-31 | 644 | 0 |
 | 270581 | dysprosium oxide (rare earth metals, china, 99.5%min fob, kilogram) | 3015 | 2013-03-21 | 638 | 5 |
 | 270585 | electrical steel (stainless steel, china, grain oriented 130 0.3*980mm | 3232 | 2012-06-14 | 631 | 5 |
 | 270601 | ferro-chrome (ferro alloys, china, kazakhstan cr 68%min, c 8.5%max in  | 1913 | 2017-12-18 | 630 | 5 |
