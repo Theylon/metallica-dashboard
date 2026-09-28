@@ -26,11 +26,20 @@ import urllib.error
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from mm_fetch import CHUNK, REGISTRY, fetch_chunk  # noqa: E402
 
-# Lithium sits between lanthanum (270768) and lutetium (270800); the battery
-# cathode indices are 72092-72098; the "northeast asia" block (229555 erbium ..
-# 229605 yttrium) carries its own lithium metal; spodumene would fall in the
-# s/t gap between prnd oxide (270930) and terbium metal (271053).
-DEFAULT_RANGES = "72080-72110,270769-270799,229550-229610,270931-271052"
+# The battery supply chain's neighbourhoods, located from the ids we already
+# know (MetalMiner allocates roughly alphabetically within the 270xxx block).
+RANGES = {
+    "battery indices (72092-72098)": "72080-72110",
+    "lithium (between lanthanum 270768 and lutetium 270800)": "270769-270799",
+    "northeast asia block (229555 erbium .. 229605 yttrium)": "229550-229610",
+    "s/t block — spodumene (after prnd oxide 270930)": "270931-271052",
+    "cobalt compounds (around cobalt sulfate 270557)": "270540-270580",
+    "iron phosphate (after ionic re conc 270748)": "270749-270763",
+    "m block — manganese (270840 dioxide, 270860 sulfate)": "270801-270878",
+    "n block — ncm precursor, nickel (270914 nickel sulfate)": "270880-270921",
+    "ternary precursor (after terbium 271053)": "271053-271074",
+}
+DEFAULT_RANGES = ",".join(RANGES.values())
 
 ERRORS = (urllib.error.URLError, urllib.error.HTTPError, ValueError, TimeoutError)
 
