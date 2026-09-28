@@ -64,8 +64,8 @@ Counts: {"rejected": 47, "level_only": 64, "tradable": 58, "tradable_public": 21
 | 72095 | lmo hydroxide-based (battery prices, global, index, index) | 0.2603 | 92 | 2364 | 1 |
 | 72097 | nmc811 hydroxide-based (battery prices, global, index, index) | 0.2594 | 92 | 2368 | 1 |
 | 1248 | steel (steel, china, crc, metric ton) | 0.2248 | 91 | 1807 | 1.0 |
-| 393 | steel (steel, china, plate, metric ton) | 0.1983 | 91 | 2043 | 1.0 |
-| 258 | steel (steel, china, hrc, short ton) | 0.1911 | 91 | 2120 | 1 |
+| 393 | steel (steel, china, plate, metric ton) | 0.1987 | 91 | 2044 | 1 |
+| 258 | steel (steel, china, hrc, short ton) | 0.1915 | 91 | 2121 | 1.0 |
 | 733 | steel (steel, china, rebar, metric ton) | 0.1843 | 91 | 2199 | 1.0 |
 
 ## Holes: max gap > 120d in a daily/weekly series (16)
