@@ -1,16 +1,16 @@
 {
- "updatedAt": "2026-09-28T17:12:07+00:00",
+ "updatedAt": "2026-09-28T19:09:40+00:00",
  "asOf": "2026-09-28",
  "window": 90,
  "obs": 71,
  "headline": {
   "annVol": 22.5,
-  "betaSpy": 0.3,
-  "betaXme": 0.29,
+  "betaSpy": 0.31,
+  "betaXme": 0.3,
   "var1d95": -298,
-  "var1d99": -423,
-  "hhi": 671.0,
-  "effectiveN": 14.9
+  "var1d99": -422,
+  "hhi": 719.0,
+  "effectiveN": 13.9
  },
  "metrics": [
   {
@@ -21,26 +21,26 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.30",
+   "v": "0.31",
    "note": "61 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.29",
+   "v": "0.30",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
   {
    "k": "Avg pairwise correlation",
-   "v": "0.39",
-   "note": "trailing 90d daily returns, 16 of 17 holdings (1 OTC ex.)",
+   "v": "0.38",
+   "note": "trailing 90d daily returns, 14 of 16 holdings (1 OTC ex.)",
    "tone": "pos"
   },
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$298",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$423)",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$422)",
    "tone": "neg"
   },
   {
@@ -51,18 +51,18 @@
   },
   {
    "k": "Max drawdown (inception curve)",
-   "v": "-17.7%",
+   "v": "-17.8%",
    "note": "peak-to-trough on the cumulative TWR",
    "tone": "neg"
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "671 / 14.9",
-   "note": "17 names, ~14.9 effective",
+   "v": "719 / 13.9",
+   "note": "16 names, ~13.9 effective",
    "tone": "pos"
   }
  ],
- "avgCorr": 0.39,
+ "avgCorr": 0.38,
  "correlations": [
   {
    "pair": "BHP \u2013 RIO",
@@ -89,9 +89,7 @@
    "HWM",
    "LIT",
    "MLI",
-   "MT",
    "NUE",
-   "PKX",
    "RIO",
    "STLD",
    "VALE"
@@ -108,9 +106,7 @@
     0.1,
     0.61,
     0.23,
-    0.4,
     0.21,
-    0.37,
     0.45,
     0.25,
     0.38
@@ -126,9 +122,7 @@
     0.46,
     0.47,
     0.38,
-    0.34,
     0.23,
-    0.29,
     0.3,
     0.24,
     0.18
@@ -144,9 +138,7 @@
     0.13,
     0.73,
     0.29,
-    0.62,
     0.26,
-    0.5,
     0.92,
     0.29,
     0.7
@@ -162,9 +154,7 @@
     0.28,
     0.36,
     0.48,
-    0.59,
     0.78,
-    0.22,
     0.42,
     0.71,
     0.37
@@ -180,9 +170,7 @@
     0.13,
     0.78,
     0.41,
-    0.63,
     0.24,
-    0.51,
     0.86,
     0.27,
     0.68
@@ -198,9 +186,7 @@
     0.47,
     0.39,
     0.25,
-    0.32,
     0.25,
-    0.12,
     0.24,
     0.27,
     0.15
@@ -216,9 +202,7 @@
     0.15,
     0.59,
     0.21,
-    0.51,
     0.09,
-    0.41,
     0.64,
     0.1,
     0.51
@@ -234,9 +218,7 @@
     1.0,
     0.25,
     0.26,
-    0.26,
     0.24,
-    0.15,
     0.12,
     0.22,
     0.01
@@ -252,9 +234,7 @@
     0.25,
     1.0,
     0.32,
-    0.55,
     0.2,
-    0.64,
     0.73,
     0.22,
     0.58
@@ -270,30 +250,10 @@
     0.26,
     0.32,
     1.0,
-    0.29,
     0.44,
-    0.14,
     0.32,
     0.43,
     0.23
-   ],
-   [
-    0.4,
-    0.34,
-    0.62,
-    0.59,
-    0.63,
-    0.32,
-    0.51,
-    0.26,
-    0.55,
-    0.29,
-    1.0,
-    0.52,
-    0.52,
-    0.64,
-    0.5,
-    0.49
    ],
    [
     0.21,
@@ -306,30 +266,10 @@
     0.24,
     0.2,
     0.44,
-    0.52,
     1.0,
-    0.19,
     0.26,
     0.9,
     0.28
-   ],
-   [
-    0.37,
-    0.29,
-    0.5,
-    0.22,
-    0.51,
-    0.12,
-    0.41,
-    0.15,
-    0.64,
-    0.14,
-    0.52,
-    0.19,
-    1.0,
-    0.5,
-    0.17,
-    0.39
    ],
    [
     0.45,
@@ -342,9 +282,7 @@
     0.12,
     0.73,
     0.32,
-    0.64,
     0.26,
-    0.5,
     1.0,
     0.28,
     0.76
@@ -360,9 +298,7 @@
     0.22,
     0.22,
     0.43,
-    0.5,
     0.9,
-    0.17,
     0.28,
     1.0,
     0.29
@@ -378,9 +314,7 @@
     0.01,
     0.58,
     0.23,
-    0.49,
     0.28,
-    0.39,
     0.76,
     0.29,
     1.0
@@ -391,115 +325,101 @@
   {
    "ticker": "COPX",
    "side": "long",
-   "weightPct": 5.1,
-   "riskContribPct": 11.6,
-   "mVaR": 17.5
+   "weightPct": 7.7,
+   "riskContribPct": 18.7,
+   "mVaR": 25.4
   },
   {
    "ticker": "CMC",
    "side": "long",
    "weightPct": 5.4,
-   "riskContribPct": 10.9,
-   "mVaR": 16.4
-  },
-  {
-   "ticker": "MT",
-   "side": "long",
-   "weightPct": 5.2,
-   "riskContribPct": 10.6,
+   "riskContribPct": 11.8,
    "mVaR": 16.0
   },
   {
    "ticker": "BHP",
    "side": "long",
    "weightPct": 5.9,
-   "riskContribPct": 9.8,
-   "mVaR": 14.9
+   "riskContribPct": 10.4,
+   "mVaR": 14.1
   },
   {
    "ticker": "STLD",
    "side": "long",
-   "weightPct": 5.3,
-   "riskContribPct": 9.3,
-   "mVaR": 14.1
+   "weightPct": 5.4,
+   "riskContribPct": 10.2,
+   "mVaR": 13.9
   },
   {
    "ticker": "NUE",
    "side": "long",
    "weightPct": 5.4,
-   "riskContribPct": 8.7,
-   "mVaR": 13.2
-  },
-  {
-   "ticker": "GLD",
-   "side": "long",
-   "weightPct": 8.5,
-   "riskContribPct": 8.2,
-   "mVaR": 12.4
+   "riskContribPct": 9.5,
+   "mVaR": 12.8
   },
   {
    "ticker": "ATI",
    "side": "long",
    "weightPct": 4.7,
-   "riskContribPct": 7.9,
-   "mVaR": 12.0
+   "riskContribPct": 8.7,
+   "mVaR": 11.7
   },
   {
-   "ticker": "PKX",
+   "ticker": "GLD",
    "side": "long",
-   "weightPct": 5.4,
-   "riskContribPct": 7.8,
-   "mVaR": 11.8
-  },
-  {
-   "ticker": "RIO",
-   "side": "long",
-   "weightPct": 5.6,
-   "riskContribPct": 7.8,
+   "weightPct": 8.5,
+   "riskContribPct": 8.7,
    "mVaR": 11.8
   },
   {
    "ticker": "CRS",
    "side": "long",
    "weightPct": 4.7,
-   "riskContribPct": 7.5,
-   "mVaR": 11.3
+   "riskContribPct": 8.6,
+   "mVaR": 11.7
   },
   {
-   "ticker": "VALE",
+   "ticker": "RIO",
    "side": "long",
-   "weightPct": 5.7,
-   "riskContribPct": 6.7,
-   "mVaR": 10.1
+   "weightPct": 5.6,
+   "riskContribPct": 8.2,
+   "mVaR": 11.1
   },
   {
    "ticker": "MLI",
    "side": "long",
    "weightPct": 5.0,
-   "riskContribPct": 6.3,
-   "mVaR": 9.5
+   "riskContribPct": 7.4,
+   "mVaR": 10.0
+  },
+  {
+   "ticker": "VALE",
+   "side": "long",
+   "weightPct": 5.7,
+   "riskContribPct": 7.2,
+   "mVaR": 9.7
   },
   {
    "ticker": "HWM",
    "side": "long",
    "weightPct": 5.0,
-   "riskContribPct": 5.3,
-   "mVaR": 8.1
+   "riskContribPct": 5.8,
+   "mVaR": 7.8
   },
   {
    "ticker": "ALB",
    "side": "short",
-   "weightPct": -9.5,
-   "riskContribPct": -3.9,
-   "mVaR": -5.9
+   "weightPct": -9.6,
+   "riskContribPct": -1.7,
+   "mVaR": -2.3
   },
   {
    "ticker": "LIT",
    "side": "short",
-   "weightPct": -14.2,
-   "riskContribPct": -14.4,
-   "mVaR": -21.9
+   "weightPct": -14.3,
+   "riskContribPct": -13.4,
+   "mVaR": -18.1
   }
  ],
- "coverageNote": "16 of 17 holdings (1 OTC excluded)"
+ "coverageNote": "14 of 16 holdings (1 OTC excluded)"
 }
