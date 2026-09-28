@@ -28,8 +28,9 @@ from mm_fetch import CHUNK, REGISTRY, fetch_chunk  # noqa: E402
 
 # Lithium sits between lanthanum (270768) and lutetium (270800); the battery
 # cathode indices are 72092-72098; the "northeast asia" block (229555 erbium ..
-# 229605 yttrium) may carry its own lithium assessments.
-DEFAULT_RANGES = "72080-72110,270769-270799,229550-229610"
+# 229605 yttrium) carries its own lithium metal; spodumene would fall in the
+# s/t gap between prnd oxide (270930) and terbium metal (271053).
+DEFAULT_RANGES = "72080-72110,270769-270799,229550-229610,270931-271052"
 
 ERRORS = (urllib.error.URLError, urllib.error.HTTPError, ValueError, TimeoutError)
 
