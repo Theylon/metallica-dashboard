@@ -14,10 +14,12 @@ Writes:
                                                  timestamp of its first report and the
                                                  timestamps of every story about it
 
-Duplicate stories, removed in this order:
-  1. the same document id returned by more than one search;
-  2. syndicated copies: the same normalised headline within SYNDICATION_DAYS
-     (the earliest copy is kept; the others are listed under `copies`).
+Duplicate stories, removed in this order (a story is a document *about one
+event*: a quarterly report covering two events is two stories):
+  1. the same (document id, event) pair returned by more than one search;
+  2. syndicated copies: the same normalised headline about the same event within
+     SYNDICATION_DAYS (the earliest copy is kept; the others are listed under
+     `copies`).
 Timestamps are never altered; the earliest one per event becomes
 `first_report_utc`. Consumed by scripts/adverse_event_block.py. Stdlib only.
 """
@@ -55,22 +57,25 @@ def main() -> int:
     rejected = set(merges_doc.get("rejected", {}))
     overrides = merges_doc.get("overrides", {})
 
-    # 1) exact duplicates by document id
+    # canonical event key first, so step 1 sees merged keys
+    for s in raw:
+        k = s.get("event_key")
+        while k in merges:
+            k = merges[k]
+        s["event_key"] = k
+
+    # 1) exact duplicates: same document about the same event
     by_id, n_idDup = {}, 0
     for s in raw:
-        k = s.get("doc_id") or f"{s.get('source')}|{s.get('headline')}|{s.get('timestamp')}"
+        doc = s.get("doc_id") or f"{s.get('source')}|{s.get('headline')}|{s.get('timestamp')}"
+        k = (doc, s["event_key"])
         if k in by_id:
             n_idDup += 1
             continue
         by_id[k] = s
     stories = sorted(by_id.values(), key=lambda s: (ts(s.get("timestamp")) or dt.datetime.max.replace(tzinfo=dt.timezone.utc)))
 
-    # canonical event key; drop rejected events
-    for s in stories:
-        k = s.get("event_key")
-        while k in merges:
-            k = merges[k]
-        s["event_key"] = k
+    # drop rejected events
     n_rej = sum(s["event_key"] in rejected for s in stories)
     stories = [s for s in stories if s["event_key"] not in rejected]
 
@@ -78,7 +83,8 @@ def main() -> int:
     kept, n_synd = [], 0
     for s in stories:
         h, t = norm_headline(s.get("headline")), ts(s.get("timestamp"))
-        twin = next((k for k in kept if norm_headline(k.get("headline")) == h and h
+        twin = next((k for k in kept if k["event_key"] == s["event_key"]
+                     and norm_headline(k.get("headline")) == h and h
                      and t and ts(k.get("timestamp"))
                      and abs((t - ts(k["timestamp"])).total_seconds()) <= SYNDICATION_DAYS * 86400), None)
         if twin:
@@ -122,7 +128,7 @@ def main() -> int:
         "source": "Bigdata.com search (entity 9561FC, fast and smart modes), PLS Group Ltd / Pilbara Minerals",
         "newsWindow": "2020-12-01 to 2026-09-23",
         "categories": CATEGORIES,
-        "dedupe": {"rawStories": len(raw), "duplicateDocIds": n_idDup,
+        "dedupe": {"rawStories": len(raw), "duplicateDocEventPairs": n_idDup,
                    "rejectedEventStories": n_rej, "syndicatedCopies": n_synd},
         "nStories": len(kept),
         "nEvents": len(out_events),
@@ -130,7 +136,7 @@ def main() -> int:
     }
     (RES / "stories.json").write_text(json.dumps({**meta, "stories": kept}, indent=2, ensure_ascii=False))
     (RES / "events.json").write_text(json.dumps({**meta, "events": out_events}, indent=2, ensure_ascii=False))
-    print(f"raw {len(raw)} → id-dupes {n_idDup}, rejected {n_rej}, syndicated {n_synd} "
+    print(f"raw {len(raw)} → doc/event dupes {n_idDup}, rejected {n_rej}, syndicated {n_synd} "
           f"→ {len(kept)} stories, {len(out_events)} events")
     return 0
 
