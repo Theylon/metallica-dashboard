@@ -1,15 +1,15 @@
 {
- "updatedAt": "2026-09-29T16:13:19+00:00",
+ "updatedAt": "2026-09-29T17:08:19+00:00",
  "asOf": "2026-09-29",
  "window": 90,
  "obs": 72,
  "headline": {
   "annVol": 22.3,
   "betaSpy": 0.31,
-  "betaXme": 0.29,
+  "betaXme": 0.3,
   "var1d95": -296,
   "var1d99": -420,
-  "hhi": 721.0,
+  "hhi": 720.0,
   "effectiveN": 13.9
  },
  "metrics": [
@@ -27,7 +27,7 @@
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.29",
+   "v": "0.30",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -51,13 +51,13 @@
   },
   {
    "k": "Max drawdown (inception curve)",
-   "v": "-18.3%",
+   "v": "-18.2%",
    "note": "peak-to-trough on the cumulative TWR",
    "tone": "neg"
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "721 / 13.9",
+   "v": "720 / 13.9",
    "note": "16 names, ~13.9 effective",
    "tone": "pos"
   }
@@ -357,9 +357,16 @@
   {
    "ticker": "COPX",
    "side": "long",
-   "weightPct": 7.7,
-   "riskContribPct": 18.8,
-   "mVaR": 26.8
+   "weightPct": 7.6,
+   "riskContribPct": 18.7,
+   "mVaR": 26.7
+  },
+  {
+   "ticker": "CMC",
+   "side": "long",
+   "weightPct": 5.2,
+   "riskContribPct": 10.4,
+   "mVaR": 14.9
   },
   {
    "ticker": "BHP",
@@ -367,13 +374,6 @@
    "weightPct": 5.9,
    "riskContribPct": 10.3,
    "mVaR": 14.7
-  },
-  {
-   "ticker": "CMC",
-   "side": "long",
-   "weightPct": 5.2,
-   "riskContribPct": 10.3,
-   "mVaR": 14.8
   },
   {
    "ticker": "GLD",
@@ -386,21 +386,21 @@
    "ticker": "STLD",
    "side": "long",
    "weightPct": 5.2,
-   "riskContribPct": 8.9,
-   "mVaR": 12.7
+   "riskContribPct": 9.0,
+   "mVaR": 12.8
   },
   {
    "ticker": "ATI",
    "side": "long",
    "weightPct": 4.9,
    "riskContribPct": 8.4,
-   "mVaR": 12.0
+   "mVaR": 12.1
   },
   {
    "ticker": "NUE",
    "side": "long",
-   "weightPct": 5.2,
-   "riskContribPct": 8.2,
+   "weightPct": 5.3,
+   "riskContribPct": 8.3,
    "mVaR": 11.8
   },
   {
@@ -415,7 +415,7 @@
    "side": "long",
    "weightPct": 4.8,
    "riskContribPct": 7.9,
-   "mVaR": 11.2
+   "mVaR": 11.3
   },
   {
    "ticker": "SLV",
@@ -455,9 +455,9 @@
   {
    "ticker": "LIT",
    "side": "short",
-   "weightPct": -14.4,
+   "weightPct": -14.3,
    "riskContribPct": -13.7,
-   "mVaR": -19.6
+   "mVaR": -19.5
   }
  ],
  "coverageNote": "15 of 16 holdings (1 OTC excluded)"
