@@ -1,100 +1,100 @@
 {
- "updatedAt": "2026-09-28T22:25:41+00:00",
+ "updatedAt": "2026-09-29T12:34:55+00:00",
  "status": "ready",
- "daysCollected": 53,
+ "daysCollected": 54,
  "minDaysNeeded": 25,
  "fwdWindow": 20,
  "signals": [
   {
    "signal": "fundamentals",
-   "rankIC": 0.276,
-   "ic_tstat": 13.49,
-   "IR": 2.35,
+   "rankIC": 0.273,
+   "ic_tstat": 13.61,
+   "IR": 2.33,
    "hitRate": 1.0,
-   "n": 3432,
-   "windows": 33
+   "n": 3536,
+   "windows": 34
   },
   {
    "signal": "quality",
-   "rankIC": 0.122,
-   "ic_tstat": 9.27,
-   "IR": 1.61,
-   "hitRate": 0.88,
-   "n": 5841,
-   "windows": 33
+   "rankIC": 0.118,
+   "ic_tstat": 8.77,
+   "IR": 1.5,
+   "hitRate": 0.85,
+   "n": 6018,
+   "windows": 34
   },
   {
    "signal": "sentiment",
-   "rankIC": 0.099,
-   "ic_tstat": 6.46,
-   "IR": 1.12,
+   "rankIC": 0.102,
+   "ic_tstat": 6.72,
+   "IR": 1.15,
    "hitRate": 0.79,
-   "n": 1287,
-   "windows": 33
+   "n": 1326,
+   "windows": 34
   },
   {
    "signal": "analyst",
-   "rankIC": 0.098,
-   "ic_tstat": 2.54,
-   "IR": 0.44,
-   "hitRate": 0.73,
-   "n": 2079,
-   "windows": 33
+   "rankIC": 0.087,
+   "ic_tstat": 2.2,
+   "IR": 0.38,
+   "hitRate": 0.71,
+   "n": 2142,
+   "windows": 34
   },
   {
    "signal": "smart",
-   "rankIC": 0.04,
-   "ic_tstat": 1.65,
-   "IR": 0.29,
-   "hitRate": 0.7,
-   "n": 2178,
-   "windows": 33
+   "rankIC": 0.036,
+   "ic_tstat": 1.49,
+   "IR": 0.26,
+   "hitRate": 0.68,
+   "n": 2244,
+   "windows": 34
   },
   {
    "signal": "deep",
-   "rankIC": -0.032,
-   "ic_tstat": -2.43,
-   "IR": -0.42,
-   "hitRate": 0.36,
-   "n": 6600,
-   "windows": 33
+   "rankIC": -0.027,
+   "ic_tstat": -1.98,
+   "IR": -0.34,
+   "hitRate": 0.38,
+   "n": 6800,
+   "windows": 34
   },
   {
    "signal": "composite",
-   "rankIC": -0.067,
-   "ic_tstat": -2.92,
-   "IR": -0.51,
-   "hitRate": 0.36,
-   "n": 6726,
-   "windows": 33
+   "rankIC": -0.059,
+   "ic_tstat": -2.51,
+   "IR": -0.43,
+   "hitRate": 0.38,
+   "n": 6933,
+   "windows": 34
   },
   {
    "signal": "commodity",
-   "rankIC": -0.103,
-   "ic_tstat": -3.71,
-   "IR": -0.65,
-   "hitRate": 0.27,
-   "n": 5808,
-   "windows": 33
+   "rankIC": -0.092,
+   "ic_tstat": -3.19,
+   "IR": -0.55,
+   "hitRate": 0.29,
+   "n": 5984,
+   "windows": 34
   },
   {
    "signal": "momentum",
-   "rankIC": -0.106,
-   "ic_tstat": -3.42,
-   "IR": -0.6,
-   "hitRate": 0.36,
-   "n": 6330,
-   "windows": 33
+   "rankIC": -0.096,
+   "ic_tstat": -3.07,
+   "IR": -0.53,
+   "hitRate": 0.38,
+   "n": 6525,
+   "windows": 34
   }
  ],
  "factorTilt": {
-  "asOf": "2026-09-28",
+  "asOf": "2026-09-29",
   "factors": [
    {
     "factor": "momentum",
-    "portZ": 0.26,
+    "portZ": 0.27,
     "longZ": 0.16,
-    "shortZ": -0.65,
+    "shortZ": -0.64,
     "coverage": 15
    },
    {

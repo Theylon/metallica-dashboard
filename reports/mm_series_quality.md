@@ -1,10 +1,10 @@
 # MetalMiner series quality
 
-Source dump: `historical_latest.json.gz` · as of 2026-09-28 · 169 series.
+Source dump: `historical_latest.json.gz` · as of 2026-09-29 · 169 series.
 
 Grades: **tradable** = daily, fresh, not frozen, no suspicious jumps; **level_only** = usable for direction/level, not for return signals (weekly/monthly cadence, partly frozen, or thin recent history); **rejected** = composite index, stopped, frozen list price, or unit flip. `public` = exchange-quoted (LME/COMEX), so no information edge.
 
-Counts: {"rejected": 47, "level_only": 64, "tradable": 58, "tradable_public": 21, "tradable_proprietary": 37}
+Counts: {"rejected": 46, "level_only": 65, "tradable": 58, "tradable_public": 21, "tradable_proprietary": 37}
 
 | category | series | tradable (proprietary / public) | level_only | rejected |
 |---|---|---|---|---|
@@ -14,59 +14,56 @@ Counts: {"rejected": 47, "level_only": 64, "tradable": 58, "tradable_public": 21
 | mmi index values | 10 | 0 (0 / 0) | 0 | 10 |
 | non ferrous metals | 42 | 21 (5 / 16) | 6 | 15 |
 | precious metals | 9 | 5 (1 / 4) | 4 | 0 |
-| rare earth metals | 35 | 22 (22 / 0) | 10 | 3 |
+| rare earth metals | 35 | 22 (22 / 0) | 11 | 2 |
 | scrap | 12 | 0 (0 / 0) | 10 | 2 |
 | stainless steel | 12 | 1 (1 / 0) | 3 | 8 |
 | stainless surcharges | 2 | 0 (0 / 0) | 1 | 1 |
 | steel | 30 | 2 (1 / 1) | 20 | 8 |
 
-## Stale: last observation > 30d before as-of (15)
+## Stale: last observation > 30d before as-of (12)
 
 | id | series | end | staleDays | obs |
 |---|---|---|---|---|
-| 356 | aluminum (non ferrous metals, korea, commercial 1050 sheet, kilogram) | 2025-11-20 | 312 | 265 |
-| 581 | aluminum (non ferrous metals, korea, 5052 coil premium over 1050, kilo | 2025-11-20 | 312 | 268 |
-| 1044 | aluminum (non ferrous metals, korea, 3003 coil premium over 1050, kilo | 2025-11-20 | 312 | 270 |
-| 618 | steel (steel, korea, rebar, metric ton) | 2026-01-01 | 270 | 359 |
-| 1136 | steel (steel, korea, hrc, metric ton) | 2026-01-01 | 270 | 283 |
-| 290 | aluminum (non ferrous metals, europe, 6082 plate, metric ton) | 2026-08-03 | 56 | 173 |
-| 408 | aluminum (non ferrous metals, europe, 5083 plate, metric ton) | 2026-08-03 | 56 | 177 |
-| 429 | aluminum (non ferrous metals, europe, 6082 bar, metric ton) | 2026-08-03 | 56 | 171 |
-| 552 | aluminum (non ferrous metals, europe, commercial 1050 sheet, metric to | 2026-08-03 | 56 | 180 |
-| 613 | yttria (rare earth metals, china, 99.99-99.999% avg ref price, metric  | 2026-08-14 | 45 | 172 |
-| 199342 | lanthanum-cerium mixed metal (rare earth metals, china, trem>99%;ce/tr | 2026-08-17 | 42 | 227 |
-| 213 | steel (scrap, united states, north central / east #1 heavy melting ste | 2026-08-24 | 35 | 173 |
-| 260 | steel (scrap, united states, south #1 heavy melting steel, gross ton) | 2026-08-24 | 35 | 177 |
-| 235 | 430 (stainless steel, united states, #4 polish vinyl ctl (0.048 in x 4 | 2026-08-28 | 31 | 241 |
-| 538 | 304 (stainless steel, united states, 2b (0.075 in x 48 in) sheet, poun | 2026-08-28 | 31 | 333 |
+| 356 | aluminum (non ferrous metals, korea, commercial 1050 sheet, kilogram) | 2025-11-20 | 313 | 265 |
+| 581 | aluminum (non ferrous metals, korea, 5052 coil premium over 1050, kilo | 2025-11-20 | 313 | 268 |
+| 1044 | aluminum (non ferrous metals, korea, 3003 coil premium over 1050, kilo | 2025-11-20 | 313 | 270 |
+| 618 | steel (steel, korea, rebar, metric ton) | 2026-01-01 | 271 | 359 |
+| 1136 | steel (steel, korea, hrc, metric ton) | 2026-01-01 | 271 | 283 |
+| 290 | aluminum (non ferrous metals, europe, 6082 plate, metric ton) | 2026-08-03 | 57 | 173 |
+| 408 | aluminum (non ferrous metals, europe, 5083 plate, metric ton) | 2026-08-03 | 57 | 177 |
+| 429 | aluminum (non ferrous metals, europe, 6082 bar, metric ton) | 2026-08-03 | 57 | 171 |
+| 552 | aluminum (non ferrous metals, europe, commercial 1050 sheet, metric to | 2026-08-03 | 57 | 180 |
+| 613 | yttria (rare earth metals, china, 99.99-99.999% avg ref price, metric  | 2026-08-14 | 46 | 172 |
+| 213 | steel (scrap, united states, north central / east #1 heavy melting ste | 2026-08-24 | 36 | 173 |
+| 260 | steel (scrap, united states, south #1 heavy melting steel, gross ton) | 2026-08-24 | 36 | 177 |
 
 ## Frozen: > 40% unchanged steps or flat run > 60 (23)
 
 | id | series | flatShare | longestFlatRun | obs | medianGapDays |
 |---|---|---|---|---|---|
-| 827 | 201 (stainless steel, united states, 2b ctl (0.075 in x 48 in) sheet,  | 0.9367 | 34 | 1313 | 1.0 |
-| 468 | 409 (stainless steel, united states, 2d (0.06 in x 48 in) sheet, pound | 0.8253 | 32 | 476 | 1 |
-| 191 | 304 (stainless steel, united states, #4 polish vinyl ctl (0.048 in x 4 | 0.7373 | 34 | 374 | 1 |
-| 538 | 304 (stainless steel, united states, 2b (0.075 in x 48 in) sheet, poun | 0.7229 | 34 | 333 | 1.0 |
-| 5 | steel (steel, united states, wire rod, cwt) | 0.7224 | 22 | 1788 | 1 |
-| 434 | 316l (stainless steel, united states, 2b ctl (0.075 in x 48 in) sheet, | 0.6877 | 34 | 318 | 1 |
-| 235 | 430 (stainless steel, united states, #4 polish vinyl ctl (0.048 in x 4 | 0.6208 | 32 | 241 | 1.0 |
-| 29004 | aluminum (non ferrous metals, europe, 6082 T6 (0.08 in x 48 in) sheet, | 0.606 | 19 | 1412 | 1 |
-| 29003 | aluminum (non ferrous metals, europe, 5251 H32 (0.08 in x 48 in) sheet | 0.6054 | 19 | 1410 | 1 |
+| 827 | 201 (stainless steel, united states, 2b ctl (0.075 in x 48 in) sheet,  | 0.936 | 34 | 1314 | 1 |
+| 468 | 409 (stainless steel, united states, 2d (0.06 in x 48 in) sheet, pound | 0.8235 | 32 | 477 | 1.0 |
+| 191 | 304 (stainless steel, united states, #4 polish vinyl ctl (0.048 in x 4 | 0.7353 | 34 | 375 | 1.0 |
+| 5 | steel (steel, united states, wire rod, cwt) | 0.7226 | 22 | 1789 | 1.0 |
+| 538 | 304 (stainless steel, united states, 2b (0.075 in x 48 in) sheet, poun | 0.7207 | 34 | 334 | 1 |
+| 434 | 316l (stainless steel, united states, 2b ctl (0.075 in x 48 in) sheet, | 0.6855 | 34 | 319 | 1.0 |
+| 235 | 430 (stainless steel, united states, #4 polish vinyl ctl (0.048 in x 4 | 0.6183 | 32 | 242 | 1 |
+| 29004 | aluminum (non ferrous metals, europe, 6082 T6 (0.08 in x 48 in) sheet, | 0.6062 | 19 | 1413 | 1.0 |
+| 29003 | aluminum (non ferrous metals, europe, 5251 H32 (0.08 in x 48 in) sheet | 0.6057 | 19 | 1411 | 1.0 |
 | 523 | steel (steel, united states, aluminized dds astm a463 t1 40 (0.05 in x | 0.5085 | 17 | 705 | 1.0 |
-| 1346 | aluminum (non ferrous metals, united states, 5083 h321 (1 in x 60 in)  | 0.4841 | 13 | 1829 | 1.0 |
-| 916 | aluminum (non ferrous metals, united states, 5052 h32 (0.06 in x 60 in | 0.4836 | 13 | 1825 | 1.0 |
-| 1040 | aluminum (non ferrous metals, united states, 6061 t651 (0.5 in x 48 in | 0.4787 | 13 | 1808 | 1 |
-| 663 | aluminum (non ferrous metals, united states, 3003 h14 (0.08 in x 48 in | 0.4702 | 13 | 1781 | 1.0 |
-| 1281 | aluminum (non ferrous metals, united states, 6061 t6 (0.08 in x 48 in) | 0.4693 | 13 | 1776 | 1 |
-| 1477 | rare earths mmi (mmi index values, global, na, index) | 0.4601 | 34 | 1933 | 1.0 |
-| 503 | aluminum (non ferrous metals, united states, 1100 h14 (0.08 in x 48 in | 0.4504 | 13 | 1915 | 1.0 |
-| 72095 | lmo hydroxide-based (battery prices, global, index, index) | 0.2603 | 92 | 2364 | 1 |
-| 72097 | nmc811 hydroxide-based (battery prices, global, index, index) | 0.2594 | 92 | 2368 | 1 |
-| 1248 | steel (steel, china, crc, metric ton) | 0.2248 | 91 | 1807 | 1.0 |
-| 393 | steel (steel, china, plate, metric ton) | 0.1987 | 91 | 2044 | 1 |
-| 258 | steel (steel, china, hrc, short ton) | 0.1915 | 91 | 2121 | 1.0 |
-| 733 | steel (steel, china, rebar, metric ton) | 0.1843 | 91 | 2199 | 1.0 |
+| 1346 | aluminum (non ferrous metals, united states, 5083 h321 (1 in x 60 in)  | 0.4844 | 13 | 1830 | 1 |
+| 916 | aluminum (non ferrous metals, united states, 5052 h32 (0.06 in x 60 in | 0.4838 | 13 | 1826 | 1 |
+| 1040 | aluminum (non ferrous metals, united states, 6061 t651 (0.5 in x 48 in | 0.479 | 13 | 1809 | 1.0 |
+| 663 | aluminum (non ferrous metals, united states, 3003 h14 (0.08 in x 48 in | 0.4705 | 13 | 1782 | 1 |
+| 1281 | aluminum (non ferrous metals, united states, 6061 t6 (0.08 in x 48 in) | 0.4696 | 13 | 1777 | 1.0 |
+| 1477 | rare earths mmi (mmi index values, global, na, index) | 0.4604 | 34 | 1934 | 1 |
+| 503 | aluminum (non ferrous metals, united states, 1100 h14 (0.08 in x 48 in | 0.4507 | 13 | 1916 | 1 |
+| 72095 | lmo hydroxide-based (battery prices, global, index, index) | 0.2606 | 92 | 2365 | 1.0 |
+| 72097 | nmc811 hydroxide-based (battery prices, global, index, index) | 0.2597 | 92 | 2369 | 1.0 |
+| 1248 | steel (steel, china, crc, metric ton) | 0.2252 | 91 | 1808 | 1 |
+| 393 | steel (steel, china, plate, metric ton) | 0.1991 | 91 | 2045 | 1.0 |
+| 258 | steel (steel, china, hrc, short ton) | 0.1919 | 91 | 2122 | 1 |
+| 733 | steel (steel, china, rebar, metric ton) | 0.1846 | 91 | 2200 | 1 |
 
 ## Holes: max gap > 120d in a daily/weekly series (16)
 
@@ -75,19 +72,19 @@ Counts: {"rejected": 47, "level_only": 64, "tradable": 58, "tradable_public": 21
 | 356 | aluminum (non ferrous metals, korea, commercial 1050 sheet, kilogram) | 815 | 8.0 | 265 |
 | 581 | aluminum (non ferrous metals, korea, 5052 coil premium over 1050, kilo | 815 | 8 | 268 |
 | 1044 | aluminum (non ferrous metals, korea, 3003 coil premium over 1050, kilo | 815 | 8 | 270 |
-| 1248 | steel (steel, china, crc, metric ton) | 401 | 1.0 | 1807 |
+| 1248 | steel (steel, china, crc, metric ton) | 401 | 1 | 1808 |
 | 613 | yttria (rare earth metals, china, 99.99-99.999% avg ref price, metric  | 395 | 15 | 172 |
-| 94902 | ruthenium (precious metals, united states, granules min. 99.90%, kilog | 347 | 2.0 | 1499 |
-| 414 | steel (steel, china, hdg coil, metric ton) | 316 | 5.0 | 445 |
-| 199342 | lanthanum-cerium mixed metal (rare earth metals, china, trem>99%;ce/tr | 316 | 7.0 | 227 |
+| 94902 | ruthenium (precious metals, united states, granules min. 99.90%, kilog | 347 | 2 | 1500 |
+| 414 | steel (steel, china, hdg coil, metric ton) | 316 | 5 | 446 |
+| 199342 | lanthanum-cerium mixed metal (rare earth metals, china, trem>99%;ce/tr | 316 | 7 | 228 |
 | 982 | steel (steel, china, slab, metric ton) | 314 | 2.0 | 1523 |
-| 539 | aluminum (non ferrous metals, china, aluminum billet, metric ton) | 302 | 1 | 1740 |
-| 1477 | rare earths mmi (mmi index values, global, na, index) | 243 | 1.0 | 1933 |
-| 1478 | raw steels mmi (mmi index values, global, na, index) | 125 | 1 | 1950 |
-| 1479 | renewables mmi (mmi index values, global, na, index) | 124 | 1.0 | 1915 |
-| 1472 | automotive mmi (mmi index values, global, na, index) | 122 | 1.0 | 1941 |
+| 539 | aluminum (non ferrous metals, china, aluminum billet, metric ton) | 302 | 1.0 | 1741 |
+| 1477 | rare earths mmi (mmi index values, global, na, index) | 243 | 1 | 1934 |
+| 1478 | raw steels mmi (mmi index values, global, na, index) | 125 | 1.0 | 1951 |
+| 1479 | renewables mmi (mmi index values, global, na, index) | 124 | 1 | 1916 |
+| 1472 | automotive mmi (mmi index values, global, na, index) | 122 | 1 | 1942 |
 | 199344 | neodymium metal (rare earth metals, china, trem>99%;nd/rem:99~99.9%;fe | 122 | 2.0 | 1177 |
-| 1471 | aluminum mmi (mmi index values, global, na, index) | 121 | 1 | 1908 |
+| 1471 | aluminum mmi (mmi index values, global, na, index) | 121 | 1.0 | 1909 |
 
 ## Jumps: single-step move > 50% (14)
 
@@ -98,8 +95,8 @@ Counts: {"rejected": 47, "level_only": 64, "tradable": 58, "tradable_public": 21
 | 613 | yttria (rare earth metals, china, 99.99-99.999% avg ref price, metric  | 3 | 172 | 2011-12-15 | 2026-08-14 |
 | 42605 | 430 (stainless steel, europe, cr coil, metric ton) | 3 | 151 | 2014-01-01 | 2026-09-07 |
 | 1228 | nickel (non ferrous metals, india, primary, kilogram) | 2 | 3334 | 2011-12-30 | 2026-09-28 |
-| 184 | palladium (precious metals, united states, sponge 99.95% purity, troy  | 1 | 3283 | 2012-01-03 | 2026-09-28 |
-| 468 | 409 (stainless steel, united states, 2d (0.06 in x 48 in) sheet, pound | 1 | 476 | 2020-01-01 | 2026-09-28 |
+| 184 | palladium (precious metals, united states, sponge 99.95% purity, troy  | 1 | 3284 | 2012-01-03 | 2026-09-29 |
+| 468 | 409 (stainless steel, united states, 2d (0.06 in x 48 in) sheet, pound | 1 | 477 | 2020-01-01 | 2026-09-29 |
 | 1189 | 430-coil (stainless surcharges, united states, nas surcharge, pound) | 1 | 158 | 2011-10-26 | 2026-09-28 |
 | 33076 | steel (steel, europe, crc, metric ton) | 1 | 153 | 2014-01-01 | 2026-09-07 |
 | 49797 | 304 (stainless steel, europe, round bar (<25mm), metric ton) | 1 | 153 | 2014-01-01 | 2026-09-07 |
@@ -112,40 +109,40 @@ Counts: {"rejected": 47, "level_only": 64, "tradable": 58, "tradable_public": 21
 
 | id | series | obs | start | recentObs | staleDays |
 |---|---|---|---|---|---|
-| 187 | platinum (precious metals, united states, sponge 99.95% purity, troy o | 3397 | 2012-01-03 | 713 | 0 |
-| 457 | nickel (non ferrous metals, china, primary, metric ton) | 3117 | 2011-12-30 | 613 | 0 |
-| 821 | zinc (non ferrous metals, china, primary cash, metric ton) | 3031 | 2011-12-30 | 611 | 0 |
-| 1072 | aluminum (non ferrous metals, india, primary cash, kilogram) | 3435 | 2011-12-30 | 636 | 0 |
-| 1337 | zinc (non ferrous metals, india, primary cash, kilogram) | 3451 | 2011-12-31 | 644 | 0 |
-| 270581 | dysprosium oxide (rare earth metals, china, 99.5%min fob, kilogram) | 3015 | 2013-03-21 | 638 | 5 |
-| 270585 | electrical steel (stainless steel, china, grain oriented 130 0.3*980mm | 3232 | 2012-06-14 | 631 | 5 |
-| 270601 | ferro-chrome (ferro alloys, china, kazakhstan cr 68%min, c 8.5%max in  | 1913 | 2017-12-18 | 630 | 5 |
-| 270612 | ferro-holmium (rare earth metals, china, 80% exw, kilogram) | 3116 | 2012-10-29 | 625 | 5 |
-| 270704 | h-beam steel (steel, shanghai, q235 200*200mm in warehouse, metric ton | 3302 | 2012-03-08 | 633 | 5 |
-| 270787 | lithium carbonate (minor metals, america, 99.5%min fob south, kilogram | 1777 | 2018-01-31 | 608 | 5 |
-| 270789 | lithium hydroxide monohydrate (minor metals, china, lioh 56.5%min, mag | 2425 | 2015-10-29 | 632 | 5 |
-| 270800 | lutetium oxide (rare earth metals, exw, exw, kilogram) | 1451 | 2019-11-21 | 630 | 5 |
-| 270840 | manganese dioxide (minor metals, china, alkaline 91%min exw, metric to | 3098 | 2013-01-04 | 632 | 5 |
-| 270860 | manganese sulfate (minor metals, china, mn 32%min exw, metric ton) | 1927 | 2017-11-22 | 633 | 5 |
-| 270879 | molybdenum bar (minor metals, china, 99.9%min exw, kilogram) | 3292 | 2011-12-30 | 622 | 5 |
-| 270898 | ndfeb (rare earth metals, china, sintered rough 35m exw, kilogram) | 1130 | 2021-02-22 | 608 | 5 |
-| 270899 | ndfeb (rare earth metals, china, sintered rough 45m exw, kilogram) | 1125 | 2021-02-22 | 607 | 5 |
-| 270900 | ndfeb (rare earth metals, china, sintered rough 50m exw, kilogram) | 1135 | 2021-02-22 | 612 | 5 |
-| 270901 | ndfeb (rare earth metals, china, sintered rough 35h exw, kilogram) | 1132 | 2021-02-22 | 613 | 5 |
-| 270902 | ndfeb (rare earth metals, china, sintered rough 45h exw, kilogram) | 1134 | 2021-02-22 | 612 | 5 |
-| 270903 | ndfeb (rare earth metals, china, sintered rough 48h exw, kilogram) | 1134 | 2021-02-22 | 612 | 5 |
-| 270904 | ndfeb (rare earth metals, china, sintered rough 50h exw, kilogram) | 1133 | 2021-02-22 | 611 | 5 |
-| 270905 | neodymium metal (rare earth metals, china, 99%min exw, kilogram) | 3322 | 2011-12-30 | 623 | 5 |
-| 270906 | neodymium metal (rare earth metals, china, 99%min fob, kilogram) | 3302 | 2011-12-30 | 637 | 5 |
-| 270907 | neodymium oxide (rare earth metals, china, 99.5%min exw, kilogram) | 2938 | 2013-08-19 | 625 | 5 |
-| 270908 | neodymium oxide (rare earth metals, china, 99.5%min fob, kilogram) | 3290 | 2011-12-30 | 636 | 5 |
-| 270914 | nickel sulfate (non ferrous metals, china, ni 22%min; co 0.05%max exw, | 3275 | 2012-04-17 | 634 | 5 |
-| 270922 | praseodymium metal (rare earth metals, china, 99.5%min fob, kilogram) | 3293 | 2011-12-30 | 635 | 5 |
-| 270923 | praseodymium oxide (rare earth metals, china, 99.5%min exw, kilogram) | 3063 | 2013-01-11 | 626 | 5 |
-| 270924 | praseodymium oxide (rare earth metals, china, 99.5%min fob, kilogram) | 3294 | 2011-12-30 | 638 | 5 |
-| 270928 | prnd mischmetal (rare earth metals, china, pr 25%, nd 75% exw, kilogra | 3334 | 2011-12-30 | 630 | 5 |
-| 270929 | prnd mischmetal (rare earth metals, china, pr 25%, nd 75% fob, kilogra | 3007 | 2013-03-25 | 636 | 5 |
-| 270930 | prnd oxide (rare earth metals, china, pr6o11 25%, nd2o3 75% exw, kilog | 3149 | 2012-09-20 | 626 | 5 |
-| 271053 | terbium metal (rare earth metals, china, 99.9%min fob, kilogram) | 1617 | 2019-01-28 | 638 | 5 |
-| 271055 | terbium oxide (rare earth metals, china, 99.99%min fob, kilogram) | 1628 | 2019-01-16 | 639 | 5 |
-| 271078 | titanium sponge (minor metals, china, 99.7%min exw, metric ton) | 3206 | 2012-07-24 | 629 | 5 |
+| 187 | platinum (precious metals, united states, sponge 99.95% purity, troy o | 3398 | 2012-01-03 | 713 | 0 |
+| 457 | nickel (non ferrous metals, china, primary, metric ton) | 3118 | 2011-12-30 | 614 | 0 |
+| 821 | zinc (non ferrous metals, china, primary cash, metric ton) | 3032 | 2011-12-30 | 612 | 0 |
+| 1072 | aluminum (non ferrous metals, india, primary cash, kilogram) | 3435 | 2011-12-30 | 635 | 1 |
+| 1337 | zinc (non ferrous metals, india, primary cash, kilogram) | 3451 | 2011-12-31 | 643 | 1 |
+| 270581 | dysprosium oxide (rare earth metals, china, 99.5%min fob, kilogram) | 3015 | 2013-03-21 | 638 | 6 |
+| 270585 | electrical steel (stainless steel, china, grain oriented 130 0.3*980mm | 3232 | 2012-06-14 | 631 | 6 |
+| 270601 | ferro-chrome (ferro alloys, china, kazakhstan cr 68%min, c 8.5%max in  | 1913 | 2017-12-18 | 630 | 6 |
+| 270612 | ferro-holmium (rare earth metals, china, 80% exw, kilogram) | 3116 | 2012-10-29 | 625 | 6 |
+| 270704 | h-beam steel (steel, shanghai, q235 200*200mm in warehouse, metric ton | 3302 | 2012-03-08 | 633 | 6 |
+| 270787 | lithium carbonate (minor metals, america, 99.5%min fob south, kilogram | 1777 | 2018-01-31 | 608 | 6 |
+| 270789 | lithium hydroxide monohydrate (minor metals, china, lioh 56.5%min, mag | 2425 | 2015-10-29 | 632 | 6 |
+| 270800 | lutetium oxide (rare earth metals, exw, exw, kilogram) | 1451 | 2019-11-21 | 630 | 6 |
+| 270840 | manganese dioxide (minor metals, china, alkaline 91%min exw, metric to | 3098 | 2013-01-04 | 632 | 6 |
+| 270860 | manganese sulfate (minor metals, china, mn 32%min exw, metric ton) | 1927 | 2017-11-22 | 633 | 6 |
+| 270879 | molybdenum bar (minor metals, china, 99.9%min exw, kilogram) | 3292 | 2011-12-30 | 622 | 6 |
+| 270898 | ndfeb (rare earth metals, china, sintered rough 35m exw, kilogram) | 1130 | 2021-02-22 | 608 | 6 |
+| 270899 | ndfeb (rare earth metals, china, sintered rough 45m exw, kilogram) | 1125 | 2021-02-22 | 607 | 6 |
+| 270900 | ndfeb (rare earth metals, china, sintered rough 50m exw, kilogram) | 1135 | 2021-02-22 | 612 | 6 |
+| 270901 | ndfeb (rare earth metals, china, sintered rough 35h exw, kilogram) | 1132 | 2021-02-22 | 613 | 6 |
+| 270902 | ndfeb (rare earth metals, china, sintered rough 45h exw, kilogram) | 1134 | 2021-02-22 | 612 | 6 |
+| 270903 | ndfeb (rare earth metals, china, sintered rough 48h exw, kilogram) | 1134 | 2021-02-22 | 612 | 6 |
+| 270904 | ndfeb (rare earth metals, china, sintered rough 50h exw, kilogram) | 1133 | 2021-02-22 | 611 | 6 |
+| 270905 | neodymium metal (rare earth metals, china, 99%min exw, kilogram) | 3322 | 2011-12-30 | 623 | 6 |
+| 270906 | neodymium metal (rare earth metals, china, 99%min fob, kilogram) | 3302 | 2011-12-30 | 637 | 6 |
+| 270907 | neodymium oxide (rare earth metals, china, 99.5%min exw, kilogram) | 2938 | 2013-08-19 | 625 | 6 |
+| 270908 | neodymium oxide (rare earth metals, china, 99.5%min fob, kilogram) | 3290 | 2011-12-30 | 636 | 6 |
+| 270914 | nickel sulfate (non ferrous metals, china, ni 22%min; co 0.05%max exw, | 3275 | 2012-04-17 | 634 | 6 |
+| 270922 | praseodymium metal (rare earth metals, china, 99.5%min fob, kilogram) | 3293 | 2011-12-30 | 635 | 6 |
+| 270923 | praseodymium oxide (rare earth metals, china, 99.5%min exw, kilogram) | 3063 | 2013-01-11 | 626 | 6 |
+| 270924 | praseodymium oxide (rare earth metals, china, 99.5%min fob, kilogram) | 3294 | 2011-12-30 | 638 | 6 |
+| 270928 | prnd mischmetal (rare earth metals, china, pr 25%, nd 75% exw, kilogra | 3334 | 2011-12-30 | 630 | 6 |
+| 270929 | prnd mischmetal (rare earth metals, china, pr 25%, nd 75% fob, kilogra | 3007 | 2013-03-25 | 636 | 6 |
+| 270930 | prnd oxide (rare earth metals, china, pr6o11 25%, nd2o3 75% exw, kilog | 3149 | 2012-09-20 | 626 | 6 |
+| 271053 | terbium metal (rare earth metals, china, 99.9%min fob, kilogram) | 1617 | 2019-01-28 | 638 | 6 |
+| 271055 | terbium oxide (rare earth metals, china, 99.99%min fob, kilogram) | 1628 | 2019-01-16 | 639 | 6 |
+| 271078 | titanium sponge (minor metals, china, 99.7%min exw, metric ton) | 3206 | 2012-07-24 | 629 | 6 |
