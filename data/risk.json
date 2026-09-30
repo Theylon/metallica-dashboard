@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-09-30T15:12:21+00:00",
+ "updatedAt": "2026-09-30T16:09:24+00:00",
  "asOf": "2026-09-30",
  "window": 90,
  "obs": 73,
@@ -8,7 +8,7 @@
   "betaSpy": 0.32,
   "betaXme": 0.3,
   "var1d95": -297,
-  "var1d99": -422,
+  "var1d99": -421,
   "hhi": 721.0,
   "effectiveN": 13.9
  },
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$297",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$422)",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$421)",
    "tone": "neg"
   },
   {
@@ -357,9 +357,16 @@
   {
    "ticker": "COPX",
    "side": "long",
-   "weightPct": 7.6,
-   "riskContribPct": 18.7,
-   "mVaR": 26.8
+   "weightPct": 7.7,
+   "riskContribPct": 18.9,
+   "mVaR": 26.9
+  },
+  {
+   "ticker": "CMC",
+   "side": "long",
+   "weightPct": 5.2,
+   "riskContribPct": 10.5,
+   "mVaR": 14.9
   },
   {
    "ticker": "BHP",
@@ -367,13 +374,6 @@
    "weightPct": 6.0,
    "riskContribPct": 10.4,
    "mVaR": 14.8
-  },
-  {
-   "ticker": "CMC",
-   "side": "long",
-   "weightPct": 5.2,
-   "riskContribPct": 10.4,
-   "mVaR": 14.9
   },
   {
    "ticker": "GLD",
@@ -386,13 +386,13 @@
    "ticker": "STLD",
    "side": "long",
    "weightPct": 5.2,
-   "riskContribPct": 8.9,
-   "mVaR": 12.7
+   "riskContribPct": 8.8,
+   "mVaR": 12.6
   },
   {
    "ticker": "ATI",
    "side": "long",
-   "weightPct": 4.9,
+   "weightPct": 5.0,
    "riskContribPct": 8.4,
    "mVaR": 12.0
   },
@@ -401,7 +401,7 @@
    "side": "long",
    "weightPct": 5.2,
    "riskContribPct": 8.2,
-   "mVaR": 11.8
+   "mVaR": 11.7
   },
   {
    "ticker": "RIO",
@@ -427,7 +427,7 @@
   {
    "ticker": "VALE",
    "side": "long",
-   "weightPct": 5.6,
+   "weightPct": 5.7,
    "riskContribPct": 6.9,
    "mVaR": 9.8
   },
@@ -436,7 +436,7 @@
    "side": "long",
    "weightPct": 5.0,
    "riskContribPct": 6.8,
-   "mVaR": 9.7
+   "mVaR": 9.6
   },
   {
    "ticker": "HWM",
@@ -449,7 +449,7 @@
    "ticker": "ALB",
    "side": "short",
    "weightPct": -9.6,
-   "riskContribPct": -2.5,
+   "riskContribPct": -2.6,
    "mVaR": -3.6
   },
   {
