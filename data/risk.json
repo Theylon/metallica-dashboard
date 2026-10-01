@@ -1,14 +1,14 @@
 {
- "updatedAt": "2026-10-01T19:11:44+00:00",
+ "updatedAt": "2026-10-01T20:09:01+00:00",
  "asOf": "2026-10-01",
  "window": 90,
  "obs": 74,
  "headline": {
   "annVol": 22.0,
-  "betaSpy": 0.32,
+  "betaSpy": 0.33,
   "betaXme": 0.3,
   "var1d95": -297,
-  "var1d99": -421,
+  "var1d99": -422,
   "hhi": 719.0,
   "effectiveN": 13.9
  },
@@ -21,7 +21,7 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.32",
+   "v": "0.33",
    "note": "62 overlapping daily obs",
    "tone": "neutral"
   },
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$297",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$421)",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$422)",
    "tone": "neg"
   },
   {
@@ -373,7 +373,7 @@
    "side": "long",
    "weightPct": 5.9,
    "riskContribPct": 10.3,
-   "mVaR": 14.6
+   "mVaR": 14.7
   },
   {
    "ticker": "GLD",
@@ -393,15 +393,15 @@
    "ticker": "ATI",
    "side": "long",
    "weightPct": 5.0,
-   "riskContribPct": 8.5,
-   "mVaR": 12.1
+   "riskContribPct": 8.6,
+   "mVaR": 12.2
   },
   {
    "ticker": "NUE",
    "side": "long",
    "weightPct": 5.2,
-   "riskContribPct": 8.2,
-   "mVaR": 11.7
+   "riskContribPct": 8.3,
+   "mVaR": 11.8
   },
   {
    "ticker": "RIO",
@@ -413,7 +413,7 @@
   {
    "ticker": "CRS",
    "side": "long",
-   "weightPct": 4.8,
+   "weightPct": 4.7,
    "riskContribPct": 7.6,
    "mVaR": 10.9
   },
@@ -434,7 +434,7 @@
   {
    "ticker": "VALE",
    "side": "long",
-   "weightPct": 5.6,
+   "weightPct": 5.7,
    "riskContribPct": 6.9,
    "mVaR": 9.8
   },
@@ -448,16 +448,16 @@
   {
    "ticker": "ALB",
    "side": "short",
-   "weightPct": -9.5,
-   "riskContribPct": -2.6,
-   "mVaR": -3.8
+   "weightPct": -9.4,
+   "riskContribPct": -2.7,
+   "mVaR": -3.9
   },
   {
    "ticker": "LIT",
    "side": "short",
    "weightPct": -14.3,
-   "riskContribPct": -13.6,
-   "mVaR": -19.4
+   "riskContribPct": -13.7,
+   "mVaR": -19.5
   }
  ],
  "coverageNote": "15 of 16 holdings (1 OTC excluded)"
