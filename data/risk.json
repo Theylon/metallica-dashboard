@@ -1,28 +1,28 @@
 {
- "updatedAt": "2026-10-02T13:12:39+00:00",
+ "updatedAt": "2026-10-02T15:09:55+00:00",
  "asOf": "2026-10-02",
  "window": 90,
  "obs": 75,
  "headline": {
-  "annVol": 21.9,
-  "betaSpy": 0.33,
+  "annVol": 22.0,
+  "betaSpy": 0.34,
   "betaXme": 0.3,
   "var1d95": -299,
-  "var1d99": -423,
-  "hhi": 720.0,
+  "var1d99": -425,
+  "hhi": 719.0,
   "effectiveN": 13.9
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "21.9%",
+   "v": "22.0%",
    "note": "from the account's daily TWR, 75 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.33",
-   "note": "62 overlapping daily obs",
+   "v": "0.34",
+   "note": "63 overlapping daily obs",
    "tone": "neutral"
   },
   {
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$299",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$423)",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$425)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "720 / 13.9",
+   "v": "719 / 13.9",
    "note": "16 names, ~13.9 effective",
    "tone": "pos"
   }
@@ -358,36 +358,36 @@
    "ticker": "COPX",
    "side": "long",
    "weightPct": 7.6,
-   "riskContribPct": 18.6,
-   "mVaR": 26.7
+   "riskContribPct": 18.5,
+   "mVaR": 26.8
   },
   {
    "ticker": "CMC",
    "side": "long",
-   "weightPct": 5.2,
-   "riskContribPct": 10.5,
-   "mVaR": 15.1
+   "weightPct": 5.3,
+   "riskContribPct": 10.7,
+   "mVaR": 15.5
   },
   {
    "ticker": "BHP",
    "side": "long",
    "weightPct": 5.9,
    "riskContribPct": 10.2,
-   "mVaR": 14.7
-  },
-  {
-   "ticker": "GLD",
-   "side": "long",
-   "weightPct": 8.7,
-   "riskContribPct": 9.3,
-   "mVaR": 13.4
+   "mVaR": 14.8
   },
   {
    "ticker": "STLD",
    "side": "long",
-   "weightPct": 5.3,
+   "weightPct": 5.4,
+   "riskContribPct": 9.3,
+   "mVaR": 13.4
+  },
+  {
+   "ticker": "GLD",
+   "side": "long",
+   "weightPct": 8.5,
    "riskContribPct": 9.1,
-   "mVaR": 13.1
+   "mVaR": 13.2
   },
   {
    "ticker": "ATI",
@@ -399,9 +399,9 @@
   {
    "ticker": "NUE",
    "side": "long",
-   "weightPct": 5.2,
-   "riskContribPct": 8.2,
-   "mVaR": 11.8
+   "weightPct": 5.3,
+   "riskContribPct": 8.4,
+   "mVaR": 12.2
   },
   {
    "ticker": "RIO",
@@ -414,50 +414,50 @@
    "ticker": "CRS",
    "side": "long",
    "weightPct": 4.8,
-   "riskContribPct": 7.7,
+   "riskContribPct": 7.6,
    "mVaR": 11.0
   },
   {
    "ticker": "SLV",
    "side": "long",
-   "weightPct": 3.9,
-   "riskContribPct": 7.5,
-   "mVaR": 10.8
+   "weightPct": 3.8,
+   "riskContribPct": 7.3,
+   "mVaR": 10.5
   },
   {
    "ticker": "MLI",
    "side": "long",
    "weightPct": 5.1,
-   "riskContribPct": 6.9,
-   "mVaR": 9.9
+   "riskContribPct": 7.0,
+   "mVaR": 10.1
   },
   {
    "ticker": "VALE",
    "side": "long",
-   "weightPct": 5.7,
-   "riskContribPct": 6.9,
-   "mVaR": 9.9
+   "weightPct": 5.6,
+   "riskContribPct": 6.8,
+   "mVaR": 9.8
   },
   {
    "ticker": "HWM",
    "side": "long",
-   "weightPct": 5.1,
-   "riskContribPct": 5.2,
-   "mVaR": 7.5
+   "weightPct": 5.0,
+   "riskContribPct": 5.1,
+   "mVaR": 7.4
   },
   {
    "ticker": "ALB",
    "side": "short",
-   "weightPct": -9.5,
-   "riskContribPct": -2.6,
-   "mVaR": -3.8
+   "weightPct": -9.3,
+   "riskContribPct": -2.7,
+   "mVaR": -4.0
   },
   {
    "ticker": "LIT",
    "side": "short",
    "weightPct": -14.4,
    "riskContribPct": -13.7,
-   "mVaR": -19.7
+   "mVaR": -19.8
   }
  ],
  "coverageNote": "15 of 16 holdings (1 OTC excluded)"
