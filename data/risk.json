@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-02T16:14:21+00:00",
+ "updatedAt": "2026-10-02T17:08:27+00:00",
  "asOf": "2026-10-02",
  "window": 90,
  "obs": 75,
@@ -8,8 +8,8 @@
   "betaSpy": 0.34,
   "betaXme": 0.3,
   "var1d95": -299,
-  "var1d99": -424,
-  "hhi": 719.0,
+  "var1d99": -425,
+  "hhi": 718.0,
   "effectiveN": 13.9
  },
  "metrics": [
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$299",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$424)",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$425)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "719 / 13.9",
+   "v": "718 / 13.9",
    "note": "16 names, ~13.9 effective",
    "tone": "pos"
   }
@@ -359,7 +359,7 @@
    "side": "long",
    "weightPct": 7.6,
    "riskContribPct": 18.5,
-   "mVaR": 26.1
+   "mVaR": 26.2
   },
   {
    "ticker": "CMC",
@@ -394,14 +394,14 @@
    "side": "long",
    "weightPct": 5.0,
    "riskContribPct": 8.3,
-   "mVaR": 11.8
+   "mVaR": 11.7
   },
   {
    "ticker": "NUE",
    "side": "long",
-   "weightPct": 5.3,
+   "weightPct": 5.2,
    "riskContribPct": 8.3,
-   "mVaR": 11.8
+   "mVaR": 11.7
   },
   {
    "ticker": "RIO",
@@ -413,8 +413,8 @@
   {
    "ticker": "CRS",
    "side": "long",
-   "weightPct": 4.7,
-   "riskContribPct": 7.3,
+   "weightPct": 4.8,
+   "riskContribPct": 7.4,
    "mVaR": 10.4
   },
   {
@@ -429,7 +429,7 @@
    "side": "long",
    "weightPct": 5.6,
    "riskContribPct": 7.0,
-   "mVaR": 9.9
+   "mVaR": 10.0
   },
   {
    "ticker": "MLI",
@@ -455,7 +455,7 @@
   {
    "ticker": "LIT",
    "side": "short",
-   "weightPct": -14.4,
+   "weightPct": -14.3,
    "riskContribPct": -13.9,
    "mVaR": -19.6
   }
