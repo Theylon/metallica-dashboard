@@ -1,14 +1,14 @@
 {
- "updatedAt": "2026-10-05T14:14:16+00:00",
+ "updatedAt": "2026-10-05T15:09:17+00:00",
  "asOf": "2026-10-05",
  "window": 90,
  "obs": 76,
  "headline": {
   "annVol": 21.9,
-  "betaSpy": 0.37,
+  "betaSpy": 0.38,
   "betaXme": 0.32,
-  "var1d95": -302,
-  "var1d99": -428,
+  "var1d95": -303,
+  "var1d99": -429,
   "hhi": 717.0,
   "effectiveN": 13.9
  },
@@ -21,7 +21,7 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.37",
+   "v": "0.38",
    "note": "62 overlapping daily obs",
    "tone": "neutral"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$302",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$428)",
+   "v": "-$303",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$429)",
    "tone": "neg"
   },
   {
@@ -358,21 +358,21 @@
    "ticker": "COPX",
    "side": "long",
    "weightPct": 7.6,
-   "riskContribPct": 18.3,
-   "mVaR": 26.5
+   "riskContribPct": 18.4,
+   "mVaR": 26.6
   },
   {
    "ticker": "CMC",
    "side": "long",
-   "weightPct": 5.3,
-   "riskContribPct": 10.8,
-   "mVaR": 15.7
+   "weightPct": 5.4,
+   "riskContribPct": 10.9,
+   "mVaR": 15.9
   },
   {
    "ticker": "BHP",
    "side": "long",
    "weightPct": 5.9,
-   "riskContribPct": 10.3,
+   "riskContribPct": 10.2,
    "mVaR": 14.9
   },
   {
@@ -401,7 +401,7 @@
    "side": "long",
    "weightPct": 5.0,
    "riskContribPct": 8.2,
-   "mVaR": 11.8
+   "mVaR": 12.0
   },
   {
    "ticker": "RIO",
@@ -413,28 +413,28 @@
   {
    "ticker": "VALE",
    "side": "long",
-   "weightPct": 5.9,
-   "riskContribPct": 7.7,
-   "mVaR": 11.2
+   "weightPct": 5.8,
+   "riskContribPct": 7.6,
+   "mVaR": 11.0
   },
   {
    "ticker": "CRS",
    "side": "long",
    "weightPct": 4.8,
    "riskContribPct": 7.3,
-   "mVaR": 10.5
+   "mVaR": 10.6
   },
   {
    "ticker": "SLV",
    "side": "long",
    "weightPct": 3.8,
-   "riskContribPct": 7.3,
-   "mVaR": 10.6
+   "riskContribPct": 7.2,
+   "mVaR": 10.5
   },
   {
    "ticker": "MLI",
    "side": "long",
-   "weightPct": 5.1,
+   "weightPct": 5.0,
    "riskContribPct": 6.7,
    "mVaR": 9.7
   },
@@ -457,7 +457,7 @@
    "side": "short",
    "weightPct": -14.4,
    "riskContribPct": -14.0,
-   "mVaR": -20.2
+   "mVaR": -20.3
   }
  ],
  "coverageNote": "15 of 16 holdings (1 OTC excluded)"
