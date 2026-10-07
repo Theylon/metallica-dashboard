@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-06T21:28:09+00:00",
+ "updatedAt": "2026-10-07T13:13:36+00:00",
  "gate": {
   "trustedMinPct": 80
  },
@@ -15,7 +15,7 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 40,
+   "n": 41,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
@@ -26,10 +26,10 @@
    "note": null,
    "detail": [
     {
-     "rankIC": 0.272,
-     "IR": 2.49,
-     "tstat": 15.72,
-     "obs": 4160
+     "rankIC": 0.27,
+     "IR": 2.48,
+     "tstat": 15.87,
+     "obs": 4264
     }
    ]
   },
@@ -147,7 +147,7 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 40,
+   "n": 41,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
@@ -159,9 +159,9 @@
    "detail": [
     {
      "rankIC": 0.115,
-     "IR": 1.58,
-     "tstat": 10.02,
-     "obs": 7080
+     "IR": 1.6,
+     "tstat": 10.27,
+     "obs": 7257
     }
    ]
   },
@@ -171,45 +171,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 40,
+   "n": 41,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 82.0,
-   "accuracyPct": 82.0,
+   "hitRatePct": 83.0,
+   "accuracyPct": 83.0,
    "status": "trusted",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": 0.12,
-     "IR": 1.27,
-     "tstat": 8.03,
-     "obs": 1560
-    }
-   ]
-  },
-  {
-   "id": "score.analyst",
-   "label": "Analyst score vs forward returns",
-   "kind": "score",
-   "source": "signal_scorecard.json (rank-IC engine)",
-   "ticker": null,
-   "n": 40,
-   "medAbsErrPct": null,
-   "meanAbsErrPct": null,
-   "beatConsensusPct": null,
-   "hitRatePct": 60.0,
-   "accuracyPct": 60.0,
-   "status": "probation",
-   "gated": true,
-   "note": null,
-   "detail": [
-    {
-     "rankIC": 0.03,
-     "IR": 0.12,
-     "tstat": 0.74,
-     "obs": 2520
+     "rankIC": 0.122,
+     "IR": 1.3,
+     "tstat": 8.3,
+     "obs": 1599
     }
    ]
   },
@@ -219,40 +195,47 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 40,
+   "n": 41,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 60.0,
-   "accuracyPct": 60.0,
+   "hitRatePct": 61.0,
+   "accuracyPct": 61.0,
    "status": "probation",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": 0.025,
+     "rankIC": 0.024,
      "IR": 0.19,
-     "tstat": 1.18,
-     "obs": 2640
+     "tstat": 1.19,
+     "obs": 2706
     }
    ]
   },
   {
-   "id": "direction.commodityBias",
-   "label": "Commodity bias (long/short per material)",
-   "kind": "direction",
-   "source": "micro_history.jsonl biasDir vs 20-snapshot-forward return",
+   "id": "score.analyst",
+   "label": "Analyst score vs forward returns",
+   "kind": "score",
+   "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 4104,
+   "n": 41,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 48.4,
-   "accuracyPct": 48.4,
+   "hitRatePct": 59.0,
+   "accuracyPct": 59.0,
    "status": "probation",
    "gated": true,
    "note": null,
-   "detail": []
+   "detail": [
+    {
+     "rankIC": 0.022,
+     "IR": 0.09,
+     "tstat": 0.55,
+     "obs": 2583
+    }
+   ]
   },
   {
    "id": "score.composite",
@@ -260,21 +243,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 40,
+   "n": 41,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 47.0,
-   "accuracyPct": 47.0,
+   "hitRatePct": 49.0,
+   "accuracyPct": 49.0,
    "status": "probation",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": -0.027,
-     "IR": -0.18,
-     "tstat": -1.16,
-     "obs": 8175
+     "rankIC": -0.021,
+     "IR": -0.14,
+     "tstat": -0.92,
+     "obs": 8382
     }
    ]
   },
@@ -284,21 +267,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 40,
+   "n": 41,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 47.0,
-   "accuracyPct": 47.0,
+   "hitRatePct": 49.0,
+   "accuracyPct": 49.0,
    "status": "probation",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": -0.014,
-     "IR": -0.17,
-     "tstat": -1.09,
-     "obs": 8000
+     "rankIC": -0.011,
+     "IR": -0.13,
+     "tstat": -0.84,
+     "obs": 8200
     }
    ]
   },
@@ -308,23 +291,40 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 40,
+   "n": 41,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 47.0,
-   "accuracyPct": 47.0,
+   "hitRatePct": 49.0,
+   "accuracyPct": 49.0,
    "status": "probation",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": -0.056,
-     "IR": -0.29,
-     "tstat": -1.84,
-     "obs": 7695
+     "rankIC": -0.051,
+     "IR": -0.26,
+     "tstat": -1.66,
+     "obs": 7890
     }
    ]
+  },
+  {
+   "id": "direction.commodityBias",
+   "label": "Commodity bias (long/short per material)",
+   "kind": "direction",
+   "source": "micro_history.jsonl biasDir vs 20-snapshot-forward return",
+   "ticker": null,
+   "n": 4218,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": 48.6,
+   "accuracyPct": 48.6,
+   "status": "probation",
+   "gated": true,
+   "note": null,
+   "detail": []
   },
   {
    "id": "score.commodity",
@@ -332,21 +332,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 40,
+   "n": 41,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 40.0,
-   "accuracyPct": 40.0,
+   "hitRatePct": 41.0,
+   "accuracyPct": 41.0,
    "status": "probation",
    "gated": true,
    "note": null,
    "detail": [
     {
-     "rankIC": -0.047,
-     "IR": -0.25,
-     "tstat": -1.56,
-     "obs": 7040
+     "rankIC": -0.04,
+     "IR": -0.2,
+     "tstat": -1.3,
+     "obs": 7216
     }
    ]
   },
