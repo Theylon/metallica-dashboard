@@ -1,12 +1,12 @@
 {
- "updatedAt": "2026-10-08T17:16:39+00:00",
+ "updatedAt": "2026-10-08T18:10:00+00:00",
  "asOf": "2026-10-08",
  "window": 90,
  "obs": 79,
  "headline": {
   "annVol": 21.6,
-  "betaSpy": 0.4,
-  "betaXme": 0.32,
+  "betaSpy": 0.39,
+  "betaXme": 0.33,
   "var1d95": -298,
   "var1d99": -423,
   "hhi": 719.0,
@@ -21,13 +21,13 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.40",
+   "v": "0.39",
    "note": "62 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.32",
+   "v": "0.33",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -365,8 +365,8 @@
    "ticker": "CMC",
    "side": "long",
    "weightPct": 5.3,
-   "riskContribPct": 11.1,
-   "mVaR": 15.8
+   "riskContribPct": 11.2,
+   "mVaR": 15.9
   },
   {
    "ticker": "BHP",
@@ -380,14 +380,14 @@
    "side": "long",
    "weightPct": 5.5,
    "riskContribPct": 9.7,
-   "mVaR": 13.8
+   "mVaR": 13.9
   },
   {
    "ticker": "GLD",
    "side": "long",
    "weightPct": 8.5,
    "riskContribPct": 9.5,
-   "mVaR": 13.6
+   "mVaR": 13.5
   },
   {
    "ticker": "NUE",
@@ -415,19 +415,19 @@
    "side": "long",
    "weightPct": 5.7,
    "riskContribPct": 7.7,
-   "mVaR": 11.0
+   "mVaR": 10.9
   },
   {
    "ticker": "SLV",
    "side": "long",
    "weightPct": 3.7,
    "riskContribPct": 7.3,
-   "mVaR": 10.4
+   "mVaR": 10.3
   },
   {
    "ticker": "MLI",
    "side": "long",
-   "weightPct": 4.9,
+   "weightPct": 5.0,
    "riskContribPct": 7.1,
    "mVaR": 10.1
   },
@@ -436,14 +436,14 @@
    "side": "long",
    "weightPct": 4.7,
    "riskContribPct": 7.0,
-   "mVaR": 9.9
+   "mVaR": 10.0
   },
   {
    "ticker": "HWM",
    "side": "long",
-   "weightPct": 4.8,
+   "weightPct": 4.9,
    "riskContribPct": 5.2,
-   "mVaR": 7.4
+   "mVaR": 7.5
   },
   {
    "ticker": "ALB",
