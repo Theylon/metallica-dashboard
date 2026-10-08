@@ -1,11 +1,11 @@
 {
- "updatedAt": "2026-10-08T18:13:24+00:00",
+ "updatedAt": "2026-10-08T19:10:14+00:00",
  "asOf": "2026-10-08",
  "window": 90,
  "obs": 79,
  "headline": {
   "annVol": 21.6,
-  "betaSpy": 0.39,
+  "betaSpy": 0.4,
   "betaXme": 0.33,
   "var1d95": -298,
   "var1d99": -423,
@@ -21,7 +21,7 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.39",
+   "v": "0.40",
    "note": "62 overlapping daily obs",
    "tone": "neutral"
   },
@@ -365,8 +365,8 @@
    "ticker": "CMC",
    "side": "long",
    "weightPct": 5.3,
-   "riskContribPct": 11.2,
-   "mVaR": 15.9
+   "riskContribPct": 11.1,
+   "mVaR": 15.8
   },
   {
    "ticker": "BHP",
@@ -378,7 +378,7 @@
   {
    "ticker": "STLD",
    "side": "long",
-   "weightPct": 5.5,
+   "weightPct": 5.4,
    "riskContribPct": 9.7,
    "mVaR": 13.8
   },
@@ -400,8 +400,8 @@
    "ticker": "ATI",
    "side": "long",
    "weightPct": 4.9,
-   "riskContribPct": 8.1,
-   "mVaR": 11.5
+   "riskContribPct": 8.2,
+   "mVaR": 11.6
   },
   {
    "ticker": "RIO",
@@ -413,8 +413,8 @@
   {
    "ticker": "VALE",
    "side": "long",
-   "weightPct": 5.7,
-   "riskContribPct": 7.7,
+   "weightPct": 5.6,
+   "riskContribPct": 7.6,
    "mVaR": 10.9
   },
   {
@@ -422,21 +422,21 @@
    "side": "long",
    "weightPct": 3.7,
    "riskContribPct": 7.3,
-   "mVaR": 10.3
-  },
-  {
-   "ticker": "MLI",
-   "side": "long",
-   "weightPct": 5.0,
-   "riskContribPct": 7.1,
-   "mVaR": 10.1
+   "mVaR": 10.4
   },
   {
    "ticker": "CRS",
    "side": "long",
-   "weightPct": 4.7,
-   "riskContribPct": 7.0,
-   "mVaR": 10.0
+   "weightPct": 4.8,
+   "riskContribPct": 7.1,
+   "mVaR": 10.1
+  },
+  {
+   "ticker": "MLI",
+   "side": "long",
+   "weightPct": 4.9,
+   "riskContribPct": 7.1,
+   "mVaR": 10.1
   },
   {
    "ticker": "HWM",
@@ -448,7 +448,7 @@
   {
    "ticker": "ALB",
    "side": "short",
-   "weightPct": -9.0,
+   "weightPct": -9.1,
    "riskContribPct": -3.0,
    "mVaR": -4.3
   },
