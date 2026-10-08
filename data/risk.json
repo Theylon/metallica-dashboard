@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-08T14:12:39+00:00",
+ "updatedAt": "2026-10-08T15:08:31+00:00",
  "asOf": "2026-10-08",
  "window": 90,
  "obs": 79,
@@ -7,9 +7,9 @@
   "annVol": 21.6,
   "betaSpy": 0.4,
   "betaXme": 0.33,
-  "var1d95": -299,
-  "var1d99": -424,
-  "hhi": 719.0,
+  "var1d95": -298,
+  "var1d99": -422,
+  "hhi": 720.0,
   "effectiveN": 13.9
  },
  "metrics": [
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$299",
-   "note": "-2.97% of NAV; 99% VaR -4.21% (-$424)",
+   "v": "-$298",
+   "note": "-2.97% of NAV; 99% VaR -4.21% (-$422)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "719 / 13.9",
+   "v": "720 / 13.9",
    "note": "16 names, ~13.9 effective",
    "tone": "pos"
   }
@@ -359,26 +359,26 @@
    "side": "long",
    "weightPct": 7.4,
    "riskContribPct": 17.9,
-   "mVaR": 25.6
+   "mVaR": 25.4
   },
   {
    "ticker": "CMC",
    "side": "long",
    "weightPct": 5.3,
    "riskContribPct": 11.1,
-   "mVaR": 15.9
+   "mVaR": 15.8
   },
   {
    "ticker": "BHP",
    "side": "long",
    "weightPct": 5.9,
-   "riskContribPct": 10.2,
-   "mVaR": 14.5
+   "riskContribPct": 10.1,
+   "mVaR": 14.4
   },
   {
    "ticker": "STLD",
    "side": "long",
-   "weightPct": 5.4,
+   "weightPct": 5.5,
    "riskContribPct": 9.7,
    "mVaR": 13.8
   },
@@ -401,7 +401,7 @@
    "side": "long",
    "weightPct": 4.9,
    "riskContribPct": 8.1,
-   "mVaR": 11.6
+   "mVaR": 11.5
   },
   {
    "ticker": "RIO",
@@ -414,7 +414,7 @@
    "ticker": "VALE",
    "side": "long",
    "weightPct": 5.7,
-   "riskContribPct": 7.7,
+   "riskContribPct": 7.8,
    "mVaR": 11.0
   },
   {
@@ -422,7 +422,7 @@
    "side": "long",
    "weightPct": 3.7,
    "riskContribPct": 7.3,
-   "mVaR": 10.4
+   "mVaR": 10.3
   },
   {
    "ticker": "CRS",
@@ -434,9 +434,9 @@
   {
    "ticker": "MLI",
    "side": "long",
-   "weightPct": 5.0,
-   "riskContribPct": 7.1,
-   "mVaR": 10.1
+   "weightPct": 4.9,
+   "riskContribPct": 7.0,
+   "mVaR": 10.0
   },
   {
    "ticker": "HWM",
@@ -448,16 +448,16 @@
   {
    "ticker": "ALB",
    "side": "short",
-   "weightPct": -9.0,
+   "weightPct": -9.1,
    "riskContribPct": -3.0,
-   "mVaR": -4.3
+   "mVaR": -4.2
   },
   {
    "ticker": "LIT",
    "side": "short",
-   "weightPct": -14.4,
+   "weightPct": -14.5,
    "riskContribPct": -14.6,
-   "mVaR": -20.9
+   "mVaR": -20.8
   }
  ],
  "coverageNote": "15 of 16 holdings (1 OTC excluded)"
