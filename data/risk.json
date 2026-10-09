@@ -1,14 +1,14 @@
 {
- "updatedAt": "2026-10-09T17:12:37+00:00",
+ "updatedAt": "2026-10-09T18:09:48+00:00",
  "asOf": "2026-10-09",
  "window": 90,
  "obs": 80,
  "headline": {
   "annVol": 21.7,
-  "betaSpy": 0.42,
+  "betaSpy": 0.43,
   "betaXme": 0.33,
-  "var1d95": -275,
-  "var1d99": -428,
+  "var1d95": -276,
+  "var1d99": -429,
   "hhi": 717.0,
   "effectiveN": 13.9
  },
@@ -21,7 +21,7 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.42",
+   "v": "0.43",
    "note": "63 overlapping daily obs",
    "tone": "neutral"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$275",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$428)",
+   "v": "-$276",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$429)",
    "tone": "neg"
   },
   {
@@ -359,27 +359,27 @@
    "side": "long",
    "weightPct": 7.6,
    "riskContribPct": 18.4,
-   "mVaR": 26.8
+   "mVaR": 26.9
   },
   {
    "ticker": "CMC",
    "side": "long",
    "weightPct": 5.3,
-   "riskContribPct": 11.0,
-   "mVaR": 16.1
+   "riskContribPct": 11.1,
+   "mVaR": 16.2
   },
   {
    "ticker": "BHP",
    "side": "long",
    "weightPct": 5.9,
-   "riskContribPct": 10.1,
-   "mVaR": 14.8
+   "riskContribPct": 10.2,
+   "mVaR": 14.9
   },
   {
    "ticker": "GLD",
    "side": "long",
    "weightPct": 8.5,
-   "riskContribPct": 9.7,
+   "riskContribPct": 9.6,
    "mVaR": 14.1
   },
   {
@@ -387,7 +387,7 @@
    "side": "long",
    "weightPct": 5.5,
    "riskContribPct": 9.6,
-   "mVaR": 13.9
+   "mVaR": 14.0
   },
   {
    "ticker": "NUE",
@@ -401,7 +401,7 @@
    "side": "long",
    "weightPct": 5.0,
    "riskContribPct": 8.4,
-   "mVaR": 12.2
+   "mVaR": 12.3
   },
   {
    "ticker": "RIO",
@@ -448,16 +448,16 @@
   {
    "ticker": "ALB",
    "side": "short",
-   "weightPct": -8.9,
+   "weightPct": -9.0,
    "riskContribPct": -3.0,
-   "mVaR": -4.3
+   "mVaR": -4.4
   },
   {
    "ticker": "LIT",
    "side": "short",
-   "weightPct": -14.3,
+   "weightPct": -14.4,
    "riskContribPct": -14.7,
-   "mVaR": -21.4
+   "mVaR": -21.5
   }
  ],
  "coverageNote": "15 of 16 holdings (1 OTC excluded)"
