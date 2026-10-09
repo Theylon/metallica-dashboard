@@ -1,21 +1,21 @@
 {
- "updatedAt": "2026-10-09T14:13:59+00:00",
+ "updatedAt": "2026-10-09T15:10:15+00:00",
  "asOf": "2026-10-09",
  "window": 90,
  "obs": 80,
  "headline": {
-  "annVol": 21.6,
+  "annVol": 21.7,
   "betaSpy": 0.41,
   "betaXme": 0.33,
-  "var1d95": -274,
-  "var1d99": -427,
+  "var1d95": -275,
+  "var1d99": -428,
   "hhi": 718.0,
   "effectiveN": 13.9
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "21.6%",
+   "v": "21.7%",
    "note": "from the account's daily TWR, 80 daily obs since inception",
    "tone": "neutral"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$274",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$427)",
+   "v": "-$275",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$428)",
    "tone": "neg"
   },
   {
@@ -357,9 +357,9 @@
   {
    "ticker": "COPX",
    "side": "long",
-   "weightPct": 7.5,
+   "weightPct": 7.6,
    "riskContribPct": 18.2,
-   "mVaR": 26.3
+   "mVaR": 26.4
   },
   {
    "ticker": "CMC",
@@ -373,12 +373,12 @@
    "side": "long",
    "weightPct": 5.9,
    "riskContribPct": 10.2,
-   "mVaR": 14.6
+   "mVaR": 14.7
   },
   {
    "ticker": "GLD",
    "side": "long",
-   "weightPct": 8.6,
+   "weightPct": 8.5,
    "riskContribPct": 9.7,
    "mVaR": 14.0
   },
@@ -386,8 +386,8 @@
    "ticker": "STLD",
    "side": "long",
    "weightPct": 5.5,
-   "riskContribPct": 9.5,
-   "mVaR": 13.7
+   "riskContribPct": 9.6,
+   "mVaR": 13.8
   },
   {
    "ticker": "NUE",
@@ -401,7 +401,7 @@
    "side": "long",
    "weightPct": 5.0,
    "riskContribPct": 8.4,
-   "mVaR": 12.0
+   "mVaR": 12.1
   },
   {
    "ticker": "RIO",
@@ -415,28 +415,28 @@
    "side": "long",
    "weightPct": 3.8,
    "riskContribPct": 7.6,
-   "mVaR": 11.0
+   "mVaR": 10.9
   },
   {
    "ticker": "VALE",
    "side": "long",
    "weightPct": 5.6,
    "riskContribPct": 7.3,
-   "mVaR": 10.5
+   "mVaR": 10.6
   },
   {
    "ticker": "CRS",
    "side": "long",
    "weightPct": 4.7,
    "riskContribPct": 7.0,
-   "mVaR": 10.1
+   "mVaR": 10.2
   },
   {
    "ticker": "MLI",
    "side": "long",
    "weightPct": 4.9,
    "riskContribPct": 6.8,
-   "mVaR": 9.7
+   "mVaR": 9.8
   },
   {
    "ticker": "HWM",
@@ -456,7 +456,7 @@
    "ticker": "LIT",
    "side": "short",
    "weightPct": -14.4,
-   "riskContribPct": -14.9,
+   "riskContribPct": -14.8,
    "mVaR": -21.4
   }
  ],
