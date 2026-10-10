@@ -1399,12 +1399,12 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
       </div>
     </div>
 
-    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">⛏️ Metal Spot — LME / China (metalminer)</div></div>
+    <div class="chart-header" style="margin-top:14px;"><div class="chart-title">⛏️ Metal Prices — MetalMiner API</div><div id="spot-updated" style="font-size:11px;color:var(--text-muted);"></div></div>
     <div class="table-panel">
       <div class="table-wrapper">
         <table>
-          <thead><tr><th style="text-align:left;">Metal</th><th>Spot</th><th style="text-align:left;">Unit</th><th style="text-align:left;">Trend</th><th>As of</th></tr></thead>
-          <tbody id="spot-tbody"><tr class="empty-row"><td colspan="5">Awaiting data</td></tr></tbody>
+          <thead><tr><th style="text-align:left;">Group</th><th style="text-align:left;">Metal</th><th style="text-align:left;">Market</th><th>Price</th><th style="text-align:left;">Unit</th><th>Chg</th><th>1M %</th><th>As of</th></tr></thead>
+          <tbody id="spot-tbody"><tr class="empty-row"><td colspan="8">Awaiting data</td></tr></tbody>
         </table>
       </div>
     </div>
@@ -2075,7 +2075,7 @@ async function loadData() {
     benchmarks = bmRes.tickers || {};
     report    = repRes || {};
     intel = { commodities: comRes.items || [], analysts: anaRes.items || [], macro: macRes.items || [], news: newsRes.items || [],
-              technicals: techRes.items || [], metalsSpot: spotRes.items || [], research: resRes.items || [],
+              technicals: techRes.items || [], metalsSpot: spotRes.items || [], metalsSpotUpdated: spotRes.updatedAt || '', research: resRes.items || [],
               events: evRes.items || [], positioning: posgRes || {}, macroHistory: mhRes || {} };
     micro = microRes || {};
     exposureHistory = expHistRes || {};
@@ -2828,15 +2828,26 @@ function renderIntel() {
 
   const st = document.getElementById('spot-tbody');
   if (st) {
+    // data/metals_spot.json — built by scripts/mm_spot.py from the daily MetalMiner
+    // API pull. Rows carry a group (Base / Precious / Steel / ...) and lagDays: the
+    // Chinese assessments publish ~2 weeks late, so an old "as of" is flagged amber.
+    // Group is a plain column (not a colspan header row): the table enhancer treats a
+    // lone td[colspan] as the previous row's detail row and would move it on sort.
     const r = intel.metalsSpot || [];
     st.innerHTML = r.length ? r.map(s => {
-      const tc = s.trend === 'up' ? pos : s.trend === 'down' ? neg : mut;
-      return `<tr><td style="text-align:left;font-weight:600;">${s.name}</td>`
+      const unit = [s.currency, s.unit].filter(Boolean).map(esc).join(' / ') || '—';
+      const late = s.lagDays > 7;
+      return `<tr><td style="text-align:left;color:${mut};">${esc(s.group || '—')}</td>`
+        + `<td style="text-align:left;font-weight:600;">${esc(s.name)}</td>`
+        + `<td style="text-align:left;color:${mut};">${esc(s.market || '—')}</td>`
         + `<td>${fmt(s.price, 2)}</td>`
-        + `<td style="text-align:left;color:${mut};">${s.currency} / ${s.unit}</td>`
-        + `<td style="text-align:left;color:${tc};">${s.trend || '—'}</td>`
-        + `<td style="color:${mut};">${s.asOf}</td></tr>`;
-    }).join('') : '<tr class="empty-row"><td colspan="5">Awaiting data</td></tr>';
+        + `<td style="text-align:left;color:${mut};">${unit}</td>`
+        + `<td style="color:${col(s.changePct)};">${s.changePct != null ? sgn(s.changePct) + '%' : '—'}</td>`
+        + `<td style="color:${col(s.change1mPct)};">${s.change1mPct != null ? sgn(s.change1mPct) + '%' : '—'}</td>`
+        + `<td style="color:${late ? 'var(--amber)' : mut};"${late ? ` title="${s.lagDays} days behind"` : ''}>${esc(s.asOf || '—')}</td></tr>`;
+    }).join('') : '<tr class="empty-row"><td colspan="8">Awaiting data</td></tr>';
+    const su = document.getElementById('spot-updated');
+    if (su) su.textContent = intel.metalsSpotUpdated ? 'Updated ' + intel.metalsSpotUpdated.slice(0, 16).replace('T', ' ') + ' UTC' : '';
   }
 
   const tcb = document.getElementById('tech-tbody');
