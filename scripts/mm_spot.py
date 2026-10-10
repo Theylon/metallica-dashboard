@@ -6,7 +6,7 @@ Reads:  a MetalMiner dump in the historical shape — the file scripts/mm_fetch.
         never committed) — plus data/mm_series_registry.json for each series' grade.
 Writes: data/metals_spot.json — {updatedAt, source, items: [...]}, one item per
         series in SPOT: the latest observation only (name, market, group, price,
-        currency, unit, asOf, lagDays, changePct vs the previous observation,
+        currency, priceUsd, unit, asOf, lagDays, changePct vs the previous observation,
         change1mPct vs ~30 days earlier, trend, id, grade). No history is written, so
         the committed file carries a handful of latest prints, never the licensed series.
 
@@ -36,10 +36,10 @@ DATA = ROOT / "data"
 REGISTRY = DATA / "mm_series_registry.json"
 OUT = DATA / "metals_spot.json"
 
-# (commodity_id, display name, market, group, currency). Currency is only filled
-# where the market prices in USD by definition (LME, COMEX, US assessments); a
-# currency the API reports on the row wins over this, and an unknown one stays None
-# rather than guessed. Ids and names are from data/mm_series_registry.json.
+# (commodity_id, display name, market, group, currency). The API reports each row's
+# native currency (many Chinese assessments are EUR, China HRC is CNY) and that wins;
+# the column here is only a fallback for a dump without it, filled where the market
+# prices in USD by definition. Ids and names are from data/mm_series_registry.json.
 SPOT = [
     (1416, "Copper", "LME cash", "Base", "USD"),
     (295, "Aluminum", "LME cash", "Base", "USD"),
@@ -69,7 +69,7 @@ MONTH_DAYS = 30
 
 
 def load(path):
-    """{id: {date: value}}, {id: {unit, currency}} from a dump (rows as mm_fetch writes them)."""
+    """{id: {date: value}}, {id: {unit, currency, usd: {date: USD}}} from a dump (mm_fetch rows)."""
     opener = gzip.open if str(path).endswith(".gz") else open
     with opener(path, "rt", encoding="utf-8") as fh:
         rows = json.load(fh)["commodities"]
@@ -85,6 +85,11 @@ def load(path):
             m["unit"] = r["unit"]
         if r.get("currency"):
             m["currency"] = str(r["currency"]).upper()
+        if r.get("USD") is not None:
+            try:
+                m.setdefault("usd", {})[date] = float(r["USD"])
+            except (TypeError, ValueError):
+                pass
     return series, meta
 
 
@@ -102,10 +107,12 @@ def item(cid, name, market, group, currency, obs, meta, grade, today):
     chg_1m = pct(price, obs[month_ago[-1]]) if month_ago else None
     trend = ("" if chg_1m is None else "up" if chg_1m >= TREND_PCT
              else "down" if chg_1m <= -TREND_PCT else "flat")
+    usd = meta.get("usd", {}).get(last)
     return {
         "name": name, "market": market, "group": group,
         "price": round(price, 2),
         "currency": meta.get("currency") or currency,
+        "priceUsd": round(usd, 2) if usd is not None else None,
         "unit": meta.get("unit", ""),
         "asOf": last,
         "lagDays": (today - datetime.date.fromisoformat(last)).days,

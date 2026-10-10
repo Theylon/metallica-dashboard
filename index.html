@@ -1403,8 +1403,8 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
     <div class="table-panel">
       <div class="table-wrapper">
         <table>
-          <thead><tr><th style="text-align:left;">Group</th><th style="text-align:left;">Metal</th><th style="text-align:left;">Market</th><th>Price</th><th style="text-align:left;">Unit</th><th>Chg</th><th>1M %</th><th>As of</th></tr></thead>
-          <tbody id="spot-tbody"><tr class="empty-row"><td colspan="8">Awaiting data</td></tr></tbody>
+          <thead><tr><th style="text-align:left;">Group</th><th style="text-align:left;">Metal</th><th style="text-align:left;">Market</th><th>Price</th><th style="text-align:left;">Unit</th><th>≈ USD</th><th>Chg</th><th>1M %</th><th>As of</th></tr></thead>
+          <tbody id="spot-tbody"><tr class="empty-row"><td colspan="9">Awaiting data</td></tr></tbody>
         </table>
       </div>
     </div>
@@ -2831,6 +2831,8 @@ function renderIntel() {
     // data/metals_spot.json — built by scripts/mm_spot.py from the daily MetalMiner
     // API pull. Rows carry a group (Base / Precious / Steel / ...) and lagDays: the
     // Chinese assessments publish ~2 weeks late, so an old "as of" is flagged amber.
+    // Price is in the series' native currency (many Chinese assessments are EUR);
+    // ≈ USD is MetalMiner's own conversion, shown only for the non-dollar rows.
     // Group is a plain column (not a colspan header row): the table enhancer treats a
     // lone td[colspan] as the previous row's detail row and would move it on sort.
     const r = intel.metalsSpot || [];
@@ -2842,10 +2844,11 @@ function renderIntel() {
         + `<td style="text-align:left;color:${mut};">${esc(s.market || '—')}</td>`
         + `<td>${fmt(s.price, 2)}</td>`
         + `<td style="text-align:left;color:${mut};">${unit}</td>`
+        + `<td style="color:${mut};">${s.priceUsd != null && s.currency !== 'USD' ? fmt(s.priceUsd, 2) : ''}</td>`
         + `<td style="color:${col(s.changePct)};">${s.changePct != null ? sgn(s.changePct) + '%' : '—'}</td>`
         + `<td style="color:${col(s.change1mPct)};">${s.change1mPct != null ? sgn(s.change1mPct) + '%' : '—'}</td>`
         + `<td style="color:${late ? 'var(--amber)' : mut};"${late ? ` title="${s.lagDays} days behind"` : ''}>${esc(s.asOf || '—')}</td></tr>`;
-    }).join('') : '<tr class="empty-row"><td colspan="8">Awaiting data</td></tr>';
+    }).join('') : '<tr class="empty-row"><td colspan="9">Awaiting data</td></tr>';
     const su = document.getElementById('spot-updated');
     if (su) su.textContent = intel.metalsSpotUpdated ? 'Updated ' + intel.metalsSpotUpdated.slice(0, 16).replace('T', ' ') + ' UTC' : '';
   }
