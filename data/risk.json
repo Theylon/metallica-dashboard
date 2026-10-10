@@ -1,22 +1,22 @@
 {
- "updatedAt": "2026-10-09T21:30:47+00:00",
- "asOf": "2026-10-09",
+ "updatedAt": "2026-10-10T12:16:59+00:00",
+ "asOf": "2026-10-10",
  "window": 90,
- "obs": 80,
+ "obs": 81,
  "headline": {
-  "annVol": 21.7,
+  "annVol": 21.6,
   "betaSpy": 0.43,
   "betaXme": 0.33,
   "var1d95": -275,
-  "var1d99": -428,
+  "var1d99": -429,
   "hhi": 718.0,
   "effectiveN": 13.9
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "21.7%",
-   "note": "from the account's daily TWR, 80 daily obs since inception",
+   "v": "21.6%",
+   "note": "from the account's daily TWR, 81 daily obs since inception",
    "tone": "neutral"
   },
   {
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$275",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$428)",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$429)",
    "tone": "neg"
   },
   {
@@ -359,7 +359,7 @@
    "side": "long",
    "weightPct": 7.6,
    "riskContribPct": 18.5,
-   "mVaR": 26.8
+   "mVaR": 26.9
   },
   {
    "ticker": "CMC",
@@ -408,13 +408,13 @@
    "side": "long",
    "weightPct": 5.6,
    "riskContribPct": 7.8,
-   "mVaR": 11.3
+   "mVaR": 11.4
   },
   {
    "ticker": "SLV",
    "side": "long",
    "weightPct": 3.8,
-   "riskContribPct": 7.6,
+   "riskContribPct": 7.5,
    "mVaR": 11.0
   },
   {
@@ -436,19 +436,19 @@
    "side": "long",
    "weightPct": 4.9,
    "riskContribPct": 6.7,
-   "mVaR": 9.7
+   "mVaR": 9.8
   },
   {
    "ticker": "HWM",
    "side": "long",
    "weightPct": 4.8,
    "riskContribPct": 5.4,
-   "mVaR": 7.8
+   "mVaR": 7.9
   },
   {
    "ticker": "ALB",
    "side": "short",
-   "weightPct": -9.0,
+   "weightPct": -8.9,
    "riskContribPct": -3.0,
    "mVaR": -4.4
   },
