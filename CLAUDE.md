@@ -43,6 +43,8 @@ IBKR Web API / Yahoo / research  ──▶  scripts/*.py  ──▶  data/*.json
 | `data/report.json` | **Static** hand-authored strategy report. Not written by any refresh script. |
 | `scripts/daily_snapshot.py` | Freezes every live `data/*.json` verbatim into `history/daily/<date>.json.gz` on each refresh (converges to EOD) for later analysis. Kept outside `data/` so Pages doesn't ship the archive. |
 | `history/daily/` | The per-day full-data snapshots (gzipped JSON). Immutable once the day passes. |
+| `scripts/adverse_events_build.py` + `scripts/adverse_event_block.py` | Offline research, not in any refresh path. The first dedupes Bigdata.com adverse-event stories (`research/pls_adverse_events/stories_raw.json` + the manual `event_merges.json`) into `stories.json` / `events.json`, keeping every original timestamp. The second tests a candidate rule, "block new buys for N sessions after an adverse event", against IBKR ASX prices, with pass rules fixed before the first run → `reports/pls_adverse_event_block.md`. |
+| `research/` | Research inputs and outputs. Outside `data/`, so Pages doesn't ship it. |
 | `.github/workflows/fetch-data.yml` | Scheduled fetch + Pages deploy (owns `master`). |
 | `.github/workflows/standards.yml` | Standards gate on PRs / working branches. |
 | `.github/workflows/pr-janitor.yml` | Weekly sweep that closes abandoned **data-only** draft PRs (see the refresh rule below). Never touches code PRs. |
