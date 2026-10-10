@@ -14,10 +14,11 @@ Writes: data/mm_catalog.json — metadata only, one entry per commodity_id
     METALMINER_API_TOKEN=... python3 scripts/mm_catalog.py
     python3 scripts/mm_catalog.py --from-file /tmp/all_prices_latest.json
 
-Endpoint: GET {BASE}/api/commodities/2/all_prices?token=...&format=json with no
-commodity_id and no historical flag — per the API doc (Rev 3/23) that returns the
-latest row of every series the token is entitled to. One request, stdlib only.
-The token is never printed: errors report the HTTP status and body only.
+Endpoint: GET {BASE}{path}/all_prices?token=...&format=json with no commodity_id
+and no historical flag — per the API doc (Rev 3/23) that returns the latest row of
+every series the token is entitled to. Tries the v2 route mm_fetch.py uses, then the
+documented v1 route, and logs each response's shape (keys and lengths, never
+values). Stdlib only. The token is never printed.
 """
 import argparse
 import collections
@@ -38,7 +39,8 @@ CATALOG = DATA / "mm_catalog.json"
 REPORT = ROOT / "reports" / "mm_catalog.md"
 
 BASE = "https://indx.metalminerindx.com"
-PATH = "/api/commodities/2/all_prices"
+# The route MetalMiner gave us on 2026-09-02, then the one in the Rev 3/23 doc.
+PATHS = ("/api/commodities/2/all_prices", "/api/1/all_prices")
 TIMEOUT = 180
 
 META_FIELDS = ("category", "type", "origin", "description", "unit", "currency", "price_future")
@@ -46,15 +48,37 @@ EXAMPLES_PER_ROW = 6   # distinct types listed in a category's Examples cell
 DEAD_DAYS = 90         # latest observation older than this = series looks discontinued
 
 
-def fetch(token, opener=urllib.request.urlopen):
+def fetch(token, path, opener=urllib.request.urlopen):
     q = urllib.parse.urlencode({"token": token, "format": "json"})
-    req = urllib.request.Request(f"{BASE}{PATH}?{q}", headers={"Accept": "application/json"})
+    req = urllib.request.Request(f"{BASE}{path}?{q}", headers={"Accept": "application/json"})
     try:
         with opener(req, timeout=TIMEOUT) as resp:
             return json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
-        body = e.read().decode("utf-8", "replace")[:200]
-        raise SystemExit(f"mm_catalog: HTTP {e.code} from all_prices: {body}") from None
+        return {"_http_error": e.code, "_body": e.read().decode("utf-8", "replace")[:200]}
+    except (urllib.error.URLError, TimeoutError, ValueError) as e:
+        return {"_http_error": None, "_body": str(e)[:200]}
+
+
+def describe(payload):
+    """Shape of a response for the log — keys, lengths, error text; never price values."""
+    if isinstance(payload, dict):
+        if "_http_error" in payload:
+            return f"HTTP {payload['_http_error']}: {payload['_body']}"
+        parts = []
+        for k, v in list(payload.items())[:8]:
+            if isinstance(v, (list, dict)):
+                parts.append(f"{k}: {type(v).__name__}[{len(v)}]")
+            elif isinstance(v, str) and k.lower() in ("error", "message", "detail", "status"):
+                parts.append(f"{k}: {v[:160]!r}")
+            else:
+                parts.append(f"{k}: {type(v).__name__}")
+        return "dict {" + ", ".join(parts) + "}"
+    if isinstance(payload, list):
+        first = payload[0] if payload else None
+        keys = list(first)[:12] if isinstance(first, dict) else type(first).__name__
+        return f"list[{len(payload)}] first={keys}"
+    return type(payload).__name__
 
 
 def catalogue(payload):
@@ -192,17 +216,21 @@ def main():
     args = ap.parse_args()
 
     if args.from_file:
-        payload = json.loads(pathlib.Path(args.from_file).read_text())
+        cat = catalogue(json.loads(pathlib.Path(args.from_file).read_text()))
     else:
         token = os.environ.get("METALMINER_API_TOKEN", "").strip()
         if not token:
             print("mm_catalog: METALMINER_API_TOKEN not set — nothing pulled", file=sys.stderr)
             return 1
-        payload = fetch(token)
-
-    cat = catalogue(payload)
+        cat = {}
+        for path in PATHS:
+            payload = fetch(token, path)
+            cat = catalogue(payload)
+            print(f"mm_catalog: {path} → {describe(payload)} → {len(cat)} series")
+            if cat:
+                break
     if not cat:
-        print("mm_catalog: the snapshot held no series — catalogue left untouched", file=sys.stderr)
+        print("mm_catalog: no route returned a series list — catalogue left untouched", file=sys.stderr)
         return 1
     now = datetime.datetime.now(datetime.timezone.utc)
     as_of = now.date().isoformat()
