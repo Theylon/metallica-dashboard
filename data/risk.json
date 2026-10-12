@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-12T18:15:18+00:00",
+ "updatedAt": "2026-10-12T19:08:53+00:00",
  "asOf": "2026-10-12",
  "window": 90,
  "obs": 81,
@@ -8,8 +8,8 @@
   "betaSpy": 0.43,
   "betaXme": 0.33,
   "var1d95": -276,
-  "var1d99": -430,
-  "hhi": 714.0,
+  "var1d99": -429,
+  "hhi": 715.0,
   "effectiveN": 14.0
  },
  "metrics": [
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$276",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$430)",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$429)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "714 / 14.0",
+   "v": "715 / 14.0",
    "note": "16 names, ~14.0 effective",
    "tone": "pos"
   }
@@ -359,7 +359,7 @@
    "side": "long",
    "weightPct": 7.5,
    "riskContribPct": 18.3,
-   "mVaR": 26.7
+   "mVaR": 26.6
   },
   {
    "ticker": "CMC",
@@ -372,8 +372,8 @@
    "ticker": "BHP",
    "side": "long",
    "weightPct": 6.0,
-   "riskContribPct": 10.3,
-   "mVaR": 15.1
+   "riskContribPct": 10.4,
+   "mVaR": 15.0
   },
   {
    "ticker": "GLD",
@@ -394,19 +394,19 @@
    "side": "long",
    "weightPct": 5.5,
    "riskContribPct": 9.0,
-   "mVaR": 13.1
+   "mVaR": 13.0
   },
   {
    "ticker": "ATI",
    "side": "long",
-   "weightPct": 4.9,
-   "riskContribPct": 8.2,
-   "mVaR": 11.9
+   "weightPct": 4.8,
+   "riskContribPct": 8.1,
+   "mVaR": 11.8
   },
   {
    "ticker": "RIO",
    "side": "long",
-   "weightPct": 5.6,
+   "weightPct": 5.5,
    "riskContribPct": 7.7,
    "mVaR": 11.2
   },
@@ -429,14 +429,14 @@
    "side": "long",
    "weightPct": 4.9,
    "riskContribPct": 6.9,
-   "mVaR": 10.0
+   "mVaR": 9.9
   },
   {
    "ticker": "CRS",
    "side": "long",
    "weightPct": 4.6,
    "riskContribPct": 6.7,
-   "mVaR": 9.8
+   "mVaR": 9.7
   },
   {
    "ticker": "HWM",
