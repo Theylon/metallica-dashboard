@@ -1,33 +1,33 @@
 {
- "updatedAt": "2026-10-12T20:13:13+00:00",
+ "updatedAt": "2026-10-12T21:09:17+00:00",
  "asOf": "2026-10-12",
  "window": 90,
  "obs": 81,
  "headline": {
-  "annVol": 22.8,
-  "betaSpy": 0.51,
-  "betaXme": 0.35,
+  "annVol": 21.6,
+  "betaSpy": 0.43,
+  "betaXme": 0.33,
   "var1d95": -275,
-  "var1d99": -504,
+  "var1d99": -429,
   "hhi": 715.0,
   "effectiveN": 14.0
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "22.8%",
+   "v": "21.6%",
    "note": "from the account's daily TWR, 81 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.51",
+   "v": "0.43",
    "note": "62 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.35",
+   "v": "0.33",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -40,12 +40,12 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$275",
-   "note": "-2.70% of NAV; 99% VaR -4.95% (-$504)",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$429)",
    "tone": "neg"
   },
   {
    "k": "Worst day since inception",
-   "v": "-4.95%",
+   "v": "-4.21%",
    "note": "single worst daily TWR",
    "tone": "neg"
   },
@@ -365,7 +365,7 @@
    "ticker": "CMC",
    "side": "long",
    "weightPct": 5.3,
-   "riskContribPct": 11.2,
+   "riskContribPct": 11.1,
    "mVaR": 16.1
   },
   {
@@ -415,7 +415,7 @@
    "side": "long",
    "weightPct": 3.7,
    "riskContribPct": 7.5,
-   "mVaR": 10.8
+   "mVaR": 10.9
   },
   {
    "ticker": "VALE",
