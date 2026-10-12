@@ -1,11 +1,11 @@
 {
- "updatedAt": "2026-10-12T17:16:58+00:00",
+ "updatedAt": "2026-10-12T18:11:01+00:00",
  "asOf": "2026-10-12",
  "window": 90,
  "obs": 81,
  "headline": {
   "annVol": 21.6,
-  "betaSpy": 0.44,
+  "betaSpy": 0.43,
   "betaXme": 0.33,
   "var1d95": -276,
   "var1d99": -430,
@@ -21,7 +21,7 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.44",
+   "v": "0.43",
    "note": "62 overlapping daily obs",
    "tone": "neutral"
   },
@@ -376,18 +376,18 @@
    "mVaR": 15.0
   },
   {
+   "ticker": "GLD",
+   "side": "long",
+   "weightPct": 8.5,
+   "riskContribPct": 9.6,
+   "mVaR": 14.0
+  },
+  {
    "ticker": "STLD",
    "side": "long",
    "weightPct": 5.5,
-   "riskContribPct": 9.7,
-   "mVaR": 14.1
-  },
-  {
-   "ticker": "GLD",
-   "side": "long",
-   "weightPct": 8.4,
    "riskContribPct": 9.6,
-   "mVaR": 13.9
+   "mVaR": 14.0
   },
   {
    "ticker": "NUE",
@@ -401,12 +401,12 @@
    "side": "long",
    "weightPct": 4.9,
    "riskContribPct": 8.2,
-   "mVaR": 12.0
+   "mVaR": 11.9
   },
   {
    "ticker": "RIO",
    "side": "long",
-   "weightPct": 5.5,
+   "weightPct": 5.6,
    "riskContribPct": 7.7,
    "mVaR": 11.2
   },
