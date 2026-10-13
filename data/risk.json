@@ -1,33 +1,33 @@
 {
- "updatedAt": "2026-10-12T23:29:54+00:00",
- "asOf": "2026-10-12",
+ "updatedAt": "2026-10-13T13:09:09+00:00",
+ "asOf": "2026-10-13",
  "window": 90,
- "obs": 81,
+ "obs": 82,
  "headline": {
-  "annVol": 21.6,
-  "betaSpy": 0.43,
-  "betaXme": 0.33,
-  "var1d95": -275,
+  "annVol": 21.4,
+  "betaSpy": 0.44,
+  "betaXme": 0.35,
+  "var1d95": -276,
   "var1d99": -429,
-  "hhi": 715.0,
+  "hhi": 716.0,
   "effectiveN": 14.0
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "21.6%",
-   "note": "from the account's daily TWR, 81 daily obs since inception",
+   "v": "21.4%",
+   "note": "from the account's daily TWR, 82 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.43",
-   "note": "62 overlapping daily obs",
+   "v": "0.44",
+   "note": "61 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.33",
+   "v": "0.35",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
@@ -39,7 +39,7 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$275",
+   "v": "-$276",
    "note": "-2.70% of NAV; 99% VaR -4.21% (-$429)",
    "tone": "neg"
   },
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "715 / 14.0",
+   "v": "716 / 14.0",
    "note": "16 names, ~14.0 effective",
    "tone": "pos"
   }
@@ -359,55 +359,55 @@
    "side": "long",
    "weightPct": 7.5,
    "riskContribPct": 18.4,
-   "mVaR": 26.7
+   "mVaR": 26.5
   },
   {
    "ticker": "CMC",
    "side": "long",
-   "weightPct": 5.3,
+   "weightPct": 5.2,
    "riskContribPct": 11.1,
-   "mVaR": 16.1
+   "mVaR": 15.9
   },
   {
    "ticker": "BHP",
    "side": "long",
-   "weightPct": 6.0,
-   "riskContribPct": 10.4,
-   "mVaR": 15.0
+   "weightPct": 5.9,
+   "riskContribPct": 10.3,
+   "mVaR": 14.8
   },
   {
    "ticker": "GLD",
    "side": "long",
    "weightPct": 8.5,
-   "riskContribPct": 9.7,
-   "mVaR": 14.0
+   "riskContribPct": 9.8,
+   "mVaR": 14.1
   },
   {
    "ticker": "STLD",
    "side": "long",
    "weightPct": 5.5,
-   "riskContribPct": 9.6,
+   "riskContribPct": 9.7,
    "mVaR": 13.9
   },
   {
    "ticker": "NUE",
    "side": "long",
    "weightPct": 5.5,
-   "riskContribPct": 8.9,
+   "riskContribPct": 9.0,
    "mVaR": 12.9
   },
   {
    "ticker": "ATI",
    "side": "long",
-   "weightPct": 4.9,
+   "weightPct": 4.8,
    "riskContribPct": 8.2,
    "mVaR": 11.9
   },
   {
    "ticker": "RIO",
    "side": "long",
-   "weightPct": 5.6,
-   "riskContribPct": 7.7,
+   "weightPct": 5.5,
+   "riskContribPct": 7.8,
    "mVaR": 11.2
   },
   {
@@ -415,20 +415,20 @@
    "side": "long",
    "weightPct": 3.7,
    "riskContribPct": 7.5,
-   "mVaR": 10.9
+   "mVaR": 10.8
   },
   {
    "ticker": "VALE",
    "side": "long",
-   "weightPct": 5.6,
+   "weightPct": 5.5,
    "riskContribPct": 7.3,
-   "mVaR": 10.6
+   "mVaR": 10.5
   },
   {
    "ticker": "MLI",
    "side": "long",
    "weightPct": 4.9,
-   "riskContribPct": 6.8,
+   "riskContribPct": 6.9,
    "mVaR": 9.9
   },
   {
@@ -441,14 +441,14 @@
   {
    "ticker": "HWM",
    "side": "long",
-   "weightPct": 4.7,
+   "weightPct": 4.8,
    "riskContribPct": 5.3,
-   "mVaR": 7.6
+   "mVaR": 7.7
   },
   {
    "ticker": "ALB",
    "side": "short",
-   "weightPct": -8.7,
+   "weightPct": -8.6,
    "riskContribPct": -3.1,
    "mVaR": -4.5
   },
