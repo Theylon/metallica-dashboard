@@ -1,0 +1,33 @@
+{
+  "note": "Manual review of the Bigdata.com story collection (six yearly search windows, 2020-12-01 to 2026-09-23). Applied by scripts/adverse_events_build.py.",
+  "merges": {
+    "2021-12-21_fy22-guidance-cut-ramp-labour": "2021-12-21_fy22-production-shipments-guidance-cut",
+    "2022-12-20_p680-capex-increase": "2022-12-20_p680-capex-up-36pct",
+    "2023-12-31_interim-dividend-withheld": "2024-01-23_h1fy24_dividend_suspended",
+    "2024-10-30_ngungaju-care-maintenance-p850": "2024-10-29_ngungaju_cm_fy25_guidance_cut",
+    "2024-10-30_midstream-construction-pause": "2024-10-29_midstream_plant_paused",
+    "2025-01-29_ppls-additional-funding": "2024-10-29_ppls_additional_debt"
+  },
+  "rejected": {
+    "2019-11-14_pilgangoora-worker-death-site-halt": "A 2021 court story recalling a November 2019 incident; the event itself is outside the study window.",
+    "2024-08-25_fy24_final_dividend_nil": "Continuation of the dividend suspension first disclosed 2024-01-23, not a new adverse development (same rule the 2026 window applied to the Feb 2026 interim).",
+    "2025-02-19_no-interim-dividend-h1fy25": "Continuation of the dividend suspension first disclosed 2024-01-23.",
+    "2025-08-24_no-final-dividend-fy25": "Continuation of the dividend suspension first disclosed 2024-01-23."
+  },
+  "excludeStories": {
+    "D957BBB9C8967CFF23EF30190D001A89": "Indexed 2022-11-28 but the text is dated 30 Oct 2024 (Mid-Stream construction pause).",
+    "8D9DE6E0E200F61DD8690C71BC9041B2": "H1 FY23 interim report stamped with the period end (2022-12-31); published Feb 2023.",
+    "09AEC7009D6C9CFBD48A9F93C1D06147": "Quartr report stamped 2023-08-23T23:00Z; the FY23 results were released 25 Aug 2023 AEST (first news 2023-08-24T22:43Z, shares -8.0% on 25 Aug).",
+    "5627D2BF865988F2D7FBCEADC65FD29D": "H1 FY24 interim report stamped with the period end (2023-12-31); published Feb 2024.",
+    "D92CC17BC70BE73C368C8EC345FF4D67": "FY24 annual report stamped with the period end (2024-06-30); published ~26 Aug 2024.",
+    "99D6FF1F0624B0AF5286828D3AEFFC8C": "H1 FY25 interim report stamped with the period end (2024-12-31); published Feb 2025."
+  },
+  "overrides": {
+    "2020-12-01_altura-acquisition-a240m-equity-raising": {
+      "note": "Raise first announced 2020-10-28, before the study window; the earliest in-window story (2020-12-01) is a restatement. Before the price history, so not price-tested."
+    },
+    "2021-12-21_fy22-production-shipments-guidance-cut": {
+      "note": "The 21 Dec 2021 ASX release itself is not indexed; the first report is news coverage the same morning."
+    }
+  }
+}
