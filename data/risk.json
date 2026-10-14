@@ -1,15 +1,15 @@
 {
- "updatedAt": "2026-10-14T18:14:45+00:00",
+ "updatedAt": "2026-10-14T19:10:23+00:00",
  "asOf": "2026-10-14",
  "window": 90,
  "obs": 83,
  "headline": {
   "annVol": 21.4,
-  "betaSpy": 0.5,
+  "betaSpy": 0.49,
   "betaXme": 0.34,
   "var1d95": -272,
-  "var1d99": -423,
-  "hhi": 714.0,
+  "var1d99": -424,
+  "hhi": 713.0,
   "effectiveN": 14.0
  },
  "metrics": [
@@ -21,7 +21,7 @@
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.50",
+   "v": "0.49",
    "note": "62 overlapping daily obs",
    "tone": "neutral"
   },
@@ -40,7 +40,7 @@
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$272",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$423)",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$424)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "714 / 14.0",
+   "v": "713 / 14.0",
    "note": "16 names, ~14.0 effective",
    "tone": "pos"
   }
@@ -358,22 +358,22 @@
    "ticker": "COPX",
    "side": "long",
    "weightPct": 7.2,
-   "riskContribPct": 16.7,
-   "mVaR": 23.3
+   "riskContribPct": 16.6,
+   "mVaR": 23.2
   },
   {
    "ticker": "CMC",
    "side": "long",
    "weightPct": 5.4,
-   "riskContribPct": 11.5,
-   "mVaR": 16.1
+   "riskContribPct": 11.6,
+   "mVaR": 16.2
   },
   {
    "ticker": "STLD",
    "side": "long",
-   "weightPct": 5.5,
+   "weightPct": 5.6,
    "riskContribPct": 9.8,
-   "mVaR": 13.7
+   "mVaR": 13.8
   },
   {
    "ticker": "BHP",
@@ -386,22 +386,22 @@
    "ticker": "GLD",
    "side": "long",
    "weightPct": 8.4,
-   "riskContribPct": 9.3,
-   "mVaR": 13.0
+   "riskContribPct": 9.2,
+   "mVaR": 12.9
   },
   {
    "ticker": "NUE",
    "side": "long",
    "weightPct": 5.6,
    "riskContribPct": 9.1,
-   "mVaR": 12.7
+   "mVaR": 12.8
   },
   {
    "ticker": "ATI",
    "side": "long",
-   "weightPct": 4.8,
-   "riskContribPct": 8.4,
-   "mVaR": 11.7
+   "weightPct": 4.9,
+   "riskContribPct": 8.5,
+   "mVaR": 11.9
   },
   {
    "ticker": "RIO",
@@ -414,7 +414,7 @@
    "ticker": "MLI",
    "side": "long",
    "weightPct": 4.9,
-   "riskContribPct": 7.3,
+   "riskContribPct": 7.2,
    "mVaR": 10.2
   },
   {
@@ -422,27 +422,27 @@
    "side": "long",
    "weightPct": 5.5,
    "riskContribPct": 7.1,
-   "mVaR": 10.0
+   "mVaR": 9.9
   },
   {
    "ticker": "CRS",
    "side": "long",
-   "weightPct": 4.6,
-   "riskContribPct": 6.9,
-   "mVaR": 9.6
+   "weightPct": 4.7,
+   "riskContribPct": 7.0,
+   "mVaR": 9.8
   },
   {
    "ticker": "SLV",
    "side": "long",
    "weightPct": 3.5,
-   "riskContribPct": 6.8,
-   "mVaR": 9.5
+   "riskContribPct": 6.7,
+   "mVaR": 9.4
   },
   {
    "ticker": "HWM",
    "side": "long",
    "weightPct": 4.7,
-   "riskContribPct": 5.5,
+   "riskContribPct": 5.6,
    "mVaR": 7.8
   },
   {
@@ -456,7 +456,7 @@
    "ticker": "LIT",
    "side": "short",
    "weightPct": -13.8,
-   "riskContribPct": -13.4,
+   "riskContribPct": -13.3,
    "mVaR": -18.7
   }
  ],
