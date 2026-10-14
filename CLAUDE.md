@@ -43,6 +43,7 @@ IBKR Web API / Yahoo / research  ──▶  scripts/*.py  ──▶  data/*.json
 | `data/report.json` | **Static** hand-authored strategy report. Not written by any refresh script. |
 | `scripts/daily_snapshot.py` | Freezes every live `data/*.json` verbatim into `history/daily/<date>.json.gz` on each refresh (converges to EOD) for later analysis. Kept outside `data/` so Pages doesn't ship the archive. |
 | `history/daily/` | The per-day full-data snapshots (gzipped JSON). Immutable once the day passes. |
+| `research/lithium_events/` | One-off Bigdata.com event history (2022→2026-09) for PLS/SGML/LTR/CXO/LAR, for testing MetalMiner lithium prices against earnings and returns. **Not a dashboard input**; its README covers date semantics and the per-company price bases. |
 | `.github/workflows/fetch-data.yml` | Scheduled fetch + Pages deploy (owns `master`). |
 | `.github/workflows/standards.yml` | Standards gate on PRs / working branches. |
 | `.github/workflows/pr-janitor.yml` | Weekly sweep that closes abandoned **data-only** draft PRs (see the refresh rule below). Never touches code PRs. |
