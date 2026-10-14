@@ -1,27 +1,27 @@
 {
- "updatedAt": "2026-10-14T19:13:36+00:00",
+ "updatedAt": "2026-10-14T20:10:03+00:00",
  "asOf": "2026-10-14",
  "window": 90,
  "obs": 83,
  "headline": {
-  "annVol": 21.4,
-  "betaSpy": 0.49,
+  "annVol": 21.3,
+  "betaSpy": 0.48,
   "betaXme": 0.34,
-  "var1d95": -272,
-  "var1d99": -424,
-  "hhi": 713.0,
+  "var1d95": -273,
+  "var1d99": -425,
+  "hhi": 712.0,
   "effectiveN": 14.0
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "21.4%",
+   "v": "21.3%",
    "note": "from the account's daily TWR, 83 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.49",
+   "v": "0.48",
    "note": "62 overlapping daily obs",
    "tone": "neutral"
   },
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$272",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$424)",
+   "v": "-$273",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$425)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "713 / 14.0",
+   "v": "712 / 14.0",
    "note": "16 names, ~14.0 effective",
    "tone": "pos"
   }
@@ -359,28 +359,28 @@
    "side": "long",
    "weightPct": 7.2,
    "riskContribPct": 16.6,
-   "mVaR": 23.2
+   "mVaR": 23.4
   },
   {
    "ticker": "CMC",
    "side": "long",
    "weightPct": 5.4,
    "riskContribPct": 11.6,
-   "mVaR": 16.2
+   "mVaR": 16.3
   },
   {
    "ticker": "STLD",
    "side": "long",
    "weightPct": 5.6,
    "riskContribPct": 9.9,
-   "mVaR": 13.8
+   "mVaR": 13.9
   },
   {
    "ticker": "BHP",
    "side": "long",
    "weightPct": 5.8,
    "riskContribPct": 9.6,
-   "mVaR": 13.4
+   "mVaR": 13.5
   },
   {
    "ticker": "GLD",
@@ -401,28 +401,28 @@
    "side": "long",
    "weightPct": 4.9,
    "riskContribPct": 8.4,
-   "mVaR": 11.7
+   "mVaR": 11.8
   },
   {
    "ticker": "RIO",
    "side": "long",
    "weightPct": 5.4,
    "riskContribPct": 7.4,
-   "mVaR": 10.3
+   "mVaR": 10.4
   },
   {
    "ticker": "MLI",
    "side": "long",
-   "weightPct": 4.9,
-   "riskContribPct": 7.2,
-   "mVaR": 10.1
+   "weightPct": 5.0,
+   "riskContribPct": 7.3,
+   "mVaR": 10.2
   },
   {
    "ticker": "VALE",
    "side": "long",
    "weightPct": 5.5,
    "riskContribPct": 7.1,
-   "mVaR": 9.9
+   "mVaR": 10.0
   },
   {
    "ticker": "CRS",
@@ -457,7 +457,7 @@
    "side": "short",
    "weightPct": -13.8,
    "riskContribPct": -13.3,
-   "mVaR": -18.6
+   "mVaR": -18.7
   }
  ],
  "coverageNote": "15 of 16 holdings (1 OTC excluded)"
