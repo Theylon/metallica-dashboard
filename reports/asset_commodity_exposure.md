@@ -702,7 +702,7 @@ Tracks each held ticker's exposure to its linked commodities (T1/T2 links from m
 | steel | 16.65% |
 | copper | 7.18% |
 | gold | 4.26% |
-| manganese dioxide | -4.39% |
+| manganese dioxide | -4.30% |
 | cobalt sulfate | -6.79% |
 | manganese sulfate | -6.79% |
 
