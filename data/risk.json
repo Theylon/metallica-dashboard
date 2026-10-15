@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-15T17:53:45+00:00",
+ "updatedAt": "2026-10-15T18:09:10+00:00",
  "asOf": "2026-10-15",
  "window": 90,
  "obs": 84,
@@ -7,9 +7,9 @@
   "annVol": 21.2,
   "betaSpy": 0.48,
   "betaXme": 0.34,
-  "var1d95": -273,
-  "var1d99": -425,
-  "hhi": 711.0,
+  "var1d95": -274,
+  "var1d99": -426,
+  "hhi": 710.0,
   "effectiveN": 14.1
  },
  "metrics": [
@@ -39,8 +39,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$273",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$425)",
+   "v": "-$274",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$426)",
    "tone": "neg"
   },
   {
@@ -57,7 +57,7 @@
   },
   {
    "k": "Concentration (HHI / eff. N)",
-   "v": "711 / 14.1",
+   "v": "710 / 14.1",
    "note": "16 names, ~14.1 effective",
    "tone": "pos"
   }
@@ -359,7 +359,7 @@
    "side": "long",
    "weightPct": 7.1,
    "riskContribPct": 16.5,
-   "mVaR": 23.0
+   "mVaR": 23.1
   },
   {
    "ticker": "CMC",
@@ -380,7 +380,7 @@
    "side": "long",
    "weightPct": 5.7,
    "riskContribPct": 9.5,
-   "mVaR": 13.2
+   "mVaR": 13.3
   },
   {
    "ticker": "GLD",
@@ -392,16 +392,16 @@
   {
    "ticker": "NUE",
    "side": "long",
-   "weightPct": 5.5,
-   "riskContribPct": 9.1,
-   "mVaR": 12.7
+   "weightPct": 5.6,
+   "riskContribPct": 9.2,
+   "mVaR": 12.8
   },
   {
    "ticker": "ATI",
    "side": "long",
    "weightPct": 4.9,
    "riskContribPct": 8.4,
-   "mVaR": 11.7
+   "mVaR": 11.8
   },
   {
    "ticker": "RIO",
@@ -449,7 +449,7 @@
    "ticker": "ALB",
    "side": "short",
    "weightPct": -8.7,
-   "riskContribPct": -2.2,
+   "riskContribPct": -2.3,
    "mVaR": -3.1
   },
   {
@@ -457,7 +457,7 @@
    "side": "short",
    "weightPct": -13.6,
    "riskContribPct": -13.4,
-   "mVaR": -18.7
+   "mVaR": -18.8
   }
  ],
  "coverageNote": "15 of 16 holdings (1 OTC excluded)"
