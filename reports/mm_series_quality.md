@@ -115,10 +115,10 @@ Counts: {"rejected": 46, "level_only": 64, "tradable": 59, "tradable_public": 21
 | 1072 | aluminum (non ferrous metals, india, primary cash, kilogram) | 3446 | 2011-12-30 | 637 | 0 |
 | 1337 | zinc (non ferrous metals, india, primary cash, kilogram) | 3461 | 2011-12-31 | 645 | 0 |
 | 270581 | dysprosium oxide (rare earth metals, china, 99.5%min fob, kilogram) | 3044 | 2013-03-21 | 665 | 0 |
-| 270585 | electrical steel (stainless steel, china, grain oriented 130 0.3*980mm | 3258 | 2012-06-14 | 655 | 0 |
+| 270585 | electrical steel (stainless steel, china, grain oriented 130 0.3*980mm | 3259 | 2012-06-14 | 656 | 0 |
 | 270601 | ferro-chrome (ferro alloys, china, kazakhstan cr 68%min, c 8.5%max in  | 1941 | 2017-12-18 | 656 | 0 |
 | 270612 | ferro-holmium (rare earth metals, china, 80% exw, kilogram) | 3143 | 2012-10-29 | 650 | 0 |
-| 270704 | h-beam steel (steel, shanghai, q235 200*200mm in warehouse, metric ton | 3330 | 2012-03-08 | 659 | 0 |
+| 270704 | h-beam steel (steel, shanghai, q235 200*200mm in warehouse, metric ton | 3331 | 2012-03-08 | 660 | 0 |
 | 270787 | lithium carbonate (minor metals, america, 99.5%min fob south, kilogram | 1804 | 2018-01-31 | 633 | 0 |
 | 270789 | lithium hydroxide monohydrate (minor metals, china, lioh 56.5%min, mag | 2454 | 2015-10-29 | 659 | 0 |
 | 270800 | lutetium oxide (rare earth metals, exw, exw, kilogram) | 1479 | 2019-11-21 | 656 | 0 |
@@ -136,7 +136,7 @@ Counts: {"rejected": 46, "level_only": 64, "tradable": 59, "tradable_public": 21
 | 270906 | neodymium metal (rare earth metals, china, 99%min fob, kilogram) | 3329 | 2011-12-30 | 662 | 0 |
 | 270907 | neodymium oxide (rare earth metals, china, 99.5%min exw, kilogram) | 2967 | 2013-08-19 | 652 | 0 |
 | 270908 | neodymium oxide (rare earth metals, china, 99.5%min fob, kilogram) | 3317 | 2011-12-30 | 661 | 0 |
-| 270914 | nickel sulfate (non ferrous metals, china, ni 22%min; co 0.05%max exw, | 3301 | 2012-04-17 | 658 | 0 |
+| 270914 | nickel sulfate (non ferrous metals, china, ni 22%min; co 0.05%max exw, | 3302 | 2012-04-17 | 659 | 0 |
 | 270922 | praseodymium metal (rare earth metals, china, 99.5%min fob, kilogram) | 3321 | 2011-12-30 | 661 | 0 |
 | 270923 | praseodymium oxide (rare earth metals, china, 99.5%min exw, kilogram) | 3091 | 2013-01-11 | 652 | 0 |
 | 270924 | praseodymium oxide (rare earth metals, china, 99.5%min fob, kilogram) | 3321 | 2011-12-30 | 663 | 0 |
@@ -145,5 +145,5 @@ Counts: {"rejected": 46, "level_only": 64, "tradable": 59, "tradable_public": 21
 | 270930 | prnd oxide (rare earth metals, china, pr6o11 25%, nd2o3 75% exw, kilog | 3176 | 2012-09-20 | 651 | 0 |
 | 271053 | terbium metal (rare earth metals, china, 99.9%min fob, kilogram) | 1646 | 2019-01-28 | 665 | 0 |
 | 271055 | terbium oxide (rare earth metals, china, 99.99%min fob, kilogram) | 1656 | 2019-01-16 | 665 | 0 |
-| 271075 | titanium plate (minor metals, china, ta2 2mm exw, kilogram) | 3117 | 2012-04-16 | 608 | 0 |
+| 271075 | titanium plate (minor metals, china, ta2 2mm exw, kilogram) | 3119 | 2012-04-16 | 610 | 0 |
 | 271078 | titanium sponge (minor metals, china, 99.7%min exw, metric ton) | 3234 | 2012-07-24 | 655 | 0 |
