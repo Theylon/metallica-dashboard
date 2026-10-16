@@ -239,7 +239,17 @@ def build_technicals(now):
 
 
 def build_metals_spot(now):
-    """True metal spot prices from metalminer (nested JSON-in-string dumps)."""
+    """True metal spot prices from metalminer (nested JSON-in-string dumps).
+
+    Legacy fallback: scripts/mm_spot.py now builds metals_spot.json from the daily
+    MetalMiner API pull, and its file is never overwritten from MCP dumps here.
+    """
+    try:
+        api_owned = json.loads((DATA / "metals_spot.json").read_text()).get("source") == "metalminer-api"
+    except (OSError, ValueError, AttributeError):
+        api_owned = False
+    if api_owned:
+        return 0
     items = []
     for label, key in METAL_SPOT:
         try:
