@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-21T20:29:12+00:00",
+ "updatedAt": "2026-10-21T21:09:42+00:00",
  "researchAsOf": "2026-07-18T19:50:53+00:00",
  "methodology": "Composite 0-100 = momentum 18% + commodity-alignment 18% + deep-dive 14% + analyst 13% + fundamentals 12% + news sentiment 9% + SmartScore 8% + quality 8% (missing sub-scores redistribute). High = long candidate, low = short candidate. Each card also carries an independent Yahoo Finance (yfinance) cross-validation of price targets, ratings and margins. The cross-check is display-only and does not change the composite. Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner, TrueNorth, Yahoo Finance.",
  "macro": "CPI (YoY) 3.72% (above 2% target); 10Y\u20132Y Spread +0.38 (normal curve). [macro feed 2026-10-21]",
@@ -237,7 +237,7 @@
     "checks": [],
     "yahoo": {
      "price": 26.79,
-     "targetMean": 52.09907,
+     "targetMean": 52.17445,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.33333,
      "ebitdaMargins": 0.15829,
@@ -610,7 +610,7 @@
     "checks": [],
     "yahoo": {
      "price": 35.97,
-     "targetMean": 50.610474,
+     "targetMean": 50.603626,
      "recommendationKey": "buy",
      "recommendationMean": 1.77273,
      "ebitdaMargins": 0.28345,
@@ -849,7 +849,7 @@
     "checks": [],
     "yahoo": {
      "price": 3224.0,
-     "targetMean": 3797.0876,
+     "targetMean": 3797.8506,
      "recommendationKey": "hold",
      "recommendationMean": 2.81818,
      "ebitdaMargins": 0.58338,
@@ -1948,7 +1948,7 @@
       "field": "priceTarget",
       "primary": 5.63,
       "yahoo": 5.92,
-      "deltaPct": 5.2,
+      "deltaPct": 5.1,
       "status": "agree"
      },
      {
@@ -1967,7 +1967,7 @@
     ],
     "yahoo": {
      "price": 5.24,
-     "targetMean": 5.9233217,
+     "targetMean": 5.9191957,
      "recommendationKey": "buy",
      "recommendationMean": 2.2,
      "ebitdaMargins": 0.1437,
@@ -1992,16 +1992,16 @@
    "analyst": null,
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 243.37,
-   "vs50": 7.0,
-   "vs200": 18.0,
-   "range52w": 97.9,
+   "price": 241.86,
+   "vs50": 6.4,
+   "vs200": 17.3,
+   "range52w": 96.4,
    "marketCap": 1551005550000,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 85.4,
+   "composite": 84.8,
    "subs": {
-    "momentum": 9.6,
+    "momentum": 9.4,
     "commodity": 8.6,
     "deep": 7.0,
     "analyst": null,
@@ -2059,8 +2059,8 @@
     "flags": [],
     "checks": [],
     "yahoo": {
-     "price": 243.37,
-     "targetMean": 238.6758,
+     "price": 241.86,
+     "targetMean": 238.54413,
      "recommendationKey": "buy",
      "recommendationMean": 2.26667,
      "ebitdaMargins": 0.57039,
@@ -3589,7 +3589,7 @@
      {
       "field": "priceTarget",
       "primary": 60.93,
-      "yahoo": 59.11,
+      "yahoo": 59.12,
       "deltaPct": -3.0,
       "status": "agree"
      },
@@ -3609,7 +3609,7 @@
     ],
     "yahoo": {
      "price": 62.78,
-     "targetMean": 59.11002,
+     "targetMean": 59.121384,
      "recommendationKey": "hold",
      "recommendationMean": 2.64706,
      "ebitdaMargins": 0.46866,
@@ -5519,15 +5519,15 @@
    "crossVal": {
     "agreement": "conflict",
     "flags": [
-     "Price target: Yahoo $159 vs primary $216 (-27%)",
+     "Price target: Yahoo $156 vs primary $216 (-28%)",
      "EBITDA margin: Yahoo 25% vs primary 11% (+14pp)"
     ],
     "checks": [
      {
       "field": "priceTarget",
       "primary": 216.17,
-      "yahoo": 158.73,
-      "deltaPct": -26.6,
+      "yahoo": 156.35,
+      "deltaPct": -27.7,
       "status": "flag"
      },
      {
@@ -5546,7 +5546,7 @@
     ],
     "yahoo": {
      "price": 94.47,
-     "targetMean": 158.72762,
+     "targetMean": 156.34666,
      "recommendationKey": "buy",
      "recommendationMean": 1.91304,
      "ebitdaMargins": 0.25093,
@@ -6356,7 +6356,7 @@
     "checks": [],
     "yahoo": {
      "price": 3840.0,
-     "targetMean": 4245.0195,
+     "targetMean": 4246.1,
      "recommendationKey": "buy",
      "recommendationMean": 2.35294,
      "ebitdaMargins": 0.34886003,
@@ -6554,7 +6554,7 @@
      {
       "field": "priceTarget",
       "primary": 36.6,
-      "yahoo": 33.73,
+      "yahoo": 33.72,
       "deltaPct": -7.9,
       "status": "agree"
      },
@@ -6574,7 +6574,7 @@
     ],
     "yahoo": {
      "price": 25.58,
-     "targetMean": 33.726593,
+     "targetMean": 33.722805,
      "recommendationKey": "buy",
      "recommendationMean": 1.66667,
      "ebitdaMargins": 0.13012,
@@ -7245,7 +7245,7 @@
     "checks": [],
     "yahoo": {
      "price": 30.7,
-     "targetMean": 51.264168,
+     "targetMean": 51.25981,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.21429,
      "ebitdaMargins": 0.32612,
@@ -8549,7 +8549,7 @@
     "checks": [],
     "yahoo": {
      "price": 9.53,
-     "targetMean": 15.320837,
+     "targetMean": 15.319637,
      "recommendationKey": "buy",
      "recommendationMean": 1.8,
      "ebitdaMargins": 0.15691,
@@ -9762,16 +9762,16 @@
    },
    "tipranksExtra": null,
    "recommendation": null,
-   "price": 4.78,
-   "vs50": -9.5,
-   "vs200": -8.2,
-   "range52w": 50.0,
+   "price": 4.866,
+   "vs50": -8.1,
+   "vs200": -6.6,
+   "range52w": 53.3,
    "marketCap": 2429952126,
    "tradable": true,
    "quoteSuspect": false,
-   "composite": 47.1,
+   "composite": 48.6,
    "subs": {
-    "momentum": 2.7,
+    "momentum": 3.2,
     "commodity": 5.0,
     "deep": 6.0,
     "analyst": null,
@@ -9923,7 +9923,7 @@
     "checks": [],
     "yahoo": {
      "price": 4.32,
-     "targetMean": 5.0867987,
+     "targetMean": 5.0875144,
      "recommendationKey": "buy",
      "recommendationMean": 2.30769,
      "ebitdaMargins": 0.20741,
@@ -11104,7 +11104,7 @@
     "checks": [],
     "yahoo": {
      "price": 7.47,
-     "targetMean": 11.765205,
+     "targetMean": 11.765446,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.4,
      "ebitdaMargins": 0.57612,
@@ -12029,7 +12029,7 @@
     "checks": [],
     "yahoo": {
      "price": 2.91,
-     "targetMean": 4.55,
+     "targetMean": 4.53889,
      "recommendationKey": "buy",
      "recommendationMean": 2.16667,
      "ebitdaMargins": 0.54852,
@@ -12518,7 +12518,7 @@
     ],
     "yahoo": {
      "price": 82.02,
-     "targetMean": 128.76868,
+     "targetMean": 128.7861,
      "recommendationKey": "buy",
      "recommendationMean": 1.57143,
      "ebitdaMargins": 0.2298,
@@ -12686,7 +12686,7 @@
     "checks": [],
     "yahoo": {
      "price": 8.53,
-     "targetMean": 16.552868,
+     "targetMean": 16.55558,
      "recommendationKey": "buy",
      "recommendationMean": 1.5625,
      "ebitdaMargins": 0.0,
@@ -13215,15 +13215,15 @@
    "crossVal": {
     "agreement": "conflict",
     "flags": [
-     "Price target: Yahoo $14 vs primary $11 (+20%)",
+     "Price target: Yahoo $14 vs primary $11 (+24%)",
      "EBITDA margin: Yahoo 4% vs primary -1% (+5pp)"
     ],
     "checks": [
      {
       "field": "priceTarget",
       "primary": 11.25,
-      "yahoo": 13.55,
-      "deltaPct": 20.4,
+      "yahoo": 13.95,
+      "deltaPct": 24.0,
       "status": "flag"
      },
      {
@@ -13242,7 +13242,7 @@
     ],
     "yahoo": {
      "price": 14.03,
-     "targetMean": 13.55,
+     "targetMean": 13.95,
      "recommendationKey": "hold",
      "recommendationMean": 2.76923,
      "ebitdaMargins": 0.04419,
@@ -13343,7 +13343,7 @@
     ],
     "yahoo": {
      "price": 2.33,
-     "targetMean": 4.711956,
+     "targetMean": 4.7126274,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.4,
      "ebitdaMargins": 0.0,
@@ -13443,7 +13443,7 @@
     "checks": [],
     "yahoo": {
      "price": 71.15,
-     "targetMean": 123.59987,
+     "targetMean": 123.58936,
      "recommendationKey": "buy",
      "recommendationMean": 1.51852,
      "ebitdaMargins": 0.15155,
@@ -14339,7 +14339,7 @@
     "checks": [],
     "yahoo": {
      "price": 13.65,
-     "targetMean": 24.920668,
+     "targetMean": 24.918549,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.14286,
      "ebitdaMargins": 0.24304001,
@@ -15353,7 +15353,7 @@
     "checks": [],
     "yahoo": {
      "price": 22.48,
-     "targetMean": 54.185806,
+     "targetMean": 54.1812,
      "recommendationKey": "buy",
      "recommendationMean": 1.84211,
      "ebitdaMargins": 0.23911,
@@ -15958,7 +15958,7 @@
     ],
     "yahoo": {
      "price": 9.77,
-     "targetMean": 13.560632,
+     "targetMean": 13.5601845,
      "recommendationKey": "buy",
      "recommendationMean": 2.0,
      "ebitdaMargins": 0.37145,
@@ -16512,7 +16512,7 @@
     "checks": [],
     "yahoo": {
      "price": 23.54,
-     "targetMean": 52.508644,
+     "targetMean": 52.50418,
      "recommendationKey": "buy",
      "recommendationMean": 2.13333,
      "ebitdaMargins": 0.58961,
@@ -16606,12 +16606,12 @@
     "checks": [],
     "yahoo": {
      "price": 25.06,
-     "targetMean": 26.38571,
+     "targetMean": 26.70333,
      "recommendationKey": "buy",
      "recommendationMean": 2.28571,
      "ebitdaMargins": 0.54408,
      "returnOnEquity": 0.108780004,
-     "numberOfAnalysts": 14
+     "numberOfAnalysts": 15
     }
    },
    "discovered": false
@@ -17968,7 +17968,7 @@
     "checks": [],
     "yahoo": {
      "price": 78.19,
-     "targetMean": 93.22896,
+     "targetMean": 93.21635,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.18182,
      "ebitdaMargins": 0.60275,
@@ -19550,7 +19550,7 @@
     "checks": [],
     "yahoo": {
      "price": 2632.0,
-     "targetMean": 3223.8704,
+     "targetMean": 3224.777,
      "recommendationKey": "hold",
      "recommendationMean": 2.92857,
      "ebitdaMargins": 0.67043,
@@ -19896,7 +19896,7 @@
     "checks": [],
     "yahoo": {
      "price": 0.9024,
-     "targetMean": 3.6717694,
+     "targetMean": 3.6719522,
      "recommendationKey": "buy",
      "recommendationMean": 1.625,
      "ebitdaMargins": 0.0,
@@ -19989,7 +19989,7 @@
     "checks": [],
     "yahoo": {
      "price": 490.0,
-     "targetMean": 724.11395,
+     "targetMean": 724.3176,
      "recommendationKey": "buy",
      "recommendationMean": 1.54545,
      "ebitdaMargins": 0.55694,
@@ -20163,7 +20163,7 @@
     "checks": [],
     "yahoo": {
      "price": 0.3966,
-     "targetMean": 1.6712923,
+     "targetMean": 1.6713756,
      "recommendationKey": "none",
      "ebitdaMargins": 0.0,
      "returnOnEquity": -1.09987,
@@ -20706,7 +20706,7 @@
     "checks": [],
     "yahoo": {
      "price": 1.51,
-     "targetMean": 4.5404058,
+     "targetMean": 4.540632,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.5,
      "ebitdaMargins": 0.0,
@@ -21390,7 +21390,7 @@
     "checks": [],
     "yahoo": {
      "price": 7.96,
-     "targetMean": 10.490641,
+     "targetMean": 10.491911,
      "recommendationKey": "strong_buy",
      "recommendationMean": 1.25,
      "ebitdaMargins": 0.28249002,
@@ -21978,6 +21978,6 @@
    "heldNow": null
   }
  ],
- "sizingNote": "NAV ~$10,168. Rules: single name \u2264 8% NAV (~$813), commodity group \u2264 20% NAV, keep gross \u2264 75%. Current book: gross ~7%, net ~7%. [book 2026-10-21]",
- "pricesRefreshedAt": "2026-10-21T20:29:12+00:00"
+ "sizingNote": "NAV ~$10,167. Rules: single name \u2264 8% NAV (~$813), commodity group \u2264 20% NAV, keep gross \u2264 75%. Current book: gross ~7%, net ~7%. [book 2026-10-21]",
+ "pricesRefreshedAt": "2026-10-21T21:09:42+00:00"
 }
