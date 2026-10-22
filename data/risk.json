@@ -1,28 +1,28 @@
 {
- "updatedAt": "2026-10-21T21:09:42+00:00",
- "asOf": "2026-10-21",
+ "updatedAt": "2026-10-22T13:24:10+00:00",
+ "asOf": "2026-10-22",
  "window": 90,
- "obs": 88,
+ "obs": 89,
  "headline": {
-  "annVol": 20.8,
+  "annVol": 20.6,
   "betaSpy": 0.5,
   "betaXme": 0.38,
-  "var1d95": -275,
-  "var1d99": -428,
+  "var1d95": -274,
+  "var1d99": -427,
   "hhi": 10000.0,
   "effectiveN": 1.0
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "20.8%",
-   "note": "from the account's daily TWR, 88 daily obs since inception",
+   "v": "20.6%",
+   "note": "from the account's daily TWR, 89 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
    "v": "0.50",
-   "note": "62 overlapping daily obs",
+   "note": "61 overlapping daily obs",
    "tone": "neutral"
   },
   {
@@ -33,8 +33,8 @@
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$275",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$428)",
+   "v": "-$274",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$427)",
    "tone": "neg"
   },
   {
