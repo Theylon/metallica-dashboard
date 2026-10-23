@@ -133,7 +133,7 @@ Counts: {"rejected": 56, "level_only": 54, "tradable": 59, "tradable_public": 21
 | 270800 | lutetium oxide (rare earth metals, exw, exw, kilogram) | 1486 | 2019-11-21 | 657 | 0 |
 | 270840 | manganese dioxide (minor metals, china, alkaline 91%min exw, metric to | 3131 | 2013-01-04 | 657 | 0 |
 | 270860 | manganese sulfate (minor metals, china, mn 32%min exw, metric ton) | 1963 | 2017-11-22 | 661 | 0 |
-| 270879 | molybdenum bar (minor metals, china, 99.9%min exw, kilogram) | 3326 | 2011-12-30 | 649 | 0 |
+| 270879 | molybdenum bar (minor metals, china, 99.9%min exw, kilogram) | 3327 | 2011-12-30 | 650 | 0 |
 | 270898 | ndfeb (rare earth metals, china, sintered rough 35m exw, kilogram) | 1166 | 2021-02-22 | 636 | 0 |
 | 270899 | ndfeb (rare earth metals, china, sintered rough 45m exw, kilogram) | 1162 | 2021-02-22 | 636 | 0 |
 | 270900 | ndfeb (rare earth metals, china, sintered rough 50m exw, kilogram) | 1168 | 2021-02-22 | 637 | 0 |
@@ -144,7 +144,7 @@ Counts: {"rejected": 56, "level_only": 54, "tradable": 59, "tradable_public": 21
 | 270905 | neodymium metal (rare earth metals, china, 99%min exw, kilogram) | 3359 | 2011-12-30 | 652 | 0 |
 | 270906 | neodymium metal (rare earth metals, china, 99%min fob, kilogram) | 3337 | 2011-12-30 | 664 | 0 |
 | 270907 | neodymium oxide (rare earth metals, china, 99.5%min exw, kilogram) | 2975 | 2013-08-19 | 654 | 0 |
-| 270908 | neodymium oxide (rare earth metals, china, 99.5%min fob, kilogram) | 3325 | 2011-12-30 | 663 | 0 |
+| 270908 | neodymium oxide (rare earth metals, china, 99.5%min fob, kilogram) | 3326 | 2011-12-30 | 664 | 0 |
 | 270914 | nickel sulfate (non ferrous metals, china, ni 22%min; co 0.05%max exw, | 3310 | 2012-04-17 | 661 | 0 |
 | 270922 | praseodymium metal (rare earth metals, china, 99.5%min fob, kilogram) | 3329 | 2011-12-30 | 663 | 0 |
 | 270923 | praseodymium oxide (rare earth metals, china, 99.5%min exw, kilogram) | 3099 | 2013-01-11 | 654 | 0 |
