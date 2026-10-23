@@ -63,8 +63,10 @@ jobs:
 
       # MetalMiner price series (licensed): pulled from the MetalMiner API with the
       # METALMINER_API_TOKEN secret into /tmp (never committed), then graded by
-      # mm_series_quality.py (registry + report are derived, committed) and run
-      # through the rare-earth lead/lag research (equities from Yahoo, also /tmp).
+      # mm_series_quality.py (registry + report are derived, committed), turned into
+      # the dashboard's metal price panel by mm_spot.py (latest prints only →
+      # data/metals_spot.json) and run through the rare-earth lead/lag research
+      # (equities from Yahoo, also /tmp).
       # data/mm_freshness.json records how far behind the latest observation is —
       # the publication delay the research scripts take as --delay. Every step is
       # best-effort: no secret or a vendor hiccup leaves the last-good files in place.
@@ -76,6 +78,7 @@ jobs:
           if [ -z "$METALMINER_API_TOKEN" ]; then echo "METALMINER_API_TOKEN not set — MetalMiner pull skipped"; exit 0; fi
           python scripts/mm_fetch.py --out /tmp/historical_latest.json.gz || { echo "mm_fetch failed (non-fatal)"; exit 0; }
           python scripts/mm_series_quality.py /tmp/historical_latest.json.gz > /dev/null || echo "mm_series_quality failed (non-fatal)"
+          python scripts/mm_spot.py /tmp/historical_latest.json.gz || echo "mm_spot failed (non-fatal)"
           python scripts/mm_equities.py --out /tmp/mm_equities.json || echo "mm_equities failed (non-fatal)"
           if [ -f /tmp/mm_equities.json ] && [ -f scripts/rare_earth_leadlag.py ]; then
             # lagDays is calendar days; the research script counts trading days (x5/7)
