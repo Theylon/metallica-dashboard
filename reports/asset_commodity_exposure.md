@@ -736,3 +736,9 @@ Tracks each held ticker's exposure to its linked commodities (T1/T2 links from m
 |---|---|
 | copper | 6.51% |
 
+## 2026-10-23
+
+| Commodity | Exposure (% NAV, tier-weighted) |
+|---|---|
+| copper | 6.52% |
+
