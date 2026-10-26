@@ -3,10 +3,15 @@
 
 Runs in the GitHub Action (pure Python + yfinance, no MCP, no cost). Reads the
 existing data/micro.json — which already holds the research layer produced by the
-MCP pipeline — refreshes ONLY the price-derived fields from fresh yfinance quotes,
+MCP pipeline — refreshes the price-derived fields from fresh yfinance quotes,
 recomputes each name's momentum sub-score + composite + group rank, and writes it
-back. Every research field (thesis, evidence, fundamentals, analyst, exposure and
-the non-momentum sub-scores) is left byte-for-byte untouched.
+back.
+
+"Price-derived" means more than the quote itself: marketCap and analyst.upsidePct
+are written by the research build but both move with price, so they are re-derived
+here too (see refresh_derived), along with the analyst/quality sub-scores they feed.
+The narrative research layer — thesis, evidence, fundamentals, consensus, sentiment,
+exposure — is left byte-for-byte untouched.
 
 Cadence: the Action runs this 4×/day on trading days, so the tab's prices, momentum
 and scores move at the same times as the live dashboard. The heavier research layer
@@ -23,7 +28,8 @@ import yfinance as yf
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from micro_score import momentum_score, composite_from_subs, rank_within_groups
-from micro_build import cross_validation, load_held, live_macro_banner, live_sizing_note, _stamp_held_now
+from micro_build import (cross_validation, load_held, live_macro_banner, live_sizing_note,
+                         analyst_score, quality_score, _num, _stamp_held_now)
 
 DATA = pathlib.Path(__file__).resolve().parent.parent / "data"
 CHUNK = 50
@@ -155,6 +161,45 @@ def mint_held_only_rows(records, held_book):
     return minted
 
 
+def refresh_derived(r, subs, yq):
+    """Re-derive the price-dependent research fields from the just-refreshed price.
+
+    marketCap and analyst.upsidePct are written once at research-build time, but both
+    move with price, so between rebuilds they drift: RS sat at a +0.47% "upside" while
+    the stock had already passed its $381 target by 6%, and its market cap stayed frozen
+    at the research-day price — far enough below $20B to cost it a quality bucket.
+    Recomputed here 4x/day, ahead of the composite, so the corrected inputs actually
+    reach the score.
+
+    Degrades, never blanks: no Yahoo entry (or a null cap, as for the ETFs) keeps the
+    last-known market cap, and a free-text price target ('GBP34 (raised from GBP25)')
+    keeps its research-time upside rather than being zeroed.
+    """
+    mc = (yq or {}).get("marketCap")
+    if mc:                          # yahoo.json is refreshed by the Action; the FMP
+        r["marketCap"] = mc         # quotes.json snapshot it was built from is frozen
+    a = r.get("analyst")
+    if a:
+        pt, price = _num(a.get("priceTarget")), _num(r.get("price"))
+        if pt and price and price > 0:
+            a["upsidePct"] = round((pt / price - 1.0) * 100.0, 2)
+    if r.get("discovered"):
+        # discovered rows score off mean(momentum, deep) and never read these sub-scores;
+        # writing them anyway would put a sub-score micro_build never produces into the
+        # micro_history.jsonl cross-section. They still get the cap/upside refresh above,
+        # which the detail card displays.
+        return
+    an = analyst_score({}, {"analyst": a} if a else None)
+    if an is not None:
+        subs["analyst"] = an
+    ql = quality_score(r, {"marketCap": r.get("marketCap")})
+    if ql is not None:
+        subs["quality"] = ql
+    # tradable is deliberately NOT recomputed: micro_build gates it on marketCap > 1.5e8,
+    # so a fresher cap could flip a US micro-cap in and out of the ranked set and the
+    # trade list on price noise 4x/day. It stays owned by the research build.
+
+
 def main():
     micro = json.loads((DATA / "micro.json").read_text())
     prev_micro = copy.deepcopy(micro)   # pre-refresh state for the decision log diff
@@ -198,22 +243,35 @@ def main():
     print(f"  got fresh quotes for {len(quotes)}/{len(fetch_list)}")
     write_price_history(series)
 
+    # The committed Yahoo pull (scripts/micro_yahoo.py, once/day in the Action) is the
+    # only fresh source of marketCap — micro_src/quotes.json is a frozen FMP snapshot
+    # with no refresh path. Loaded here so both refresh_derived and the cross-check
+    # below can read it; no network in this step.
+    yq = {}
+    ypath = DATA / "micro_src" / "yahoo.json"
+    if ypath.exists():
+        yq = json.loads(ypath.read_text()).get("quotes", {})
+
     refreshed = 0
     for r in records:
         r.pop("groupRank", None)                      # clear stale ranks before re-rank
         q = quotes.get(r["ticker"])
-        if not q:
-            continue                                  # keep last-known live fields
-        r["price"] = q.get("price", r.get("price"))
-        for k in ("vs50", "vs200", "range52w"):
-            if q.get(k) is not None:
-                r[k] = q[k]
-        # recompute momentum sub-score from the fresh quote, then the composite
-        mom = momentum_score({"vs50": r.get("vs50"), "vs200": r.get("vs200"),
-                              "range52w": r.get("range52w"), "suspect": r.get("quoteSuspect")})
         subs = dict(r.get("subs") or {})
-        if mom is not None:
-            subs["momentum"] = round(mom, 1)
+        if q:                                         # no quote → keep last-known live fields
+            r["price"] = q.get("price", r.get("price"))
+            for k in ("vs50", "vs200", "range52w"):
+                if q.get(k) is not None:
+                    r[k] = q[k]
+            # recompute momentum sub-score from the fresh quote
+            mom = momentum_score({"vs50": r.get("vs50"), "vs200": r.get("vs200"),
+                                  "range52w": r.get("range52w"), "suspect": r.get("quoteSuspect")})
+            if mom is not None:
+                subs["momentum"] = round(mom, 1)
+            refreshed += 1
+        # re-derive marketCap / analyst.upsidePct and the sub-scores they feed BEFORE the
+        # composite below, or the corrected inputs never reach the score. Runs even when
+        # yfinance had no quote — the Yahoo cap may still be fresher than the stored one.
+        refresh_derived(r, subs, yq.get(r["ticker"]))
         if r.get("discovered"):
             # discovered names composite = mean(momentum, deep)*10 (mirrors micro_build)
             parts = [v for v in (subs.get("momentum"), subs.get("deep")) if v is not None]
@@ -223,19 +281,14 @@ def main():
             if comp is not None:
                 r["composite"], r["coverage"] = comp, cov
         r["subs"] = subs
-        refreshed += 1
 
     rank_within_groups(records)
 
-    # Refresh the Yahoo cross-check from the committed yahoo.json (no network here —
-    # scripts/micro_yahoo.py produces it). crossVal is derived from each row's own
+    # Refresh the Yahoo cross-check from the same yahoo.json loaded above (no network
+    # here — scripts/micro_yahoo.py produces it). crossVal is derived from each row's own
     # analyst/fundamentals/price vs the independent Yahoo pull. Only recompute when
     # yahoo.json has data, so a missing file never wipes a cross-check a full rebuild
     # already computed.
-    yq = {}
-    ypath = DATA / "micro_src" / "yahoo.json"
-    if ypath.exists():
-        yq = json.loads(ypath.read_text()).get("quotes", {})
     if yq:
         for r in records:
             try:

@@ -64,11 +64,15 @@ python3 scripts/build_universe.py <xlsx>     # skip if xlsx absent
 python3 scripts/gen_deep_auto.py             # regenerates model-derived deep-dive fillers
 python3 scripts/micro_yahoo.py               # Yahoo cross-validation pull (best-effort)
 python3 scripts/micro_build.py               # writes data/micro.json (research + scores + cross-check)
+python3 scripts/micro_refresh.py             # REQUIRED — re-derives cap/upside at the current price
 ```
 Sanity: 204 tickers, evidence≈204/204, deep model-derived=0, fundamentals≈104
-(check any cross-val `conflict` flags). Then `python3 scripts/micro_refresh.py` is NOT
-needed here (the Action owns prices), but running it is harmless and refreshes momentum +
-the Yahoo cross-check.
+(check any cross-val `conflict` flags).
+
+`micro_refresh.py` is **not** optional at the end of a rebuild. `micro_build` writes
+`marketCap` and `analyst.upsidePct` at the research snapshot's price; `micro_refresh`
+re-derives both at the current price (and the analyst/quality sub-scores they feed).
+Skipping it leaves the tab showing a research-day upside until the next Action run.
 
 ## 5b. Automated research layer → `data/{events,positioning,macro_history}.json` (Feature E)
 Extends the Intel tab from the ALB/SQM pair to the **whole book** + adds positioning and a
