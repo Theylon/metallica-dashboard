@@ -78,9 +78,18 @@ jobs:
           python scripts/mm_series_quality.py /tmp/historical_latest.json.gz > /dev/null || echo "mm_series_quality failed (non-fatal)"
           python scripts/mm_equities.py --out /tmp/mm_equities.json || echo "mm_equities failed (non-fatal)"
           if [ -f /tmp/mm_equities.json ] && [ -f scripts/rare_earth_leadlag.py ]; then
-            # lagDays is calendar days; the research script counts trading days (x5/7)
-            DELAY=$(python -c "import json;d=json.load(open('data/mm_freshness.json'));print(max(1, round(d['series'].get('270930', {}).get('lagDays', 15) * 5 / 7)))" 2>/dev/null || echo 11)
-            python scripts/rare_earth_leadlag.py /tmp/historical_latest.json.gz --equities /tmp/mm_equities.json --delay "$DELAY" > /dev/null || echo "rare_earth_leadlag failed (non-fatal)"
+            # lagDays is calendar days; the research script counts trading days (x5/7).
+            # Skip entirely while the reference series is graded "rejected": during the
+            # 2026-08-07..09-04 MetalMiner outage the lag read 27 days, and a delay measured
+            # then describes the outage, not the publication schedule (it flipped the MP
+            # result from -16% to -2%). No run beats a misleading one.
+            GRADE=$(python -c "import json;print(next((r['grade'] for r in json.load(open('data/mm_series_registry.json'))['series'] if r['id']==270930), 'unknown'))" 2>/dev/null || echo unknown)
+            DELAY=$(python -c "import json;d=json.load(open('data/mm_freshness.json'));print(max(1, round(d['series'].get('270930', {}).get('lagDays', 4) * 5 / 7)))" 2>/dev/null || echo 3)
+            if [ "$GRADE" = "rejected" ]; then
+              echo "rare_earth_leadlag skipped: reference series 270930 graded rejected (delay $DELAY would be an outage artefact)"
+            else
+              python scripts/rare_earth_leadlag.py /tmp/historical_latest.json.gz --equities /tmp/mm_equities.json --delay "$DELAY" > /dev/null || echo "rare_earth_leadlag failed (non-fatal)"
+            fi
           fi
           rm -f /tmp/historical_latest.json.gz /tmp/mm_equities.json
 
