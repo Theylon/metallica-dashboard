@@ -689,7 +689,6 @@ td.wrap-cell { white-space: normal; overflow-wrap: anywhere; vertical-align: top
   .table-header-left { flex-wrap: wrap; row-gap: 8px; }
   .filter-bar { margin-left: 0; padding-left: 0; border-left: none; }
   .filter-input { width: 100px; }
-  #trade-note { max-width: 100% !important; text-align: left !important; }
 
   .exposure-grid { gap: 12px; }
   .gauge-center-label { font-size: 20px; }
@@ -1007,27 +1006,12 @@ body.fts-reorder-active { user-select: none; cursor: grabbing; }
       </div>
     </div>
 
-    <!-- Trade execution tape (Report v2) -->
-    <div class="table-panel">
-      <div class="table-header">
-        <div class="table-title">Trade Execution Tape</div>
-        <div id="trade-note" style="font-size:11px;color:var(--text-muted);max-width:58%;text-align:right;line-height:1.45;"></div>
-      </div>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="text-align:left;">Time (UTC)</th>
-              <th>Ticker</th>
-              <th>Shares</th>
-              <th>Avg Fill</th>
-              <th>Order</th>
-            </tr>
-          </thead>
-          <tbody id="trade-tbody"><tr class="empty-row"><td colspan="5">Awaiting report data</td></tr></tbody>
-        </table>
-      </div>
-    </div>
+    <!-- The "Trade Execution Tape" that used to sit here was removed: it showed
+         the top-12 CURRENT HOLDINGS, not executions — a literal "—" under
+         "Time (UTC)", average cost relabelled "Avg Fill", and a BUY/SELL SHORT
+         column synthesised from the position side. Every value it held is in
+         the Positions table above, and the real execution history is the
+         Orders tab, which reads data/orders.jsonl. -->
   </div><!-- /positions -->
 
   <!-- ─── Journal page (behavioral trade analytics · Shadow Account) ── -->
@@ -3710,7 +3694,6 @@ function renderReport() {
   // Rewrite those two facts from the live data so the provenance line can't lie.
   setText('report-sources', 'Sources: ' + rewriteSourceFacts(report.sources || ''));
   setText('risk-asof', 'as of ' + (report.asOf || '—'));
-  renderTradeTape();
   renderEtfLookthrough();
   renderRiskTab();
   renderMarkets();
@@ -3745,22 +3728,6 @@ function benchSinceInception(t) {
   const i = b.dates.indexOf(INCEPTION_DATE);
   if (i < 0 || !b.closes[i]) return null;
   return (b.closes[b.closes.length - 1] / b.closes[i] - 1) * 100;
-}
-
-function renderTradeTape() {
-  const el = document.getElementById('trade-tbody');
-  if (!positions || !positions.length) { if (el) el.innerHTML = ''; return; }
-  setText('trade-note', `Largest current holdings from the live book (${(account.updatedAt || '').slice(0, 10)}) — `
-    + `share count at average cost. Full execution history is on the Orders tab.`);
-  const rows = positions.slice().sort((a, b) => Math.abs(b.mktValue) - Math.abs(a.mktValue)).slice(0, 12);
-  el.innerHTML = rows.map(p => `
-    <tr>
-      <td>—</td>
-      <td><span class="ticker-sym">${esc(p.ticker)}</span></td>
-      <td>${fmt(p.shares, 2)}</td>
-      <td>${fmtPrice(p.avgCost)}</td>
-      <td>${p.side === 'short' ? 'SELL SHORT' : 'BUY'}</td>
-    </tr>`).join('');
 }
 
 // Honest staleness badge for the genuinely hand-authored/editorial sections
