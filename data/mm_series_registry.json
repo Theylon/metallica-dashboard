@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-10-23T21:08:47+00:00",
-  "asOf": "2026-10-23",
-  "dumpDate": "2026-10-23",
+  "updatedAt": "2026-10-26T13:25:45+00:00",
+  "asOf": "2026-10-26",
+  "dumpDate": "2026-10-26",
   "counts": {
-    "rejected": 56,
-    "level_only": 54,
+    "rejected": 44,
+    "level_only": 66,
     "tradable": 59,
     "tradable_public": 21,
     "tradable_proprietary": 38
@@ -21,13 +21,13 @@
         "frozen: 72% of steps unchanged"
       ],
       "stats": {
-        "obs": 1813,
+        "obs": 1816,
         "start": "2012-04-29",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 34,
-        "flatShare": 0.7246,
+        "flatShare": 0.7245,
         "longestFlatRun": 22,
         "bigJumps": 0,
         "recentObs": 892,
@@ -38,23 +38,24 @@
       "id": 48,
       "category": "scrap",
       "name": "steel (scrap, united states, total us prompt industrial comp., gross ton)",
-      "grade": "rejected",
+      "grade": "level_only",
       "unit": "gross ton",
       "public": false,
       "reasons": [
-        "stale 32d (last 2026-09-21)"
+        "cadence: median gap 31d",
+        "only 34 obs in last 3y"
       ],
       "stats": {
-        "obs": 173,
+        "obs": 174,
         "start": "2011-12-30",
-        "end": "2026-09-21",
-        "staleDays": 32,
-        "medianGapDays": 31.0,
+        "end": "2026-10-26",
+        "staleDays": 0,
+        "medianGapDays": 31,
         "maxGapDays": 63,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 33,
+        "recentObs": 34,
         "nonPositive": 0
       }
     },
@@ -73,7 +74,7 @@
         "obs": 221,
         "start": "2011-12-26",
         "end": "2026-10-01",
-        "staleDays": 22,
+        "staleDays": 25,
         "medianGapDays": 28.0,
         "maxGapDays": 102,
         "flatShare": 0.0,
@@ -87,23 +88,24 @@
       "id": 132,
       "category": "scrap",
       "name": "steel (scrap, united states, south prompt industrial comp., gross ton)",
-      "grade": "rejected",
+      "grade": "level_only",
       "unit": "gross ton",
       "public": false,
       "reasons": [
-        "stale 32d (last 2026-09-21)"
+        "cadence: median gap 31d",
+        "only 33 obs in last 3y"
       ],
       "stats": {
-        "obs": 178,
+        "obs": 179,
         "start": "2011-12-30",
-        "end": "2026-09-21",
-        "staleDays": 32,
-        "medianGapDays": 31,
+        "end": "2026-10-26",
+        "staleDays": 0,
+        "medianGapDays": 31.0,
         "maxGapDays": 92,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 32,
+        "recentObs": 33,
         "nonPositive": 0
       }
     },
@@ -116,16 +118,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1995,
+        "obs": 1996,
         "start": "2011-12-30",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 33,
         "flatShare": 0.0005,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 741,
+        "recentObs": 739,
         "nonPositive": 0
       }
     },
@@ -138,19 +140,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 7d",
-        "only 150 obs in last 3y"
+        "only 151 obs in last 3y"
       ],
       "stats": {
-        "obs": 748,
+        "obs": 749,
         "start": "2011-12-28",
-        "end": "2026-10-16",
-        "staleDays": 7,
-        "medianGapDays": 7,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 7.0,
         "maxGapDays": 29,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 150,
+        "recentObs": 151,
         "nonPositive": 0
       }
     },
@@ -158,23 +160,24 @@
       "id": 153,
       "category": "scrap",
       "name": "steel (scrap, united states, total us shredded scrap (#2), gross ton)",
-      "grade": "rejected",
+      "grade": "level_only",
       "unit": "gross ton",
       "public": false,
       "reasons": [
-        "stale 32d (last 2026-09-21)"
+        "cadence: median gap 31d",
+        "only 35 obs in last 3y"
       ],
       "stats": {
-        "obs": 177,
+        "obs": 178,
         "start": "2011-12-30",
-        "end": "2026-09-21",
-        "staleDays": 32,
-        "medianGapDays": 30.5,
+        "end": "2026-10-26",
+        "staleDays": 0,
+        "medianGapDays": 31,
         "maxGapDays": 63,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 34,
+        "recentObs": 35,
         "nonPositive": 0
       }
     },
@@ -189,16 +192,16 @@
         "1 >50% jump(s) \u2014 check before use"
       ],
       "stats": {
-        "obs": 3298,
+        "obs": 3299,
         "start": "2012-01-03",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-26",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
         "maxGapDays": 92,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 1,
-        "recentObs": 702,
+        "recentObs": 700,
         "nonPositive": 0
       }
     },
@@ -211,16 +214,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3412,
+        "obs": 3413,
         "start": "2012-01-03",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 10,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 712,
+        "recentObs": 710,
         "nonPositive": 0
       }
     },
@@ -238,7 +241,7 @@
         "obs": 375,
         "start": "2020-01-01",
         "end": "2026-09-29",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 90,
         "flatShare": 0.7353,
@@ -252,23 +255,24 @@
       "id": 213,
       "category": "scrap",
       "name": "steel (scrap, united states, north central / east #1 heavy melting steel, gross ton)",
-      "grade": "rejected",
+      "grade": "level_only",
       "unit": "gross ton",
       "public": false,
       "reasons": [
-        "stale 60d (last 2026-08-24)"
+        "cadence: median gap 31d",
+        "only 35 obs in last 3y"
       ],
       "stats": {
-        "obs": 173,
+        "obs": 174,
         "start": "2011-12-30",
-        "end": "2026-08-24",
-        "staleDays": 60,
-        "medianGapDays": 31.0,
+        "end": "2026-10-26",
+        "staleDays": 0,
+        "medianGapDays": 31,
         "maxGapDays": 63,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 34,
+        "recentObs": 35,
         "nonPositive": 0
       }
     },
@@ -286,7 +290,7 @@
         "obs": 242,
         "start": "2020-01-01",
         "end": "2026-09-29",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 1,
         "maxGapDays": 91,
         "flatShare": 0.6183,
@@ -304,19 +308,19 @@
       "unit": "troy ounce",
       "public": false,
       "reasons": [
-        "only 344 obs in last 3y"
+        "only 342 obs in last 3y"
       ],
       "stats": {
         "obs": 1736,
         "start": "2012-01-03",
         "end": "2026-10-22",
-        "staleDays": 1,
+        "staleDays": 4,
         "medianGapDays": 1,
         "maxGapDays": 78,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 344,
+        "recentObs": 342,
         "nonPositive": 0
       }
     },
@@ -329,16 +333,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2014,
+        "obs": 2015,
         "start": "2011-12-01",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 61,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 746,
+        "recentObs": 744,
         "nonPositive": 0
       }
     },
@@ -351,19 +355,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 7d",
-        "only 151 obs in last 3y"
+        "only 152 obs in last 3y"
       ],
       "stats": {
-        "obs": 812,
+        "obs": 813,
         "start": "2011-12-28",
-        "end": "2026-10-16",
-        "staleDays": 7,
-        "medianGapDays": 7,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 7.0,
         "maxGapDays": 18,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 151,
+        "recentObs": 152,
         "nonPositive": 0
       }
     },
@@ -378,13 +382,13 @@
         "20% of steps unchanged"
       ],
       "stats": {
-        "obs": 2146,
+        "obs": 2149,
         "start": "2011-12-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 66,
-        "flatShare": 0.1972,
+        "flatShare": 0.1974,
         "longestFlatRun": 91,
         "bigJumps": 0,
         "recentObs": 973,
@@ -395,23 +399,24 @@
       "id": 260,
       "category": "scrap",
       "name": "steel (scrap, united states, south #1 heavy melting steel, gross ton)",
-      "grade": "rejected",
+      "grade": "level_only",
       "unit": "gross ton",
       "public": false,
       "reasons": [
-        "stale 60d (last 2026-08-24)"
+        "cadence: median gap 31d",
+        "only 33 obs in last 3y"
       ],
       "stats": {
-        "obs": 177,
+        "obs": 178,
         "start": "2011-12-30",
-        "end": "2026-08-24",
-        "staleDays": 60,
-        "medianGapDays": 31.0,
+        "end": "2026-10-26",
+        "staleDays": 0,
+        "medianGapDays": 31,
         "maxGapDays": 63,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 32,
+        "recentObs": 33,
         "nonPositive": 0
       }
     },
@@ -423,13 +428,13 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "stale 81d (last 2026-08-03)"
+        "stale 84d (last 2026-08-03)"
       ],
       "stats": {
         "obs": 173,
         "start": "2011-11-16",
         "end": "2026-08-03",
-        "staleDays": 81,
+        "staleDays": 84,
         "medianGapDays": 31.0,
         "maxGapDays": 141,
         "flatShare": 0.0,
@@ -448,16 +453,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2012,
+        "obs": 2013,
         "start": "2011-12-01",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 32,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 747,
+        "recentObs": 745,
         "nonPositive": 0
       }
     },
@@ -470,16 +475,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2000,
+        "obs": 2001,
         "start": "2011-12-30",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 33,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 740,
+        "recentObs": 738,
         "nonPositive": 0
       }
     },
@@ -492,19 +497,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 7d",
-        "only 131 obs in last 3y"
+        "only 132 obs in last 3y"
       ],
       "stats": {
-        "obs": 284,
+        "obs": 285,
         "start": "2020-01-01",
-        "end": "2026-10-17",
-        "staleDays": 6,
-        "medianGapDays": 7,
+        "end": "2026-10-25",
+        "staleDays": 1,
+        "medianGapDays": 7.0,
         "maxGapDays": 26,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 131,
+        "recentObs": 132,
         "nonPositive": 0
       }
     },
@@ -516,19 +521,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "stale 337d (last 2025-11-20)"
+        "stale 340d (last 2025-11-20)"
       ],
       "stats": {
         "obs": 265,
         "start": "2011-10-31",
         "end": "2025-11-20",
-        "staleDays": 337,
+        "staleDays": 340,
         "medianGapDays": 8.0,
         "maxGapDays": 815,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 41,
+        "recentObs": 40,
         "nonPositive": 0
       }
     },
@@ -540,19 +545,19 @@
       "unit": "pound",
       "public": true,
       "reasons": [
-        "only 523 obs in last 3y"
+        "only 522 obs in last 3y"
       ],
       "stats": {
-        "obs": 1625,
+        "obs": 1626,
         "start": "2013-04-12",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 2.0,
+        "medianGapDays": 2,
         "maxGapDays": 84,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 523,
+        "recentObs": 522,
         "nonPositive": 0
       }
     },
@@ -567,13 +572,13 @@
         "20% of steps unchanged"
       ],
       "stats": {
-        "obs": 2069,
+        "obs": 2072,
         "start": "2011-12-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 73,
-        "flatShare": 0.2045,
+        "flatShare": 0.2047,
         "longestFlatRun": 91,
         "bigJumps": 0,
         "recentObs": 970,
@@ -588,13 +593,13 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "stale 81d (last 2026-08-03)"
+        "stale 84d (last 2026-08-03)"
       ],
       "stats": {
         "obs": 177,
         "start": "2011-11-16",
         "end": "2026-08-03",
-        "staleDays": 81,
+        "staleDays": 84,
         "medianGapDays": 31.0,
         "maxGapDays": 77,
         "flatShare": 0.0,
@@ -613,19 +618,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 5d",
-        "only 196 obs in last 3y"
+        "only 195 obs in last 3y"
       ],
       "stats": {
-        "obs": 450,
+        "obs": 451,
         "start": "2011-12-26",
-        "end": "2026-10-21",
-        "staleDays": 2,
-        "medianGapDays": 5,
+        "end": "2026-10-26",
+        "staleDays": 0,
+        "medianGapDays": 5.0,
         "maxGapDays": 316,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 196,
+        "recentObs": 195,
         "nonPositive": 0
       }
     },
@@ -637,13 +642,13 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "stale 81d (last 2026-08-03)"
+        "stale 84d (last 2026-08-03)"
       ],
       "stats": {
         "obs": 171,
         "start": "2011-11-16",
         "end": "2026-08-03",
-        "staleDays": 81,
+        "staleDays": 84,
         "medianGapDays": 31.0,
         "maxGapDays": 77,
         "flatShare": 0.0,
@@ -667,7 +672,7 @@
         "obs": 319,
         "start": "2020-01-01",
         "end": "2026-09-29",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 1.0,
         "maxGapDays": 90,
         "flatShare": 0.6855,
@@ -686,16 +691,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3129,
+        "obs": 3130,
         "start": "2011-12-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 99,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 616,
+        "recentObs": 614,
         "nonPositive": 0
       }
     },
@@ -710,16 +715,16 @@
         "frozen: 83% of steps unchanged"
       ],
       "stats": {
-        "obs": 501,
+        "obs": 504,
         "start": "2020-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 91,
-        "flatShare": 0.832,
+        "flatShare": 0.833,
         "longestFlatRun": 32,
         "bigJumps": 1,
-        "recentObs": 359,
+        "recentObs": 362,
         "nonPositive": 0
       }
     },
@@ -727,23 +732,24 @@
       "id": 486,
       "category": "scrap",
       "name": "steel (scrap, united states, north midwest #1 heavy melting steel, gross ton)",
-      "grade": "rejected",
+      "grade": "level_only",
       "unit": "gross ton",
       "public": false,
       "reasons": [
-        "stale 32d (last 2026-09-21)"
+        "cadence: median gap 31d",
+        "only 33 obs in last 3y"
       ],
       "stats": {
-        "obs": 176,
+        "obs": 177,
         "start": "2011-12-30",
-        "end": "2026-09-21",
-        "staleDays": 32,
-        "medianGapDays": 31,
+        "end": "2026-10-26",
+        "staleDays": 0,
+        "medianGapDays": 31.0,
         "maxGapDays": 92,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 32,
+        "recentObs": 33,
         "nonPositive": 0
       }
     },
@@ -758,13 +764,13 @@
         "frozen: 45% of steps unchanged"
       ],
       "stats": {
-        "obs": 1940,
+        "obs": 1943,
         "start": "2020-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 21,
-        "flatShare": 0.4497,
+        "flatShare": 0.4501,
         "longestFlatRun": 13,
         "bigJumps": 0,
         "recentObs": 984,
@@ -782,16 +788,16 @@
         "frozen: 51% of steps unchanged"
       ],
       "stats": {
-        "obs": 708,
+        "obs": 710,
         "start": "2020-01-01",
-        "end": "2026-10-17",
-        "staleDays": 6,
+        "end": "2026-10-26",
+        "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 23,
-        "flatShare": 0.5064,
+        "flatShare": 0.5063,
         "longestFlatRun": 17,
         "bigJumps": 0,
-        "recentObs": 334,
+        "recentObs": 336,
         "nonPositive": 0
       }
     },
@@ -809,7 +815,7 @@
         "obs": 334,
         "start": "2020-01-01",
         "end": "2026-09-29",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 1,
         "maxGapDays": 90,
         "flatShare": 0.7207,
@@ -827,19 +833,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "only 476 obs in last 3y"
+        "only 474 obs in last 3y"
       ],
       "stats": {
-        "obs": 1753,
+        "obs": 1754,
         "start": "2011-12-23",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 302,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 476,
+        "recentObs": 474,
         "nonPositive": 0
       }
     },
@@ -851,13 +857,13 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "stale 81d (last 2026-08-03)"
+        "stale 84d (last 2026-08-03)"
       ],
       "stats": {
         "obs": 180,
         "start": "2011-11-16",
         "end": "2026-08-03",
-        "staleDays": 81,
+        "staleDays": 84,
         "medianGapDays": 31,
         "maxGapDays": 77,
         "flatShare": 0.0,
@@ -871,23 +877,24 @@
       "id": 561,
       "category": "scrap",
       "name": "steel (scrap, united states, north central / east prompt industrial comp., gross ton)",
-      "grade": "rejected",
+      "grade": "level_only",
       "unit": "gross ton",
       "public": false,
       "reasons": [
-        "stale 32d (last 2026-09-21)"
+        "cadence: median gap 31d",
+        "only 32 obs in last 3y"
       ],
       "stats": {
-        "obs": 161,
+        "obs": 162,
         "start": "2012-10-31",
-        "end": "2026-09-21",
-        "staleDays": 32,
-        "medianGapDays": 31.0,
+        "end": "2026-10-26",
+        "staleDays": 0,
+        "medianGapDays": 31,
         "maxGapDays": 92,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 31,
+        "recentObs": 32,
         "nonPositive": 0
       }
     },
@@ -899,19 +906,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "stale 337d (last 2025-11-20)"
+        "stale 340d (last 2025-11-20)"
       ],
       "stats": {
         "obs": 268,
         "start": "2011-11-14",
         "end": "2025-11-20",
-        "staleDays": 337,
+        "staleDays": 340,
         "medianGapDays": 8,
         "maxGapDays": 815,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 41,
+        "recentObs": 40,
         "nonPositive": 0
       }
     },
@@ -929,7 +936,7 @@
         "obs": 173,
         "start": "2011-12-15",
         "end": "2026-10-19",
-        "staleDays": 4,
+        "staleDays": 7,
         "medianGapDays": 15.0,
         "maxGapDays": 395,
         "flatShare": 0.0,
@@ -947,19 +954,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "stale 295d (last 2026-01-01)"
+        "stale 298d (last 2026-01-01)"
       ],
       "stats": {
         "obs": 359,
         "start": "2011-12-28",
         "end": "2026-01-01",
-        "staleDays": 295,
+        "staleDays": 298,
         "medianGapDays": 9.0,
         "maxGapDays": 78,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 62,
+        "recentObs": 61,
         "nonPositive": 0
       }
     },
@@ -972,19 +979,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 7d",
-        "only 152 obs in last 3y"
+        "only 153 obs in last 3y"
       ],
       "stats": {
-        "obs": 343,
+        "obs": 344,
         "start": "2020-01-01",
-        "end": "2026-10-17",
-        "staleDays": 6,
-        "medianGapDays": 7.0,
+        "end": "2026-10-25",
+        "staleDays": 1,
+        "medianGapDays": 7,
         "maxGapDays": 26,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 152,
+        "recentObs": 153,
         "nonPositive": 0
       }
     },
@@ -997,16 +1004,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2016,
+        "obs": 2017,
         "start": "2011-12-31",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 61,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 747,
+        "recentObs": 745,
         "nonPositive": 0
       }
     },
@@ -1021,13 +1028,13 @@
         "frozen: 47% of steps unchanged"
       ],
       "stats": {
-        "obs": 1806,
+        "obs": 1809,
         "start": "2020-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 90,
-        "flatShare": 0.4693,
+        "flatShare": 0.4696,
         "longestFlatRun": 13,
         "bigJumps": 0,
         "recentObs": 976,
@@ -1038,23 +1045,24 @@
       "id": 671,
       "category": "scrap",
       "name": "steel (scrap, united states, north midwest shredded scrap (#2), gross ton)",
-      "grade": "rejected",
+      "grade": "level_only",
       "unit": "gross ton",
       "public": false,
       "reasons": [
-        "stale 32d (last 2026-09-21)"
+        "cadence: median gap 31d",
+        "only 34 obs in last 3y"
       ],
       "stats": {
-        "obs": 176,
+        "obs": 177,
         "start": "2011-12-30",
-        "end": "2026-09-21",
-        "staleDays": 32,
-        "medianGapDays": 31,
+        "end": "2026-10-26",
+        "staleDays": 0,
+        "medianGapDays": 31.0,
         "maxGapDays": 63,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 33,
+        "recentObs": 34,
         "nonPositive": 0
       }
     },
@@ -1067,16 +1075,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1999,
+        "obs": 2000,
         "start": "2011-12-30",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 33,
         "flatShare": 0.0005,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 746,
+        "recentObs": 744,
         "nonPositive": 0
       }
     },
@@ -1084,23 +1092,24 @@
       "id": 715,
       "category": "scrap",
       "name": "steel (scrap, united states, south shredded scrap (#2), gross ton)",
-      "grade": "rejected",
+      "grade": "level_only",
       "unit": "gross ton",
       "public": false,
       "reasons": [
-        "stale 32d (last 2026-09-21)"
+        "cadence: median gap 31d",
+        "only 32 obs in last 3y"
       ],
       "stats": {
-        "obs": 173,
+        "obs": 174,
         "start": "2011-12-30",
-        "end": "2026-09-21",
-        "staleDays": 32,
-        "medianGapDays": 31.0,
+        "end": "2026-10-26",
+        "staleDays": 0,
+        "medianGapDays": 31,
         "maxGapDays": 91,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 31,
+        "recentObs": 32,
         "nonPositive": 0
       }
     },
@@ -1115,16 +1124,16 @@
         "19% of steps unchanged"
       ],
       "stats": {
-        "obs": 2224,
+        "obs": 2227,
         "start": "2011-12-28",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 98,
-        "flatShare": 0.1898,
+        "flatShare": 0.19,
         "longestFlatRun": 91,
         "bigJumps": 0,
-        "recentObs": 969,
+        "recentObs": 970,
         "nonPositive": 0
       }
     },
@@ -1137,16 +1146,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1999,
+        "obs": 2000,
         "start": "2011-12-30",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 33,
         "flatShare": 0.0015,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 738,
+        "recentObs": 736,
         "nonPositive": 0
       }
     },
@@ -1159,16 +1168,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3043,
+        "obs": 3044,
         "start": "2011-12-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 99,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 614,
+        "recentObs": 612,
         "nonPositive": 0
       }
     },
@@ -1183,16 +1192,16 @@
         "frozen: 94% of steps unchanged"
       ],
       "stats": {
-        "obs": 1338,
+        "obs": 1341,
         "start": "2020-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 90,
-        "flatShare": 0.9372,
+        "flatShare": 0.9373,
         "longestFlatRun": 34,
         "bigJumps": 0,
-        "recentObs": 902,
+        "recentObs": 905,
         "nonPositive": 0
       }
     },
@@ -1204,19 +1213,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "only 599 obs in last 3y"
+        "only 597 obs in last 3y"
       ],
       "stats": {
-        "obs": 3034,
+        "obs": 3035,
         "start": "2011-12-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 100,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 599,
+        "recentObs": 597,
         "nonPositive": 0
       }
     },
@@ -1230,19 +1239,19 @@
       "reasons": [
         "cadence: median gap 6d",
         "37% of steps unchanged",
-        "only 153 obs in last 3y"
+        "only 154 obs in last 3y"
       ],
       "stats": {
-        "obs": 549,
+        "obs": 550,
         "start": "2020-01-01",
-        "end": "2026-10-17",
-        "staleDays": 6,
-        "medianGapDays": 6.0,
+        "end": "2026-10-25",
+        "staleDays": 1,
+        "medianGapDays": 6,
         "maxGapDays": 23,
-        "flatShare": 0.3741,
+        "flatShare": 0.3734,
         "longestFlatRun": 17,
         "bigJumps": 0,
-        "recentObs": 153,
+        "recentObs": 154,
         "nonPositive": 0
       }
     },
@@ -1257,13 +1266,13 @@
         "frozen: 48% of steps unchanged"
       ],
       "stats": {
-        "obs": 1850,
+        "obs": 1853,
         "start": "2020-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 90,
-        "flatShare": 0.4824,
+        "flatShare": 0.4827,
         "longestFlatRun": 13,
         "bigJumps": 0,
         "recentObs": 1003,
@@ -1279,19 +1288,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 7d",
-        "only 154 obs in last 3y"
+        "only 155 obs in last 3y"
       ],
       "stats": {
-        "obs": 351,
+        "obs": 352,
         "start": "2020-01-01",
-        "end": "2026-10-17",
-        "staleDays": 6,
-        "medianGapDays": 7.0,
+        "end": "2026-10-25",
+        "staleDays": 1,
+        "medianGapDays": 7,
         "maxGapDays": 26,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 154,
+        "recentObs": 155,
         "nonPositive": 0
       }
     },
@@ -1304,19 +1313,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 7d",
-        "only 132 obs in last 3y"
+        "only 133 obs in last 3y"
       ],
       "stats": {
-        "obs": 528,
+        "obs": 529,
         "start": "2011-12-28",
-        "end": "2026-10-16",
-        "staleDays": 7,
-        "medianGapDays": 7,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 7.0,
         "maxGapDays": 34,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 132,
+        "recentObs": 133,
         "nonPositive": 0
       }
     },
@@ -1329,16 +1338,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2021,
+        "obs": 2022,
         "start": "2011-12-31",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 33,
         "flatShare": 0.0005,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 750,
+        "recentObs": 748,
         "nonPositive": 0
       }
     },
@@ -1350,19 +1359,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "only 374 obs in last 3y"
+        "only 372 obs in last 3y"
       ],
       "stats": {
-        "obs": 1528,
+        "obs": 1529,
         "start": "2011-12-27",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 2,
+        "medianGapDays": 2.0,
         "maxGapDays": 314,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 374,
+        "recentObs": 372,
         "nonPositive": 0
       }
     },
@@ -1375,16 +1384,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1996,
+        "obs": 1997,
         "start": "2011-12-30",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 39,
         "flatShare": 0.001,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 736,
+        "recentObs": 734,
         "nonPositive": 0
       }
     },
@@ -1399,13 +1408,13 @@
         "frozen: 48% of steps unchanged"
       ],
       "stats": {
-        "obs": 1833,
+        "obs": 1836,
         "start": "2020-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 90,
-        "flatShare": 0.4776,
+        "flatShare": 0.4779,
         "longestFlatRun": 13,
         "bigJumps": 0,
         "recentObs": 974,
@@ -1420,19 +1429,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "stale 337d (last 2025-11-20)"
+        "stale 340d (last 2025-11-20)"
       ],
       "stats": {
         "obs": 270,
         "start": "2011-11-14",
         "end": "2025-11-20",
-        "staleDays": 337,
+        "staleDays": 340,
         "medianGapDays": 8,
         "maxGapDays": 815,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 41,
+        "recentObs": 40,
         "nonPositive": 0
       }
     },
@@ -1445,16 +1454,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3451,
+        "obs": 3452,
         "start": "2011-12-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 24,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 637,
+        "recentObs": 635,
         "nonPositive": 0
       }
     },
@@ -1466,19 +1475,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "stale 295d (last 2026-01-01)"
+        "stale 298d (last 2026-01-01)"
       ],
       "stats": {
         "obs": 283,
         "start": "2011-12-28",
         "end": "2026-01-01",
-        "staleDays": 295,
+        "staleDays": 298,
         "medianGapDays": 14.0,
         "maxGapDays": 111,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 46,
+        "recentObs": 45,
         "nonPositive": 0
       }
     },
@@ -1486,23 +1495,24 @@
       "id": 1152,
       "category": "scrap",
       "name": "steel (scrap, united states, total us #1 heavy melting steel, gross ton)",
-      "grade": "rejected",
+      "grade": "level_only",
       "unit": "gross ton",
       "public": false,
       "reasons": [
-        "stale 32d (last 2026-09-21)"
+        "cadence: median gap 31d",
+        "only 33 obs in last 3y"
       ],
       "stats": {
-        "obs": 177,
+        "obs": 178,
         "start": "2011-12-30",
-        "end": "2026-09-21",
-        "staleDays": 32,
-        "medianGapDays": 30.5,
+        "end": "2026-10-26",
+        "staleDays": 0,
+        "medianGapDays": 31,
         "maxGapDays": 63,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 32,
+        "recentObs": 33,
         "nonPositive": 0
       }
     },
@@ -1514,19 +1524,19 @@
       "unit": "pound",
       "public": false,
       "reasons": [
-        "1 >50% jump(s) in a 158-obs series"
+        "1 >50% jump(s) in a 159-obs series"
       ],
       "stats": {
-        "obs": 158,
+        "obs": 159,
         "start": "2011-10-26",
-        "end": "2026-09-28",
-        "staleDays": 25,
-        "medianGapDays": 31,
+        "end": "2026-10-26",
+        "staleDays": 0,
+        "medianGapDays": 31.0,
         "maxGapDays": 272,
-        "flatShare": 0.0064,
+        "flatShare": 0.0063,
         "longestFlatRun": 1,
         "bigJumps": 1,
-        "recentObs": 32,
+        "recentObs": 33,
         "nonPositive": 0
       }
     },
@@ -1539,19 +1549,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 30d",
-        "only 36 obs in last 3y"
+        "only 37 obs in last 3y"
       ],
       "stats": {
-        "obs": 177,
+        "obs": 178,
         "start": "2011-12-22",
-        "end": "2026-09-28",
-        "staleDays": 25,
-        "medianGapDays": 30.0,
+        "end": "2026-10-26",
+        "staleDays": 0,
+        "medianGapDays": 30,
         "maxGapDays": 57,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 36,
+        "recentObs": 37,
         "nonPositive": 0
       }
     },
@@ -1569,13 +1579,13 @@
         "obs": 3350,
         "start": "2011-12-30",
         "end": "2026-10-23",
-        "staleDays": 0,
+        "staleDays": 3,
         "medianGapDays": 1,
         "maxGapDays": 42,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 2,
-        "recentObs": 645,
+        "recentObs": 643,
         "nonPositive": 0
       }
     },
@@ -1590,16 +1600,16 @@
         "23% of steps unchanged"
       ],
       "stats": {
-        "obs": 1832,
+        "obs": 1835,
         "start": "2011-12-22",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 401,
-        "flatShare": 0.231,
+        "flatShare": 0.2312,
         "longestFlatRun": 91,
         "bigJumps": 0,
-        "recentObs": 954,
+        "recentObs": 956,
         "nonPositive": 0
       }
     },
@@ -1612,16 +1622,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2001,
+        "obs": 2002,
         "start": "2011-12-30",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 33,
         "flatShare": 0.0015,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 746,
+        "recentObs": 744,
         "nonPositive": 0
       }
     },
@@ -1634,19 +1644,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 7d",
-        "only 150 obs in last 3y"
+        "only 151 obs in last 3y"
       ],
       "stats": {
-        "obs": 794,
+        "obs": 795,
         "start": "2011-12-28",
-        "end": "2026-10-16",
-        "staleDays": 7,
-        "medianGapDays": 7,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 7.0,
         "maxGapDays": 26,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 150,
+        "recentObs": 151,
         "nonPositive": 0
       }
     },
@@ -1661,13 +1671,13 @@
         "frozen: 47% of steps unchanged"
       ],
       "stats": {
-        "obs": 1801,
+        "obs": 1804,
         "start": "2020-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 90,
-        "flatShare": 0.4683,
+        "flatShare": 0.4687,
         "longestFlatRun": 13,
         "bigJumps": 0,
         "recentObs": 977,
@@ -1683,16 +1693,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3466,
+        "obs": 3467,
         "start": "2011-12-31",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 14,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 645,
+        "recentObs": 643,
         "nonPositive": 0
       }
     },
@@ -1707,13 +1717,13 @@
         "frozen: 48% of steps unchanged"
       ],
       "stats": {
-        "obs": 1854,
+        "obs": 1857,
         "start": "2020-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 90,
-        "flatShare": 0.483,
+        "flatShare": 0.4833,
         "longestFlatRun": 13,
         "bigJumps": 0,
         "recentObs": 978,
@@ -1724,23 +1734,24 @@
       "id": 1373,
       "category": "scrap",
       "name": "steel (scrap, united states, north midwest prompt industrial comp., gross ton)",
-      "grade": "rejected",
+      "grade": "level_only",
       "unit": "gross ton",
       "public": false,
       "reasons": [
-        "stale 32d (last 2026-09-21)"
+        "cadence: median gap 31d",
+        "only 34 obs in last 3y"
       ],
       "stats": {
-        "obs": 171,
+        "obs": 172,
         "start": "2011-12-30",
-        "end": "2026-09-21",
-        "staleDays": 32,
-        "medianGapDays": 31.0,
+        "end": "2026-10-26",
+        "staleDays": 0,
+        "medianGapDays": 31,
         "maxGapDays": 62,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 33,
+        "recentObs": 34,
         "nonPositive": 0
       }
     },
@@ -1753,16 +1764,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2020,
+        "obs": 2021,
         "start": "2011-12-01",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 61,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 748,
+        "recentObs": 746,
         "nonPositive": 0
       }
     },
@@ -1775,16 +1786,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2014,
+        "obs": 2015,
         "start": "2011-12-01",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 32,
         "flatShare": 0.0005,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 747,
+        "recentObs": 745,
         "nonPositive": 0
       }
     },
@@ -1792,23 +1803,24 @@
       "id": 1456,
       "category": "scrap",
       "name": "steel (scrap, united states, north central / east shredded scrap (#2), gross ton)",
-      "grade": "rejected",
+      "grade": "level_only",
       "unit": "gross ton",
       "public": false,
       "reasons": [
-        "stale 32d (last 2026-09-21)"
+        "cadence: median gap 31d",
+        "only 30 obs in last 3y"
       ],
       "stats": {
-        "obs": 163,
+        "obs": 164,
         "start": "2011-12-30",
-        "end": "2026-09-21",
-        "staleDays": 32,
-        "medianGapDays": 31.0,
+        "end": "2026-10-26",
+        "staleDays": 0,
+        "medianGapDays": 31,
         "maxGapDays": 63,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 29,
+        "recentObs": 30,
         "nonPositive": 0
       }
     },
@@ -1823,13 +1835,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1933,
+        "obs": 1936,
         "start": "2012-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 121,
-        "flatShare": 0.3333,
+        "flatShare": 0.3339,
         "longestFlatRun": 26,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -1847,13 +1859,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1966,
+        "obs": 1969,
         "start": "2012-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 122,
-        "flatShare": 0.2641,
+        "flatShare": 0.2642,
         "longestFlatRun": 9,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -1871,13 +1883,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1976,
+        "obs": 1979,
         "start": "2012-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 89,
-        "flatShare": 0.2046,
+        "flatShare": 0.2042,
         "longestFlatRun": 23,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -1895,13 +1907,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1957,
+        "obs": 1960,
         "start": "2012-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 62,
-        "flatShare": 0.2945,
+        "flatShare": 0.295,
         "longestFlatRun": 9,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -1919,13 +1931,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1990,
+        "obs": 1993,
         "start": "2012-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 91,
-        "flatShare": 0.2866,
+        "flatShare": 0.2871,
         "longestFlatRun": 9,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -1946,7 +1958,7 @@
         "obs": 222,
         "start": "2012-01-01",
         "end": "2026-10-01",
-        "staleDays": 22,
+        "staleDays": 25,
         "medianGapDays": 29,
         "maxGapDays": 61,
         "flatShare": 0.0,
@@ -1968,13 +1980,13 @@
         "frozen: 46% of steps unchanged"
       ],
       "stats": {
-        "obs": 1958,
+        "obs": 1961,
         "start": "2012-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 243,
-        "flatShare": 0.463,
+        "flatShare": 0.4633,
         "longestFlatRun": 34,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -1992,13 +2004,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1975,
+        "obs": 1978,
         "start": "2012-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 125,
-        "flatShare": 0.1454,
+        "flatShare": 0.1452,
         "longestFlatRun": 8,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -2016,13 +2028,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1940,
+        "obs": 1943,
         "start": "2012-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 124,
-        "flatShare": 0.2362,
+        "flatShare": 0.2358,
         "longestFlatRun": 10,
         "bigJumps": 0,
         "recentObs": 1057,
@@ -2040,13 +2052,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1985,
+        "obs": 1988,
         "start": "2012-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 92,
-        "flatShare": 0.318,
+        "flatShare": 0.3186,
         "longestFlatRun": 21,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -2062,16 +2074,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1903,
+        "obs": 1904,
         "start": "2019-01-01",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 707,
+        "recentObs": 705,
         "nonPositive": 0
       }
     },
@@ -2084,16 +2096,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1904,
+        "obs": 1905,
         "start": "2019-01-01",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 709,
+        "recentObs": 707,
         "nonPositive": 0
       }
     },
@@ -2108,13 +2120,13 @@
         "frozen: 61% of steps unchanged"
       ],
       "stats": {
-        "obs": 1435,
+        "obs": 1438,
         "start": "2019-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 34,
-        "flatShare": 0.6095,
+        "flatShare": 0.6096,
         "longestFlatRun": 19,
         "bigJumps": 0,
         "recentObs": 912,
@@ -2132,13 +2144,13 @@
         "frozen: 61% of steps unchanged"
       ],
       "stats": {
-        "obs": 1437,
+        "obs": 1440,
         "start": "2019-01-01",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 34,
-        "flatShare": 0.61,
+        "flatShare": 0.6101,
         "longestFlatRun": 19,
         "bigJumps": 0,
         "recentObs": 912,
@@ -2160,7 +2172,7 @@
         "obs": 154,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 17,
+        "staleDays": 20,
         "medianGapDays": 31,
         "maxGapDays": 52,
         "flatShare": 0.0,
@@ -2184,7 +2196,7 @@
         "obs": 154,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 17,
+        "staleDays": 20,
         "medianGapDays": 31,
         "maxGapDays": 52,
         "flatShare": 0.0,
@@ -2209,7 +2221,7 @@
         "obs": 154,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 17,
+        "staleDays": 20,
         "medianGapDays": 31,
         "maxGapDays": 52,
         "flatShare": 0.0,
@@ -2234,7 +2246,7 @@
         "obs": 153,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 17,
+        "staleDays": 20,
         "medianGapDays": 31.0,
         "maxGapDays": 60,
         "flatShare": 0.0,
@@ -2259,7 +2271,7 @@
         "obs": 153,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 17,
+        "staleDays": 20,
         "medianGapDays": 31.0,
         "maxGapDays": 89,
         "flatShare": 0.0,
@@ -2283,7 +2295,7 @@
         "obs": 152,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 17,
+        "staleDays": 20,
         "medianGapDays": 31,
         "maxGapDays": 90,
         "flatShare": 0.0,
@@ -2308,7 +2320,7 @@
         "obs": 154,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 17,
+        "staleDays": 20,
         "medianGapDays": 31,
         "maxGapDays": 59,
         "flatShare": 0.0,
@@ -2332,7 +2344,7 @@
         "obs": 154,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 17,
+        "staleDays": 20,
         "medianGapDays": 31,
         "maxGapDays": 59,
         "flatShare": 0.0,
@@ -2357,7 +2369,7 @@
         "obs": 153,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 17,
+        "staleDays": 20,
         "medianGapDays": 31.0,
         "maxGapDays": 84,
         "flatShare": 0.0,
@@ -2378,13 +2390,13 @@
         "17% of steps unchanged"
       ],
       "stats": {
-        "obs": 2539,
+        "obs": 2542,
         "start": "2018-06-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 11,
-        "flatShare": 0.1714,
+        "flatShare": 0.172,
         "longestFlatRun": 4,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2402,13 +2414,13 @@
         "17% of steps unchanged"
       ],
       "stats": {
-        "obs": 2539,
+        "obs": 2542,
         "start": "2018-06-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 11,
-        "flatShare": 0.1714,
+        "flatShare": 0.172,
         "longestFlatRun": 4,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2426,13 +2438,13 @@
         "26% of steps unchanged"
       ],
       "stats": {
-        "obs": 2410,
+        "obs": 2413,
         "start": "2018-06-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.2561,
+        "flatShare": 0.2566,
         "longestFlatRun": 48,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2447,16 +2459,16 @@
       "unit": "index",
       "public": false,
       "reasons": [
-        "26% of steps unchanged"
+        "27% of steps unchanged"
       ],
       "stats": {
-        "obs": 2389,
+        "obs": 2392,
         "start": "2018-06-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.2647,
+        "flatShare": 0.2652,
         "longestFlatRun": 92,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2474,13 +2486,13 @@
         "24% of steps unchanged"
       ],
       "stats": {
-        "obs": 2429,
+        "obs": 2432,
         "start": "2018-06-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 14,
-        "flatShare": 0.2385,
+        "flatShare": 0.239,
         "longestFlatRun": 30,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2498,13 +2510,13 @@
         "26% of steps unchanged"
       ],
       "stats": {
-        "obs": 2393,
+        "obs": 2396,
         "start": "2018-06-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.2638,
+        "flatShare": 0.2643,
         "longestFlatRun": 92,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2522,13 +2534,13 @@
         "21% of steps unchanged"
       ],
       "stats": {
-        "obs": 2480,
+        "obs": 2483,
         "start": "2018-06-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 11,
-        "flatShare": 0.2073,
+        "flatShare": 0.2079,
         "longestFlatRun": 6,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2549,7 +2561,7 @@
         "obs": 117,
         "start": "2017-01-01",
         "end": "2026-10-06",
-        "staleDays": 17,
+        "staleDays": 20,
         "medianGapDays": 31.0,
         "maxGapDays": 64,
         "flatShare": 0.0,
@@ -2573,7 +2585,7 @@
         "obs": 116,
         "start": "2017-01-01",
         "end": "2026-10-06",
-        "staleDays": 17,
+        "staleDays": 20,
         "medianGapDays": 31,
         "maxGapDays": 64,
         "flatShare": 0.0,
@@ -2592,16 +2604,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1842,
+        "obs": 1843,
         "start": "2019-01-01",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 705,
+        "recentObs": 703,
         "nonPositive": 0
       }
     },
@@ -2614,16 +2626,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1849,
+        "obs": 1850,
         "start": "2019-01-01",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 9,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 710,
+        "recentObs": 708,
         "nonPositive": 0
       }
     },
@@ -2636,16 +2648,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1898,
+        "obs": 1899,
         "start": "2019-01-01",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 704,
+        "recentObs": 702,
         "nonPositive": 0
       }
     },
@@ -2658,16 +2670,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1902,
+        "obs": 1903,
         "start": "2019-01-01",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 707,
+        "recentObs": 705,
         "nonPositive": 0
       }
     },
@@ -2679,19 +2691,19 @@
       "unit": "short ton",
       "public": true,
       "reasons": [
-        "only 533 obs in last 3y"
+        "only 531 obs in last 3y"
       ],
       "stats": {
-        "obs": 1471,
+        "obs": 1472,
         "start": "2019-01-01",
-        "end": "2026-10-21",
-        "staleDays": 2,
-        "medianGapDays": 1.0,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 17,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 533,
+        "recentObs": 531,
         "nonPositive": 0
       }
     },
@@ -2704,16 +2716,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1734,
+        "obs": 1735,
         "start": "2019-01-01",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 28,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 651,
+        "recentObs": 649,
         "nonPositive": 0
       }
     },
@@ -2725,20 +2737,20 @@
       "unit": "pound",
       "public": true,
       "reasons": [
-        "only 493 obs in last 3y",
+        "only 491 obs in last 3y",
         "1 >50% jump(s) \u2014 check before use"
       ],
       "stats": {
-        "obs": 1180,
+        "obs": 1181,
         "start": "2019-01-01",
-        "end": "2026-10-21",
-        "staleDays": 2,
-        "medianGapDays": 1,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 24,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 1,
-        "recentObs": 493,
+        "recentObs": 491,
         "nonPositive": 0
       }
     },
@@ -2753,16 +2765,16 @@
         "1 >50% jump(s) \u2014 check before use"
       ],
       "stats": {
-        "obs": 1320,
+        "obs": 1321,
         "start": "2019-01-01",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 26,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 1,
-        "recentObs": 623,
+        "recentObs": 621,
         "nonPositive": 0
       }
     },
@@ -2775,16 +2787,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1007,
+        "obs": 1008,
         "start": "2022-01-25",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 19,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 656,
+        "recentObs": 654,
         "nonPositive": 0
       }
     },
@@ -2797,16 +2809,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1139,
+        "obs": 1140,
         "start": "2022-01-25",
-        "end": "2026-10-22",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-23",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 706,
+        "recentObs": 704,
         "nonPositive": 0
       }
     },
@@ -2824,7 +2836,7 @@
         "obs": 78,
         "start": "2020-01-01",
         "end": "2026-10-06",
-        "staleDays": 17,
+        "staleDays": 20,
         "medianGapDays": 31,
         "maxGapDays": 121,
         "flatShare": 0.0,
@@ -2849,7 +2861,7 @@
         "obs": 78,
         "start": "2020-01-01",
         "end": "2026-10-06",
-        "staleDays": 17,
+        "staleDays": 20,
         "medianGapDays": 31,
         "maxGapDays": 121,
         "flatShare": 0.0,
@@ -2867,19 +2879,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 548 obs in last 3y"
+        "only 545 obs in last 3y"
       ],
       "stats": {
         "obs": 2524,
         "start": "2013-04-02",
         "end": "2026-10-23",
-        "staleDays": 0,
+        "staleDays": 3,
         "medianGapDays": 1,
         "maxGapDays": 10,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 548,
+        "recentObs": 545,
         "nonPositive": 0
       }
     },
@@ -2891,19 +2903,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 504 obs in last 3y"
+        "only 502 obs in last 3y"
       ],
       "stats": {
         "obs": 1511,
         "start": "2014-01-02",
         "end": "2026-10-23",
-        "staleDays": 0,
+        "staleDays": 3,
         "medianGapDays": 2.0,
         "maxGapDays": 347,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 504,
+        "recentObs": 502,
         "nonPositive": 0
       }
     },
@@ -2922,7 +2934,7 @@
         "obs": 228,
         "start": "2012-01-04",
         "end": "2026-09-29",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 7,
         "maxGapDays": 316,
         "flatShare": 0.0,
@@ -2943,11 +2955,11 @@
         "only 258 obs in last 3y"
       ],
       "stats": {
-        "obs": 1179,
+        "obs": 1180,
         "start": "2012-01-04",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 2.0,
+        "medianGapDays": 2,
         "maxGapDays": 122,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -2971,7 +2983,7 @@
         "obs": 70,
         "start": "2020-12-01",
         "end": "2026-10-01",
-        "staleDays": 22,
+        "staleDays": 25,
         "medianGapDays": 31,
         "maxGapDays": 62,
         "flatShare": 0.0,
@@ -2996,7 +3008,7 @@
         "obs": 70,
         "start": "2020-12-01",
         "end": "2026-10-01",
-        "staleDays": 22,
+        "staleDays": 25,
         "medianGapDays": 31,
         "maxGapDays": 62,
         "flatShare": 0.0,
@@ -3021,7 +3033,7 @@
         "obs": 142,
         "start": "2015-01-01",
         "end": "2026-10-01",
-        "staleDays": 22,
+        "staleDays": 25,
         "medianGapDays": 31,
         "maxGapDays": 31,
         "flatShare": 0.0,
@@ -3045,7 +3057,7 @@
         "obs": 68,
         "start": "2020-12-01",
         "end": "2026-10-01",
-        "staleDays": 22,
+        "staleDays": 25,
         "medianGapDays": 31,
         "maxGapDays": 62,
         "flatShare": 0.0,
@@ -3063,19 +3075,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 559 obs in last 3y"
+        "only 562 obs in last 3y"
       ],
       "stats": {
-        "obs": 2393,
+        "obs": 2398,
         "start": "2015-01-22",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0004,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 559,
+        "recentObs": 562,
         "nonPositive": 0
       }
     },
@@ -3088,11 +3100,11 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3052,
+        "obs": 3055,
         "start": "2013-03-21",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 30,
         "flatShare": 0.0007,
         "longestFlatRun": 1,
@@ -3110,16 +3122,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3267,
+        "obs": 3272,
         "start": "2012-06-14",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
         "flatShare": 0.0003,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 658,
+        "recentObs": 660,
         "nonPositive": 0
       }
     },
@@ -3131,19 +3143,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 415 obs in last 3y"
+        "only 421 obs in last 3y"
       ],
       "stats": {
-        "obs": 1861,
+        "obs": 1869,
         "start": "2012-07-12",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 2.0,
         "maxGapDays": 30,
-        "flatShare": 0.0065,
-        "longestFlatRun": 3,
+        "flatShare": 0.0054,
+        "longestFlatRun": 2,
         "bigJumps": 0,
-        "recentObs": 415,
+        "recentObs": 421,
         "nonPositive": 0
       }
     },
@@ -3156,16 +3168,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1949,
+        "obs": 1953,
         "start": "2017-12-18",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0005,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 658,
+        "recentObs": 659,
         "nonPositive": 0
       }
     },
@@ -3178,16 +3190,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3151,
+        "obs": 3156,
         "start": "2012-10-29",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0003,
+        "flatShare": 0.0006,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 652,
+        "recentObs": 654,
         "nonPositive": 0
       }
     },
@@ -3200,11 +3212,11 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3339,
+        "obs": 3342,
         "start": "2012-03-08",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
         "flatShare": 0.0006,
         "longestFlatRun": 1,
@@ -3221,19 +3233,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "only 519 obs in last 3y"
+        "only 522 obs in last 3y"
       ],
       "stats": {
-        "obs": 519,
+        "obs": 522,
         "start": "2024-06-14",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
-        "maxGapDays": 12,
-        "flatShare": 0.0019,
+        "medianGapDays": 1,
+        "maxGapDays": 14,
+        "flatShare": 0.0038,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 519,
+        "recentObs": 522,
         "nonPositive": 0
       }
     },
@@ -3245,19 +3257,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 473 obs in last 3y"
+        "only 477 obs in last 3y"
       ],
       "stats": {
-        "obs": 2536,
+        "obs": 2542,
         "start": "2013-04-09",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 21,
-        "flatShare": 0.0036,
+        "flatShare": 0.0028,
         "longestFlatRun": 3,
         "bigJumps": 0,
-        "recentObs": 473,
+        "recentObs": 477,
         "nonPositive": 0
       }
     },
@@ -3269,19 +3281,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 562 obs in last 3y"
+        "only 566 obs in last 3y"
       ],
       "stats": {
-        "obs": 2679,
+        "obs": 2685,
         "start": "2013-01-23",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 30,
-        "flatShare": 0.003,
+        "flatShare": 0.0034,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 562,
+        "recentObs": 566,
         "nonPositive": 0
       }
     },
@@ -3293,19 +3305,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 236 obs in last 3y"
+        "only 250 obs in last 3y"
       ],
       "stats": {
-        "obs": 1876,
+        "obs": 1892,
         "start": "2012-12-05",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 55,
-        "flatShare": 0.0005,
+        "flatShare": 0.0011,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 236,
+        "recentObs": 250,
         "nonPositive": 0
       }
     },
@@ -3317,19 +3329,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 318 obs in last 3y"
+        "only 333 obs in last 3y"
       ],
       "stats": {
-        "obs": 2068,
+        "obs": 2085,
         "start": "2012-11-19",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 30,
-        "flatShare": 0.0039,
+        "flatShare": 0.0048,
         "longestFlatRun": 4,
         "bigJumps": 0,
-        "recentObs": 318,
+        "recentObs": 333,
         "nonPositive": 0
       }
     },
@@ -3341,19 +3353,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 425 obs in last 3y"
+        "only 428 obs in last 3y"
       ],
       "stats": {
-        "obs": 2697,
+        "obs": 2702,
         "start": "2011-12-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 21,
         "flatShare": 0.0019,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 425,
+        "recentObs": 428,
         "nonPositive": 0
       }
     },
@@ -3366,16 +3378,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1812,
+        "obs": 1818,
         "start": "2018-01-31",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 30,
-        "flatShare": 0.0006,
+        "flatShare": 0.0011,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 635,
+        "recentObs": 638,
         "nonPositive": 0
       }
     },
@@ -3388,16 +3400,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 2461,
+        "obs": 2465,
         "start": "2015-10-29",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0004,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 660,
+        "recentObs": 661,
         "nonPositive": 0
       }
     },
@@ -3410,16 +3422,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1486,
+        "obs": 1491,
         "start": "2019-11-21",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0007,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 657,
+        "recentObs": 659,
         "nonPositive": 0
       }
     },
@@ -3432,16 +3444,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3131,
+        "obs": 3138,
         "start": "2013-01-04",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0003,
+        "flatShare": 0.0006,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 657,
+        "recentObs": 661,
         "nonPositive": 0
       }
     },
@@ -3454,16 +3466,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1963,
+        "obs": 1967,
         "start": "2017-11-22",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.001,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 661,
+        "recentObs": 662,
         "nonPositive": 0
       }
     },
@@ -3476,16 +3488,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3327,
+        "obs": 3332,
         "start": "2011-12-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0003,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 650,
+        "recentObs": 652,
         "nonPositive": 0
       }
     },
@@ -3498,16 +3510,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1166,
+        "obs": 1170,
         "start": "2021-02-22",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0017,
+        "flatShare": 0.0026,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 636,
+        "recentObs": 637,
         "nonPositive": 0
       }
     },
@@ -3520,16 +3532,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1162,
+        "obs": 1165,
         "start": "2021-02-22",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.0009,
+        "flatShare": 0.0017,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 636,
+        "recentObs": 637,
         "nonPositive": 0
       }
     },
@@ -3542,16 +3554,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1168,
+        "obs": 1175,
         "start": "2021-02-22",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.0009,
+        "flatShare": 0.0017,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 637,
+        "recentObs": 642,
         "nonPositive": 0
       }
     },
@@ -3564,16 +3576,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1167,
+        "obs": 1172,
         "start": "2021-02-22",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0017,
+        "flatShare": 0.0026,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 640,
+        "recentObs": 643,
         "nonPositive": 0
       }
     },
@@ -3586,16 +3598,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1171,
+        "obs": 1174,
         "start": "2021-02-22",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0009,
+        "flatShare": 0.0017,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 641,
+        "recentObs": 642,
         "nonPositive": 0
       }
     },
@@ -3608,16 +3620,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1167,
+        "obs": 1174,
         "start": "2021-02-22",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0009,
+        "flatShare": 0.0017,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 637,
+        "recentObs": 642,
         "nonPositive": 0
       }
     },
@@ -3630,16 +3642,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1169,
+        "obs": 1173,
         "start": "2021-02-22",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.0017,
+        "flatShare": 0.0026,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 639,
+        "recentObs": 640,
         "nonPositive": 0
       }
     },
@@ -3652,13 +3664,13 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3359,
+        "obs": 3362,
         "start": "2011-12-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0003,
+        "flatShare": 0.0006,
         "longestFlatRun": 1,
         "bigJumps": 0,
         "recentObs": 652,
@@ -3674,16 +3686,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3337,
+        "obs": 3342,
         "start": "2011-12-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 30,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0006,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 664,
+        "recentObs": 666,
         "nonPositive": 0
       }
     },
@@ -3696,11 +3708,11 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 2975,
+        "obs": 2978,
         "start": "2013-08-19",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
         "flatShare": 0.0007,
         "longestFlatRun": 1,
@@ -3718,16 +3730,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3326,
+        "obs": 3330,
         "start": "2011-12-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 30,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0006,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 664,
+        "recentObs": 665,
         "nonPositive": 0
       }
     },
@@ -3740,16 +3752,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3310,
+        "obs": 3315,
         "start": "2012-04-17",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 20,
         "flatShare": 0.0006,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 661,
+        "recentObs": 663,
         "nonPositive": 0
       }
     },
@@ -3762,16 +3774,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3329,
+        "obs": 3333,
         "start": "2011-12-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 30,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0006,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 663,
+        "recentObs": 664,
         "nonPositive": 0
       }
     },
@@ -3784,16 +3796,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3099,
+        "obs": 3103,
         "start": "2013-01-11",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.001,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 654,
+        "recentObs": 655,
         "nonPositive": 0
       }
     },
@@ -3806,16 +3818,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3329,
+        "obs": 3334,
         "start": "2011-12-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 30,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0006,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 665,
+        "recentObs": 667,
         "nonPositive": 0
       }
     },
@@ -3828,16 +3840,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3370,
+        "obs": 3374,
         "start": "2011-12-30",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0003,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 658,
+        "recentObs": 659,
         "nonPositive": 0
       }
     },
@@ -3850,16 +3862,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3043,
+        "obs": 3047,
         "start": "2013-03-25",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 30,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0007,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 664,
+        "recentObs": 665,
         "nonPositive": 0
       }
     },
@@ -3872,16 +3884,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3184,
+        "obs": 3189,
         "start": "2012-09-20",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.0003,
+        "flatShare": 0.0006,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 653,
+        "recentObs": 655,
         "nonPositive": 0
       }
     },
@@ -3894,13 +3906,13 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1654,
+        "obs": 1657,
         "start": "2019-01-28",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 30,
-        "flatShare": 0.0006,
+        "flatShare": 0.0012,
         "longestFlatRun": 1,
         "bigJumps": 0,
         "recentObs": 667,
@@ -3916,16 +3928,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1664,
+        "obs": 1668,
         "start": "2019-01-16",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 30,
         "flatShare": 0.0012,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 667,
+        "recentObs": 668,
         "nonPositive": 0
       }
     },
@@ -3938,16 +3950,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3127,
+        "obs": 3131,
         "start": "2012-04-16",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.001,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 612,
+        "recentObs": 613,
         "nonPositive": 0
       }
     },
@@ -3960,16 +3972,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3242,
+        "obs": 3246,
         "start": "2012-07-24",
-        "end": "2026-10-23",
+        "end": "2026-10-26",
         "staleDays": 0,
         "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0003,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 657,
+        "recentObs": 658,
         "nonPositive": 0
       }
     }
