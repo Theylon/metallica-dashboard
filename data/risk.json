@@ -1,12 +1,12 @@
 {
- "updatedAt": "2026-10-23T21:10:30+00:00",
- "asOf": "2026-10-23",
+ "updatedAt": "2026-10-26T13:24:13+00:00",
+ "asOf": "2026-10-26",
  "window": 90,
- "obs": 90,
+ "obs": 91,
  "headline": {
-  "annVol": 20.5,
-  "betaSpy": 0.48,
-  "betaXme": 0.36,
+  "annVol": 20.4,
+  "betaSpy": 0.49,
+  "betaXme": 0.38,
   "var1d95": -274,
   "var1d99": -426,
   "hhi": 10000.0,
@@ -15,19 +15,19 @@
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "20.5%",
-   "note": "from the account's daily TWR, 90 daily obs since inception",
+   "v": "20.4%",
+   "note": "from the account's daily TWR, 91 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.48",
-   "note": "63 overlapping daily obs",
+   "v": "0.49",
+   "note": "61 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.36",
+   "v": "0.38",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
