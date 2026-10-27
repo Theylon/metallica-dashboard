@@ -98,8 +98,8 @@ Counts: {"rejected": 44, "level_only": 66, "tradable": 59, "tradable_public": 21
 | 33076 | steel (steel, europe, crc, metric ton) | 1 | 154 | 2014-01-01 | 2026-10-06 |
 | 49797 | 304 (stainless steel, europe, round bar (<25mm), metric ton) | 1 | 154 | 2014-01-01 | 2026-10-06 |
 | 80747 | goes (grain oriented electrical steel) (steel, europe, coil (<600mm),  | 1 | 116 | 2017-01-01 | 2026-10-06 |
-| 82101 | aluminum (non ferrous metals, united states, aup (mw premium) future 3 | 1 | 1181 | 2019-01-01 | 2026-10-23 |
-| 82102 | aluminum (non ferrous metals, united states, aup (mw premium) spot, po | 1 | 1321 | 2019-01-01 | 2026-10-23 |
+| 82101 | aluminum (non ferrous metals, united states, aup (mw premium) future 3 | 1 | 1182 | 2019-01-01 | 2026-10-26 |
+| 82102 | aluminum (non ferrous metals, united states, aup (mw premium) spot, po | 1 | 1322 | 2019-01-01 | 2026-10-26 |
 | 229605 | yttrium (rare earth metals, northeast asia, , kilogram) | 1 | 68 | 2020-12-01 | 2026-10-01 |
 
 ## Tradable, proprietary (the series worth building signals on) (38)
