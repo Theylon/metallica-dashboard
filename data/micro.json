@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-30T21:09:10+00:00",
+ "updatedAt": "2026-10-30T21:24:24+00:00",
  "researchAsOf": "2026-07-18T19:50:53+00:00",
  "methodology": "Composite 0-100 = momentum 18% + commodity-alignment 18% + deep-dive 14% + analyst 13% + fundamentals 12% + news sentiment 9% + SmartScore 8% + quality 8% (missing sub-scores redistribute). High = long candidate, low = short candidate. Each card also carries an independent Yahoo Finance (yfinance) cross-validation of price targets, ratings and margins. The cross-check is display-only and does not change the composite. Sources: IBKR, FMP, TipRanks, Bigdata.com (RavenPack), Carbon Arc, MetalMiner, TrueNorth, Yahoo Finance.",
  "macro": "Fed Funds Rate 3.75% (hawkish); CPI (YoY) 3.72% (above 2% target); 10Y\u20132Y Spread +0.37 (normal curve). [macro feed 2026-10-30]",
@@ -1948,7 +1948,7 @@
       "field": "priceTarget",
       "primary": 5.63,
       "yahoo": 5.65,
-      "deltaPct": 0.3,
+      "deltaPct": 0.4,
       "status": "agree"
      },
      {
@@ -1967,7 +1967,7 @@
     ],
     "yahoo": {
      "price": 4.66,
-     "targetMean": 5.6456704,
+     "targetMean": 5.650136,
      "recommendationKey": "buy",
      "recommendationMean": 2.0,
      "ebitdaMargins": 0.15814,
@@ -11101,7 +11101,7 @@
     "checks": [],
     "yahoo": {
      "price": 6.87,
-     "targetMean": 11.761457,
+     "targetMean": 11.761907,
      "recommendationKey": "none",
      "ebitdaMargins": 0.57612,
      "returnOnEquity": 0.21256,
@@ -21983,5 +21983,5 @@
   }
  ],
  "sizingNote": "NAV ~$10,113. Rules: single name \u2264 8% NAV (~$809), commodity group \u2264 20% NAV, keep gross \u2264 75%. Current book: gross ~6%, net ~6%. [book 2026-10-30]",
- "pricesRefreshedAt": "2026-10-30T21:09:10+00:00"
+ "pricesRefreshedAt": "2026-10-30T21:24:24+00:00"
 }
