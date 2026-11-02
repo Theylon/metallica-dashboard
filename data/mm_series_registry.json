@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-10-30T21:23:05+00:00",
-  "asOf": "2026-10-30",
-  "dumpDate": "2026-10-30",
+  "updatedAt": "2026-11-02T13:32:58+00:00",
+  "asOf": "2026-11-02",
+  "dumpDate": "2026-11-02",
   "counts": {
-    "rejected": 45,
-    "level_only": 65,
+    "rejected": 46,
+    "level_only": 64,
     "tradable": 59,
     "tradable_public": 21,
     "tradable_proprietary": 38
@@ -18,16 +18,16 @@
       "unit": "cwt",
       "public": false,
       "reasons": [
-        "frozen: 73% of steps unchanged"
+        "frozen: 72% of steps unchanged"
       ],
       "stats": {
-        "obs": 1820,
+        "obs": 1823,
         "start": "2012-04-29",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 34,
-        "flatShare": 0.7251,
+        "flatShare": 0.725,
         "longestFlatRun": 22,
         "bigJumps": 0,
         "recentObs": 892,
@@ -49,7 +49,7 @@
         "obs": 174,
         "start": "2011-12-30",
         "end": "2026-10-26",
-        "staleDays": 4,
+        "staleDays": 7,
         "medianGapDays": 31,
         "maxGapDays": 63,
         "flatShare": 0.0,
@@ -63,24 +63,23 @@
       "id": 69,
       "category": "steel",
       "name": "goes (grain oriented electrical steel) (steel, united states, coil, metric ton)",
-      "grade": "level_only",
+      "grade": "rejected",
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "cadence: median gap 28d",
-        "only 36 obs in last 3y"
+        "stale 32d (last 2026-10-01)"
       ],
       "stats": {
         "obs": 221,
         "start": "2011-12-26",
         "end": "2026-10-01",
-        "staleDays": 29,
+        "staleDays": 32,
         "medianGapDays": 28.0,
         "maxGapDays": 102,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 36,
+        "recentObs": 35,
         "nonPositive": 0
       }
     },
@@ -99,7 +98,7 @@
         "obs": 179,
         "start": "2011-12-30",
         "end": "2026-10-26",
-        "staleDays": 4,
+        "staleDays": 7,
         "medianGapDays": 31.0,
         "maxGapDays": 92,
         "flatShare": 0.0,
@@ -118,16 +117,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2000,
+        "obs": 2001,
         "start": "2011-12-30",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 33,
         "flatShare": 0.0005,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 741,
+        "recentObs": 739,
         "nonPositive": 0
       }
     },
@@ -140,19 +139,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 7d",
-        "only 150 obs in last 3y"
+        "only 151 obs in last 3y"
       ],
       "stats": {
-        "obs": 749,
+        "obs": 750,
         "start": "2011-12-28",
-        "end": "2026-10-23",
-        "staleDays": 7,
-        "medianGapDays": 7.0,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 7,
         "maxGapDays": 29,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 150,
+        "recentObs": 151,
         "nonPositive": 0
       }
     },
@@ -171,7 +170,7 @@
         "obs": 178,
         "start": "2011-12-30",
         "end": "2026-10-26",
-        "staleDays": 4,
+        "staleDays": 7,
         "medianGapDays": 31,
         "maxGapDays": 63,
         "flatShare": 0.0,
@@ -192,16 +191,16 @@
         "1 >50% jump(s) \u2014 check before use"
       ],
       "stats": {
-        "obs": 3303,
+        "obs": 3304,
         "start": "2012-01-03",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 92,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 1,
-        "recentObs": 702,
+        "recentObs": 700,
         "nonPositive": 0
       }
     },
@@ -214,16 +213,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3417,
+        "obs": 3418,
         "start": "2012-01-03",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 10,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 712,
+        "recentObs": 710,
         "nonPositive": 0
       }
     },
@@ -238,16 +237,16 @@
         "frozen: 73% of steps unchanged"
       ],
       "stats": {
-        "obs": 379,
+        "obs": 382,
         "start": "2020-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 90,
-        "flatShare": 0.7328,
+        "flatShare": 0.7349,
         "longestFlatRun": 34,
         "bigJumps": 0,
-        "recentObs": 189,
+        "recentObs": 191,
         "nonPositive": 0
       }
     },
@@ -266,7 +265,7 @@
         "obs": 174,
         "start": "2011-12-30",
         "end": "2026-10-26",
-        "staleDays": 4,
+        "staleDays": 7,
         "medianGapDays": 31,
         "maxGapDays": 63,
         "flatShare": 0.0,
@@ -290,13 +289,13 @@
         "obs": 245,
         "start": "2020-01-01",
         "end": "2026-10-29",
-        "staleDays": 1,
+        "staleDays": 4,
         "medianGapDays": 1.0,
         "maxGapDays": 91,
         "flatShare": 0.6148,
         "longestFlatRun": 32,
         "bigJumps": 0,
-        "recentObs": 142,
+        "recentObs": 141,
         "nonPositive": 0
       }
     },
@@ -308,19 +307,19 @@
       "unit": "troy ounce",
       "public": false,
       "reasons": [
-        "only 345 obs in last 3y"
+        "only 343 obs in last 3y"
       ],
       "stats": {
         "obs": 1740,
         "start": "2012-01-03",
         "end": "2026-10-30",
-        "staleDays": 0,
+        "staleDays": 3,
         "medianGapDays": 1,
         "maxGapDays": 78,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 345,
+        "recentObs": 343,
         "nonPositive": 0
       }
     },
@@ -333,16 +332,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2019,
+        "obs": 2020,
         "start": "2011-12-01",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 61,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 746,
+        "recentObs": 744,
         "nonPositive": 0
       }
     },
@@ -355,19 +354,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 7d",
-        "only 151 obs in last 3y"
+        "only 152 obs in last 3y"
       ],
       "stats": {
-        "obs": 813,
+        "obs": 814,
         "start": "2011-12-28",
-        "end": "2026-10-23",
-        "staleDays": 7,
-        "medianGapDays": 7.0,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 7,
         "maxGapDays": 18,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 151,
+        "recentObs": 152,
         "nonPositive": 0
       }
     },
@@ -382,16 +381,16 @@
         "20% of steps unchanged"
       ],
       "stats": {
-        "obs": 2153,
+        "obs": 2156,
         "start": "2011-12-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 66,
-        "flatShare": 0.197,
+        "flatShare": 0.1972,
         "longestFlatRun": 91,
         "bigJumps": 0,
-        "recentObs": 977,
+        "recentObs": 979,
         "nonPositive": 0
       }
     },
@@ -410,7 +409,7 @@
         "obs": 178,
         "start": "2011-12-30",
         "end": "2026-10-26",
-        "staleDays": 4,
+        "staleDays": 7,
         "medianGapDays": 31,
         "maxGapDays": 63,
         "flatShare": 0.0,
@@ -428,19 +427,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "stale 88d (last 2026-08-03)"
+        "stale 91d (last 2026-08-03)"
       ],
       "stats": {
         "obs": 173,
         "start": "2011-11-16",
         "end": "2026-08-03",
-        "staleDays": 88,
+        "staleDays": 91,
         "medianGapDays": 31.0,
         "maxGapDays": 141,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 33,
+        "recentObs": 32,
         "nonPositive": 0
       }
     },
@@ -453,16 +452,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2017,
+        "obs": 2018,
         "start": "2011-12-01",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 32,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 747,
+        "recentObs": 745,
         "nonPositive": 0
       }
     },
@@ -475,16 +474,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2005,
+        "obs": 2006,
         "start": "2011-12-30",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 33,
         "flatShare": 0.0005,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 740,
+        "recentObs": 738,
         "nonPositive": 0
       }
     },
@@ -497,19 +496,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 7d",
-        "only 131 obs in last 3y"
+        "only 132 obs in last 3y"
       ],
       "stats": {
-        "obs": 285,
+        "obs": 286,
         "start": "2020-01-01",
-        "end": "2026-10-25",
-        "staleDays": 5,
-        "medianGapDays": 7.0,
+        "end": "2026-10-31",
+        "staleDays": 2,
+        "medianGapDays": 7,
         "maxGapDays": 26,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 131,
+        "recentObs": 132,
         "nonPositive": 0
       }
     },
@@ -521,13 +520,13 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "stale 344d (last 2025-11-20)"
+        "stale 347d (last 2025-11-20)"
       ],
       "stats": {
         "obs": 265,
         "start": "2011-10-31",
         "end": "2025-11-20",
-        "staleDays": 344,
+        "staleDays": 347,
         "medianGapDays": 8.0,
         "maxGapDays": 815,
         "flatShare": 0.0,
@@ -551,7 +550,7 @@
         "obs": 1630,
         "start": "2013-04-12",
         "end": "2026-10-30",
-        "staleDays": 0,
+        "staleDays": 3,
         "medianGapDays": 2,
         "maxGapDays": 84,
         "flatShare": 0.0,
@@ -572,16 +571,16 @@
         "20% of steps unchanged"
       ],
       "stats": {
-        "obs": 2076,
+        "obs": 2079,
         "start": "2011-12-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 73,
-        "flatShare": 0.2043,
+        "flatShare": 0.2045,
         "longestFlatRun": 91,
         "bigJumps": 0,
-        "recentObs": 974,
+        "recentObs": 975,
         "nonPositive": 0
       }
     },
@@ -593,19 +592,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "stale 88d (last 2026-08-03)"
+        "stale 91d (last 2026-08-03)"
       ],
       "stats": {
         "obs": 177,
         "start": "2011-11-16",
         "end": "2026-08-03",
-        "staleDays": 88,
+        "staleDays": 91,
         "medianGapDays": 31.0,
         "maxGapDays": 77,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 33,
+        "recentObs": 32,
         "nonPositive": 0
       }
     },
@@ -618,19 +617,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 5d",
-        "only 197 obs in last 3y"
+        "only 196 obs in last 3y"
       ],
       "stats": {
         "obs": 453,
         "start": "2011-12-26",
         "end": "2026-10-28",
-        "staleDays": 2,
+        "staleDays": 5,
         "medianGapDays": 5.0,
         "maxGapDays": 316,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 197,
+        "recentObs": 196,
         "nonPositive": 0
       }
     },
@@ -642,19 +641,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "stale 88d (last 2026-08-03)"
+        "stale 91d (last 2026-08-03)"
       ],
       "stats": {
         "obs": 171,
         "start": "2011-11-16",
         "end": "2026-08-03",
-        "staleDays": 88,
+        "staleDays": 91,
         "medianGapDays": 31.0,
         "maxGapDays": 77,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 33,
+        "recentObs": 32,
         "nonPositive": 0
       }
     },
@@ -666,19 +665,19 @@
       "unit": "pound",
       "public": false,
       "reasons": [
-        "frozen: 68% of steps unchanged"
+        "frozen: 69% of steps unchanged"
       ],
       "stats": {
-        "obs": 323,
+        "obs": 326,
         "start": "2020-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 90,
-        "flatShare": 0.6832,
+        "flatShare": 0.6862,
         "longestFlatRun": 34,
         "bigJumps": 0,
-        "recentObs": 208,
+        "recentObs": 210,
         "nonPositive": 0
       }
     },
@@ -691,16 +690,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3133,
+        "obs": 3134,
         "start": "2011-12-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 99,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 615,
+        "recentObs": 613,
         "nonPositive": 0
       }
     },
@@ -715,16 +714,16 @@
         "frozen: 83% of steps unchanged"
       ],
       "stats": {
-        "obs": 508,
+        "obs": 511,
         "start": "2020-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 91,
-        "flatShare": 0.8304,
+        "flatShare": 0.8314,
         "longestFlatRun": 32,
         "bigJumps": 1,
-        "recentObs": 366,
+        "recentObs": 368,
         "nonPositive": 0
       }
     },
@@ -743,7 +742,7 @@
         "obs": 177,
         "start": "2011-12-30",
         "end": "2026-10-26",
-        "staleDays": 4,
+        "staleDays": 7,
         "medianGapDays": 31.0,
         "maxGapDays": 92,
         "flatShare": 0.0,
@@ -764,13 +763,13 @@
         "frozen: 45% of steps unchanged"
       ],
       "stats": {
-        "obs": 1947,
+        "obs": 1950,
         "start": "2020-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 21,
-        "flatShare": 0.4502,
+        "flatShare": 0.45,
         "longestFlatRun": 13,
         "bigJumps": 0,
         "recentObs": 984,
@@ -788,16 +787,16 @@
         "frozen: 51% of steps unchanged"
       ],
       "stats": {
-        "obs": 714,
+        "obs": 715,
         "start": "2020-01-01",
-        "end": "2026-10-30",
-        "staleDays": 0,
-        "medianGapDays": 1,
+        "end": "2026-10-31",
+        "staleDays": 2,
+        "medianGapDays": 1.0,
         "maxGapDays": 23,
-        "flatShare": 0.5091,
+        "flatShare": 0.5084,
         "longestFlatRun": 17,
         "bigJumps": 0,
-        "recentObs": 337,
+        "recentObs": 335,
         "nonPositive": 0
       }
     },
@@ -815,13 +814,13 @@
         "obs": 336,
         "start": "2020-01-01",
         "end": "2026-10-29",
-        "staleDays": 1,
+        "staleDays": 4,
         "medianGapDays": 1,
         "maxGapDays": 90,
         "flatShare": 0.7164,
         "longestFlatRun": 34,
         "bigJumps": 0,
-        "recentObs": 124,
+        "recentObs": 123,
         "nonPositive": 0
       }
     },
@@ -833,19 +832,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "only 476 obs in last 3y"
+        "only 474 obs in last 3y"
       ],
       "stats": {
-        "obs": 1758,
+        "obs": 1759,
         "start": "2011-12-23",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 302,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 476,
+        "recentObs": 474,
         "nonPositive": 0
       }
     },
@@ -857,19 +856,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "stale 88d (last 2026-08-03)"
+        "stale 91d (last 2026-08-03)"
       ],
       "stats": {
         "obs": 180,
         "start": "2011-11-16",
         "end": "2026-08-03",
-        "staleDays": 88,
+        "staleDays": 91,
         "medianGapDays": 31,
         "maxGapDays": 77,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 33,
+        "recentObs": 32,
         "nonPositive": 0
       }
     },
@@ -888,7 +887,7 @@
         "obs": 162,
         "start": "2012-10-31",
         "end": "2026-10-26",
-        "staleDays": 4,
+        "staleDays": 7,
         "medianGapDays": 31,
         "maxGapDays": 92,
         "flatShare": 0.0,
@@ -906,13 +905,13 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "stale 344d (last 2025-11-20)"
+        "stale 347d (last 2025-11-20)"
       ],
       "stats": {
         "obs": 268,
         "start": "2011-11-14",
         "end": "2025-11-20",
-        "staleDays": 344,
+        "staleDays": 347,
         "medianGapDays": 8,
         "maxGapDays": 815,
         "flatShare": 0.0,
@@ -936,7 +935,7 @@
         "obs": 174,
         "start": "2011-12-15",
         "end": "2026-10-29",
-        "staleDays": 1,
+        "staleDays": 4,
         "medianGapDays": 15,
         "maxGapDays": 395,
         "flatShare": 0.0,
@@ -954,13 +953,13 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "stale 302d (last 2026-01-01)"
+        "stale 305d (last 2026-01-01)"
       ],
       "stats": {
         "obs": 359,
         "start": "2011-12-28",
         "end": "2026-01-01",
-        "staleDays": 302,
+        "staleDays": 305,
         "medianGapDays": 9.0,
         "maxGapDays": 78,
         "flatShare": 0.0,
@@ -979,19 +978,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 7d",
-        "only 152 obs in last 3y"
+        "only 153 obs in last 3y"
       ],
       "stats": {
-        "obs": 344,
+        "obs": 345,
         "start": "2020-01-01",
-        "end": "2026-10-25",
-        "staleDays": 5,
-        "medianGapDays": 7,
+        "end": "2026-10-31",
+        "staleDays": 2,
+        "medianGapDays": 7.0,
         "maxGapDays": 26,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 152,
+        "recentObs": 153,
         "nonPositive": 0
       }
     },
@@ -1004,16 +1003,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2021,
+        "obs": 2022,
         "start": "2011-12-31",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 61,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 747,
+        "recentObs": 745,
         "nonPositive": 0
       }
     },
@@ -1028,16 +1027,16 @@
         "frozen: 47% of steps unchanged"
       ],
       "stats": {
-        "obs": 1813,
+        "obs": 1816,
         "start": "2020-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 90,
-        "flatShare": 0.4696,
+        "flatShare": 0.4694,
         "longestFlatRun": 13,
         "bigJumps": 0,
-        "recentObs": 976,
+        "recentObs": 977,
         "nonPositive": 0
       }
     },
@@ -1056,7 +1055,7 @@
         "obs": 177,
         "start": "2011-12-30",
         "end": "2026-10-26",
-        "staleDays": 4,
+        "staleDays": 7,
         "medianGapDays": 31.0,
         "maxGapDays": 63,
         "flatShare": 0.0,
@@ -1075,16 +1074,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2004,
+        "obs": 2005,
         "start": "2011-12-30",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 33,
         "flatShare": 0.0005,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 746,
+        "recentObs": 744,
         "nonPositive": 0
       }
     },
@@ -1103,7 +1102,7 @@
         "obs": 174,
         "start": "2011-12-30",
         "end": "2026-10-26",
-        "staleDays": 4,
+        "staleDays": 7,
         "medianGapDays": 31,
         "maxGapDays": 91,
         "flatShare": 0.0,
@@ -1124,16 +1123,16 @@
         "19% of steps unchanged"
       ],
       "stats": {
-        "obs": 2231,
+        "obs": 2234,
         "start": "2011-12-28",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 98,
-        "flatShare": 0.1897,
+        "flatShare": 0.1899,
         "longestFlatRun": 91,
         "bigJumps": 0,
-        "recentObs": 973,
+        "recentObs": 974,
         "nonPositive": 0
       }
     },
@@ -1146,16 +1145,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2004,
+        "obs": 2005,
         "start": "2011-12-30",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 33,
         "flatShare": 0.0015,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 738,
+        "recentObs": 736,
         "nonPositive": 0
       }
     },
@@ -1168,16 +1167,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3047,
+        "obs": 3048,
         "start": "2011-12-30",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-11-02",
+        "staleDays": 0,
+        "medianGapDays": 1,
         "maxGapDays": 99,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 613,
+        "recentObs": 611,
         "nonPositive": 0
       }
     },
@@ -1195,13 +1194,13 @@
         "obs": 1344,
         "start": "2020-01-01",
         "end": "2026-10-29",
-        "staleDays": 1,
+        "staleDays": 4,
         "medianGapDays": 1,
         "maxGapDays": 90,
         "flatShare": 0.936,
         "longestFlatRun": 34,
         "bigJumps": 0,
-        "recentObs": 908,
+        "recentObs": 907,
         "nonPositive": 0
       }
     },
@@ -1213,19 +1212,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "only 599 obs in last 3y"
+        "only 597 obs in last 3y"
       ],
       "stats": {
-        "obs": 3039,
+        "obs": 3040,
         "start": "2011-12-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 100,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 599,
+        "recentObs": 597,
         "nonPositive": 0
       }
     },
@@ -1239,19 +1238,19 @@
       "reasons": [
         "cadence: median gap 6d",
         "37% of steps unchanged",
-        "only 153 obs in last 3y"
+        "only 154 obs in last 3y"
       ],
       "stats": {
-        "obs": 550,
+        "obs": 551,
         "start": "2020-01-01",
-        "end": "2026-10-25",
-        "staleDays": 5,
-        "medianGapDays": 6,
+        "end": "2026-10-31",
+        "staleDays": 2,
+        "medianGapDays": 6.0,
         "maxGapDays": 23,
-        "flatShare": 0.3734,
+        "flatShare": 0.3727,
         "longestFlatRun": 17,
         "bigJumps": 0,
-        "recentObs": 153,
+        "recentObs": 154,
         "nonPositive": 0
       }
     },
@@ -1266,16 +1265,16 @@
         "frozen: 48% of steps unchanged"
       ],
       "stats": {
-        "obs": 1857,
+        "obs": 1860,
         "start": "2020-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 90,
-        "flatShare": 0.4828,
+        "flatShare": 0.4825,
         "longestFlatRun": 13,
         "bigJumps": 0,
-        "recentObs": 1003,
+        "recentObs": 1004,
         "nonPositive": 0
       }
     },
@@ -1288,19 +1287,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 7d",
-        "only 154 obs in last 3y"
+        "only 155 obs in last 3y"
       ],
       "stats": {
-        "obs": 352,
+        "obs": 353,
         "start": "2020-01-01",
-        "end": "2026-10-25",
-        "staleDays": 5,
-        "medianGapDays": 7,
+        "end": "2026-10-31",
+        "staleDays": 2,
+        "medianGapDays": 7.0,
         "maxGapDays": 26,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 154,
+        "recentObs": 155,
         "nonPositive": 0
       }
     },
@@ -1313,19 +1312,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 7d",
-        "only 132 obs in last 3y"
+        "only 133 obs in last 3y"
       ],
       "stats": {
-        "obs": 529,
+        "obs": 530,
         "start": "2011-12-28",
-        "end": "2026-10-23",
-        "staleDays": 7,
-        "medianGapDays": 7.0,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 7,
         "maxGapDays": 34,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 132,
+        "recentObs": 133,
         "nonPositive": 0
       }
     },
@@ -1338,16 +1337,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2026,
+        "obs": 2027,
         "start": "2011-12-31",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 33,
         "flatShare": 0.0005,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 750,
+        "recentObs": 748,
         "nonPositive": 0
       }
     },
@@ -1359,19 +1358,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "only 374 obs in last 3y"
+        "only 373 obs in last 3y"
       ],
       "stats": {
-        "obs": 1531,
+        "obs": 1532,
         "start": "2011-12-27",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 2.0,
+        "medianGapDays": 2,
         "maxGapDays": 314,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 374,
+        "recentObs": 373,
         "nonPositive": 0
       }
     },
@@ -1384,16 +1383,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2001,
+        "obs": 2002,
         "start": "2011-12-30",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 39,
         "flatShare": 0.001,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 736,
+        "recentObs": 734,
         "nonPositive": 0
       }
     },
@@ -1408,13 +1407,13 @@
         "frozen: 48% of steps unchanged"
       ],
       "stats": {
-        "obs": 1840,
+        "obs": 1843,
         "start": "2020-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 90,
-        "flatShare": 0.478,
+        "flatShare": 0.4777,
         "longestFlatRun": 13,
         "bigJumps": 0,
         "recentObs": 974,
@@ -1429,13 +1428,13 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "stale 344d (last 2025-11-20)"
+        "stale 347d (last 2025-11-20)"
       ],
       "stats": {
         "obs": 270,
         "start": "2011-11-14",
         "end": "2025-11-20",
-        "staleDays": 344,
+        "staleDays": 347,
         "medianGapDays": 8,
         "maxGapDays": 815,
         "flatShare": 0.0,
@@ -1454,16 +1453,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3456,
+        "obs": 3457,
         "start": "2011-12-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 24,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 637,
+        "recentObs": 635,
         "nonPositive": 0
       }
     },
@@ -1475,19 +1474,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "stale 302d (last 2026-01-01)"
+        "stale 305d (last 2026-01-01)"
       ],
       "stats": {
         "obs": 283,
         "start": "2011-12-28",
         "end": "2026-01-01",
-        "staleDays": 302,
+        "staleDays": 305,
         "medianGapDays": 14.0,
         "maxGapDays": 111,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 45,
+        "recentObs": 44,
         "nonPositive": 0
       }
     },
@@ -1506,7 +1505,7 @@
         "obs": 178,
         "start": "2011-12-30",
         "end": "2026-10-26",
-        "staleDays": 4,
+        "staleDays": 7,
         "medianGapDays": 31,
         "maxGapDays": 63,
         "flatShare": 0.0,
@@ -1530,13 +1529,13 @@
         "obs": 159,
         "start": "2011-10-26",
         "end": "2026-10-26",
-        "staleDays": 4,
+        "staleDays": 7,
         "medianGapDays": 31.0,
         "maxGapDays": 272,
         "flatShare": 0.0063,
         "longestFlatRun": 1,
         "bigJumps": 1,
-        "recentObs": 33,
+        "recentObs": 32,
         "nonPositive": 0
       }
     },
@@ -1549,19 +1548,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 30d",
-        "only 37 obs in last 3y"
+        "only 36 obs in last 3y"
       ],
       "stats": {
         "obs": 178,
         "start": "2011-12-22",
         "end": "2026-10-26",
-        "staleDays": 4,
+        "staleDays": 7,
         "medianGapDays": 30,
         "maxGapDays": 57,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 37,
+        "recentObs": 36,
         "nonPositive": 0
       }
     },
@@ -1576,16 +1575,16 @@
         "2 >50% jump(s) \u2014 check before use"
       ],
       "stats": {
-        "obs": 3354,
+        "obs": 3355,
         "start": "2011-12-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 42,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 2,
-        "recentObs": 645,
+        "recentObs": 643,
         "nonPositive": 0
       }
     },
@@ -1600,16 +1599,16 @@
         "23% of steps unchanged"
       ],
       "stats": {
-        "obs": 1839,
+        "obs": 1842,
         "start": "2011-12-22",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 401,
-        "flatShare": 0.2307,
+        "flatShare": 0.2309,
         "longestFlatRun": 91,
         "bigJumps": 0,
-        "recentObs": 960,
+        "recentObs": 963,
         "nonPositive": 0
       }
     },
@@ -1622,16 +1621,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2006,
+        "obs": 2007,
         "start": "2011-12-30",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 33,
         "flatShare": 0.0015,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 746,
+        "recentObs": 744,
         "nonPositive": 0
       }
     },
@@ -1644,19 +1643,19 @@
       "public": false,
       "reasons": [
         "cadence: median gap 7d",
-        "only 150 obs in last 3y"
+        "only 151 obs in last 3y"
       ],
       "stats": {
-        "obs": 795,
+        "obs": 796,
         "start": "2011-12-28",
-        "end": "2026-10-23",
-        "staleDays": 7,
-        "medianGapDays": 7.0,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 7,
         "maxGapDays": 26,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 150,
+        "recentObs": 151,
         "nonPositive": 0
       }
     },
@@ -1671,16 +1670,16 @@
         "frozen: 47% of steps unchanged"
       ],
       "stats": {
-        "obs": 1808,
+        "obs": 1811,
         "start": "2020-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 90,
-        "flatShare": 0.4687,
+        "flatShare": 0.4685,
         "longestFlatRun": 13,
         "bigJumps": 0,
-        "recentObs": 977,
+        "recentObs": 978,
         "nonPositive": 0
       }
     },
@@ -1693,16 +1692,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3470,
+        "obs": 3471,
         "start": "2011-12-31",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-11-02",
+        "staleDays": 0,
+        "medianGapDays": 1.0,
         "maxGapDays": 14,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 644,
+        "recentObs": 642,
         "nonPositive": 0
       }
     },
@@ -1717,13 +1716,13 @@
         "frozen: 48% of steps unchanged"
       ],
       "stats": {
-        "obs": 1861,
+        "obs": 1864,
         "start": "2020-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 90,
-        "flatShare": 0.4833,
+        "flatShare": 0.4831,
         "longestFlatRun": 13,
         "bigJumps": 0,
         "recentObs": 978,
@@ -1745,7 +1744,7 @@
         "obs": 172,
         "start": "2011-12-30",
         "end": "2026-10-26",
-        "staleDays": 4,
+        "staleDays": 7,
         "medianGapDays": 31,
         "maxGapDays": 62,
         "flatShare": 0.0,
@@ -1764,16 +1763,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2025,
+        "obs": 2026,
         "start": "2011-12-01",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 61,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 748,
+        "recentObs": 746,
         "nonPositive": 0
       }
     },
@@ -1786,16 +1785,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 2019,
+        "obs": 2020,
         "start": "2011-12-01",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 32,
         "flatShare": 0.0005,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 747,
+        "recentObs": 745,
         "nonPositive": 0
       }
     },
@@ -1814,7 +1813,7 @@
         "obs": 164,
         "start": "2011-12-30",
         "end": "2026-10-26",
-        "staleDays": 4,
+        "staleDays": 7,
         "medianGapDays": 31,
         "maxGapDays": 63,
         "flatShare": 0.0,
@@ -1835,13 +1834,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1940,
+        "obs": 1943,
         "start": "2012-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 121,
-        "flatShare": 0.3332,
+        "flatShare": 0.3337,
         "longestFlatRun": 26,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -1859,13 +1858,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1973,
+        "obs": 1976,
         "start": "2012-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 122,
-        "flatShare": 0.2637,
+        "flatShare": 0.2643,
         "longestFlatRun": 9,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -1883,13 +1882,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1983,
+        "obs": 1986,
         "start": "2012-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 89,
-        "flatShare": 0.2038,
+        "flatShare": 0.2035,
         "longestFlatRun": 23,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -1907,13 +1906,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1964,
+        "obs": 1967,
         "start": "2012-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 62,
-        "flatShare": 0.2944,
+        "flatShare": 0.2945,
         "longestFlatRun": 9,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -1931,13 +1930,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1997,
+        "obs": 2000,
         "start": "2012-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 91,
-        "flatShare": 0.2866,
+        "flatShare": 0.2871,
         "longestFlatRun": 9,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -1952,19 +1951,20 @@
       "unit": "index",
       "public": false,
       "reasons": [
-        "composite index, not a price"
+        "composite index, not a price",
+        "stale 32d (last 2026-10-01)"
       ],
       "stats": {
         "obs": 222,
         "start": "2012-01-01",
         "end": "2026-10-01",
-        "staleDays": 29,
+        "staleDays": 32,
         "medianGapDays": 29,
         "maxGapDays": 61,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 37,
+        "recentObs": 36,
         "nonPositive": 0
       }
     },
@@ -1980,13 +1980,13 @@
         "frozen: 46% of steps unchanged"
       ],
       "stats": {
-        "obs": 1965,
+        "obs": 1968,
         "start": "2012-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 243,
-        "flatShare": 0.4628,
+        "flatShare": 0.4626,
         "longestFlatRun": 34,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -2004,13 +2004,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1982,
+        "obs": 1985,
         "start": "2012-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 125,
-        "flatShare": 0.1449,
+        "flatShare": 0.1447,
         "longestFlatRun": 8,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -2028,13 +2028,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1947,
+        "obs": 1950,
         "start": "2012-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 124,
-        "flatShare": 0.2354,
+        "flatShare": 0.235,
         "longestFlatRun": 10,
         "bigJumps": 0,
         "recentObs": 1057,
@@ -2052,13 +2052,13 @@
         "composite index, not a price"
       ],
       "stats": {
-        "obs": 1992,
+        "obs": 1995,
         "start": "2012-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 92,
-        "flatShare": 0.3179,
+        "flatShare": 0.318,
         "longestFlatRun": 21,
         "bigJumps": 0,
         "recentObs": 1082,
@@ -2074,16 +2074,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1908,
+        "obs": 1909,
         "start": "2019-01-01",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 707,
+        "recentObs": 705,
         "nonPositive": 0
       }
     },
@@ -2096,16 +2096,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1909,
+        "obs": 1910,
         "start": "2019-01-01",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 709,
+        "recentObs": 707,
         "nonPositive": 0
       }
     },
@@ -2120,13 +2120,13 @@
         "frozen: 61% of steps unchanged"
       ],
       "stats": {
-        "obs": 1442,
+        "obs": 1445,
         "start": "2019-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 34,
-        "flatShare": 0.61,
+        "flatShare": 0.6094,
         "longestFlatRun": 19,
         "bigJumps": 0,
         "recentObs": 912,
@@ -2144,13 +2144,13 @@
         "frozen: 61% of steps unchanged"
       ],
       "stats": {
-        "obs": 1444,
+        "obs": 1447,
         "start": "2019-01-01",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 34,
-        "flatShare": 0.6105,
+        "flatShare": 0.61,
         "longestFlatRun": 19,
         "bigJumps": 0,
         "recentObs": 912,
@@ -2172,7 +2172,7 @@
         "obs": 154,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 31,
         "maxGapDays": 52,
         "flatShare": 0.0,
@@ -2196,7 +2196,7 @@
         "obs": 154,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 31,
         "maxGapDays": 52,
         "flatShare": 0.0,
@@ -2221,7 +2221,7 @@
         "obs": 154,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 31,
         "maxGapDays": 52,
         "flatShare": 0.0,
@@ -2246,7 +2246,7 @@
         "obs": 153,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 31.0,
         "maxGapDays": 60,
         "flatShare": 0.0,
@@ -2271,7 +2271,7 @@
         "obs": 153,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 31.0,
         "maxGapDays": 89,
         "flatShare": 0.0,
@@ -2295,7 +2295,7 @@
         "obs": 152,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 31,
         "maxGapDays": 90,
         "flatShare": 0.0,
@@ -2320,7 +2320,7 @@
         "obs": 154,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 31,
         "maxGapDays": 59,
         "flatShare": 0.0,
@@ -2344,7 +2344,7 @@
         "obs": 154,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 31,
         "maxGapDays": 59,
         "flatShare": 0.0,
@@ -2369,7 +2369,7 @@
         "obs": 153,
         "start": "2014-01-01",
         "end": "2026-10-06",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 31.0,
         "maxGapDays": 84,
         "flatShare": 0.0,
@@ -2390,13 +2390,13 @@
         "17% of steps unchanged"
       ],
       "stats": {
-        "obs": 2546,
+        "obs": 2549,
         "start": "2018-06-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 11,
-        "flatShare": 0.1717,
+        "flatShare": 0.1719,
         "longestFlatRun": 4,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2414,13 +2414,13 @@
         "17% of steps unchanged"
       ],
       "stats": {
-        "obs": 2546,
+        "obs": 2549,
         "start": "2018-06-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 11,
-        "flatShare": 0.1717,
+        "flatShare": 0.1719,
         "longestFlatRun": 4,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2438,13 +2438,13 @@
         "26% of steps unchanged"
       ],
       "stats": {
-        "obs": 2417,
+        "obs": 2420,
         "start": "2018-06-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.2566,
+        "flatShare": 0.2567,
         "longestFlatRun": 48,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2462,13 +2462,13 @@
         "27% of steps unchanged"
       ],
       "stats": {
-        "obs": 2396,
+        "obs": 2399,
         "start": "2018-06-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.2651,
+        "flatShare": 0.2652,
         "longestFlatRun": 92,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2486,13 +2486,13 @@
         "24% of steps unchanged"
       ],
       "stats": {
-        "obs": 2436,
+        "obs": 2439,
         "start": "2018-06-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 14,
-        "flatShare": 0.239,
+        "flatShare": 0.2391,
         "longestFlatRun": 30,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2510,13 +2510,13 @@
         "26% of steps unchanged"
       ],
       "stats": {
-        "obs": 2400,
+        "obs": 2403,
         "start": "2018-06-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.2643,
+        "flatShare": 0.2644,
         "longestFlatRun": 92,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2534,13 +2534,13 @@
         "21% of steps unchanged"
       ],
       "stats": {
-        "obs": 2487,
+        "obs": 2490,
         "start": "2018-06-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 11,
-        "flatShare": 0.2076,
+        "flatShare": 0.2077,
         "longestFlatRun": 6,
         "bigJumps": 0,
         "recentObs": 1085,
@@ -2561,13 +2561,13 @@
         "obs": 117,
         "start": "2017-01-01",
         "end": "2026-10-06",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 31.0,
         "maxGapDays": 64,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 4,
-        "recentObs": 35,
+        "recentObs": 34,
         "nonPositive": 0
       }
     },
@@ -2585,7 +2585,7 @@
         "obs": 116,
         "start": "2017-01-01",
         "end": "2026-10-06",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 31,
         "maxGapDays": 64,
         "flatShare": 0.0,
@@ -2604,16 +2604,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1847,
+        "obs": 1848,
         "start": "2019-01-01",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 705,
+        "recentObs": 703,
         "nonPositive": 0
       }
     },
@@ -2626,16 +2626,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1854,
+        "obs": 1855,
         "start": "2019-01-01",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 9,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 709,
+        "recentObs": 707,
         "nonPositive": 0
       }
     },
@@ -2648,16 +2648,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1903,
+        "obs": 1904,
         "start": "2019-01-01",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 704,
+        "recentObs": 702,
         "nonPositive": 0
       }
     },
@@ -2670,16 +2670,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1907,
+        "obs": 1908,
         "start": "2019-01-01",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 707,
+        "recentObs": 705,
         "nonPositive": 0
       }
     },
@@ -2691,19 +2691,19 @@
       "unit": "short ton",
       "public": true,
       "reasons": [
-        "only 533 obs in last 3y"
+        "only 532 obs in last 3y"
       ],
       "stats": {
-        "obs": 1476,
+        "obs": 1477,
         "start": "2019-01-01",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 17,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 533,
+        "recentObs": 532,
         "nonPositive": 0
       }
     },
@@ -2716,16 +2716,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1739,
+        "obs": 1740,
         "start": "2019-01-01",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 28,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 651,
+        "recentObs": 649,
         "nonPositive": 0
       }
     },
@@ -2744,7 +2744,7 @@
         "obs": 1184,
         "start": "2019-01-01",
         "end": "2026-10-29",
-        "staleDays": 1,
+        "staleDays": 4,
         "medianGapDays": 1,
         "maxGapDays": 24,
         "flatShare": 0.0,
@@ -2765,16 +2765,16 @@
         "1 >50% jump(s) \u2014 check before use"
       ],
       "stats": {
-        "obs": 1325,
+        "obs": 1326,
         "start": "2019-01-01",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1.0,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1,
         "maxGapDays": 26,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 1,
-        "recentObs": 623,
+        "recentObs": 624,
         "nonPositive": 0
       }
     },
@@ -2787,16 +2787,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1012,
+        "obs": 1013,
         "start": "2022-01-25",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 19,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 656,
+        "recentObs": 654,
         "nonPositive": 0
       }
     },
@@ -2809,16 +2809,16 @@
       "public": true,
       "reasons": [],
       "stats": {
-        "obs": 1144,
+        "obs": 1145,
         "start": "2022-01-25",
-        "end": "2026-10-29",
-        "staleDays": 1,
-        "medianGapDays": 1,
+        "end": "2026-10-30",
+        "staleDays": 3,
+        "medianGapDays": 1.0,
         "maxGapDays": 8,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 706,
+        "recentObs": 704,
         "nonPositive": 0
       }
     },
@@ -2836,7 +2836,7 @@
         "obs": 78,
         "start": "2020-01-01",
         "end": "2026-10-06",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 31,
         "maxGapDays": 121,
         "flatShare": 0.0,
@@ -2861,7 +2861,7 @@
         "obs": 78,
         "start": "2020-01-01",
         "end": "2026-10-06",
-        "staleDays": 24,
+        "staleDays": 27,
         "medianGapDays": 31,
         "maxGapDays": 121,
         "flatShare": 0.0,
@@ -2879,19 +2879,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 546 obs in last 3y"
+        "only 544 obs in last 3y"
       ],
       "stats": {
-        "obs": 2526,
+        "obs": 2527,
         "start": "2013-04-02",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 10,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 546,
+        "recentObs": 544,
         "nonPositive": 0
       }
     },
@@ -2903,19 +2903,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 503 obs in last 3y"
+        "only 501 obs in last 3y"
       ],
       "stats": {
-        "obs": 1513,
+        "obs": 1514,
         "start": "2014-01-02",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 2.0,
+        "medianGapDays": 2,
         "maxGapDays": 347,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 503,
+        "recentObs": 501,
         "nonPositive": 0
       }
     },
@@ -2927,13 +2927,13 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "stale 31d (last 2026-09-29)"
+        "stale 34d (last 2026-09-29)"
       ],
       "stats": {
         "obs": 228,
         "start": "2012-01-04",
         "end": "2026-09-29",
-        "staleDays": 31,
+        "staleDays": 34,
         "medianGapDays": 7,
         "maxGapDays": 316,
         "flatShare": 0.0,
@@ -2957,7 +2957,7 @@
         "obs": 1182,
         "start": "2012-01-04",
         "end": "2026-10-30",
-        "staleDays": 0,
+        "staleDays": 3,
         "medianGapDays": 2,
         "maxGapDays": 122,
         "flatShare": 0.0,
@@ -2979,11 +2979,11 @@
         "only 36 obs in last 3y"
       ],
       "stats": {
-        "obs": 70,
+        "obs": 71,
         "start": "2020-12-01",
-        "end": "2026-10-01",
-        "staleDays": 29,
-        "medianGapDays": 31,
+        "end": "2026-11-01",
+        "staleDays": 1,
+        "medianGapDays": 31.0,
         "maxGapDays": 62,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -3004,11 +3004,11 @@
         "only 36 obs in last 3y"
       ],
       "stats": {
-        "obs": 70,
+        "obs": 71,
         "start": "2020-12-01",
-        "end": "2026-10-01",
-        "staleDays": 29,
-        "medianGapDays": 31,
+        "end": "2026-11-01",
+        "staleDays": 1,
+        "medianGapDays": 31.0,
         "maxGapDays": 62,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -3029,11 +3029,11 @@
         "only 36 obs in last 3y"
       ],
       "stats": {
-        "obs": 142,
+        "obs": 143,
         "start": "2015-01-01",
-        "end": "2026-10-01",
-        "staleDays": 29,
-        "medianGapDays": 31,
+        "end": "2026-11-01",
+        "staleDays": 1,
+        "medianGapDays": 31.0,
         "maxGapDays": 31,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -3050,14 +3050,14 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "1 >50% jump(s) in a 68-obs series"
+        "1 >50% jump(s) in a 69-obs series"
       ],
       "stats": {
-        "obs": 68,
+        "obs": 69,
         "start": "2020-12-01",
-        "end": "2026-10-01",
-        "staleDays": 29,
-        "medianGapDays": 31,
+        "end": "2026-11-01",
+        "staleDays": 1,
+        "medianGapDays": 31.0,
         "maxGapDays": 62,
         "flatShare": 0.0,
         "longestFlatRun": 0,
@@ -3074,19 +3074,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 565 obs in last 3y"
+        "only 563 obs in last 3y"
       ],
       "stats": {
-        "obs": 2402,
+        "obs": 2403,
         "start": "2015-01-22",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 565,
+        "recentObs": 563,
         "nonPositive": 0
       }
     },
@@ -3099,16 +3099,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3059,
+        "obs": 3060,
         "start": "2013-03-21",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 30,
         "flatShare": 0.0007,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 669,
+        "recentObs": 668,
         "nonPositive": 0
       }
     },
@@ -3121,16 +3121,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3276,
+        "obs": 3277,
         "start": "2012-06-14",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0003,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 662,
+        "recentObs": 660,
         "nonPositive": 0
       }
     },
@@ -3142,19 +3142,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 424 obs in last 3y"
+        "only 423 obs in last 3y"
       ],
       "stats": {
-        "obs": 1873,
+        "obs": 1874,
         "start": "2012-07-12",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 2.0,
+        "medianGapDays": 2,
         "maxGapDays": 30,
         "flatShare": 0.0053,
         "longestFlatRun": 2,
         "bigJumps": 0,
-        "recentObs": 424,
+        "recentObs": 423,
         "nonPositive": 0
       }
     },
@@ -3167,16 +3167,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1957,
+        "obs": 1958,
         "start": "2017-12-18",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
         "flatShare": 0.001,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 661,
+        "recentObs": 659,
         "nonPositive": 0
       }
     },
@@ -3189,16 +3189,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3160,
+        "obs": 3161,
         "start": "2012-10-29",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0006,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 656,
+        "recentObs": 655,
         "nonPositive": 0
       }
     },
@@ -3211,16 +3211,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3346,
+        "obs": 3347,
         "start": "2012-03-08",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.0003,
+        "flatShare": 0.0006,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 664,
+        "recentObs": 662,
         "nonPositive": 0
       }
     },
@@ -3232,19 +3232,19 @@
       "unit": "metric ton",
       "public": false,
       "reasons": [
-        "only 526 obs in last 3y"
+        "only 527 obs in last 3y"
       ],
       "stats": {
-        "obs": 526,
+        "obs": 527,
         "start": "2024-06-14",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 14,
-        "flatShare": 0.0038,
+        "flatShare": 0.0019,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 526,
+        "recentObs": 527,
         "nonPositive": 0
       }
     },
@@ -3256,19 +3256,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 480 obs in last 3y"
+        "only 479 obs in last 3y"
       ],
       "stats": {
-        "obs": 2546,
+        "obs": 2547,
         "start": "2013-04-09",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 21,
-        "flatShare": 0.0028,
+        "flatShare": 0.0027,
         "longestFlatRun": 3,
         "bigJumps": 0,
-        "recentObs": 480,
+        "recentObs": 479,
         "nonPositive": 0
       }
     },
@@ -3280,19 +3280,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 569 obs in last 3y"
+        "only 568 obs in last 3y"
       ],
       "stats": {
-        "obs": 2689,
+        "obs": 2690,
         "start": "2013-01-23",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 30,
         "flatShare": 0.0033,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 569,
+        "recentObs": 568,
         "nonPositive": 0
       }
     },
@@ -3304,19 +3304,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 253 obs in last 3y"
+        "only 252 obs in last 3y"
       ],
       "stats": {
-        "obs": 1896,
+        "obs": 1897,
         "start": "2012-12-05",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 55,
-        "flatShare": 0.0005,
+        "flatShare": 0.0011,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 253,
+        "recentObs": 252,
         "nonPositive": 0
       }
     },
@@ -3328,19 +3328,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 335 obs in last 3y"
+        "only 334 obs in last 3y"
       ],
       "stats": {
-        "obs": 2089,
+        "obs": 2090,
         "start": "2012-11-19",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 30,
         "flatShare": 0.0048,
         "longestFlatRun": 4,
         "bigJumps": 0,
-        "recentObs": 335,
+        "recentObs": 334,
         "nonPositive": 0
       }
     },
@@ -3352,19 +3352,19 @@
       "unit": "kilogram",
       "public": false,
       "reasons": [
-        "only 431 obs in last 3y"
+        "only 430 obs in last 3y"
       ],
       "stats": {
-        "obs": 2706,
+        "obs": 2707,
         "start": "2011-12-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 21,
         "flatShare": 0.0015,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 431,
+        "recentObs": 430,
         "nonPositive": 0
       }
     },
@@ -3377,16 +3377,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1822,
+        "obs": 1823,
         "start": "2018-01-31",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 30,
         "flatShare": 0.0011,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 640,
+        "recentObs": 638,
         "nonPositive": 0
       }
     },
@@ -3399,16 +3399,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 2469,
+        "obs": 2470,
         "start": "2015-10-29",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0,
-        "longestFlatRun": 0,
+        "flatShare": 0.0004,
+        "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 663,
+        "recentObs": 661,
         "nonPositive": 0
       }
     },
@@ -3421,16 +3421,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1495,
+        "obs": 1496,
         "start": "2019-11-21",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
         "flatShare": 0.0007,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 661,
+        "recentObs": 660,
         "nonPositive": 0
       }
     },
@@ -3443,16 +3443,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3142,
+        "obs": 3143,
         "start": "2013-01-04",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0006,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 663,
+        "recentObs": 661,
         "nonPositive": 0
       }
     },
@@ -3465,16 +3465,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1971,
+        "obs": 1972,
         "start": "2017-11-22",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
         "flatShare": 0.001,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 664,
+        "recentObs": 662,
         "nonPositive": 0
       }
     },
@@ -3487,16 +3487,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3336,
+        "obs": 3337,
         "start": "2011-12-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0003,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 654,
+        "recentObs": 652,
         "nonPositive": 0
       }
     },
@@ -3509,16 +3509,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1174,
+        "obs": 1175,
         "start": "2021-02-22",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0026,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 640,
+        "recentObs": 639,
         "nonPositive": 0
       }
     },
@@ -3531,16 +3531,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1169,
+        "obs": 1170,
         "start": "2021-02-22",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
         "flatShare": 0.0017,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 640,
+        "recentObs": 639,
         "nonPositive": 0
       }
     },
@@ -3553,16 +3553,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1179,
+        "obs": 1180,
         "start": "2021-02-22",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
         "flatShare": 0.0017,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 645,
+        "recentObs": 644,
         "nonPositive": 0
       }
     },
@@ -3575,16 +3575,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1176,
+        "obs": 1177,
         "start": "2021-02-22",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0026,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 646,
+        "recentObs": 645,
         "nonPositive": 0
       }
     },
@@ -3597,16 +3597,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1178,
+        "obs": 1179,
         "start": "2021-02-22",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0017,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 645,
+        "recentObs": 644,
         "nonPositive": 0
       }
     },
@@ -3619,16 +3619,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1178,
+        "obs": 1179,
         "start": "2021-02-22",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0017,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 645,
+        "recentObs": 644,
         "nonPositive": 0
       }
     },
@@ -3641,16 +3641,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1177,
+        "obs": 1178,
         "start": "2021-02-22",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
-        "flatShare": 0.0026,
+        "flatShare": 0.0025,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 643,
+        "recentObs": 642,
         "nonPositive": 0
       }
     },
@@ -3663,16 +3663,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3366,
+        "obs": 3367,
         "start": "2011-12-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.0003,
+        "flatShare": 0.0006,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 655,
+        "recentObs": 654,
         "nonPositive": 0
       }
     },
@@ -3685,16 +3685,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3346,
+        "obs": 3347,
         "start": "2011-12-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 30,
         "flatShare": 0.0006,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 668,
+        "recentObs": 667,
         "nonPositive": 0
       }
     },
@@ -3707,16 +3707,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 2982,
+        "obs": 2983,
         "start": "2013-08-19",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0003,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 657,
+        "recentObs": 656,
         "nonPositive": 0
       }
     },
@@ -3729,16 +3729,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3334,
+        "obs": 3335,
         "start": "2011-12-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 30,
         "flatShare": 0.0006,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 667,
+        "recentObs": 666,
         "nonPositive": 0
       }
     },
@@ -3751,16 +3751,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3319,
+        "obs": 3320,
         "start": "2012-04-17",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 20,
-        "flatShare": 0.0006,
+        "flatShare": 0.0003,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 665,
+        "recentObs": 663,
         "nonPositive": 0
       }
     },
@@ -3773,16 +3773,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3337,
+        "obs": 3338,
         "start": "2011-12-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 30,
         "flatShare": 0.0006,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 666,
+        "recentObs": 665,
         "nonPositive": 0
       }
     },
@@ -3795,16 +3795,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3107,
+        "obs": 3108,
         "start": "2013-01-11",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
         "flatShare": 0.0006,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 658,
+        "recentObs": 657,
         "nonPositive": 0
       }
     },
@@ -3817,16 +3817,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3338,
+        "obs": 3339,
         "start": "2011-12-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 30,
         "flatShare": 0.0006,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 669,
+        "recentObs": 668,
         "nonPositive": 0
       }
     },
@@ -3839,16 +3839,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3378,
+        "obs": 3379,
         "start": "2011-12-30",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
         "flatShare": 0.0,
         "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 662,
+        "recentObs": 661,
         "nonPositive": 0
       }
     },
@@ -3861,16 +3861,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3051,
+        "obs": 3052,
         "start": "2013-03-25",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 30,
-        "flatShare": 0.0003,
+        "flatShare": 0.0007,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 667,
+        "recentObs": 666,
         "nonPositive": 0
       }
     },
@@ -3883,16 +3883,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3193,
+        "obs": 3194,
         "start": "2012-09-20",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
         "flatShare": 0.0003,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 657,
+        "recentObs": 656,
         "nonPositive": 0
       }
     },
@@ -3905,16 +3905,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1661,
+        "obs": 1662,
         "start": "2019-01-28",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 30,
         "flatShare": 0.0012,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 669,
+        "recentObs": 668,
         "nonPositive": 0
       }
     },
@@ -3927,16 +3927,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 1672,
+        "obs": 1673,
         "start": "2019-01-16",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 30,
         "flatShare": 0.0012,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 670,
+        "recentObs": 669,
         "nonPositive": 0
       }
     },
@@ -3949,16 +3949,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3135,
+        "obs": 3136,
         "start": "2012-04-16",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1.0,
+        "medianGapDays": 1,
         "maxGapDays": 18,
         "flatShare": 0.001,
         "longestFlatRun": 1,
         "bigJumps": 0,
-        "recentObs": 615,
+        "recentObs": 613,
         "nonPositive": 0
       }
     },
@@ -3971,16 +3971,16 @@
       "public": false,
       "reasons": [],
       "stats": {
-        "obs": 3250,
+        "obs": 3251,
         "start": "2012-07-24",
-        "end": "2026-10-30",
+        "end": "2026-11-02",
         "staleDays": 0,
-        "medianGapDays": 1,
+        "medianGapDays": 1.0,
         "maxGapDays": 18,
-        "flatShare": 0.0003,
-        "longestFlatRun": 1,
+        "flatShare": 0.0,
+        "longestFlatRun": 0,
         "bigJumps": 0,
-        "recentObs": 660,
+        "recentObs": 658,
         "nonPositive": 0
       }
     }
