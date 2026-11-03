@@ -1,14 +1,14 @@
 {
- "updatedAt": "2026-11-03T13:10:37+00:00",
+ "updatedAt": "2026-11-03T14:07:23+00:00",
  "asOf": "2026-11-03",
  "window": 90,
  "obs": 97,
  "headline": {
   "annVol": 19.8,
   "betaSpy": 0.52,
-  "betaXme": 0.4,
+  "betaXme": 0.41,
   "var1d95": -273,
-  "var1d99": -425,
+  "var1d99": -426,
   "hhi": 10000.0,
   "effectiveN": 1.0
  },
@@ -22,19 +22,19 @@
   {
    "k": "Beta vs S&P 500 (SPY)",
    "v": "0.52",
-   "note": "62 overlapping daily obs",
+   "note": "61 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.40",
+   "v": "0.41",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
   {
    "k": "1-day VaR (95%, historical)",
    "v": "-$273",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$425)",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$426)",
    "tone": "neg"
   },
   {
