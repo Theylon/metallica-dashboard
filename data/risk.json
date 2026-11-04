@@ -1,40 +1,40 @@
 {
- "updatedAt": "2026-11-03T22:13:50+00:00",
- "asOf": "2026-11-03",
+ "updatedAt": "2026-11-04T13:06:50+00:00",
+ "asOf": "2026-11-04",
  "window": 90,
- "obs": 97,
+ "obs": 98,
  "headline": {
-  "annVol": 19.8,
-  "betaSpy": 0.52,
-  "betaXme": 0.4,
-  "var1d95": -273,
-  "var1d99": -425,
+  "annVol": 19.7,
+  "betaSpy": 0.49,
+  "betaXme": 0.42,
+  "var1d95": -274,
+  "var1d99": -426,
   "hhi": 10000.0,
   "effectiveN": 1.0
  },
  "metrics": [
   {
    "k": "Annualized volatility",
-   "v": "19.8%",
-   "note": "from the account's daily TWR, 97 daily obs since inception",
+   "v": "19.7%",
+   "note": "from the account's daily TWR, 98 daily obs since inception",
    "tone": "neutral"
   },
   {
    "k": "Beta vs S&P 500 (SPY)",
-   "v": "0.52",
-   "note": "62 overlapping daily obs",
+   "v": "0.49",
+   "note": "61 overlapping daily obs",
    "tone": "neutral"
   },
   {
    "k": "Beta vs metals (XME)",
-   "v": "0.40",
+   "v": "0.42",
    "note": "long/short damps directional metals beta",
    "tone": "pos"
   },
   {
    "k": "1-day VaR (95%, historical)",
-   "v": "-$273",
-   "note": "-2.70% of NAV; 99% VaR -4.21% (-$425)",
+   "v": "-$274",
+   "note": "-2.70% of NAV; 99% VaR -4.21% (-$426)",
    "tone": "neg"
   },
   {
