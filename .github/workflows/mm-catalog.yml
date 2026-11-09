@@ -1,0 +1,77 @@
+# Weekly snapshot of the whole MetalMiner catalogue our API token can see
+# (scripts/mm_catalog.py → data/mm_catalog.json + reports/mm_catalog.md).
+# Metadata only — no price values — so the outputs are safe to commit.
+#
+# On master (schedule / manual run) the outputs are committed. On a working
+# branch (a push touching the script or this file) the run only prints the report
+# to the log and uploads it as an artifact: a GITHUB_TOKEN commit back to the
+# branch would leave the PR head without a Standards run.
+name: MetalMiner catalogue
+
+on:
+  schedule:
+    - cron: '20 6 * * 1'   # Mondays 06:20 UTC, before the first data refresh
+  workflow_dispatch:
+  push:
+    branches-ignore: [master]
+    paths:
+      - scripts/mm_catalog.py
+      - .github/workflows/mm-catalog.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mm-catalog-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Pull catalogue
+        env:
+          METALMINER_API_TOKEN: ${{ secrets.METALMINER_API_TOKEN }}
+        run: |
+          if [ -z "$METALMINER_API_TOKEN" ]; then echo "METALMINER_API_TOKEN not set — catalogue skipped"; exit 0; fi
+          python scripts/mm_catalog.py
+          cat reports/mm_catalog.md
+
+      - name: Upload report
+        if: hashFiles('reports/mm_catalog.md') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: mm-catalog
+          path: |
+            reports/mm_catalog.md
+            data/mm_catalog.json
+          retention-days: 7
+
+      - name: Commit (master only)
+        if: github.ref == 'refs/heads/master'
+        run: |
+          git config user.name "metallica-bot"
+          git config user.email "bot@metallica-dashboard.local"
+          git add data/mm_catalog.json reports/mm_catalog.md 2>/dev/null || true
+          if git diff --staged --quiet; then echo "No catalogue changes."; exit 0; fi
+          git commit -m "data: MetalMiner catalogue $(date -u +%Y-%m-%d)"
+          for attempt in 1 2 3 4; do
+            if git push; then echo "Pushed on attempt $attempt."; exit 0; fi
+            # Only these two files are written here, so a rebase onto the data bot's
+            # commits replays cleanly; on a real conflict, leave it to next week.
+            if ! git pull --rebase --no-edit; then
+              git rebase --abort || true
+              echo "::warning::Rebase conflicted — catalogue not committed this run."
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          echo "::warning::Could not push the catalogue after 4 attempts."
