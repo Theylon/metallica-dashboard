@@ -1,90 +1,90 @@
 {
- "updatedAt": "2026-11-10T22:10:25+00:00",
+ "updatedAt": "2026-11-11T23:19:12+00:00",
  "status": "ready",
- "daysCollected": 86,
+ "daysCollected": 87,
  "minDaysNeeded": 25,
  "fwdWindow": 20,
  "signals": [
   {
    "signal": "fundamentals",
-   "rankIC": 0.246,
+   "rankIC": 0.244,
    "ic_tstat": 18.92,
-   "IR": 2.33,
+   "IR": 2.31,
    "hitRate": 1.0,
-   "n": 6864,
-   "windows": 66
+   "n": 6968,
+   "windows": 67
   },
   {
    "signal": "quality",
-   "rankIC": 0.163,
-   "ic_tstat": 14.76,
-   "IR": 1.82,
-   "hitRate": 0.92,
-   "n": 11682,
-   "windows": 66
+   "rankIC": 0.164,
+   "ic_tstat": 15.02,
+   "IR": 1.83,
+   "hitRate": 0.93,
+   "n": 11859,
+   "windows": 67
   },
   {
    "signal": "sentiment",
-   "rankIC": 0.087,
-   "ic_tstat": 5.61,
-   "IR": 0.69,
-   "hitRate": 0.73,
-   "n": 2574,
-   "windows": 66
+   "rankIC": 0.085,
+   "ic_tstat": 5.46,
+   "IR": 0.67,
+   "hitRate": 0.72,
+   "n": 2613,
+   "windows": 67
   },
   {
    "signal": "composite",
    "rankIC": 0.065,
-   "ic_tstat": 3.02,
+   "ic_tstat": 3.03,
    "IR": 0.37,
-   "hitRate": 0.65,
-   "n": 13616,
-   "windows": 66
+   "hitRate": 0.66,
+   "n": 13826,
+   "windows": 67
   },
   {
    "signal": "momentum",
-   "rankIC": 0.062,
-   "ic_tstat": 2.23,
+   "rankIC": 0.061,
+   "ic_tstat": 2.2,
    "IR": 0.27,
-   "hitRate": 0.65,
-   "n": 12824,
-   "windows": 66
+   "hitRate": 0.64,
+   "n": 13022,
+   "windows": 67
   },
   {
    "signal": "deep",
    "rankIC": 0.013,
-   "ic_tstat": 1.24,
-   "IR": 0.15,
+   "ic_tstat": 1.27,
+   "IR": 0.16,
    "hitRate": 0.61,
-   "n": 13200,
-   "windows": 66
+   "n": 13400,
+   "windows": 67
   },
   {
    "signal": "smart",
-   "rankIC": 0.005,
-   "ic_tstat": 0.34,
+   "rankIC": 0.004,
+   "ic_tstat": 0.31,
    "IR": 0.04,
    "hitRate": 0.48,
-   "n": 4356,
-   "windows": 66
+   "n": 4422,
+   "windows": 67
   },
   {
    "signal": "commodity",
-   "rankIC": 0.004,
-   "ic_tstat": 0.16,
-   "IR": 0.02,
-   "hitRate": 0.58,
-   "n": 11616,
-   "windows": 66
+   "rankIC": 0.002,
+   "ic_tstat": 0.11,
+   "IR": 0.01,
+   "hitRate": 0.57,
+   "n": 11792,
+   "windows": 67
   },
   {
    "signal": "analyst",
    "rankIC": -0.089,
-   "ic_tstat": -2.87,
-   "IR": -0.35,
+   "ic_tstat": -2.91,
+   "IR": -0.36,
    "hitRate": 0.36,
-   "n": 4158,
-   "windows": 66
+   "n": 4221,
+   "windows": 67
   }
  ],
  "factorTilt": {
@@ -92,8 +92,8 @@
   "factors": [
    {
     "factor": "momentum",
-    "portZ": -0.01,
-    "longZ": -0.16,
+    "portZ": -0.0,
+    "longZ": -0.06,
     "shortZ": null,
     "coverage": 1
    },
