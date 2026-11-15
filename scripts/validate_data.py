@@ -88,7 +88,7 @@ SPECS: dict[str, dict] = {
     "research.json":    {"container": DICT, "required": ["updatedAt", "items"],
                          "rows": ("items", ["ticker"])},
     "metals_spot.json": {"container": DICT, "required": ["updatedAt", "items"],
-                         "rows": ("items", ["name"])},
+                         "rows": ("items", ["name", "price"])},
     # Process tab (see PROCESS.md). Line-delimited files (decision_log.jsonl,
     # orders.jsonl — the latter feeds the Orders tab) can't live in SPECS
     # (validate_file whole-file-parses); they get a per-line parse in step 3

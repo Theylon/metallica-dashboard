@@ -8,8 +8,11 @@ Reads:  METALMINER_API_TOKEN from the environment (a GitHub Actions secret in CI
 Writes: --out (default /tmp/historical_latest.json.gz) in the same shape as a
         MetalMiner historical dump — {"commodities": [{collection_date,
         commodity_id, category, type, origin, description, unit, value}, ...]} —
-        so mm_series_quality.py, mmi_proxy_audit.py and rare_earth_leadlag.py run
-        on it unchanged. The dump is licensed data and stays OUT of git
+        so mm_series_quality.py, mmi_proxy_audit.py, mm_spot.py and
+        rare_earth_leadlag.py run on it unchanged. Two API fields ride along when
+        sent: "currency" (the native currency of "value": usd, eur, cny ... —
+        many Chinese assessments are EUR) and "USD" (value converted at that
+        day's FX, for dollar-based research). The dump is licensed data and stays OUT of git
         (.gitignore blocks historical_*.json[.gz]).
         data/mm_freshness.json — derived metadata only: per id, the last
         observation date and its lag in days behind the pull, plus counts. This
@@ -84,6 +87,9 @@ def normalise(payload):
         if not date:
             continue
         row = {k: r.get(k) for k in ROW_FIELDS}
+        for k in ("currency", "USD"):
+            if r.get(k) is not None:
+                row[k] = r[k]
         row["collection_date"] = str(date)[:10]
         row["commodity_id"] = int(r["commodity_id"])
         try:

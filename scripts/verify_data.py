@@ -386,6 +386,23 @@ def check_freshness(account, risk, pnl):
             ok(f"risk.json obs {risk.get('obs')} ≤ {twr_days} pnl twr days")
 
 
+def check_metals_spot():
+    """Warn when the MetalMiner price panel stops refreshing (mm_spot.py in the Action)."""
+    try:
+        doc = _load("metals_spot.json")
+        age_d = (datetime.datetime.now(datetime.timezone.utc)
+                 - datetime.datetime.fromisoformat(doc["updatedAt"])).total_seconds() / 86400
+    except (OSError, ValueError, KeyError, TypeError) as e:
+        warn(f"metals_spot.json unreadable: {e}")
+        return
+    if doc.get("source") != "metalminer-api":
+        warn("metals_spot.json is not from the MetalMiner API pull yet (mm_spot.py has not run)")
+    elif age_d > 4:
+        warn(f"metals_spot.json is {age_d:.0f} days old — is the MetalMiner pull failing?")
+    else:
+        ok(f"metals_spot.json: {len(doc.get('items', []))} MetalMiner series, {age_d:.1f}d old")
+
+
 def main():
     account = _load("account.json")
     positions = _load("positions.json")["positions"]
@@ -411,6 +428,7 @@ def main():
     check_process_files()
     check_linkage_map()
     check_freshness(account, risk, pnl)
+    check_metals_spot()
 
     print(f"\n{len(FAILS)} failure(s), {len(WARNS)} warning(s)")
     sys.exit(1 if FAILS else 0)
