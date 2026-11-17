@@ -1,0 +1,46 @@
+name: MetalMiner discover
+
+# Read-only probe: asks the MetalMiner API which commodity ids in a range are
+# open to our tier and prints their metadata (names, units, date span — never
+# prices) to the job log and summary. Nothing is committed or uploaded.
+# Add an id it finds to mm_fetch.py EXTRA_IDS to start pulling it daily.
+
+on:
+  workflow_dispatch:
+    inputs:
+      ranges:
+        description: 'comma-separated id ranges, e.g. 270769-270799,72080-72110 (blank = defaults)'
+        required: false
+        default: ''
+  push:
+    branches-ignore: [master]
+    paths:
+      - scripts/mm_discover.py
+      - .github/workflows/mm-discover.yml
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Probe MetalMiner ids
+        env:
+          METALMINER_API_TOKEN: ${{ secrets.METALMINER_API_TOKEN }}
+          RANGES: ${{ github.event.inputs.ranges }}
+        run: |
+          if [ -n "$RANGES" ]; then
+            python scripts/mm_discover.py --ranges "$RANGES"
+          else
+            python scripts/mm_discover.py
+          fi
