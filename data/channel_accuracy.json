@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-16T23:02:22+00:00",
+ "updatedAt": "2026-11-17T00:40:26+00:00",
  "gate": {
   "trustedMinPct": 80
  },
@@ -15,7 +15,7 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 70,
+   "n": 71,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
@@ -26,10 +26,10 @@
    "note": null,
    "detail": [
     {
-     "rankIC": 0.241,
+     "rankIC": 0.24,
      "IR": 2.29,
-     "tstat": 19.12,
-     "obs": 7280
+     "tstat": 19.31,
+     "obs": 7384
     }
    ]
   },
@@ -147,7 +147,7 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 70,
+   "n": 71,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
@@ -159,33 +159,9 @@
    "detail": [
     {
      "rankIC": 0.167,
-     "IR": 1.88,
-     "tstat": 15.74,
-     "obs": 12390
-    }
-   ]
-  },
-  {
-   "id": "score.sentiment",
-   "label": "Sentiment score vs forward returns",
-   "kind": "score",
-   "source": "signal_scorecard.json (rank-IC engine)",
-   "ticker": null,
-   "n": 70,
-   "medAbsErrPct": null,
-   "meanAbsErrPct": null,
-   "beatConsensusPct": null,
-   "hitRatePct": 69.0,
-   "accuracyPct": 69.0,
-   "status": "probation",
-   "gated": true,
-   "note": null,
-   "detail": [
-    {
-     "rankIC": 0.076,
-     "IR": 0.58,
-     "tstat": 4.88,
-     "obs": 2730
+     "IR": 1.9,
+     "tstat": 15.98,
+     "obs": 12567
     }
    ]
   },
@@ -195,12 +171,12 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 70,
+   "n": 71,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 67.0,
-   "accuracyPct": 67.0,
+   "hitRatePct": 68.0,
+   "accuracyPct": 68.0,
    "status": "probation",
    "gated": true,
    "note": null,
@@ -208,8 +184,32 @@
     {
      "rankIC": 0.067,
      "IR": 0.39,
-     "tstat": 3.25,
-     "obs": 14456
+     "tstat": 3.32,
+     "obs": 14666
+    }
+   ]
+  },
+  {
+   "id": "score.sentiment",
+   "label": "Sentiment score vs forward returns",
+   "kind": "score",
+   "source": "signal_scorecard.json (rank-IC engine)",
+   "ticker": null,
+   "n": 71,
+   "medAbsErrPct": null,
+   "meanAbsErrPct": null,
+   "beatConsensusPct": null,
+   "hitRatePct": 68.0,
+   "accuracyPct": 68.0,
+   "status": "probation",
+   "gated": true,
+   "note": null,
+   "detail": [
+    {
+     "rankIC": 0.073,
+     "IR": 0.56,
+     "tstat": 4.7,
+     "obs": 2769
     }
    ]
   },
@@ -219,21 +219,21 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 70,
+   "n": 71,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 64.0,
-   "accuracyPct": 64.0,
+   "hitRatePct": 65.0,
+   "accuracyPct": 65.0,
    "status": "probation",
    "gated": true,
    "note": null,
    "detail": [
     {
      "rankIC": 0.061,
-     "IR": 0.27,
-     "tstat": 2.29,
-     "obs": 13616
+     "IR": 0.28,
+     "tstat": 2.33,
+     "obs": 13814
     }
    ]
   },
@@ -243,7 +243,7 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 70,
+   "n": 71,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
@@ -256,8 +256,8 @@
     {
      "rankIC": 0.016,
      "IR": 0.19,
-     "tstat": 1.56,
-     "obs": 14000
+     "tstat": 1.61,
+     "obs": 14200
     }
    ]
   },
@@ -267,7 +267,7 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 70,
+   "n": 71,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
@@ -278,10 +278,10 @@
    "note": null,
    "detail": [
     {
-     "rankIC": 0.0,
-     "IR": 0.0,
-     "tstat": 0.01,
-     "obs": 12320
+     "rankIC": -0.001,
+     "IR": -0.01,
+     "tstat": -0.06,
+     "obs": 12496
     }
    ]
   },
@@ -291,12 +291,12 @@
    "kind": "direction",
    "source": "micro_history.jsonl biasDir vs 20-snapshot-forward return",
    "ticker": null,
-   "n": 7524,
+   "n": 7638,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
-   "hitRatePct": 49.4,
-   "accuracyPct": 49.4,
+   "hitRatePct": 49.3,
+   "accuracyPct": 49.3,
    "status": "probation",
    "gated": true,
    "note": null,
@@ -308,7 +308,7 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 70,
+   "n": 71,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
@@ -322,7 +322,7 @@
      "rankIC": 0.004,
      "IR": 0.03,
      "tstat": 0.29,
-     "obs": 4620
+     "obs": 4686
     }
    ]
   },
@@ -332,7 +332,7 @@
    "kind": "score",
    "source": "signal_scorecard.json (rank-IC engine)",
    "ticker": null,
-   "n": 70,
+   "n": 71,
    "medAbsErrPct": null,
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
@@ -344,9 +344,9 @@
    "detail": [
     {
      "rankIC": -0.087,
-     "IR": -0.36,
-     "tstat": -2.97,
-     "obs": 4410
+     "IR": -0.35,
+     "tstat": -2.99,
+     "obs": 4473
     }
    ]
   },
@@ -412,15 +412,15 @@
    "meanAbsErrPct": null,
    "beatConsensusPct": null,
    "hitRatePct": null,
-   "accuracyPct": 69.5,
+   "accuracyPct": 70.6,
    "status": "info",
    "gated": false,
    "note": null,
    "detail": [
     {
-     "agree": 137,
+     "agree": 139,
      "mixed": 37,
-     "conflict": 23
+     "conflict": 21
     }
    ]
   }
